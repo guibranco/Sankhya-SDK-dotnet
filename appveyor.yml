@@ -1,0 +1,117 @@
+version: 1.0.{build}
+skip_tags: true
+image: Visual Studio 2022
+configuration: Release
+skip_commits:
+  message: /(Create|Update) .*\.(png|jpg|jpeg|bmp|gif|md)/
+
+environment:
+  SOLUTION_NAME: Sankhya
+  SONAR_TOKEN: 
+    secure: Igylx3y/l0I0VWQoMr2dSCblzYcS/4JCUVYqqedO6zSm9AsGq1SxGrjTLyf29jUP
+  GITHUB_TOKEN:
+    secure: AD1z81FqZlvGkCEyDzJ3g6sIJ93ecUE9EuqfUxc4CMiFGW139pWZk+/huuTY5jzG
+  CODACY_PROJECT_TOKEN:
+    secure: zNseofT7KMGybjmYDNys3AQhYvM/JVXwL95C/pVDspL19ilVfXApWLuzhTgaXRvD
+
+dotnet_csproj: 
+  patch: true 
+  file: '**\*.csproj' 
+  version: '{version}' 
+  package_version: '{version}' 
+  assembly_version: '{version}' 
+  file_version: '{version}' 
+  informational_version: '{version}' 
+
+before_build:
+- ps: $env:SONAR_PROJECT = "$env:APPVEYOR_REPO_NAME" -replace "/","_"
+- ps: $env:SONAR_ORGANIZATION = "$env:APPVEYOR_REPO_NAME" -replace "/.*$","-github"
+- cmd: nuget restore
+- cmd: choco install opencover.portable
+- cmd: choco install codecov
+- cmd: curl -L https://github.com/codacy/codacy-coverage-reporter/releases/download/13.11.17/codacy-coverage-reporter-assembly.jar > ./codacy-test-reporter.jar
+- cmd: dotnet tool install --global dotnet-sonarscanner
+
+build:
+  publish_nuget: true
+  include_nuget_references: true
+  parallel: true
+  verbosity: normal
+
+build_script:
+- ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER -And $env:APPVEYOR_REPO_BRANCH -eq "master") { & 
+  dotnet sonarscanner begin 
+ /k:"$env:SONAR_PROJECT" 
+ /o:"$env:SONAR_ORGANIZATION" 
+ /d:sonar.host.url="https://sonarcloud.io" 
+ /d:sonar.login="$env:SONAR_TOKEN" 
+ /v:"$env:APPVEYOR_BUILD_NUMBER" 
+ /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" 
+ /d:sonar.coverage.exclusions="**/$env:SOLUTION_NAME.Tests/**,**/*Tests.cs" 
+ /d:sonar.cs.opencover.reportsPaths="$env:CD\Tests\$env:SOLUTION_NAME.Tests\coverage.opencover.xml" }'
+- dotnet build %SOLUTION_NAME%.sln
+- dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj 
+ /p:CollectCoverage=true 
+ /p:CoverletOutputFormat="opencover"
+- codecov -f "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
+- SET JAVA_HOME=C:\Program Files\Java\jdk11
+- SET PATH=%JAVA_HOME%\bin;%PATH%
+- java 
+ -jar 
+ ./codacy-test-reporter.jar report 
+ -l CSharp 
+ -t %CODACY_PROJECT_TOKEN% 
+ -r "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
+- ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER -And $env:APPVEYOR_REPO_BRANCH -eq "master") { & 
+ dotnet sonarscanner end 
+ /d:sonar.login="$env:SONAR_TOKEN" }'
+
+after_build:
+- xcopy %CD%\Src\%SOLUTION_NAME%\bin\Release\netstandard2.1\*.* %CD%\Build\
+
+- copy %CD%\Src\%SOLUTION_NAME%\bin\Release\%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg %SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg
+- copy %CD%\Src\%SOLUTION_NAME%.Health\bin\Release\%SOLUTION_NAME%.Health.%APPVEYOR_BUILD_VERSION%.nupkg %SOLUTION_NAME%.Health.%APPVEYOR_BUILD_VERSION%.nupkg
+
+- rd /s /q %CD%\Src\%SOLUTION_NAME%\bin\Release\
+
+- xcopy %CD%\Tests\%SOLUTION_NAME%.Tests\*.xml %CD%\Coverage\
+- xcopy %CD%\Tests\%SOLUTION_NAME%.Tests\*.json %CD%\Coverage\
+
+- cd %CD%
+
+- 7z a -tzip -mx9 "%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.zip" Build
+- 7z a -tzip -mx9 "%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.Coverage.zip" Coverage
+
+artifacts:
+- path: $(SOLUTION_NAME).%APPVEYOR_BUILD_VERSION%.zip
+  name: ZipFile
+
+- path: $(SOLUTION_NAME).%APPVEYOR_BUILD_VERSION%.nupkg
+  name: PackageMain
+
+- path: $(SOLUTION_NAME).Health.%APPVEYOR_BUILD_VERSION%.nupkg
+  name: PackageHealth
+
+- path: $(SOLUTION_NAME).%APPVEYOR_BUILD_VERSION%.Coverage.zip
+  name: Coverage
+
+deploy:
+- provider: Environment
+  name: NuGet
+  on:
+   branch: master
+  artifact: PackageMain
+
+- provider: Environment
+  name: NuGet
+  on:
+   branch: master
+  artifact: PackageHealth
+
+- provider: GitHub
+  on:
+   branch: master
+  tag: $(appveyor_build_version)
+  auth_token: $(GITHUB_TOKEN)
+  force_update: true
+  artifact: ZipFile
