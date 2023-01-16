@@ -25,7 +25,7 @@ namespace Sankhya.Attributes
     public sealed class ServiceAttribute : Attribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceAttribute"/> class.
+        /// Initializes a new instance of the <see cref="ServiceAttribute" /> class.
         /// </summary>
         /// <param name="module">The module.</param>
         /// <param name="category">The category.</param>

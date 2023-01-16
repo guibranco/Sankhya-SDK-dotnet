@@ -24,12 +24,12 @@ namespace Sankhya.Attributes
     public sealed class EntityReferenceAttribute : Attribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EntityReferenceAttribute"/> class.
+        /// Initializes a new instance of the <see cref="EntityReferenceAttribute" /> class.
         /// </summary>
         public EntityReferenceAttribute() => CustomRelationName = string.Empty;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EntityReferenceAttribute"/> class.
+        /// Initializes a new instance of the <see cref="EntityReferenceAttribute" /> class.
         /// </summary>
         /// <param name="customRelationName">Name of the custom relation.</param>
         public EntityReferenceAttribute(string customRelationName) => CustomRelationName = customRelationName;

@@ -6,21 +6,26 @@
 // Last Modified By : Guilherme Branco Stracini
 // Last Modified On : 01-16-2023
 // ***********************************************************************
-// <copyright file="EntityIgnoreAttribute.cs" company="Guilherme Branco Stracini">
+// <copyright file="User.cs" company="Guilherme Branco Stracini">
 //     © 2023 Guilherme Branco Stracini. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Attributes
+namespace Sankhya.Service
 {
-    using System;
+    using System.Xml.Serialization;
 
     /// <summary>
-    /// Class EntityIgnoreAttribute. This class cannot be inherited.
-    /// Implements the <see cref="Attribute" />
+    /// Class User. This class cannot be inherited.
     /// </summary>
-    /// <seealso cref="Attribute" />
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
-    public sealed class EntityIgnoreAttribute : Attribute
-    { }
+    [XmlType("usuario")]
+    public sealed class User
+    {
+        /// <summary>
+        /// Gets or sets the logged user code.
+        /// </summary>
+        /// <value>The logged user code.</value>
+        [XmlAttribute(AttributeName = "codUsuLogado")]
+        public int LoggedUserCode { get; set; }
+    }
 }
