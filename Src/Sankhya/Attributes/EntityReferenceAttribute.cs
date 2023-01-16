@@ -38,6 +38,6 @@ namespace Sankhya.Attributes
         /// Gets the name of the custom relation.
         /// </summary>
         /// <value>The name of the custom relation.</value>
-        public string CustomRelationName { get; private set; }
+        public string CustomRelationName { get; }
     }
 }

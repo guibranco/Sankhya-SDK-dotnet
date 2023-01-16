@@ -33,6 +33,6 @@ namespace Sankhya.Attributes
         /// Gets the name.
         /// </summary>
         /// <value>The name.</value>
-        public string Name { get; private set; }
+        public string Name { get; }
     }
 }
