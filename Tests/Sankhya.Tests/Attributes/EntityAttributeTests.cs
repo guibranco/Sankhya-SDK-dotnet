@@ -1,6 +1,5 @@
 namespace Sankhya.Tests.Attributes
 {
-    using System;
     using Sankhya.Attributes;
     using Xunit;
 
