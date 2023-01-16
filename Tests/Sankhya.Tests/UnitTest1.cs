@@ -1,6 +1,7 @@
 namespace Sankhya.Tests
 {
     using System;
+    using Sankhya.Attributes;
     using Xunit;
 
     public class UnitTest1
@@ -8,7 +9,10 @@ namespace Sankhya.Tests
         [Fact]
         public void Test1()
         {
-            Assert.True(true);
+            const string name = "test";
+            var entityAttribute = new EntityAttribute(name);
+            var result = entityAttribute.Name;
+            Assert.Equal(name, result);
         }
     }
 }
