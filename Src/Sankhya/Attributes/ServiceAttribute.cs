@@ -41,19 +41,19 @@ namespace Sankhya.Attributes
         /// Gets the category.
         /// </summary>
         /// <value>The category.</value>
-        public ServiceCategory Category { get; private set; }
+        public ServiceCategory Category { get; }
 
         /// <summary>
         /// Gets the module.
         /// </summary>
         /// <value>The module.</value>
-        public ServiceModule Module { get; private set; }
+        public ServiceModule Module { get; }
 
         /// <summary>
         /// Gets the type.
         /// </summary>
         /// <value>The type.</value>
-        public ServiceType Type { get; private set; }
+        public ServiceType Type { get; }
 
     }
 }

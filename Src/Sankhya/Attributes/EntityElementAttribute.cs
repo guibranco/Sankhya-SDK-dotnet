@@ -24,36 +24,26 @@ namespace Sankhya.Attributes
     public sealed class EntityElementAttribute : Attribute
     {
         /// <summary>
-        /// The element
-        /// </summary>
-        private readonly string _element;
-
-        /// <summary>
-        /// The ignore inline reference
-        /// </summary>
-        private readonly bool _ignoreInlineReference;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="EntityElementAttribute"/> class.
         /// </summary>
         /// <param name="elementName">Name of the element.</param>
         /// <param name="ignoreInlineReference">if set to <c>true</c> [ignore inline reference].</param>
         public EntityElementAttribute(string elementName, bool ignoreInlineReference = false)
         {
-            _element = elementName;
-            _ignoreInlineReference = ignoreInlineReference;
+            ElementName = elementName;
+            IgnoreInlineReference = ignoreInlineReference;
         }
 
         /// <summary>
         /// Gets the name of the element.
         /// </summary>
         /// <value>The name of the element.</value>
-        public string ElementName => _element;
+        public string ElementName { get; }
 
         /// <summary>
         /// Gets a value indicating whether [ignore inline reference].
         /// </summary>
         /// <value><c>true</c> if [ignore inline reference]; otherwise, <c>false</c>.</value>
-        public bool IgnoreInlineReference => _ignoreInlineReference;
+        public bool IgnoreInlineReference { get; }
     }
 }

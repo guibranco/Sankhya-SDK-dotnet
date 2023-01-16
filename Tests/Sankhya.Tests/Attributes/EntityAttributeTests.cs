@@ -1,13 +1,12 @@
-namespace Sankhya.Tests
+namespace Sankhya.Tests.Attributes
 {
-    using System;
     using Sankhya.Attributes;
     using Xunit;
 
-    public class UnitTest1
+    public class EntityAttributeTests
     {
         [Fact]
-        public void Test1()
+        public void SetAttributeName_NamePropertyShouldBeEqual()
         {
             const string name = "test";
             var entityAttribute = new EntityAttribute(name);

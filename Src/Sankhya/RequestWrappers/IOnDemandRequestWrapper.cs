@@ -6,33 +6,35 @@
 // Last Modified By : Guilherme Branco Stracini
 // Last Modified On : 01-16-2023
 // ***********************************************************************
-// <copyright file="EntityAttribute.cs" company="Guilherme Branco Stracini">
+// <copyright file="IOnDemandRequestWrapper.cs" company="Guilherme Branco Stracini">
 //     © 2023 Guilherme Branco Stracini. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Attributes
+namespace Sankhya.RequestWrappers
 {
+    using CrispyWaffle.Utilities;
+
     using System;
 
+
     /// <summary>
-    /// Class EntityAttribute. This class cannot be inherited.
-    /// Implements the <see cref="Attribute" />
+    /// Interface IOnDemandRequestWrapper
+    /// Implements the <see cref="IDisposable" />
     /// </summary>
-    /// <seealso cref="Attribute" />
-    [AttributeUsage(AttributeTargets.Class, Inherited = false)]
-    public sealed class EntityAttribute : Attribute
+    /// <seealso cref="IDisposable" />
+    //TODO issue #69 (Integração Service)
+    public interface IOnDemandRequestWrapper : IDisposable
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EntityAttribute"/> class.
+        /// Adds the specified entity.
         /// </summary>
-        /// <param name="name">The name.</param>
-        public EntityAttribute(string name) => Name = name;
+        /// <param name="entity">The entity.</param>
+        void Add(IEntity entity);
 
         /// <summary>
-        /// Gets the name.
+        /// Flushes this instance.
         /// </summary>
-        /// <value>The name.</value>
-        public string Name { get; }
+        void Flush();
     }
 }

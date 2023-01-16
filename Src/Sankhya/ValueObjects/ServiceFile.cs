@@ -6,49 +6,39 @@
 // Last Modified By : Guilherme Branco Stracini
 // Last Modified On : 01-16-2023
 // ***********************************************************************
-// <copyright file="PaymentStatus.cs" company="Guilherme Branco Stracini">
+// <copyright file="ServiceFile.cs" company="Guilherme Branco Stracini">
 //     © 2023 Guilherme Branco Stracini. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.ValueObjects
 {
-    using CrispyWaffle.Attributes;
-
-
     /// <summary>
-    /// Enum PaymentStatus
+    /// Class ServiceFile. This class cannot be inherited.
     /// </summary>
-    public enum PaymentStatus
+    public sealed class ServiceFile
     {
+        /// <summary>
+        /// Gets or sets the type of the content.
+        /// </summary>
+        /// <value>The type of the content.</value>
+        public string ContentType { get; set; }
 
         /// <summary>
-        /// The pending
+        /// Gets or sets the name of the file.
         /// </summary>
-        [InternalValue("P")]
-        [HumanReadable("Pendente")]
-        Pending,
-
+        /// <value>The name of the file.</value>
+        public string FileName { get; set; }
 
         /// <summary>
-        /// The paid
+        /// Gets or sets the extension.
         /// </summary>
-        [InternalValue("E")]
-        [HumanReadable("Efetuado")]
-        Paid,
-
+        /// <value>The extension.</value>
+        public string FileExtension { get; set; }
         /// <summary>
-        /// The reversal
+        /// Gets or sets the data.
         /// </summary>
-        [InternalValue("R")]
-        [HumanReadable("Estornado")]
-        Reversal,
-
-        /// <summary>
-        /// The billed
-        /// </summary>
-        [InternalValue("F")]
-        [HumanReadable("Faturado")]
-        Billed,
+        /// <value>The data.</value>
+        public byte[] Data { get; set; }
     }
 }
