@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{953BD55B-09E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FC02E30A-45F3-4F81-96F3-8672D8C8E9D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sankhya.Tests", "Tests\Sankhya.Tests\Sankhya.Tests.csproj", "{51FB3B48-7823-48A5-AC3F-C10AE84D29EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,12 +26,17 @@ Global
 		{D1E5B509-0934-4E15-B78D-D3A88ADDCB16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1E5B509-0934-4E15-B78D-D3A88ADDCB16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1E5B509-0934-4E15-B78D-D3A88ADDCB16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51FB3B48-7823-48A5-AC3F-C10AE84D29EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51FB3B48-7823-48A5-AC3F-C10AE84D29EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51FB3B48-7823-48A5-AC3F-C10AE84D29EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51FB3B48-7823-48A5-AC3F-C10AE84D29EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D1E5B509-0934-4E15-B78D-D3A88ADDCB16} = {953BD55B-09E1-4283-8925-3F2BE10D2846}
+		{51FB3B48-7823-48A5-AC3F-C10AE84D29EB} = {FC02E30A-45F3-4F81-96F3-8672D8C8E9D2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D610A89E-FD32-4908-B089-03DA72C42377}
