@@ -6,21 +6,28 @@
 // Last Modified By : Guilherme Branco Stracini
 // Last Modified On : 01-16-2023
 // ***********************************************************************
-// <copyright file="EntityIgnoreAttribute.cs" company="Guilherme Branco Stracini">
+// <copyright file="Users.cs" company="Guilherme Branco Stracini">
 //     © 2023 Guilherme Branco Stracini. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Attributes
+namespace Sankhya.Service
 {
-    using System;
+    using CrispyWaffle.Serialization;
+    using System.Xml.Serialization;
 
     /// <summary>
-    /// Class EntityIgnoreAttribute. This class cannot be inherited.
-    /// Implements the <see cref="Attribute" />
+    /// Class Users. This class cannot be inherited.
     /// </summary>
-    /// <seealso cref="Attribute" />
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
-    public sealed class EntityIgnoreAttribute : Attribute
-    { }
+    [Serializer]
+    [XmlRoot(ElementName = "usuarios")]
+    public sealed class Users
+    {
+        /// <summary>
+        /// Gets or sets the user.
+        /// </summary>
+        /// <value>The user.</value>
+        [XmlElement(ElementName = "usuario")]
+        public User[] User { get; set; }
+    }
 }

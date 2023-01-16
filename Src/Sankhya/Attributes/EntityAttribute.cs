@@ -24,7 +24,7 @@ namespace Sankhya.Attributes
     public sealed class EntityAttribute : Attribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EntityAttribute"/> class.
+        /// Initializes a new instance of the <see cref="EntityAttribute" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
         public EntityAttribute(string name) => Name = name;

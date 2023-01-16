@@ -24,7 +24,7 @@ namespace Sankhya.Attributes
     public sealed class EntityElementAttribute : Attribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EntityElementAttribute"/> class.
+        /// Initializes a new instance of the <see cref="EntityElementAttribute" /> class.
         /// </summary>
         /// <param name="elementName">Name of the element.</param>
         /// <param name="ignoreInlineReference">if set to <c>true</c> [ignore inline reference].</param>
