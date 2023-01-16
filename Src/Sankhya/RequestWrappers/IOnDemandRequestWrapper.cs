@@ -13,11 +13,8 @@
 // ***********************************************************************
 namespace Sankhya.RequestWrappers
 {
-    using CrispyWaffle.Utilities;
-
     using System;
     using Sankhya.Transport;
-
 
     /// <summary>
     /// Interface IOnDemandRequestWrapper
