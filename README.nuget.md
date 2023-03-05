@@ -3,7 +3,6 @@
 The [Sankhya ERP](https://www.nuget.org/packages/Sankhya) SDK for .NET projects (both Core & Framework).
 
 [![GitHub license](https://img.shields.io/github/license/guibranco/Sankhya-SDK-dotnet)](https://github.com/guibranco/Sankhya-SDK-dotnet)
-[![Time tracker](https://wakatime.com/badge/github/guibranco/Sankhya-SDK-dotnet.svg)](https://wakatime.com/badge/github/guibranco/Sankhya-SDK-dotnet)
 
 ![Sankhya logo](https://raw.githubusercontent.com/guibranco/Sankhya-SDK-dotnet/main/logo.png)
 
@@ -16,7 +15,6 @@ The [Sankhya ERP](https://www.nuget.org/packages/Sankhya) SDK for .NET projects 
 ## Code Quality
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/f6d787f9a2fe4116a7a8a0043489ba67)](https://www.codacy.com/gh/guibranco/Sankhya-SDK-dotnet/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/Sankhya-SDK-dotnet&amp;utm_campaign=Badge_Grade)
-[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/f6d787f9a2fe4116a7a8a0043489ba67)](https://www.codacy.com/gh/guibranco/Sankhya-SDK-dotnet/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/Sankhya-SDK-dotnet&amp;utm_campaign=Badge_Coverage)
 [![codecov](https://codecov.io/gh/guibranco/Sankhya-SDK-dotnet/branch/main/graph/badge.svg)](https://codecov.io/gh/guibranco/Sankhya-SDK-dotnet)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=guibranco_Sankhya-SDK-dotnet&metric=alert_status)](https://sonarcloud.io/dashboard?id=guibranco_Sankhya-SDK-dotnet)
