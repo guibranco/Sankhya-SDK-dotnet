@@ -11,41 +11,40 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+/// <summary>
+/// Enum ProductSuggestionType
+/// </summary>
+public enum ProductSuggestionType
 {
-    using CrispyWaffle.Attributes;
 
     /// <summary>
-    /// Enum ProductSuggestionType
+    /// The none
     /// </summary>
-    public enum ProductSuggestionType
-    {
+    [HumanReadable("Nenhum")]
+    None,
 
-        /// <summary>
-        /// The none
-        /// </summary>
-        [HumanReadable("Nenhum")]
-        None,
+    /// <summary>
+    /// The accessory
+    /// </summary>
+    [HumanReadable("Acessório")]
+    [InternalValue("A")]
+    Accessory,
 
-        /// <summary>
-        /// The accessory
-        /// </summary>
-        [HumanReadable("Acessório")]
-        [InternalValue("A")]
-        Accessory,
+    /// <summary>
+    /// The suggestion
+    /// </summary>
+    [HumanReadable("Sugestão")]
+    [InternalValue("S")]
+    Suggestion,
 
-        /// <summary>
-        /// The suggestion
-        /// </summary>
-        [HumanReadable("Sugestão")]
-        [InternalValue("S")]
-        Suggestion,
-
-        /// <summary>
-        /// The buy together
-        /// </summary>
-        [HumanReadable("Compre Junto")]
-        [InternalValue("C")]
-        BuyTogether
-    }
+    /// <summary>
+    /// The buy together
+    /// </summary>
+    [HumanReadable("Compre Junto")]
+    [InternalValue("C")]
+    BuyTogether
 }

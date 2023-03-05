@@ -11,41 +11,40 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+/// <summary>
+/// Enum SankhyaWarningLevel
+/// </summary>
+public enum SankhyaWarningLevel
 {
-    using CrispyWaffle.Attributes;
+    /// <summary>
+    /// The urgent
+    /// </summary>
+    [InternalValue("0")]
+    [HumanReadable("Urgente")]
+    Urgent = 0,
 
     /// <summary>
-    /// Enum SankhyaWarningLevel
+    /// The error
     /// </summary>
-    public enum SankhyaWarningLevel
-    {
-        /// <summary>
-        /// The urgent
-        /// </summary>
-        [InternalValue("0")]
-        [HumanReadable("Urgente")]
-        Urgent = 0,
+    [InternalValue("1")]
+    [HumanReadable("Erro")]
+    Error = 1,
 
-        /// <summary>
-        /// The error
-        /// </summary>
-        [InternalValue("1")]
-        [HumanReadable("Erro")]
-        Error = 1,
+    /// <summary>
+    /// The warning
+    /// </summary>
+    [InternalValue("2")]
+    [HumanReadable("Alerta")]
+    Warning = 2,
 
-        /// <summary>
-        /// The warning
-        /// </summary>
-        [InternalValue("2")]
-        [HumanReadable("Alerta")]
-        Warning = 2,
-
-        /// <summary>
-        /// The information
-        /// </summary>
-        [InternalValue("3")]
-        [HumanReadable("Informação")]
-        Information = 3
-    }
+    /// <summary>
+    /// The information
+    /// </summary>
+    [InternalValue("3")]
+    [HumanReadable("Informação")]
+    Information = 3
 }

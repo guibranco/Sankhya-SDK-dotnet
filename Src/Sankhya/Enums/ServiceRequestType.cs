@@ -11,70 +11,69 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+
+
+
+/// <summary>
+/// Enum ServiceRequestType
+/// </summary>
+public enum ServiceRequestType
 {
-    using CrispyWaffle.Attributes;
+
+
+
+    /// <summary>
+    /// The default
+    /// </summary>
+    [HumanReadable("Default")]
+    Default,
 
 
 
 
     /// <summary>
-    /// Enum ServiceRequestType
+    /// The simple crud
     /// </summary>
-    public enum ServiceRequestType
-    {
-
-
-
-        /// <summary>
-        /// The default
-        /// </summary>
-        [HumanReadable("Default")]
-        Default,
+    [HumanReadable("Simple CRUD")]
+    SimpleCrud,
 
 
 
 
-        /// <summary>
-        /// The simple crud
-        /// </summary>
-        [HumanReadable("Simple CRUD")]
-        SimpleCrud,
+    /// <summary>
+    /// The paged crud
+    /// </summary>
+    [HumanReadable("Paged CRUD (retrieve)")]
+    PagedCrud,
 
 
 
 
-        /// <summary>
-        /// The paged crud
-        /// </summary>
-        [HumanReadable("Paged CRUD (retrieve)")]
-        PagedCrud,
+    /// <summary>
+    /// The queryable crud
+    /// </summary>
+    [HumanReadable("Queryable CRUD (retrieve)")]
+    QueryableCrud,
 
 
 
 
-        /// <summary>
-        /// The queryable crud
-        /// </summary>
-        [HumanReadable("Queryable CRUD (retrieve)")]
-        QueryableCrud,
+    /// <summary>
+    /// The on demand crud
+    /// </summary>
+    [HumanReadable("On demand CRUD (Create, Update, Delete)")]
+    OnDemandCrud,
 
 
 
 
-        /// <summary>
-        /// The on demand crud
-        /// </summary>
-        [HumanReadable("On demand CRUD (Create, Update, Delete)")]
-        OnDemandCrud,
-
-
-
-
-        /// <summary>
-        /// The know services
-        /// </summary>
-        [HumanReadable("Know services")]
-        KnowServices
-    }
+    /// <summary>
+    /// The know services
+    /// </summary>
+    [HumanReadable("Know services")]
+    KnowServices
 }

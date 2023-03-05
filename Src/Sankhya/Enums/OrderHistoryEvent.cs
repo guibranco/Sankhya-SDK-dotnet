@@ -11,49 +11,48 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+/// <summary>
+/// Enum OrderHistoryEvent
+/// </summary>
+public enum OrderHistoryEvent
 {
-    using CrispyWaffle.Attributes;
 
     /// <summary>
-    /// Enum OrderHistoryEvent
+    /// The none
     /// </summary>
-    public enum OrderHistoryEvent
-    {
+    [InternalValue("")]
+    [HumanReadable("Nenhum")]
+    None,
 
-        /// <summary>
-        /// The none
-        /// </summary>
-        [InternalValue("")]
-        [HumanReadable("Nenhum")]
-        None,
+    /// <summary>
+    /// The change
+    /// </summary>
+    [InternalValue("A")]
+    [HumanReadable("Alteração")]
+    Change,
 
-        /// <summary>
-        /// The change
-        /// </summary>
-        [InternalValue("A")]
-        [HumanReadable("Alteração")]
-        Change,
+    /// <summary>
+    /// The confirmation
+    /// </summary>
+    [InternalValue("C")]
+    [HumanReadable("Confirmação")]
+    Confirmation,
 
-        /// <summary>
-        /// The confirmation
-        /// </summary>
-        [InternalValue("C")]
-        [HumanReadable("Confirmação")]
-        Confirmation,
+    /// <summary>
+    /// The exclusion
+    /// </summary>
+    [InternalValue("E")]
+    [HumanReadable("Exclusão")]
+    Exclusion,
 
-        /// <summary>
-        /// The exclusion
-        /// </summary>
-        [InternalValue("E")]
-        [HumanReadable("Exclusão")]
-        Exclusion,
-
-        /// <summary>
-        /// The inclusion
-        /// </summary>
-        [InternalValue("I")]
-        [HumanReadable("Inclusão")]
-        Inclusion
-    }
+    /// <summary>
+    /// The inclusion
+    /// </summary>
+    [InternalValue("I")]
+    [HumanReadable("Inclusão")]
+    Inclusion
 }

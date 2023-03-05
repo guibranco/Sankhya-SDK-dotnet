@@ -11,69 +11,68 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+/// <summary>
+/// Enum SellerType
+/// </summary>
+public enum SellerType
 {
-    using CrispyWaffle.Attributes;
+    /// <summary>
+    /// The none
+    /// </summary>
+    [HumanReadable("Nenhum")]
+    [InternalValue("0")]
+    None,
 
     /// <summary>
-    /// Enum SellerType
+    /// The buyer
     /// </summary>
-    public enum SellerType
-    {
-        /// <summary>
-        /// The none
-        /// </summary>
-        [HumanReadable("Nenhum")]
-        [InternalValue("0")]
-        None,
+    [HumanReadable("Comprador")]
+    [InternalValue("C")]
+    Buyer,
 
-        /// <summary>
-        /// The buyer
-        /// </summary>
-        [HumanReadable("Comprador")]
-        [InternalValue("C")]
-        Buyer,
+    /// <summary>
+    /// The seller
+    /// </summary>
+    [HumanReadable("Vendedor")]
+    [InternalValue("V")]
+    Seller,
 
-        /// <summary>
-        /// The seller
-        /// </summary>
-        [HumanReadable("Vendedor")]
-        [InternalValue("V")]
-        Seller,
+    /// <summary>
+    /// The supervisor
+    /// </summary>
+    [HumanReadable("Supervisor")]
+    [InternalValue("S")]
+    Supervisor,
 
-        /// <summary>
-        /// The supervisor
-        /// </summary>
-        [HumanReadable("Supervisor")]
-        [InternalValue("S")]
-        Supervisor,
+    /// <summary>
+    /// The manager
+    /// </summary>
+    [HumanReadable("Gerente")]
+    [InternalValue("G")]
+    Manager,
 
-        /// <summary>
-        /// The manager
-        /// </summary>
-        [HumanReadable("Gerente")]
-        [InternalValue("G")]
-        Manager,
+    /// <summary>
+    /// The performer
+    /// </summary>
+    [HumanReadable("Executante")]
+    [InternalValue("E")]
+    Performer,
 
-        /// <summary>
-        /// The performer
-        /// </summary>
-        [HumanReadable("Executante")]
-        [InternalValue("E")]
-        Performer,
+    /// <summary>
+    /// The representative
+    /// </summary>
+    [HumanReadable("Representante")]
+    [InternalValue("R")]
+    Representative,
 
-        /// <summary>
-        /// The representative
-        /// </summary>
-        [HumanReadable("Representante")]
-        [InternalValue("R")]
-        Representative,
-
-        /// <summary>
-        /// The technician
-        /// </summary>
-        [HumanReadable("Técnico")]
-        [InternalValue("T")]
-        Technician
-    }
+    /// <summary>
+    /// The technician
+    /// </summary>
+    [HumanReadable("Técnico")]
+    [InternalValue("T")]
+    Technician
 }

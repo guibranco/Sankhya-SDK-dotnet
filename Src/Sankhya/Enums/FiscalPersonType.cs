@@ -11,30 +11,29 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+
+
+
+/// <summary>
+/// Enum FiscalPersonType
+/// </summary>
+public enum FiscalPersonType
 {
-    using CrispyWaffle.Attributes;
-
-
-
+    /// <summary>
+    /// The individual
+    /// </summary>
+    [HumanReadable("Pessoa física")]
+    [InternalValue("F")]
+    Individual,
 
     /// <summary>
-    /// Enum FiscalPersonType
+    /// The corporation
     /// </summary>
-    public enum FiscalPersonType
-    {
-        /// <summary>
-        /// The individual
-        /// </summary>
-        [HumanReadable("Pessoa física")]
-        [InternalValue("F")]
-        Individual,
-
-        /// <summary>
-        /// The corporation
-        /// </summary>
-        [HumanReadable("Pessoa jurídica")]
-        [InternalValue("J")]
-        Corporation
-    }
+    [HumanReadable("Pessoa jurídica")]
+    [InternalValue("J")]
+    Corporation
 }

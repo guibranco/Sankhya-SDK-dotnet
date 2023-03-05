@@ -11,78 +11,77 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
-{
-    using CrispyWaffle.Attributes;
+namespace Sankhya.Enums;
 
+using CrispyWaffle.Attributes;
+
+
+/// <summary>
+/// Enum TradingSubType
+/// </summary>
+public enum TradingSubType
+{
 
     /// <summary>
-    /// Enum TradingSubType
+    /// The none
     /// </summary>
-    public enum TradingSubType
-    {
+    [HumanReadable("Nenhum")]
+    [InternalValue("0")]
+    None,
 
-        /// <summary>
-        /// The none
-        /// </summary>
-        [HumanReadable("Nenhum")]
-        [InternalValue("0")]
-        None,
+    /// <summary>
+    /// The in cash
+    /// </summary>
+    [HumanReadable("A vista")]
+    [InternalValue("1")]
+    InCash,
 
-        /// <summary>
-        /// The in cash
-        /// </summary>
-        [HumanReadable("A vista")]
-        [InternalValue("1")]
-        InCash,
+    /// <summary>
+    /// The deferred
+    /// </summary>
+    [HumanReadable("A prazo")]
+    [InternalValue("2")]
+    Deferred,
 
-        /// <summary>
-        /// The deferred
-        /// </summary>
-        [HumanReadable("A prazo")]
-        [InternalValue("2")]
-        Deferred,
+    /// <summary>
+    /// The parceled out
+    /// </summary>
+    [HumanReadable("Parcelada")]
+    [InternalValue("3")]
+    ParceledOut,
 
-        /// <summary>
-        /// The parceled out
-        /// </summary>
-        [HumanReadable("Parcelada")]
-        [InternalValue("3")]
-        ParceledOut,
+    /// <summary>
+    /// The postdated check
+    /// </summary>
+    [HumanReadable("Cheque pré-datado")]
+    [InternalValue("4")]
+    PostdatedCheck,
 
-        /// <summary>
-        /// The postdated check
-        /// </summary>
-        [HumanReadable("Cheque pré-datado")]
-        [InternalValue("4")]
-        PostdatedCheck,
+    /// <summary>
+    /// The installment credit
+    /// </summary>
+    [HumanReadable("Crediário")]
+    [InternalValue("5")]
+    InstallmentCredit,
 
-        /// <summary>
-        /// The installment credit
-        /// </summary>
-        [HumanReadable("Crediário")]
-        [InternalValue("5")]
-        InstallmentCredit,
+    /// <summary>
+    /// The financial
+    /// </summary>
+    [HumanReadable("Financeira")]
+    [InternalValue("6")]
+    Financial,
 
-        /// <summary>
-        /// The financial
-        /// </summary>
-        [HumanReadable("Financeira")]
-        [InternalValue("6")]
-        Financial,
+    /// <summary>
+    /// The credit card
+    /// </summary>
+    [HumanReadable("Cartão de crédito")]
+    [InternalValue("7")]
+    CreditCard,
 
-        /// <summary>
-        /// The credit card
-        /// </summary>
-        [HumanReadable("Cartão de crédito")]
-        [InternalValue("7")]
-        CreditCard,
-
-        /// <summary>
-        /// The debit card
-        /// </summary>
-        [HumanReadable("Cartão de débito")]
-        [InternalValue("8")]
-        DebitCard
-    }
+    /// <summary>
+    /// The debit card
+    /// </summary>
+    [HumanReadable("Cartão de débito")]
+    [InternalValue("8")]
+    DebitCard
 }

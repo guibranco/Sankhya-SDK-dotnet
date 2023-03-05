@@ -11,36 +11,35 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+/// <summary>
+/// Enum ServiceResponseStatus
+/// </summary>
+public enum ServiceResponseStatus
 {
     /// <summary>
-    /// Enum ServiceResponseStatus
+    /// The error
     /// </summary>
-    public enum ServiceResponseStatus
-    {
-        /// <summary>
-        /// The error
-        /// </summary>
-        Error = 0,
+    Error = 0,
 
-        /// <summary>
-        /// The ok
-        /// </summary>
-        Ok = 1,
+    /// <summary>
+    /// The ok
+    /// </summary>
+    Ok = 1,
 
-        /// <summary>
-        /// The information
-        /// </summary>
-        Info = 2,
+    /// <summary>
+    /// The information
+    /// </summary>
+    Info = 2,
 
-        /// <summary>
-        /// The timeout
-        /// </summary>
-        Timeout = 3,
+    /// <summary>
+    /// The timeout
+    /// </summary>
+    Timeout = 3,
 
-        /// <summary>
-        /// The service canceled
-        /// </summary>
-        ServiceCanceled = 4
-    }
+    /// <summary>
+    /// The service canceled
+    /// </summary>
+    ServiceCanceled = 4
 }

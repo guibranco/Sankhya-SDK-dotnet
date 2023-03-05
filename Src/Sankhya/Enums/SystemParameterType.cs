@@ -11,63 +11,62 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+/// <summary>
+/// Enum SystemParameterType
+/// </summary>
+public enum SystemParameterType
 {
-    using CrispyWaffle.Attributes;
+    /// <summary>
+    /// The none
+    /// </summary>
+    [InternalValue("")]
+    [HumanReadable("Nenhum")]
+    None,
 
     /// <summary>
-    /// Enum SystemParameterType
+    /// The text
     /// </summary>
-    public enum SystemParameterType
-    {
-        /// <summary>
-        /// The none
-        /// </summary>
-        [InternalValue("")]
-        [HumanReadable("Nenhum")]
-        None,
+    [InternalValue("T")]
+    [HumanReadable("Texto")]
+    Text,
 
-        /// <summary>
-        /// The text
-        /// </summary>
-        [InternalValue("T")]
-        [HumanReadable("Texto")]
-        Text,
+    /// <summary>
+    /// The date
+    /// </summary>
+    [InternalValue("D")]
+    [HumanReadable("Data")]
+    Date,
 
-        /// <summary>
-        /// The date
-        /// </summary>
-        [InternalValue("D")]
-        [HumanReadable("Data")]
-        Date,
+    /// <summary>
+    /// The decimal
+    /// </summary>
+    [InternalValue("F")]
+    [HumanReadable("Número Decimal")]
+    Decimal,
 
-        /// <summary>
-        /// The decimal
-        /// </summary>
-        [InternalValue("F")]
-        [HumanReadable("Número Decimal")]
-        Decimal,
+    /// <summary>
+    /// The logical
+    /// </summary>
+    [InternalValue("L")]
+    [HumanReadable("Lógico")]
+    Logical,
 
-        /// <summary>
-        /// The logical
-        /// </summary>
-        [InternalValue("L")]
-        [HumanReadable("Lógico")]
-        Logical,
-
-        /// <summary>
-        /// The list
-        /// </summary>
-        [InternalValue("C")]
-        [HumanReadable("List")]
-        List,
+    /// <summary>
+    /// The list
+    /// </summary>
+    [InternalValue("C")]
+    [HumanReadable("List")]
+    List,
 
 
-        /// <summary>
-        /// The integer
-        /// </summary>
-        [InternalValue("I")]
-        [HumanReadable("Número Inteiro")]
-        Integer,
-    }
+    /// <summary>
+    /// The integer
+    /// </summary>
+    [InternalValue("I")]
+    [HumanReadable("Número Inteiro")]
+    Integer,
 }

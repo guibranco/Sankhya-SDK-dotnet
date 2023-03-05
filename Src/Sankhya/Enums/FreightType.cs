@@ -11,44 +11,43 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+
+
+
+/// <summary>
+/// Enum FreightType
+/// </summary>
+public enum FreightType
 {
-    using CrispyWaffle.Attributes;
-
-
-
+    /// <summary>
+    /// The cost insurance freight
+    /// </summary>
+    [InternalValue("C")]
+    [HumanReadable("CIF")]
+    CostInsuranceFreight,
 
     /// <summary>
-    /// Enum FreightType
+    /// The free on board
     /// </summary>
-    public enum FreightType
-    {
-        /// <summary>
-        /// The cost insurance freight
-        /// </summary>
-        [InternalValue("C")]
-        [HumanReadable("CIF")]
-        CostInsuranceFreight,
+    [InternalValue("F")]
+    [HumanReadable("FOB")]
+    FreeOnBoard,
 
-        /// <summary>
-        /// The free on board
-        /// </summary>
-        [InternalValue("F")]
-        [HumanReadable("FOB")]
-        FreeOnBoard,
+    /// <summary>
+    /// The no freight
+    /// </summary>
+    [InternalValue("S")]
+    [HumanReadable("Sem Frete")]
+    NoFreight,
 
-        /// <summary>
-        /// The no freight
-        /// </summary>
-        [InternalValue("S")]
-        [HumanReadable("Sem Frete")]
-        NoFreight,
-
-        /// <summary>
-        /// The third
-        /// </summary>
-        [InternalValue("T")]
-        [HumanReadable("Terceiros")]
-        Third
-    }
+    /// <summary>
+    /// The third
+    /// </summary>
+    [InternalValue("T")]
+    [HumanReadable("Terceiros")]
+    Third
 }

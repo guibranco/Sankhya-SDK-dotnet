@@ -11,35 +11,34 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+/// <summary>
+/// Enum BillingType
+/// </summary>
+public enum BillingType
 {
-    using CrispyWaffle.Attributes;
 
     /// <summary>
-    /// Enum BillingType
+    /// The none
     /// </summary>
-    public enum BillingType
-    {
+    [HumanReadable("Nenhum")]
+    [InternalValue("")]
+    None,
 
-        /// <summary>
-        /// The none
-        /// </summary>
-        [HumanReadable("Nenhum")]
-        [InternalValue("")]
-        None,
+    /// <summary>
+    /// The normal
+    /// </summary>
+    [HumanReadable("Faturamento normal")]
+    [InternalValue("FaturamentoNormal")]
+    Normal,
 
-        /// <summary>
-        /// The normal
-        /// </summary>
-        [HumanReadable("Faturamento normal")]
-        [InternalValue("FaturamentoNormal")]
-        Normal,
-
-        /// <summary>
-        /// The direct
-        /// </summary>
-        [HumanReadable("Faturamento direto")]
-        [InternalValue("FaturamentoDireto")]
-        Direct
-    }
+    /// <summary>
+    /// The direct
+    /// </summary>
+    [HumanReadable("Faturamento direto")]
+    [InternalValue("FaturamentoDireto")]
+    Direct
 }

@@ -11,33 +11,32 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+/// <summary>
+/// Enum ProductSourceType
+/// </summary>
+public enum ProductSourceType
 {
-    using CrispyWaffle.Attributes;
+    /// <summary>
+    /// The none
+    /// </summary>
+    [HumanReadable("None")]
+    None,
 
     /// <summary>
-    /// Enum ProductSourceType
+    /// The group
     /// </summary>
-    public enum ProductSourceType
-    {
-        /// <summary>
-        /// The none
-        /// </summary>
-        [HumanReadable("None")]
-        None,
+    [HumanReadable("Group of product")]
+    [InternalValue("G")]
+    Group,
 
-        /// <summary>
-        /// The group
-        /// </summary>
-        [HumanReadable("Group of product")]
-        [InternalValue("G")]
-        Group,
-
-        /// <summary>
-        /// The product
-        /// </summary>
-        [HumanReadable("Product")]
-        [InternalValue("P")]
-        Product
-    }
+    /// <summary>
+    /// The product
+    /// </summary>
+    [HumanReadable("Product")]
+    [InternalValue("P")]
+    Product
 }

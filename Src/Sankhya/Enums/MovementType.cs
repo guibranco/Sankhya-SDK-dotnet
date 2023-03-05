@@ -11,192 +11,191 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+
+/// <summary>
+/// Enum MovementType
+/// </summary>
+public enum MovementType
 {
-    using CrispyWaffle.Attributes;
+
 
 
     /// <summary>
-    /// Enum MovementType
+    /// The none
     /// </summary>
-    public enum MovementType
-    {
+    [InternalValue("")]
+    [HumanReadable("Nenhum")]
+    None,
 
+    /// <summary>
+    /// The deposit
+    /// </summary>
+    [InternalValue("1")]
+    [HumanReadable("NF Depósito")]
+    Deposit,
 
+    /// <summary>
+    /// The warrant
+    /// </summary>
+    [InternalValue("2")]
+    [HumanReadable("PD Devol. / Procuração / Warrant")]
+    Warrant,
 
-        /// <summary>
-        /// The none
-        /// </summary>
-        [InternalValue("")]
-        [HumanReadable("Nenhum")]
-        None,
+    /// <summary>
+    /// The output
+    /// </summary>
+    [InternalValue("3")]
+    [HumanReadable("Saídas")]
+    Output,
 
-        /// <summary>
-        /// The deposit
-        /// </summary>
-        [InternalValue("1")]
-        [HumanReadable("NF Depósito")]
-        Deposit,
+    /// <summary>
+    /// The billing
+    /// </summary>
+    [InternalValue("4")]
+    [HumanReadable("Faturamento")]
+    Billing,
 
-        /// <summary>
-        /// The warrant
-        /// </summary>
-        [InternalValue("2")]
-        [HumanReadable("PD Devol. / Procuração / Warrant")]
-        Warrant,
+    /// <summary>
+    /// The RD8
+    /// </summary>
+    [InternalValue("8")]
+    [HumanReadable("RD8")]
+    Rd8,
 
-        /// <summary>
-        /// The output
-        /// </summary>
-        [InternalValue("3")]
-        [HumanReadable("Saídas")]
-        Output,
+    /// <summary>
+    /// The bank movement
+    /// </summary>
+    [InternalValue("B")]
+    [HumanReadable("Movimento bancário")]
+    BankMovement,
 
-        /// <summary>
-        /// The billing
-        /// </summary>
-        [InternalValue("4")]
-        [HumanReadable("Faturamento")]
-        Billing,
+    /// <summary>
+    /// The purchase
+    /// </summary>
+    [InternalValue("C")]
+    [HumanReadable("Compra")]
+    Purchase,
 
-        /// <summary>
-        /// The RD8
-        /// </summary>
-        [InternalValue("8")]
-        [HumanReadable("RD8")]
-        Rd8,
+    /// <summary>
+    /// The sales return
+    /// </summary>
+    [InternalValue("D")]
+    [HumanReadable("Devolução de venda")]
+    SalesReturn,
 
-        /// <summary>
-        /// The bank movement
-        /// </summary>
-        [InternalValue("B")]
-        [HumanReadable("Movimento bancário")]
-        BankMovement,
+    /// <summary>
+    /// The purchase return
+    /// </summary>
+    [InternalValue("E")]
+    [HumanReadable("Devolução de compra")]
+    PurchaseReturn,
 
-        /// <summary>
-        /// The purchase
-        /// </summary>
-        [InternalValue("C")]
-        [HumanReadable("Compra")]
-        Purchase,
+    /// <summary>
+    /// The production
+    /// </summary>
+    [InternalValue("F")]
+    [HumanReadable("Produção")]
+    Production,
 
-        /// <summary>
-        /// The sales return
-        /// </summary>
-        [InternalValue("D")]
-        [HumanReadable("Devolução de venda")]
-        SalesReturn,
+    /// <summary>
+    /// The payment
+    /// </summary>
+    [InternalValue("G")]
+    [HumanReadable("Pagamento")]
+    Payment,
 
-        /// <summary>
-        /// The purchase return
-        /// </summary>
-        [InternalValue("E")]
-        [HumanReadable("Devolução de compra")]
-        PurchaseReturn,
+    /// <summary>
+    /// The financial
+    /// </summary>
+    [InternalValue("I")]
+    [HumanReadable("Financeiro")]
+    Financial,
 
-        /// <summary>
-        /// The production
-        /// </summary>
-        [InternalValue("F")]
-        [HumanReadable("Produção")]
-        Production,
+    /// <summary>
+    /// The request order
+    /// </summary>
+    [InternalValue("J")]
+    [HumanReadable("Pedido de Requisição")]
+    RequestOrder,
 
-        /// <summary>
-        /// The payment
-        /// </summary>
-        [InternalValue("G")]
-        [HumanReadable("Pagamento")]
-        Payment,
+    /// <summary>
+    /// The transfer order
+    /// </summary>
+    [InternalValue("K")]
+    [HumanReadable("Pedido de Transferência")]
+    TransferOrder,
 
-        /// <summary>
-        /// The financial
-        /// </summary>
-        [InternalValue("I")]
-        [HumanReadable("Financeiro")]
-        Financial,
+    /// <summary>
+    /// The request return
+    /// </summary>
+    [InternalValue("L")]
+    [HumanReadable("Devolução de Requisição")]
+    RequestReturn,
 
-        /// <summary>
-        /// The request order
-        /// </summary>
-        [InternalValue("J")]
-        [HumanReadable("Pedido de Requisição")]
-        RequestOrder,
+    /// <summary>
+    /// The transfer return
+    /// </summary>
+    [InternalValue("M")]
+    [HumanReadable("Devolução de Transferência")]
+    TransferReturn,
 
-        /// <summary>
-        /// The transfer order
-        /// </summary>
-        [InternalValue("K")]
-        [HumanReadable("Pedido de Transferência")]
-        TransferOrder,
+    /// <summary>
+    /// The input
+    /// </summary>
+    [InternalValue("N")]
+    [HumanReadable("Entradas")]
+    Input,
 
-        /// <summary>
-        /// The request return
-        /// </summary>
-        [InternalValue("L")]
-        [HumanReadable("Devolução de Requisição")]
-        RequestReturn,
+    /// <summary>
+    /// The purchase order
+    /// </summary>
+    [InternalValue("O")]
+    [HumanReadable("Pedido de compra")]
+    PurchaseOrder,
 
-        /// <summary>
-        /// The transfer return
-        /// </summary>
-        [InternalValue("M")]
-        [HumanReadable("Devolução de Transferência")]
-        TransferReturn,
+    /// <summary>
+    /// The sales order
+    /// </summary>
+    [InternalValue("P")]
+    [HumanReadable("Pedido de venda")]
+    SalesOrder,
 
-        /// <summary>
-        /// The input
-        /// </summary>
-        [InternalValue("N")]
-        [HumanReadable("Entradas")]
-        Input,
+    /// <summary>
+    /// The request
+    /// </summary>
+    [InternalValue("Q")]
+    [HumanReadable("Requisição")]
+    Request,
 
-        /// <summary>
-        /// The purchase order
-        /// </summary>
-        [InternalValue("O")]
-        [HumanReadable("Pedido de compra")]
-        PurchaseOrder,
+    /// <summary>
+    /// The receipt
+    /// </summary>
+    [InternalValue("R")]
+    [HumanReadable("Recebimento")]
+    Receipt,
 
-        /// <summary>
-        /// The sales order
-        /// </summary>
-        [InternalValue("P")]
-        [HumanReadable("Pedido de venda")]
-        SalesOrder,
+    /// <summary>
+    /// The transfer
+    /// </summary>
+    [InternalValue("T")]
+    [HumanReadable("Transferência")]
+    Transfer,
 
-        /// <summary>
-        /// The request
-        /// </summary>
-        [InternalValue("Q")]
-        [HumanReadable("Requisição")]
-        Request,
+    /// <summary>
+    /// The sales
+    /// </summary>
+    [InternalValue("V")]
+    [HumanReadable("Venda")]
+    Sales,
 
-        /// <summary>
-        /// The receipt
-        /// </summary>
-        [InternalValue("R")]
-        [HumanReadable("Recebimento")]
-        Receipt,
-
-        /// <summary>
-        /// The transfer
-        /// </summary>
-        [InternalValue("T")]
-        [HumanReadable("Transferência")]
-        Transfer,
-
-        /// <summary>
-        /// The sales
-        /// </summary>
-        [InternalValue("V")]
-        [HumanReadable("Venda")]
-        Sales,
-
-        /// <summary>
-        /// The model
-        /// </summary>
-        [InternalValue("Z")]
-        [HumanReadable("Modelo")]
-        Model
-    }
+    /// <summary>
+    /// The model
+    /// </summary>
+    [InternalValue("Z")]
+    [HumanReadable("Modelo")]
+    Model
 }
