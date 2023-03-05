@@ -34,7 +34,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
 
         return ReferenceEquals(this, other) || _singleNumber == other._singleNumber && _singleNumberSet == other._singleNumberSet &&
             _invoiceNumber == other._invoiceNumber && _invoiceNumberSet == other._invoiceNumberSet &&
-            _originalOrder == other._originalOrder && _originalOrderSet == other._originalOrderSet &&
             _dateTraded.Equals(other._dateTraded) && _dateTradedSet == other._dateTradedSet &&
             _invoiceValue == other._invoiceValue && _invoiceValueSet == other._invoiceValueSet &&
             _movementType == other._movementType && _movementTypeSet == other._movementTypeSet &&
@@ -54,8 +53,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
             string.Equals(_invoiceSeries, other._invoiceSeries, StringComparison.InvariantCultureIgnoreCase) &&
             _invoiceSeriesSet == other._invoiceSeriesSet &&
             string.Equals(_hostName, other._hostName, StringComparison.InvariantCultureIgnoreCase) &&
-            _hostNameSet == other._hostNameSet && _codeResend == other._codeResend &&
-            _codeResendSet == other._codeResendSet && Equals(_tradingType, other._tradingType) &&
+            _hostNameSet == other._hostNameSet && Equals(_tradingType, other._tradingType) &&
             _tradingTypeSet == other._tradingTypeSet && Equals(_user, other._user) &&
             _userSet == other._userSet && Equals(_seller, other._seller) &&
             _sellerSet == other._sellerSet;
@@ -89,8 +87,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
             hashCode = (hashCode * 397) ^ _singleNumberSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _invoiceNumber;
             hashCode = (hashCode * 397) ^ _invoiceNumberSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _originalOrder;
-            hashCode = (hashCode * 397) ^ _originalOrderSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateTraded.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateTradedSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _invoiceValue.GetHashCode();
@@ -127,8 +123,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
                 ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_hostName)
                 : 0);
             hashCode = (hashCode * 397) ^ _hostNameSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codeResend;
-            hashCode = (hashCode * 397) ^ _codeResendSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_tradingType != null
                 ? _tradingType.GetHashCode()
                 : 0);
@@ -182,15 +176,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The invoice number set
     /// </summary>
     private bool _invoiceNumberSet;
-
-    /// <summary>
-    /// The original order
-    /// </summary>
-    private int _originalOrder;
-    /// <summary>
-    /// The original order set
-    /// </summary>
-    private bool _originalOrderSet;
 
     /// <summary>
     /// The date traded
@@ -337,15 +322,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     private bool _hostNameSet;
 
     /// <summary>
-    /// The code resend
-    /// </summary>
-    private int _codeResend;
-    /// <summary>
-    /// The code resend set
-    /// </summary>
-    private bool _codeResendSet;
-
-    /// <summary>
     /// The trading type
     /// </summary>
     private TradingType _tradingType;
@@ -405,23 +381,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
             _invoiceNumberSet = true;
         }
 
-    }
-
-    /// <summary>
-    /// Gets or sets the original order.
-    /// </summary>
-    /// <value>
-    /// The original order.
-    /// </value>
-    [EntityElement("AD_PEDORIGINAL")]
-    public int OriginalOrder
-    {
-        get => _originalOrder;
-        set
-        {
-            _originalOrder = value;
-            _originalOrderSet = true;
-        }
     }
 
     /// <summary>
@@ -709,23 +668,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     }
 
     /// <summary>
-    /// Gets or sets the code resend.
-    /// </summary>
-    /// <value>
-    /// The code resend.
-    /// </value>
-    [EntityElement("AD_CODREENVIO")]
-    public int CodeResend
-    {
-        get => _codeResend;
-        set
-        {
-            _codeResend = value;
-            _codeResendSet = true;
-        }
-    }
-
-    /// <summary>
     /// Gets or sets the type of the trading.
     /// </summary>
     /// <value>
@@ -797,18 +739,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EditorBrowsable(EditorBrowsableState.Never)]
 
     public bool ShouldSerializeInvoiceNumber() => _invoiceNumberSet;
-
-
-    /// <summary>
-    /// The should serialize original order serialization helper method
-    /// </summary>
-    /// <returns>
-    /// Returns <c>true</c> when the field should be serialized, false otherwise
-    /// </returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public bool ShouldSerializeOriginalOrder() => _originalOrderSet;
 
     /// <summary>
     /// Should the serialize date traded.
@@ -950,17 +880,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeHostName() => _hostNameSet;
-
-    /// <summary>
-    /// The should serialize code resend serialization helper method
-    /// </summary>
-    /// <returns>
-    /// Returns <c>true</c> when the field should be serialized, false otherwise
-    /// </returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public bool ShouldSerializeCodeResend() => _codeResendSet;
 
     /// <summary>
     /// The should serialize trading type serialization helper method

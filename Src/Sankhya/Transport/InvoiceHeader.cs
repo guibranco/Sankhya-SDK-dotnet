@@ -28,80 +28,48 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     // ReSharper disable once CyclomaticComplexity
     public bool Equals(InvoiceHeader other)
     {
-        if (ReferenceEquals(null, other))
-        {
-            return false;
-        }
-
-        return ReferenceEquals(this, other) || _singleNumber == other._singleNumber && _singleNumberSet == other._singleNumberSet &&
-            _codeCompany == other._codeCompany && _codeCompanySet == other._codeCompanySet &&
-            _codePartner == other._codePartner && _codePartnerSet == other._codePartnerSet &&
-            _codePartnerDestination == other._codePartnerDestination &&
-            _codePartnerDestinationSet == other._codePartnerDestinationSet &&
-            _codePartnerRoyalties == other._codePartnerRoyalties &&
-            _codePartnerRoyaltiesSet == other._codePartnerRoyaltiesSet &&
-            _codeContact == other._codeContact && _codeContactSet == other._codeContactSet &&
-            _operationType == other._operationType && _operationTypeSet == other._operationTypeSet &&
-            _codeTradeType == other._codeTradeType && _codeTradeTypeSet == other._codeTradeTypeSet &&
-            _invoiceNumber == other._invoiceNumber && _invoiceNumberSet == other._invoiceNumberSet &&
-            _codeSeller == other._codeSeller && _codeSellerSet == other._codeSellerSet &&
-            _dateTraded.Equals(other._dateTraded) && _dateTradedSet == other._dateTradedSet &&
-            _dateImported.Equals(other._dateImported) && _dateImportedSet == other._dateImportedSet &&
-            _dateBilled.Equals(other._dateBilled) && _dateBilledSet == other._dateBilledSet &&
-            _dateExpectedDelivery.Equals(other._dateExpectedDelivery) &&
-            _dateExpectedDeliverySet == other._dateExpectedDeliverySet &&
-            _dateChanged.Equals(other._dateChanged) && _dateChangedSet == other._dateChangedSet &&
-            _codeResultCenter == other._codeResultCenter &&
-            _codeResultCenterSet == other._codeResultCenterSet && _codeNature == other._codeNature &&
-            _codeNatureSet == other._codeNatureSet && _movementType == other._movementType &&
-            _movementTypeSet == other._movementTypeSet && _freightValue == other._freightValue &&
-            _freightValueSet == other._freightValueSet && _originalOrder == other._originalOrder &&
-            _originalOrderSet == other._originalOrderSet &&
-            string.Equals(_note, other._note, StringComparison.InvariantCultureIgnoreCase) &&
-            _noteSet == other._noteSet && _codeHowKnow == other._codeHowKnow &&
-            _codeHowKnowSet == other._codeHowKnowSet &&
-            string.Equals(
-                _creditCardLastFourDigits,
-                other._creditCardLastFourDigits,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _creditCardLastFourDigitsSet == other._creditCardLastFourDigitsSet &&
-            string.Equals(
-                _creditCardTransaction,
-                other._creditCardTransaction,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _creditCardTransactionSet == other._creditCardTransactionSet &&
-            string.Equals(
-                _creditCardAuthorizationCode,
-                other._creditCardAuthorizationCode,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _creditCardAuthorizationCodeSet == other._creditCardAuthorizationCodeSet &&
-            _freightType == other._freightType && _freightTypeSet == other._freightTypeSet &&
-            _invoiceStatus == other._invoiceStatus && _invoiceStatusSet == other._invoiceStatusSet &&
-            _invoiceFreightType == other._invoiceFreightType &&
-            _invoiceFreightTypeSet == other._invoiceFreightTypeSet &&
-            _codeTransportType == other._codeTransportType &&
-            _codeTransportTypeSet == other._codeTransportTypeSet &&
-            _codePartnerCarrier == other._codePartnerCarrier &&
-            _codePartnerCarrierSet == other._codePartnerCarrierSet && _codeResend == other._codeResend &&
-            _codeResendSet == other._codeResendSet && _fiscalInvoiceStatus == other._fiscalInvoiceStatus &&
-            _fiscalInvoiceStatusSet == other._fiscalInvoiceStatusSet && _confirmed == other._confirmed &&
-            _confirmedSet == other._confirmedSet && _pending == other._pending &&
-            _pendingSet == other._pendingSet &&
-            string.Equals(
-                _fiscalInvoiceKey,
-                other._fiscalInvoiceKey,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _fiscalInvoiceKeySet == other._fiscalInvoiceKeySet &&
-            _movementTime.Equals(other._movementTime) && _movementTimeSet == other._movementTimeSet &&
-            _invoiceValue == other._invoiceValue && _invoiceValueSet == other._invoiceValueSet &&
-            Equals(_partner, other._partner) && _partnerSet == other._partnerSet &&
-            Equals(_partnerDestination, other._partnerDestination) &&
-            _partnerDestinationSet == other._partnerDestinationSet &&
-            Equals(_partnerCarrier, other._partnerCarrier) &&
-            _partnerCarrierSet == other._partnerCarrierSet &&
-            Equals(_partnerRoyalties, other._partnerRoyalties) &&
-            _partnerRoyaltiesSet == other._partnerRoyaltiesSet && Equals(_seller, other._seller) &&
-            _sellerSet == other._sellerSet;
+        if (ReferenceEquals(null, other)) return false;
+        if (ReferenceEquals(this, other)) return true;
+        return _codeCompany == other._codeCompany && _codeCompanySet == other._codeCompanySet &&
+               _codeContact == other._codeContact && _codeContactSet == other._codeContactSet &&
+               _codeNature == other._codeNature && _codeNatureSet == other._codeNatureSet &&
+               _codePartner == other._codePartner && _codePartnerCarrier == other._codePartnerCarrier &&
+               _codePartnerCarrierSet == other._codePartnerCarrierSet &&
+               _codePartnerDestination == other._codePartnerDestination &&
+               _codePartnerDestinationSet == other._codePartnerDestinationSet &&
+               _codePartnerSet == other._codePartnerSet && _codeResultCenter == other._codeResultCenter &&
+               _codeResultCenterSet == other._codeResultCenterSet && _codeSeller == other._codeSeller &&
+               _codeSellerSet == other._codeSellerSet && _codeTradeType == other._codeTradeType &&
+               _codeTradeTypeSet == other._codeTradeTypeSet && _confirmed == other._confirmed &&
+               _confirmedSet == other._confirmedSet && _dateBilled.Equals(other._dateBilled) &&
+               _dateBilledSet == other._dateBilledSet && _dateChanged.Equals(other._dateChanged) &&
+               _dateChangedSet == other._dateChangedSet && _dateExpectedDelivery.Equals(other._dateExpectedDelivery) &&
+               _dateExpectedDeliverySet == other._dateExpectedDeliverySet &&
+               _dateImported.Equals(other._dateImported) && _dateImportedSet == other._dateImportedSet &&
+               _dateTraded.Equals(other._dateTraded) && _dateTradedSet == other._dateTradedSet &&
+               string.Equals(_fiscalInvoiceKey, other._fiscalInvoiceKey, StringComparison.InvariantCultureIgnoreCase) &&
+               _fiscalInvoiceKeySet == other._fiscalInvoiceKeySet &&
+               _fiscalInvoiceStatus == other._fiscalInvoiceStatus &&
+               _fiscalInvoiceStatusSet == other._fiscalInvoiceStatusSet && _freightType == other._freightType &&
+               _freightTypeSet == other._freightTypeSet && _freightValue == other._freightValue &&
+               _freightValueSet == other._freightValueSet && _invoiceFreightType == other._invoiceFreightType &&
+               _invoiceFreightTypeSet == other._invoiceFreightTypeSet && _invoiceNumber == other._invoiceNumber &&
+               _invoiceNumberSet == other._invoiceNumberSet && _invoiceStatus == other._invoiceStatus &&
+               _invoiceStatusSet == other._invoiceStatusSet && _invoiceValue == other._invoiceValue &&
+               _invoiceValueSet == other._invoiceValueSet && _movementTime.Equals(other._movementTime) &&
+               _movementTimeSet == other._movementTimeSet && _movementType == other._movementType &&
+               _movementTypeSet == other._movementTypeSet &&
+               string.Equals(_note, other._note, StringComparison.InvariantCultureIgnoreCase) &&
+               _noteSet == other._noteSet && _operationType == other._operationType &&
+               _operationTypeSet == other._operationTypeSet && Equals(_partner, other._partner) &&
+               Equals(_partnerCarrier, other._partnerCarrier) && _partnerCarrierSet == other._partnerCarrierSet &&
+               Equals(_partnerDestination, other._partnerDestination) &&
+               _partnerDestinationSet == other._partnerDestinationSet &&
+               Equals(_partnerRoyalties, other._partnerRoyalties) &&
+               _partnerRoyaltiesSet == other._partnerRoyaltiesSet && _partnerSet == other._partnerSet &&
+               _pending == other._pending && _pendingSet == other._pendingSet && Equals(_seller, other._seller) &&
+               _sellerSet == other._sellerSet && _singleNumber == other._singleNumber &&
+               _singleNumberSet == other._singleNumberSet;
     }
 
     /// <summary>
@@ -111,12 +79,10 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
-        if (ReferenceEquals(null, obj))
-        {
-            return false;
-        }
-
-        return ReferenceEquals(this, obj) || obj is InvoiceHeader header && Equals(header);
+        if (ReferenceEquals(null, obj)) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != this.GetType()) return false;
+        return Equals((InvoiceHeader)obj);
     }
 
     /// <summary>
@@ -129,110 +95,74 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     {
         unchecked
         {
-            var hashCode = _singleNumber.GetHashCode();
-            hashCode = (hashCode * 397) ^ _singleNumberSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codeCompany;
+            var hashCode = _codeCompany;
             hashCode = (hashCode * 397) ^ _codeCompanySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codePartner;
-            hashCode = (hashCode * 397) ^ _codePartnerSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codePartnerDestination;
-            hashCode = (hashCode * 397) ^ _codePartnerDestinationSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codePartnerRoyalties;
-            hashCode = (hashCode * 397) ^ _codePartnerRoyaltiesSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeContact;
             hashCode = (hashCode * 397) ^ _codeContactSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _operationType;
-            hashCode = (hashCode * 397) ^ _operationTypeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codeTradeType;
-            hashCode = (hashCode * 397) ^ _codeTradeTypeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _invoiceNumber;
-            hashCode = (hashCode * 397) ^ _invoiceNumberSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codeSeller;
-            hashCode = (hashCode * 397) ^ _codeSellerSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _dateTraded.GetHashCode();
-            hashCode = (hashCode * 397) ^ _dateTradedSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _dateImported.GetHashCode();
-            hashCode = (hashCode * 397) ^ _dateImportedSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _dateBilled.GetHashCode();
-            hashCode = (hashCode * 397) ^ _dateBilledSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _dateExpectedDelivery.GetHashCode();
-            hashCode = (hashCode * 397) ^ _dateExpectedDeliverySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _dateChanged.GetHashCode();
-            hashCode = (hashCode * 397) ^ _dateChangedSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codeResultCenter;
-            hashCode = (hashCode * 397) ^ _codeResultCenterSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeNature;
             hashCode = (hashCode * 397) ^ _codeNatureSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (int)_movementType;
-            hashCode = (hashCode * 397) ^ _movementTypeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _freightValue.GetHashCode();
-            hashCode = (hashCode * 397) ^ _freightValueSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _originalOrder;
-            hashCode = (hashCode * 397) ^ _originalOrderSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_note != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_note)
-                : 0);
-            hashCode = (hashCode * 397) ^ _noteSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codeHowKnow;
-            hashCode = (hashCode * 397) ^ _codeHowKnowSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_creditCardLastFourDigits != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_creditCardLastFourDigits)
-                : 0);
-            hashCode = (hashCode * 397) ^ _creditCardLastFourDigitsSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_creditCardTransaction != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_creditCardTransaction)
-                : 0);
-            hashCode = (hashCode * 397) ^ _creditCardTransactionSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_creditCardAuthorizationCode != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_creditCardAuthorizationCode)
-                : 0);
-            hashCode = (hashCode * 397) ^ _creditCardAuthorizationCodeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (int)_freightType;
-            hashCode = (hashCode * 397) ^ _freightTypeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (int)_invoiceStatus;
-            hashCode = (hashCode * 397) ^ _invoiceStatusSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (int)_invoiceFreightType;
-            hashCode = (hashCode * 397) ^ _invoiceFreightTypeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codeTransportType;
-            hashCode = (hashCode * 397) ^ _codeTransportTypeSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _codePartner;
             hashCode = (hashCode * 397) ^ _codePartnerCarrier;
             hashCode = (hashCode * 397) ^ _codePartnerCarrierSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codeResend;
-            hashCode = (hashCode * 397) ^ _codeResendSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (int)_fiscalInvoiceStatus;
-            hashCode = (hashCode * 397) ^ _fiscalInvoiceStatusSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _codePartnerDestination;
+            hashCode = (hashCode * 397) ^ _codePartnerDestinationSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _codePartnerSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _codeResultCenter;
+            hashCode = (hashCode * 397) ^ _codeResultCenterSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _codeSeller;
+            hashCode = (hashCode * 397) ^ _codeSellerSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _codeTradeType;
+            hashCode = (hashCode * 397) ^ _codeTradeTypeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _confirmed.GetHashCode();
             hashCode = (hashCode * 397) ^ _confirmedSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _pending.GetHashCode();
-            hashCode = (hashCode * 397) ^ _pendingSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_fiscalInvoiceKey != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_fiscalInvoiceKey)
-                : 0);
+            hashCode = (hashCode * 397) ^ _dateBilled.GetHashCode();
+            hashCode = (hashCode * 397) ^ _dateBilledSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _dateChanged.GetHashCode();
+            hashCode = (hashCode * 397) ^ _dateChangedSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _dateExpectedDelivery.GetHashCode();
+            hashCode = (hashCode * 397) ^ _dateExpectedDeliverySet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _dateImported.GetHashCode();
+            hashCode = (hashCode * 397) ^ _dateImportedSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _dateTraded.GetHashCode();
+            hashCode = (hashCode * 397) ^ _dateTradedSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ (_fiscalInvoiceKey != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_fiscalInvoiceKey) : 0);
             hashCode = (hashCode * 397) ^ _fiscalInvoiceKeySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _movementTime.GetHashCode();
-            hashCode = (hashCode * 397) ^ _movementTimeSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ (int)_fiscalInvoiceStatus;
+            hashCode = (hashCode * 397) ^ _fiscalInvoiceStatusSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ (int)_freightType;
+            hashCode = (hashCode * 397) ^ _freightTypeSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _freightValue.GetHashCode();
+            hashCode = (hashCode * 397) ^ _freightValueSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ (int)_invoiceFreightType;
+            hashCode = (hashCode * 397) ^ _invoiceFreightTypeSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _invoiceNumber;
+            hashCode = (hashCode * 397) ^ _invoiceNumberSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ (int)_invoiceStatus;
+            hashCode = (hashCode * 397) ^ _invoiceStatusSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _invoiceValue.GetHashCode();
             hashCode = (hashCode * 397) ^ _invoiceValueSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_partner != null
-                ? _partner.GetHashCode()
-                : 0);
-            hashCode = (hashCode * 397) ^ _partnerSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_partnerDestination != null
-                ? _partnerDestination.GetHashCode()
-                : 0);
-            hashCode = (hashCode * 397) ^ _partnerDestinationSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_partnerCarrier != null
-                ? _partnerCarrier.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ _movementTime.GetHashCode();
+            hashCode = (hashCode * 397) ^ _movementTimeSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ (int)_movementType;
+            hashCode = (hashCode * 397) ^ _movementTypeSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ (_note != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_note) : 0);
+            hashCode = (hashCode * 397) ^ _noteSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _operationType;
+            hashCode = (hashCode * 397) ^ _operationTypeSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ (_partner != null ? _partner.GetHashCode() : 0);
+            hashCode = (hashCode * 397) ^ (_partnerCarrier != null ? _partnerCarrier.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _partnerCarrierSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_partnerRoyalties != null
-                ? _partnerRoyalties.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (_partnerDestination != null ? _partnerDestination.GetHashCode() : 0);
+            hashCode = (hashCode * 397) ^ _partnerDestinationSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ (_partnerRoyalties != null ? _partnerRoyalties.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _partnerRoyaltiesSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_seller != null
-                ? _seller.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ _partnerSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _pending.GetHashCode();
+            hashCode = (hashCode * 397) ^ _pendingSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ (_seller != null ? _seller.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _sellerSet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _singleNumber.GetHashCode();
+            hashCode = (hashCode * 397) ^ _singleNumberSet.GetHashCode();
             return hashCode;
         }
     }
@@ -292,15 +222,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The code partner destination set
     /// </summary>
     private bool _codePartnerDestinationSet;
-
-    /// <summary>
-    /// The code partner royalties
-    /// </summary>
-    private int _codePartnerRoyalties;
-    /// <summary>
-    /// The code partner royalties set
-    /// </summary>
-    private bool _codePartnerRoyaltiesSet;
 
     /// <summary>
     /// The code contact
@@ -429,15 +350,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     private bool _freightValueSet;
 
     /// <summary>
-    /// The original order
-    /// </summary>
-    private int _originalOrder;
-    /// <summary>
-    /// The original order set
-    /// </summary>
-    private bool _originalOrderSet;
-
-    /// <summary>
     /// The note
     /// </summary>
     private string _note;
@@ -445,42 +357,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The note set
     /// </summary>
     private bool _noteSet;
-
-    /// <summary>
-    /// The code how know
-    /// </summary>
-    private int _codeHowKnow;
-    /// <summary>
-    /// The code how know set
-    /// </summary>
-    private bool _codeHowKnowSet;
-
-    /// <summary>
-    /// The credit card last four digits
-    /// </summary>
-    private string _creditCardLastFourDigits;
-    /// <summary>
-    /// The credit card last four digits set
-    /// </summary>
-    private bool _creditCardLastFourDigitsSet;
-
-    /// <summary>
-    /// The credit card transaction
-    /// </summary>
-    private string _creditCardTransaction;
-    /// <summary>
-    /// The credit card transaction set
-    /// </summary>
-    private bool _creditCardTransactionSet;
-
-    /// <summary>
-    /// The credit card authorization code
-    /// </summary>
-    private string _creditCardAuthorizationCode;
-    /// <summary>
-    /// The credit card authorization code set
-    /// </summary>
-    private bool _creditCardAuthorizationCodeSet;
 
     /// <summary>
     /// The freight type
@@ -510,15 +386,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     private bool _invoiceFreightTypeSet;
 
     /// <summary>
-    /// The code transport type
-    /// </summary>
-    private int _codeTransportType;
-    /// <summary>
-    /// The code transport type set
-    /// </summary>
-    private bool _codeTransportTypeSet;
-
-    /// <summary>
     /// The code partner carrier
     /// </summary>
     private int _codePartnerCarrier;
@@ -526,15 +393,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The code partner carrier set
     /// </summary>
     private bool _codePartnerCarrierSet;
-
-    /// <summary>
-    /// The code resend
-    /// </summary>
-    private int _codeResend;
-    /// <summary>
-    /// The code resend set
-    /// </summary>
-    private bool _codeResendSet;
 
     /// <summary>
     /// The fiscal invoice status
@@ -696,20 +554,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         {
             _codePartnerDestination = value;
             _codePartnerDestinationSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the code partner royalties.
-    /// </summary>
-    /// <value>The code partner royalties.</value>
-    [EntityElement("AD_CODPARCROYALTIES")]
-    public int CodePartnerRoyalties
-    {
-        get => _codePartnerRoyalties; set
-        {
-            _codePartnerRoyalties = value;
-            _codePartnerRoyaltiesSet = true;
         }
     }
 
@@ -981,20 +825,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     }
 
     /// <summary>
-    /// Gets or sets the original order.
-    /// </summary>
-    /// <value>The original order.</value>
-    [EntityElement("AD_PEDORIGINAL")]
-    public int OriginalOrder
-    {
-        get => _originalOrder; set
-        {
-            _originalOrder = value;
-            _originalOrderSet = true;
-        }
-    }
-
-    /// <summary>
     /// Gets or sets the note.
     /// </summary>
     /// <value>The note.</value>
@@ -1007,63 +837,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
             _noteSet = true;
         }
     }
-
-    /// <summary>
-    /// Gets or sets the code how know.
-    /// </summary>
-    /// <value>The code how know.</value>
-    [EntityElement("AD_CODCOMOSOUBE")]
-    public int CodeHowKnow
-    {
-        get => _codeHowKnow; set
-        {
-            _codeHowKnow = value;
-            _codeHowKnowSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the credit card last four digits.
-    /// </summary>
-    /// <value>The credit card last four digits.</value>
-    [EntityElement("AD_NUROCARTAO")]
-    public string CreditCardLastFourDigits
-    {
-        get => _creditCardLastFourDigits; set
-        {
-            _creditCardLastFourDigits = value;
-            _creditCardLastFourDigitsSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the credit card transaction.
-    /// </summary>
-    /// <value>The credit card transaction.</value>
-    [EntityElement("AD_DOCCARTAO")]
-    public string CreditCardTransaction
-    {
-        get => _creditCardTransaction; set
-        {
-            _creditCardTransaction = value;
-            _creditCardTransactionSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the credit card authorization code.
-    /// </summary>
-    /// <value>The credit card authorization code.</value>
-    [EntityElement("AD_CODAUT")]
-    public string CreditCardAuthorizationCode
-    {
-        get => _creditCardAuthorizationCode; set
-        {
-            _creditCardAuthorizationCode = value;
-            _creditCardAuthorizationCodeSet = true;
-        }
-    }
-
+    
     /// <summary>
     /// Gets or sets the type of the freight.
     /// </summary>
@@ -1164,22 +938,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
             _invoiceFreightTypeSet = true;
         }
     }
-
-    /// <summary>
-    /// Gets or sets the type of the code transport.
-    /// </summary>
-    /// <value>The type of the code transport.</value>
-    [EntityElement("AD_IDMOD")]
-    public int CodeTransportType
-    {
-        get => _codeTransportType;
-        set
-        {
-            _codeTransportType = value;
-            _codeTransportTypeSet = true;
-        }
-    }
-
+    
     /// <summary>
     /// Gets or sets the code partner carrier.
     /// </summary>
@@ -1192,21 +951,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         {
             _codePartnerCarrier = value;
             _codePartnerCarrierSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the code resend.
-    /// </summary>
-    /// <value>The code resend.</value>
-    [EntityElement("AD_CODREENVIO")]
-    public int CodeResend
-    {
-        get => _codeResend;
-        set
-        {
-            _codeResend = value;
-            _codeResendSet = true;
         }
     }
 
@@ -1506,15 +1250,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     public bool ShouldSerializeCodePartnerDestination() => _codePartnerDestinationSet;
 
     /// <summary>
-    /// Should the serialize code partner royalties.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public bool ShouldSerializeCodePartnerRoyalties() => _codePartnerRoyaltiesSet;
-
-    /// <summary>
     /// Should the serialize code contact.
     /// </summary>
     /// <returns>Boolean.</returns>
@@ -1641,15 +1376,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     public bool ShouldSerializeFreightValue() => _freightValueSet;
 
     /// <summary>
-    /// Should the serialize original order.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public bool ShouldSerializeOriginalOrder() => _originalOrderSet;
-
-    /// <summary>
     /// Should the serialize note.
     /// </summary>
     /// <returns>Boolean.</returns>
@@ -1657,42 +1383,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EditorBrowsable(EditorBrowsableState.Never)]
 
     public bool ShouldSerializeNote() => _noteSet;
-
-    /// <summary>
-    /// Should the serialize code how know.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public bool ShouldSerializeCodeHowKnow() => _codeHowKnowSet;
-
-    /// <summary>
-    /// Should the serialize credit card last four digits.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public bool ShouldSerializeCreditCardLastFourDigits() => _creditCardLastFourDigitsSet;
-
-    /// <summary>
-    /// Should the serialize credit card transaction.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public bool ShouldSerializeCreditCardTransaction() => _creditCardTransactionSet;
-
-    /// <summary>
-    /// Should the serialize credit card authorization code.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public bool ShouldSerializeCreditCardAuthorizationCode() => _creditCardAuthorizationCodeSet;
 
     /// <summary>
     /// Should the type of the serialize freight.
@@ -1722,15 +1412,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     public bool ShouldSerializeInvoiceFreightType() => _invoiceFreightTypeSet;
 
     /// <summary>
-    /// Should the type of the serialize code transport.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public bool ShouldSerializeCodeTransportType() => _codeTransportTypeSet;
-
-    /// <summary>
     /// Should the serialize code partner carrier.
     /// </summary>
     /// <returns>Boolean.</returns>
@@ -1738,15 +1419,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EditorBrowsable(EditorBrowsableState.Never)]
 
     public bool ShouldSerializeCodePartnerCarrier() => _codePartnerCarrierSet;
-
-    /// <summary>
-    /// Should the serialize code resend.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public bool ShouldSerializeCodeResend() => _codeResendSet;
 
     /// <summary>
     /// Should the serialize fiscal invoice status.

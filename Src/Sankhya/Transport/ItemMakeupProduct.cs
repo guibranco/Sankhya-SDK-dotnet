@@ -27,11 +27,8 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
 
         return ReferenceEquals(this, other) || _codeFeedStock == other._codeFeedStock && _codeFeedStockSet == other._codeFeedStockSet &&
             _feedStockQuantity == other._feedStockQuantity &&
-            _feedStockQuantitySet == other._feedStockQuantitySet && _gift == other._gift &&
-            _giftSet == other._giftSet && _locked == other._locked &&
-            _lockedSet == other._lockedSet && string.Equals(_observation, other._observation) &&
-            _observationSet == other._observationSet && _price == other._price &&
-            _priceSet == other._priceSet && Equals(_product, other._product) &&
+            _feedStockQuantitySet == other._feedStockQuantitySet && string.Equals(_observation, other._observation) &&
+            _observationSet == other._observationSet  && Equals(_product, other._product) &&
             _codeProduct == other._codeProduct && _codeProductSet == other._codeProductSet &&
             _productSet == other._productSet && _sequence == other._sequence &&
             _sequenceSet == other._sequenceSet && string.Equals(_volume, other._volume) &&
@@ -71,14 +68,8 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
             hashCode = (hashCode * 397) ^ _codeFeedStockSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _feedStockQuantity.GetHashCode();
             hashCode = (hashCode * 397) ^ _feedStockQuantitySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _gift.GetHashCode();
-            hashCode = (hashCode * 397) ^ _giftSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _locked.GetHashCode();
-            hashCode = (hashCode * 397) ^ _lockedSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_observation?.GetHashCode() ?? 0);
             hashCode = (hashCode * 397) ^ _observationSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _price.GetHashCode();
-            hashCode = (hashCode * 397) ^ _priceSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_product != null ? _product.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _codeProduct;
             hashCode = (hashCode * 397) ^ _codeProductSet.GetHashCode();
@@ -164,33 +155,6 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     /// The observation set
     /// </summary>
     private bool _observationSet;
-
-    /// <summary>
-    /// The gift
-    /// </summary>
-    private bool _gift;
-    /// <summary>
-    /// The gift set
-    /// </summary>
-    private bool _giftSet;
-
-    /// <summary>
-    /// The locked
-    /// </summary>
-    private bool _locked;
-    /// <summary>
-    /// The locked set
-    /// </summary>
-    private bool _lockedSet;
-
-    /// <summary>
-    /// The price
-    /// </summary>
-    private decimal _price;
-    /// <summary>
-    /// The price set
-    /// </summary>
-    private bool _priceSet;
 
     /// <summary>
     /// The product
@@ -288,49 +252,7 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
             _observationSet = true;
         }
     }
-
-    /// <summary>
-    /// Gets or sets the gift.
-    /// </summary>
-    /// <value>The gift.</value>
-    [EntityElement("AD_BRINDE")]
-    public bool Gift
-    {
-        get => _gift; set
-        {
-            _gift = value;
-            _giftSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the locked.
-    /// </summary>
-    /// <value>The locked.</value>
-    [EntityElement("AD_TRAVADO")]
-    public bool Locked
-    {
-        get => _locked; set
-        {
-            _locked = value;
-            _lockedSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the price.
-    /// </summary>
-    /// <value>The price.</value>
-    [EntityElement("AD_VLRVENDA")]
-    public decimal Price
-    {
-        get => _price; set
-        {
-            _price = value;
-            _priceSet = true;
-        }
-    }
-
+    
     /// <summary>
     /// Gets or sets the product.
     /// </summary>
@@ -384,24 +306,6 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeObservation() => _observationSet;
-
-    /// <summary>
-    /// Should the serialize gift.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    public bool ShouldSerializeGift() => _giftSet;
-
-    /// <summary>
-    /// Should the serialize locked.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    public bool ShouldSerializeLocked() => _lockedSet;
-
-    /// <summary>
-    /// Should the serialize price.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    public bool ShouldSerializePrice() => _priceSet;
 
     /// <summary>
     /// Should the serialize product.
