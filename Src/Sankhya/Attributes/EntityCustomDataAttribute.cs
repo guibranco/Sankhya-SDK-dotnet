@@ -11,22 +11,21 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Attributes
-{
-    using System;
+namespace Sankhya.Attributes;
 
+using System;
+
+/// <summary>
+/// Class EntityCustomDataAttribute. This class cannot be inherited.
+/// Implements the <see cref="Attribute" />
+/// </summary>
+/// <seealso cref="Attribute" />
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Property, AllowMultiple = true)]
+public sealed class EntityCustomDataAttribute : Attribute
+{
     /// <summary>
-    /// Class EntityCustomDataAttribute. This class cannot be inherited.
-    /// Implements the <see cref="Attribute" />
+    /// Gets or sets the maximum length.
     /// </summary>
-    /// <seealso cref="Attribute" />
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property, AllowMultiple = true)]
-    public sealed class EntityCustomDataAttribute : Attribute
-    {
-        /// <summary>
-        /// Gets or sets the maximum length.
-        /// </summary>
-        /// <value>The maximum length.</value>
-        public int MaxLength { get; set; }
-    }
+    /// <value>The maximum length.</value>
+    public int MaxLength { get; set; }
 }

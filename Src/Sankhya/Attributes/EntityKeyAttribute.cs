@@ -11,16 +11,15 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Attributes
-{
-    using System;
+namespace Sankhya.Attributes;
 
-    /// <summary>
-    /// Class EntityKeyAttribute. This class cannot be inherited.
-    /// Implements the <see cref="Attribute" />
-    /// </summary>
-    /// <seealso cref="Attribute" />
-    [AttributeUsage(AttributeTargets.Property)]
-    public sealed class EntityKeyAttribute : Attribute
-    { }
-}
+using System;
+
+/// <summary>
+/// Class EntityKeyAttribute. This class cannot be inherited.
+/// Implements the <see cref="Attribute" />
+/// </summary>
+/// <seealso cref="Attribute" />
+[AttributeUsage(AttributeTargets.Property)]
+public sealed class EntityKeyAttribute : Attribute
+{ }

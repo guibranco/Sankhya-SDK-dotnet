@@ -11,33 +11,32 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Attributes
+namespace Sankhya.Attributes;
+
+using System;
+
+/// <summary>
+/// Class EntityReferenceAttribute. This class cannot be inherited.
+/// Implements the <see cref="Attribute" />
+/// </summary>
+/// <seealso cref="Attribute" />
+[AttributeUsage(AttributeTargets.Property)]
+public sealed class EntityReferenceAttribute : Attribute
 {
-    using System;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EntityReferenceAttribute" /> class.
+    /// </summary>
+    public EntityReferenceAttribute() => CustomRelationName = string.Empty;
 
     /// <summary>
-    /// Class EntityReferenceAttribute. This class cannot be inherited.
-    /// Implements the <see cref="Attribute" />
+    /// Initializes a new instance of the <see cref="EntityReferenceAttribute" /> class.
     /// </summary>
-    /// <seealso cref="Attribute" />
-    [AttributeUsage(AttributeTargets.Property)]
-    public sealed class EntityReferenceAttribute : Attribute
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EntityReferenceAttribute" /> class.
-        /// </summary>
-        public EntityReferenceAttribute() => CustomRelationName = string.Empty;
+    /// <param name="customRelationName">Name of the custom relation.</param>
+    public EntityReferenceAttribute(string customRelationName) => CustomRelationName = customRelationName;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EntityReferenceAttribute" /> class.
-        /// </summary>
-        /// <param name="customRelationName">Name of the custom relation.</param>
-        public EntityReferenceAttribute(string customRelationName) => CustomRelationName = customRelationName;
-
-        /// <summary>
-        /// Gets the name of the custom relation.
-        /// </summary>
-        /// <value>The name of the custom relation.</value>
-        public string CustomRelationName { get; }
-    }
+    /// <summary>
+    /// Gets the name of the custom relation.
+    /// </summary>
+    /// <value>The name of the custom relation.</value>
+    public string CustomRelationName { get; }
 }

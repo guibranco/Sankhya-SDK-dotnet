@@ -11,16 +11,15 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Attributes
-{
-    using System;
+namespace Sankhya.Attributes;
 
-    /// <summary>
-    /// Class EntityIgnoreAttribute. This class cannot be inherited.
-    /// Implements the <see cref="Attribute" />
-    /// </summary>
-    /// <seealso cref="Attribute" />
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
-    public sealed class EntityIgnoreAttribute : Attribute
-    { }
-}
+using System;
+
+/// <summary>
+/// Class EntityIgnoreAttribute. This class cannot be inherited.
+/// Implements the <see cref="Attribute" />
+/// </summary>
+/// <seealso cref="Attribute" />
+[AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
+public sealed class EntityIgnoreAttribute : Attribute
+{ }
