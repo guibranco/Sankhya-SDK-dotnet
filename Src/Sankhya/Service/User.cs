@@ -11,21 +11,20 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service
-{
-    using System.Xml.Serialization;
+namespace Sankhya.Service;
 
+using System.Xml.Serialization;
+
+/// <summary>
+/// Class User. This class cannot be inherited.
+/// </summary>
+[XmlType("usuario")]
+public sealed class User
+{
     /// <summary>
-    /// Class User. This class cannot be inherited.
+    /// Gets or sets the logged user code.
     /// </summary>
-    [XmlType("usuario")]
-    public sealed class User
-    {
-        /// <summary>
-        /// Gets or sets the logged user code.
-        /// </summary>
-        /// <value>The logged user code.</value>
-        [XmlAttribute(AttributeName = "codUsuLogado")]
-        public int LoggedUserCode { get; set; }
-    }
+    /// <value>The logged user code.</value>
+    [XmlAttribute(AttributeName = "codUsuLogado")]
+    public int LoggedUserCode { get; set; }
 }

@@ -11,58 +11,57 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service
-{
-    using CrispyWaffle.Serialization;
+namespace Sankhya.Service;
 
-    using System.Xml.Serialization;
+using CrispyWaffle.Serialization;
+
+using System.Xml.Serialization;
+
+/// <summary>
+/// Class Config. This class cannot be inherited.
+/// </summary>
+[Serializer]
+[XmlRoot(ElementName = "config")]
+public sealed class Config
+{
+    #region Private Members
 
     /// <summary>
-    /// Class Config. This class cannot be inherited.
+    /// The path
     /// </summary>
-    [Serializer]
-    [XmlRoot(ElementName = "config")]
-    public sealed class Config
+    private string _path;
+    /// <summary>
+    /// The path set
+    /// </summary>
+    private bool _pathSet;
+
+    #endregion
+
+    #region Public Properties
+
+    /// <summary>
+    /// Gets or sets the path.
+    /// </summary>
+    /// <value>The path.</value>
+    [XmlAttribute(AttributeName = "path")]
+    public string Path
     {
-        #region Private Members
-
-        /// <summary>
-        /// The path
-        /// </summary>
-        private string _path;
-        /// <summary>
-        /// The path set
-        /// </summary>
-        private bool _pathSet;
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// Gets or sets the path.
-        /// </summary>
-        /// <value>The path.</value>
-        [XmlAttribute(AttributeName = "path")]
-        public string Path
+        get => _path; set
         {
-            get => _path; set
-            {
-                _path = value;
-                _pathSet = true;
-            }
+            _path = value;
+            _pathSet = true;
         }
-
-        #endregion
-
-        #region Serializer Helpers
-
-        /// <summary>
-        /// Should the serialize path.
-        /// </summary>
-        /// <returns>Boolean.</returns>
-        public bool ShouldSerializePath() => _pathSet;
-
-        #endregion
     }
+
+    #endregion
+
+    #region Serializer Helpers
+
+    /// <summary>
+    /// Should the serialize path.
+    /// </summary>
+    /// <returns>Boolean.</returns>
+    public bool ShouldSerializePath() => _pathSet;
+
+    #endregion
 }

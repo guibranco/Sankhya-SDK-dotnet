@@ -1,26 +1,14 @@
-﻿// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="Criteria.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-namespace Sankhya.Service;
+﻿namespace Sankhya.Service;
 
 using System.ComponentModel;
 using System.Xml.Serialization;
 
 /// <summary>
-/// Class Criteria. This class cannot be inherited.
+/// Class Prop. This class cannot be inherited.
 /// </summary>
-public sealed class Criteria
+public sealed class Prop
 {
+
     #region Private Members
 
     /// <summary>
@@ -44,11 +32,12 @@ public sealed class Criteria
     #endregion
 
     #region Public Properties
+
     /// <summary>
     /// Gets or sets the name.
     /// </summary>
     /// <value>The name.</value>
-    [XmlAttribute(AttributeName = "nome")]
+    [XmlAttribute("name")]
     public string Name
     {
         get => _name; set
@@ -62,7 +51,7 @@ public sealed class Criteria
     /// Gets or sets the value.
     /// </summary>
     /// <value>The value.</value>
-    [XmlAttribute(AttributeName = "valor")]
+    [XmlAttribute("value")]
     public string Value
     {
         get => _value; set
@@ -76,7 +65,6 @@ public sealed class Criteria
 
     #region Serializer Helpers
 
-
     /// <summary>
     /// Should the name of the serialize.
     /// </summary>
@@ -84,7 +72,6 @@ public sealed class Criteria
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeName() => _nameSet;
-
 
     /// <summary>
     /// Should the serialize value.

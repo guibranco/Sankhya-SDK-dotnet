@@ -11,71 +11,70 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service
-{
-    using System.ComponentModel;
-    using System.Data.Common;
-    using System.Text;
-    using System.Xml.Serialization;
+namespace Sankhya.Service;
 
-    using System;
+using System.ComponentModel;
+using System.Data.Common;
+using System.Text;
+using System.Xml.Serialization;
+
+using System;
+
+/// <summary>
+/// A literal criteria.
+/// </summary>
+/// <seealso cref="ILiteralCriteria" />
+
+public sealed class LiteralCriteria : ILiteralCriteria
+{
+    #region Public properties
 
     /// <summary>
-    /// A literal criteria.
+    /// Gets or sets the expression.
     /// </summary>
-    /// <seealso cref="ILiteralCriteria" />
+    /// <value>The expression.</value>
 
-    public sealed class LiteralCriteria : ILiteralCriteria
+    [XmlElement(ElementName = "expression")]
+    [Localizable(false)]
+    public string Expression { get; set; }
+
+    /// <summary>
+    /// Gets or sets the parameters.
+    /// </summary>
+    /// <value>The parameters.</value>
+    [XmlElement(ElementName = "parameter")]
+    public Parameter[] Parameters { get; set; }
+
+    #endregion
+
+    #region ~Ctor
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="LiteralCriteria" /> class.
+    /// </summary>
+    public LiteralCriteria()
+    { }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="LiteralCriteria" /> class.
+    /// </summary>
+    /// <param name="expression">The expression.</param>
+    public LiteralCriteria([Localizable(false)] string expression) => Expression = expression;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="LiteralCriteria" /> class.
+    /// </summary>
+    /// <param name="expressionBuilder">The expression builder.</param>
+    /// <exception cref="System.ArgumentNullException">expressionBuilder</exception>
+    public LiteralCriteria(StringBuilder expressionBuilder)
     {
-        #region Public properties
-
-        /// <summary>
-        /// Gets or sets the expression.
-        /// </summary>
-        /// <value>The expression.</value>
-
-        [XmlElement(ElementName = "expression")]
-        [Localizable(false)]
-        public string Expression { get; set; }
-
-        /// <summary>
-        /// Gets or sets the parameters.
-        /// </summary>
-        /// <value>The parameters.</value>
-        [XmlElement(ElementName = "parameter")]
-        public Parameter[] Parameters { get; set; }
-
-        #endregion
-
-        #region ~Ctor
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LiteralCriteria" /> class.
-        /// </summary>
-        public LiteralCriteria()
-        { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LiteralCriteria" /> class.
-        /// </summary>
-        /// <param name="expression">The expression.</param>
-        public LiteralCriteria([Localizable(false)] string expression) => Expression = expression;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LiteralCriteria" /> class.
-        /// </summary>
-        /// <param name="expressionBuilder">The expression builder.</param>
-        /// <exception cref="System.ArgumentNullException">expressionBuilder</exception>
-        public LiteralCriteria(StringBuilder expressionBuilder)
+        if (expressionBuilder == null)
         {
-            if (expressionBuilder == null)
-            {
-                throw new ArgumentNullException(nameof(expressionBuilder));
-            }
-
-            Expression = expressionBuilder.ToString();
+            throw new ArgumentNullException(nameof(expressionBuilder));
         }
 
-        #endregion
+        Expression = expressionBuilder.ToString();
     }
+
+    #endregion
 }

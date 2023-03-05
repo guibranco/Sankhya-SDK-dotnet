@@ -1,25 +1,12 @@
-﻿// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="Criteria.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-namespace Sankhya.Service;
+﻿namespace Sankhya.Service;
 
 using System.ComponentModel;
 using System.Xml.Serialization;
 
 /// <summary>
-/// Class Criteria. This class cannot be inherited.
+/// The CRUD service entities
 /// </summary>
-public sealed class Criteria
+public sealed class CrudServiceEntities
 {
     #region Private Members
 
@@ -33,22 +20,23 @@ public sealed class Criteria
     private bool _nameSet;
 
     /// <summary>
-    /// The value
+    /// The entities
     /// </summary>
-    private string _value;
+    private dynamic[] _entities;
     /// <summary>
-    /// The value set
+    /// The entities set
     /// </summary>
-    private bool _valueSet;
+    private bool _entitiesSet;
 
     #endregion
 
     #region Public Properties
+
     /// <summary>
     /// Gets or sets the name.
     /// </summary>
     /// <value>The name.</value>
-    [XmlAttribute(AttributeName = "nome")]
+    [XmlAttribute("nome")]
     public string Name
     {
         get => _name; set
@@ -59,23 +47,22 @@ public sealed class Criteria
     }
 
     /// <summary>
-    /// Gets or sets the value.
+    /// Gets or sets the entities.
     /// </summary>
-    /// <value>The value.</value>
-    [XmlAttribute(AttributeName = "valor")]
-    public string Value
+    /// <value>The entities.</value>
+    [XmlArrayItem("entidade")]
+    public dynamic[] Entities
     {
-        get => _value; set
+        get => _entities; set
         {
-            _value = value;
-            _valueSet = true;
+            _entities = value;
+            _entitiesSet = true;
         }
     }
 
     #endregion
 
     #region Serializer Helpers
-
 
     /// <summary>
     /// Should the name of the serialize.
@@ -85,14 +72,13 @@ public sealed class Criteria
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeName() => _nameSet;
 
-
     /// <summary>
-    /// Should the serialize value.
+    /// Should the serialize entities.
     /// </summary>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeValue() => _valueSet;
+    public bool ShouldSerializeEntities() => _entitiesSet;
 
     #endregion
 

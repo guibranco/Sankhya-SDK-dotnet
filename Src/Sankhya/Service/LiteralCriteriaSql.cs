@@ -11,21 +11,20 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service
-{
-    using System.Xml.Serialization;
+namespace Sankhya.Service;
 
+using System.Xml.Serialization;
+
+/// <summary>
+/// Class LiteralCriteriaSql. This class cannot be inherited.
+/// </summary>
+/// <seealso cref="ILiteralCriteria" />
+public sealed class LiteralCriteriaSql : ILiteralCriteria
+{
     /// <summary>
-    /// Class LiteralCriteriaSql. This class cannot be inherited.
+    /// Gets or sets the expression.
     /// </summary>
-    /// <seealso cref="ILiteralCriteria" />
-    public sealed class LiteralCriteriaSql : ILiteralCriteria
-    {
-        /// <summary>
-        /// Gets or sets the expression.
-        /// </summary>
-        /// <value>The expression.</value>
-        [XmlElement(ElementName = "expressao")]
-        public string Expression { get; set; }
-    }
+    /// <value>The expression.</value>
+    [XmlElement(ElementName = "expressao")]
+    public string Expression { get; set; }
 }

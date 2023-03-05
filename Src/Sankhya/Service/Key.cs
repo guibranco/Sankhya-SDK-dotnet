@@ -11,57 +11,56 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service
+namespace Sankhya.Service;
+
+using CrispyWaffle.Serialization;
+using System.Xml.Serialization;
+
+/// <summary>
+/// Class Key. This class cannot be inherited.
+/// </summary>
+[Serializer]
+[XmlRoot("chave")]
+public sealed class Key
 {
-    using CrispyWaffle.Serialization;
-    using System.Xml.Serialization;
+    #region Private Members
 
     /// <summary>
-    /// Class Key. This class cannot be inherited.
+    /// The value
     /// </summary>
-    [Serializer]
-    [XmlRoot("chave")]
-    public sealed class Key
+    private string _value;
+    /// <summary>
+    /// The value set
+    /// </summary>
+    private bool _valueSet;
+
+    #endregion
+
+    #region Public Properties
+
+    /// <summary>
+    /// Gets or sets the value.
+    /// </summary>
+    /// <value>The value.</value>
+    [XmlAttribute(AttributeName = "valor")]
+    public string Value
     {
-        #region Private Members
-
-        /// <summary>
-        /// The value
-        /// </summary>
-        private string _value;
-        /// <summary>
-        /// The value set
-        /// </summary>
-        private bool _valueSet;
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// Gets or sets the value.
-        /// </summary>
-        /// <value>The value.</value>
-        [XmlAttribute(AttributeName = "valor")]
-        public string Value
+        get => _value; set
         {
-            get => _value; set
-            {
-                _value = value;
-                _valueSet = true;
-            }
+            _value = value;
+            _valueSet = true;
         }
-
-        #endregion
-
-        #region Serializer Helpers
-
-        /// <summary>
-        /// Should the serialize value.
-        /// </summary>
-        /// <returns>Boolean.</returns>
-        public bool ShouldSerializeValue() => _valueSet;
-
-        #endregion
     }
+
+    #endregion
+
+    #region Serializer Helpers
+
+    /// <summary>
+    /// Should the serialize value.
+    /// </summary>
+    /// <returns>Boolean.</returns>
+    public bool ShouldSerializeValue() => _valueSet;
+
+    #endregion
 }
