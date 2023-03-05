@@ -33,7 +33,6 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
             _quantity == other._quantity && _quantitySet == other._quantitySet &&
             _isQuantityMultiplier == other._isQuantityMultiplier &&
             _isQuantityMultiplierSet == other._isQuantityMultiplierSet &&
-            _suggestionType == other._suggestionType && _suggestionTypeSet == other._suggestionTypeSet &&
             Equals(_productSuggestion, other._productSuggestion) &&
             _productSuggestionSet == other._productSuggestionSet;
     }
@@ -71,8 +70,6 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
             hashCode = (hashCode * 397) ^ _quantitySet.GetHashCode();
             hashCode = (hashCode * 397) ^ _isQuantityMultiplier.GetHashCode();
             hashCode = (hashCode * 397) ^ _isQuantityMultiplierSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (int)_suggestionType;
-            hashCode = (hashCode * 397) ^ _suggestionTypeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_productSuggestion != null ? _productSuggestion.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _productSuggestionSet.GetHashCode();
             return hashCode;
@@ -143,15 +140,6 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// The is quantity multiplier set
     /// </summary>
     private bool _isQuantityMultiplierSet;
-
-    /// <summary>
-    /// The suggestion type
-    /// </summary>
-    private ProductSuggestionType _suggestionType;
-    /// <summary>
-    /// The suggestion type set
-    /// </summary>
-    private bool _suggestionTypeSet;
 
     /// <summary>
     /// The product suggestion
@@ -275,38 +263,6 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     }
 
     /// <summary>
-    /// Gets or sets the type of the suggestion.
-    /// </summary>
-    /// <value>The type of the suggestion.</value>
-    [EntityIgnore]
-    public ProductSuggestionType SuggestionType
-    {
-        get => _suggestionType;
-
-        set
-        {
-            _suggestionType = value;
-            _suggestionTypeSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the suggestion type internal.
-    /// </summary>
-    /// <value>The suggestion type internal.</value>
-    [EntityElement("AD_TIPOVENDA")]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public string SuggestionTypeInternal
-    {
-        get => _suggestionType.GetInternalValue(); set
-        {
-            _suggestionType = EnumExtensions.GetEnumByInternalValueAttribute<ProductSuggestionType>(value);
-            _suggestionTypeSet = true;
-        }
-    }
-
-    /// <summary>
     /// Gets or sets the product suggestion.
     /// </summary>
     /// <value>The product suggestion.</value>
@@ -354,12 +310,6 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeIsQuantityMultiplier() => _isQuantityMultiplierSet;
-
-    /// <summary>
-    /// Should the type of the serialize suggestion.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    public bool ShouldSerializeSuggestionType() => _suggestionTypeSet;
 
     /// <summary>
     /// Should the serialize product suggestion.

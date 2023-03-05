@@ -61,14 +61,10 @@ public class Partner : IEntity, IEquatable<Partner>
                string.Equals(_emailAddressFiscalInvoice, other._emailAddressFiscalInvoice,
                    StringComparison.InvariantCultureIgnoreCase) &&
                _emailAddressFiscalInvoiceSet == other._emailAddressFiscalInvoiceSet &&
-               _codeHowKnow == other._codeHowKnow && _codeHowKnowSet == other._codeHowKnowSet &&
                _isActive == other._isActive && _isActiveSet == other._isActiveSet && _isClient == other._isClient &&
                _isClientSet == other._isClientSet && _isSeller == other._isSeller &&
                _isSellerSet == other._isSellerSet && _isUser == other._isUser && _isUserSet == other._isUserSet &&
                _isSupplier == other._isSupplier && _isSupplierSet == other._isSupplierSet &&
-               _isCraftsman == other._isCraftsman && _isCraftsmanSet == other._isCraftsmanSet &&
-               _isInventoryCounter == other._isInventoryCounter &&
-               _isInventoryCounterSet == other._isInventoryCounterSet &&
                string.Equals(_document, other._document, StringComparison.InvariantCultureIgnoreCase) &&
                _documentSet == other._documentSet &&
                string.Equals(_identity, other._identity, StringComparison.InvariantCultureIgnoreCase) &&
@@ -98,16 +94,13 @@ public class Partner : IEntity, IEquatable<Partner>
                _dateChangedSet == other._dateChangedSet &&
                _sendFiscalInvoiceByEmail == other._sendFiscalInvoiceByEmail &&
                _sendFiscalInvoiceByEmailSet == other._sendFiscalInvoiceByEmailSet &&
-               _excludeFromMailing == other._excludeFromMailing &&
-               _excludeFromMailingSet == other._excludeFromMailingSet &&
                string.Equals(_authorizationGroup, other._authorizationGroup,
                    StringComparison.InvariantCultureIgnoreCase) &&
                _authorizationGroupSet == other._authorizationGroupSet &&
                string.Equals(_latitude, other._latitude, StringComparison.InvariantCultureIgnoreCase) &&
                _latitudeSet == other._latitudeSet &&
                string.Equals(_longitude, other._longitude, StringComparison.InvariantCultureIgnoreCase) &&
-               _longitudeSet == other._longitudeSet && _dateIndexed.Equals(other._dateIndexed) &&
-               _dateIndexedSet == other._dateIndexedSet &&
+               _longitudeSet == other._longitudeSet && 
                string.Equals(_notes, other._notes, StringComparison.InvariantCultureIgnoreCase) &&
                _notesSet == other._notesSet && Equals(_address, other._address) &&
                _addressSet == other._addressSet && Equals(_neighborhood, other._neighborhood) &&
@@ -162,8 +155,6 @@ public class Partner : IEntity, IEquatable<Partner>
             hashCode = (hashCode * 397) ^ _emailAddressSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_emailAddressFiscalInvoice != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_emailAddressFiscalInvoice) : 0);
             hashCode = (hashCode * 397) ^ _emailAddressFiscalInvoiceSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codeHowKnow;
-            hashCode = (hashCode * 397) ^ _codeHowKnowSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _isActive.GetHashCode();
             hashCode = (hashCode * 397) ^ _isActiveSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _isClient.GetHashCode();
@@ -174,10 +165,6 @@ public class Partner : IEntity, IEquatable<Partner>
             hashCode = (hashCode * 397) ^ _isUserSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _isSupplier.GetHashCode();
             hashCode = (hashCode * 397) ^ _isSupplierSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _isCraftsman.GetHashCode();
-            hashCode = (hashCode * 397) ^ _isCraftsmanSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _isInventoryCounter.GetHashCode();
-            hashCode = (hashCode * 397) ^ _isInventoryCounterSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_document != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_document) : 0);
             hashCode = (hashCode * 397) ^ _documentSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_identity != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_identity) : 0);
@@ -210,16 +197,12 @@ public class Partner : IEntity, IEquatable<Partner>
             hashCode = (hashCode * 397) ^ _dateChangedSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _sendFiscalInvoiceByEmail.GetHashCode();
             hashCode = (hashCode * 397) ^ _sendFiscalInvoiceByEmailSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _excludeFromMailing.GetHashCode();
-            hashCode = (hashCode * 397) ^ _excludeFromMailingSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_authorizationGroup != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_authorizationGroup) : 0);
             hashCode = (hashCode * 397) ^ _authorizationGroupSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_latitude != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_latitude) : 0);
             hashCode = (hashCode * 397) ^ _latitudeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_longitude != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_longitude) : 0);
             hashCode = (hashCode * 397) ^ _longitudeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _dateIndexed.GetHashCode();
-            hashCode = (hashCode * 397) ^ _dateIndexedSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_notes != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_notes) : 0);
             hashCode = (hashCode * 397) ^ _notesSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_address != null ? _address.GetHashCode() : 0);
@@ -320,15 +303,6 @@ public class Partner : IEntity, IEquatable<Partner>
     private bool _emailAddressFiscalInvoiceSet;
 
     /// <summary>
-    /// The code how know
-    /// </summary>
-    private int _codeHowKnow;
-    /// <summary>
-    /// The code how know set
-    /// </summary>
-    private bool _codeHowKnowSet;
-
-    /// <summary>
     /// The is active
     /// </summary>
     private bool _isActive;
@@ -372,24 +346,6 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The is supplier set
     /// </summary>
     private bool _isSupplierSet;
-
-    /// <summary>
-    /// The is craftsman
-    /// </summary>
-    private bool _isCraftsman;
-    /// <summary>
-    /// The is craftsman set
-    /// </summary>
-    private bool _isCraftsmanSet;
-
-    /// <summary>
-    /// The is inventory counter
-    /// </summary>
-    private bool _isInventoryCounter;
-    /// <summary>
-    /// The is inventory counter set
-    /// </summary>
-    private bool _isInventoryCounterSet;
 
     /// <summary>
     /// The document
@@ -536,15 +492,6 @@ public class Partner : IEntity, IEquatable<Partner>
     private bool _sendFiscalInvoiceByEmailSet;
 
     /// <summary>
-    /// The exclude from mailing
-    /// </summary>
-    private bool _excludeFromMailing;
-    /// <summary>
-    /// The exclude from mailing set
-    /// </summary>
-    private bool _excludeFromMailingSet;
-
-    /// <summary>
     /// The authorization group
     /// </summary>
     private string _authorizationGroup;
@@ -570,15 +517,6 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The longitude set
     /// </summary>
     private bool _longitudeSet;
-
-    /// <summary>
-    /// The date indexed
-    /// </summary>
-    private DateTime _dateIndexed;
-    /// <summary>
-    /// The date indexed set
-    /// </summary>
-    private bool _dateIndexedSet;
 
     /// <summary>
     /// The notes
@@ -787,21 +725,7 @@ public class Partner : IEntity, IEquatable<Partner>
             _emailAddressFiscalInvoiceSet = true;
         }
     }
-
-    /// <summary>
-    /// Gets or sets the code how know.
-    /// </summary>
-    /// <value>The code how know.</value>
-    [EntityElement("AD_ID")]
-    public int CodeHowKnow
-    {
-        get => _codeHowKnow; set
-        {
-            _codeHowKnow = value;
-            _codeHowKnowSet = true;
-        }
-    }
-
+    
     /// <summary>
     /// Gets or sets the is active.
     /// </summary>
@@ -959,75 +883,7 @@ public class Partner : IEntity, IEquatable<Partner>
             _isSupplierSet = true;
         }
     }
-
-    /// <summary>
-    /// Gets or sets the is craftsman.
-    /// </summary>
-    /// <value>The is craftsman.</value>
-    [EntityIgnore]
-    public bool IsCraftsman
-    {
-
-        get => _isCraftsman; set
-        {
-            _isCraftsman = value;
-            _isCraftsmanSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the is craftsman internal.
-    /// </summary>
-    /// <value>The is craftsman internal.</value>
-    [EntityElement("AD_ARTESAO")]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public string IsCraftsmanInternal
-    {
-        get => _isCraftsman.ToString(@"S", @"N"); set
-        {
-            _isCraftsman = value != null && value.ToBoolean();
-            _isCraftsmanSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the is inventory counter.
-    /// </summary>
-    /// <value>The is inventory counter.</value>
-    [EntityIgnore]
-    public bool IsInventoryCounter
-    {
-
-        get => _isInventoryCounter; set
-        {
-            _isInventoryCounter = value;
-            _isInventoryCounterSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the is inventory counter internal.
-    /// </summary>
-    /// <value>The is inventory counter internal.</value>
-    [EntityElement("AD_CONTADORESTOQUE")]
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public string IsInventoryCounterInternal
-    {
-        get => _isInventoryCounter.ToString(@"S", @"N"); set
-        {
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                return;
-            }
-
-            _isInventoryCounter = value.ToBoolean();
-            _isInventoryCounterSet = true;
-        }
-    }
-
+    
     /// <summary>
     /// Gets or sets the document.
     /// </summary>
@@ -1276,42 +1132,7 @@ public class Partner : IEntity, IEquatable<Partner>
             _sendFiscalInvoiceByEmailSet = true;
         }
     }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether [exclude from mailing].
-    /// </summary>
-    /// <value><c>true</c> if [exclude from mailing]; otherwise, <c>false</c>.</value>
-    [EntityIgnore]
-    public bool ExcludeFromMailing
-    {
-
-        get => _excludeFromMailing;
-        set
-        {
-            _excludeFromMailing = value;
-            _excludeFromMailingSet = true;
-        }
-    }
-
-
-    /// <summary>
-    /// Gets or sets the exclude from mailing internal.
-    /// </summary>
-    /// <value>The exclude from mailing internal.</value>
-    [EntityElement("AD_INCMAILING")]
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public string ExcludeFromMailingInternal
-    {
-        get => _excludeFromMailing.ToString(@"S", @"N");
-        set
-        {
-            _excludeFromMailing = value.ToBoolean();
-            _excludeFromMailingSet = true;
-        }
-    }
-
+    
     /// <summary>
     /// Gets or sets the authorization group.
     /// </summary>
@@ -1356,22 +1177,6 @@ public class Partner : IEntity, IEquatable<Partner>
         {
             _longitude = value;
             _longitudeSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the date indexed.
-    /// </summary>
-    /// <value>The date indexed.</value>
-    [EntityElement("AD_DT_IDX")]
-    public DateTime DateIndexed
-    {
-
-        get => _dateIndexed;
-        set
-        {
-            _dateIndexed = value;
-            _dateIndexedSet = true;
         }
     }
 
@@ -1529,14 +1334,6 @@ public class Partner : IEntity, IEquatable<Partner>
     public bool ShouldSerializeEmailAddressFiscalInvoice() => _emailAddressFiscalInvoiceSet;
 
     /// <summary>
-    /// Should the serialize code how know.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeCodeHowKnow() => _codeHowKnowSet;
-
-    /// <summary>
     /// Should the serialize is active.
     /// </summary>
     /// <returns>Boolean.</returns>
@@ -1575,23 +1372,6 @@ public class Partner : IEntity, IEquatable<Partner>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeIsSupplier() => _isSupplierSet;
-
-    /// <summary>
-    /// Should the serialize is craftsman.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeIsCraftsman() => _isCraftsmanSet;
-
-
-    /// <summary>
-    /// Should the serialize is inventory counter.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeIsInventoryCounter() => _isInventoryCounterSet;
 
     /// <summary>
     /// Should the serialize document.
@@ -1721,16 +1501,6 @@ public class Partner : IEntity, IEquatable<Partner>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSendFiscalInvoiceByEmail() => _sendFiscalInvoiceByEmailSet;
 
-
-    /// <summary>
-    /// The should serialize exclude from mailing serialization helper method
-    /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public bool ShouldSerializeExcludeFromMailing() => _excludeFromMailingSet;
-
     /// <summary>
     /// Should the serialize authorization group.
     /// </summary>
@@ -1756,15 +1526,6 @@ public class Partner : IEntity, IEquatable<Partner>
     [EditorBrowsable(EditorBrowsableState.Never)]
 
     public bool ShouldSerializeLongitude() => _longitudeSet;
-
-    /// <summary>
-    /// The should serialize date indexed serialization helper method
-    /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public bool ShouldSerializeDateIndexed() => _dateIndexedSet;
 
     /// <summary>
     /// The should serialize notes serialization helper method

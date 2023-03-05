@@ -30,8 +30,7 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
         return ReferenceEquals(this, other) || string.Equals(_invoiceKey, other._invoiceKey, StringComparison.InvariantCultureIgnoreCase) &&
             _invoiceKeySet == other._invoiceKeySet && _invoiceNumber == other._invoiceNumber &&
             _invoiceNumberSet == other._invoiceNumberSet && _operationType == other._operationType &&
-            _operationTypeSet == other._operationTypeSet && _originalOrder == other._originalOrder &&
-            _originalOrderSet == other._originalOrderSet && _singleNumber == other._singleNumber &&
+            _operationTypeSet == other._operationTypeSet && _singleNumber == other._singleNumber &&
             _singleNumberSet == other._singleNumberSet && _status == other._status &&
             _statusSet == other._statusSet;
     }
@@ -73,8 +72,6 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
             hashCode = (hashCode * 397) ^ _invoiceNumberSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _operationType;
             hashCode = (hashCode * 397) ^ _operationTypeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _originalOrder;
-            hashCode = (hashCode * 397) ^ _originalOrderSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _singleNumber;
             hashCode = (hashCode * 397) ^ _singleNumberSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (int)_status;
@@ -120,15 +117,6 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     /// The invoice number set
     /// </summary>
     private bool _invoiceNumberSet;
-
-    /// <summary>
-    /// The original order
-    /// </summary>
-    private int _originalOrder;
-    /// <summary>
-    /// The original order set
-    /// </summary>
-    private bool _originalOrderSet;
 
     /// <summary>
     /// The status
@@ -186,20 +174,6 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
         {
             _invoiceNumber = value;
             _invoiceNumberSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the original order.
-    /// </summary>
-    /// <value>The original order.</value>
-    [EntityElement("AD_PEDORIGINAL")]
-    public int OriginalOrder
-    {
-        get => _originalOrder; set
-        {
-            _originalOrder = value;
-            _originalOrderSet = true;
         }
     }
 
@@ -283,15 +257,7 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoiceNumber() => _invoiceNumberSet;
-
-    /// <summary>
-    /// Should the serialize original order.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeOriginalOrder() => _originalOrderSet;
-
+    
     /// <summary>
     /// Should the serialize status.
     /// </summary>
