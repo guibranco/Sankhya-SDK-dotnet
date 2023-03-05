@@ -11,11 +11,10 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Transport
-{
-    /// <summary>
-    /// Interface IEntity
-    /// </summary>
-    public interface IEntity
-    { }
-}
+namespace Sankhya.Transport;
+
+/// <summary>
+/// Interface IEntity
+/// </summary>
+public interface IEntity
+{ }
