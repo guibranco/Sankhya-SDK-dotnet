@@ -11,34 +11,33 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.ValueObjects
+namespace Sankhya.ValueObjects;
+
+/// <summary>
+/// Class ServiceFile. This class cannot be inherited.
+/// </summary>
+public sealed class ServiceFile
 {
     /// <summary>
-    /// Class ServiceFile. This class cannot be inherited.
+    /// Gets or sets the type of the content.
     /// </summary>
-    public sealed class ServiceFile
-    {
-        /// <summary>
-        /// Gets or sets the type of the content.
-        /// </summary>
-        /// <value>The type of the content.</value>
-        public string ContentType { get; set; }
+    /// <value>The type of the content.</value>
+    public string ContentType { get; set; }
 
-        /// <summary>
-        /// Gets or sets the name of the file.
-        /// </summary>
-        /// <value>The name of the file.</value>
-        public string FileName { get; set; }
+    /// <summary>
+    /// Gets or sets the name of the file.
+    /// </summary>
+    /// <value>The name of the file.</value>
+    public string FileName { get; set; }
 
-        /// <summary>
-        /// Gets or sets the extension.
-        /// </summary>
-        /// <value>The extension.</value>
-        public string FileExtension { get; set; }
-        /// <summary>
-        /// Gets or sets the data.
-        /// </summary>
-        /// <value>The data.</value>
-        public byte[] Data { get; set; }
-    }
+    /// <summary>
+    /// Gets or sets the extension.
+    /// </summary>
+    /// <value>The extension.</value>
+    public string FileExtension { get; set; }
+    /// <summary>
+    /// Gets or sets the data.
+    /// </summary>
+    /// <value>The data.</value>
+    public byte[] Data { get; set; }
 }
