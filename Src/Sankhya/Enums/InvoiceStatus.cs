@@ -11,33 +11,32 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+/// <summary>
+/// Enum InvoiceStatus
+/// </summary>
+public enum InvoiceStatus
 {
-    using CrispyWaffle.Attributes;
     /// <summary>
-    /// Enum InvoiceStatus
+    /// The service
     /// </summary>
-    public enum InvoiceStatus
-    {
-        /// <summary>
-        /// The service
-        /// </summary>
-        [InternalValue("A")]
-        [HumanReadable("Atendimento")]
-        Service,
+    [InternalValue("A")]
+    [HumanReadable("Atendimento")]
+    Service,
 
-        /// <summary>
-        /// The released
-        /// </summary>
-        [InternalValue("L")]
-        [HumanReadable("Liberada")]
-        Released,
+    /// <summary>
+    /// The released
+    /// </summary>
+    [InternalValue("L")]
+    [HumanReadable("Liberada")]
+    Released,
 
-        /// <summary>
-        /// The pending
-        /// </summary>
-        [InternalValue("P")]
-        [HumanReadable("Pendente")]
-        Pending
-    }
+    /// <summary>
+    /// The pending
+    /// </summary>
+    [InternalValue("P")]
+    [HumanReadable("Pendente")]
+    Pending
 }

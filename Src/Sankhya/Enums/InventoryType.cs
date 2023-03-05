@@ -11,28 +11,27 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+/// <summary>
+/// Enum InventoryType
+/// </summary>
+public enum InventoryType
 {
-    using CrispyWaffle.Attributes;
 
     /// <summary>
-    /// Enum InventoryType
+    /// The own
     /// </summary>
-    public enum InventoryType
-    {
+    [HumanReadable("Próprio")]
+    [InternalValue("P")]
+    Own,
 
-        /// <summary>
-        /// The own
-        /// </summary>
-        [HumanReadable("Próprio")]
-        [InternalValue("P")]
-        Own,
-
-        /// <summary>
-        /// The third
-        /// </summary>
-        [HumanReadable("Terceiro")]
-        [InternalValue("T")]
-        Third
-    }
+    /// <summary>
+    /// The third
+    /// </summary>
+    [HumanReadable("Terceiro")]
+    [InternalValue("T")]
+    Third
 }

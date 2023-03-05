@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TheValueMustHaveBetween1and6digits" xml:space="preserve">
+    <value>The {0} must have between 1 and 6 digits</value>
+  </data>
+  <data name="SankhyaContext_AcquireNewSession_NewSession" xml:space="preserve">
+    <value>Starting new session for {0} requests</value>
+  </data>
+  <data name="SankhyaContext_AcquireNewSession_NewSessionStarted" xml:space="preserve">
+    <value>New session started for {0} requests with token {1}</value>
+  </data>
+  <data name="SankhyaContext_FinalizeSession_FinalizeSession" xml:space="preserve">
+    <value>Finalizing session with token {0}</value>
+  </data>
+  <data name="SankhyaContext_Dispose_DisposingServiceContext" xml:space="preserve">
+    <value>Disposing service context</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_SendWarning_SendingWarningWithLevel" xml:space="preserve">
+    <value>Sending warning with level {0} and title {1} to {2}</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>all</value>
+  </data>
+  <data name="UsersOrGroups" xml:space="preserve">
+    <value> users/groups</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_SendMessage_SendingMessage" xml:space="preserve">
+    <value>Sending message to {0} users/groups</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_ReceiveMessages_ReceivingMessages" xml:space="preserve">
+    <value>Receiving messages</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_CreateInvoice" xml:space="preserve">
+    <value>Creating invoice header for operation {0} with {1} ite{2}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_AddInvoiceItems_AddingItemsToInvoice" xml:space="preserve">
+    <value>Adding {0} ite{2} to invoice with single number {1}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_RemoveInvoiceItems_AllItemsMustBeFromTheSameInvoice" xml:space="preserve">
+    <value>All items must be from the same invoice</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_RemoveInvoiceItems_DeletingItemsFromInvoice" xml:space="preserve">
+    <value>Deleting {0} ite{2} from invoice with single number {1}</value>
+  </data>
+  <data name="SankhyaWrapper_ServiceInvokerInternal_Service" xml:space="preserve">
+    <value>ServiceInvoker -&gt; Service: {0} | Entity: {1} | Attempt: {2}</value>
+  </data>
+  <data name="SankhyaWrapper_ServiceInvokerInternal_Module" xml:space="preserve">
+    <value>ServiceInvoker -&gt; Module: {0} | Service: {1} | Attempt: {2}</value>
+  </data>
+  <data name="SankhyaWrapper_ServiceInvokerInternal_ReasonIdentifiedTakingSecondsRetry" xml:space="preserve">
+    <value>{1} identified, taking {0} seconds to retry</value>
+  </data>
+  <data name="SankhyaWrapper_ServiceInvokerInternal_CanceledQuery" xml:space="preserve">
+    <value>Query canceled, probably overloaded on server. Taking {0} seconds to retry.</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_Bill_BillingInvoiceToTOP" xml:space="preserve">
+    <value>Billing the invoice with single number {0} to TOP {1} | Billing type: {2} | Series: {3}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_ConfirmInvoice_Confirming" xml:space="preserve">
+    <value>Confirming invoice with single number: {0}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_FlagInvoicesAsNotPending" xml:space="preserve">
+    <value>Flagging {0} invoice{1} with single number{1} {2} as not pending</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_GetInvoiceAccompaniments" xml:space="preserve">
+    <value>Getting accompaniments of {0} invoice{1} with single number{1} {2}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_CancelInvoices_Canceling" xml:space="preserve">
+    <value>Canceling {0} invoice{1} with single number{1} {2}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_CancelInvoices_Canceled" xml:space="preserve">
+    <value>{0} invoice{1} canceled</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_BindInvoiceWithOrder" xml:space="preserve">
+    <value>Binding invoice with single number {0} with order. Partner code: {1} | Movement type: {2}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_DuplicateInvoice_Duplicating" xml:space="preserve">
+    <value>Duplicating invoice with single number {0} on TOP: {1} | series: {2} | exit date: {3} | update prices: {4}</value>
+  </data>
+  <data name="Uninformed" xml:space="preserve">
+    <value>Uninformed</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_DuplicateInvoice_Duplicated" xml:space="preserve">
+    <value>Invoice with single number {0} duplicated, new invoice with single number: {1}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_GetFiscalInvoiceAuthorization" xml:space="preserve">
+    <value>Getting authorization of {0} fiscal invoice{1} with single number{1} {2}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_GenerateLot" xml:space="preserve">
+    <value>Generating lot of {0} fiscal invoice{1} with single number{1} {2}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_FlagAsPaymentsPaid" xml:space="preserve">
+    <value>Flagging financial movement{0} as paid: {1}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_ReversePayments" xml:space="preserve">
+    <value>Reversing financial low of movement with single number {0}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_DeleteFiles" xml:space="preserve">
+    <value>Removing {0} files from repository</value>
+  </data>
+  <data name="OnDemandRequestWrapper_OnDemandRequestWrapper_Starting" xml:space="preserve">
+    <value>Starting queue for the type {0} with throughput of {1} ite{2}</value>
+  </data>
+  <data name="OnDemandRequestWrapper_OnDemandRequestWrapper_Cancelling" xml:space="preserve">
+    <value>Canceling queue for type {0} with session token {1}</value>
+  </data>
+  <data name="AlreadyDisposed" xml:space="preserve">
+    <value>This instance is already disposed</value>
+  </data>
+  <data name="OnDemandRequestWrapper_Add" xml:space="preserve">
+    <value>Adding item of type {0} to queue</value>
+  </data>
+  <data name="OnDemandRequestWrapper_Flush" xml:space="preserve">
+    <value>Emptying the queue of type {0}</value>
+  </data>
+  <data name="OnDemandRequestWrapper_Process" xml:space="preserve">
+    <value>{0} {1} ite{2} of type {3}</value>
+  </data>
+  <data name="Deleting" xml:space="preserve">
+    <value>deleting</value>
+  </data>
+  <data name="CreatingOrUpdating" xml:space="preserve">
+    <value>creating/updating</value>
+  </data>
+  <data name="OnDemandRequestWrapper_Dispose" xml:space="preserve">
+    <value>{0} request{1} done for sending {2} entit{3} (successful: {5}) of type {4}</value>
+  </data>
+  <data name="YSingularSuffix" xml:space="preserve">
+    <value>y</value>
+  </data>
+  <data name="YPluralSuffix" xml:space="preserve">
+    <value>ies</value>
+  </data>
+  <data name="PagedRequestWrapper_Signaling" xml:space="preserve">
+    <value>Signaling '{1}' event of type {0} for anyone who wants to listen</value>
+  </data>
+  <data name="PageLoaded" xml:space="preserve">
+    <value>page loaded</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>error</value>
+  </data>
+  <data name="AllPagesLoaded" xml:space="preserve">
+    <value>all pages loaded</value>
+  </data>
+  <data name="PagedRequestWrapper_Close" xml:space="preserve">
+    <value>{0} entit{1} loaded of type {2}</value>
+  </data>
+  <data name="PagedRequestWrapper_GetManagedEnumerator_ErrorOccured" xml:space="preserve">
+    <value>An error has occurred when loading paged request of type {0}</value>
+  </data>
+  <data name="PagedRequestWrapper_GetManagedEnumerator_PageLoaded" xml:space="preserve">
+    <value>Page {0}{1} for paged request of {2} loaded with {3} entit{4}</value>
+  </data>
+  <data name="OfTotal" xml:space="preserve">
+    <value> of {0}</value>
+  </data>
+  <data name="ResponseStreamIsNull" xml:space="preserve">
+    <value>Response stream is null</value>
+  </data>
+  <data name="SankhyaWrapper_Authenticate_Authentication" xml:space="preserve">
+    <value>Authenticating on Sankhya web service with username: {0}</value>
+  </data>
+  <data name="SankhyaWrapper_ShowVersionInfo_SankhyaWVersionNotFound" xml:space="preserve">
+    <value>Sankhya-W version not found</value>
+  </data>
+  <data name="SankhyaWrapper_ShowVersionInfo_SankhyaWVersion" xml:space="preserve">
+    <value>Sankhya-W application version: {0}</value>
+  </data>
+  <data name="SankhyaWrapper_GetFile_Getting" xml:space="preserve">
+    <value>Getting file with key {0}</value>
+  </data>
+  <data name="SankhyaWrapper_GetImage_Getting" xml:space="preserve">
+    <value>Getting image on entity {0} with keys: {1}</value>
+  </data>
+  <data name="SankhyaWrapper_GetImage_ImageNotFound" xml:space="preserve">
+    <value>Image not found at {0}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_RemoveInvoice" xml:space="preserve">
+    <value>Removing invoice with single number {0}</value>
+  </data>
+  <data name="EntityExtensions_TypeMustInherits" xml:space="preserve">
+    <value>The type {0} must inherits from {1} or must be of type {2}</value>
+  </data>
+  <data name="EntityExtensions_GetEntityCustomData" xml:space="preserve">
+    <value>The type {0} has multiple attributes of type {1}</value>
+  </data>
+  <data name="ServiceRequestExtensions_ParseProperty" xml:space="preserve">
+    <value>Consider changing the inline reference {0}.{1} for EntityReference in property {2} of entity {3} (Type: {4})</value>
+  </data>
+  <data name="ServiceRequestForeignKeyException" xml:space="preserve">
+    <value>The value supplied to {0}.{1} reference isn't valid.</value>
+  </data>
+  <data name="ServiceRequestDuplicatedDocumentException" xml:space="preserve">
+    <value>The partner {0} has the document duplicated with another partner</value>
+  </data>
+  <data name="CancelledOnDemandRequestWrapperException" xml:space="preserve">
+    <value>Cannot add new items to a cancelled on demand request wrapper instance</value>
+  </data>
+  <data name="ConfirmInvoiceException" xml:space="preserve">
+    <value>Unable to confirm invoice with single number: {0}</value>
+  </data>
+  <data name="InvalidClientEntityException" xml:space="preserve">
+    <value>The type '{0}' requires the application for the client {1}</value>
+  </data>
+  <data name="InvalidKeyFileException" xml:space="preserve">
+    <value>The supplied key {0} is not valid for this session or has been deleted from the Sankhya</value>
+  </data>
+  <data name="InvalidServiceQueryOptionsException" xml:space="preserve">
+    <value>Unable to use query options with service {0}</value>
+  </data>
+  <data name="InvalidServiceRequestOperationException" xml:space="preserve">
+    <value>Unable to execute this operation with service {0}</value>
+  </data>
+  <data name="MarkAsPaymentPaidException" xml:space="preserve">
+    <value>Unable to low payments for financial numbers {0}</value>
+  </data>
+  <data name="MissingSerializerHelperEntityException" xml:space="preserve">
+    <value>The {0} property of {1} entity (Type: {2}) is missing the serializer helper method</value>
+  </data>
+  <data name="NoItemsConfirmInvoiceException" xml:space="preserve">
+    <value>Invoice {0} has no items, cannot be confirmed</value>
+  </data>
+  <data name="ServiceResponseUnexpectedElementException" xml:space="preserve">
+    <value>The '{0}' element is not currently being addressed in Service Response.ResponseBody for the {1} service</value>
+  </data>
+  <data name="ServiceRequestUnexpectedResultException" xml:space="preserve">
+    <value>The call to the {0} service resulted in an invalid response</value>
+  </data>
+  <data name="ServiceRequestUnexpectedResultException_Uncaught" xml:space="preserve">
+    <value>The call to the {0} service resulted in the following uncaught error message: {1}</value>
+  </data>
+  <data name="ServiceRequestUnbalancedDelimiterException" xml:space="preserve">
+    <value>There is an unbalanced delimiter in the request</value>
+  </data>
+  <data name="ServiceRequestUnavailableException" xml:space="preserve">
+    <value>The call to the {0} service is currently unavailable</value>
+  </data>
+  <data name="NotAllowedCorrectionFiscalInvoiceException" xml:space="preserve">
+    <value>The fiscal invoice {0} with {1} {2} does not allow correction</value>
+  </data>
+  <data name="FiscalInvoiceStatus" xml:space="preserve">
+    <value>fiscal invoice status</value>
+  </data>
+  <data name="OperationType" xml:space="preserve">
+    <value>operation type</value>
+  </data>
+  <data name="PagedRequestException" xml:space="preserve">
+    <value>There were one or more errors in the paged request below</value>
+  </data>
+  <data name="RemoveInvoiceException" xml:space="preserve">
+    <value>Unable to remove invoice with single number: {0}</value>
+  </data>
+  <data name="ServiceRequestCompetitionException" xml:space="preserve">
+    <value>The session has been identified as duplicated by Sankhya</value>
+  </data>
+  <data name="ServiceRequestExpiredAuthenticationException" xml:space="preserve">
+    <value>The user's session is expired</value>
+  </data>
+  <data name="ServiceRequestExternalException" xml:space="preserve">
+    <value>Internal Sankhya error (NPE) on call to the {0} service. Check Sankhya log file for more information</value>
+  </data>
+  <data name="ServiceRequestFileNotFoundException" xml:space="preserve">
+    <value>Unable to load the file from path {0}. File or directory not found.</value>
+  </data>
+  <data name="ServiceRequestInaccessibleException" xml:space="preserve">
+    <value>Unable to connect to Sankhya server at address {0}:{1}</value>
+  </data>
+  <data name="ServiceRequestInvalidAuthorizationException" xml:space="preserve">
+    <value>Attempt of unauthorized/unauthenticated access</value>
+  </data>
+  <data name="ServiceRequestInvalidCredentialsException" xml:space="preserve">
+    <value>Unable to authenticate in Sankhya web service with provided credentials data</value>
+  </data>
+  <data name="ServiceRequestInvalidExpressionException" xml:space="preserve">
+    <value>The filter expression '{0}' is invalid, check if it is a valid SQL expression!</value>
+  </data>
+  <data name="ServiceRequestInvalidOperationException" xml:space="preserve">
+    <value>Unable to process the service response</value>
+  </data>
+  <data name="ServiceRequestPropertyNameException" xml:space="preserve">
+    <value>The call to the service {0} couldn't find the field {1} on entity {2} in {3} entity request</value>
+  </data>
+  <data name="ServiceRequestPropertyValueException" xml:space="preserve">
+    <value>The call to the service {0} couldn't find the field {1} on entity {2}</value>
+  </data>
+  <data name="ServiceRequestPropertyWidthException" xml:space="preserve">
+    <value>The call to the service {0} couldn't be completed because the width of the value for  the {1} property on entity {2} is above that allowed. Current width: {3}. Width allowed: {4}</value>
+  </data>
+  <data name="ServiceRequestRepeatedException" xml:space="preserve">
+    <value>You can not use a managed request object that was already consumed</value>
+  </data>
+  <data name="ServiceRequestTimeoutException" xml:space="preserve">
+    <value>The call to the {0} service has timed out</value>
+  </data>
+  <data name="ServiceRequestPaginationException" xml:space="preserve">
+    <value>Unable to complete the paged request, concurrent requests from the same user causes this error</value>
+  </data>
+  <data name="PagedRequestWrapper_LoadResponse_Waiting" xml:space="preserve">
+    <value>Waiting another paged request of type {0} end. Estimated time to wait: {1}</value>
+  </data>
+  <data name="PagedRequestWrapper_GetManagedEnumeratorInternal" xml:space="preserve">
+    <value>Object disposed ignored</value>
+  </data>
+  <data name="PagedRequestWrapper_GetManagedEnumerator" xml:space="preserve">
+    <value>Got {0} items of {1} in {2}</value>
+  </data>
+  <data name="ServiceRequestTooManyResultsException" xml:space="preserve">
+    <value>The request to {0} service on entity {1} resulted in {2} entities as a result. The expected was only one entity</value>
+  </data>
+  <data name="ServiceRequestBusinessRuleRestrictionException" xml:space="preserve">
+    <value>The business rule {0} doesn't allow the request to be completed. Error message: {1}</value>
+  </data>
+  <data name="ServiceRequestFullTransactionLogsException" xml:space="preserve">
+    <value>The transaction logs of '{0}' database is full</value>
+  </data>
+  <data name="UnlinkShippingException" xml:space="preserve">
+    <value>Unable to unlink shipping for financial numbers {0}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_UnlinkShipping" xml:space="preserve">
+    <value>Unlink the shipping for the financial single number {0}</value>
+  </data>
+  <data name="ServiceRequestInvalidRelationException" xml:space="preserve">
+    <value>The relation {0} of entity {1} cannot be found on Sankhya</value>
+  </data>
+  <data name="ServiceRequestAttributeException" xml:space="preserve">
+    <value>The service {0} requires the attribute {1}</value>
+  </data>
+  <data name="ServiceRequestPartnerFiscalClassificationException" xml:space="preserve">
+    <value>In the absence of the State registration, only the ICMS Classification: 'Non - Contributing Final Consumer' and 'Rural Producer' are permitted</value>
+  </data>
+  <data name="ServiceRequestPartnerStateInscriptionException" xml:space="preserve">
+    <value>Enter the word ISENTO for this type of state registration</value>
+  </data>
+  <data name="ServiceRequestInvalidSubQueryException" xml:space="preserve">
+    <value>The subquery returned more than 1 value. This is not allowed when the subquery follows a =,! =, &lt;, &lt;=,&gt;,&gt; = or when it is used as an expression</value>
+  </data>
+  <data name="ServiceRequestPartnerInvalidDocumentLengthException" xml:space="preserve">
+    <value>The partner document have an invalid length</value>
+  </data>
+  <data name="ItemPluralSufix" xml:space="preserve">
+    <value>ms</value>
+  </data>
+  <data name="PagedRequestWrapper_HandleCancellationTokenCancelled" xml:space="preserve">
+    <value>Cancellation requested for request {0} {1} {2}</value>
+  </data>
+  <data name="SankhyaWrapper_ReadStream_Exception" xml:space="preserve">
+    <value>Invalid read size</value>
+  </data>
+</root>

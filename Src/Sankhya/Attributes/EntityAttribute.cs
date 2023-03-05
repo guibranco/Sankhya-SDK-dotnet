@@ -11,28 +11,27 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Attributes
+namespace Sankhya.Attributes;
+
+using System;
+
+/// <summary>
+/// Class EntityAttribute. This class cannot be inherited.
+/// Implements the <see cref="Attribute" />
+/// </summary>
+/// <seealso cref="Attribute" />
+[AttributeUsage(AttributeTargets.Class, Inherited = false)]
+public sealed class EntityAttribute : Attribute
 {
-    using System;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EntityAttribute" /> class.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    public EntityAttribute(string name) => Name = name;
 
     /// <summary>
-    /// Class EntityAttribute. This class cannot be inherited.
-    /// Implements the <see cref="Attribute" />
+    /// Gets the name.
     /// </summary>
-    /// <seealso cref="Attribute" />
-    [AttributeUsage(AttributeTargets.Class, Inherited = false)]
-    public sealed class EntityAttribute : Attribute
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EntityAttribute" /> class.
-        /// </summary>
-        /// <param name="name">The name.</param>
-        public EntityAttribute(string name) => Name = name;
-
-        /// <summary>
-        /// Gets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        public string Name { get; }
-    }
+    /// <value>The name.</value>
+    public string Name { get; }
 }

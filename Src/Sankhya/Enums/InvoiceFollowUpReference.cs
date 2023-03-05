@@ -11,76 +11,75 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+/// <summary>
+/// Enum InvoiceFollowUpReference
+/// </summary>
+public enum InvoiceFollowUpReference
 {
-    using CrispyWaffle.Attributes;
+    /// <summary>
+    /// The contact
+    /// </summary>
+    [HumanReadable("Contato")]
+    [InternalValue("C")]
+    Contact,
 
     /// <summary>
-    /// Enum InvoiceFollowUpReference
+    /// The company
     /// </summary>
-    public enum InvoiceFollowUpReference
-    {
-        /// <summary>
-        /// The contact
-        /// </summary>
-        [HumanReadable("Contato")]
-        [InternalValue("C")]
-        Contact,
+    [HumanReadable("Empresa")]
+    [InternalValue("E")]
+    Company,
 
-        /// <summary>
-        /// The company
-        /// </summary>
-        [HumanReadable("Empresa")]
-        [InternalValue("E")]
-        Company,
+    /// <summary>
+    /// The freight
+    /// </summary>
+    [HumanReadable("Frete")]
+    [InternalValue("F")]
+    Freight,
 
-        /// <summary>
-        /// The freight
-        /// </summary>
-        [HumanReadable("Frete")]
-        [InternalValue("F")]
-        Freight,
+    /// <summary>
+    /// The vehicle
+    /// </summary>
+    [HumanReadable("Veículo")]
+    [InternalValue("I")]
+    Vehicle,
 
-        /// <summary>
-        /// The vehicle
-        /// </summary>
-        [HumanReadable("Veículo")]
-        [InternalValue("I")]
-        Vehicle,
+    /// <summary>
+    /// The invoice
+    /// </summary>
+    [HumanReadable("Nota")]
+    [InternalValue("N")]
+    Invoice,
 
-        /// <summary>
-        /// The invoice
-        /// </summary>
-        [HumanReadable("Nota")]
-        [InternalValue("N")]
-        Invoice,
+    /// <summary>
+    /// The partner
+    /// </summary>
+    [HumanReadable("Parceiro")]
+    [InternalValue("P")]
+    Partner,
 
-        /// <summary>
-        /// The partner
-        /// </summary>
-        [HumanReadable("Parceiro")]
-        [InternalValue("P")]
-        Partner,
+    /// <summary>
+    /// The product
+    /// </summary>
+    [HumanReadable("Produto")]
+    [InternalValue("R")]
+    Product,
 
-        /// <summary>
-        /// The product
-        /// </summary>
-        [HumanReadable("Produto")]
-        [InternalValue("R")]
-        Product,
+    /// <summary>
+    /// The carrier
+    /// </summary>
+    [HumanReadable("Transportadora")]
+    [InternalValue("T")]
+    Carrier,
 
-        /// <summary>
-        /// The carrier
-        /// </summary>
-        [HumanReadable("Transportadora")]
-        [InternalValue("T")]
-        Carrier,
-
-        /// <summary>
-        /// The seller
-        /// </summary>
-        [HumanReadable("Vendedor")]
-        [InternalValue("V")]
-        Seller
-    }
+    /// <summary>
+    /// The seller
+    /// </summary>
+    [HumanReadable("Vendedor")]
+    [InternalValue("V")]
+    Seller
 }

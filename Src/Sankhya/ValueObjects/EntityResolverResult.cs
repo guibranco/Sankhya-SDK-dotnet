@@ -11,64 +11,63 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.ValueObjects
+namespace Sankhya.ValueObjects;
+
+using System.Collections.Generic;
+using Sankhya.Service;
+
+/// <summary>
+/// Class EntityResolverResult. This class cannot be inherited.
+/// </summary>
+public sealed class EntityResolverResult
 {
-    using System.Collections.Generic;
-    using Sankhya.Service;
+    /// <summary>
+    /// The name
+    /// </summary>
+    public readonly string Name;
 
     /// <summary>
-    /// Class EntityResolverResult. This class cannot be inherited.
+    /// The field values
     /// </summary>
-    public sealed class EntityResolverResult
+    public readonly List<FieldValue> FieldValues;
+
+    /// <summary>
+    /// The keys
+    /// </summary>
+    public readonly List<FieldValue> Keys;
+
+    /// <summary>
+    /// The criteria
+    /// </summary>
+    public readonly List<Criteria> Criteria;
+
+    /// <summary>
+    /// The fields
+    /// </summary>
+    public readonly List<Field> Fields;
+
+    /// <summary>
+    /// The references
+    /// </summary>
+    public readonly Dictionary<string, List<Field>> References;
+
+    /// <summary>
+    /// The literal criteria
+    /// </summary>
+    public readonly LiteralCriteria LiteralCriteria;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EntityResolverResult" /> class.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    public EntityResolverResult(string name)
     {
-        /// <summary>
-        /// The name
-        /// </summary>
-        public readonly string Name;
-
-        /// <summary>
-        /// The field values
-        /// </summary>
-        public readonly List<FieldValue> FieldValues;
-
-        /// <summary>
-        /// The keys
-        /// </summary>
-        public readonly List<FieldValue> Keys;
-
-        /// <summary>
-        /// The criteria
-        /// </summary>
-        public readonly List<Criteria> Criteria;
-
-        /// <summary>
-        /// The fields
-        /// </summary>
-        public readonly List<Field> Fields;
-
-        /// <summary>
-        /// The references
-        /// </summary>
-        public readonly Dictionary<string, List<Field>> References;
-
-        /// <summary>
-        /// The literal criteria
-        /// </summary>
-        public readonly LiteralCriteria LiteralCriteria;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EntityResolverResult" /> class.
-        /// </summary>
-        /// <param name="name">The name.</param>
-        public EntityResolverResult(string name)
-        {
-            Name = name;
-            FieldValues = new();
-            Keys = new();
-            Criteria = new();
-            Fields = new();
-            References = new();
-            LiteralCriteria = new();
-        }
+        Name = name;
+        FieldValues = new();
+        Keys = new();
+        Criteria = new();
+        Fields = new();
+        References = new();
+        LiteralCriteria = new();
     }
 }

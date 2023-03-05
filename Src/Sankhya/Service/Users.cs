@@ -11,23 +11,22 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service
-{
-    using CrispyWaffle.Serialization;
-    using System.Xml.Serialization;
+namespace Sankhya.Service;
 
+using CrispyWaffle.Serialization;
+using System.Xml.Serialization;
+
+/// <summary>
+/// Class Users. This class cannot be inherited.
+/// </summary>
+[Serializer]
+[XmlRoot(ElementName = "usuarios")]
+public sealed class Users
+{
     /// <summary>
-    /// Class Users. This class cannot be inherited.
+    /// Gets or sets the user.
     /// </summary>
-    [Serializer]
-    [XmlRoot(ElementName = "usuarios")]
-    public sealed class Users
-    {
-        /// <summary>
-        /// Gets or sets the user.
-        /// </summary>
-        /// <value>The user.</value>
-        [XmlElement(ElementName = "usuario")]
-        public User[] User { get; set; }
-    }
+    /// <value>The user.</value>
+    [XmlElement(ElementName = "usuario")]
+    public User[] User { get; set; }
 }

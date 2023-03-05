@@ -11,58 +11,57 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service
-{
-    using System.ComponentModel;
+namespace Sankhya.Service;
 
-    using System.Xml.Serialization;
+using System.ComponentModel;
+
+using System.Xml.Serialization;
+
+/// <summary>
+/// Class Message. This class cannot be inherited.
+/// </summary>
+public sealed class Message
+{
+    #region Private Members
 
     /// <summary>
-    /// Class Message. This class cannot be inherited.
+    /// The text
     /// </summary>
-    public sealed class Message
+    private string _text;
+    /// <summary>
+    /// The text set
+    /// </summary>
+    private bool _textSet;
+
+    #endregion
+
+    #region Public Properties
+
+    /// <summary>
+    /// Gets or sets the text.
+    /// </summary>
+    /// <value>The text.</value>
+    [XmlText]
+    public string Text
     {
-        #region Private Members
-
-        /// <summary>
-        /// The text
-        /// </summary>
-        private string _text;
-        /// <summary>
-        /// The text set
-        /// </summary>
-        private bool _textSet;
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// Gets or sets the text.
-        /// </summary>
-        /// <value>The text.</value>
-        [XmlText]
-        public string Text
+        get => _text; set
         {
-            get => _text; set
-            {
-                _text = value;
-                _textSet = true;
-            }
+            _text = value;
+            _textSet = true;
         }
-
-        #endregion
-
-        #region Serializer Helpers
-
-        /// <summary>
-        /// Should the serialize text.
-        /// </summary>
-        /// <returns>Boolean.</returns>
-        [Browsable(false)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeText() => _textSet;
-
-        #endregion
     }
+
+    #endregion
+
+    #region Serializer Helpers
+
+    /// <summary>
+    /// Should the serialize text.
+    /// </summary>
+    /// <returns>Boolean.</returns>
+    [Browsable(false)]
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public bool ShouldSerializeText() => _textSet;
+
+    #endregion
 }

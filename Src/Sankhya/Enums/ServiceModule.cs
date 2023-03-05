@@ -11,41 +11,40 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+/// <summary>
+/// Enum ServiceModule
+/// </summary>
+public enum ServiceModule
 {
-    using CrispyWaffle.Attributes;
+    /// <summary>
+    /// The none
+    /// </summary>
+    [InternalValue("none")]
+    [HumanReadable("Test")]
+    None = 0,
 
     /// <summary>
-    /// Enum ServiceModule
+    /// The mge
     /// </summary>
-    public enum ServiceModule
-    {
-        /// <summary>
-        /// The none
-        /// </summary>
-        [InternalValue("none")]
-        [HumanReadable("Test")]
-        None = 0,
+    [InternalValue("mge")]
+    [HumanReadable("MGE")]
+    Mge = 1,
 
-        /// <summary>
-        /// The mge
-        /// </summary>
-        [InternalValue("mge")]
-        [HumanReadable("MGE")]
-        Mge = 1,
+    /// <summary>
+    /// The mgecom
+    /// </summary>
+    [InternalValue("mgecom")]
+    [HumanReadable("MGECOM")]
+    Mgecom = 2,
 
-        /// <summary>
-        /// The mgecom
-        /// </summary>
-        [InternalValue("mgecom")]
-        [HumanReadable("MGECOM")]
-        Mgecom = 2,
-
-        /// <summary>
-        /// The mgefin
-        /// </summary>
-        [InternalValue("mgefin")]
-        [HumanReadable("MGEFIN")]
-        Mgefin = 3
-    }
+    /// <summary>
+    /// The mgefin
+    /// </summary>
+    [InternalValue("mgefin")]
+    [HumanReadable("MGEFIN")]
+    Mgefin = 3
 }

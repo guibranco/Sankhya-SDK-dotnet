@@ -11,58 +11,57 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service
+namespace Sankhya.Service;
+
+using CrispyWaffle.Serialization;
+using System.Xml.Serialization;
+
+/// <summary>
+/// Class Event. This class cannot be inherited.
+/// </summary>
+[Serializer]
+[XmlRoot("Event")]
+public sealed class Event
 {
-    using CrispyWaffle.Serialization;
-    using System.Xml.Serialization;
+    #region Private Members
 
     /// <summary>
-    /// Class Event. This class cannot be inherited.
+    /// The code product
     /// </summary>
-    [Serializer]
-    [XmlRoot("Event")]
-    public sealed class Event
+    private int _codeProduct;
+    /// <summary>
+    /// The code product set
+    /// </summary>
+    private bool _codeProductSet;
+
+
+    #endregion
+
+    #region Public Properties
+
+    /// <summary>
+    /// Gets or sets the code product.
+    /// </summary>
+    /// <value>The code product.</value>
+    [XmlAttribute(AttributeName = "codProd")]
+    public int CodeProduct
     {
-        #region Private Members
-
-        /// <summary>
-        /// The code product
-        /// </summary>
-        private int _codeProduct;
-        /// <summary>
-        /// The code product set
-        /// </summary>
-        private bool _codeProductSet;
-
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// Gets or sets the code product.
-        /// </summary>
-        /// <value>The code product.</value>
-        [XmlAttribute(AttributeName = "codProd")]
-        public int CodeProduct
+        get => _codeProduct; set
         {
-            get => _codeProduct; set
-            {
-                _codeProduct = value;
-                _codeProductSet = true;
-            }
+            _codeProduct = value;
+            _codeProductSet = true;
         }
-
-        #endregion
-
-        #region Serializer Helpers
-
-        /// <summary>
-        /// Shoulds the serialize code product.
-        /// </summary>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public bool ShouldSerializeCodeProduct() => _codeProductSet;
-
-        #endregion
     }
+
+    #endregion
+
+    #region Serializer Helpers
+
+    /// <summary>
+    /// Shoulds the serialize code product.
+    /// </summary>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    public bool ShouldSerializeCodeProduct() => _codeProductSet;
+
+    #endregion
 }

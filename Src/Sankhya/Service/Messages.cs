@@ -11,64 +11,63 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service
-{
-    using CrispyWaffle.Serialization;
-    using System.ComponentModel;
+namespace Sankhya.Service;
 
-    using System.Xml.Serialization;
+using CrispyWaffle.Serialization;
+using System.ComponentModel;
+
+using System.Xml.Serialization;
+
+/// <summary>
+/// Class Messages. This class cannot be inherited.
+/// </summary>
+[Serializer]
+[XmlRoot("mensagens")]
+public sealed class Messages
+{
+
+    #region Private Members
 
     /// <summary>
-    /// Class Messages. This class cannot be inherited.
+    /// The message
     /// </summary>
-    [Serializer]
-    [XmlRoot("mensagens")]
-    public sealed class Messages
+    private Message[] _message;
+    /// <summary>
+    /// The message set
+    /// </summary>
+    private bool _messageSet;
+
+    #endregion
+
+    #region Public Properties
+
+    /// <summary>
+    /// Gets or sets the message.
+    /// </summary>
+    /// <value>The message.</value>
+    [XmlElement("msg")]
+    public Message[] Message
     {
-
-        #region Private Members
-
-        /// <summary>
-        /// The message
-        /// </summary>
-        private Message[] _message;
-        /// <summary>
-        /// The message set
-        /// </summary>
-        private bool _messageSet;
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// Gets or sets the message.
-        /// </summary>
-        /// <value>The message.</value>
-        [XmlElement("msg")]
-        public Message[] Message
+        get => _message; set
         {
-            get => _message; set
-            {
-                _message = value;
-                _messageSet = true;
-            }
+            _message = value;
+            _messageSet = true;
         }
-
-        #endregion
-
-        #region Serializer Helpers
-
-
-        /// <summary>
-        /// Should the serialize message.
-        /// </summary>
-        /// <returns>Boolean.</returns>
-        [Browsable(false)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMessage() => _messageSet;
-
-        #endregion
-
     }
+
+    #endregion
+
+    #region Serializer Helpers
+
+
+    /// <summary>
+    /// Should the serialize message.
+    /// </summary>
+    /// <returns>Boolean.</returns>
+    [Browsable(false)]
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public bool ShouldSerializeMessage() => _messageSet;
+
+    #endregion
+
 }

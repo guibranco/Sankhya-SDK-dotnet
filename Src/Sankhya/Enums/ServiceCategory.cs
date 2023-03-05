@@ -11,48 +11,46 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+/// <summary>
+/// Enum ServiceCategory
+/// </summary>
+public enum ServiceCategory
 {
 
     /// <summary>
-    /// Enum ServiceCategory
+    /// The none
     /// </summary>
-    public enum ServiceCategory
-    {
+    None,
 
-        /// <summary>
-        /// The none
-        /// </summary>
-        None,
+    /// <summary>
+    /// The authorization
+    /// </summary>
+    Authorization,
 
-        /// <summary>
-        /// The authorization
-        /// </summary>
-        Authorization,
+    /// <summary>
+    /// The communication
+    /// </summary>
+    Communication,
 
-        /// <summary>
-        /// The communication
-        /// </summary>
-        Communication,
+    /// <summary>
+    /// The crud
+    /// </summary>
+    Crud,
 
-        /// <summary>
-        /// The crud
-        /// </summary>
-        Crud,
+    /// <summary>
+    /// The file
+    /// </summary>
+    File,
 
-        /// <summary>
-        /// The file
-        /// </summary>
-        File,
+    /// <summary>
+    /// The fiscal invoice
+    /// </summary>
+    FiscalInvoice,
 
-        /// <summary>
-        /// The fiscal invoice
-        /// </summary>
-        FiscalInvoice,
-
-        /// <summary>
-        /// The invoice
-        /// </summary>
-        Invoice
-    }
+    /// <summary>
+    /// The invoice
+    /// </summary>
+    Invoice
 }

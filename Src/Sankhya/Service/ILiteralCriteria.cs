@@ -11,11 +11,10 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service
-{
-    /// <summary>
-    /// Interface ILiteralCriteria
-    /// </summary>
-    public interface ILiteralCriteria
-    { }
-}
+namespace Sankhya.Service;
+
+/// <summary>
+/// Interface ILiteralCriteria
+/// </summary>
+public interface ILiteralCriteria
+{ }

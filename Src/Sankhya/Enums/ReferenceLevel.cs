@@ -12,55 +12,54 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+/// <summary>
+/// Enum ReferenceLevel
+/// </summary>
+public enum ReferenceLevel
 {
-    using CrispyWaffle.Attributes;
+
     /// <summary>
-    /// Enum ReferenceLevel
+    /// The none
     /// </summary>
-    public enum ReferenceLevel
-    {
+    [HumanReadable("None")]
+    None,
 
-        /// <summary>
-        /// The none
-        /// </summary>
-        [HumanReadable("None")]
-        None,
+    /// <summary>
+    /// The first
+    /// </summary>
+    [HumanReadable("First")]
+    First,
 
-        /// <summary>
-        /// The first
-        /// </summary>
-        [HumanReadable("First")]
-        First,
+    /// <summary>
+    /// The second
+    /// </summary>
+    [HumanReadable("Second")]
+    Second,
 
-        /// <summary>
-        /// The second
-        /// </summary>
-        [HumanReadable("Second")]
-        Second,
+    /// <summary>
+    /// The third
+    /// </summary>
+    [HumanReadable("Third")]
+    Third,
 
-        /// <summary>
-        /// The third
-        /// </summary>
-        [HumanReadable("Third")]
-        Third,
+    /// <summary>
+    /// The fourth
+    /// </summary>
+    [HumanReadable("Fourth")]
+    Fourth,
 
-        /// <summary>
-        /// The fourth
-        /// </summary>
-        [HumanReadable("Fourth")]
-        Fourth,
+    /// <summary>
+    /// The fifth
+    /// </summary>
+    [HumanReadable("Fifth")]
+    Fifth,
 
-        /// <summary>
-        /// The fifth
-        /// </summary>
-        [HumanReadable("Fifth")]
-        Fifth,
-
-        /// <summary>
-        /// The sixth
-        /// </summary>
-        [HumanReadable("Sixth")]
-        Sixth,
-    }
+    /// <summary>
+    /// The sixth
+    /// </summary>
+    [HumanReadable("Sixth")]
+    Sixth,
 }

@@ -11,28 +11,27 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.RequestWrappers
+namespace Sankhya.RequestWrappers;
+
+using System;
+using Sankhya.Transport;
+
+/// <summary>
+/// Interface IOnDemandRequestWrapper
+/// Implements the <see cref="IDisposable" />
+/// </summary>
+/// <seealso cref="IDisposable" />
+//TODO issue #69 (Integração Service)
+public interface IOnDemandRequestWrapper : IDisposable
 {
-    using System;
-    using Sankhya.Transport;
+    /// <summary>
+    /// Adds the specified entity.
+    /// </summary>
+    /// <param name="entity">The entity.</param>
+    void Add(IEntity entity);
 
     /// <summary>
-    /// Interface IOnDemandRequestWrapper
-    /// Implements the <see cref="IDisposable" />
+    /// Flushes this instance.
     /// </summary>
-    /// <seealso cref="IDisposable" />
-    //TODO issue #69 (Integração Service)
-    public interface IOnDemandRequestWrapper : IDisposable
-    {
-        /// <summary>
-        /// Adds the specified entity.
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        void Add(IEntity entity);
-
-        /// <summary>
-        /// Flushes this instance.
-        /// </summary>
-        void Flush();
-    }
+    void Flush();
 }

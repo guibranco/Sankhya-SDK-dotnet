@@ -11,34 +11,33 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+/// <summary>
+/// Enum SankhyaWarningType
+/// </summary>
+public enum SankhyaWarningType
 {
-    using CrispyWaffle.Attributes;
+    /// <summary>
+    /// The none
+    /// </summary>
+    [InternalValue("0")]
+    [HumanReadable("Nenhum")]
+    None = 0,
 
     /// <summary>
-    /// Enum SankhyaWarningType
+    /// The user
     /// </summary>
-    public enum SankhyaWarningType
-    {
-        /// <summary>
-        /// The none
-        /// </summary>
-        [InternalValue("0")]
-        [HumanReadable("Nenhum")]
-        None = 0,
+    [InternalValue("usuario")]
+    [HumanReadable("Usuário")]
+    User = 1,
 
-        /// <summary>
-        /// The user
-        /// </summary>
-        [InternalValue("usuario")]
-        [HumanReadable("Usuário")]
-        User = 1,
-
-        /// <summary>
-        /// The group
-        /// </summary>
-        [InternalValue("grupo")]
-        [HumanReadable("Grupo")]
-        Group = 2
-    }
+    /// <summary>
+    /// The group
+    /// </summary>
+    [InternalValue("grupo")]
+    [HumanReadable("Grupo")]
+    Group = 2
 }

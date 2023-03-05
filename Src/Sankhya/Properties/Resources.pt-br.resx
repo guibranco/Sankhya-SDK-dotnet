@@ -1,0 +1,374 @@
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="All" xml:space="preserve">
+    <value>todos</value>
+  </data>
+  <data name="AllPagesLoaded" xml:space="preserve">
+    <value>todas as páginas carregadas</value>
+  </data>
+  <data name="AlreadyDisposed" xml:space="preserve">
+    <value>Esta instância já está descartada</value>
+  </data>
+  <data name="CancelledOnDemandRequestWrapperException" xml:space="preserve">
+    <value>Não é possível adicionar novos itens a uma instância do wrapper de solicitação cancelada por demanda</value>
+  </data>
+  <data name="ConfirmInvoiceException" xml:space="preserve">
+    <value>Não foi possível confirmar a fatura com número único: {0}</value>
+  </data>
+  <data name="CreatingOrUpdating" xml:space="preserve">
+    <value>criando / atualizando</value>
+  </data>
+  <data name="Deleting" xml:space="preserve">
+    <value>excluindo</value>
+  </data>
+  <data name="EntityDynamicSerialization_ChangeKeys" xml:space="preserve">
+    <value>A contagem de chaves nos metadados é diferente da contagem de chaves no dicionário</value>
+  </data>
+  <data name="EntityExtensions_GetEntityCustomData" xml:space="preserve">
+    <value>O tipo {0} possui vários atributos do tipo {1}</value>
+  </data>
+  <data name="EntityExtensions_TypeMustInherits" xml:space="preserve">
+    <value>O tipo {0} deve herdar de {1} ou deve ser do tipo {2}</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>erro</value>
+  </data>
+  <data name="FiscalInvoiceStatus" xml:space="preserve">
+    <value>status da fatura fiscal</value>
+  </data>
+  <data name="InvalidClientEntityException" xml:space="preserve">
+    <value>O tipo '{0}' requer o aplicativo para o cliente {1}</value>
+  </data>
+  <data name="InvalidKeyFileException" xml:space="preserve">
+    <value>A chave fornecida {0} não é válida para esta sessão ou foi excluída do Sankhya</value>
+  </data>
+  <data name="InvalidServiceQueryOptionsException" xml:space="preserve">
+    <value>Não foi possível usar as opções de consulta com o serviço {0}</value>
+  </data>
+  <data name="InvalidServiceRequestOperationException" xml:space="preserve">
+    <value>Não foi possível executar esta operação com o serviço {0}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_AddInvoiceItems_AddingItemsToInvoice" xml:space="preserve">
+    <value>Adicionando {0} ite{2} à fatura com número único {1}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_Bill_BillingInvoiceToTOP" xml:space="preserve">
+    <value>Faturamento da fatura com número único {0} até TOP {1} | Tipo de cobrança: {2} | Série: {3}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_BindInvoiceWithOrder" xml:space="preserve">
+    <value>Fatura vinculativa com número único {0} com pedido. Código do parceiro: {1} | Tipo de movimento: {2}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_CancelInvoices_Canceled" xml:space="preserve">
+    <value>{0} fatura {1} cancelada</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_CancelInvoices_Canceling" xml:space="preserve">
+    <value>Cancelando {0} fatura {1} com número único {1} {2}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_ConfirmInvoice_Confirming" xml:space="preserve">
+    <value>Confirmando fatura com número único: {0}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_CreateInvoice" xml:space="preserve">
+    <value>Criando cabeçalho da fatura para a operação {0} com {1} ite{2}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_DeleteFiles" xml:space="preserve">
+    <value>Removendo arquivos {0} do repositório</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_DuplicateInvoice_Duplicated" xml:space="preserve">
+    <value>Fatura com número único {0} duplicado, nova fatura com número único: {1}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_DuplicateInvoice_Duplicating" xml:space="preserve">
+    <value>Fatura duplicada com número único {0} na parte superior: {1} | série: {2} | data de saída: {3} | atualizar preços: {4}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_FlagAsPaymentsPaid" xml:space="preserve">
+    <value>Sinalizando o movimento financeiro {0} como pago: {1}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_FlagInvoicesAsNotPending" xml:space="preserve">
+    <value>Sinalizar {0} fatura {1} com número único {1} {2} como não pendente</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_GenerateLot" xml:space="preserve">
+    <value>Gerando lote da {0} nota fiscal {1} com número único {1} {2}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_GetFiscalInvoiceAuthorization" xml:space="preserve">
+    <value>Obtendo autorização da {0} nota fiscal {1} com número único {1} {2}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_GetInvoiceAccompaniments" xml:space="preserve">
+    <value>Obter acompanhamentos da {0} fatura {1} com o número único {1} {2}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_ReceiveMessages_ReceivingMessages" xml:space="preserve">
+    <value>Recebendo mensagens</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_RemoveInvoice" xml:space="preserve">
+    <value>Removendo fatura com número único {0}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_RemoveInvoiceItems_AllItemsMustBeFromTheSameInvoice" xml:space="preserve">
+    <value>Todos os itens devem ser da mesma fatura</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_RemoveInvoiceItems_DeletingItemsFromInvoice" xml:space="preserve">
+    <value>Excluindo {0} ite{2} da fatura com número único {1}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_ReversePayments" xml:space="preserve">
+    <value>Estorno financeiro baixo de movimento com número único {0}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_SendMessage_SendingMessage" xml:space="preserve">
+    <value>Enviando mensagem para {0} usuários / grupos</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_SendWarning_SendingWarningWithLevel" xml:space="preserve">
+    <value>Enviando aviso com nível {0} e título {1} para {2}</value>
+  </data>
+  <data name="KnowServicesRequestWrapper_UnlinkShipping" xml:space="preserve">
+    <value>Desvincule a remessa para o número único financeiro {0}</value>
+  </data>
+  <data name="MarkAsPaymentPaidException" xml:space="preserve">
+    <value>Não é possível pagamentos baixos para números financeiros {0}</value>
+  </data>
+  <data name="MissingSerializerHelperEntityException" xml:space="preserve">
+    <value>A propriedade {0} da entidade {1} (Tipo: {2}) está ausente no método auxiliar do serializador</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="Uninformed" xml:space="preserve">
+    <value>Não informado</value>
+  </data>
+  <data name="SimpleCRUDRequestWrapper_UpdateAsync_Invalid" xml:space="preserve">
+    <value>Solicitação de atualização assíncrona inválida</value>
+  </data>
+  <data name="ServiceResponseUnexpectedElementException" xml:space="preserve">
+    <value>O elemento '{0}' não está sendo tratado no Service Response.ResponseBody para o serviço {1}</value>
+  </data>
+  <data name="ServiceRequestUnexpectedResultException_Uncaught" xml:space="preserve">
+    <value>A chamada para o serviço {0} resultou na seguinte mensagem de erro não capturada: {1}</value>
+  </data>
+  <data name="ServiceRequestUnexpectedResultException" xml:space="preserve">
+    <value>A chamada para o serviço {0} resultou em uma resposta inválida</value>
+  </data>
+  <data name="PagedRequestWrapper_GetManagedEnumerator" xml:space="preserve">
+    <value>Obteve {0} itens de {1} em {2}</value>
+  </data>
+  <data name="PagedRequestWrapper_GetManagedEnumeratorInternal" xml:space="preserve">
+    <value>Objeto descartado ignorado</value>
+  </data>
+  <data name="PagedRequestWrapper_GetManagedEnumerator_ErrorOccured" xml:space="preserve">
+    <value>Ocorreu um erro ao carregar a solicitação paginada do tipo {0}</value>
+  </data>
+  <data name="PagedRequestWrapper_GetManagedEnumerator_PageLoaded" xml:space="preserve">
+    <value>Página {0} {1} para solicitação paginada de {2} carregada com {3} entidad{4}</value>
+  </data>
+  <data name="YPluralSuffix" xml:space="preserve">
+    <value>es</value>
+  </data>
+  <data name="YSingularSuffix" xml:space="preserve">
+    <value>e</value>
+  </data>
+  <data name="UsersOrGroups" xml:space="preserve">
+    <value>usuários / grupos</value>
+  </data>
+  <data name="UnlinkShippingException" xml:space="preserve">
+    <value>Não foi possível desvincular a remessa para números financeiros {0}</value>
+  </data>
+  <data name="TheValueMustHaveBetween1and6digits" xml:space="preserve">
+    <value>O {0} deve ter entre 1 e 6 dígitos</value>
+  </data>
+  <data name="ServiceRequestUnbalancedDelimiterException" xml:space="preserve">
+    <value>Há um delimitador desequilibrado na solicitação</value>
+  </data>
+  <data name="ServiceRequestUnavailableException" xml:space="preserve">
+    <value>A chamada para o serviço {0} está indisponível no momento</value>
+  </data>
+  <data name="ServiceRequestTooManyResultsException" xml:space="preserve">
+    <value>A solicitação para {0} atender à entidade {1} resultou em {2} entidades como resultado. O esperado era apenas uma entidade</value>
+  </data>
+  <data name="ServiceRequestTimeoutException" xml:space="preserve">
+    <value>A chamada para o serviço {0} atingiu o tempo limite</value>
+  </data>
+  <data name="ServiceRequestRepeatedException" xml:space="preserve">
+    <value>Você não pode usar um objeto de solicitação gerenciada que já foi consumido</value>
+  </data>
+  <data name="ServiceRequestPropertyWidthException" xml:space="preserve">
+    <value>A chamada para o serviço {0} não pôde ser concluída porque a largura do valor da propriedade {1} na entidade {2} está acima da permitida. Largura atual: {3}. Largura permitida: {4}</value>
+  </data>
+  <data name="ServiceRequestPropertyValueException" xml:space="preserve">
+    <value>A chamada para o serviço {0} não pôde encontrar o campo {1} na entidade {2}</value>
+  </data>
+  <data name="ServiceRequestPropertyNameException" xml:space="preserve">
+    <value>A chamada para o serviço {0} não pôde encontrar o campo {1} na entidade {2} na {3} solicitação da entidade</value>
+  </data>
+  <data name="ServiceRequestPartnerStateInscriptionException" xml:space="preserve">
+    <value>Digite a palavra ISENTO para este tipo de registro de estado</value>
+  </data>
+  <data name="ServiceRequestPartnerInvalidDocumentLengthException" xml:space="preserve">
+    <value>O documento do parceiro tem um comprimento inválido</value>
+  </data>
+  <data name="ServiceRequestPartnerFiscalClassificationException" xml:space="preserve">
+    <value>Na ausência do registro estadual, somente a Classificação do ICMS: 'Consumidor final não contribuinte' e 'Produtor rural' é permitida</value>
+  </data>
+  <data name="ServiceRequestPaginationException" xml:space="preserve">
+    <value>Não é possível concluir a solicitação paginada, solicitações simultâneas do mesmo usuário causam este erro</value>
+  </data>
+  <data name="ServiceRequestInvalidSubQueryException" xml:space="preserve">
+    <value>A subconsulta retornou mais de 1 valor. Isso não é permitido quando a subconsulta segue a = ,! =, &lt;, &lt;=,&gt;,&gt; = ou quando é usado como expressão</value>
+  </data>
+  <data name="ServiceRequestInvalidRelationException" xml:space="preserve">
+    <value>A relação {0} da entidade {1} não pode ser encontrada em Sankhya</value>
+  </data>
+  <data name="ServiceRequestInvalidOperationException" xml:space="preserve">
+    <value>Não foi possível processar a resposta do serviço</value>
+  </data>
+  <data name="ServiceRequestInvalidExpressionException" xml:space="preserve">
+    <value>A expressão de filtro '{0}' é inválida, verifique se é uma expressão SQL válida!</value>
+  </data>
+  <data name="ServiceRequestInvalidCredentialsException" xml:space="preserve">
+    <value>Não foi possível autenticar no serviço da web Sankhya com dados de credenciais fornecidas</value>
+  </data>
+  <data name="ServiceRequestInvalidAuthorizationException" xml:space="preserve">
+    <value>Tentativa de acesso não autorizado / não autenticado</value>
+  </data>
+  <data name="ServiceRequestInaccessibleException" xml:space="preserve">
+    <value>Não foi possível conectar ao servidor Sankhya no endereço {0}: {1}</value>
+  </data>
+  <data name="NoItemsConfirmInvoiceException" xml:space="preserve">
+    <value>A fatura {0} não possui itens, não pode ser confirmada</value>
+  </data>
+  <data name="SankhyaContext_AcquireNewSession_NewSession" xml:space="preserve">
+    <value>Iniciando nova sessão para {0} solicitações</value>
+  </data>
+  <data name="PageLoaded" xml:space="preserve">
+    <value>página carregada</value>
+  </data>
+  <data name="PagedRequestWrapper_Signaling" xml:space="preserve">
+    <value>Sinalizando o evento '{1}' do tipo {0} para quem quiser ouvir</value>
+  </data>
+  <data name="PagedRequestWrapper_LoadResponse_Waiting" xml:space="preserve">
+    <value>Aguardando outra solicitação paginada do tipo {0} final. Tempo estimado para esperar: {1}</value>
+  </data>
+  <data name="PagedRequestWrapper_Close" xml:space="preserve">
+    <value>{0} entidad{1} carregada do tipo {2}</value>
+  </data>
+  <data name="PagedRequestException" xml:space="preserve">
+    <value>Houve um ou mais erros na solicitação paginada abaixo</value>
+  </data>
+  <data name="ResponseStreamIsNull" xml:space="preserve">
+    <value>O fluxo de resposta é nulo</value>
+  </data>
+  <data name="RemoveInvoiceException" xml:space="preserve">
+    <value>Não foi possível remover a fatura com número único: {0}</value>
+  </data>
+  <data name="SankhyaContext_AcquireNewSession_NewSessionStarted" xml:space="preserve">
+    <value>Nova sessão iniciada para {0} solicitações com token {1}</value>
+  </data>
+  <data name="SankhyaContext_Dispose_DisposingServiceContext" xml:space="preserve">
+    <value>Descartando o contexto do serviço</value>
+  </data>
+  <data name="SankhyaContext_FinalizeSession_FinalizeSession" xml:space="preserve">
+    <value>Finalizando a sessão com o token {0}</value>
+  </data>
+  <data name="SankhyaWrapper_Authenticate_Authentication" xml:space="preserve">
+    <value>Autenticando no serviço da web Sankhya com nome de usuário: {0}</value>
+  </data>
+  <data name="SankhyaWrapper_GetFile_Getting" xml:space="preserve">
+    <value>Obtendo arquivo com a chave {0}</value>
+  </data>
+  <data name="SankhyaWrapper_GetImage_Getting" xml:space="preserve">
+    <value>Obtendo imagem na entidade {0} com as teclas: {1}</value>
+  </data>
+  <data name="SankhyaWrapper_GetImage_ImageNotFound" xml:space="preserve">
+    <value>Imagem não encontrada em {0}</value>
+  </data>
+  <data name="SankhyaWrapper_ServiceInvokerInternal_CanceledQuery" xml:space="preserve">
+    <value>Consulta cancelada, provavelmente sobrecarregada no servidor. Levando {0} segundos para tentar novamente.</value>
+  </data>
+  <data name="SankhyaWrapper_ServiceInvokerInternal_Module" xml:space="preserve">
+    <value>ServiceInvoker -&gt; Módulo: {0} | Serviço: {1} | Tentativa: {2}</value>
+  </data>
+  <data name="SankhyaWrapper_ServiceInvokerInternal_ReasonIdentifiedTakingSecondsRetry" xml:space="preserve">
+    <value>{1} identificado, levando {0} segundos para tentar novamente</value>
+  </data>
+  <data name="SankhyaWrapper_ServiceInvokerInternal_Service" xml:space="preserve">
+    <value>ServiceInvoker -&gt; Serviço: {0} | Entidade: {1} | Tentativa: {2}</value>
+  </data>
+  <data name="SankhyaWrapper_ShowVersionInfo_SankhyaWVersion" xml:space="preserve">
+    <value>Versão do aplicativo Sankhya-W: {0}</value>
+  </data>
+  <data name="SankhyaWrapper_ShowVersionInfo_SankhyaWVersionNotFound" xml:space="preserve">
+    <value>Versão Sankhya-W não encontrada</value>
+  </data>
+  <data name="ServiceRequestAttributeException" xml:space="preserve">
+    <value>O serviço {0} requer o atributo {1}</value>
+  </data>
+  <data name="ServiceRequestBusinessRuleRestrictionException" xml:space="preserve">
+    <value>A regra de negócios {0} não permite que a solicitação seja concluída. Mensagem de erro: {1}</value>
+  </data>
+  <data name="ServiceRequestCompetitionException" xml:space="preserve">
+    <value>A sessão foi identificada como duplicada por Sankhya</value>
+  </data>
+  <data name="ServiceRequestDuplicatedDocumentException" xml:space="preserve">
+    <value>O parceiro {0} duplicou o documento com outro parceiro</value>
+  </data>
+  <data name="ServiceRequestExpiredAuthenticationException" xml:space="preserve">
+    <value>A sessão do usuário expirou</value>
+  </data>
+  <data name="ServiceRequestExtensions_ParseProperty" xml:space="preserve">
+    <value>Considere alterar a referência embutida {0}. {1} para EntityReference na propriedade {2} da entidade {3} (Tipo: {4})</value>
+  </data>
+  <data name="ServiceRequestExternalException" xml:space="preserve">
+    <value>Erro interno de Sankhya (NPE) na chamada para o serviço {0}. Verifique o arquivo de log Sankhya para obter mais informações</value>
+  </data>
+  <data name="ServiceRequestFileNotFoundException" xml:space="preserve">
+    <value>Não foi possível carregar o arquivo do caminho {0}. Arquivo ou diretório não encontrado.</value>
+  </data>
+  <data name="ServiceRequestForeignKeyException" xml:space="preserve">
+    <value>O valor fornecido para {0}. {1} referência não é válido.</value>
+  </data>
+  <data name="ServiceRequestFullTransactionLogsException" xml:space="preserve">
+    <value>Os logs de transações do banco de dados '{0}' estão cheios</value>
+  </data>
+  <data name="OnDemandRequestWrapper_Dispose" xml:space="preserve">
+    <value>{0} solicitação {1} feita para o envio de {2} autorização {3} (bem-sucedida: {5}) do tipo {4}</value>
+  </data>
+  <data name="OnDemandRequestWrapper_Flush" xml:space="preserve">
+    <value>Esvaziando a fila do tipo {0}</value>
+  </data>
+  <data name="OnDemandRequestWrapper_OnDemandRequestWrapper_Cancelling" xml:space="preserve">
+    <value>Cancelando fila para o tipo {0} com token de sessão {1}</value>
+  </data>
+  <data name="OnDemandRequestWrapper_OnDemandRequestWrapper_Starting" xml:space="preserve">
+    <value>Fila inicial para o tipo {0} com taxa de transferência do {1} ite{2}</value>
+  </data>
+  <data name="OnDemandRequestWrapper_Process" xml:space="preserve">
+    <value>{0} {1} ite{2} do tipo {3}</value>
+  </data>
+  <data name="NotAllowedCorrectionFiscalInvoiceException" xml:space="preserve">
+    <value>A fatura fiscal {0} com {1} {2} não permite correção</value>
+  </data>
+  <data name="OfTotal" xml:space="preserve">
+    <value>de {0}</value>
+  </data>
+  <data name="OnDemandRequestWrapper_Add" xml:space="preserve">
+    <value>Incluindo item do tipo {0} na fila</value>
+  </data>
+  <data name="OperationType" xml:space="preserve">
+    <value>tipo de operação</value>
+  </data>
+  <data name="ItemPluralSufix" xml:space="preserve">
+    <value>ns</value>
+  </data>
+  <data name="PagedRequestWrapper_HandleCancellationTokenCancelled" xml:space="preserve">
+    <value>Cancelamento solicitado para a solicitação {0} {1} {2}</value>
+  </data>
+  <data name="SankhyaWrapper_ReadStream_Exception" xml:space="preserve">
+    <value>Tamanho de leitura inválido</value>
+  </data>
+</root>

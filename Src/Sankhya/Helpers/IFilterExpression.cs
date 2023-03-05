@@ -11,18 +11,17 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Helpers
+namespace Sankhya.Helpers;
+
+//TODO issue #68 (Integração Service)
+/// <summary>
+/// Interface IFilterExpression
+/// </summary>
+public interface IFilterExpression
 {
-    //TODO issue #68 (Integração Service)
     /// <summary>
-    /// Interface IFilterExpression
+    /// Builds the expression
     /// </summary>
-    public interface IFilterExpression
-    {
-        /// <summary>
-        /// Builds the expression
-        /// </summary>
-        /// <returns>System.String.</returns>
-        string BuildExpression();
-    }
+    /// <returns>System.String.</returns>
+    string BuildExpression();
 }

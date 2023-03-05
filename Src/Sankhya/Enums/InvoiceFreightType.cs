@@ -11,27 +11,26 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+/// <summary>
+/// Enum InvoiceFreightType
+/// </summary>
+public enum InvoiceFreightType
 {
-    using CrispyWaffle.Attributes;
+    /// <summary>
+    /// The extra invoice
+    /// </summary>
+    [InternalValue("N")]
+    [HumanReadable("Extra nota")]
+    ExtraInvoice,
 
     /// <summary>
-    /// Enum InvoiceFreightType
+    /// The included
     /// </summary>
-    public enum InvoiceFreightType
-    {
-        /// <summary>
-        /// The extra invoice
-        /// </summary>
-        [InternalValue("N")]
-        [HumanReadable("Extra nota")]
-        ExtraInvoice,
-
-        /// <summary>
-        /// The included
-        /// </summary>
-        [InternalValue("S")]
-        [HumanReadable("Incluso")]
-        Included
-    }
+    [InternalValue("S")]
+    [HumanReadable("Incluso")]
+    Included
 }

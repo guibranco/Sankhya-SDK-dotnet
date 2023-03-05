@@ -11,34 +11,33 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums
+namespace Sankhya.Enums;
+
+using CrispyWaffle.Attributes;
+
+/// <summary>
+/// Enum ParameterType
+/// </summary>
+public enum ParameterType
 {
-    using CrispyWaffle.Attributes;
+    /// <summary>
+    /// The string
+    /// </summary>
+    [InternalValue("S")]
+    [HumanReadable("String")]
+    String,
 
     /// <summary>
-    /// Enum ParameterType
+    /// The integer
     /// </summary>
-    public enum ParameterType
-    {
-        /// <summary>
-        /// The string
-        /// </summary>
-        [InternalValue("S")]
-        [HumanReadable("String")]
-        String,
+    [InternalValue("I")]
+    [HumanReadable("Integer")]
+    Integer,
 
-        /// <summary>
-        /// The integer
-        /// </summary>
-        [InternalValue("I")]
-        [HumanReadable("Integer")]
-        Integer,
-
-        /// <summary>
-        /// The datetime
-        /// </summary>
-        [InternalValue("D")]
-        [HumanReadable("Datetime")]
-        Datetime
-    }
+    /// <summary>
+    /// The datetime
+    /// </summary>
+    [InternalValue("D")]
+    [HumanReadable("Datetime")]
+    Datetime
 }

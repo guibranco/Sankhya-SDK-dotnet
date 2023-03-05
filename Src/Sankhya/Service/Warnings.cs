@@ -11,24 +11,23 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service
+namespace Sankhya.Service;
+
+using CrispyWaffle.Serialization;
+
+using System.Xml.Serialization;
+
+/// <summary>
+/// Class Warnings. This class cannot be inherited.
+/// </summary>
+[XmlRoot("avisos")]
+[Serializer]
+public sealed class Warnings
 {
-    using CrispyWaffle.Serialization;
-
-    using System.Xml.Serialization;
-
     /// <summary>
-    /// Class Warnings. This class cannot be inherited.
+    /// Gets or sets the warning.
     /// </summary>
-    [XmlRoot("avisos")]
-    [Serializer]
-    public sealed class Warnings
-    {
-        /// <summary>
-        /// Gets or sets the warning.
-        /// </summary>
-        /// <value>The warning.</value>
-        [XmlElement("aviso")]
-        public Warning[] Warning { get; set; }
-    }
+    /// <value>The warning.</value>
+    [XmlElement("aviso")]
+    public Warning[] Warning { get; set; }
 }
