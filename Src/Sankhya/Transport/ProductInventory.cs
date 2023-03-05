@@ -37,9 +37,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
             && string.Equals(_control, other._control, StringComparison.InvariantCultureIgnoreCase)
             && _controlSet == other._controlSet && _quantity == other._quantity
             && _quantitySet == other._quantitySet && _reserved == other._reserved
-            && _reservedSet == other._reservedSet && _lastCountDate.Equals(other._lastCountDate)
-            && _lastCountDateSet == other._lastCountDateSet
-            && _minAllowedQuantity == other._minAllowedQuantity
+            && _reservedSet == other._reservedSet && _minAllowedQuantity == other._minAllowedQuantity
             && _minAllowedQuantitySet == other._minAllowedQuantitySet
             && _maxAllowedQuantity == other._maxAllowedQuantity
             && _maxAllowedQuantitySet == other._maxAllowedQuantitySet && _type == other._type
@@ -95,8 +93,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
             hashCode = (hashCode * 397) ^ _quantitySet.GetHashCode();
             hashCode = (hashCode * 397) ^ _reserved.GetHashCode();
             hashCode = (hashCode * 397) ^ _reservedSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _lastCountDate.GetHashCode();
-            hashCode = (hashCode * 397) ^ _lastCountDateSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _minAllowedQuantity.GetHashCode();
             hashCode = (hashCode * 397) ^ _minAllowedQuantitySet.GetHashCode();
             hashCode = (hashCode * 397) ^ _maxAllowedQuantity.GetHashCode();
@@ -197,15 +193,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The reserved set
     /// </summary>
     private bool _reservedSet;
-
-    /// <summary>
-    /// The last count date
-    /// </summary>
-    private DateTime _lastCountDate;
-    /// <summary>
-    /// The last count date set
-    /// </summary>
-    private bool _lastCountDateSet;
 
     /// <summary>
     /// The minimum allowed quantity
@@ -366,22 +353,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
             _reservedSet = true;
         }
     }
-
-    /// <summary>
-    /// Gets or sets the last count date.
-    /// </summary>
-    /// <value>The last count date.</value>
-    [EntityElement("AD_DTULTCONT")]
-    public DateTime LastCountDate
-    {
-        get => _lastCountDate;
-        set
-        {
-            _lastCountDate = value;
-            _lastCountDateSet = true;
-        }
-    }
-
+    
     /// <summary>
     /// Gets or sets the minimum allowed quantity.
     /// </summary>
@@ -537,14 +509,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeReserved() => _reservedSet;
-
-    /// <summary>
-    /// Should the serialize last count date.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeLastCountDate() => _lastCountDateSet;
 
     /// <summary>
     /// Should the serialize minimum allowed quantity.

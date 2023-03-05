@@ -41,15 +41,10 @@ public class Product : IEntity, IEquatable<Product>
                 other._codeVolumeComponent,
                 StringComparison.InvariantCultureIgnoreCase) &&
             _codeVolumeComponentSet == other._codeVolumeComponentSet && _codeGroup == other._codeGroup &&
-            _codeGroupSet == other._codeGroupSet && _isNegativeStockAllowed == other._isNegativeStockAllowed &&
-            _isNegativeStockAllowedSet == other._isNegativeStockAllowedSet && _usesGrid == other._usesGrid &&
-            _usesGridSet == other._usesGridSet && _netWeight == other._netWeight &&
-            _netWeightSet == other._netWeightSet && _grossWeight == other._grossWeight &&
-            _grossWeightSet == other._grossWeightSet && _listPrice == other._listPrice &&
-            _listPriceSet == other._listPriceSet && _quantity == other._quantity &&
-            _quantitySet == other._quantitySet && _codeFather == other._codeFather &&
-            _codeFatherSet == other._codeFatherSet && _codeReplacement == other._codeReplacement &&
-            _codeReplacementSet == other._codeReplacementSet &&
+            _codeGroupSet == other._codeGroupSet &&
+            _netWeight == other._netWeight &&_netWeightSet == other._netWeightSet 
+            && _grossWeight == other._grossWeight && _grossWeightSet == other._grossWeightSet &&
+            _quantity == other._quantity && _quantitySet == other._quantitySet &&
             string.Equals(_brand, other._brand, StringComparison.InvariantCultureIgnoreCase) &&
             _brandSet == other._brandSet &&
             string.Equals(_reference, other._reference, StringComparison.InvariantCultureIgnoreCase) &&
@@ -107,22 +102,12 @@ public class Product : IEntity, IEquatable<Product>
             hashCode = (hashCode * 397) ^ _codeVolumeComponentSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeGroup;
             hashCode = (hashCode * 397) ^ _codeGroupSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _isNegativeStockAllowed.GetHashCode();
-            hashCode = (hashCode * 397) ^ _isNegativeStockAllowedSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _usesGrid.GetHashCode();
-            hashCode = (hashCode * 397) ^ _usesGridSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _netWeight.GetHashCode();
             hashCode = (hashCode * 397) ^ _netWeightSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _grossWeight.GetHashCode();
             hashCode = (hashCode * 397) ^ _grossWeightSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _listPrice.GetHashCode();
-            hashCode = (hashCode * 397) ^ _listPriceSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _quantity.GetHashCode();
             hashCode = (hashCode * 397) ^ _quantitySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codeFather;
-            hashCode = (hashCode * 397) ^ _codeFatherSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codeReplacement;
-            hashCode = (hashCode * 397) ^ _codeReplacementSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_brand != null
                 ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_brand)
                 : 0);
@@ -259,24 +244,6 @@ public class Product : IEntity, IEquatable<Product>
     private bool _codeGroupSet;
 
     /// <summary>
-    /// The is negative stock allowed
-    /// </summary>
-    private bool _isNegativeStockAllowed;
-    /// <summary>
-    /// The is negative stock allowed set
-    /// </summary>
-    private bool _isNegativeStockAllowedSet;
-
-    /// <summary>
-    /// The uses grid
-    /// </summary>
-    private bool _usesGrid;
-    /// <summary>
-    /// The uses grid set
-    /// </summary>
-    private bool _usesGridSet;
-
-    /// <summary>
     /// The net weight
     /// </summary>
     private decimal _netWeight;
@@ -295,15 +262,6 @@ public class Product : IEntity, IEquatable<Product>
     private bool _grossWeightSet;
 
     /// <summary>
-    /// The list price
-    /// </summary>
-    private decimal _listPrice;
-    /// <summary>
-    /// The list price set
-    /// </summary>
-    private bool _listPriceSet;
-
-    /// <summary>
     /// The quantity
     /// </summary>
     private decimal _quantity;
@@ -311,24 +269,6 @@ public class Product : IEntity, IEquatable<Product>
     /// The quantity set
     /// </summary>
     private bool _quantitySet;
-
-    /// <summary>
-    /// The code father
-    /// </summary>
-    private int _codeFather;
-    /// <summary>
-    /// The code father set
-    /// </summary>
-    private bool _codeFatherSet;
-
-    /// <summary>
-    /// The code replacement
-    /// </summary>
-    private int _codeReplacement;
-    /// <summary>
-    /// The code replacement set
-    /// </summary>
-    private bool _codeReplacementSet;
 
     /// <summary>
     /// The brand
@@ -585,37 +525,7 @@ public class Product : IEntity, IEquatable<Product>
             _codeGroupSet = true;
         }
     }
-
-    /// <summary>
-    /// Gets or sets the is negative stock allowed.
-    /// </summary>
-    /// <value>The is negative stock allowed.</value>
-    [EntityElement("AD_PESTNEG")]
-    public bool IsNegativeStockAllowed
-    {
-        get => _isNegativeStockAllowed; set
-        {
-            _isNegativeStockAllowed = value;
-            _isNegativeStockAllowedSet = value;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the uses grid.
-    /// </summary>
-    /// <value>The uses grid.</value>
-    [EntityElement("AD_USAGRADE")]
-    public bool UsesGrid
-    {
-        get => _usesGrid;
-
-        set
-        {
-            _usesGrid = value;
-            _usesGridSet = true;
-        }
-    }
-
+    
     /// <summary>
     /// Gets or sets the net weight.
     /// </summary>
@@ -645,22 +555,6 @@ public class Product : IEntity, IEquatable<Product>
     }
 
     /// <summary>
-    /// Gets or sets the list price.
-    /// </summary>
-    /// <value>The list price.</value>
-    [EntityElement("AD_VLRDE")]
-    public decimal ListPrice
-    {
-        get => _listPrice;
-
-        set
-        {
-            _listPrice = value;
-            _listPriceSet = true;
-        }
-    }
-
-    /// <summary>
     /// Gets or sets the quantity.
     /// </summary>
     /// <value>The quantity.</value>
@@ -673,41 +567,7 @@ public class Product : IEntity, IEquatable<Product>
             _quantitySet = true;
         }
     }
-
-    /// <summary>
-    /// Gets or sets the code father.
-    /// </summary>
-    /// <value>The code father.</value>
-    [EntityElement("AD_CODPAI")]
-    public int CodeFather
-    {
-        get => _codeFather;
-
-        set
-        {
-            _codeFather = value;
-            _codeFatherSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the code replacement.
-    /// </summary>
-    /// <value>
-    /// The code replacement.
-    /// </value>
-    [EntityElement("AD_CODPRODSUBSTITUTO")]
-    public int CodeReplacement
-    {
-        get => _codeReplacement;
-
-        set
-        {
-            _codeReplacement = value;
-            _codeReplacementSet = true;
-        }
-    }
-
+    
     /// <summary>
     /// Gets or sets the brand.
     /// </summary>
@@ -1070,22 +930,6 @@ public class Product : IEntity, IEquatable<Product>
     public bool ShouldSerializeCodeGroup() => _codeGroupSet;
 
     /// <summary>
-    /// Should the serialize is negative stock allowed.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeIsNegativeStockAllowed() => _isNegativeStockAllowedSet;
-
-    /// <summary>
-    /// Should the serialize uses grid.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeUsesGrid() => _usesGridSet;
-
-    /// <summary>
     /// Should the serialize net weight.
     /// </summary>
     /// <returns>Boolean.</returns>
@@ -1102,41 +946,13 @@ public class Product : IEntity, IEquatable<Product>
     public bool ShouldSerializeGrossWeight() => _grossWeightSet;
 
     /// <summary>
-    /// Should the serialize list price.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeListPrice() => _listPriceSet;
-
-    /// <summary>
     /// Should the serialize quantity.
     /// </summary>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeQuantity() => _quantitySet;
-
-    /// <summary>
-    /// Should the serialize code father.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeCodeFather() => _codeFatherSet;
-
-
-    /// <summary>
-    /// The should serialize code replacement serialization helper method
-    /// </summary>
-    /// <returns>
-    /// Returns <c>true</c> when the field should be serialized, false otherwise
-    /// </returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public bool ShouldSerializeCodeReplacement() => _codeReplacementSet;
-
+    
     /// <summary>
     /// Should the serialize brand.
     /// </summary>

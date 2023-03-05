@@ -45,16 +45,12 @@ public class Seller : IEntity, IEquatable<Seller>
 
         return ReferenceEquals(this, other) || _code == other._code && _codeSet == other._codeSet && _codeUser == other._codeUser &&
             _codeUserSet == other._codeUserSet && _codePartner == other._codePartner &&
-            _codePartnerSet == other._codePartnerSet && _codeSupervisor == other._codeSupervisor &&
-            _codeSupervisorSet == other._codeSupervisorSet &&
-            string.Equals(_codeAffiliated, other._codeAffiliated, StringComparison.InvariantCultureIgnoreCase) &&
-            _codeAffiliatedSet == other._codeAffiliatedSet && _isActive == other._isActive &&
+            _codePartnerSet == other._codePartnerSet && _isActive == other._isActive &&
             _isActiveSet == other._isActiveSet &&
             string.Equals(_nickname, other._nickname, StringComparison.InvariantCultureIgnoreCase) &&
             _nicknameSet == other._nicknameSet &&
             string.Equals(_email, other._email, StringComparison.InvariantCultureIgnoreCase) &&
-            _emailSet == other._emailSet && _mobility == other._mobility &&
-            _mobilitySet == other._mobilitySet && _type == other._type && _typeSet == other._typeSet &&
+            _emailSet == other._emailSet && _type == other._type && _typeSet == other._typeSet &&
             _dateChanged.Equals(other._dateChanged) && _dateChangedSet == other._dateChangedSet &&
             Equals(_partner, other._partner) && _partnerSet == other._partnerSet;
     }
@@ -90,12 +86,6 @@ public class Seller : IEntity, IEquatable<Seller>
             hashCode = (hashCode * 397) ^ _codeUserSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codePartner;
             hashCode = (hashCode * 397) ^ _codePartnerSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codeSupervisor;
-            hashCode = (hashCode * 397) ^ _codeSupervisorSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_codeAffiliated != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_codeAffiliated)
-                : 0);
-            hashCode = (hashCode * 397) ^ _codeAffiliatedSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _isActive.GetHashCode();
             hashCode = (hashCode * 397) ^ _isActiveSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_nickname != null
@@ -106,8 +96,6 @@ public class Seller : IEntity, IEquatable<Seller>
                 ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_email)
                 : 0);
             hashCode = (hashCode * 397) ^ _emailSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _mobility.GetHashCode();
-            hashCode = (hashCode * 397) ^ _mobilitySet.GetHashCode();
             hashCode = (hashCode * 397) ^ (int)_type;
             hashCode = (hashCode * 397) ^ _typeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateChanged.GetHashCode();
@@ -168,24 +156,6 @@ public class Seller : IEntity, IEquatable<Seller>
     private bool _codePartnerSet;
 
     /// <summary>
-    /// The code supervisor
-    /// </summary>
-    private int _codeSupervisor;
-    /// <summary>
-    /// The code supervisor set
-    /// </summary>
-    private bool _codeSupervisorSet;
-
-    /// <summary>
-    /// The code affiliated
-    /// </summary>
-    private string _codeAffiliated;
-    /// <summary>
-    /// The code affiliated set
-    /// </summary>
-    private bool _codeAffiliatedSet;
-
-    /// <summary>
     /// The active
     /// </summary>
     private bool _isActive;
@@ -211,15 +181,6 @@ public class Seller : IEntity, IEquatable<Seller>
     /// The email set
     /// </summary>
     private bool _emailSet;
-
-    /// <summary>
-    /// The mobility
-    /// </summary>
-    private bool _mobility;
-    /// <summary>
-    /// The mobility set
-    /// </summary>
-    private bool _mobilitySet;
 
     /// <summary>
     /// The type
@@ -294,35 +255,7 @@ public class Seller : IEntity, IEquatable<Seller>
             _codePartnerSet = true;
         }
     }
-
-    /// <summary>
-    /// Gets or sets the code supervisor.
-    /// </summary>
-    /// <value>The code supervisor.</value>
-    [EntityElement("AD_CODSUPERVISOR")]
-    public int CodeSupervisor
-    {
-        get => _codeSupervisor; set
-        {
-            _codeSupervisor = value;
-            _codeSupervisorSet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the code affiliated.
-    /// </summary>
-    /// <value>The code affiliated.</value>
-    [EntityElement("AD_CODAFILIADO")]
-    public string CodeAffiliated
-    {
-        get => _codeAffiliated; set
-        {
-            _codeAffiliated = value;
-            _codeAffiliatedSet = true;
-        }
-    }
-
+    
     /// <summary>
     /// Gets or sets a value indicating whether this instance is active.
     /// </summary>
@@ -388,38 +321,7 @@ public class Seller : IEntity, IEquatable<Seller>
             _emailSet = true;
         }
     }
-
-    /// <summary>
-    /// Gets or sets the mobility.
-    /// </summary>
-    /// <value>The mobility.</value>
-    [EntityIgnore]
-    public bool Mobility
-    {
-        get => _mobility;
-        set
-        {
-            _mobility = value;
-            _mobilitySet = true;
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the mobility internal.
-    /// </summary>
-    /// <value>The mobility internal.</value>
-    [EntityElement("AD_MOBILIDADE")]
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public string MobilityInternal
-    {
-        get => _mobility.ToString(); set
-        {
-            _mobility = value.ToBoolean(@"S|N");
-            _mobilitySet = true;
-        }
-    }
-
+    
     /// <summary>
     /// Gets or sets the type.
     /// </summary>
@@ -512,22 +414,6 @@ public class Seller : IEntity, IEquatable<Seller>
     public bool ShouldSerializeCodePartner() => _codePartnerSet;
 
     /// <summary>
-    /// Should the serialize code supervisor.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeCodeSupervisor() => _codeSupervisorSet;
-
-    /// <summary>
-    /// Should the serialize code affiliated.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeCodeAffiliated() => _codeAffiliatedSet;
-
-    /// <summary>
     /// Should the serialize is active.
     /// </summary>
     /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
@@ -550,14 +436,6 @@ public class Seller : IEntity, IEquatable<Seller>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeEmail() => _emailSet;
-
-    /// <summary>
-    /// Should the serialize mobility.
-    /// </summary>
-    /// <returns>Boolean.</returns>
-    [Browsable(false)]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeMobility() => _mobilitySet;
 
     /// <summary>
     /// Should the type of the serialize.
