@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <PackageReference Include="CrispyWaffle" Version="3.2.49" />
-    <PackageReference Include="CrispyWaffle.Configuration" Version="3.2.32" />
+    <PackageReference Include="CrispyWaffle.Configuration" Version="3.2.58" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
