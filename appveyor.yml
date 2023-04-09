@@ -12,7 +12,7 @@ environment:
   CODACY_PROJECT_TOKEN:
     secure: zNseofT7KMGybjmYDNys3AQhYvM/JVXwL95C/pVDspL19ilVfXApWLuzhTgaXRvD
   CODECLIMATE_TOKEN:
-    secure: d300dcb73545609c0df07055d34cb8bcd0816536fb6f47e1d2d8b008e2cc6506
+    secure: +vxctRFKNlc6iOHsPLZz6328hKoUMtfEwRySSYGYUg/SLmONVnwVUWf6vA/DUgjjTlHJahBDOD+dM6XN2KJdzMqmXyNQYqybzA0Gbc2XcFg=
 
 dotnet_csproj: 
   patch: true
@@ -22,7 +22,7 @@ dotnet_csproj:
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
-  
+
 init:
 - SET JAVA_HOME=C:\Program Files\Java\jdk19
 - SET PATH=%JAVA_HOME%\bin;%PATH%
