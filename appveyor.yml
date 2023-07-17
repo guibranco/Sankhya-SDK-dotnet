@@ -4,14 +4,14 @@ image: Visual Studio 2022
 configuration: Release
 
 environment:
-  SONAR_TOKEN: 
+  SONAR_TOKEN:
     secure: Igylx3y/l0I0VWQoMr2dSCblzYcS/4JCUVYqqedO6zSm9AsGq1SxGrjTLyf29jUP
   CODACY_PROJECT_TOKEN:
     secure: zNseofT7KMGybjmYDNys3AQhYvM/JVXwL95C/pVDspL19ilVfXApWLuzhTgaXRvD
   CODECLIMATE_TOKEN:
     secure: +vxctRFKNlc6iOHsPLZz6328hKoUMtfEwRySSYGYUg/SLmONVnwVUWf6vA/DUgjjTlHJahBDOD+dM6XN2KJdzMqmXyNQYqybzA0Gbc2XcFg=
 
-dotnet_csproj: 
+dotnet_csproj:
   patch: true
   file: '**\*.csproj'
   version: '{version}'
