@@ -54,5 +54,4 @@ public sealed class ServiceAttribute : Attribute
     /// </summary>
     /// <value>The type.</value>
     public ServiceType Type { get; }
-
 }

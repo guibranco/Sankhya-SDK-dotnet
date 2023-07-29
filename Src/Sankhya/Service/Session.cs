@@ -12,6 +12,7 @@ public sealed class Session
     /// The identifier
     /// </summary>
     private string _id;
+
     /// <summary>
     /// The identifier set
     /// </summary>
@@ -21,6 +22,7 @@ public sealed class Session
     /// The creation time
     /// </summary>
     private string _creationTime;
+
     /// <summary>
     /// The creation time set
     /// </summary>
@@ -30,6 +32,7 @@ public sealed class Session
     /// The last accessed time
     /// </summary>
     private string _lastAccessedTime;
+
     /// <summary>
     /// The last accessed time set
     /// </summary>
@@ -39,6 +42,7 @@ public sealed class Session
     /// The inactive interval
     /// </summary>
     private int _inactiveInterval;
+
     /// <summary>
     /// The inactive interval set
     /// </summary>
@@ -48,6 +52,7 @@ public sealed class Session
     /// The maximum inactive interval
     /// </summary>
     private int _maxInactiveInterval;
+
     /// <summary>
     /// The maximum inactive interval set
     /// </summary>
@@ -57,6 +62,7 @@ public sealed class Session
     /// The user agent
     /// </summary>
     private string _userAgent;
+
     /// <summary>
     /// The user agent set
     /// </summary>
@@ -66,6 +72,7 @@ public sealed class Session
     /// The host
     /// </summary>
     private string _host;
+
     /// <summary>
     /// The host set
     /// </summary>
@@ -75,6 +82,7 @@ public sealed class Session
     /// The login time
     /// </summary>
     private string _loginTime;
+
     /// <summary>
     /// The login time set
     /// </summary>
@@ -84,6 +92,7 @@ public sealed class Session
     /// The is authenticated
     /// </summary>
     private bool _isAuthenticated;
+
     /// <summary>
     /// The is authenticated set
     /// </summary>
@@ -93,6 +102,7 @@ public sealed class Session
     /// The user identifier
     /// </summary>
     private int _userId;
+
     /// <summary>
     /// The user identifier set
     /// </summary>
@@ -102,6 +112,7 @@ public sealed class Session
     /// The user name
     /// </summary>
     private string _userName;
+
     /// <summary>
     /// The user name set
     /// </summary>
@@ -118,7 +129,8 @@ public sealed class Session
     [XmlAttribute("ID")]
     public string Id
     {
-        get => _id; set
+        get => _id;
+        set
         {
             _id = value;
             _idSet = true;
@@ -132,7 +144,8 @@ public sealed class Session
     [XmlAttribute("CREATIONTIME")]
     public string CreationTime
     {
-        get => _creationTime; set
+        get => _creationTime;
+        set
         {
             _creationTime = value;
             _creationTimeSet = true;
@@ -146,7 +159,8 @@ public sealed class Session
     [XmlAttribute("LASTACCESSEDTIME")]
     public string LastAccessedTime
     {
-        get => _lastAccessedTime; set
+        get => _lastAccessedTime;
+        set
         {
             _lastAccessedTime = value;
             _lastAccessedTimeSet = true;
@@ -160,7 +174,8 @@ public sealed class Session
     [XmlAttribute("INACTIVEINTERVAL")]
     public int InactiveInterval
     {
-        get => _inactiveInterval; set
+        get => _inactiveInterval;
+        set
         {
             _inactiveInterval = value;
             _inactiveIntervalSet = true;
@@ -174,7 +189,8 @@ public sealed class Session
     [XmlAttribute("MAXINACTIVEINTERVAL")]
     public int MaxInactiveInterval
     {
-        get => _maxInactiveInterval; set
+        get => _maxInactiveInterval;
+        set
         {
             _maxInactiveInterval = value;
             _maxInactiveIntervalSet = true;
@@ -188,7 +204,8 @@ public sealed class Session
     [XmlAttribute("USERAGENT")]
     public string UserAgent
     {
-        get => _userAgent; set
+        get => _userAgent;
+        set
         {
             _userAgent = value;
             _userAgentSet = true;
@@ -202,7 +219,8 @@ public sealed class Session
     [XmlAttribute("HOST")]
     public string Host
     {
-        get => _host; set
+        get => _host;
+        set
         {
             _host = value;
             _hostSet = true;
@@ -216,7 +234,8 @@ public sealed class Session
     [XmlAttribute("LOGINTIME")]
     public string LoginTime
     {
-        get => _loginTime; set
+        get => _loginTime;
+        set
         {
             _loginTime = value;
             _loginTimeSet = true;
@@ -231,7 +250,6 @@ public sealed class Session
     public bool IsAuthenticated
     {
         get => _isAuthenticated;
-
         set
         {
             _isAuthenticated = value;
@@ -263,9 +281,9 @@ public sealed class Session
     [XmlAttribute("USERID")]
     public int UserId
     {
-        get => _userId; set
+        get => _userId;
+        set
         {
-
             _userId = value;
             _userIdSet = true;
         }
@@ -278,7 +296,8 @@ public sealed class Session
     [XmlAttribute("USERNAME")]
     public string UserName
     {
-        get => _userName; set
+        get => _userName;
+        set
         {
             _userName = value;
             _userNameSet = true;
@@ -297,7 +316,6 @@ public sealed class Session
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeId() => _idSet;
 
-
     /// <summary>
     /// Should the serialize creation time.
     /// </summary>
@@ -305,7 +323,6 @@ public sealed class Session
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCreationTime() => _creationTimeSet;
-
 
     /// <summary>
     /// Should the serialize last accessed time.
@@ -315,7 +332,6 @@ public sealed class Session
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeLastAccessedTime() => _lastAccessedTimeSet;
 
-
     /// <summary>
     /// Should the serialize inactive interval.
     /// </summary>
@@ -324,7 +340,6 @@ public sealed class Session
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInactiveInterval() => _inactiveIntervalSet;
 
-
     /// <summary>
     /// Should the serialize maximum inactive interval.
     /// </summary>
@@ -332,7 +347,6 @@ public sealed class Session
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMaxInactiveInterval() => _maxInactiveIntervalSet;
-
 
     /// <summary>
     /// Should the serialize user agent.

@@ -32,18 +32,21 @@ public sealed class EntityQueryOptions
     /// <value>The maximum results.</value>
 
     public int? MaxResults { get; set; }
+
     /// <summary>
     /// Gets or sets the include references.
     /// </summary>
     /// <value>The include references.</value>
 
     public bool? IncludeReferences { get; set; }
+
     /// <summary>
     /// Gets or sets the maximum reference depth.
     /// </summary>
     /// <value>The maximum reference depth.</value>
 
     public ReferenceLevel? MaxReferenceDepth { get; set; }
+
     /// <summary>
     /// Gets or sets the include presentation fields.
     /// </summary>

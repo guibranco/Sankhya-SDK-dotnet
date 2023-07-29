@@ -70,7 +70,13 @@ public sealed class PagedRequestEventArgs
     /// <param name="totalLoaded">The total loaded.</param>
     /// <param name="currentPage">The current page.</param>
     /// <param name="totalPages">The total pages.</param>
-    public PagedRequestEventArgs(Type type, int quantityLoaded, int totalLoaded, int currentPage, int totalPages)
+    public PagedRequestEventArgs(
+        Type type,
+        int quantityLoaded,
+        int totalLoaded,
+        int currentPage,
+        int totalPages
+    )
     {
         Type = type;
         QuantityLoaded = quantityLoaded;
@@ -86,11 +92,7 @@ public sealed class PagedRequestEventArgs
     /// <param name="currentPage">The current page.</param>
     /// <param name="totalLoaded">The total loaded.</param>
     /// <param name="exception">The exception.</param>
-    public PagedRequestEventArgs(
-        Type type,
-        int currentPage,
-        int totalLoaded,
-        Exception exception)
+    public PagedRequestEventArgs(Type type, int currentPage, int totalLoaded, Exception exception)
     {
         Type = type;
         CurrentPage = currentPage;

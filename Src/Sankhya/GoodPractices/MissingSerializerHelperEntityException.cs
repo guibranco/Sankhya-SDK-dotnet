@@ -8,12 +8,24 @@ using Sankhya.Properties;
 [Serializable]
 public class MissingSerializerHelperEntityException : Exception
 {
-    public MissingSerializerHelperEntityException(string propertyName,
+    public MissingSerializerHelperEntityException(
+        string propertyName,
         string entityName,
-        string fullyQualifiedClassName)
-        : base(string.Format(CultureInfo.CurrentCulture, Resources.MissingSerializerHelperEntityException, propertyName, entityName, fullyQualifiedClassName))
-    { }
+        string fullyQualifiedClassName
+    )
+        : base(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.MissingSerializerHelperEntityException,
+                propertyName,
+                entityName,
+                fullyQualifiedClassName
+            )
+        ) { }
 
-    protected MissingSerializerHelperEntityException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected MissingSerializerHelperEntityException(
+        SerializationInfo info,
+        StreamingContext context
+    )
+        : base(info, context) { }
 }

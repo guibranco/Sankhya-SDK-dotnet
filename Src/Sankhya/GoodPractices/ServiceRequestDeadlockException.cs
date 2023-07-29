@@ -7,10 +7,13 @@ using Sankhya.Service;
 [Serializable]
 public class ServiceRequestDeadlockException : ServiceRequestTemporarilyException
 {
-    public ServiceRequestDeadlockException(string message, ServiceRequest request, ServiceResponse response)
-        : base(message, request, response)
-    { }
+    public ServiceRequestDeadlockException(
+        string message,
+        ServiceRequest request,
+        ServiceResponse response
+    )
+        : base(message, request, response) { }
 
-    protected ServiceRequestDeadlockException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestDeadlockException(SerializationInfo info, StreamingContext context)
+        : base(info, context) { }
 }

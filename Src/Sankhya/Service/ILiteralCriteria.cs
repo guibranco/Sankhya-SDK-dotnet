@@ -16,5 +16,4 @@ namespace Sankhya.Service;
 /// <summary>
 /// Interface ILiteralCriteria
 /// </summary>
-public interface ILiteralCriteria
-{ }
+public interface ILiteralCriteria { }

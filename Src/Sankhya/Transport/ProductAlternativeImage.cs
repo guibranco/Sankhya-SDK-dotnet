@@ -26,12 +26,21 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
             return false;
         }
 
-        return ReferenceEquals(this, other) || _code == other._code && _codeSet == other._codeSet && _codeProduct == other._codeProduct
-            && _codeProductSet == other._codeProductSet
-            && string.Equals(_fileName, other._fileName, StringComparison.InvariantCultureIgnoreCase)
-            && _fileNameSet == other._fileNameSet && _codeUser == other._codeUser
-            && _codeUserSet == other._codeUserSet && _dateChanged.Equals(other._dateChanged)
-            && _dateChangedSet == other._dateChangedSet;
+        return ReferenceEquals(this, other)
+            || _code == other._code
+                && _codeSet == other._codeSet
+                && _codeProduct == other._codeProduct
+                && _codeProductSet == other._codeProductSet
+                && string.Equals(
+                    _fileName,
+                    other._fileName,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _fileNameSet == other._fileNameSet
+                && _codeUser == other._codeUser
+                && _codeUserSet == other._codeUserSet
+                && _dateChanged.Equals(other._dateChanged)
+                && _dateChangedSet == other._dateChangedSet;
     }
 
     /// <summary>
@@ -61,7 +70,13 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
             hashCode = (hashCode * 397) ^ _codeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeProduct;
             hashCode = (hashCode * 397) ^ _codeProductSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_fileName != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_fileName) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _fileName != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_fileName)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _fileNameSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeUser;
             hashCode = (hashCode * 397) ^ _codeUserSet.GetHashCode();
@@ -77,7 +92,8 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator ==(ProductAlternativeImage left, ProductAlternativeImage right) => Equals(left, right);
+    public static bool operator ==(ProductAlternativeImage left, ProductAlternativeImage right) =>
+        Equals(left, right);
 
     /// <summary>
     /// Implements the !=.
@@ -85,7 +101,8 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator !=(ProductAlternativeImage left, ProductAlternativeImage right) => !Equals(left, right);
+    public static bool operator !=(ProductAlternativeImage left, ProductAlternativeImage right) =>
+        !Equals(left, right);
 
     #endregion
 
@@ -95,6 +112,7 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// The code
     /// </summary>
     private int _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -104,6 +122,7 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// The code product
     /// </summary>
     private int _codeProduct;
+
     /// <summary>
     /// The code product set
     /// </summary>
@@ -113,6 +132,7 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// The file name
     /// </summary>
     private string _fileName;
+
     /// <summary>
     /// The file name set
     /// </summary>
@@ -122,6 +142,7 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// The code user
     /// </summary>
     private int _codeUser;
+
     /// <summary>
     /// The code user set
     /// </summary>
@@ -131,6 +152,7 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// The date changed
     /// </summary>
     private DateTime _dateChanged;
+
     /// <summary>
     /// The date changed set
     /// </summary>
@@ -149,7 +171,6 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     public int Code
     {
         get => _code;
-
         set
         {
             _code = value;
@@ -181,7 +202,6 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     public string FileName
     {
         get => _fileName;
-
         set
         {
             _fileName = value;
@@ -195,7 +215,6 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// <value>The code user.</value>
     [EntityElement("CODUSU")]
     [EntityKey]
-
     public int CodeUser
     {
         get => _codeUser;
@@ -211,7 +230,6 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// </summary>
     /// <value>The date changed.</value>
     [EntityElement("DHALTER")]
-
     public DateTime DateChanged
     {
         get => _dateChanged;

@@ -15,5 +15,4 @@ public sealed class Path
     /// <value>The value.</value>
     [XmlText]
     public string Value { get; set; }
-
 }

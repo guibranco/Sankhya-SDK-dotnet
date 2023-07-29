@@ -9,9 +9,11 @@ using Sankhya.Service;
 public class ServiceRequestInvalidSubQueryException : ServiceRequestGeneralException
 {
     public ServiceRequestInvalidSubQueryException(ServiceRequest request)
-        : base(Resources.ServiceRequestInvalidSubQueryException, request)
-    { }
+        : base(Resources.ServiceRequestInvalidSubQueryException, request) { }
 
-    protected ServiceRequestInvalidSubQueryException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestInvalidSubQueryException(
+        SerializationInfo info,
+        StreamingContext context
+    )
+        : base(info, context) { }
 }

@@ -11,13 +11,13 @@ using CrispyWaffle.Serialization;
 [XmlRoot("clientEvents")]
 public sealed class ClientEvents
 {
-
     #region Private Members
 
     /// <summary>
     /// The client event
     /// </summary>
     private ClientEvent[] _clientEvent;
+
     /// <summary>
     /// The client event set
     /// </summary>
@@ -34,7 +34,8 @@ public sealed class ClientEvents
     [XmlElement("clientEvent")]
     public ClientEvent[] ClientEvent
     {
-        get => _clientEvent; set
+        get => _clientEvent;
+        set
         {
             _clientEvent = value;
             _clientEventSet = true;
@@ -54,6 +55,4 @@ public sealed class ClientEvents
     public bool ShouldSerializeClientEvent() => _clientEventSet;
 
     #endregion
-
-
 }

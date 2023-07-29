@@ -27,14 +27,19 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _codeSource == other._codeSource && _codeSourceSet == other._codeSourceSet &&
-            _codeSuggestion == other._codeSuggestion && _codeSuggestionSet == other._codeSuggestionSet &&
-            _sourceType == other._sourceType && _sourceTypeSet == other._sourceTypeSet &&
-            _quantity == other._quantity && _quantitySet == other._quantitySet &&
-            _isQuantityMultiplier == other._isQuantityMultiplier &&
-            _isQuantityMultiplierSet == other._isQuantityMultiplierSet &&
-            Equals(_productSuggestion, other._productSuggestion) &&
-            _productSuggestionSet == other._productSuggestionSet;
+        return ReferenceEquals(this, other)
+            || _codeSource == other._codeSource
+                && _codeSourceSet == other._codeSourceSet
+                && _codeSuggestion == other._codeSuggestion
+                && _codeSuggestionSet == other._codeSuggestionSet
+                && _sourceType == other._sourceType
+                && _sourceTypeSet == other._sourceTypeSet
+                && _quantity == other._quantity
+                && _quantitySet == other._quantitySet
+                && _isQuantityMultiplier == other._isQuantityMultiplier
+                && _isQuantityMultiplierSet == other._isQuantityMultiplierSet
+                && Equals(_productSuggestion, other._productSuggestion)
+                && _productSuggestionSet == other._productSuggestionSet;
     }
 
     /// <summary>
@@ -70,7 +75,9 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
             hashCode = (hashCode * 397) ^ _quantitySet.GetHashCode();
             hashCode = (hashCode * 397) ^ _isQuantityMultiplier.GetHashCode();
             hashCode = (hashCode * 397) ^ _isQuantityMultiplierSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_productSuggestion != null ? _productSuggestion.GetHashCode() : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (_productSuggestion != null ? _productSuggestion.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _productSuggestionSet.GetHashCode();
             return hashCode;
         }
@@ -82,7 +89,8 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator ==(ProductSuggestedSale left, ProductSuggestedSale right) => Equals(left, right);
+    public static bool operator ==(ProductSuggestedSale left, ProductSuggestedSale right) =>
+        Equals(left, right);
 
     /// <summary>
     /// Implements the !=.
@@ -90,7 +98,8 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator !=(ProductSuggestedSale left, ProductSuggestedSale right) => !Equals(left, right);
+    public static bool operator !=(ProductSuggestedSale left, ProductSuggestedSale right) =>
+        !Equals(left, right);
 
     #endregion
 
@@ -100,6 +109,7 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// The code source
     /// </summary>
     private int _codeSource;
+
     /// <summary>
     /// The code source set
     /// </summary>
@@ -109,6 +119,7 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// The code suggestion
     /// </summary>
     private int _codeSuggestion;
+
     /// <summary>
     /// The code suggestion set
     /// </summary>
@@ -118,6 +129,7 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// The source type
     /// </summary>
     private ProductSourceType _sourceType;
+
     /// <summary>
     /// The source type set
     /// </summary>
@@ -127,6 +139,7 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// The quantity
     /// </summary>
     private decimal _quantity;
+
     /// <summary>
     /// The quantity set
     /// </summary>
@@ -136,6 +149,7 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// The is quantity multiplier
     /// </summary>
     private bool _isQuantityMultiplier;
+
     /// <summary>
     /// The is quantity multiplier set
     /// </summary>
@@ -145,6 +159,7 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// The product suggestion
     /// </summary>
     private Product _productSuggestion;
+
     /// <summary>
     /// The product suggestion set
     /// </summary>
@@ -178,7 +193,8 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     [EntityKey]
     public int CodeSuggestion
     {
-        get => _codeSuggestion; set
+        get => _codeSuggestion;
+        set
         {
             _codeSuggestion = value;
             _codeSuggestionSet = true;
@@ -190,10 +206,10 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// </summary>
     /// <value>The type of the source.</value>
     [EntityIgnore]
-
     public ProductSourceType SourceType
     {
-        get => _sourceType; set
+        get => _sourceType;
+        set
         {
             _sourceType = value;
             _sourceTypeSet = true;
@@ -206,10 +222,10 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// <value>The source type internal.</value>
     [EntityElement("TIPORIG")]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string SourceTypeInternal
     {
-        get => _sourceType.GetInternalValue(); set
+        get => _sourceType.GetInternalValue();
+        set
         {
             _sourceType = EnumExtensions.GetEnumByInternalValueAttribute<ProductSourceType>(value);
             _sourceTypeSet = true;
@@ -221,10 +237,10 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// </summary>
     /// <value>The quantity.</value>
     [EntityElement("QTDSUGERIDA")]
-
     public decimal Quantity
     {
-        get => _quantity; set
+        get => _quantity;
+        set
         {
             _quantity = value;
             _quantitySet = true;
@@ -236,10 +252,10 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// </summary>
     /// <value>The is quantity multiplier.</value>
     [EntityIgnore]
-
     public bool IsQuantityMultiplier
     {
-        get => _isQuantityMultiplier; set
+        get => _isQuantityMultiplier;
+        set
         {
             _isQuantityMultiplier = value;
             _isQuantityMultiplierSet = true;
@@ -252,10 +268,10 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// <value>The is quantity multiplier internal.</value>
     [EntityElement("MULTQTD")]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string IsQuantityMultiplierInternal
     {
-        get => _isQuantityMultiplier.ToString(@"S", @"N"); set
+        get => _isQuantityMultiplier.ToString(@"S", @"N");
+        set
         {
             _isQuantityMultiplier = value.ToBoolean();
             _isQuantityMultiplierSet = true;
@@ -267,10 +283,10 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// </summary>
     /// <value>The product suggestion.</value>
     [EntityReference]
-
     public Product ProductSuggestion
     {
-        get => _productSuggestion; set
+        get => _productSuggestion;
+        set
         {
             _productSuggestion = value;
             _productSuggestionSet = true;
@@ -318,5 +334,4 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     public bool ShouldSerializeProductSuggestion() => _productSuggestionSet;
 
     #endregion
-
 }

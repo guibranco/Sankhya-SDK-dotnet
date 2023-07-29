@@ -25,13 +25,13 @@ using System.Xml.Serialization;
 [XmlRoot("mensagens")]
 public sealed class Messages
 {
-
     #region Private Members
 
     /// <summary>
     /// The message
     /// </summary>
     private Message[] _message;
+
     /// <summary>
     /// The message set
     /// </summary>
@@ -48,7 +48,8 @@ public sealed class Messages
     [XmlElement("msg")]
     public Message[] Message
     {
-        get => _message; set
+        get => _message;
+        set
         {
             _message = value;
             _messageSet = true;
@@ -69,5 +70,4 @@ public sealed class Messages
     public bool ShouldSerializeMessage() => _messageSet;
 
     #endregion
-
 }

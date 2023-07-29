@@ -22,16 +22,14 @@ public class EntityDynamicSerialization : DynamicSerialization
     /// <summary>
     /// Initializes a new instance of the <see cref="EntityDynamicSerialization" /> class.
     /// </summary>
-    public EntityDynamicSerialization()
-    { }
+    public EntityDynamicSerialization() { }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="EntityDynamicSerialization" /> class.
     /// </summary>
     /// <param name="keyFilter">The filter to serialize keys</param>
     public EntityDynamicSerialization(DynamicSerializationOption keyFilter)
-        : base(keyFilter)
-    { }
+        : base(keyFilter) { }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="EntityDynamicSerialization" /> class.
@@ -40,8 +38,7 @@ public class EntityDynamicSerialization : DynamicSerialization
     /// <param name="context">The context.</param>
     // ReSharper disable once UnusedMember.Global
     protected EntityDynamicSerialization(SerializationInfo info, StreamingContext context)
-        : base(info, context)
-    { }
+        : base(info, context) { }
 
     #endregion
 
@@ -57,7 +54,14 @@ public class EntityDynamicSerialization : DynamicSerialization
     /// <param name="prefix">(Optional) the prefix.</param>
     /// <param name="currentLevel">(Optional) the current level.</param>
     /// <returns>A T.</returns>
-    private T ParseEntity<T>(T instance, Type type, ReferenceLevel maxInnerLevel, string prefix = null, ReferenceLevel currentLevel = ReferenceLevel.None) where T : class, new()
+    private T ParseEntity<T>(
+        T instance,
+        Type type,
+        ReferenceLevel maxInnerLevel,
+        string prefix = null,
+        ReferenceLevel currentLevel = ReferenceLevel.None
+    )
+        where T : class, new()
     {
         if (currentLevel >= maxInnerLevel)
         {
@@ -86,7 +90,9 @@ public class EntityDynamicSerialization : DynamicSerialization
         ReferenceLevel maxInnerLevel,
         string prefix,
         ReferenceLevel currentLevel,
-        PropertyInfo propertyInfo) where T : class, new()
+        PropertyInfo propertyInfo
+    )
+        where T : class, new()
     {
         var isEntityReference = false;
         var propertyName = propertyInfo.Name;
@@ -142,15 +148,20 @@ public class EntityDynamicSerialization : DynamicSerialization
                 innerType,
                 maxInnerLevel,
                 referencePrefix,
-                innerLevel);
-            if (propertyInfo.GetValue(instance) != null
-                && typeof(IUpdateable).IsAssignableFrom(propertyInfo.PropertyType))
+                innerLevel
+            );
+            if (
+                propertyInfo.GetValue(instance) != null
+                && typeof(IUpdateable).IsAssignableFrom(propertyInfo.PropertyType)
+            )
             {
                 propertyInfo.SetValue(
                     instance,
-                    ((IUpdateable)propertyInfo.GetValue(instance))
-                    .UpdateValues((IUpdateable)referenceValue),
-                    null);
+                    ((IUpdateable)propertyInfo.GetValue(instance)).UpdateValues(
+                        (IUpdateable)referenceValue
+                    ),
+                    null
+                );
             }
             else
             {
@@ -160,8 +171,9 @@ public class EntityDynamicSerialization : DynamicSerialization
 
         #endregion
 
-        if (!Dictionary.ContainsKey(propertyName)
-            && !Dictionary.ContainsKey(propertyName.ToUpper()))
+        if (
+            !Dictionary.ContainsKey(propertyName) && !Dictionary.ContainsKey(propertyName.ToUpper())
+        )
         {
             return;
         }
@@ -182,7 +194,6 @@ public class EntityDynamicSerialization : DynamicSerialization
 
         try
         {
-
             object value;
 
             if (valueInDictionary == null)
@@ -204,17 +215,35 @@ public class EntityDynamicSerialization : DynamicSerialization
                 {
                     value = date;
                 }
-                else if (DateTime.TryParseExact(valueInDictionary.ToString(), @"dd/MM/yyyy HH:mm:ss", culture, DateTimeStyles.None, out date))
+                else if (
+                    DateTime.TryParseExact(
+                        valueInDictionary.ToString(),
+                        @"dd/MM/yyyy HH:mm:ss",
+                        culture,
+                        DateTimeStyles.None,
+                        out date
+                    )
+                )
                 {
                     value = date;
                 }
-                else if (DateTime.TryParseExact(valueInDictionary.ToString(), @"dd/MM/yyyy", culture, DateTimeStyles.None, out date))
+                else if (
+                    DateTime.TryParseExact(
+                        valueInDictionary.ToString(),
+                        @"dd/MM/yyyy",
+                        culture,
+                        DateTimeStyles.None,
+                        out date
+                    )
+                )
                 {
                     value = date;
                 }
                 else
                 {
-                    throw new InvalidOperationException($@"Invalid date format for value {valueInDictionary}");
+                    throw new InvalidOperationException(
+                        $@"Invalid date format for value {valueInDictionary}"
+                    );
                 }
             }
             else
@@ -230,7 +259,6 @@ public class EntityDynamicSerialization : DynamicSerialization
         }
     }
 
-
     #endregion
 
     #region Public methods
@@ -242,7 +270,8 @@ public class EntityDynamicSerialization : DynamicSerialization
     /// <returns>object converted to a type&lt; t&gt;</returns>
 
 
-    public T ConvertToType<T>() where T : class, new()
+    public T ConvertToType<T>()
+        where T : class, new()
     {
         var type = typeof(T);
         var instance = (T)Activator.CreateInstance(type);
@@ -266,7 +295,9 @@ public class EntityDynamicSerialization : DynamicSerialization
 
         if (newKeys.Fields.Length != Dictionary.Count)
         {
-            throw new IndexOutOfRangeException("The key count in metadata is different than the key count in the dictionary");
+            throw new IndexOutOfRangeException(
+                "The key count in metadata is different than the key count in the dictionary"
+            );
         }
 
         var index = 0;
@@ -283,5 +314,4 @@ public class EntityDynamicSerialization : DynamicSerialization
     }
 
     #endregion
-
 }

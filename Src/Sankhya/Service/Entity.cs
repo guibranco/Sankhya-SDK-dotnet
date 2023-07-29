@@ -12,6 +12,7 @@ public sealed class Entity
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -21,6 +22,7 @@ public sealed class Entity
     /// The root entity
     /// </summary>
     private string _rootEntity;
+
     /// <summary>
     /// The root entity set
     /// </summary>
@@ -30,6 +32,7 @@ public sealed class Entity
     /// The include presentation fields
     /// </summary>
     private bool _includePresentationFields;
+
     /// <summary>
     /// The include presentation fields set
     /// </summary>
@@ -39,6 +42,7 @@ public sealed class Entity
     /// The rows limit
     /// </summary>
     private int _rowsLimit;
+
     /// <summary>
     /// The rows limit set
     /// </summary>
@@ -48,6 +52,7 @@ public sealed class Entity
     /// The path
     /// </summary>
     private string _path;
+
     /// <summary>
     /// The path set
     /// </summary>
@@ -57,6 +62,7 @@ public sealed class Entity
     /// The data set identifier
     /// </summary>
     private string _dataSetId;
+
     /// <summary>
     /// The data set identifier set
     /// </summary>
@@ -66,6 +72,7 @@ public sealed class Entity
     /// The fields
     /// </summary>
     private Field[] _fields;
+
     /// <summary>
     /// The fields set
     /// </summary>
@@ -75,6 +82,7 @@ public sealed class Entity
     /// The campos
     /// </summary>
     private FieldValue[] _campos;
+
     /// <summary>
     /// The campos set
     /// </summary>
@@ -84,6 +92,7 @@ public sealed class Entity
     /// The field
     /// </summary>
     private Field _field;
+
     /// <summary>
     /// The field set
     /// </summary>
@@ -93,6 +102,7 @@ public sealed class Entity
     /// The fieldset
     /// </summary>
     private Field _fieldset;
+
     /// <summary>
     /// The fieldset set
     /// </summary>
@@ -112,6 +122,7 @@ public sealed class Entity
     /// The literal criteria
     /// </summary>
     private LiteralCriteria _literalCriteria;
+
     /// <summary>
     /// The literal criteria set
     /// </summary>
@@ -121,6 +132,7 @@ public sealed class Entity
     /// The literal criteria SQL
     /// </summary>
     private LiteralCriteriaSql _literalCriteriaSql;
+
     /// <summary>
     /// The literal criteria SQL set
     /// </summary>
@@ -130,6 +142,7 @@ public sealed class Entity
     /// The references fetch
     /// </summary>
     private ReferenceFetch[] _referencesFetch;
+
     /// <summary>
     /// The references fetch set
     /// </summary>
@@ -139,6 +152,7 @@ public sealed class Entity
     /// The ids
     /// </summary>
     private EntityDynamicSerialization[] _ids;
+
     /// <summary>
     /// The ids set
     /// </summary>
@@ -155,7 +169,8 @@ public sealed class Entity
     [XmlAttribute(AttributeName = "name")]
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
@@ -169,7 +184,8 @@ public sealed class Entity
     [XmlAttribute(AttributeName = "rootEntity")]
     public string RootEntity
     {
-        get => _rootEntity; set
+        get => _rootEntity;
+        set
         {
             _rootEntity = value;
             _rootEntitySet = true;
@@ -183,7 +199,8 @@ public sealed class Entity
     [XmlAttribute(AttributeName = "getPresentations")]
     public bool IncludePresentationFields
     {
-        get => _includePresentationFields; set
+        get => _includePresentationFields;
+        set
         {
             _includePresentationFields = value;
             _includePresentationFieldsSet = true;
@@ -197,7 +214,8 @@ public sealed class Entity
     [XmlAttribute(AttributeName = "rowsLimit")]
     public int RowsLimit
     {
-        get => _rowsLimit; set
+        get => _rowsLimit;
+        set
         {
             _rowsLimit = value;
             _rowsLimitSet = true;
@@ -211,7 +229,8 @@ public sealed class Entity
     [XmlAttribute(AttributeName = "path")]
     public string Path
     {
-        get => _path; set
+        get => _path;
+        set
         {
             _path = value;
             _pathSet = true;
@@ -225,7 +244,8 @@ public sealed class Entity
     [XmlAttribute(AttributeName = "datasetid")]
     public string DataSetId
     {
-        get => _dataSetId; set
+        get => _dataSetId;
+        set
         {
             _dataSetId = value;
             _dataSetIdSet = true;
@@ -240,7 +260,8 @@ public sealed class Entity
     [XmlArrayItem("field")]
     public Field[] Fields
     {
-        get => _fields; set
+        get => _fields;
+        set
         {
             _fields = value;
             _fieldsSet = true;
@@ -254,7 +275,8 @@ public sealed class Entity
     [XmlElement("campo")]
     public FieldValue[] Campos
     {
-        get => _campos; set
+        get => _campos;
+        set
         {
             _campos = value;
             _camposSet = true;
@@ -268,7 +290,8 @@ public sealed class Entity
     [XmlElement(ElementName = "field")]
     public Field Field
     {
-        get => _field; set
+        get => _field;
+        set
         {
             _field = value;
             _fieldSet = true;
@@ -282,7 +305,8 @@ public sealed class Entity
     [XmlElement("fieldset")]
     public Field Fieldset
     {
-        get => _fieldset; set
+        get => _fieldset;
+        set
         {
             _fieldset = value;
             _fieldsetSet = true;
@@ -296,7 +320,8 @@ public sealed class Entity
     [XmlElement(ElementName = "criterio")]
     public Criteria[] Criteria
     {
-        get => _criterion; set
+        get => _criterion;
+        set
         {
             _criterion = value;
             _criterionSet = true;
@@ -310,7 +335,8 @@ public sealed class Entity
     [XmlElement(ElementName = "literalCriteria")]
     public LiteralCriteria LiteralCriteria
     {
-        get => _literalCriteria; set
+        get => _literalCriteria;
+        set
         {
             _literalCriteria = value;
             _literalCriteriaSet = true;
@@ -324,7 +350,8 @@ public sealed class Entity
     [XmlElement("criterioLiteral")]
     public LiteralCriteriaSql LiteralCriteriaSql
     {
-        get => _literalCriteriaSql; set
+        get => _literalCriteriaSql;
+        set
         {
             _literalCriteriaSql = value;
             _literalCriteriaSqlSet = true;
@@ -338,7 +365,8 @@ public sealed class Entity
     [XmlElement(ElementName = "referenceFetch")]
     public ReferenceFetch[] ReferencesFetch
     {
-        get => _referencesFetch; set
+        get => _referencesFetch;
+        set
         {
             _referencesFetch = value;
             _referencesFetchSet = true;
@@ -353,7 +381,8 @@ public sealed class Entity
     [XmlElement("id")]
     public EntityDynamicSerialization[] Ids
     {
-        get => _ids; set
+        get => _ids;
+        set
         {
             _ids = value;
             _idsSet = true;
@@ -372,7 +401,6 @@ public sealed class Entity
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeName() => _nameSet;
 
-
     /// <summary>
     /// Should the serialize root entity.
     /// </summary>
@@ -380,7 +408,6 @@ public sealed class Entity
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRootEntity() => _rootEntitySet;
-
 
     /// <summary>
     /// Should the serialize include presentation fields.
@@ -405,7 +432,6 @@ public sealed class Entity
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePath() => _pathSet;
-
 
     /// <summary>
     /// Should the serialize data set identifier.
@@ -447,7 +473,6 @@ public sealed class Entity
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeFieldset() => _fieldsetSet;
 
-
     /// <summary>
     /// Should the serialize criteria.
     /// </summary>
@@ -455,7 +480,6 @@ public sealed class Entity
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCriteria() => _criterionSet;
-
 
     /// <summary>
     /// Should the serialize literal criteria.
@@ -465,7 +489,6 @@ public sealed class Entity
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeLiteralCriteria() => _literalCriteriaSet;
 
-
     /// <summary>
     /// Should the serialize literal criteria SQL.
     /// </summary>
@@ -474,7 +497,6 @@ public sealed class Entity
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeLiteralCriteriaSql() => _literalCriteriaSqlSet;
 
-
     /// <summary>
     /// Should the serialize references fetch.
     /// </summary>
@@ -482,7 +504,6 @@ public sealed class Entity
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeReferencesFetch() => _referencesFetchSet;
-
 
     /// <summary>
     /// Should the serialize ids.

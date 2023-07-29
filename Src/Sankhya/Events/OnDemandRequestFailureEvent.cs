@@ -44,7 +44,6 @@ public class OnDemandRequestFailureEvent : IEvent
     /// <value><c>true</c> if this instance is update; otherwise, <c>false</c>.</value>
     public bool IsUpdate { get; }
 
-
     #endregion
 
     #region ~Ctors

@@ -16,6 +16,7 @@ public sealed class ClientEvent
     /// The identifier
     /// </summary>
     private string _id;
+
     /// <summary>
     /// The identifier set
     /// </summary>
@@ -25,6 +26,7 @@ public sealed class ClientEvent
     /// The event
     /// </summary>
     private Event _event;
+
     /// <summary>
     /// The event set
     /// </summary>
@@ -34,6 +36,7 @@ public sealed class ClientEvent
     /// The invoice items
     /// </summary>
     private ClientEventInvoiceItem[] _invoiceItems;
+
     /// <summary>
     /// The invoice items set
     /// </summary>
@@ -43,6 +46,7 @@ public sealed class ClientEvent
     /// The text
     /// </summary>
     private string _text;
+
     /// <summary>
     /// The text set
     /// </summary>
@@ -59,7 +63,8 @@ public sealed class ClientEvent
     [XmlAttribute("id")]
     public string Id
     {
-        get => _id; set
+        get => _id;
+        set
         {
             _id = value;
             _idSet = true;
@@ -73,7 +78,8 @@ public sealed class ClientEvent
     [XmlElement("event")]
     public Event Event
     {
-        get => _event; set
+        get => _event;
+        set
         {
             _event = value;
             _eventSet = true;
@@ -87,13 +93,13 @@ public sealed class ClientEvent
     [XmlElement("itemNota")]
     public ClientEventInvoiceItem[] InvoiceItems
     {
-        get => _invoiceItems; set
+        get => _invoiceItems;
+        set
         {
             _invoiceItems = value;
             _invoiceItemsSet = true;
         }
     }
-
 
     /// <summary>
     /// Gets or sets the text.
@@ -103,7 +109,8 @@ public sealed class ClientEvent
     [Localizable(false)]
     public string Text
     {
-        get => _text; set
+        get => _text;
+        set
         {
             _text = value;
             _textSet = true;
@@ -129,7 +136,6 @@ public sealed class ClientEvent
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeEvent() => _eventSet;
-
 
     /// <summary>
     /// Should the serialize invoice items.

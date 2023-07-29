@@ -42,24 +42,41 @@ public class City : IEntity, IEquatable<City>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _code == other._code && _codeSet == other._codeSet && _codeState == other._codeState &&
-            _codeStateSet == other._codeStateSet && _codeRegion == other._codeRegion &&
-            _codeRegionSet == other._codeRegionSet && _codeFiscal == other._codeFiscal &&
-            _codeFiscalSet == other._codeFiscalSet &&
-            string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase) &&
-            _nameSet == other._nameSet &&
-            string.Equals(
-                _descriptionCorreios,
-                other._descriptionCorreios,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _descriptionCorreiosSet == other._descriptionCorreiosSet &&
-            Equals(_state, other._state) && _stateSet == other._stateSet &&
-            Equals(_region, other._region) && _regionSet == other._regionSet &&
-            _areaCode == other._areaCode && _areaCodeSet == other._areaCodeSet &&
-            string.Equals(_latitude, other._latitude, StringComparison.InvariantCultureIgnoreCase) &&
-            _latitudeSet == other._latitudeSet &&
-            string.Equals(_longitude, other._longitude, StringComparison.InvariantCultureIgnoreCase) &&
-            _longitudeSet == other._longitudeSet;
+        return ReferenceEquals(this, other)
+            || _code == other._code
+                && _codeSet == other._codeSet
+                && _codeState == other._codeState
+                && _codeStateSet == other._codeStateSet
+                && _codeRegion == other._codeRegion
+                && _codeRegionSet == other._codeRegionSet
+                && _codeFiscal == other._codeFiscal
+                && _codeFiscalSet == other._codeFiscalSet
+                && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+                && _nameSet == other._nameSet
+                && string.Equals(
+                    _descriptionCorreios,
+                    other._descriptionCorreios,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _descriptionCorreiosSet == other._descriptionCorreiosSet
+                && Equals(_state, other._state)
+                && _stateSet == other._stateSet
+                && Equals(_region, other._region)
+                && _regionSet == other._regionSet
+                && _areaCode == other._areaCode
+                && _areaCodeSet == other._areaCodeSet
+                && string.Equals(
+                    _latitude,
+                    other._latitude,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _latitudeSet == other._latitudeSet
+                && string.Equals(
+                    _longitude,
+                    other._longitude,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _longitudeSet == other._longitudeSet;
     }
 
     /// <summary>
@@ -93,31 +110,43 @@ public class City : IEntity, IEquatable<City>
             hashCode = (hashCode * 397) ^ _codeRegionSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeFiscal;
             hashCode = (hashCode * 397) ^ _codeFiscalSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_name != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _name != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name) : 0
+                );
             hashCode = (hashCode * 397) ^ _nameSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_descriptionCorreios != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_descriptionCorreios)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _descriptionCorreios != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
+                            _descriptionCorreios
+                        )
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _descriptionCorreiosSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_state != null
-                ? _state.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (_state != null ? _state.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _stateSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_region != null
-                ? _region.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (_region != null ? _region.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _regionSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _areaCode;
             hashCode = (hashCode * 397) ^ _areaCodeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_latitude != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_latitude)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _latitude != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_latitude)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _latitudeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_longitude != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_longitude)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _longitude != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_longitude)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _longitudeSet.GetHashCode();
             return hashCode;
         }
@@ -147,6 +176,7 @@ public class City : IEntity, IEquatable<City>
     /// The code
     /// </summary>
     private int _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -156,6 +186,7 @@ public class City : IEntity, IEquatable<City>
     /// The code state
     /// </summary>
     private int _codeState;
+
     /// <summary>
     /// The code state set
     /// </summary>
@@ -165,6 +196,7 @@ public class City : IEntity, IEquatable<City>
     /// The code region
     /// </summary>
     private int _codeRegion;
+
     /// <summary>
     /// The code region set
     /// </summary>
@@ -174,6 +206,7 @@ public class City : IEntity, IEquatable<City>
     /// The code fiscal
     /// </summary>
     private int _codeFiscal;
+
     /// <summary>
     /// The code fiscal set
     /// </summary>
@@ -183,6 +216,7 @@ public class City : IEntity, IEquatable<City>
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -192,6 +226,7 @@ public class City : IEntity, IEquatable<City>
     /// The description correios
     /// </summary>
     private string _descriptionCorreios;
+
     /// <summary>
     /// The description correios set
     /// </summary>
@@ -201,6 +236,7 @@ public class City : IEntity, IEquatable<City>
     /// The state
     /// </summary>
     private State _state;
+
     /// <summary>
     /// The state set
     /// </summary>
@@ -210,6 +246,7 @@ public class City : IEntity, IEquatable<City>
     /// The region
     /// </summary>
     private Region _region;
+
     /// <summary>
     /// The region set
     /// </summary>
@@ -219,6 +256,7 @@ public class City : IEntity, IEquatable<City>
     /// The area code
     /// </summary>
     private int _areaCode;
+
     /// <summary>
     /// The area code set
     /// </summary>
@@ -228,6 +266,7 @@ public class City : IEntity, IEquatable<City>
     /// The latitude
     /// </summary>
     private string _latitude;
+
     /// <summary>
     /// The latitude set
     /// </summary>
@@ -237,6 +276,7 @@ public class City : IEntity, IEquatable<City>
     /// The longitude
     /// </summary>
     private string _longitude;
+
     /// <summary>
     /// The longitude set
     /// </summary>
@@ -254,7 +294,8 @@ public class City : IEntity, IEquatable<City>
     [EntityElement("CODCID")]
     public int Code
     {
-        get => _code; set
+        get => _code;
+        set
         {
             _code = value;
             _codeSet = true;
@@ -298,7 +339,8 @@ public class City : IEntity, IEquatable<City>
     [EntityElement("CODMUNFIS")]
     public int CodeFiscal
     {
-        get => _codeFiscal; set
+        get => _codeFiscal;
+        set
         {
             _codeFiscal = value;
             _codeFiscalSet = true;
@@ -312,7 +354,8 @@ public class City : IEntity, IEquatable<City>
     [EntityElement("NOMECID")]
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
@@ -326,7 +369,8 @@ public class City : IEntity, IEquatable<City>
     [EntityElement("DESCRICAOCORREIO")]
     public string DescriptionCorreios
     {
-        get => _descriptionCorreios; set
+        get => _descriptionCorreios;
+        set
         {
             _descriptionCorreios = value;
             _descriptionCorreiosSet = true;
@@ -378,7 +422,6 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-
     /// <summary>
     /// Gets or sets the state.
     /// </summary>
@@ -419,7 +462,6 @@ public class City : IEntity, IEquatable<City>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCode() => _codeSet;
 
     /// <summary>
@@ -468,7 +510,6 @@ public class City : IEntity, IEquatable<City>
     /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeAreaCode() => _areaCodeSet;
 
     /// <summary>
@@ -477,7 +518,6 @@ public class City : IEntity, IEquatable<City>
     /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeLatitude() => _latitudeSet;
 
     /// <summary>
@@ -486,7 +526,6 @@ public class City : IEntity, IEquatable<City>
     /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeLongitude() => _longitudeSet;
 
     /// <summary>

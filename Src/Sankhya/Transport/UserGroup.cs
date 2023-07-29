@@ -27,14 +27,25 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _code == other._code && _codeSet == other._codeSet
-                                                                    && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
-                                                                    && _nameSet == other._nameSet && _isActive == other._isActive
-                                                                    && _isActiveSet == other._isActiveSet
-                                                                    && string.Equals(_userName, other._userName, StringComparison.InvariantCultureIgnoreCase)
-                                                                    && _userNameSet == other._userNameSet
-                                                                    && string.Equals(_emailAddress, other._emailAddress, StringComparison.InvariantCultureIgnoreCase)
-                                                                    && _emailAddressSet == other._emailAddressSet;
+        return ReferenceEquals(this, other)
+            || _code == other._code
+                && _codeSet == other._codeSet
+                && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+                && _nameSet == other._nameSet
+                && _isActive == other._isActive
+                && _isActiveSet == other._isActiveSet
+                && string.Equals(
+                    _userName,
+                    other._userName,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _userNameSet == other._userNameSet
+                && string.Equals(
+                    _emailAddress,
+                    other._emailAddress,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _emailAddressSet == other._emailAddressSet;
     }
 
     /// <summary>
@@ -68,19 +79,29 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
         {
             var hashCode = _code;
             hashCode = (hashCode * 397) ^ _codeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_name != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _name != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name) : 0
+                );
             hashCode = (hashCode * 397) ^ _nameSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _isActive.GetHashCode();
             hashCode = (hashCode * 397) ^ _isActiveSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_userName != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_userName)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _userName != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_userName)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _userNameSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_emailAddress != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_emailAddress)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _emailAddress != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_emailAddress)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _emailAddressSet.GetHashCode();
             return hashCode;
         }
@@ -110,6 +131,7 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// The code
     /// </summary>
     private int _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -119,6 +141,7 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -128,6 +151,7 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// The is active
     /// </summary>
     private bool _isActive;
+
     /// <summary>
     /// The is active set
     /// </summary>
@@ -137,6 +161,7 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// The user name
     /// </summary>
     private string _userName;
+
     /// <summary>
     /// The user name set
     /// </summary>
@@ -146,6 +171,7 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// The email address
     /// </summary>
     private string _emailAddress;
+
     /// <summary>
     /// The email address set
     /// </summary>
@@ -162,7 +188,8 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     [EntityElement("CODGRUPO")]
     public int Code
     {
-        get => _code; set
+        get => _code;
+        set
         {
             _code = value;
             _codeSet = true;
@@ -176,13 +203,13 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     [EntityElement("NOMEGRUPO")]
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
         }
     }
-
 
     /// <summary>
     /// Gets or sets the is active.
@@ -191,7 +218,8 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     [EntityIgnore]
     public bool IsActive
     {
-        get => _isActive; set
+        get => _isActive;
+        set
         {
             _isActive = value;
             _isActiveSet = true;
@@ -207,13 +235,13 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string IsActiveInternal
     {
-        get => _isActive.ToString(@"S", @"N"); set
+        get => _isActive.ToString(@"S", @"N");
+        set
         {
             _isActive = value.ToBoolean();
             _isActiveSet = true;
         }
     }
-
 
     /// <summary>
     /// Gets or sets the name of the user.
@@ -222,7 +250,8 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     [EntityElement("USER_NAME", true)]
     public string UserName
     {
-        get => _userName; set
+        get => _userName;
+        set
         {
             _userName = value;
             _userNameSet = true;
@@ -236,7 +265,8 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     [EntityElement("EMAIL")]
     public string EmailAddress
     {
-        get => _emailAddress; set
+        get => _emailAddress;
+        set
         {
             _emailAddress = value;
             _emailAddressSet = true;
@@ -253,9 +283,7 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCode() => _codeSet;
-
 
     /// <summary>
     /// Should the name of the serialize.
@@ -263,7 +291,6 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeName() => _nameSet;
 
     /// <summary>
@@ -272,9 +299,7 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeIsActive() => _isActiveSet;
-
 
     /// <summary>
     /// Should the name of the serialize user.
@@ -282,9 +307,7 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeUserName() => _userNameSet;
-
 
     /// <summary>
     /// Should the serialize email address.
@@ -292,9 +315,7 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeEmailAddress() => _emailAddressSet;
 
     #endregion
-
 }

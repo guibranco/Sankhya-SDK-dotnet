@@ -20,6 +20,7 @@ public sealed class ServiceRequest
     /// The service
     /// </summary>
     private ServiceName _service;
+
     /// <summary>
     /// The service set
     /// </summary>
@@ -29,6 +30,7 @@ public sealed class ServiceRequest
     /// The request body
     /// </summary>
     private RequestBody _requestBody;
+
     /// <summary>
     /// The request body set
     /// </summary>
@@ -46,7 +48,8 @@ public sealed class ServiceRequest
     [XmlIgnore]
     public ServiceName Service
     {
-        get => _service; set
+        get => _service;
+        set
         {
             _service = value;
             _serviceSet = true;
@@ -63,7 +66,8 @@ public sealed class ServiceRequest
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ServiceInternal
     {
-        get => _service.GetInternalValue(); set
+        get => _service.GetInternalValue();
+        set
         {
             _service = EnumExtensions.GetEnumByInternalValueAttribute<ServiceName>(value);
             _serviceSet = true;
@@ -78,7 +82,8 @@ public sealed class ServiceRequest
     [XmlElement("requestBody")]
     public RequestBody RequestBody
     {
-        get => _requestBody; set
+        get => _requestBody;
+        set
         {
             _requestBody = value;
             _requestBodySet = true;

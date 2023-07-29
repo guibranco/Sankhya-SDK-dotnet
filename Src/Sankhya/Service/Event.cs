@@ -29,11 +29,11 @@ public sealed class Event
     /// The code product
     /// </summary>
     private int _codeProduct;
+
     /// <summary>
     /// The code product set
     /// </summary>
     private bool _codeProductSet;
-
 
     #endregion
 
@@ -46,7 +46,8 @@ public sealed class Event
     [XmlAttribute(AttributeName = "codProd")]
     public int CodeProduct
     {
-        get => _codeProduct; set
+        get => _codeProduct;
+        set
         {
             _codeProduct = value;
             _codeProductSet = true;

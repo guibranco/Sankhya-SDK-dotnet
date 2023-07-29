@@ -28,6 +28,7 @@ public sealed class Warning
     /// The single number
     /// </summary>
     private int _singleNumber;
+
     /// <summary>
     /// The single number set
     /// </summary>
@@ -37,6 +38,7 @@ public sealed class Warning
     /// The message
     /// </summary>
     private string _message;
+
     /// <summary>
     /// The message set
     /// </summary>
@@ -53,7 +55,8 @@ public sealed class Warning
     [XmlAttribute(AttributeName = "nunota")]
     public int SingleNumber
     {
-        get => _singleNumber; set
+        get => _singleNumber;
+        set
         {
             _singleNumber = value;
             _singleNumberSet = true;
@@ -67,7 +70,8 @@ public sealed class Warning
     [XmlText]
     public string Message
     {
-        get => _message; set
+        get => _message;
+        set
         {
             _message = value;
             _messageSet = true;

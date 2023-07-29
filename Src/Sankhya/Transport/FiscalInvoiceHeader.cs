@@ -27,12 +27,21 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
             return false;
         }
 
-        return ReferenceEquals(this, other) || string.Equals(_invoiceKey, other._invoiceKey, StringComparison.InvariantCultureIgnoreCase) &&
-            _invoiceKeySet == other._invoiceKeySet && _invoiceNumber == other._invoiceNumber &&
-            _invoiceNumberSet == other._invoiceNumberSet && _operationType == other._operationType &&
-            _operationTypeSet == other._operationTypeSet && _singleNumber == other._singleNumber &&
-            _singleNumberSet == other._singleNumberSet && _status == other._status &&
-            _statusSet == other._statusSet;
+        return ReferenceEquals(this, other)
+            || string.Equals(
+                _invoiceKey,
+                other._invoiceKey,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+                && _invoiceKeySet == other._invoiceKeySet
+                && _invoiceNumber == other._invoiceNumber
+                && _invoiceNumberSet == other._invoiceNumberSet
+                && _operationType == other._operationType
+                && _operationTypeSet == other._operationTypeSet
+                && _singleNumber == other._singleNumber
+                && _singleNumberSet == other._singleNumberSet
+                && _status == other._status
+                && _statusSet == other._statusSet;
     }
 
     /// <summary>
@@ -66,7 +75,10 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     {
         unchecked
         {
-            var hashCode = _invoiceKey != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_invoiceKey) : 0;
+            var hashCode =
+                _invoiceKey != null
+                    ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_invoiceKey)
+                    : 0;
             hashCode = (hashCode * 397) ^ _invoiceKeySet.GetHashCode();
             hashCode = (hashCode * 397) ^ _invoiceNumber;
             hashCode = (hashCode * 397) ^ _invoiceNumberSet.GetHashCode();
@@ -86,7 +98,8 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator ==(FiscalInvoiceHeader left, FiscalInvoiceHeader right) => Equals(left, right);
+    public static bool operator ==(FiscalInvoiceHeader left, FiscalInvoiceHeader right) =>
+        Equals(left, right);
 
     /// <summary>
     /// Implements the !=.
@@ -94,7 +107,8 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator !=(FiscalInvoiceHeader left, FiscalInvoiceHeader right) => !Equals(left, right);
+    public static bool operator !=(FiscalInvoiceHeader left, FiscalInvoiceHeader right) =>
+        !Equals(left, right);
 
     #endregion
 
@@ -104,6 +118,7 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     /// The single number
     /// </summary>
     private int _singleNumber;
+
     /// <summary>
     /// The single number set
     /// </summary>
@@ -113,6 +128,7 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     /// The invoice number
     /// </summary>
     private int _invoiceNumber;
+
     /// <summary>
     /// The invoice number set
     /// </summary>
@@ -122,6 +138,7 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     /// The status
     /// </summary>
     private FiscalInvoiceStatus _status;
+
     /// <summary>
     /// The status set
     /// </summary>
@@ -131,6 +148,7 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     /// The operation type
     /// </summary>
     private int _operationType;
+
     /// <summary>
     /// The operation type set
     /// </summary>
@@ -140,6 +158,7 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     /// The invoice key
     /// </summary>
     private string _invoiceKey;
+
     /// <summary>
     /// The invoice key set
     /// </summary>
@@ -156,7 +175,8 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     [EntityElement("NUNOTA")]
     public int SingleNumber
     {
-        get => _singleNumber; set
+        get => _singleNumber;
+        set
         {
             _singleNumber = value;
             _singleNumberSet = true;
@@ -170,7 +190,8 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     [EntityElement("NUMNOTA")]
     public int InvoiceNumber
     {
-        get => _invoiceNumber; set
+        get => _invoiceNumber;
+        set
         {
             _invoiceNumber = value;
             _invoiceNumberSet = true;
@@ -184,7 +205,8 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     [EntityIgnore]
     public FiscalInvoiceStatus Status
     {
-        get => _status; set
+        get => _status;
+        set
         {
             _status = value;
             _statusSet = true;
@@ -200,7 +222,8 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string StatusInternal
     {
-        get => _status.GetInternalValue(); set
+        get => _status.GetInternalValue();
+        set
         {
             _status = string.IsNullOrWhiteSpace(value)
                 ? FiscalInvoiceStatus.NotNfe
@@ -209,7 +232,6 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
         }
     }
 
-
     /// <summary>
     /// Gets or sets the type of the operation.
     /// </summary>
@@ -217,7 +239,8 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     [EntityElement("CODTIPOPER")]
     public int OperationType
     {
-        get => _operationType; set
+        get => _operationType;
+        set
         {
             _operationType = value;
             _operationTypeSet = true;
@@ -231,7 +254,8 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     [EntityElement("CHAVENFE")]
     public string InvoiceKey
     {
-        get => _invoiceKey; set
+        get => _invoiceKey;
+        set
         {
             _invoiceKey = value;
             _invoiceKeySet = true;
@@ -257,7 +281,7 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoiceNumber() => _invoiceNumberSet;
-    
+
     /// <summary>
     /// Should the serialize status.
     /// </summary>
@@ -283,5 +307,4 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     public bool ShouldSerializeInvoiceKey() => _invoiceKeySet;
 
     #endregion
-
 }

@@ -1,5 +1,4 @@
-﻿
-//
+﻿//
 
 namespace Sankhya.Transport;
 
@@ -26,42 +25,80 @@ public class Product : IEntity, IEquatable<Product>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _code == other._code && _codeSet == other._codeSet && _isActive == other._isActive &&
-            _isActiveSet == other._isActiveSet &&
-            string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase) &&
-            _nameSet == other._nameSet &&
-            string.Equals(_complement, other._complement, StringComparison.InvariantCultureIgnoreCase) &&
-            _complementSet == other._complementSet &&
-            string.Equals(_description, other._description, StringComparison.InvariantCultureIgnoreCase) &&
-            _descriptionSet == other._descriptionSet &&
-            string.Equals(_codeVolume, other._codeVolume, StringComparison.InvariantCultureIgnoreCase) &&
-            _codeVolumeSet == other._codeVolumeSet &&
-            string.Equals(
-                _codeVolumeComponent,
-                other._codeVolumeComponent,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _codeVolumeComponentSet == other._codeVolumeComponentSet && _codeGroup == other._codeGroup &&
-            _codeGroupSet == other._codeGroupSet &&
-            _netWeight == other._netWeight &&_netWeightSet == other._netWeightSet 
-            && _grossWeight == other._grossWeight && _grossWeightSet == other._grossWeightSet &&
-            _quantity == other._quantity && _quantitySet == other._quantitySet &&
-            string.Equals(_brand, other._brand, StringComparison.InvariantCultureIgnoreCase) &&
-            _brandSet == other._brandSet &&
-            string.Equals(_reference, other._reference, StringComparison.InvariantCultureIgnoreCase) &&
-            _referenceSet == other._referenceSet && _width == other._width && _widthSet == other._widthSet &&
-            _height == other._height && _heightSet == other._heightSet && _length == other._length &&
-            _lengthSet == other._lengthSet && _source == other._source && _sourceSet == other._sourceSet &&
-            _isSaleAllowedOutsideKit == other._isSaleAllowedOutsideKit &&
-            _isSaleAllowedOutsideKitSet == other._isSaleAllowedOutsideKitSet &&
-            string.Equals(_ncm, other._ncm, StringComparison.InvariantCultureIgnoreCase) &&
-            _ncmSet == other._ncmSet && _use == other._use && _useSet == other._useSet &&
-            Equals(_productFather, other._productFather) && _productFatherSet == other._productFatherSet &&
-            Equals(_productReplacement, other._productReplacement) &&
-            _productReplacementSet == other._productReplacementSet && Equals(_cost, other._cost) &&
-            _costSet == other._costSet && Equals(Components, other.Components) &&
-            Equals(AlternativeImages, other.AlternativeImages) && Equals(Suggestions, other.Suggestions) &&
-            Equals(CodesBars, other.CodesBars) && Equals(Image, other.Image);
+        return ReferenceEquals(this, other)
+            || _code == other._code
+                && _codeSet == other._codeSet
+                && _isActive == other._isActive
+                && _isActiveSet == other._isActiveSet
+                && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+                && _nameSet == other._nameSet
+                && string.Equals(
+                    _complement,
+                    other._complement,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _complementSet == other._complementSet
+                && string.Equals(
+                    _description,
+                    other._description,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _descriptionSet == other._descriptionSet
+                && string.Equals(
+                    _codeVolume,
+                    other._codeVolume,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _codeVolumeSet == other._codeVolumeSet
+                && string.Equals(
+                    _codeVolumeComponent,
+                    other._codeVolumeComponent,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _codeVolumeComponentSet == other._codeVolumeComponentSet
+                && _codeGroup == other._codeGroup
+                && _codeGroupSet == other._codeGroupSet
+                && _netWeight == other._netWeight
+                && _netWeightSet == other._netWeightSet
+                && _grossWeight == other._grossWeight
+                && _grossWeightSet == other._grossWeightSet
+                && _quantity == other._quantity
+                && _quantitySet == other._quantitySet
+                && string.Equals(_brand, other._brand, StringComparison.InvariantCultureIgnoreCase)
+                && _brandSet == other._brandSet
+                && string.Equals(
+                    _reference,
+                    other._reference,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _referenceSet == other._referenceSet
+                && _width == other._width
+                && _widthSet == other._widthSet
+                && _height == other._height
+                && _heightSet == other._heightSet
+                && _length == other._length
+                && _lengthSet == other._lengthSet
+                && _source == other._source
+                && _sourceSet == other._sourceSet
+                && _isSaleAllowedOutsideKit == other._isSaleAllowedOutsideKit
+                && _isSaleAllowedOutsideKitSet == other._isSaleAllowedOutsideKitSet
+                && string.Equals(_ncm, other._ncm, StringComparison.InvariantCultureIgnoreCase)
+                && _ncmSet == other._ncmSet
+                && _use == other._use
+                && _useSet == other._useSet
+                && Equals(_productFather, other._productFather)
+                && _productFatherSet == other._productFatherSet
+                && Equals(_productReplacement, other._productReplacement)
+                && _productReplacementSet == other._productReplacementSet
+                && Equals(_cost, other._cost)
+                && _costSet == other._costSet
+                && Equals(Components, other.Components)
+                && Equals(AlternativeImages, other.AlternativeImages)
+                && Equals(Suggestions, other.Suggestions)
+                && Equals(CodesBars, other.CodesBars)
+                && Equals(Image, other.Image);
     }
+
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -80,25 +117,45 @@ public class Product : IEntity, IEquatable<Product>
             hashCode = (hashCode * 397) ^ _codeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _isActive.GetHashCode();
             hashCode = (hashCode * 397) ^ _isActiveSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_name != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _name != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name) : 0
+                );
             hashCode = (hashCode * 397) ^ _nameSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_complement != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_complement)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _complement != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_complement)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _complementSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_description != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_description)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _description != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_description)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _descriptionSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_codeVolume != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_codeVolume)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _codeVolume != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_codeVolume)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _codeVolumeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_codeVolumeComponent != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_codeVolumeComponent)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _codeVolumeComponent != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
+                            _codeVolumeComponent
+                        )
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _codeVolumeComponentSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeGroup;
             hashCode = (hashCode * 397) ^ _codeGroupSet.GetHashCode();
@@ -108,13 +165,21 @@ public class Product : IEntity, IEquatable<Product>
             hashCode = (hashCode * 397) ^ _grossWeightSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _quantity.GetHashCode();
             hashCode = (hashCode * 397) ^ _quantitySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_brand != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_brand)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _brand != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_brand)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _brandSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_reference != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_reference)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _reference != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_reference)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _referenceSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _width.GetHashCode();
             hashCode = (hashCode * 397) ^ _widthSet.GetHashCode();
@@ -126,39 +191,28 @@ public class Product : IEntity, IEquatable<Product>
             hashCode = (hashCode * 397) ^ _sourceSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _isSaleAllowedOutsideKit.GetHashCode();
             hashCode = (hashCode * 397) ^ _isSaleAllowedOutsideKitSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_ncm != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_ncm)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (_ncm != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_ncm) : 0);
             hashCode = (hashCode * 397) ^ _ncmSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (int)_use;
             hashCode = (hashCode * 397) ^ _useSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_productFather != null
-                ? _productFather.GetHashCode()
-                : 0);
+            hashCode =
+                (hashCode * 397) ^ (_productFather != null ? _productFather.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _productFatherSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_productReplacement != null
-                ? _productReplacement.GetHashCode()
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (_productReplacement != null ? _productReplacement.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _productReplacementSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_cost != null
-                ? _cost.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (_cost != null ? _cost.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _costSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (Components != null
-                ? Components.GetHashCode()
-                : 0);
-            hashCode = (hashCode * 397) ^ (AlternativeImages != null
-                ? AlternativeImages.GetHashCode()
-                : 0);
-            hashCode = (hashCode * 397) ^ (Suggestions != null
-                ? Suggestions.GetHashCode()
-                : 0);
-            hashCode = (hashCode * 397) ^ (CodesBars != null
-                ? CodesBars.GetHashCode()
-                : 0);
-            hashCode = (hashCode * 397) ^ (Image != null
-                ? Image.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (Components != null ? Components.GetHashCode() : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (AlternativeImages != null ? AlternativeImages.GetHashCode() : 0);
+            hashCode = (hashCode * 397) ^ (Suggestions != null ? Suggestions.GetHashCode() : 0);
+            hashCode = (hashCode * 397) ^ (CodesBars != null ? CodesBars.GetHashCode() : 0);
+            hashCode = (hashCode * 397) ^ (Image != null ? Image.GetHashCode() : 0);
             return hashCode;
         }
     }
@@ -175,6 +229,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The code
     /// </summary>
     private int _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -184,6 +239,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The is active
     /// </summary>
     private bool _isActive;
+
     /// <summary>
     /// The is active set
     /// </summary>
@@ -193,6 +249,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -202,6 +259,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The complement
     /// </summary>
     private string _complement;
+
     /// <summary>
     /// The complement set
     /// </summary>
@@ -211,6 +269,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The description
     /// </summary>
     private string _description;
+
     /// <summary>
     /// The description set
     /// </summary>
@@ -220,6 +279,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The code volume
     /// </summary>
     private string _codeVolume;
+
     /// <summary>
     /// The code volume set
     /// </summary>
@@ -229,6 +289,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The code volume component
     /// </summary>
     private string _codeVolumeComponent;
+
     /// <summary>
     /// The code volume component set
     /// </summary>
@@ -238,6 +299,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The code group
     /// </summary>
     private int _codeGroup;
+
     /// <summary>
     /// The code group set
     /// </summary>
@@ -247,6 +309,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The net weight
     /// </summary>
     private decimal _netWeight;
+
     /// <summary>
     /// The net weight set
     /// </summary>
@@ -256,6 +319,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The gross weight
     /// </summary>
     private decimal _grossWeight;
+
     /// <summary>
     /// The gross weight set
     /// </summary>
@@ -265,6 +329,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The quantity
     /// </summary>
     private decimal _quantity;
+
     /// <summary>
     /// The quantity set
     /// </summary>
@@ -274,6 +339,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The brand
     /// </summary>
     private string _brand;
+
     /// <summary>
     /// The brand set
     /// </summary>
@@ -283,6 +349,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The reference
     /// </summary>
     private string _reference;
+
     /// <summary>
     /// The reference set
     /// </summary>
@@ -292,6 +359,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The width
     /// </summary>
     private decimal _width;
+
     /// <summary>
     /// The width set
     /// </summary>
@@ -301,6 +369,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The height
     /// </summary>
     private decimal _height;
+
     /// <summary>
     /// The height set
     /// </summary>
@@ -310,6 +379,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The length
     /// </summary>
     private decimal _length;
+
     /// <summary>
     /// The length set
     /// </summary>
@@ -319,6 +389,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The source
     /// </summary>
     private ProductSource _source;
+
     /// <summary>
     /// The source set
     /// </summary>
@@ -328,6 +399,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The is sale allowed outside kit
     /// </summary>
     private bool _isSaleAllowedOutsideKit;
+
     /// <summary>
     /// The is sale allowed outside kit set
     /// </summary>
@@ -337,6 +409,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The NCM
     /// </summary>
     private string _ncm;
+
     /// <summary>
     /// The NCM set
     /// </summary>
@@ -346,6 +419,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The use
     /// </summary>
     private ProductUse _use;
+
     /// <summary>
     /// The use set
     /// </summary>
@@ -355,6 +429,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The product father
     /// </summary>
     private Product _productFather;
+
     /// <summary>
     /// The product father set
     /// </summary>
@@ -364,6 +439,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The product replacement
     /// </summary>
     private Product _productReplacement;
+
     /// <summary>
     /// The product replacement set
     /// </summary>
@@ -373,6 +449,7 @@ public class Product : IEntity, IEquatable<Product>
     /// The cost
     /// </summary>
     private ProductCost _cost;
+
     /// <summary>
     /// The cost set
     /// </summary>
@@ -390,7 +467,8 @@ public class Product : IEntity, IEquatable<Product>
     [EntityElement("CODPROD")]
     public int Code
     {
-        get => _code; set
+        get => _code;
+        set
         {
             _code = value;
             _codeSet = true;
@@ -404,7 +482,6 @@ public class Product : IEntity, IEquatable<Product>
     [EntityIgnore]
     public bool IsActive
     {
-
         get => _isActive;
         set
         {
@@ -420,10 +497,10 @@ public class Product : IEntity, IEquatable<Product>
     [EntityElement("ATIVO")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string IsActiveInternal
     {
-        get => _isActive.ToString(@"S", @"N"); set
+        get => _isActive.ToString(@"S", @"N");
+        set
         {
             _isActive = value.ToBoolean();
             _isActiveSet = true;
@@ -444,7 +521,6 @@ public class Product : IEntity, IEquatable<Product>
             _name = value;
             _nameSet = true;
         }
-
     }
 
     /// <summary>
@@ -487,7 +563,8 @@ public class Product : IEntity, IEquatable<Product>
     [Localizable(false)]
     public string CodeVolume
     {
-        get => _codeVolume; set
+        get => _codeVolume;
+        set
         {
             _codeVolume = value;
             _codeVolumeSet = true;
@@ -501,7 +578,6 @@ public class Product : IEntity, IEquatable<Product>
     [EntityIgnore]
     public string CodeVolumeComponent
     {
-
         get => _codeVolumeComponent;
         set
         {
@@ -518,14 +594,13 @@ public class Product : IEntity, IEquatable<Product>
     public int CodeGroup
     {
         get => _codeGroup;
-
         set
         {
             _codeGroup = value;
             _codeGroupSet = true;
         }
     }
-    
+
     /// <summary>
     /// Gets or sets the net weight.
     /// </summary>
@@ -533,7 +608,8 @@ public class Product : IEntity, IEquatable<Product>
     [EntityElement("PESOLIQ")]
     public decimal NetWeight
     {
-        get => _netWeight; set
+        get => _netWeight;
+        set
         {
             _netWeight = value;
             _netWeightSet = true;
@@ -547,7 +623,8 @@ public class Product : IEntity, IEquatable<Product>
     [EntityElement("PESOBRUTO")]
     public decimal GrossWeight
     {
-        get => _grossWeight; set
+        get => _grossWeight;
+        set
         {
             _grossWeight = value;
             _grossWeightSet = true;
@@ -561,13 +638,14 @@ public class Product : IEntity, IEquatable<Product>
     [EntityIgnore]
     public decimal Quantity
     {
-        get => _quantity; set
+        get => _quantity;
+        set
         {
             _quantity = value;
             _quantitySet = true;
         }
     }
-    
+
     /// <summary>
     /// Gets or sets the brand.
     /// </summary>
@@ -576,7 +654,6 @@ public class Product : IEntity, IEquatable<Product>
     public string Brand
     {
         get => _brand;
-
         set
         {
             _brand = value;
@@ -592,7 +669,6 @@ public class Product : IEntity, IEquatable<Product>
     public string Reference
     {
         get => _reference;
-
         set
         {
             _reference = value;
@@ -608,7 +684,6 @@ public class Product : IEntity, IEquatable<Product>
     public ProductSource Source
     {
         get => _source;
-
         set
         {
             _source = value;
@@ -623,10 +698,10 @@ public class Product : IEntity, IEquatable<Product>
     [EntityElement("ORIGPROD")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string SourceInternal
     {
-        get => _source.GetInternalValue(); set
+        get => _source.GetInternalValue();
+        set
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -643,7 +718,6 @@ public class Product : IEntity, IEquatable<Product>
     /// </summary>
     /// <value>The is sale allowed outside kit.</value>
     [EntityIgnore]
-
     public bool IsSaleAllowedOutsideKit
     {
         get => _isSaleAllowedOutsideKit;
@@ -661,10 +735,10 @@ public class Product : IEntity, IEquatable<Product>
     [EntityElement("VENCOMPINDIV")]
     [Browsable(true)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string IsSaleAllowedOutsideKitInternal
     {
-        get => _isSaleAllowedOutsideKit.ToString(); set
+        get => _isSaleAllowedOutsideKit.ToString();
+        set
         {
             if (!string.IsNullOrWhiteSpace(value))
             {
@@ -680,11 +754,9 @@ public class Product : IEntity, IEquatable<Product>
     /// </summary>
     /// <value>The width.</value>
     [EntityElement("LARGURA")]
-
     public decimal Width
     {
         get => _width;
-
         set
         {
             _width = value;
@@ -697,11 +769,9 @@ public class Product : IEntity, IEquatable<Product>
     /// </summary>
     /// <value>The height.</value>
     [EntityElement("ALTURA")]
-
     public decimal Height
     {
         get => _height;
-
         set
         {
             _height = value;
@@ -714,11 +784,9 @@ public class Product : IEntity, IEquatable<Product>
     /// </summary>
     /// <value>The length.</value>
     [EntityElement("ESPESSURA")]
-
     public decimal Length
     {
         get => _length;
-
         set
         {
             _length = value;
@@ -731,11 +799,9 @@ public class Product : IEntity, IEquatable<Product>
     /// </summary>
     /// <value>The NCM.</value>
     [EntityElement("NCM")]
-
     public string NCM
     {
         get => _ncm;
-
         set
         {
             _ncm = value;
@@ -753,7 +819,6 @@ public class Product : IEntity, IEquatable<Product>
     public ProductUse Use
     {
         get => _use;
-
         set
         {
             _use = value;
@@ -770,7 +835,6 @@ public class Product : IEntity, IEquatable<Product>
     [EntityElement("USOPROD")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string UseInternal
     {
         get => _use.GetInternalValue();
@@ -786,11 +850,9 @@ public class Product : IEntity, IEquatable<Product>
     /// </summary>
     /// <value>The product father.</value>
     [EntityReference("Produto_AD001")]
-
     public Product ProductFather
     {
         get => _productFather;
-
         set
         {
             _productFather = value;
@@ -805,7 +867,6 @@ public class Product : IEntity, IEquatable<Product>
     /// The product replacement.
     /// </value>
     [EntityReference("Produto_AD002")]
-
     public Product ProductReplacement
     {
         get => _productReplacement;
@@ -816,7 +877,6 @@ public class Product : IEntity, IEquatable<Product>
         }
     }
 
-
     /// <summary>
     /// Gets or sets the cost.
     /// </summary>
@@ -824,7 +884,8 @@ public class Product : IEntity, IEquatable<Product>
     [EntityIgnore]
     public ProductCost Cost
     {
-        get => _cost; set
+        get => _cost;
+        set
         {
             _cost = value;
             _costSet = true;
@@ -952,7 +1013,7 @@ public class Product : IEntity, IEquatable<Product>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeQuantity() => _quantitySet;
-    
+
     /// <summary>
     /// Should the serialize brand.
     /// </summary>
@@ -969,7 +1030,6 @@ public class Product : IEntity, IEquatable<Product>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeReference() => _referenceSet;
 
-
     /// <summary>
     /// Should the serialize source.
     /// </summary>
@@ -985,7 +1045,6 @@ public class Product : IEntity, IEquatable<Product>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeIsSaleAllowedOutsideKit() => _isSaleAllowedOutsideKitSet;
-
 
     /// <summary>
     /// Should the width of the serialize.
@@ -1027,7 +1086,6 @@ public class Product : IEntity, IEquatable<Product>
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeUse() => _useSet;
 
     /// <summary>
@@ -1046,7 +1104,6 @@ public class Product : IEntity, IEquatable<Product>
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeProductReplacement() => _productReplacementSet;
 
     /// <summary>

@@ -28,19 +28,37 @@ public class Financial : IEntity, IEquatable<Financial>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _singleNumber == other._singleNumber && _singleNumberSet == other._singleNumberSet &&
-            _singleNumberInvoice == other._singleNumberInvoice &&
-            _singleNumberInvoiceSet == other._singleNumberInvoiceSet &&
-            _invoiceNumber == other._invoiceNumber && _invoiceNumberSet == other._invoiceNumberSet &&
-            _dateLow.Equals(other._dateLow) && _dateLowSet == other._dateLowSet &&
-            _dateChanged.Equals(other._dateChanged) && _dateChangedSet == other._dateChangedSet &&
-            string.Equals(_barCode, other._barCode, StringComparison.InvariantCultureIgnoreCase) &&
-            _barCodeSet == other._barCodeSet &&
-            string.Equals(_typefulLine, other._typefulLine, StringComparison.InvariantCultureIgnoreCase) &&
-            _typefulLineSet == other._typefulLineSet &&
-            string.Equals(_ourNumber, other._ourNumber, StringComparison.InvariantCultureIgnoreCase) &&
-            _ourNumberSet == other._ourNumberSet && _codeResultCenter == other._codeResultCenter &&
-            _codeResultCenterSet == other._codeResultCenterSet;
+        return ReferenceEquals(this, other)
+            || _singleNumber == other._singleNumber
+                && _singleNumberSet == other._singleNumberSet
+                && _singleNumberInvoice == other._singleNumberInvoice
+                && _singleNumberInvoiceSet == other._singleNumberInvoiceSet
+                && _invoiceNumber == other._invoiceNumber
+                && _invoiceNumberSet == other._invoiceNumberSet
+                && _dateLow.Equals(other._dateLow)
+                && _dateLowSet == other._dateLowSet
+                && _dateChanged.Equals(other._dateChanged)
+                && _dateChangedSet == other._dateChangedSet
+                && string.Equals(
+                    _barCode,
+                    other._barCode,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _barCodeSet == other._barCodeSet
+                && string.Equals(
+                    _typefulLine,
+                    other._typefulLine,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _typefulLineSet == other._typefulLineSet
+                && string.Equals(
+                    _ourNumber,
+                    other._ourNumber,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _ourNumberSet == other._ourNumberSet
+                && _codeResultCenter == other._codeResultCenter
+                && _codeResultCenterSet == other._codeResultCenterSet;
     }
 
     /// <summary>
@@ -76,11 +94,29 @@ public class Financial : IEntity, IEquatable<Financial>
             hashCode = (hashCode * 397) ^ _dateLowSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateChanged.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateChangedSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_barCode != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_barCode) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _barCode != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_barCode)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _barCodeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_typefulLine != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_typefulLine) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _typefulLine != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_typefulLine)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _typefulLineSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_ourNumber != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_ourNumber) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _ourNumber != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_ourNumber)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _ourNumberSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeResultCenter;
             hashCode = (hashCode * 397) ^ _codeResultCenterSet.GetHashCode();
@@ -112,6 +148,7 @@ public class Financial : IEntity, IEquatable<Financial>
     /// The single number
     /// </summary>
     private int _singleNumber;
+
     /// <summary>
     /// The single number set
     /// </summary>
@@ -121,6 +158,7 @@ public class Financial : IEntity, IEquatable<Financial>
     /// The single number invoice
     /// </summary>
     private int _singleNumberInvoice;
+
     /// <summary>
     /// The single number invoice set
     /// </summary>
@@ -130,6 +168,7 @@ public class Financial : IEntity, IEquatable<Financial>
     /// The invoice number
     /// </summary>
     private int _invoiceNumber;
+
     /// <summary>
     /// The invoice number set
     /// </summary>
@@ -139,6 +178,7 @@ public class Financial : IEntity, IEquatable<Financial>
     /// The date low
     /// </summary>
     private DateTime? _dateLow;
+
     /// <summary>
     /// The date low set
     /// </summary>
@@ -148,6 +188,7 @@ public class Financial : IEntity, IEquatable<Financial>
     /// The date changed
     /// </summary>
     private DateTime _dateChanged;
+
     /// <summary>
     /// The date changed set
     /// </summary>
@@ -157,6 +198,7 @@ public class Financial : IEntity, IEquatable<Financial>
     /// The bar code
     /// </summary>
     private string _barCode;
+
     /// <summary>
     /// The bar code set
     /// </summary>
@@ -166,6 +208,7 @@ public class Financial : IEntity, IEquatable<Financial>
     /// The typeful line
     /// </summary>
     private string _typefulLine;
+
     /// <summary>
     /// The typeful line set
     /// </summary>
@@ -175,6 +218,7 @@ public class Financial : IEntity, IEquatable<Financial>
     /// Our number
     /// </summary>
     private string _ourNumber;
+
     /// <summary>
     /// Our number set
     /// </summary>
@@ -184,6 +228,7 @@ public class Financial : IEntity, IEquatable<Financial>
     /// The code result center
     /// </summary>
     private int _codeResultCenter;
+
     /// <summary>
     /// The code result center set
     /// </summary>
@@ -201,7 +246,8 @@ public class Financial : IEntity, IEquatable<Financial>
     [EntityKey]
     public int SingleNumber
     {
-        get => _singleNumber; set
+        get => _singleNumber;
+        set
         {
             _singleNumber = value;
             _singleNumberSet = true;
@@ -215,7 +261,6 @@ public class Financial : IEntity, IEquatable<Financial>
     [EntityElement("NUNOTA")]
     public int SingleNumberInvoice
     {
-
         get => _singleNumberInvoice;
         set
         {
@@ -231,7 +276,6 @@ public class Financial : IEntity, IEquatable<Financial>
     [EntityElement("NUMNOTA")]
     public int InvoiceNumber
     {
-
         get => _invoiceNumber;
         set
         {
@@ -248,7 +292,6 @@ public class Financial : IEntity, IEquatable<Financial>
     public DateTime? DateLow
     {
         get => _dateLow;
-
         set
         {
             _dateLow = value;
@@ -278,12 +321,21 @@ public class Financial : IEntity, IEquatable<Financial>
             {
                 _dateLow = date;
             }
-            else if (DateTime.TryParseExact(value, @"dd/MM/yyyy HH:mm:ss", culture, DateTimeStyles.None, out date))
+            else if (
+                DateTime.TryParseExact(
+                    value,
+                    @"dd/MM/yyyy HH:mm:ss",
+                    culture,
+                    DateTimeStyles.None,
+                    out date
+                )
+            )
             {
                 _dateLow = date;
             }
-            else if (DateTime.TryParseExact(value, @"dd/MM/yyyy", culture,
-                         DateTimeStyles.None, out date))
+            else if (
+                DateTime.TryParseExact(value, @"dd/MM/yyyy", culture, DateTimeStyles.None, out date)
+            )
             {
                 _dateLow = date;
             }
@@ -302,7 +354,6 @@ public class Financial : IEntity, IEquatable<Financial>
     public DateTime DateChanged
     {
         get => _dateChanged;
-
         set
         {
             _dateChanged = value;
@@ -317,7 +368,6 @@ public class Financial : IEntity, IEquatable<Financial>
     [EntityElement("CODIGOBARRA")]
     public string BarCode
     {
-
         get => _barCode;
         set
         {
@@ -333,7 +383,6 @@ public class Financial : IEntity, IEquatable<Financial>
     [EntityElement("LINHADIGITAVEL")]
     public string TypefulLine
     {
-
         get => _typefulLine;
         set
         {
@@ -349,7 +398,6 @@ public class Financial : IEntity, IEquatable<Financial>
     [EntityElement("NOSSONUM")]
     public string OurNumber
     {
-
         get => _ourNumber;
         set
         {
@@ -365,7 +413,6 @@ public class Financial : IEntity, IEquatable<Financial>
     [EntityElement("CODCENCUS")]
     public int CodeResultCenter
     {
-
         get => _codeResultCenter;
         set
         {
@@ -451,5 +498,4 @@ public class Financial : IEntity, IEquatable<Financial>
     public bool ShouldSerializeCodeResultCenter() => _codeResultCenterSet;
 
     #endregion
-
 }

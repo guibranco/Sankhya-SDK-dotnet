@@ -27,10 +27,12 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// The session token.
     /// </summary>
-    private static readonly Guid _sessionToken = _context.AcquireNewSession(ServiceRequestType.SimpleCrud);
+    private static readonly Guid _sessionToken = _context.AcquireNewSession(
+        ServiceRequestType.SimpleCrud
+    );
 
     #endregion
-        
+
     #region Retrieve Methods
 
     /// <summary>
@@ -40,7 +42,8 @@ public static class SimpleCrudRequestWrapper
     /// <param name="entity">The entity.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
-    private static T CanFindInternal<T>(T entity) where T : class, IEntity, new()
+    private static T CanFindInternal<T>(T entity)
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity);
@@ -52,7 +55,11 @@ public static class SimpleCrudRequestWrapper
 
         if (response.Entities.Length > 1)
         {
-            throw new ServiceRequestTooManyResultsException(request, response, response.Entities.Length);
+            throw new ServiceRequestTooManyResultsException(
+                request,
+                response,
+                response.Entities.Length
+            );
         }
 
         return response.Entities?.Single().ConvertToType<T>();
@@ -66,18 +73,23 @@ public static class SimpleCrudRequestWrapper
     /// <param name="options">The options.</param>
     /// <returns></returns>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
-    private static T CanFindInternal<T>(T entity, EntityQueryOptions options) where T : class, IEntity, new()
+    private static T CanFindInternal<T>(T entity, EntityQueryOptions options)
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity);
         if (options.IncludePresentationFields.HasValue)
         {
-            request.RequestBody.DataSet.IncludePresentationFields = options.IncludePresentationFields.Value;
+            request.RequestBody.DataSet.IncludePresentationFields = options
+                .IncludePresentationFields
+                .Value;
         }
 
         if (options.IncludeReferences.HasValue && !options.IncludeReferences.Value)
         {
-            request.RequestBody.DataSet.Entities = request.RequestBody.DataSet.Entities.Where(e => string.IsNullOrWhiteSpace(e.Path)).ToArray();
+            request.RequestBody.DataSet.Entities = request.RequestBody.DataSet.Entities
+                .Where(e => string.IsNullOrWhiteSpace(e.Path))
+                .ToArray();
         }
 
         var response = _context.ServiceInvoker(request, _sessionToken);
@@ -88,7 +100,11 @@ public static class SimpleCrudRequestWrapper
 
         if (response.Entities.Length > 1)
         {
-            throw new ServiceRequestTooManyResultsException(request, response, response.Entities.Length);
+            throw new ServiceRequestTooManyResultsException(
+                request,
+                response,
+                response.Entities.Length
+            );
         }
 
         return response.Entities?.Single().ConvertToType<T>();
@@ -101,32 +117,31 @@ public static class SimpleCrudRequestWrapper
     /// <param name="entity">The entity.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
-    private static async Task<T> CanFindInternalAsync<T>(T entity) where T : class, IEntity, new()
+    private static async Task<T> CanFindInternalAsync<T>(T entity)
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity);
         return await _context
             .ServiceInvokerAsync(request, _sessionToken)
-            .ContinueWith(
-                t =>
+            .ContinueWith(t =>
+            {
+                if (t.Result.Entities == null || t.Result.Entities.Length == 0)
                 {
-                    if (t.Result.Entities == null ||
-                        t.Result.Entities.Length == 0)
-                    {
-                        return null;
-                    }
+                    return null;
+                }
 
-                    if (t.Result.Entities.Length > 1)
-                    {
-                        throw new ServiceRequestTooManyResultsException(
-                            request,
-                            t.Result,
-                            t.Result.Entities
-                                .Length);
-                    }
+                if (t.Result.Entities.Length > 1)
+                {
+                    throw new ServiceRequestTooManyResultsException(
+                        request,
+                        t.Result,
+                        t.Result.Entities.Length
+                    );
+                }
 
-                    return t.Result.Entities.Single().ConvertToType<T>();
-                })
+                return t.Result.Entities.Single().ConvertToType<T>();
+            })
             .ConfigureAwait(false);
     }
 
@@ -137,7 +152,8 @@ public static class SimpleCrudRequestWrapper
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
-    private static T CanFindInternal<T>(ILiteralCriteria criteria) where T : class, IEntity, new()
+    private static T CanFindInternal<T>(ILiteralCriteria criteria)
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
@@ -149,7 +165,11 @@ public static class SimpleCrudRequestWrapper
 
         if (response.Entities.Length > 1)
         {
-            throw new ServiceRequestTooManyResultsException(request, response, response.Entities.Length);
+            throw new ServiceRequestTooManyResultsException(
+                request,
+                response,
+                response.Entities.Length
+            );
         }
 
         return response.Entities?.Single().ConvertToType<T>();
@@ -162,32 +182,31 @@ public static class SimpleCrudRequestWrapper
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
-    private static async Task<T> CanFindInternalAsync<T>(ILiteralCriteria criteria) where T : class, IEntity, new()
+    private static async Task<T> CanFindInternalAsync<T>(ILiteralCriteria criteria)
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
         return await _context
             .ServiceInvokerAsync(request, _sessionToken)
-            .ContinueWith(
-                t =>
+            .ContinueWith(t =>
+            {
+                if (t.Result.Entities == null || t.Result.Entities.Length == 0)
                 {
-                    if (t.Result.Entities == null ||
-                        t.Result.Entities.Length == 0)
-                    {
-                        return null;
-                    }
+                    return null;
+                }
 
-                    if (t.Result.Entities.Length > 1)
-                    {
-                        throw new ServiceRequestTooManyResultsException(
-                            request,
-                            t.Result,
-                            t.Result.Entities
-                                .Length);
-                    }
+                if (t.Result.Entities.Length > 1)
+                {
+                    throw new ServiceRequestTooManyResultsException(
+                        request,
+                        t.Result,
+                        t.Result.Entities.Length
+                    );
+                }
 
-                    return t.Result.Entities.Single().ConvertToType<T>();
-                })
+                return t.Result.Entities.Single().ConvertToType<T>();
+            })
             .ConfigureAwait(false);
     }
 
@@ -200,7 +219,8 @@ public static class SimpleCrudRequestWrapper
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
-    private static T MustFindInternal<T>(T entity, EntityQueryOptions options) where T : class, IEntity, new()
+    private static T MustFindInternal<T>(T entity, EntityQueryOptions options)
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         if (options != null)
@@ -220,7 +240,11 @@ public static class SimpleCrudRequestWrapper
 
         if (response.Entities.Length > 1)
         {
-            throw new ServiceRequestTooManyResultsException(request, response, response.Entities.Length);
+            throw new ServiceRequestTooManyResultsException(
+                request,
+                response,
+                response.Entities.Length
+            );
         }
 
         return response.Entities?.Single().ConvertToType<T>();
@@ -234,32 +258,31 @@ public static class SimpleCrudRequestWrapper
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
-    private static async Task<T> MustFindInternalAsync<T>(T entity) where T : class, IEntity, new()
+    private static async Task<T> MustFindInternalAsync<T>(T entity)
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity);
         return await _context
             .ServiceInvokerAsync(request, _sessionToken)
-            .ContinueWith(
-                t =>
+            .ContinueWith(t =>
+            {
+                if (t.Result.Entities == null || t.Result.Entities.Length == 0)
                 {
-                    if (t.Result.Entities == null ||
-                        t.Result.Entities.Length == 0)
-                    {
-                        throw new ServiceRequestUnexpectedResultException(request, t.Result);
-                    }
+                    throw new ServiceRequestUnexpectedResultException(request, t.Result);
+                }
 
-                    if (t.Result.Entities.Length > 1)
-                    {
-                        throw new ServiceRequestTooManyResultsException(
-                            request,
-                            t.Result,
-                            t.Result.Entities
-                                .Length);
-                    }
+                if (t.Result.Entities.Length > 1)
+                {
+                    throw new ServiceRequestTooManyResultsException(
+                        request,
+                        t.Result,
+                        t.Result.Entities.Length
+                    );
+                }
 
-                    return t.Result.Entities.Single().ConvertToType<T>();
-                })
+                return t.Result.Entities.Single().ConvertToType<T>();
+            })
             .ConfigureAwait(false);
     }
 
@@ -271,7 +294,8 @@ public static class SimpleCrudRequestWrapper
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
-    private static T MustFindInternal<T>(ILiteralCriteria criteria) where T : class, IEntity, new()
+    private static T MustFindInternal<T>(ILiteralCriteria criteria)
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
@@ -283,7 +307,11 @@ public static class SimpleCrudRequestWrapper
 
         if (response.Entities.Length > 1)
         {
-            throw new ServiceRequestTooManyResultsException(request, response, response.Entities.Length);
+            throw new ServiceRequestTooManyResultsException(
+                request,
+                response,
+                response.Entities.Length
+            );
         }
 
         return response.Entities?.Single().ConvertToType<T>();
@@ -297,32 +325,31 @@ public static class SimpleCrudRequestWrapper
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
-    private static async Task<T> MustFindInternalAsync<T>(ILiteralCriteria criteria) where T : class, IEntity, new()
+    private static async Task<T> MustFindInternalAsync<T>(ILiteralCriteria criteria)
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
         return await _context
             .ServiceInvokerAsync(request, _sessionToken)
-            .ContinueWith(
-                t =>
+            .ContinueWith(t =>
+            {
+                if (t.Result.Entities == null || t.Result.Entities.Length == 0)
                 {
-                    if (t.Result.Entities == null ||
-                        t.Result.Entities.Length == 0)
-                    {
-                        throw new ServiceRequestUnexpectedResultException(request, t.Result);
-                    }
+                    throw new ServiceRequestUnexpectedResultException(request, t.Result);
+                }
 
-                    if (t.Result.Entities.Length > 1)
-                    {
-                        throw new ServiceRequestTooManyResultsException(
-                            request,
-                            t.Result,
-                            t.Result.Entities
-                                .Length);
-                    }
+                if (t.Result.Entities.Length > 1)
+                {
+                    throw new ServiceRequestTooManyResultsException(
+                        request,
+                        t.Result,
+                        t.Result.Entities.Length
+                    );
+                }
 
-                    return t.Result.Entities.Single().ConvertToType<T>();
-                })
+                return t.Result.Entities.Single().ConvertToType<T>();
+            })
             .ConfigureAwait(false);
     }
 
@@ -334,7 +361,8 @@ public static class SimpleCrudRequestWrapper
     /// <typeparam name="T">The <paramref name="entity" /> type, that must be a <see cref="IEntity" /> derived class</typeparam>
     /// <param name="entity">The entity to find (populate it's properties to act as filters)</param>
     /// <returns>Returns the instance with it's values or null if not found.</returns>
-    public static T TryFind<T>(this T entity) where T : class, IEntity, new() => CanFindInternal(entity);
+    public static T TryFind<T>(this T entity)
+        where T : class, IEntity, new() => CanFindInternal(entity);
 
     /// <summary>
     /// A extension method of a IEntity class that try to find a entity in Sankhya.
@@ -344,7 +372,8 @@ public static class SimpleCrudRequestWrapper
     /// <typeparam name="T">The <paramref name="entity" /> type, that must be a <see cref="IEntity" /> derived class</typeparam>
     /// <param name="entity">The entity to find (populate it's properties to act as filters)</param>
     /// <returns>Returns the instance with it's values or null if not found.</returns>
-    public static async Task<T> TryFindAsync<T>(this T entity) where T : class, IEntity, new() => await CanFindInternalAsync(entity).ConfigureAwait(false);
+    public static async Task<T> TryFindAsync<T>(this T entity)
+        where T : class, IEntity, new() => await CanFindInternalAsync(entity).ConfigureAwait(false);
 
     /// <summary>
     /// This method try to find a single entity by a criteria (<seealso cref="ILiteralCriteria" />)
@@ -354,7 +383,8 @@ public static class SimpleCrudRequestWrapper
     /// <param name="_">The entity.</param>
     /// <param name="criteria">A instance of any implementation of <seealso cref="ILiteralCriteria" /></param>
     /// <returns>The <seealso cref="IEntity" /> if any results found or null</returns>
-    public static T TryFind<T>(this T _, ILiteralCriteria criteria) where T : class, IEntity, new() => CanFindInternal<T>(criteria);
+    public static T TryFind<T>(this T _, ILiteralCriteria criteria)
+        where T : class, IEntity, new() => CanFindInternal<T>(criteria);
 
     /// <summary>
     /// This method try to find a single entity by a criteria (<seealso cref="ILiteralCriteria" />)
@@ -364,7 +394,8 @@ public static class SimpleCrudRequestWrapper
     /// <param name="entity">The entity.</param>
     /// <param name="options">The query options</param>
     /// <returns>The entity if found or null if not</returns>
-    public static T TryFind<T>(this T entity, EntityQueryOptions options) where T : class, IEntity, new()
+    public static T TryFind<T>(this T entity, EntityQueryOptions options)
+        where T : class, IEntity, new()
     {
         if (options == null)
         {
@@ -382,7 +413,9 @@ public static class SimpleCrudRequestWrapper
     /// <param name="entity">The entity.</param>
     /// <param name="criteria">A instance of any implementation of <seealso cref="ILiteralCriteria" /></param>
     /// <returns>The <seealso cref="IEntity" /> if any results found or null</returns>
-    public static async Task<T> TryFindAsync<T>(this T entity, ILiteralCriteria criteria) where T : class, IEntity, new() => await CanFindInternalAsync<T>(criteria).ConfigureAwait(false);
+    public static async Task<T> TryFindAsync<T>(this T entity, ILiteralCriteria criteria)
+        where T : class, IEntity, new() =>
+        await CanFindInternalAsync<T>(criteria).ConfigureAwait(false);
 
     /// <summary>
     /// A extension method of a IEntity class that find a entity in Sankhya.
@@ -392,7 +425,8 @@ public static class SimpleCrudRequestWrapper
     /// <typeparam name="T">The <paramref name="entity" /> type, that must be a <see cref="IEntity" /> derived class</typeparam>
     /// <param name="entity">The entity to find (populate it's properties to act as filters)</param>
     /// <returns>Returns a instance of <paramref name="entity" /> populated with it's values.</returns>
-    public static T Find<T>(this T entity) where T : class, IEntity, new() => MustFindInternal(entity, null);
+    public static T Find<T>(this T entity)
+        where T : class, IEntity, new() => MustFindInternal(entity, null);
 
     /// <summary>
     /// A extension method of a IEntity class that find a entity in Sankhya.
@@ -403,7 +437,8 @@ public static class SimpleCrudRequestWrapper
     /// <param name="entity">The entity.</param>
     /// <param name="options">The options.</param>
     /// <returns></returns>
-    public static T Find<T>(this T entity, EntityQueryOptions options) where T : class, IEntity, new() => MustFindInternal(entity, options);
+    public static T Find<T>(this T entity, EntityQueryOptions options)
+        where T : class, IEntity, new() => MustFindInternal(entity, options);
 
     /// <summary>
     /// A extension method of a IEntity class that find a entity in Sankhya as asynchronous operation.
@@ -413,7 +448,9 @@ public static class SimpleCrudRequestWrapper
     /// <typeparam name="T">The <paramref name="entity" /> type, that must be a <see cref="IEntity" /> derived class</typeparam>
     /// <param name="entity">The entity to find (populate it's properties to act as filters)</param>
     /// <returns>Returns a instance of <paramref name="entity" /> populated with it's values.</returns>
-    public static async Task<T> FindAsync<T>(this T entity) where T : class, IEntity, new() => await MustFindInternalAsync(entity).ConfigureAwait(false);
+    public static async Task<T> FindAsync<T>(this T entity)
+        where T : class, IEntity, new() =>
+        await MustFindInternalAsync(entity).ConfigureAwait(false);
 
     /// <summary>
     /// This method lookup a single entity by a criteria (<seealso cref="ILiteralCriteria" />)
@@ -424,7 +461,8 @@ public static class SimpleCrudRequestWrapper
     /// <param name="_">The entity.</param>
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
-    public static T Find<T>(this T _, ILiteralCriteria criteria) where T : class, IEntity, new() => MustFindInternal<T>(criteria);
+    public static T Find<T>(this T _, ILiteralCriteria criteria)
+        where T : class, IEntity, new() => MustFindInternal<T>(criteria);
 
     /// <summary>
     /// This method lookup a single entity by a criteria (<seealso cref="ILiteralCriteria" />) asynchronous
@@ -435,7 +473,9 @@ public static class SimpleCrudRequestWrapper
     /// <param name="_">The entity.</param>
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
-    public static async Task<T> FindAsync<T>(this T _, ILiteralCriteria criteria) where T : class, IEntity, new() => await MustFindInternalAsync<T>(criteria).ConfigureAwait(false);
+    public static async Task<T> FindAsync<T>(this T _, ILiteralCriteria criteria)
+        where T : class, IEntity, new() =>
+        await MustFindInternalAsync<T>(criteria).ConfigureAwait(false);
 
     #endregion
 
@@ -449,7 +489,8 @@ public static class SimpleCrudRequestWrapper
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
 
-    public static T Update<T>(this T entity) where T : class, IEntity, new()
+    public static T Update<T>(this T entity)
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceSave);
         request.Resolve(entity);
@@ -469,7 +510,8 @@ public static class SimpleCrudRequestWrapper
     /// <param name="entity">The entity.</param>
     /// <param name="token">The token.</param>
     /// <returns>A task with the entity result</returns>
-    public static async Task UpdateAsync<T>(this T entity, CancellationToken token) where T : class, IEntity, new()
+    public static async Task UpdateAsync<T>(this T entity, CancellationToken token)
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceSave);
         request.Resolve(entity);
@@ -487,14 +529,17 @@ public static class SimpleCrudRequestWrapper
     /// <param name="request">The request.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
-    private static T ConvertToType<T>(Task<ServiceResponse> t, ServiceRequest request) where T : class, IEntity, new()
+    private static T ConvertToType<T>(Task<ServiceResponse> t, ServiceRequest request)
+        where T : class, IEntity, new()
     {
         if (t.IsFaulted)
         {
             var exception =
-                (t.Exception?.InnerExceptions.FirstOrDefault() ??
-                 t.Exception?.InnerException ??
-                 t.Exception) ?? new InvalidOperationException("Invalid async update request");
+                (
+                    t.Exception?.InnerExceptions.FirstOrDefault()
+                    ?? t.Exception?.InnerException
+                    ?? t.Exception
+                ) ?? new InvalidOperationException("Invalid async update request");
             LogConsumer.Handle(exception);
             return null;
         }
@@ -517,7 +562,8 @@ public static class SimpleCrudRequestWrapper
     /// <typeparam name="T"></typeparam>
     /// <param name="entity">The entity.</param>
 
-    public static void Remove<T>(this T entity) where T : class, IEntity, new()
+    public static void Remove<T>(this T entity)
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceRemove);
         request.Resolve(entity);
@@ -531,7 +577,8 @@ public static class SimpleCrudRequestWrapper
     /// <param name="entity">The entity.</param>
     /// <returns>Task.</returns>
 
-    public static async Task RemoveAsync<T>(this T entity) where T : class, IEntity, new()
+    public static async Task RemoveAsync<T>(this T entity)
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceRemove);
         request.Resolve(entity);

@@ -16,5 +16,4 @@ namespace Sankhya.Transport;
 /// <summary>
 /// Interface IEntity
 /// </summary>
-public interface IEntity
-{ }
+public interface IEntity { }

@@ -9,9 +9,7 @@ using Sankhya.Service;
 public class PagedRequestException : ServiceRequestGeneralException
 {
     public PagedRequestException(ServiceRequest request, Exception innerException)
-        : base(Resources.PagedRequestException, request, innerException)
-    { }
+        : base(Resources.PagedRequestException, request, innerException) { }
 
-    protected PagedRequestException(SerializationInfo info, StreamingContext context)
-    { }
+    protected PagedRequestException(SerializationInfo info, StreamingContext context) { }
 }

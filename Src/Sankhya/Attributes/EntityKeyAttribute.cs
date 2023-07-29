@@ -21,5 +21,4 @@ using System;
 /// </summary>
 /// <seealso cref="Attribute" />
 [AttributeUsage(AttributeTargets.Property)]
-public sealed class EntityKeyAttribute : Attribute
-{ }
+public sealed class EntityKeyAttribute : Attribute { }

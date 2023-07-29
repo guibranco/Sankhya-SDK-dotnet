@@ -22,7 +22,6 @@ using Sankhya.Attributes;
 /// </summary>
 /// <seealso cref="IEntity" />
 [Entity("CodigoBarras")]
-
 public class CodeBars : IEntity, IEquatable<CodeBars>
 {
     #region Equality members
@@ -39,13 +38,21 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
             return false;
         }
 
-        return ReferenceEquals(this, other) || string.Equals(_code, other._code, StringComparison.InvariantCultureIgnoreCase) &&
-            _codeSet == other._codeSet && _codeProduct == other._codeProduct &&
-            _codeProductSet == other._codeProductSet && _codeUser == other._codeUser &&
-            _codeUserSet == other._codeUserSet &&
-            string.Equals(_codeVolume, other._codeVolume, StringComparison.InvariantCultureIgnoreCase) &&
-            _codeVolumeSet == other._codeVolumeSet && _dateChanged.Equals(other._dateChanged) &&
-            _dateChangedSet == other._dateChangedSet;
+        return ReferenceEquals(this, other)
+            || string.Equals(_code, other._code, StringComparison.InvariantCultureIgnoreCase)
+                && _codeSet == other._codeSet
+                && _codeProduct == other._codeProduct
+                && _codeProductSet == other._codeProductSet
+                && _codeUser == other._codeUser
+                && _codeUserSet == other._codeUserSet
+                && string.Equals(
+                    _codeVolume,
+                    other._codeVolume,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _codeVolumeSet == other._codeVolumeSet
+                && _dateChanged.Equals(other._dateChanged)
+                && _dateChangedSet == other._dateChangedSet;
     }
 
     /// <summary>
@@ -71,13 +78,20 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     {
         unchecked
         {
-            var hashCode = _code != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_code) : 0;
+            var hashCode =
+                _code != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_code) : 0;
             hashCode = (hashCode * 397) ^ _codeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeProduct;
             hashCode = (hashCode * 397) ^ _codeProductSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeUser;
             hashCode = (hashCode * 397) ^ _codeUserSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_codeVolume != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_codeVolume) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _codeVolume != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_codeVolume)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _codeVolumeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateChanged.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateChangedSet.GetHashCode();
@@ -109,6 +123,7 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// The code
     /// </summary>
     private string _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -118,6 +133,7 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// The code product
     /// </summary>
     private int _codeProduct;
+
     /// <summary>
     /// The code product set
     /// </summary>
@@ -127,6 +143,7 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// The code user
     /// </summary>
     private int _codeUser;
+
     /// <summary>
     /// The code user set
     /// </summary>
@@ -136,6 +153,7 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// The code volume
     /// </summary>
     private string _codeVolume;
+
     /// <summary>
     /// The code volume set
     /// </summary>
@@ -145,6 +163,7 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// The date changed
     /// </summary>
     private DateTime _dateChanged;
+
     /// <summary>
     /// The date changed set
     /// </summary>
@@ -160,10 +179,10 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// <value>The code.</value>
     [EntityKey]
     [EntityElement("CODBARRA")]
-
     public string Code
     {
-        get => _code; set
+        get => _code;
+        set
         {
             _code = value;
             _codeSet = true;
@@ -175,10 +194,10 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// </summary>
     /// <value>The code product.</value>
     [EntityElement("CODPROD")]
-
     public int CodeProduct
     {
-        get => _codeProduct; set
+        get => _codeProduct;
+        set
         {
             _codeProduct = value;
             _codeProductSet = true;
@@ -190,10 +209,10 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// </summary>
     /// <value>The code user.</value>
     [EntityElement("CODUSU")]
-
     public int CodeUser
     {
-        get => _codeUser; set
+        get => _codeUser;
+        set
         {
             _codeUser = value;
             _codeUserSet = true;
@@ -205,10 +224,10 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// </summary>
     /// <value>The code volume.</value>
     [EntityElement("CODVOL")]
-
     public string CodeVolume
     {
-        get => _codeVolume; set
+        get => _codeVolume;
+        set
         {
             _codeVolume = value;
             _codeVolumeSet = true;
@@ -220,10 +239,10 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// </summary>
     /// <value>The date changed.</value>
     [EntityElement("DHALTER")]
-
     public DateTime DateChanged
     {
-        get => _dateChanged; set
+        get => _dateChanged;
+        set
         {
             _dateChanged = value;
             _dateChangedSet = true;

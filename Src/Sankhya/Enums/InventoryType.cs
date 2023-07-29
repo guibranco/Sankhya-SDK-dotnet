@@ -20,7 +20,6 @@ using CrispyWaffle.Attributes;
 /// </summary>
 public enum InventoryType
 {
-
     /// <summary>
     /// The own
     /// </summary>

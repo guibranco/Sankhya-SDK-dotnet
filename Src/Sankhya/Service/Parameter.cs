@@ -23,7 +23,6 @@ using Sankhya.Enums;
 /// </summary>
 public sealed class Parameter
 {
-
     /// <summary>
     /// Gets or sets the type internal.
     /// </summary>
@@ -42,9 +41,7 @@ public sealed class Parameter
     /// </summary>
     /// <value>The type.</value>
     [XmlIgnore]
-
     public ParameterType Type { get; set; }
-
 
     /// <summary>
     /// Gets or sets the value.

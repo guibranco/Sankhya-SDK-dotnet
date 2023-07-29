@@ -16,6 +16,7 @@ public sealed class SystemWarningRecipient
     /// The identifier
     /// </summary>
     private int _id;
+
     /// <summary>
     /// The identifier set
     /// </summary>
@@ -25,6 +26,7 @@ public sealed class SystemWarningRecipient
     /// The type
     /// </summary>
     private SankhyaWarningType _type;
+
     /// <summary>
     /// The type set
     /// </summary>
@@ -41,7 +43,8 @@ public sealed class SystemWarningRecipient
     [XmlAttribute("id")]
     public int Id
     {
-        get => _id; set
+        get => _id;
+        set
         {
             _id = value;
             _idSet = true;
@@ -55,7 +58,8 @@ public sealed class SystemWarningRecipient
     [XmlIgnore]
     public SankhyaWarningType Type
     {
-        get => _type; set
+        get => _type;
+        set
         {
             _type = value;
             _typeSet = true;
@@ -71,7 +75,8 @@ public sealed class SystemWarningRecipient
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string TypeInternal
     {
-        get => _type.GetInternalValue(); set
+        get => _type.GetInternalValue();
+        set
         {
             _type = EnumExtensions.GetEnumByInternalValueAttribute<SankhyaWarningType>(value);
             _typeSet = true;

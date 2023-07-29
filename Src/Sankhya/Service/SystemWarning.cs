@@ -16,6 +16,7 @@ public sealed class SystemWarning
     /// The importance
     /// </summary>
     private SankhyaWarningLevel _importance;
+
     /// <summary>
     /// The importance set
     /// </summary>
@@ -25,6 +26,7 @@ public sealed class SystemWarning
     /// The title
     /// </summary>
     private string _title;
+
     /// <summary>
     /// The title set
     /// </summary>
@@ -34,6 +36,7 @@ public sealed class SystemWarning
     /// The description
     /// </summary>
     private string _description;
+
     /// <summary>
     /// The description set
     /// </summary>
@@ -43,6 +46,7 @@ public sealed class SystemWarning
     /// The tip
     /// </summary>
     private string _tip;
+
     /// <summary>
     /// The tip set
     /// </summary>
@@ -52,6 +56,7 @@ public sealed class SystemWarning
     /// The recipients
     /// </summary>
     private SystemWarningRecipient[] _recipients;
+
     /// <summary>
     /// The recipients set
     /// </summary>
@@ -68,7 +73,6 @@ public sealed class SystemWarning
     [XmlIgnore]
     public SankhyaWarningLevel Importance
     {
-
         get => _importance;
         set
         {
@@ -86,7 +90,11 @@ public sealed class SystemWarning
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ImportanceInternal
     {
-        get => _importance.GetInternalValue(); set => _importance = EnumExtensions.GetEnumByInternalValueAttribute<SankhyaWarningLevel>(value);
+        get => _importance.GetInternalValue();
+        set =>
+            _importance = EnumExtensions.GetEnumByInternalValueAttribute<SankhyaWarningLevel>(
+                value
+            );
     }
 
     /// <summary>
@@ -96,7 +104,8 @@ public sealed class SystemWarning
     [XmlElement(ElementName = "titulo")]
     public string Title
     {
-        get => _title; set
+        get => _title;
+        set
         {
             _title = value;
             _titleSet = true;
@@ -110,7 +119,8 @@ public sealed class SystemWarning
     [XmlElement(ElementName = "descricao")]
     public string Description
     {
-        get => _description; set
+        get => _description;
+        set
         {
             _description = value;
             _descriptionSet = true;
@@ -124,7 +134,8 @@ public sealed class SystemWarning
     [XmlElement(ElementName = "Dica")]
     public string Tip
     {
-        get => _tip; set
+        get => _tip;
+        set
         {
             _tip = value;
             _tipSet = true;
@@ -138,7 +149,8 @@ public sealed class SystemWarning
     [XmlElement("destinatario")]
     public SystemWarningRecipient[] Recipients
     {
-        get => _recipients; set
+        get => _recipients;
+        set
         {
             _recipients = value;
             _recipientsSet = true;

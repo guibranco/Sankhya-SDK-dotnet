@@ -20,7 +20,6 @@ using CrispyWaffle.Attributes;
 /// </summary>
 public enum BillingType
 {
-
     /// <summary>
     /// The none
     /// </summary>

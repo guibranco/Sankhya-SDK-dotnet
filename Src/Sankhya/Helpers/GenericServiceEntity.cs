@@ -69,7 +69,12 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
     /// <param name="property">The property.</param>
     /// <param name="type">The type.</param>
     /// <param name="currentEntityName">Name of the current entity.</param>
-    private void WriteXmlElement(XmlWriter writer, PropertyInfo property, Type type, string currentEntityName)
+    private void WriteXmlElement(
+        XmlWriter writer,
+        PropertyInfo property,
+        Type type,
+        string currentEntityName
+    )
     {
         var propertyName = property.Name;
 
@@ -95,7 +100,12 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
     /// <param name="property">The property.</param>
     /// <param name="propertyName">Name of the property.</param>
     /// <param name="customDataProperty">The custom data property.</param>
-    private void Serialize(XmlWriter writer, PropertyInfo property, string propertyName, EntityCustomDataAttribute customDataProperty)
+    private void Serialize(
+        XmlWriter writer,
+        PropertyInfo property,
+        string propertyName,
+        EntityCustomDataAttribute customDataProperty
+    )
     {
         var value = property.GetValue(this);
 
@@ -119,9 +129,11 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
 
             if (propertyType != null)
             {
-                if (propertyType == typeof(string) &&
-                    customDataProperty.MaxLength > 0 &&
-                    value.ToString().Length > customDataProperty.MaxLength)
+                if (
+                    propertyType == typeof(string)
+                    && customDataProperty.MaxLength > 0
+                    && value.ToString().Length > customDataProperty.MaxLength
+                )
                 {
                     value = value.ToString().Abbreviate(customDataProperty.MaxLength, false);
                 }
@@ -156,16 +168,26 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
             ? property.Name.Substring(0, property.Name.Length - 8)
             : property.Name;
 
-        var shouldSerializeMethod = type.GetMethod(string.Concat(@"ShouldSerialize", shouldSerializeMethodName));
+        var shouldSerializeMethod = type.GetMethod(
+            string.Concat(@"ShouldSerialize", shouldSerializeMethodName)
+        );
 
         if (shouldSerializeMethod == null || shouldSerializeMethod.ReturnType != typeof(bool))
         {
-            LogConsumer.Handle(new MissingSerializerHelperEntityException(property.Name, currentEntityName, type.FullName));
+            LogConsumer.Handle(
+                new MissingSerializerHelperEntityException(
+                    property.Name,
+                    currentEntityName,
+                    type.FullName
+                )
+            );
         }
 
-        if (shouldSerializeMethod != null &&
-            shouldSerializeMethod.ReturnType == typeof(bool) &&
-            !(bool)shouldSerializeMethod.Invoke(this, null))
+        if (
+            shouldSerializeMethod != null
+            && shouldSerializeMethod.ReturnType == typeof(bool)
+            && !(bool)shouldSerializeMethod.Invoke(this, null)
+        )
         {
             return true;
         }

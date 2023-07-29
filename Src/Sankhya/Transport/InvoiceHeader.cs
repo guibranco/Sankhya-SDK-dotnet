@@ -28,48 +28,82 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     // ReSharper disable once CyclomaticComplexity
     public bool Equals(InvoiceHeader other)
     {
-        if (ReferenceEquals(null, other)) return false;
-        if (ReferenceEquals(this, other)) return true;
-        return _codeCompany == other._codeCompany && _codeCompanySet == other._codeCompanySet &&
-               _codeContact == other._codeContact && _codeContactSet == other._codeContactSet &&
-               _codeNature == other._codeNature && _codeNatureSet == other._codeNatureSet &&
-               _codePartner == other._codePartner && _codePartnerCarrier == other._codePartnerCarrier &&
-               _codePartnerCarrierSet == other._codePartnerCarrierSet &&
-               _codePartnerDestination == other._codePartnerDestination &&
-               _codePartnerDestinationSet == other._codePartnerDestinationSet &&
-               _codePartnerSet == other._codePartnerSet && _codeResultCenter == other._codeResultCenter &&
-               _codeResultCenterSet == other._codeResultCenterSet && _codeSeller == other._codeSeller &&
-               _codeSellerSet == other._codeSellerSet && _codeTradeType == other._codeTradeType &&
-               _codeTradeTypeSet == other._codeTradeTypeSet && _confirmed == other._confirmed &&
-               _confirmedSet == other._confirmedSet && _dateBilled.Equals(other._dateBilled) &&
-               _dateBilledSet == other._dateBilledSet && _dateChanged.Equals(other._dateChanged) &&
-               _dateChangedSet == other._dateChangedSet && _dateExpectedDelivery.Equals(other._dateExpectedDelivery) &&
-               _dateExpectedDeliverySet == other._dateExpectedDeliverySet &&
-               _dateImported.Equals(other._dateImported) && _dateImportedSet == other._dateImportedSet &&
-               _dateTraded.Equals(other._dateTraded) && _dateTradedSet == other._dateTradedSet &&
-               string.Equals(_fiscalInvoiceKey, other._fiscalInvoiceKey, StringComparison.InvariantCultureIgnoreCase) &&
-               _fiscalInvoiceKeySet == other._fiscalInvoiceKeySet &&
-               _fiscalInvoiceStatus == other._fiscalInvoiceStatus &&
-               _fiscalInvoiceStatusSet == other._fiscalInvoiceStatusSet && _freightType == other._freightType &&
-               _freightTypeSet == other._freightTypeSet && _freightValue == other._freightValue &&
-               _freightValueSet == other._freightValueSet && _invoiceFreightType == other._invoiceFreightType &&
-               _invoiceFreightTypeSet == other._invoiceFreightTypeSet && _invoiceNumber == other._invoiceNumber &&
-               _invoiceNumberSet == other._invoiceNumberSet && _invoiceStatus == other._invoiceStatus &&
-               _invoiceStatusSet == other._invoiceStatusSet && _invoiceValue == other._invoiceValue &&
-               _invoiceValueSet == other._invoiceValueSet && _movementTime.Equals(other._movementTime) &&
-               _movementTimeSet == other._movementTimeSet && _movementType == other._movementType &&
-               _movementTypeSet == other._movementTypeSet &&
-               string.Equals(_note, other._note, StringComparison.InvariantCultureIgnoreCase) &&
-               _noteSet == other._noteSet && _operationType == other._operationType &&
-               _operationTypeSet == other._operationTypeSet && Equals(_partner, other._partner) &&
-               Equals(_partnerCarrier, other._partnerCarrier) && _partnerCarrierSet == other._partnerCarrierSet &&
-               Equals(_partnerDestination, other._partnerDestination) &&
-               _partnerDestinationSet == other._partnerDestinationSet &&
-               Equals(_partnerRoyalties, other._partnerRoyalties) &&
-               _partnerRoyaltiesSet == other._partnerRoyaltiesSet && _partnerSet == other._partnerSet &&
-               _pending == other._pending && _pendingSet == other._pendingSet && Equals(_seller, other._seller) &&
-               _sellerSet == other._sellerSet && _singleNumber == other._singleNumber &&
-               _singleNumberSet == other._singleNumberSet;
+        if (ReferenceEquals(null, other))
+            return false;
+        if (ReferenceEquals(this, other))
+            return true;
+        return _codeCompany == other._codeCompany
+            && _codeCompanySet == other._codeCompanySet
+            && _codeContact == other._codeContact
+            && _codeContactSet == other._codeContactSet
+            && _codeNature == other._codeNature
+            && _codeNatureSet == other._codeNatureSet
+            && _codePartner == other._codePartner
+            && _codePartnerCarrier == other._codePartnerCarrier
+            && _codePartnerCarrierSet == other._codePartnerCarrierSet
+            && _codePartnerDestination == other._codePartnerDestination
+            && _codePartnerDestinationSet == other._codePartnerDestinationSet
+            && _codePartnerSet == other._codePartnerSet
+            && _codeResultCenter == other._codeResultCenter
+            && _codeResultCenterSet == other._codeResultCenterSet
+            && _codeSeller == other._codeSeller
+            && _codeSellerSet == other._codeSellerSet
+            && _codeTradeType == other._codeTradeType
+            && _codeTradeTypeSet == other._codeTradeTypeSet
+            && _confirmed == other._confirmed
+            && _confirmedSet == other._confirmedSet
+            && _dateBilled.Equals(other._dateBilled)
+            && _dateBilledSet == other._dateBilledSet
+            && _dateChanged.Equals(other._dateChanged)
+            && _dateChangedSet == other._dateChangedSet
+            && _dateExpectedDelivery.Equals(other._dateExpectedDelivery)
+            && _dateExpectedDeliverySet == other._dateExpectedDeliverySet
+            && _dateImported.Equals(other._dateImported)
+            && _dateImportedSet == other._dateImportedSet
+            && _dateTraded.Equals(other._dateTraded)
+            && _dateTradedSet == other._dateTradedSet
+            && string.Equals(
+                _fiscalInvoiceKey,
+                other._fiscalInvoiceKey,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _fiscalInvoiceKeySet == other._fiscalInvoiceKeySet
+            && _fiscalInvoiceStatus == other._fiscalInvoiceStatus
+            && _fiscalInvoiceStatusSet == other._fiscalInvoiceStatusSet
+            && _freightType == other._freightType
+            && _freightTypeSet == other._freightTypeSet
+            && _freightValue == other._freightValue
+            && _freightValueSet == other._freightValueSet
+            && _invoiceFreightType == other._invoiceFreightType
+            && _invoiceFreightTypeSet == other._invoiceFreightTypeSet
+            && _invoiceNumber == other._invoiceNumber
+            && _invoiceNumberSet == other._invoiceNumberSet
+            && _invoiceStatus == other._invoiceStatus
+            && _invoiceStatusSet == other._invoiceStatusSet
+            && _invoiceValue == other._invoiceValue
+            && _invoiceValueSet == other._invoiceValueSet
+            && _movementTime.Equals(other._movementTime)
+            && _movementTimeSet == other._movementTimeSet
+            && _movementType == other._movementType
+            && _movementTypeSet == other._movementTypeSet
+            && string.Equals(_note, other._note, StringComparison.InvariantCultureIgnoreCase)
+            && _noteSet == other._noteSet
+            && _operationType == other._operationType
+            && _operationTypeSet == other._operationTypeSet
+            && Equals(_partner, other._partner)
+            && Equals(_partnerCarrier, other._partnerCarrier)
+            && _partnerCarrierSet == other._partnerCarrierSet
+            && Equals(_partnerDestination, other._partnerDestination)
+            && _partnerDestinationSet == other._partnerDestinationSet
+            && Equals(_partnerRoyalties, other._partnerRoyalties)
+            && _partnerRoyaltiesSet == other._partnerRoyaltiesSet
+            && _partnerSet == other._partnerSet
+            && _pending == other._pending
+            && _pendingSet == other._pendingSet
+            && Equals(_seller, other._seller)
+            && _sellerSet == other._sellerSet
+            && _singleNumber == other._singleNumber
+            && _singleNumberSet == other._singleNumberSet;
     }
 
     /// <summary>
@@ -79,9 +113,12 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
+        if (ReferenceEquals(null, obj))
+            return false;
+        if (ReferenceEquals(this, obj))
+            return true;
+        if (obj.GetType() != this.GetType())
+            return false;
         return Equals((InvoiceHeader)obj);
     }
 
@@ -125,7 +162,13 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
             hashCode = (hashCode * 397) ^ _dateImportedSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateTraded.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateTradedSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_fiscalInvoiceKey != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_fiscalInvoiceKey) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _fiscalInvoiceKey != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_fiscalInvoiceKey)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _fiscalInvoiceKeySet.GetHashCode();
             hashCode = (hashCode * 397) ^ (int)_fiscalInvoiceStatus;
             hashCode = (hashCode * 397) ^ _fiscalInvoiceStatusSet.GetHashCode();
@@ -145,16 +188,25 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
             hashCode = (hashCode * 397) ^ _movementTimeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (int)_movementType;
             hashCode = (hashCode * 397) ^ _movementTypeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_note != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_note) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _note != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_note) : 0
+                );
             hashCode = (hashCode * 397) ^ _noteSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _operationType;
             hashCode = (hashCode * 397) ^ _operationTypeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_partner != null ? _partner.GetHashCode() : 0);
-            hashCode = (hashCode * 397) ^ (_partnerCarrier != null ? _partnerCarrier.GetHashCode() : 0);
+            hashCode =
+                (hashCode * 397) ^ (_partnerCarrier != null ? _partnerCarrier.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _partnerCarrierSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_partnerDestination != null ? _partnerDestination.GetHashCode() : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (_partnerDestination != null ? _partnerDestination.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _partnerDestinationSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_partnerRoyalties != null ? _partnerRoyalties.GetHashCode() : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (_partnerRoyalties != null ? _partnerRoyalties.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _partnerRoyaltiesSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _partnerSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _pending.GetHashCode();
@@ -191,6 +243,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The single number
     /// </summary>
     private int? _singleNumber;
+
     /// <summary>
     /// The single number set
     /// </summary>
@@ -200,6 +253,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The code company
     /// </summary>
     private int _codeCompany;
+
     /// <summary>
     /// The code company set
     /// </summary>
@@ -209,6 +263,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The code partner
     /// </summary>
     private int _codePartner;
+
     /// <summary>
     /// The code partner set
     /// </summary>
@@ -218,6 +273,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The code partner destination
     /// </summary>
     private int _codePartnerDestination;
+
     /// <summary>
     /// The code partner destination set
     /// </summary>
@@ -227,6 +283,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The code contact
     /// </summary>
     private int _codeContact;
+
     /// <summary>
     /// The code contact set
     /// </summary>
@@ -236,6 +293,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The operation type
     /// </summary>
     private int _operationType;
+
     /// <summary>
     /// The operation type set
     /// </summary>
@@ -245,6 +303,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The code trade type
     /// </summary>
     private int _codeTradeType;
+
     /// <summary>
     /// The code trade type set
     /// </summary>
@@ -254,6 +313,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The invoice number
     /// </summary>
     private int _invoiceNumber;
+
     /// <summary>
     /// The invoice number set
     /// </summary>
@@ -263,6 +323,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The code seller
     /// </summary>
     private int _codeSeller;
+
     /// <summary>
     /// The code seller set
     /// </summary>
@@ -272,6 +333,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The date traded
     /// </summary>
     private DateTime _dateTraded;
+
     /// <summary>
     /// The date traded set
     /// </summary>
@@ -281,6 +343,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The date imported
     /// </summary>
     private DateTime _dateImported;
+
     /// <summary>
     /// The date imported set
     /// </summary>
@@ -290,6 +353,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The date billed
     /// </summary>
     private DateTime _dateBilled;
+
     /// <summary>
     /// The date billed set
     /// </summary>
@@ -299,6 +363,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The date expected delivery
     /// </summary>
     private DateTime _dateExpectedDelivery;
+
     /// <summary>
     /// The date expected delivery set
     /// </summary>
@@ -308,6 +373,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The date changed
     /// </summary>
     private DateTime _dateChanged;
+
     /// <summary>
     /// The date changed set
     /// </summary>
@@ -317,6 +383,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The code result center
     /// </summary>
     private int _codeResultCenter;
+
     /// <summary>
     /// The code result center set
     /// </summary>
@@ -326,6 +393,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The code nature
     /// </summary>
     private int _codeNature;
+
     /// <summary>
     /// The code nature set
     /// </summary>
@@ -335,6 +403,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The movement type
     /// </summary>
     private MovementType _movementType;
+
     /// <summary>
     /// The movement type set
     /// </summary>
@@ -344,6 +413,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The freight value
     /// </summary>
     private decimal _freightValue;
+
     /// <summary>
     /// The freight value set
     /// </summary>
@@ -353,6 +423,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The note
     /// </summary>
     private string _note;
+
     /// <summary>
     /// The note set
     /// </summary>
@@ -362,6 +433,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The freight type
     /// </summary>
     private FreightType _freightType;
+
     /// <summary>
     /// The freight type set
     /// </summary>
@@ -371,6 +443,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The invoice status
     /// </summary>
     private InvoiceStatus _invoiceStatus;
+
     /// <summary>
     /// The invoice status set
     /// </summary>
@@ -380,6 +453,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The invoice freight type
     /// </summary>
     private InvoiceFreightType _invoiceFreightType;
+
     /// <summary>
     /// The invoice freight type set
     /// </summary>
@@ -389,6 +463,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The code partner carrier
     /// </summary>
     private int _codePartnerCarrier;
+
     /// <summary>
     /// The code partner carrier set
     /// </summary>
@@ -398,6 +473,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The fiscal invoice status
     /// </summary>
     private FiscalInvoiceStatus _fiscalInvoiceStatus;
+
     /// <summary>
     /// The fiscal invoice status set
     /// </summary>
@@ -407,6 +483,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The confirmed
     /// </summary>
     private bool _confirmed;
+
     /// <summary>
     /// The confirmed set
     /// </summary>
@@ -416,6 +493,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The pending
     /// </summary>
     private bool _pending;
+
     /// <summary>
     /// The pending set
     /// </summary>
@@ -425,6 +503,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The fiscal invoice key
     /// </summary>
     private string _fiscalInvoiceKey;
+
     /// <summary>
     /// The fiscal invoice key set
     /// </summary>
@@ -434,6 +513,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The movement time
     /// </summary>
     private TimeSpan _movementTime;
+
     /// <summary>
     /// The movement time set
     /// </summary>
@@ -443,6 +523,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The invoice value
     /// </summary>
     private decimal _invoiceValue;
+
     /// <summary>
     /// The invoice value set
     /// </summary>
@@ -452,6 +533,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The partner
     /// </summary>
     private Partner _partner;
+
     /// <summary>
     /// The partner set
     /// </summary>
@@ -461,6 +543,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The partner destination
     /// </summary>
     private Partner _partnerDestination;
+
     /// <summary>
     /// The partner destination set
     /// </summary>
@@ -470,6 +553,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The partner carrier
     /// </summary>
     private Partner _partnerCarrier;
+
     /// <summary>
     /// The partner carrier set
     /// </summary>
@@ -479,6 +563,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The partner royalties
     /// </summary>
     private Partner _partnerRoyalties;
+
     /// <summary>
     /// The partner royalties set
     /// </summary>
@@ -488,6 +573,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The seller
     /// </summary>
     private Seller _seller;
+
     /// <summary>
     /// The seller set
     /// </summary>
@@ -505,7 +591,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityKey]
     public int? SingleNumber
     {
-        get => _singleNumber; set
+        get => _singleNumber;
+        set
         {
             _singleNumber = value;
             _singleNumberSet = true;
@@ -519,7 +606,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("CODEMP")]
     public int CodeCompany
     {
-        get => _codeCompany; set
+        get => _codeCompany;
+        set
         {
             _codeCompany = value;
             _codeCompanySet = true;
@@ -533,7 +621,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("CODPARC")]
     public int CodePartner
     {
-        get => _codePartner; set
+        get => _codePartner;
+        set
         {
             _codePartner = value;
             _codePartnerSet = true;
@@ -564,7 +653,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("CODCONTATO")]
     public int CodeContact
     {
-        get => _codeContact; set
+        get => _codeContact;
+        set
         {
             _codeContact = value;
             _codeContactSet = true;
@@ -578,7 +668,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("CODTIPOPER")]
     public int OperationType
     {
-        get => _operationType; set
+        get => _operationType;
+        set
         {
             _operationType = value;
             _operationTypeSet = true;
@@ -592,7 +683,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("CODTIPVENDA")]
     public int CodeTradeType
     {
-        get => _codeTradeType; set
+        get => _codeTradeType;
+        set
         {
             _codeTradeType = value;
             _codeTradeTypeSet = true;
@@ -606,7 +698,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("NUMNOTA")]
     public int InvoiceNumber
     {
-        get => _invoiceNumber; set
+        get => _invoiceNumber;
+        set
         {
             _invoiceNumber = value;
             _invoiceNumberSet = true;
@@ -620,7 +713,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("CODVEND")]
     public int CodeSeller
     {
-        get => _codeSeller; set
+        get => _codeSeller;
+        set
         {
             _codeSeller = value;
             _codeSellerSet = true;
@@ -634,7 +728,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityIgnore]
     public DateTime DateTraded
     {
-        get => _dateTraded; set
+        get => _dateTraded;
+        set
         {
             _dateTraded = value;
             _dateTradedSet = true;
@@ -650,7 +745,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string DateTradedInternal
     {
-        get => _dateTraded.ToShortDateString(); set
+        get => _dateTraded.ToShortDateString();
+        set
         {
             _dateTraded = value.ToDateTime();
             _dateTradedSet = true;
@@ -664,7 +760,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityIgnore]
     public DateTime DateImported
     {
-        get => _dateImported; set
+        get => _dateImported;
+        set
         {
             _dateImported = value;
             _dateImportedSet = true;
@@ -680,7 +777,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string DateImportedInternal
     {
-        get => _dateImported.ToString(@"dd/MM/yyyy HH:mm:ss"); set
+        get => _dateImported.ToString(@"dd/MM/yyyy HH:mm:ss");
+        set
         {
             _dateImported = value.ToDateTime();
             _dateImportedSet = true;
@@ -694,7 +792,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("DTFATUR")]
     public DateTime DateBilled
     {
-        get => _dateBilled; set
+        get => _dateBilled;
+        set
         {
             _dateBilled = value;
             _dateBilledSet = true;
@@ -708,7 +807,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityIgnore]
     public DateTime DateExpectedDelivery
     {
-        get => _dateExpectedDelivery; set
+        get => _dateExpectedDelivery;
+        set
         {
             _dateExpectedDelivery = value;
             _dateExpectedDeliverySet = true;
@@ -720,10 +820,10 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// </summary>
     /// <value>The date expected delivery internal.</value>
     [EntityElement("DTPREVENT")]
-
     public string DateExpectedDeliveryInternal
     {
-        get => _dateExpectedDelivery.ToString(@"dd/MM/yyyy HH:mm:ss"); set
+        get => _dateExpectedDelivery.ToString(@"dd/MM/yyyy HH:mm:ss");
+        set
         {
             if (value != null)
             {
@@ -742,7 +842,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     public DateTime DateChanged
     {
         get => _dateChanged;
-
         set
         {
             _dateChanged = value;
@@ -757,7 +856,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("CODCENCUS")]
     public int CodeResultCenter
     {
-
         get => _codeResultCenter;
         set
         {
@@ -773,7 +871,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("CODNAT")]
     public int CodeNature
     {
-        get => _codeNature; set
+        get => _codeNature;
+        set
         {
             _codeNature = value;
             _codeNatureSet = true;
@@ -787,7 +886,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityIgnore]
     public MovementType MovementType
     {
-        get => _movementType; set
+        get => _movementType;
+        set
         {
             _movementType = value;
             _movementTypeSet = true;
@@ -803,7 +903,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string MovementTypeInternal
     {
-        get => _movementType.GetInternalValue(); set
+        get => _movementType.GetInternalValue();
+        set
         {
             _movementType = EnumExtensions.GetEnumByInternalValueAttribute<MovementType>(value);
             _movementTypeSet = true;
@@ -817,7 +918,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("VLRFRETE")]
     public decimal FreightValue
     {
-        get => _freightValue; set
+        get => _freightValue;
+        set
         {
             _freightValue = value;
             _freightValueSet = true;
@@ -831,13 +933,14 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("OBSERVACAO")]
     public string Note
     {
-        get => _note; set
+        get => _note;
+        set
         {
             _note = value;
             _noteSet = true;
         }
     }
-    
+
     /// <summary>
     /// Gets or sets the type of the freight.
     /// </summary>
@@ -845,7 +948,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityIgnore]
     public FreightType FreightType
     {
-        get => _freightType; set
+        get => _freightType;
+        set
         {
             _freightType = value;
             _freightTypeSet = true;
@@ -876,7 +980,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityIgnore]
     public InvoiceStatus InvoiceStatus
     {
-
         get => _invoiceStatus;
         set
         {
@@ -934,11 +1037,12 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
                 return;
             }
 
-            _invoiceFreightType = EnumExtensions.GetEnumByInternalValueAttribute<InvoiceFreightType>(value);
+            _invoiceFreightType =
+                EnumExtensions.GetEnumByInternalValueAttribute<InvoiceFreightType>(value);
             _invoiceFreightTypeSet = true;
         }
     }
-    
+
     /// <summary>
     /// Gets or sets the code partner carrier.
     /// </summary>
@@ -981,9 +1085,10 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         get => _fiscalInvoiceStatus.GetInternalValue();
         set
         {
-            _fiscalInvoiceStatus = value == null
-                ? FiscalInvoiceStatus.NotNfe
-                : EnumExtensions.GetEnumByInternalValueAttribute<FiscalInvoiceStatus>(value);
+            _fiscalInvoiceStatus =
+                value == null
+                    ? FiscalInvoiceStatus.NotNfe
+                    : EnumExtensions.GetEnumByInternalValueAttribute<FiscalInvoiceStatus>(value);
             _fiscalInvoiceStatusSet = true;
         }
     }
@@ -995,7 +1100,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityIgnore]
     public bool Confirmed
     {
-        get => _confirmed; set
+        get => _confirmed;
+        set
         {
             _confirmed = value;
             _confirmedSet = true;
@@ -1011,7 +1117,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ConfirmedInternal
     {
-        get => _confirmed.ToString(@"Sim", @"Não"); set
+        get => _confirmed.ToString(@"Sim", @"Não");
+        set
         {
             _confirmed = value.ToBoolean(@"Sim");
             _confirmedSet = true;
@@ -1025,7 +1132,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityIgnore]
     public bool Pending
     {
-        get => _pending; set
+        get => _pending;
+        set
         {
             _pending = value;
             _pendingSet = true;
@@ -1041,7 +1149,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string PendingInternal
     {
-        get => _pending.ToString(@"S", @"N"); set
+        get => _pending.ToString(@"S", @"N");
+        set
         {
             _pending = value.ToBoolean();
             _pendingSet = true;
@@ -1055,7 +1164,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("CHAVENFE")]
     public string FiscalInvoiceKey
     {
-        get => _fiscalInvoiceKey; set
+        get => _fiscalInvoiceKey;
+        set
         {
             _fiscalInvoiceKey = value;
             _fiscalInvoiceKeySet = true;
@@ -1069,7 +1179,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityIgnore]
     public TimeSpan MovementTime
     {
-        get => _movementTime; set
+        get => _movementTime;
+        set
         {
             _movementTime = value;
             _movementTimeSet = true;
@@ -1085,7 +1196,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("HRMOV")]
     public string MovementTimeInternal
     {
-        get => string.Concat(_movementTime.Hours, _movementTime.Minutes, _movementTime.Seconds); set
+        get => string.Concat(_movementTime.Hours, _movementTime.Minutes, _movementTime.Seconds);
+        set
         {
             if (value == null)
             {
@@ -1098,22 +1210,50 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
                     _movementTime = new(value.ToInt32(), 0, 0);
                     break;
                 case 2:
-                    _movementTime = new(value.Substring(0, 1).ToInt32(), value.Substring(1, 1).ToInt32(), 0);
+                    _movementTime = new(
+                        value.Substring(0, 1).ToInt32(),
+                        value.Substring(1, 1).ToInt32(),
+                        0
+                    );
                     break;
                 case 3:
-                    _movementTime = new(value.Substring(0, 2).ToInt32(), value.Substring(2, 1).ToInt32(), 0);
+                    _movementTime = new(
+                        value.Substring(0, 2).ToInt32(),
+                        value.Substring(2, 1).ToInt32(),
+                        0
+                    );
                     break;
                 case 4:
-                    _movementTime = new(value.Substring(0, 2).ToInt32(), value.Substring(2, 2).ToInt32(), 0);
+                    _movementTime = new(
+                        value.Substring(0, 2).ToInt32(),
+                        value.Substring(2, 2).ToInt32(),
+                        0
+                    );
                     break;
                 case 5:
-                    _movementTime = new(value.Substring(0, 2).ToInt32(), value.Substring(2, 2).ToInt32(), value.Substring(4, 1).ToInt32());
+                    _movementTime = new(
+                        value.Substring(0, 2).ToInt32(),
+                        value.Substring(2, 2).ToInt32(),
+                        value.Substring(4, 1).ToInt32()
+                    );
                     break;
                 case 6:
-                    _movementTime = new(value.Substring(0, 2).ToInt32(), value.Substring(2, 2).ToInt32(), value.Substring(4, 2).ToInt32());
+                    _movementTime = new(
+                        value.Substring(0, 2).ToInt32(),
+                        value.Substring(2, 2).ToInt32(),
+                        value.Substring(4, 2).ToInt32()
+                    );
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(value), value, string.Format(CultureInfo.CurrentCulture, Resources.TheValueMustHaveBetween1and6digits, nameof(MovementTime)));
+                    throw new ArgumentOutOfRangeException(
+                        nameof(value),
+                        value,
+                        string.Format(
+                            CultureInfo.CurrentCulture,
+                            Resources.TheValueMustHaveBetween1and6digits,
+                            nameof(MovementTime)
+                        )
+                    );
             }
             _movementTimeSet = true;
         }
@@ -1126,7 +1266,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityElement("VLRNOTA")]
     public decimal InvoiceValue
     {
-        get => _invoiceValue; set
+        get => _invoiceValue;
+        set
         {
             _invoiceValue = value;
             _invoiceValueSet = true;
@@ -1140,7 +1281,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityReference]
     public Partner Partner
     {
-        get => _partner; set
+        get => _partner;
+        set
         {
             _partner = value;
             _partnerSet = true;
@@ -1171,7 +1313,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityReference("Transportadora")]
     public Partner PartnerCarrier
     {
-        get => _partnerCarrier; set
+        get => _partnerCarrier;
+        set
         {
             _partnerCarrier = value;
             _partnerCarrierSet = true;
@@ -1185,7 +1328,8 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityReference("Parceiro_AD001")]
     public Partner PartnerRoyalties
     {
-        get => _partnerRoyalties; set
+        get => _partnerRoyalties;
+        set
         {
             _partnerRoyalties = value;
             _partnerRoyaltiesSet = true;
@@ -1199,13 +1343,13 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [EntityReference]
     public Seller Seller
     {
-        get => _seller; set
+        get => _seller;
+        set
         {
             _seller = value;
             _sellerSet = true;
         }
     }
-
 
     #endregion
 
@@ -1217,7 +1361,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeSingleNumber() => _singleNumberSet;
 
     /// <summary>
@@ -1226,7 +1369,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodeCompany() => _codeCompanySet;
 
     /// <summary>
@@ -1235,7 +1377,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodePartner() => _codePartnerSet;
 
     /// <summary>
@@ -1246,7 +1387,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodePartnerDestination() => _codePartnerDestinationSet;
 
     /// <summary>
@@ -1255,7 +1395,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodeContact() => _codeContactSet;
 
     /// <summary>
@@ -1264,7 +1403,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeOperationType() => _operationTypeSet;
 
     /// <summary>
@@ -1273,7 +1411,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodeTradeType() => _codeTradeTypeSet;
 
     /// <summary>
@@ -1282,7 +1419,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeInvoiceNumber() => _invoiceNumberSet;
 
     /// <summary>
@@ -1291,7 +1427,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodeSeller() => _codeSellerSet;
 
     /// <summary>
@@ -1300,7 +1435,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeDateTraded() => _dateTradedSet;
 
     /// <summary>
@@ -1309,7 +1443,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeDateImported() => _dateImportedSet;
 
     /// <summary>
@@ -1318,7 +1451,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeDateBilled() => _dateBilledSet;
 
     /// <summary>
@@ -1327,7 +1459,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeDateExpectedDelivery() => _dateExpectedDeliverySet;
 
     /// <summary>
@@ -1336,7 +1467,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeDateChanged() => _dateChangedSet;
 
     /// <summary>
@@ -1345,7 +1475,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodeResultCenter() => _codeResultCenterSet;
 
     /// <summary>
@@ -1354,7 +1483,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodeNature() => _codeNatureSet;
 
     /// <summary>
@@ -1363,7 +1491,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeMovementType() => _movementTypeSet;
 
     /// <summary>
@@ -1372,7 +1499,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeFreightValue() => _freightValueSet;
 
     /// <summary>
@@ -1381,7 +1507,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeNote() => _noteSet;
 
     /// <summary>
@@ -1390,7 +1515,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeFreightType() => _freightTypeSet;
 
     /// <summary>
@@ -1399,7 +1523,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeInvoiceStatus() => _invoiceStatusSet;
 
     /// <summary>
@@ -1408,7 +1531,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeInvoiceFreightType() => _invoiceFreightTypeSet;
 
     /// <summary>
@@ -1417,7 +1539,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodePartnerCarrier() => _codePartnerCarrierSet;
 
     /// <summary>
@@ -1426,7 +1547,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeFiscalInvoiceStatus() => _fiscalInvoiceStatusSet;
 
     /// <summary>
@@ -1435,7 +1555,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeConfirmed() => _confirmedSet;
 
     /// <summary>
@@ -1444,7 +1563,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializePending() => _pendingSet;
 
     /// <summary>
@@ -1453,7 +1571,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeFiscalInvoiceKey() => _fiscalInvoiceKeySet;
 
     /// <summary>
@@ -1462,7 +1579,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeMovementTime() => _movementTimeSet;
 
     /// <summary>
@@ -1471,7 +1587,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeInvoiceValue() => _invoiceValueSet;
 
     /// <summary>
@@ -1480,7 +1595,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializePartner() => _partnerSet;
 
     /// <summary>
@@ -1491,7 +1605,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializePartnerDestination() => _partnerDestinationSet;
 
     /// <summary>
@@ -1500,7 +1613,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializePartnerCarrier() => _partnerCarrierSet;
 
     /// <summary>
@@ -1509,7 +1621,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializePartnerRoyalties() => _partnerRoyaltiesSet;
 
     /// <summary>
@@ -1518,7 +1629,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeSeller() => _sellerSet;
 
     #endregion

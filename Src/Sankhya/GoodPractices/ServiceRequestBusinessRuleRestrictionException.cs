@@ -9,18 +9,31 @@ using Sankhya.Service;
 [Serializable]
 public class ServiceRequestBusinessRuleRestrictionException : ServiceRequestGeneralException
 {
-    public ServiceRequestBusinessRuleRestrictionException(string businessRuleName,
+    public ServiceRequestBusinessRuleRestrictionException(
+        string businessRuleName,
         string errorMessage,
         ServiceRequest request,
-        ServiceResponse response)
-        : base(string.Format(CultureInfo.CurrentCulture, Resources.ServiceRequestBusinessRuleRestrictionException, businessRuleName, errorMessage), request, response)
+        ServiceResponse response
+    )
+        : base(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.ServiceRequestBusinessRuleRestrictionException,
+                businessRuleName,
+                errorMessage
+            ),
+            request,
+            response
+        )
     {
         BusinessRuleName = businessRuleName;
         ErrorMessage = errorMessage;
     }
 
-    protected ServiceRequestBusinessRuleRestrictionException(SerializationInfo info, StreamingContext context)
-    { }
+    protected ServiceRequestBusinessRuleRestrictionException(
+        SerializationInfo info,
+        StreamingContext context
+    ) { }
 
     public string BusinessRuleName { get; }
 

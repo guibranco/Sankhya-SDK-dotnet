@@ -8,9 +8,11 @@ using Sankhya.Properties;
 public class ServiceRequestInvalidCredentialsException : Exception
 {
     public ServiceRequestInvalidCredentialsException()
-        : base(Resources.ServiceRequestInvalidCredentialsException)
-    { }
+        : base(Resources.ServiceRequestInvalidCredentialsException) { }
 
-    protected ServiceRequestInvalidCredentialsException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestInvalidCredentialsException(
+        SerializationInfo info,
+        StreamingContext context
+    )
+        : base(info, context) { }
 }

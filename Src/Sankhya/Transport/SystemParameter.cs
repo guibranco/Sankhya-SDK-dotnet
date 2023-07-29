@@ -28,23 +28,41 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
             return false;
         }
 
-        return ReferenceEquals(this, other) || string.Equals(_key, other._key, StringComparison.InvariantCultureIgnoreCase) &&
-            _keySet == other._keySet &&
-            string.Equals(_description, other._description, StringComparison.InvariantCultureIgnoreCase) &&
-            _descriptionSet == other._descriptionSet && _codeUser == other._codeUser &&
-            _codeUserSet == other._codeUserSet && _type == other._type && _typeSet == other._typeSet &&
-            string.Equals(_module, other._module, StringComparison.InvariantCultureIgnoreCase) &&
-            _moduleSet == other._moduleSet &&
-            string.Equals(_class, other._class, StringComparison.InvariantCultureIgnoreCase) &&
-            _classSet == other._classSet &&
-            string.Equals(_tab, other._tab, StringComparison.InvariantCultureIgnoreCase) &&
-            _tabSet == other._tabSet && _logical == other._logical &&
-            _logicalSet == other._logicalSet && _integer == other._integer &&
-            _integerSet == other._integerSet && _decimal == other._decimal &&
-            _decimalSet == other._decimalSet && _date.Equals(other._date) &&
-            _dateSet == other._dateSet &&
-            string.Equals(_text, other._text, StringComparison.InvariantCultureIgnoreCase) &&
-            _textSet == other._textSet && Equals(_user, other._user) && _userSet == other._userSet;
+        return ReferenceEquals(this, other)
+            || string.Equals(_key, other._key, StringComparison.InvariantCultureIgnoreCase)
+                && _keySet == other._keySet
+                && string.Equals(
+                    _description,
+                    other._description,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _descriptionSet == other._descriptionSet
+                && _codeUser == other._codeUser
+                && _codeUserSet == other._codeUserSet
+                && _type == other._type
+                && _typeSet == other._typeSet
+                && string.Equals(
+                    _module,
+                    other._module,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _moduleSet == other._moduleSet
+                && string.Equals(_class, other._class, StringComparison.InvariantCultureIgnoreCase)
+                && _classSet == other._classSet
+                && string.Equals(_tab, other._tab, StringComparison.InvariantCultureIgnoreCase)
+                && _tabSet == other._tabSet
+                && _logical == other._logical
+                && _logicalSet == other._logicalSet
+                && _integer == other._integer
+                && _integerSet == other._integerSet
+                && _decimal == other._decimal
+                && _decimalSet == other._decimalSet
+                && _date.Equals(other._date)
+                && _dateSet == other._dateSet
+                && string.Equals(_text, other._text, StringComparison.InvariantCultureIgnoreCase)
+                && _textSet == other._textSet
+                && Equals(_user, other._user)
+                && _userSet == other._userSet;
     }
 
     /// <summary>
@@ -70,19 +88,40 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     {
         unchecked
         {
-            var hashCode = _key != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_key) : 0;
+            var hashCode =
+                _key != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_key) : 0;
             hashCode = (hashCode * 397) ^ _keySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_description != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_description) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _description != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_description)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _descriptionSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeUser;
             hashCode = (hashCode * 397) ^ _codeUserSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (int)_type;
             hashCode = (hashCode * 397) ^ _typeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_module != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_module) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _module != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_module)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _moduleSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_class != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_class) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _class != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_class)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _classSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_tab != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_tab) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (_tab != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_tab) : 0);
             hashCode = (hashCode * 397) ^ _tabSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _logical.GetHashCode();
             hashCode = (hashCode * 397) ^ _logicalSet.GetHashCode();
@@ -92,7 +131,11 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
             hashCode = (hashCode * 397) ^ _decimalSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _date.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_text != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_text) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _text != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_text) : 0
+                );
             hashCode = (hashCode * 397) ^ _textSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_user != null ? _user.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _userSet.GetHashCode();
@@ -106,7 +149,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator ==(SystemParameter left, SystemParameter right) => Equals(left, right);
+    public static bool operator ==(SystemParameter left, SystemParameter right) =>
+        Equals(left, right);
 
     /// <summary>
     /// Implements the !=.
@@ -114,7 +158,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator !=(SystemParameter left, SystemParameter right) => !Equals(left, right);
+    public static bool operator !=(SystemParameter left, SystemParameter right) =>
+        !Equals(left, right);
 
     #endregion
 
@@ -124,6 +169,7 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// The key
     /// </summary>
     private string _key;
+
     /// <summary>
     /// The key set
     /// </summary>
@@ -133,6 +179,7 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// The description
     /// </summary>
     private string _description;
+
     /// <summary>
     /// The description set
     /// </summary>
@@ -142,6 +189,7 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// The code user
     /// </summary>
     private int _codeUser;
+
     /// <summary>
     /// The code user set
     /// </summary>
@@ -151,6 +199,7 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// The type
     /// </summary>
     private SystemParameterType _type;
+
     /// <summary>
     /// The type set
     /// </summary>
@@ -160,6 +209,7 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// The module
     /// </summary>
     private string _module;
+
     /// <summary>
     /// The module set
     /// </summary>
@@ -169,6 +219,7 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// The class
     /// </summary>
     private string _class;
+
     /// <summary>
     /// The class set
     /// </summary>
@@ -178,6 +229,7 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// The tab
     /// </summary>
     private string _tab;
+
     /// <summary>
     /// The tab set
     /// </summary>
@@ -187,6 +239,7 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// The logical
     /// </summary>
     private bool _logical;
+
     /// <summary>
     /// The logical set
     /// </summary>
@@ -196,6 +249,7 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// The integer
     /// </summary>
     private int _integer;
+
     /// <summary>
     /// The integer set
     /// </summary>
@@ -205,6 +259,7 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// The decimal
     /// </summary>
     private decimal _decimal;
+
     /// <summary>
     /// The decimal set
     /// </summary>
@@ -214,6 +269,7 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// The date
     /// </summary>
     private DateTime _date;
+
     /// <summary>
     /// The date set
     /// </summary>
@@ -223,6 +279,7 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// The text
     /// </summary>
     private string _text;
+
     /// <summary>
     /// The text set
     /// </summary>
@@ -232,6 +289,7 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// The user
     /// </summary>
     private User _user;
+
     /// <summary>
     /// The user set
     /// </summary>
@@ -249,7 +307,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EntityKey]
     public string Key
     {
-        get => _key; set
+        get => _key;
+        set
         {
             _key = value;
             _keySet = true;
@@ -263,7 +322,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EntityElement("DESCRICAO")]
     public string Description
     {
-        get => _description; set
+        get => _description;
+        set
         {
             _description = value;
             _descriptionSet = true;
@@ -277,7 +337,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EntityElement("CODUSU")]
     public int CodeUser
     {
-        get => _codeUser; set
+        get => _codeUser;
+        set
         {
             _codeUser = value;
             _codeUserSet = true;
@@ -291,7 +352,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EntityIgnore]
     public SystemParameterType Type
     {
-        get => _type; set
+        get => _type;
+        set
         {
             _type = value;
             _typeSet = true;
@@ -307,7 +369,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string TypeInternal
     {
-        get => _type.GetInternalValue(); set
+        get => _type.GetInternalValue();
+        set
         {
             _type = EnumExtensions.GetEnumByInternalValueAttribute<SystemParameterType>(value);
             _typeSet = true;
@@ -321,7 +384,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EntityElement("MODULO")]
     public string Module
     {
-        get => _module; set
+        get => _module;
+        set
         {
             _module = value;
             _moduleSet = true;
@@ -335,7 +399,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EntityElement("CLASSE")]
     public string Class
     {
-        get => _class; set
+        get => _class;
+        set
         {
             _class = value;
             _classSet = true;
@@ -349,7 +414,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EntityElement("ABA")]
     public string Tab
     {
-        get => _tab; set
+        get => _tab;
+        set
         {
             _tab = value;
             _tabSet = true;
@@ -363,7 +429,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EntityIgnore]
     public bool Logical
     {
-        get => _logical; set
+        get => _logical;
+        set
         {
             _logical = value;
             _logicalSet = true;
@@ -379,7 +446,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string LogicalInternal
     {
-        get => _logical.ToString(); set
+        get => _logical.ToString();
+        set
         {
             _logical = value.ToBoolean(@"S|N");
             _logicalSet = true;
@@ -393,7 +461,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EntityElement("INTEIRO")]
     public int Integer
     {
-        get => _integer; set
+        get => _integer;
+        set
         {
             _integer = value;
             _integerSet = true;
@@ -407,7 +476,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EntityElement("NUMDEC")]
     public decimal Decimal
     {
-        get => _decimal; set
+        get => _decimal;
+        set
         {
             _decimal = value;
             _decimalSet = true;
@@ -421,7 +491,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EntityElement("DATA")]
     public DateTime Date
     {
-        get => _date; set
+        get => _date;
+        set
         {
             _date = value;
             _dateSet = true;
@@ -435,7 +506,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EntityElement("TEXTO")]
     public string Text
     {
-        get => _text; set
+        get => _text;
+        set
         {
             _text = value;
             _textSet = true;
@@ -449,7 +521,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [EntityReference]
     public User User
     {
-        get => _user; set
+        get => _user;
+        set
         {
             _user = value;
             _userSet = true;
@@ -565,5 +638,4 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     public bool ShouldSerializeUser() => _userSet;
 
     #endregion
-
 }

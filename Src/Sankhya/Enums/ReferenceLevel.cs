@@ -15,12 +15,12 @@
 namespace Sankhya.Enums;
 
 using CrispyWaffle.Attributes;
+
 /// <summary>
 /// Enum ReferenceLevel
 /// </summary>
 public enum ReferenceLevel
 {
-
     /// <summary>
     /// The none
     /// </summary>

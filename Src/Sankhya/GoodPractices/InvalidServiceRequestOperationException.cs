@@ -11,9 +11,17 @@ using Sankhya.Properties;
 public class InvalidServiceRequestOperationException : Exception
 {
     public InvalidServiceRequestOperationException(ServiceName service)
-        : base(string.Format(CultureInfo.CurrentCulture, Resources.InvalidServiceRequestOperationException, service.GetHumanReadableValue()))
-    { }
+        : base(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.InvalidServiceRequestOperationException,
+                service.GetHumanReadableValue()
+            )
+        ) { }
 
-    protected InvalidServiceRequestOperationException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected InvalidServiceRequestOperationException(
+        SerializationInfo info,
+        StreamingContext context
+    )
+        : base(info, context) { }
 }

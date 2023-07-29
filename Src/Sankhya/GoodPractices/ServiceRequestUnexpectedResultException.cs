@@ -23,15 +23,37 @@ public class ServiceRequestUnexpectedResultException : ServiceRequestGeneralExce
     }
 
     public ServiceRequestUnexpectedResultException(ServiceRequest request, ServiceResponse response)
-        : base(string.Format(CultureInfo.CurrentCulture, Resources.ServiceRequestUnexpectedResultException, GetServiceName(request)), request, response) =>
-        ErrorMessage = string.Empty;
+        : base(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.ServiceRequestUnexpectedResultException,
+                GetServiceName(request)
+            ),
+            request,
+            response
+        ) => ErrorMessage = string.Empty;
 
-    public ServiceRequestUnexpectedResultException(string message, ServiceRequest request, ServiceResponse response)
-        : base(string.Format(CultureInfo.CurrentCulture, Resources.ServiceRequestUnexpectedResultException_Uncaught, GetServiceName(request), message), request, response) =>
-        ErrorMessage = message;
+    public ServiceRequestUnexpectedResultException(
+        string message,
+        ServiceRequest request,
+        ServiceResponse response
+    )
+        : base(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.ServiceRequestUnexpectedResultException_Uncaught,
+                GetServiceName(request),
+                message
+            ),
+            request,
+            response
+        ) => ErrorMessage = message;
 
-    protected ServiceRequestUnexpectedResultException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
-        
+    protected ServiceRequestUnexpectedResultException(
+        SerializationInfo info,
+        StreamingContext context
+    )
+        : base(info, context) { }
+
     public string ErrorMessage { get; }
 }

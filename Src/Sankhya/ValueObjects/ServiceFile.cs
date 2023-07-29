@@ -35,6 +35,7 @@ public sealed class ServiceFile
     /// </summary>
     /// <value>The extension.</value>
     public string FileExtension { get; set; }
+
     /// <summary>
     /// Gets or sets the data.
     /// </summary>

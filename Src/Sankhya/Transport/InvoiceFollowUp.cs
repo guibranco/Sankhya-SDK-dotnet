@@ -13,7 +13,6 @@ using Sankhya.Properties;
 /// </summary>
 /// <seealso cref="IEntity" />
 [Entity("AcompanhamentoNota")]
-
 public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
 {
     #region Equality members
@@ -32,18 +31,33 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _singleNumber == other._singleNumber && _singleNumberSet == other._singleNumberSet &&
-            _sequence == other._sequence && _sequenceSet == other._sequenceSet &&
-            _codeUser == other._codeUser && _codeUserSet == other._codeUserSet &&
-            _dateOccurrence.Equals(other._dateOccurrence) && _dateOccurrenceSet == other._dateOccurrenceSet &&
-            _timeOccurrence.Equals(other._timeOccurrence) && _timeOccurrenceSet == other._timeOccurrenceSet &&
-            string.Equals(_occurrences, other._occurrences, StringComparison.InvariantCultureIgnoreCase) &&
-            _occurrencesSet == other._occurrencesSet && _typed == other._typed &&
-            _typedSet == other._typedSet && _reference == other._reference &&
-            _referenceSet == other._referenceSet && Equals(_user, other._user) &&
-            _userSet == other._userSet && Equals(_invoiceHeader, other._invoiceHeader) &&
-            _invoiceHeaderSet == other._invoiceHeaderSet && Equals(_invoiceItem, other._invoiceItem) &&
-            _invoiceItemSet == other._invoiceItemSet;
+        return ReferenceEquals(this, other)
+            || _singleNumber == other._singleNumber
+                && _singleNumberSet == other._singleNumberSet
+                && _sequence == other._sequence
+                && _sequenceSet == other._sequenceSet
+                && _codeUser == other._codeUser
+                && _codeUserSet == other._codeUserSet
+                && _dateOccurrence.Equals(other._dateOccurrence)
+                && _dateOccurrenceSet == other._dateOccurrenceSet
+                && _timeOccurrence.Equals(other._timeOccurrence)
+                && _timeOccurrenceSet == other._timeOccurrenceSet
+                && string.Equals(
+                    _occurrences,
+                    other._occurrences,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _occurrencesSet == other._occurrencesSet
+                && _typed == other._typed
+                && _typedSet == other._typedSet
+                && _reference == other._reference
+                && _referenceSet == other._referenceSet
+                && Equals(_user, other._user)
+                && _userSet == other._userSet
+                && Equals(_invoiceHeader, other._invoiceHeader)
+                && _invoiceHeaderSet == other._invoiceHeaderSet
+                && Equals(_invoiceItem, other._invoiceItem)
+                && _invoiceItemSet == other._invoiceItemSet;
     }
 
     /// <summary>
@@ -81,7 +95,13 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
             hashCode = (hashCode * 397) ^ _dateOccurrenceSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _timeOccurrence.GetHashCode();
             hashCode = (hashCode * 397) ^ _timeOccurrenceSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_occurrences != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_occurrences) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _occurrences != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_occurrences)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _occurrencesSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _typed.GetHashCode();
             hashCode = (hashCode * 397) ^ _typedSet.GetHashCode();
@@ -89,7 +109,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
             hashCode = (hashCode * 397) ^ _referenceSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_user != null ? _user.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _userSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_invoiceHeader != null ? _invoiceHeader.GetHashCode() : 0);
+            hashCode =
+                (hashCode * 397) ^ (_invoiceHeader != null ? _invoiceHeader.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _invoiceHeaderSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_invoiceItem != null ? _invoiceItem.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _invoiceItemSet.GetHashCode();
@@ -103,7 +124,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator ==(InvoiceFollowUp left, InvoiceFollowUp right) => Equals(left, right);
+    public static bool operator ==(InvoiceFollowUp left, InvoiceFollowUp right) =>
+        Equals(left, right);
 
     /// <summary>
     /// Implements the !=.
@@ -111,7 +133,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator !=(InvoiceFollowUp left, InvoiceFollowUp right) => !Equals(left, right);
+    public static bool operator !=(InvoiceFollowUp left, InvoiceFollowUp right) =>
+        !Equals(left, right);
 
     #endregion
 
@@ -121,6 +144,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// The single number
     /// </summary>
     private int _singleNumber;
+
     /// <summary>
     /// The single number set
     /// </summary>
@@ -130,6 +154,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// The sequence
     /// </summary>
     private int _sequence;
+
     /// <summary>
     /// The sequence set
     /// </summary>
@@ -139,6 +164,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// The code user
     /// </summary>
     private int _codeUser;
+
     /// <summary>
     /// The code user set
     /// </summary>
@@ -148,6 +174,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// The date occurrence
     /// </summary>
     private DateTime _dateOccurrence;
+
     /// <summary>
     /// The date occurrence set
     /// </summary>
@@ -157,6 +184,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// The time occurrence
     /// </summary>
     private TimeSpan _timeOccurrence;
+
     /// <summary>
     /// The time occurrence set
     /// </summary>
@@ -166,6 +194,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// The occurrences
     /// </summary>
     private string _occurrences;
+
     /// <summary>
     /// The occurrences set
     /// </summary>
@@ -175,6 +204,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// The typed
     /// </summary>
     private bool _typed;
+
     /// <summary>
     /// The typed set
     /// </summary>
@@ -184,6 +214,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// The reference
     /// </summary>
     private InvoiceFollowUpReference _reference;
+
     /// <summary>
     /// The reference set
     /// </summary>
@@ -193,6 +224,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// The user
     /// </summary>
     private User _user;
+
     /// <summary>
     /// The user set
     /// </summary>
@@ -202,6 +234,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// The invoice header
     /// </summary>
     private InvoiceHeader _invoiceHeader;
+
     /// <summary>
     /// The invoice header set
     /// </summary>
@@ -211,6 +244,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// The invoice item
     /// </summary>
     private InvoiceItem _invoiceItem;
+
     /// <summary>
     /// The invoice item set
     /// </summary>
@@ -228,7 +262,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EntityKey]
     public int SingleNumber
     {
-        get => _singleNumber; set
+        get => _singleNumber;
+        set
         {
             _singleNumber = value;
             _singleNumberSet = true;
@@ -243,7 +278,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EntityKey]
     public int Sequence
     {
-        get => _sequence; set
+        get => _sequence;
+        set
         {
             _sequence = value;
             _sequenceSet = true;
@@ -257,7 +293,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EntityElement("CODUSU")]
     public int CodeUser
     {
-        get => _codeUser; set
+        get => _codeUser;
+        set
         {
             _codeUser = value;
             _codeUserSet = true;
@@ -272,7 +309,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EntityKey]
     public DateTime DateOccurrence
     {
-        get => _dateOccurrence; set
+        get => _dateOccurrence;
+        set
         {
             _dateOccurrence = value;
             _dateOccurrenceSet = true;
@@ -286,7 +324,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EntityIgnore]
     public TimeSpan TimeOccurrence
     {
-        get => _timeOccurrence; set
+        get => _timeOccurrence;
+        set
         {
             _timeOccurrence = value;
             _timeOccurrenceSet = true;
@@ -304,7 +343,9 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string TimeOccurrenceInternal
     {
-        get => string.Concat(_timeOccurrence.Hours, _timeOccurrence.Minutes, _timeOccurrence.Seconds); set
+        get =>
+            string.Concat(_timeOccurrence.Hours, _timeOccurrence.Minutes, _timeOccurrence.Seconds);
+        set
         {
             if (value == null)
             {
@@ -317,22 +358,50 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
                     _timeOccurrence = new(value.ToInt32(), 0, 0);
                     break;
                 case 2:
-                    _timeOccurrence = new(value.Substring(0, 1).ToInt32(), value.Substring(1, 1).ToInt32(), 0);
+                    _timeOccurrence = new(
+                        value.Substring(0, 1).ToInt32(),
+                        value.Substring(1, 1).ToInt32(),
+                        0
+                    );
                     break;
                 case 3:
-                    _timeOccurrence = new(value.Substring(0, 2).ToInt32(), value.Substring(2, 1).ToInt32(), 0);
+                    _timeOccurrence = new(
+                        value.Substring(0, 2).ToInt32(),
+                        value.Substring(2, 1).ToInt32(),
+                        0
+                    );
                     break;
                 case 4:
-                    _timeOccurrence = new(value.Substring(0, 2).ToInt32(), value.Substring(2, 2).ToInt32(), 0);
+                    _timeOccurrence = new(
+                        value.Substring(0, 2).ToInt32(),
+                        value.Substring(2, 2).ToInt32(),
+                        0
+                    );
                     break;
                 case 5:
-                    _timeOccurrence = new(value.Substring(0, 2).ToInt32(), value.Substring(2, 2).ToInt32(), value.Substring(4, 1).ToInt32());
+                    _timeOccurrence = new(
+                        value.Substring(0, 2).ToInt32(),
+                        value.Substring(2, 2).ToInt32(),
+                        value.Substring(4, 1).ToInt32()
+                    );
                     break;
                 case 6:
-                    _timeOccurrence = new(value.Substring(0, 2).ToInt32(), value.Substring(2, 2).ToInt32(), value.Substring(4, 2).ToInt32());
+                    _timeOccurrence = new(
+                        value.Substring(0, 2).ToInt32(),
+                        value.Substring(2, 2).ToInt32(),
+                        value.Substring(4, 2).ToInt32()
+                    );
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(value), value, string.Format(CultureInfo.CurrentCulture, Resources.TheValueMustHaveBetween1and6digits, nameof(TimeOccurrence)));
+                    throw new ArgumentOutOfRangeException(
+                        nameof(value),
+                        value,
+                        string.Format(
+                            CultureInfo.CurrentCulture,
+                            Resources.TheValueMustHaveBetween1and6digits,
+                            nameof(TimeOccurrence)
+                        )
+                    );
             }
             _timeOccurrenceSet = true;
         }
@@ -345,7 +414,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EntityElement("OCORRENCIAS")]
     public string Occurrences
     {
-        get => _occurrences; set
+        get => _occurrences;
+        set
         {
             _occurrences = value;
             _occurrencesSet = true;
@@ -359,7 +429,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EntityIgnore]
     public bool Typed
     {
-        get => _typed; set
+        get => _typed;
+        set
         {
             _typed = value;
             _typedSet = true;
@@ -375,7 +446,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string TypedInternal
     {
-        get => _typed.ToString(@"S", @"N"); set
+        get => _typed.ToString(@"S", @"N");
+        set
         {
             _typed = value.ToBoolean(@"S|N");
             _typedSet = true;
@@ -389,7 +461,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EntityIgnore]
     public InvoiceFollowUpReference Reference
     {
-        get => _reference; set
+        get => _reference;
+        set
         {
             _reference = value;
             _referenceSet = true;
@@ -405,9 +478,12 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ReferenceInternal
     {
-        get => _reference.GetInternalValue(); set
+        get => _reference.GetInternalValue();
+        set
         {
-            _reference = EnumExtensions.GetEnumByInternalValueAttribute<InvoiceFollowUpReference>(value);
+            _reference = EnumExtensions.GetEnumByInternalValueAttribute<InvoiceFollowUpReference>(
+                value
+            );
             _referenceSet = true;
         }
     }
@@ -419,7 +495,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EntityReference]
     public User User
     {
-        get => _user; set
+        get => _user;
+        set
         {
             _user = value;
             _userSet = true;
@@ -433,7 +510,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EntityReference]
     public InvoiceHeader InvoiceHeader
     {
-        get => _invoiceHeader; set
+        get => _invoiceHeader;
+        set
         {
             _invoiceHeader = value;
             _invoiceHeaderSet = true;
@@ -447,7 +525,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EntityReference]
     public InvoiceItem InvoiceItem
     {
-        get => _invoiceItem; set
+        get => _invoiceItem;
+        set
         {
             _invoiceItem = value;
             _invoiceItemSet = true;
@@ -514,7 +593,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeTyped() => _typedSet;
 
-
     /// <summary>
     /// Should the serialize reference.
     /// </summary>
@@ -548,5 +626,4 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     public bool ShouldSerializeInvoiceItem() => _invoiceItemSet;
 
     #endregion
-
 }

@@ -9,10 +9,23 @@ using Sankhya.Service;
 [Serializable]
 public class ServiceRequestInaccessibleException : ServiceRequestTemporarilyException
 {
-    public ServiceRequestInaccessibleException(string host, int port, ServiceRequest request, Exception innerException)
-        : base(string.Format(CultureInfo.CurrentCulture, Resources.ServiceRequestInaccessibleException, host, port), request, innerException)
-    { }
+    public ServiceRequestInaccessibleException(
+        string host,
+        int port,
+        ServiceRequest request,
+        Exception innerException
+    )
+        : base(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.ServiceRequestInaccessibleException,
+                host,
+                port
+            ),
+            request,
+            innerException
+        ) { }
 
-    protected ServiceRequestInaccessibleException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestInaccessibleException(SerializationInfo info, StreamingContext context)
+        : base(info, context) { }
 }

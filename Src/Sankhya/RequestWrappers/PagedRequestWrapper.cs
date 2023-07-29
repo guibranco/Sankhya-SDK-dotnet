@@ -67,7 +67,6 @@ internal sealed class PagedRequestWrapper
     /// </summary>
     private readonly int _maxResults;
 
-
     /// <summary>
     /// Collection of responses.
     /// </summary>
@@ -141,9 +140,10 @@ internal sealed class PagedRequestWrapper
     private PagedRequestWrapper(Type type, ServiceRequest request, int maxResults)
     {
         _context = ServiceLocator.Resolve<SankhyaContext>();
-        _entityName = request.RequestBody.Entity?.Name ??
-                      request.RequestBody.Entity?.RootEntity ??
-                      request.RequestBody.DataSet.RootEntity;
+        _entityName =
+            request.RequestBody.Entity?.Name
+            ?? request.RequestBody.Entity?.RootEntity
+            ?? request.RequestBody.DataSet.RootEntity;
         _items = new();
         _maxResults = maxResults;
         _request = request;
@@ -170,8 +170,18 @@ internal sealed class PagedRequestWrapper
             return;
         }
 
-        LogConsumer.Trace(Resources.PagedRequestWrapper_Signaling, _entityName, Resources.PageLoaded);
-        var eventArgs = new PagedRequestEventArgs(_type, quantityLoaded, _resultsLoaded, currentPageNumber, totalPages);
+        LogConsumer.Trace(
+            Resources.PagedRequestWrapper_Signaling,
+            _entityName,
+            Resources.PageLoaded
+        );
+        var eventArgs = new PagedRequestEventArgs(
+            _type,
+            quantityLoaded,
+            _resultsLoaded,
+            currentPageNumber,
+            totalPages
+        );
         PageLoadedSuccessfully?.Invoke(this, eventArgs);
         PageProcessed?.Invoke(this, eventArgs);
     }
@@ -193,7 +203,12 @@ internal sealed class PagedRequestWrapper
 
         LogConsumer.Trace(Resources.PagedRequestWrapper_Signaling, _entityName, Resources.Error);
 
-        var eventArgs = new PagedRequestEventArgs(_type, currentPageNumber, _resultsLoaded, exception);
+        var eventArgs = new PagedRequestEventArgs(
+            _type,
+            currentPageNumber,
+            _resultsLoaded,
+            exception
+        );
 
         PageLoadedError?.Invoke(this, eventArgs);
 
@@ -222,7 +237,10 @@ internal sealed class PagedRequestWrapper
 
             var response = _context.ServiceInvoker(_request, _token);
 
-            _request.RequestBody.DataSet.PagerId = response.ResponseBody.CrudServiceProviderEntities.PagerId;
+            _request.RequestBody.DataSet.PagerId = response
+                .ResponseBody
+                .CrudServiceProviderEntities
+                .PagerId;
 
             quantityLoaded = response.ResponseBody.CrudServiceProviderEntities.Total;
 
@@ -230,7 +248,12 @@ internal sealed class PagedRequestWrapper
 
             Interlocked.Add(ref _resultsLoaded, quantityLoaded);
 
-            foreach (EntityDynamicSerialization ds in response.ResponseBody.CrudServiceProviderEntities.Entities)
+            foreach (
+                EntityDynamicSerialization ds in response
+                    .ResponseBody
+                    .CrudServiceProviderEntities
+                    .Entities
+            )
             {
                 _items.Enqueue(ds);
             }
@@ -285,7 +308,12 @@ internal sealed class PagedRequestWrapper
 
         var firstPage = LoadPage(pageNumber++, out var quantityLoaded, out var totalPages);
 
-        if (!firstPage || quantityLoaded != 150 || token.IsCancellationRequested || _maxResults != -1 && _maxResults <= quantityLoaded)
+        if (
+            !firstPage
+            || quantityLoaded != 150
+            || token.IsCancellationRequested
+            || _maxResults != -1 && _maxResults <= quantityLoaded
+        )
         {
             Close();
             return;
@@ -298,14 +326,20 @@ internal sealed class PagedRequestWrapper
                 totalPages = 1 + pageNumber;
             }
 
-            CacheManager.Set(EnvironmentHelper.ProcessId, _cacheKey, TimeSpan.FromMinutes(lockMinutes * (totalPages - pageNumber + 1)));
+            CacheManager.Set(
+                EnvironmentHelper.ProcessId,
+                _cacheKey,
+                TimeSpan.FromMinutes(lockMinutes * (totalPages - pageNumber + 1))
+            );
 
             var success = LoadPage(pageNumber++, out quantityLoaded, out totalPages);
 
-            if (success &&
-                quantityLoaded == 300 &&
-                !token.IsCancellationRequested &&
-                (_maxResults == -1 || _maxResults > _resultsLoaded))
+            if (
+                success
+                && quantityLoaded == 300
+                && !token.IsCancellationRequested
+                && (_maxResults == -1 || _maxResults > _resultsLoaded)
+            )
             {
                 continue;
             }
@@ -323,7 +357,10 @@ internal sealed class PagedRequestWrapper
     {
         while (true)
         {
-            if (!CacheManager.TryGet(_cacheKey, out int processId) || processId == EnvironmentHelper.ProcessId)
+            if (
+                !CacheManager.TryGet(_cacheKey, out int processId)
+                || processId == EnvironmentHelper.ProcessId
+            )
             {
                 break;
             }
@@ -336,7 +373,11 @@ internal sealed class PagedRequestWrapper
                 break;
             }
 
-            LogConsumer.Warning(Resources.PagedRequestWrapper_LoadResponse_Waiting, _entityName, timeToWait);
+            LogConsumer.Warning(
+                Resources.PagedRequestWrapper_LoadResponse_Waiting,
+                _entityName,
+                timeToWait
+            );
 
             Thread.Sleep(Math.Min(10000, (int)timeToWait.TotalMilliseconds));
         }
@@ -361,13 +402,17 @@ internal sealed class PagedRequestWrapper
             LogConsumer.Handle(e);
         }
 
-        LogConsumer.Trace(Resources.PagedRequestWrapper_Signaling, _entityName, Resources.AllPagesLoaded);
-        LogConsumer.Info(Resources.PagedRequestWrapper_Close,
+        LogConsumer.Trace(
+            Resources.PagedRequestWrapper_Signaling,
+            _entityName,
+            Resources.AllPagesLoaded
+        );
+        LogConsumer.Info(
+            Resources.PagedRequestWrapper_Close,
             _resultsLoaded,
-            _resultsLoaded == 1
-                ? Resources.YSingularSuffix
-                : Resources.YPluralSuffix,
-            _entityName);
+            _resultsLoaded == 1 ? Resources.YSingularSuffix : Resources.YPluralSuffix,
+            _entityName
+        );
         _context.FinalizeSession(_token);
         _allPagesLoaded.Set();
         _set = true;
@@ -390,9 +435,10 @@ internal sealed class PagedRequestWrapper
         int maxResults,
         string entityName,
         CancellationTokenSource cts,
-        BlockingCollection<T> stronglyTypedCollection) where T : class, IEntity, new()
+        BlockingCollection<T> stronglyTypedCollection
+    )
+        where T : class, IEntity, new()
     {
-
         if (cts.IsCancellationRequested)
         {
             return null;
@@ -404,8 +450,25 @@ internal sealed class PagedRequestWrapper
 
         var wrapper = new PagedRequestWrapper(typeof(T), request, maxResults);
 
-        wrapper.PageLoadedError += (_, e) => ex = HandlePageLoadedError(entityName, cts, stronglyTypedCollection, wrapper, e.Exception);
-        wrapper.PageLoadedSuccessfully += (_, e) => HandlePageLoaded(processOnDemandData, entityName, cts, stronglyTypedCollection, e.CurrentPage, e.TotalPages, e.QuantityLoaded, wrapper);
+        wrapper.PageLoadedError += (_, e) =>
+            ex = HandlePageLoadedError(
+                entityName,
+                cts,
+                stronglyTypedCollection,
+                wrapper,
+                e.Exception
+            );
+        wrapper.PageLoadedSuccessfully += (_, e) =>
+            HandlePageLoaded(
+                processOnDemandData,
+                entityName,
+                cts,
+                stronglyTypedCollection,
+                e.CurrentPage,
+                e.TotalPages,
+                e.QuantityLoaded,
+                wrapper
+            );
 
         try
         {
@@ -449,30 +512,35 @@ internal sealed class PagedRequestWrapper
     /// <param name="totalPages">The total pages.</param>
     /// <param name="quantityLoaded">The quantity loaded.</param>
     /// <param name="wrapper">The wrapper.</param>
-    private static void HandlePageLoaded<T>(Action<List<T>> processOnDemandData,
+    private static void HandlePageLoaded<T>(
+        Action<List<T>> processOnDemandData,
         string entityName,
         CancellationTokenSource cts,
         BlockingCollection<T> stronglyTypedCollection,
         int currentPageNumber,
         int totalPages,
         int quantityLoaded,
-        PagedRequestWrapper wrapper) where T : class, IEntity, new()
+        PagedRequestWrapper wrapper
+    )
+        where T : class, IEntity, new()
     {
-        LogConsumer.Info(Resources.PagedRequestWrapper_GetManagedEnumerator_PageLoaded,
+        LogConsumer.Info(
+            Resources.PagedRequestWrapper_GetManagedEnumerator_PageLoaded,
             currentPageNumber,
-            totalPages > 0 ? string.Format(CultureInfo.CurrentCulture, Resources.OfTotal, totalPages) : string.Empty,
+            totalPages > 0
+                ? string.Format(CultureInfo.CurrentCulture, Resources.OfTotal, totalPages)
+                : string.Empty,
             entityName,
             quantityLoaded,
-            quantityLoaded == 1 ? Resources.YSingularSuffix : Resources.YPluralSuffix);
+            quantityLoaded == 1 ? Resources.YSingularSuffix : Resources.YPluralSuffix
+        );
         var temp = new List<T>();
         for (var i = 0; i < quantityLoaded; i++)
         {
             temp.Add(wrapper._items.Dequeue().ConvertToType<T>());
         }
 
-        if (!temp.Any() ||
-            cts.IsCancellationRequested ||
-            stronglyTypedCollection.IsAddingCompleted)
+        if (!temp.Any() || cts.IsCancellationRequested || stronglyTypedCollection.IsAddingCompleted)
         {
             return;
         }
@@ -482,7 +550,14 @@ internal sealed class PagedRequestWrapper
             temp.ForEach(stronglyTypedCollection.Add);
             return;
         }
-        wrapper._onDemandTasks.Add(Task.Factory.StartNew(() => LoadOnDemandData(processOnDemandData, temp, stronglyTypedCollection, cts), cts.Token, TaskCreationOptions.AttachedToParent, TaskScheduler.Current));
+        wrapper._onDemandTasks.Add(
+            Task.Factory.StartNew(
+                () => LoadOnDemandData(processOnDemandData, temp, stronglyTypedCollection, cts),
+                cts.Token,
+                TaskCreationOptions.AttachedToParent,
+                TaskScheduler.Current
+            )
+        );
     }
 
     /// <summary>
@@ -493,7 +568,13 @@ internal sealed class PagedRequestWrapper
     /// <param name="temp">The temporary.</param>
     /// <param name="stronglyTypedCollection">The strongly typed collection.</param>
     /// <param name="cts">The CTS.</param>
-    private static void LoadOnDemandData<T>(Action<List<T>> processOnDemandData, List<T> temp, BlockingCollection<T> stronglyTypedCollection, CancellationTokenSource cts) where T : class, IEntity, new()
+    private static void LoadOnDemandData<T>(
+        Action<List<T>> processOnDemandData,
+        List<T> temp,
+        BlockingCollection<T> stronglyTypedCollection,
+        CancellationTokenSource cts
+    )
+        where T : class, IEntity, new()
     {
         try
         {
@@ -520,14 +601,19 @@ internal sealed class PagedRequestWrapper
     /// <param name="wrapper">The wrapper.</param>
     /// <param name="exception">The exception.</param>
     /// <returns></returns>
-    private static ServiceRequestGeneralException HandlePageLoadedError<T>(string entityName,
+    private static ServiceRequestGeneralException HandlePageLoadedError<T>(
+        string entityName,
         CancellationTokenSource cts,
         BlockingCollection<T> stronglyTypedCollection,
         PagedRequestWrapper wrapper,
-        Exception exception)
+        Exception exception
+    )
         where T : class, IEntity, new()
     {
-        LogConsumer.Warning(Resources.PagedRequestWrapper_GetManagedEnumerator_ErrorOccured, entityName);
+        LogConsumer.Warning(
+            Resources.PagedRequestWrapper_GetManagedEnumerator_ErrorOccured,
+            entityName
+        );
 
         wrapper.Close();
 
@@ -555,7 +641,20 @@ internal sealed class PagedRequestWrapper
     /// <param name="request">The request.</param>
     /// <param name="entityName">Name of the entity.</param>
     /// <param name="timeout">The timeout.</param>
-    private static void HandleCancellationTokenCancelled(ServiceRequest request, string entityName, TimeSpan timeout) => LogConsumer.Error(string.Format(CultureInfo.CurrentCulture, Resources.PagedRequestWrapper_HandleCancellationTokenCancelled, entityName, timeout.TotalSeconds, request.ServiceInternal));
+    private static void HandleCancellationTokenCancelled(
+        ServiceRequest request,
+        string entityName,
+        TimeSpan timeout
+    ) =>
+        LogConsumer.Error(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.PagedRequestWrapper_HandleCancellationTokenCancelled,
+                entityName,
+                timeout.TotalSeconds,
+                request.ServiceInternal
+            )
+        );
 
     #endregion
 
@@ -570,7 +669,13 @@ internal sealed class PagedRequestWrapper
     /// <param name="processOnDemandData">The process on demand data.</param>
     /// <param name="maxResults">The maximum results.</param>
     /// <returns>IEnumerable&lt;T&gt;.</returns>
-    public static IEnumerable<T> GetManagedEnumerator<T>(ServiceRequest request, TimeSpan timeout, Action<List<T>> processOnDemandData = null, int maxResults = -1) where T : class, IEntity, new()
+    public static IEnumerable<T> GetManagedEnumerator<T>(
+        ServiceRequest request,
+        TimeSpan timeout,
+        Action<List<T>> processOnDemandData = null,
+        int maxResults = -1
+    )
+        where T : class, IEntity, new()
     {
         var entityName = typeof(T).GetEntityName();
 
@@ -586,9 +691,19 @@ internal sealed class PagedRequestWrapper
 
         timer.Start();
 
-        var task = Task.Run(() =>
-            // ReSharper disable AccessToDisposedClosure
-            ex = GetManagedEnumeratorInternal(request, processOnDemandData, maxResults, entityName, cts, stronglyTypedCollection), cts.Token);
+        var task = Task.Run(
+            () =>
+                // ReSharper disable AccessToDisposedClosure
+                ex = GetManagedEnumeratorInternal(
+                    request,
+                    processOnDemandData,
+                    maxResults,
+                    entityName,
+                    cts,
+                    stronglyTypedCollection
+                ),
+            cts.Token
+        );
 
         var counter = 0;
 
@@ -608,7 +723,12 @@ internal sealed class PagedRequestWrapper
 
         timer.Stop();
 
-        LogConsumer.Trace(Resources.PagedRequestWrapper_GetManagedEnumerator, counter, entityName, timer.Elapsed);
+        LogConsumer.Trace(
+            Resources.PagedRequestWrapper_GetManagedEnumerator,
+            counter,
+            entityName,
+            timer.Elapsed
+        );
 
         if (ex != null)
         {

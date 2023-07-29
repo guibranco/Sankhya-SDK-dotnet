@@ -16,6 +16,7 @@ public sealed class Accompaniment
     /// The date
     /// </summary>
     private DateTime _date;
+
     /// <summary>
     /// The date set
     /// </summary>
@@ -25,6 +26,7 @@ public sealed class Accompaniment
     /// The time
     /// </summary>
     private TimeSpan _time;
+
     /// <summary>
     /// The time set
     /// </summary>
@@ -34,6 +36,7 @@ public sealed class Accompaniment
     /// The occurrence
     /// </summary>
     private string _occurrence;
+
     /// <summary>
     /// The occurrence set
     /// </summary>
@@ -43,6 +46,7 @@ public sealed class Accompaniment
     /// The user
     /// </summary>
     private string _user;
+
     /// <summary>
     /// The user set
     /// </summary>
@@ -82,8 +86,6 @@ public sealed class Accompaniment
         }
     }
 
-
-
     /// <summary>
     /// Gets or sets the time.
     /// </summary>
@@ -91,7 +93,8 @@ public sealed class Accompaniment
     [XmlIgnore]
     public TimeSpan Time
     {
-        get => _time; set
+        get => _time;
+        set
         {
             _time = value;
             _timeSet = true;
@@ -133,7 +136,8 @@ public sealed class Accompaniment
     [XmlAttribute("ocorrencias")]
     public string Occurrence
     {
-        get => _occurrence; set
+        get => _occurrence;
+        set
         {
             _occurrence = value;
             _occurrenceSet = true;
@@ -147,7 +151,8 @@ public sealed class Accompaniment
     [XmlAttribute("usuario")]
     public string User
     {
-        get => _user; set
+        get => _user;
+        set
         {
             _user = value;
             _userSet = true;
@@ -181,7 +186,6 @@ public sealed class Accompaniment
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeOccurrence() => _occurrenceSet;
 
     /// <summary>
@@ -193,5 +197,4 @@ public sealed class Accompaniment
     public bool ShouldSerializeUser() => _userSet;
 
     #endregion
-
 }

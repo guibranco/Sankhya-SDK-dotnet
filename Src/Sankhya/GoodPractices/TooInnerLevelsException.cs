@@ -7,9 +7,8 @@ using System.Runtime.Serialization;
 public class TooInnerLevelsException : Exception
 {
     public TooInnerLevelsException(string entityName)
-        : base($@"Service Request with too inner entity references on entity {entityName}")
-    { }
+        : base($@"Service Request with too inner entity references on entity {entityName}") { }
 
-    protected TooInnerLevelsException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected TooInnerLevelsException(SerializationInfo info, StreamingContext context)
+        : base(info, context) { }
 }

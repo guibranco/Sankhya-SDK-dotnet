@@ -16,8 +16,11 @@ public class ServiceRequestInvalidOperationException : Exception, IXmlServiceExc
         Response = response;
     }
 
-    protected ServiceRequestInvalidOperationException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestInvalidOperationException(
+        SerializationInfo info,
+        StreamingContext context
+    )
+        : base(info, context) { }
 
     #region Implementation of IServiceException
 

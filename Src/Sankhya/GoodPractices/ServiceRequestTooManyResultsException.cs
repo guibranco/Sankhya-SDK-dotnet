@@ -10,14 +10,27 @@ using Sankhya.Service;
 [Serializable]
 public class ServiceRequestTooManyResultsException : ServiceRequestGeneralException
 {
-    public ServiceRequestTooManyResultsException(ServiceRequest request,
+    public ServiceRequestTooManyResultsException(
+        ServiceRequest request,
         ServiceResponse response,
-        int resultLength)
-        : base(string.Format(CultureInfo.CurrentCulture, Resources.ServiceRequestTooManyResultsException, request?.Service.GetHumanReadableValue(), request?.RequestBody.Entity?.Name ?? request?.RequestBody.Entity?.RootEntity ?? request?.RequestBody.DataSet.RootEntity, resultLength),
+        int resultLength
+    )
+        : base(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.ServiceRequestTooManyResultsException,
+                request?.Service.GetHumanReadableValue(),
+                request?.RequestBody.Entity?.Name
+                    ?? request?.RequestBody.Entity?.RootEntity
+                    ?? request?.RequestBody.DataSet.RootEntity,
+                resultLength
+            ),
             request,
-            response)
-    { }
+            response
+        ) { }
 
-    protected ServiceRequestTooManyResultsException(SerializationInfo info, StreamingContext context)
-    { }
+    protected ServiceRequestTooManyResultsException(
+        SerializationInfo info,
+        StreamingContext context
+    ) { }
 }

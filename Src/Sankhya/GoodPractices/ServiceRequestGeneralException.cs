@@ -14,8 +14,7 @@ public class ServiceRequestGeneralException : Exception, IXmlServiceException
 
     private readonly ServiceResponse _response;
 
-    public ServiceRequestGeneralException()
-    { }
+    public ServiceRequestGeneralException() { }
 
     protected ServiceRequestGeneralException(string message, ServiceRequest request)
         : base(message)
@@ -23,31 +22,46 @@ public class ServiceRequestGeneralException : Exception, IXmlServiceException
         _request = request;
         _response = null;
     }
-    protected ServiceRequestGeneralException(string message, ServiceRequest request, Exception innerException)
+
+    protected ServiceRequestGeneralException(
+        string message,
+        ServiceRequest request,
+        Exception innerException
+    )
         : base(message, innerException)
     {
         _request = request;
         _response = null;
     }
 
-    protected ServiceRequestGeneralException(string message, ServiceRequest request, ServiceResponse response)
+    protected ServiceRequestGeneralException(
+        string message,
+        ServiceRequest request,
+        ServiceResponse response
+    )
         : base(message)
     {
         _request = request;
         _response = response;
     }
 
-    protected ServiceRequestGeneralException(string message, ServiceRequest request, ServiceResponse response, Exception innerException)
+    protected ServiceRequestGeneralException(
+        string message,
+        ServiceRequest request,
+        ServiceResponse response,
+        Exception innerException
+    )
         : base(message, innerException)
     {
         _request = request;
         _response = response;
     }
 
-    protected ServiceRequestGeneralException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestGeneralException(SerializationInfo info, StreamingContext context)
+        : base(info, context) { }
 
     public XmlDocument Request => _request != null ? _request.GetSerializer() : new XmlDocument();
 
-    public XmlDocument Response => _response != null ? _response.GetSerializer() : new XmlDocument();
+    public XmlDocument Response =>
+        _response != null ? _response.GetSerializer() : new XmlDocument();
 }

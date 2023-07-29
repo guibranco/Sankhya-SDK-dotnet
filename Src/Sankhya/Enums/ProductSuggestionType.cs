@@ -20,7 +20,6 @@ using CrispyWaffle.Attributes;
 /// </summary>
 public enum ProductSuggestionType
 {
-
     /// <summary>
     /// The none
     /// </summary>
