@@ -76,13 +76,7 @@ public static class KnowServicesRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.SessionKill)
         {
-            RequestBody = new()
-            {
-                Session = new()
-                {
-                    Id = sessionId
-                }
-            }
+            RequestBody = new() { Session = new() { Id = sessionId } }
         };
         _context.ServiceInvoker(request, _sessionToken);
     }
@@ -99,7 +93,13 @@ public static class KnowServicesRequestWrapper
     /// <param name="tip">The tip.</param>
     /// <param name="level">The level.</param>
     /// <param name="recipients">The recipients.</param>
-    public static void SendWarning([Localizable(false)] string title, [Localizable(false)] string description, [Localizable(false)] string tip, SankhyaWarningLevel level, ICollection<SystemWarningRecipient> recipients = null)
+    public static void SendWarning(
+        [Localizable(false)] string title,
+        [Localizable(false)] string description,
+        [Localizable(false)] string tip,
+        SankhyaWarningLevel level,
+        ICollection<SystemWarningRecipient> recipients = null
+    )
     {
         var request = new ServiceRequest(ServiceName.WarningSend)
         {
@@ -123,12 +123,14 @@ public static class KnowServicesRequestWrapper
             request.RequestBody.SystemWarning.Recipients = recipients.ToArray();
         }
 
-        LogConsumer.Info(Resources.KnowServicesRequestWrapper_SendWarning_SendingWarningWithLevel,
+        LogConsumer.Info(
+            Resources.KnowServicesRequestWrapper_SendWarning_SendingWarningWithLevel,
             level.GetHumanReadableValue(),
             title,
             recipients == null || !recipients.Any()
                 ? Resources.All
-                : string.Concat(recipients.Count, Resources.UsersOrGroups));
+                : string.Concat(recipients.Count, Resources.UsersOrGroups)
+        );
         _context.ServiceInvoker(request, _sessionToken);
     }
 
@@ -137,25 +139,24 @@ public static class KnowServicesRequestWrapper
     /// </summary>
     /// <param name="content">The content.</param>
     /// <param name="recipients">The recipients.</param>
-    public static void SendMessage([Localizable(false)] string content, ICollection<SystemWarningRecipient> recipients = null)
+    public static void SendMessage(
+        [Localizable(false)] string content,
+        ICollection<SystemWarningRecipient> recipients = null
+    )
     {
-
         var request = new ServiceRequest(ServiceName.MessageSend)
         {
-            RequestBody =
-            {
-                SystemMessage = new()
-                {
-                    Content = content
-                }
-            }
+            RequestBody = { SystemMessage = new() { Content = content } }
         };
         if (recipients != null && recipients.Any())
         {
             request.RequestBody.SystemMessage.Recipients = recipients.ToArray();
         }
 
-        LogConsumer.Info(Resources.KnowServicesRequestWrapper_SendMessage_SendingMessage, recipients?.Count.ToString() ?? Resources.All);
+        LogConsumer.Info(
+            Resources.KnowServicesRequestWrapper_SendMessage_SendingMessage,
+            recipients?.Count.ToString() ?? Resources.All
+        );
         _context.ServiceInvoker(request, _sessionToken);
     }
 
@@ -169,10 +170,7 @@ public static class KnowServicesRequestWrapper
         {
             RequestBody =
             {
-                NotificationElem = new()
-                {
-                    LastNotification = _lastTimeMessageReceived
-                }
+                NotificationElem = new() { LastNotification = _lastTimeMessageReceived }
             }
         };
         LogConsumer.Info(Resources.KnowServicesRequestWrapper_ReceiveMessages_ReceivingMessages);
@@ -191,7 +189,10 @@ public static class KnowServicesRequestWrapper
     /// <param name="invoiceHeader">The invoice header.</param>
     /// <param name="invoiceItems">(Optional) The invoice items.</param>
     /// <returns>Int32.</returns>
-    public static int CreateInvoice(InvoiceHeader invoiceHeader, IEnumerable<InvoiceItem> invoiceItems = null)
+    public static int CreateInvoice(
+        InvoiceHeader invoiceHeader,
+        IEnumerable<InvoiceItem> invoiceItems = null
+    )
     {
         if (invoiceHeader == null)
         {
@@ -200,13 +201,7 @@ public static class KnowServicesRequestWrapper
 
         var request = new ServiceRequest(ServiceName.InvoiceInclude)
         {
-            RequestBody =
-            {
-                Invoice = new()
-                {
-                    Header = invoiceHeader
-                }
-            }
+            RequestBody = { Invoice = new() { Header = invoiceHeader } }
         };
         var itemsCount = 0;
         if (invoiceItems != null)
@@ -218,7 +213,12 @@ public static class KnowServicesRequestWrapper
                 request.RequestBody.Invoice.Items = new() { Items = items };
             }
         }
-        LogConsumer.Info(Resources.KnowServicesRequestWrapper_CreateInvoice, invoiceHeader.OperationType, itemsCount, itemsCount == 1 ? @"m" : Resources.ItemPluralSufix);
+        LogConsumer.Info(
+            Resources.KnowServicesRequestWrapper_CreateInvoice,
+            invoiceHeader.OperationType,
+            itemsCount,
+            itemsCount == 1 ? @"m" : Resources.ItemPluralSufix
+        );
         var response = _context.ServiceInvoker(request, _sessionToken);
         string singleNumber = response.ResponseBody.PrimaryKey.NUNOTA.ToString();
         return singleNumber.ToInt32();
@@ -234,13 +234,7 @@ public static class KnowServicesRequestWrapper
         {
             RequestBody =
             {
-                Invoices = new()
-                {
-                    Invoice = new()
-                    {
-                        SingleNumberDuplication = singleNumber
-                    }
-                }
+                Invoices = new() { Invoice = new() { SingleNumberDuplication = singleNumber } }
             }
         };
 
@@ -274,7 +268,12 @@ public static class KnowServicesRequestWrapper
             }
         };
 
-        LogConsumer.Info(Resources.KnowServicesRequestWrapper_AddInvoiceItems_AddingItemsToInvoice, items.Length, singleNumber, items.Length == 1 ? @"m" : Resources.ItemPluralSufix);
+        LogConsumer.Info(
+            Resources.KnowServicesRequestWrapper_AddInvoiceItems_AddingItemsToInvoice,
+            items.Length,
+            singleNumber,
+            items.Length == 1 ? @"m" : Resources.ItemPluralSufix
+        );
 
         var response = _context.ServiceInvoker(request, _sessionToken);
 
@@ -289,7 +288,6 @@ public static class KnowServicesRequestWrapper
             LogConsumer.Handle(e);
         }
 
-
         return 0;
     }
 
@@ -303,9 +301,15 @@ public static class KnowServicesRequestWrapper
     {
         var items = invoiceItems as InvoiceItem[] ?? invoiceItems.ToArray();
         var first = items.First();
-        if (!items.All(item => item.SingleNumber.HasValue && item.SingleNumber == first.SingleNumber))
+        if (
+            !items.All(
+                item => item.SingleNumber.HasValue && item.SingleNumber == first.SingleNumber
+            )
+        )
         {
-            throw new InvalidOperationException(Resources.KnowServicesRequestWrapper_RemoveInvoiceItems_AllItemsMustBeFromTheSameInvoice);
+            throw new InvalidOperationException(
+                Resources.KnowServicesRequestWrapper_RemoveInvoiceItems_AllItemsMustBeFromTheSameInvoice
+            );
         }
 
         var request = new ServiceRequest(ServiceName.InvoiceItemRemove)
@@ -314,18 +318,18 @@ public static class KnowServicesRequestWrapper
             {
                 Invoice = new()
                 {
-                    Items = new()
-                    {
-                        Items = items,
-                        OnlineUpdate = true
-                    }
+                    Items = new() { Items = items, OnlineUpdate = true }
                 }
             }
         };
-        LogConsumer.Info(Resources.KnowServicesRequestWrapper_RemoveInvoiceItems_DeletingItemsFromInvoice, items.Length, first.SingleNumber ?? 0, items.Length == 1 ? @"m" : Resources.ItemPluralSufix);
+        LogConsumer.Info(
+            Resources.KnowServicesRequestWrapper_RemoveInvoiceItems_DeletingItemsFromInvoice,
+            items.Length,
+            first.SingleNumber ?? 0,
+            items.Length == 1 ? @"m" : Resources.ItemPluralSufix
+        );
         _context.ServiceInvoker(request, _sessionToken);
     }
-
 
     #endregion
 
@@ -341,7 +345,14 @@ public static class KnowServicesRequestWrapper
     /// <param name="series">The serie.</param>
     /// <param name="requestEvents">The request events.</param>
     /// <returns>Int32.</returns>
-    public static int Bill(int singleNumber, int codeOperationType, BillingType type, out ClientEvent[] responseEvents, int? series = null, ClientEvent[] requestEvents = null)
+    public static int Bill(
+        int singleNumber,
+        int codeOperationType,
+        BillingType type,
+        out ClientEvent[] responseEvents,
+        int? series = null,
+        ClientEvent[] requestEvents = null
+    )
     {
         var request = new ServiceRequest(ServiceName.InvoiceBill)
         {
@@ -371,11 +382,13 @@ public static class KnowServicesRequestWrapper
             request.RequestBody.Invoices.BillingType = BillingType.Direct;
             request.RequestBody.Invoices.Series = series.Value;
         }
-        LogConsumer.Info(Resources.KnowServicesRequestWrapper_Bill_BillingInvoiceToTOP,
+        LogConsumer.Info(
+            Resources.KnowServicesRequestWrapper_Bill_BillingInvoiceToTOP,
             singleNumber,
             codeOperationType,
             request.RequestBody.Invoices.BillingType.GetHumanReadableValue(),
-            series?.ToString() ?? Resources.Uninformed);
+            series?.ToString() ?? Resources.Uninformed
+        );
         var response = _context.ServiceInvoker(request, _sessionToken);
         responseEvents = null;
         if (response?.ResponseBody == null)
@@ -388,7 +401,9 @@ public static class KnowServicesRequestWrapper
             responseEvents = response.ResponseBody.ClientEvents.ClientEvent;
         }
 
-        return response.ResponseBody.Invoices?.Invoice?.Value == null ? -1 : response.ResponseBody.Invoices.Invoice.Value;
+        return response.ResponseBody.Invoices?.Invoice?.Value == null
+            ? -1
+            : response.ResponseBody.Invoices.Invoice.Value;
     }
 
     /// <summary>
@@ -411,11 +426,7 @@ public static class KnowServicesRequestWrapper
                     SingleNumberConfirmation = singleNumber,
                     Props = new[]
                     {
-                        new Prop
-                        {
-                            Name = @"br.com.utiliza.dtneg.servidor",
-                            Value = @"false"
-                        }
+                        new Prop { Name = @"br.com.utiliza.dtneg.servidor", Value = @"false" }
                     }
                 }
             }
@@ -423,23 +434,34 @@ public static class KnowServicesRequestWrapper
 
         try
         {
-
-            LogConsumer.Info(Resources.KnowServicesRequestWrapper_ConfirmInvoice_Confirming, singleNumber);
+            LogConsumer.Info(
+                Resources.KnowServicesRequestWrapper_ConfirmInvoice_Confirming,
+                singleNumber
+            );
             _context.ServiceInvoker(request, _sessionToken);
         }
         catch (Exception e)
         {
-            if (e.Message.IndexOf(@"confirmar sem produtos/serviços/mat.prima", StringComparison.InvariantCultureIgnoreCase) != -1)
+            if (
+                e.Message.IndexOf(
+                    @"confirmar sem produtos/serviços/mat.prima",
+                    StringComparison.InvariantCultureIgnoreCase
+                ) != -1
+            )
             {
                 throw new NoItemsConfirmInvoiceException(singleNumber, null, e);
             }
 
-            if (e.Message.IndexOf(@"já foi confirmada", StringComparison.InvariantCultureIgnoreCase) == -1)
+            if (
+                e.Message.IndexOf(@"já foi confirmada", StringComparison.InvariantCultureIgnoreCase)
+                == -1
+            )
             {
                 throw new ConfirmInvoiceException(singleNumber, null, e);
             }
         }
     }
+
     /// <summary>
     /// Flag invoices as not pending by it's single numbers
     /// </summary>
@@ -449,12 +471,14 @@ public static class KnowServicesRequestWrapper
         var singleNumbersArray = singleNumbers as int[] ?? singleNumbers.ToArray();
         var request = new ServiceRequest(ServiceName.InvoiceFlagAsNotPending)
         {
-            RequestBody =
-            {
-                SingleNumbers = singleNumbersArray
-            }
+            RequestBody = { SingleNumbers = singleNumbersArray }
         };
-        LogConsumer.Info(Resources.KnowServicesRequestWrapper_FlagInvoicesAsNotPending, singleNumbersArray.Length, singleNumbersArray.Length == 1 ? string.Empty : @"s", string.Join(@",", singleNumbersArray));
+        LogConsumer.Info(
+            Resources.KnowServicesRequestWrapper_FlagInvoicesAsNotPending,
+            singleNumbersArray.Length,
+            singleNumbersArray.Length == 1 ? string.Empty : @"s",
+            string.Join(@",", singleNumbersArray)
+        );
         _context.ServiceInvoker(request, _sessionToken);
     }
 
@@ -468,15 +492,14 @@ public static class KnowServicesRequestWrapper
         var singleNumbersList = singleNumbers as int[] ?? singleNumbers.ToArray();
         var request = new ServiceRequest(ServiceName.InvoiceAccompaniments)
         {
-            RequestBody =
-            {
-                Invoices = new()
-                {
-                    SingleNumbers = singleNumbersList
-                }
-            }
+            RequestBody = { Invoices = new() { SingleNumbers = singleNumbersList } }
         };
-        LogConsumer.Info(Resources.KnowServicesRequestWrapper_GetInvoiceAccompaniments, singleNumbersList.Length, singleNumbersList.Length == 1 ? string.Empty : @"s", string.Join(@",", singleNumbersList));
+        LogConsumer.Info(
+            Resources.KnowServicesRequestWrapper_GetInvoiceAccompaniments,
+            singleNumbersList.Length,
+            singleNumbersList.Length == 1 ? string.Empty : @"s",
+            string.Join(@",", singleNumbersList)
+        );
         var response = _context.ServiceInvoker(request, _sessionToken);
         return response.ResponseBody.InvoiceAccompaniments.Invoices;
     }
@@ -488,34 +511,40 @@ public static class KnowServicesRequestWrapper
     /// <param name="justification">The justification.</param>
     /// <param name="singleNumbersNotCancelled">The single numbers that cannot be cancelled.</param>
     /// <returns>The quantity of invoices cancelled.</returns>
-    public static int CancelInvoices(IEnumerable<int> singleNumbers, string justification, out IEnumerable<int> singleNumbersNotCancelled)
+    public static int CancelInvoices(
+        IEnumerable<int> singleNumbers,
+        string justification,
+        out IEnumerable<int> singleNumbersNotCancelled
+    )
     {
-
         var singleNumbersList = singleNumbers as int[] ?? singleNumbers.ToArray();
         var request = new ServiceRequest(ServiceName.InvoiceCancel)
         {
             RequestBody =
             {
-                CancelledInvoices =
-                    new()
-                    {
-                        Justification = justification,
-                        SingleNumbers = singleNumbersList
-                    }
+                CancelledInvoices = new()
+                {
+                    Justification = justification,
+                    SingleNumbers = singleNumbersList
+                }
             }
         };
 
         LogConsumer.Info(
             Resources.KnowServicesRequestWrapper_CancelInvoices_Canceling,
             singleNumbersList.Length,
-            singleNumbersList.Length == 1
-                ? string.Empty
-                : @"s",
-            string.Join(@",", singleNumbersList));
+            singleNumbersList.Length == 1 ? string.Empty : @"s",
+            string.Join(@",", singleNumbersList)
+        );
         var response = _context.ServiceInvoker(request, _sessionToken);
         var cancelled = response.ResponseBody.CancellationResult.TotalCancelledInvoices;
-        singleNumbersNotCancelled = response.ResponseBody.CancellationResult.SingleNumbers ?? Array.Empty<int>();
-        LogConsumer.Info(Resources.KnowServicesRequestWrapper_CancelInvoices_Canceled, cancelled, cancelled == 1 ? string.Empty : @"s");
+        singleNumbersNotCancelled =
+            response.ResponseBody.CancellationResult.SingleNumbers ?? Array.Empty<int>();
+        LogConsumer.Info(
+            Resources.KnowServicesRequestWrapper_CancelInvoices_Canceled,
+            cancelled,
+            cancelled == 1 ? string.Empty : @"s"
+        );
         return cancelled;
     }
 
@@ -525,7 +554,11 @@ public static class KnowServicesRequestWrapper
     /// <param name="singleNumber">The single number.</param>
     /// <param name="codePartner">The code partner.</param>
     /// <param name="movementType">Type of the movement.</param>
-    public static void BindInvoiceWithOrder(int singleNumber, int codePartner, MovementType movementType)
+    public static void BindInvoiceWithOrder(
+        int singleNumber,
+        int codePartner,
+        MovementType movementType
+    )
     {
         var request = new ServiceRequest(ServiceName.InvoiceBindWithOrder)
         {
@@ -539,10 +572,12 @@ public static class KnowServicesRequestWrapper
                 }
             }
         };
-        LogConsumer.Info(Resources.KnowServicesRequestWrapper_BindInvoiceWithOrder,
+        LogConsumer.Info(
+            Resources.KnowServicesRequestWrapper_BindInvoiceWithOrder,
             singleNumber,
             codePartner,
-            movementType.GetHumanReadableValue());
+            movementType.GetHumanReadableValue()
+        );
         _context.ServiceInvoker(request, _sessionToken);
     }
 
@@ -560,7 +595,8 @@ public static class KnowServicesRequestWrapper
         int codeOperationType,
         int? series = null,
         DateTime? dateExit = null,
-        bool shouldUpdatePrice = false)
+        bool shouldUpdatePrice = false
+    )
     {
         var request = new ServiceRequest(ServiceName.InvoiceDuplicate)
         {
@@ -572,11 +608,7 @@ public static class KnowServicesRequestWrapper
                     DateExitDuplicationNullable = dateExit,
                     ShouldUpdatePrice = shouldUpdatePrice,
                     ShouldDuplicateAllItems = true,
-                    Invoice = new()
-                    {
-                        SingleNumberDuplication = singleNumber
-                    }
-
+                    Invoice = new() { SingleNumberDuplication = singleNumber }
                 }
             }
         };
@@ -586,16 +618,20 @@ public static class KnowServicesRequestWrapper
             request.RequestBody.Invoices.Series = series.Value;
         }
 
-        LogConsumer.Info(Resources.KnowServicesRequestWrapper_DuplicateInvoice_Duplicating,
+        LogConsumer.Info(
+            Resources.KnowServicesRequestWrapper_DuplicateInvoice_Duplicating,
             singleNumber,
             series?.ToString() ?? Resources.Uninformed,
             codeOperationType,
             dateExit?.ToString(@"dd/MM/yyyy") ?? Resources.Uninformed,
-            shouldUpdatePrice.ToString(Resources.Yes, Resources.No));
+            shouldUpdatePrice.ToString(Resources.Yes, Resources.No)
+        );
         var response = _context.ServiceInvoker(request, _sessionToken);
-        LogConsumer.Info(Resources.KnowServicesRequestWrapper_DuplicateInvoice_Duplicated,
+        LogConsumer.Info(
+            Resources.KnowServicesRequestWrapper_DuplicateInvoice_Duplicated,
             response.ResponseBody.Invoices.Invoice.SingleNumberDuplicationSource,
-            response.ResponseBody.Invoices.Invoice.SingleNumberDuplicationDestiny);
+            response.ResponseBody.Invoices.Invoice.SingleNumberDuplicationDestiny
+        );
         return response.ResponseBody.Invoices.Invoice.SingleNumberDuplicationDestiny;
     }
 
@@ -612,21 +648,14 @@ public static class KnowServicesRequestWrapper
         var singleNumbersLists = singleNumbers as int[] ?? singleNumbers.ToArray();
         var request = new ServiceRequest(ServiceName.NfeGetAuthorization)
         {
-            RequestBody =
-            {
-                Invoices = new()
-                {
-                    SingleNumbers = singleNumbersLists
-                }
-            }
+            RequestBody = { Invoices = new() { SingleNumbers = singleNumbersLists } }
         };
-        LogConsumer.Info(Resources.KnowServicesRequestWrapper_GetFiscalInvoiceAuthorization,
-            singleNumbersLists
-                .Length,
-            singleNumbersLists.Length == 1
-                ? string.Empty
-                : @"s",
-            string.Join(@",", singleNumbersLists));
+        LogConsumer.Info(
+            Resources.KnowServicesRequestWrapper_GetFiscalInvoiceAuthorization,
+            singleNumbersLists.Length,
+            singleNumbersLists.Length == 1 ? string.Empty : @"s",
+            string.Join(@",", singleNumbersLists)
+        );
         _context.ServiceInvoker(request, _sessionToken);
     }
 
@@ -648,12 +677,12 @@ public static class KnowServicesRequestWrapper
                 }
             }
         };
-        LogConsumer.Info(Resources.KnowServicesRequestWrapper_GenerateLot,
+        LogConsumer.Info(
+            Resources.KnowServicesRequestWrapper_GenerateLot,
             singleNumbersLists.Length,
-            singleNumbersLists.Length == 1
-                ? string.Empty
-                : @"s",
-            string.Join(@",", singleNumbersLists));
+            singleNumbersLists.Length == 1 ? string.Empty : @"s",
+            string.Join(@",", singleNumbersLists)
+        );
         _context.ServiceInvoker(request, _sessionToken);
     }
 
@@ -702,11 +731,11 @@ public static class KnowServicesRequestWrapper
         };
         try
         {
-            LogConsumer.Info(Resources.KnowServicesRequestWrapper_FlagAsPaymentsPaid,
-                financialNumbersList.Count == 1
-                    ? string.Empty
-                    : @"s",
-                string.Join(@",", financialNumbersList));
+            LogConsumer.Info(
+                Resources.KnowServicesRequestWrapper_FlagAsPaymentsPaid,
+                financialNumbersList.Count == 1 ? string.Empty : @"s",
+                string.Join(@",", financialNumbersList)
+            );
             _context.ServiceInvoker(request, _sessionToken);
         }
         catch (Exception e)
@@ -724,21 +753,27 @@ public static class KnowServicesRequestWrapper
     {
         var financialNumbersList = financialNumbers as List<int> ?? financialNumbers.ToList();
         foreach (
-            var request in
-            financialNumbersList.Select(financialNumber => new ServiceRequest(ServiceName.FinancialReversal)
-            {
-                RequestBody =
-                {
-                    Param = new()
+            var request in financialNumbersList.Select(
+                financialNumber =>
+                    new ServiceRequest(ServiceName.FinancialReversal)
                     {
-                        FinancialNumber = financialNumber,
-                        Recompose = @"undefined",
-                        RevertAllAnticipation = @"undefined"
+                        RequestBody =
+                        {
+                            Param = new()
+                            {
+                                FinancialNumber = financialNumber,
+                                Recompose = @"undefined",
+                                RevertAllAnticipation = @"undefined"
+                            }
+                        }
                     }
-                }
-            }))
+            )
+        )
         {
-            LogConsumer.Info(Resources.KnowServicesRequestWrapper_ReversePayments, request.RequestBody.Param.FinancialNumber);
+            LogConsumer.Info(
+                Resources.KnowServicesRequestWrapper_ReversePayments,
+                request.RequestBody.Param.FinancialNumber
+            );
             _context.ServiceInvoker(request, _sessionToken);
         }
     }
@@ -753,13 +788,7 @@ public static class KnowServicesRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.UnlinkShipping)
         {
-            RequestBody =
-            {
-                Param = new()
-                {
-                    FinancialNumberUpperCase = financialNumber
-                }
-            }
+            RequestBody = { Param = new() { FinancialNumberUpperCase = financialNumber } }
         };
 
         try
@@ -786,13 +815,7 @@ public static class KnowServicesRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.FileOpen)
         {
-            RequestBody =
-            {
-                Config = new()
-                {
-                    Path = path
-                }
-            }
+            RequestBody = { Config = new() { Path = path } }
         };
         var response = _context.ServiceInvoker(request, _sessionToken);
         return response.ResponseBody.Key.Value;
@@ -809,17 +832,10 @@ public static class KnowServicesRequestWrapper
         {
             RequestBody =
             {
-                Paths = pathsArray.Select(
-                    path => new Path
-                    {
-                        Value = path
-                    }).ToArray(),
+                Paths = pathsArray.Select(path => new Path { Value = path }).ToArray(),
                 ClientEvents = new[]
                 {
-                    new ClientEvent
-                    {
-                        Text = @"br.com.sankhya.actionbutton.clientconfirm"
-                    }
+                    new ClientEvent { Text = @"br.com.sankhya.actionbutton.clientconfirm" }
                 }
             }
         };
@@ -839,7 +855,8 @@ public static class KnowServicesRequestWrapper
     /// </summary>
     /// <param name="key">The key.</param>
     /// <returns>Task&lt;ServiceFile&gt;.</returns>
-    public static async Task<ServiceFile> GetFileAsync(string key) => await _context.GetFileAsync(key, _sessionToken).ConfigureAwait(false);
+    public static async Task<ServiceFile> GetFileAsync(string key) =>
+        await _context.GetFileAsync(key, _sessionToken).ConfigureAwait(false);
 
     #endregion
 
@@ -851,7 +868,8 @@ public static class KnowServicesRequestWrapper
     /// <typeparam name="T"></typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>ServiceImage.</returns>
-    public static ServiceFile GetImage<T>(this T entity) where T : class, IEntity, new()
+    public static ServiceFile GetImage<T>(this T entity)
+        where T : class, IEntity, new()
     {
         if (entity == null)
         {
@@ -859,7 +877,10 @@ public static class KnowServicesRequestWrapper
         }
 
         var result = entity.ExtractKeys();
-        return _context.GetImage(result.Name, result.Keys.ToDictionary(k => k.Name, k => (object)k.Value));
+        return _context.GetImage(
+            result.Name,
+            result.Keys.ToDictionary(k => k.Name, k => (object)k.Value)
+        );
     }
 
     /// <summary>
@@ -869,7 +890,8 @@ public static class KnowServicesRequestWrapper
     /// <param name="entity">The entity.</param>
     /// <returns>ServiceImage.</returns>
 
-    public static async Task<ServiceFile> GetImageAsync<T>(this T entity) where T : class, IEntity, new()
+    public static async Task<ServiceFile> GetImageAsync<T>(this T entity)
+        where T : class, IEntity, new()
     {
         if (entity == null)
         {
@@ -877,7 +899,9 @@ public static class KnowServicesRequestWrapper
         }
 
         var result = entity.ExtractKeys();
-        return await _context.GetImageAsync(result.Name, result.Keys.ToDictionary(k => k.Name, k => (object)k.Value)).ConfigureAwait(false);
+        return await _context
+            .GetImageAsync(result.Name, result.Keys.ToDictionary(k => k.Name, k => (object)k.Value))
+            .ConfigureAwait(false);
     }
 
     #endregion

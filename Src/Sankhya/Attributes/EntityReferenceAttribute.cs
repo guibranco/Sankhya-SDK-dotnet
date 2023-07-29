@@ -32,7 +32,8 @@ public sealed class EntityReferenceAttribute : Attribute
     /// Initializes a new instance of the <see cref="EntityReferenceAttribute" /> class.
     /// </summary>
     /// <param name="customRelationName">Name of the custom relation.</param>
-    public EntityReferenceAttribute(string customRelationName) => CustomRelationName = customRelationName;
+    public EntityReferenceAttribute(string customRelationName) =>
+        CustomRelationName = customRelationName;
 
     /// <summary>
     /// Gets the name of the custom relation.

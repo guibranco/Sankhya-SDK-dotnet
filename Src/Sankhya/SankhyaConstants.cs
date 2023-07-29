@@ -5,7 +5,6 @@
 /// </summary>
 internal static class SankhyaConstants
 {
-
     /// <summary>
     /// The session identifier cookie name
     /// </summary>

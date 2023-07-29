@@ -30,6 +30,7 @@ public sealed class Config
     /// The path
     /// </summary>
     private string _path;
+
     /// <summary>
     /// The path set
     /// </summary>
@@ -46,7 +47,8 @@ public sealed class Config
     [XmlAttribute(AttributeName = "path")]
     public string Path
     {
-        get => _path; set
+        get => _path;
+        set
         {
             _path = value;
             _pathSet = true;

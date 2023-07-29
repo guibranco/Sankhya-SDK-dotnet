@@ -11,9 +11,14 @@ using Sankhya.Properties;
 public class InvalidServiceQueryOptionsException : Exception
 {
     public InvalidServiceQueryOptionsException(ServiceName service)
-        : base(string.Format(CultureInfo.CurrentCulture, Resources.InvalidServiceQueryOptionsException, service.GetHumanReadableValue()))
-    { }
+        : base(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.InvalidServiceQueryOptionsException,
+                service.GetHumanReadableValue()
+            )
+        ) { }
 
-    protected InvalidServiceQueryOptionsException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected InvalidServiceQueryOptionsException(SerializationInfo info, StreamingContext context)
+        : base(info, context) { }
 }

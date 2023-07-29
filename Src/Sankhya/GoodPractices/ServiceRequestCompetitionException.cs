@@ -9,8 +9,7 @@ using Sankhya.Service;
 public class ServiceRequestCompetitionException : ServiceRequestTemporarilyException
 {
     public ServiceRequestCompetitionException(ServiceRequest request, ServiceResponse response)
-        : base(Resources.ServiceRequestCompetitionException, request, response)
-    { }
+        : base(Resources.ServiceRequestCompetitionException, request, response) { }
 
     protected ServiceRequestCompetitionException(SerializationInfo info, StreamingContext context)
     { }

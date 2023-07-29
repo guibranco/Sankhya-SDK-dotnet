@@ -52,8 +52,7 @@ public sealed class LiteralCriteria : ILiteralCriteria
     /// <summary>
     /// Initializes a new instance of the <see cref="LiteralCriteria" /> class.
     /// </summary>
-    public LiteralCriteria()
-    { }
+    public LiteralCriteria() { }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LiteralCriteria" /> class.

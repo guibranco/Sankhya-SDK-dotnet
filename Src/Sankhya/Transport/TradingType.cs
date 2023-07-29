@@ -27,11 +27,19 @@ public class TradingType : IEntity, IEquatable<TradingType>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _code == other._code && _codeSet == other._codeSet &&
-            string.Equals(_description, other._description, StringComparison.InvariantCultureIgnoreCase) &&
-            _descriptionSet == other._descriptionSet && _active == other._active &&
-            _activeSet == other._activeSet && _subType == other._subType &&
-            _subTypeSet == other._subTypeSet;
+        return ReferenceEquals(this, other)
+            || _code == other._code
+                && _codeSet == other._codeSet
+                && string.Equals(
+                    _description,
+                    other._description,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _descriptionSet == other._descriptionSet
+                && _active == other._active
+                && _activeSet == other._activeSet
+                && _subType == other._subType
+                && _subTypeSet == other._subTypeSet;
     }
 
     /// <summary>
@@ -59,7 +67,13 @@ public class TradingType : IEntity, IEquatable<TradingType>
         {
             var hashCode = _code;
             hashCode = (hashCode * 397) ^ _codeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_description != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_description) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _description != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_description)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _descriptionSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _active.GetHashCode();
             hashCode = (hashCode * 397) ^ _activeSet.GetHashCode();
@@ -93,6 +107,7 @@ public class TradingType : IEntity, IEquatable<TradingType>
     /// The code
     /// </summary>
     private int _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -102,6 +117,7 @@ public class TradingType : IEntity, IEquatable<TradingType>
     /// The description
     /// </summary>
     private string _description;
+
     /// <summary>
     /// The description set
     /// </summary>
@@ -111,6 +127,7 @@ public class TradingType : IEntity, IEquatable<TradingType>
     /// The active
     /// </summary>
     private bool _active;
+
     /// <summary>
     /// The active set
     /// </summary>
@@ -120,6 +137,7 @@ public class TradingType : IEntity, IEquatable<TradingType>
     /// The sub type
     /// </summary>
     private TradingSubType _subType;
+
     /// <summary>
     /// The sub type set
     /// </summary>
@@ -136,7 +154,8 @@ public class TradingType : IEntity, IEquatable<TradingType>
     [EntityElement("CODTIPVENDA")]
     public int Code
     {
-        get => _code; set
+        get => _code;
+        set
         {
             _code = value;
             _codeSet = true;
@@ -150,7 +169,8 @@ public class TradingType : IEntity, IEquatable<TradingType>
     [EntityElement("DESCRTIPVENDA")]
     public string Description
     {
-        get => _description; set
+        get => _description;
+        set
         {
             _description = value;
             _descriptionSet = true;
@@ -164,7 +184,8 @@ public class TradingType : IEntity, IEquatable<TradingType>
     [EntityIgnore]
     public bool Active
     {
-        get => _active; set
+        get => _active;
+        set
         {
             _active = value;
             _activeSet = true;
@@ -179,7 +200,8 @@ public class TradingType : IEntity, IEquatable<TradingType>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ActiveInternal
     {
-        get => _active.ToString(); set
+        get => _active.ToString();
+        set
         {
             _active = value.ToBoolean(@"S|N");
             _activeSet = true;
@@ -193,7 +215,8 @@ public class TradingType : IEntity, IEquatable<TradingType>
     [EntityIgnore]
     public TradingSubType SubType
     {
-        get => _subType; set
+        get => _subType;
+        set
         {
             _subType = value;
             _subTypeSet = true;
@@ -209,7 +232,8 @@ public class TradingType : IEntity, IEquatable<TradingType>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string SubTypeInternal
     {
-        get => _subType.GetInternalValue(); set
+        get => _subType.GetInternalValue();
+        set
         {
             _subType = EnumExtensions.GetEnumByInternalValueAttribute<TradingSubType>(value);
             _subTypeSet = true;
@@ -236,7 +260,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDescription() => _descriptionSet;
 
-
     /// <summary>
     /// Should the serialize active.
     /// </summary>
@@ -244,7 +267,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeActive() => _activeSet;
-
 
     /// <summary>
     /// Should the type of the serialize sub.
@@ -255,5 +277,4 @@ public class TradingType : IEntity, IEquatable<TradingType>
     public bool ShouldSerializeSubType() => _subTypeSet;
 
     #endregion
-
 }

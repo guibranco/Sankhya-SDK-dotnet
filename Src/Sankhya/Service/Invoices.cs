@@ -15,13 +15,13 @@ using Sankhya.Enums;
 [Serializer]
 public sealed class Invoices
 {
-
     #region Private Members
 
     /// <summary>
     /// The single numbers
     /// </summary>
     private int[] _singleNumbers;
+
     /// <summary>
     /// The single numbers set
     /// </summary>
@@ -31,6 +31,7 @@ public sealed class Invoices
     /// The code operation type
     /// </summary>
     private int _codeOperationType;
+
     /// <summary>
     /// The code operation type set
     /// </summary>
@@ -40,6 +41,7 @@ public sealed class Invoices
     /// The code operation type duplication
     /// </summary>
     private int _codeOperationTypeDuplication;
+
     /// <summary>
     /// The code operation type duplication set
     /// </summary>
@@ -49,6 +51,7 @@ public sealed class Invoices
     /// The series
     /// </summary>
     private int _series;
+
     /// <summary>
     /// The series set
     /// </summary>
@@ -58,6 +61,7 @@ public sealed class Invoices
     /// The return disapproved invoices
     /// </summary>
     private bool _returnDisapprovedInvoices;
+
     /// <summary>
     /// The return disapproved invoices set
     /// </summary>
@@ -67,6 +71,7 @@ public sealed class Invoices
     /// The should update price
     /// </summary>
     private bool _shouldUpdatePrice;
+
     /// <summary>
     /// The should update price set
     /// </summary>
@@ -76,6 +81,7 @@ public sealed class Invoices
     /// The should duplicate all items
     /// </summary>
     private bool _shouldDuplicateAllItems;
+
     /// <summary>
     /// The should duplicate all items set
     /// </summary>
@@ -85,6 +91,7 @@ public sealed class Invoices
     /// The is date validated
     /// </summary>
     private bool _isDateValidated;
+
     /// <summary>
     /// The is date validated set
     /// </summary>
@@ -94,6 +101,7 @@ public sealed class Invoices
     /// The one invoice for each
     /// </summary>
     private bool _oneInvoiceForEach;
+
     /// <summary>
     /// The one invoice for each set
     /// </summary>
@@ -103,6 +111,7 @@ public sealed class Invoices
     /// The date exit duplication nullable
     /// </summary>
     private DateTime? _dateExitDuplicationNullable;
+
     /// <summary>
     /// The date exit duplication nullable set
     /// </summary>
@@ -112,6 +121,7 @@ public sealed class Invoices
     /// The date billing nullable
     /// </summary>
     private DateTime? _dateBillingNullable;
+
     /// <summary>
     /// The date billing nullable set
     /// </summary>
@@ -121,6 +131,7 @@ public sealed class Invoices
     /// The date exit nullable
     /// </summary>
     private DateTime? _dateExitNullable;
+
     /// <summary>
     /// The date exit nullable set
     /// </summary>
@@ -130,6 +141,7 @@ public sealed class Invoices
     /// The time exit nullable
     /// </summary>
     private TimeSpan? _timeExitNullable;
+
     /// <summary>
     /// The time exit nullable set
     /// </summary>
@@ -139,6 +151,7 @@ public sealed class Invoices
     /// The billing type
     /// </summary>
     private BillingType _billingType;
+
     /// <summary>
     /// The billing type set
     /// </summary>
@@ -148,6 +161,7 @@ public sealed class Invoices
     /// The invoices with currency
     /// </summary>
     private InvoicesWithCurrency _invoicesWithCurrency;
+
     /// <summary>
     /// The invoices with currency set
     /// </summary>
@@ -157,6 +171,7 @@ public sealed class Invoices
     /// The invoice
     /// </summary>
     private Invoice _invoice;
+
     /// <summary>
     /// The invoice set
     /// </summary>
@@ -173,7 +188,8 @@ public sealed class Invoices
     [XmlElement("nunota")]
     public int[] SingleNumbers
     {
-        get => _singleNumbers; set
+        get => _singleNumbers;
+        set
         {
             _singleNumbers = value;
             _singleNumbersSet = true;
@@ -187,7 +203,8 @@ public sealed class Invoices
     [XmlAttribute("codTipOper")]
     public int CodeOperationType
     {
-        get => _codeOperationType; set
+        get => _codeOperationType;
+        set
         {
             _codeOperationType = value;
             _codeOperationTypeSet = true;
@@ -201,7 +218,8 @@ public sealed class Invoices
     [XmlAttribute("top")]
     public int CodeOperationTypeDuplication
     {
-        get => _codeOperationTypeDuplication; set
+        get => _codeOperationTypeDuplication;
+        set
         {
             _codeOperationTypeDuplication = value;
             _codeOperationTypeDuplicationSet = true;
@@ -215,7 +233,8 @@ public sealed class Invoices
     [XmlAttribute("serie")]
     public int Series
     {
-        get => _series; set
+        get => _series;
+        set
         {
             _series = value;
             _seriesSet = true;
@@ -229,7 +248,6 @@ public sealed class Invoices
     [XmlIgnore]
     public bool ReturnDisapprovedInvoices
     {
-
         get => _returnDisapprovedInvoices;
         set
         {
@@ -247,7 +265,8 @@ public sealed class Invoices
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ReturnDisapprovedInvoicesInternal
     {
-        get => _returnDisapprovedInvoices.ToString(@"S", @"N"); set
+        get => _returnDisapprovedInvoices.ToString(@"S", @"N");
+        set
         {
             _returnDisapprovedInvoices = value.ToBoolean();
             _returnDisapprovedInvoicesSet = true;
@@ -261,7 +280,6 @@ public sealed class Invoices
     [XmlIgnore]
     public bool ShouldUpdatePrice
     {
-
         get => _shouldUpdatePrice;
         set
         {
@@ -279,7 +297,8 @@ public sealed class Invoices
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ShouldUpdatePriceInternal
     {
-        get => _shouldUpdatePrice.ToString(@"true", @"false"); set
+        get => _shouldUpdatePrice.ToString(@"true", @"false");
+        set
         {
             _shouldUpdatePrice = value.ToBoolean();
             _shouldUpdatePriceSet = true;
@@ -293,7 +312,6 @@ public sealed class Invoices
     [XmlIgnore]
     public bool ShouldDuplicateAllItems
     {
-
         get => _shouldDuplicateAllItems;
         set
         {
@@ -311,7 +329,8 @@ public sealed class Invoices
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ShouldDuplicateAllItemsInternal
     {
-        get => _shouldDuplicateAllItems.ToString(@"true", @"false"); set
+        get => _shouldDuplicateAllItems.ToString(@"true", @"false");
+        set
         {
             _shouldDuplicateAllItems = value.ToBoolean();
             _shouldDuplicateAllItemsSet = true;
@@ -325,7 +344,6 @@ public sealed class Invoices
     [XmlIgnore]
     public bool IsDateValidated
     {
-
         get => _isDateValidated;
         set
         {
@@ -343,7 +361,8 @@ public sealed class Invoices
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string IsDateValidatedInternal
     {
-        get => _isDateValidated.ToString(@"S", @"N"); set
+        get => _isDateValidated.ToString(@"S", @"N");
+        set
         {
             _isDateValidated = value.ToBoolean();
             _isDateValidatedSet = true;
@@ -357,7 +376,6 @@ public sealed class Invoices
     [XmlIgnore]
     public bool OneInvoiceForEach
     {
-
         get => _oneInvoiceForEach;
         set
         {
@@ -375,7 +393,8 @@ public sealed class Invoices
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string OneInvoiceForEachInternal
     {
-        get => _oneInvoiceForEach.ToString(@"S", @"N"); set
+        get => _oneInvoiceForEach.ToString(@"S", @"N");
+        set
         {
             _oneInvoiceForEach = value.ToBoolean();
             _oneInvoiceForEachSet = true;
@@ -389,7 +408,6 @@ public sealed class Invoices
     [XmlIgnore]
     public DateTime? DateExitDuplicationNullable
     {
-
         get => _dateExitDuplicationNullable;
         set
         {
@@ -430,7 +448,6 @@ public sealed class Invoices
     [XmlIgnore]
     public DateTime? DateBillingNullable
     {
-
         get => _dateBillingNullable;
         set
         {
@@ -462,7 +479,6 @@ public sealed class Invoices
 
             _dateBillingNullableSet = true;
         }
-
     }
 
     /// <summary>
@@ -472,7 +488,6 @@ public sealed class Invoices
     [XmlIgnore]
     public DateTime? DateExitNullable
     {
-
         get => _dateExitNullable;
         set
         {
@@ -490,7 +505,8 @@ public sealed class Invoices
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string DateExitNullableInternal
     {
-        get => _dateExitNullable?.ToString() ?? string.Empty; set
+        get => _dateExitNullable?.ToString() ?? string.Empty;
+        set
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -512,7 +528,6 @@ public sealed class Invoices
     [XmlIgnore]
     public TimeSpan? TimeExitNullable
     {
-
         get => _timeExitNullable;
         set
         {
@@ -530,7 +545,8 @@ public sealed class Invoices
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string TimeExitNullableInternal
     {
-        get => _timeExitNullable?.ToString() ?? string.Empty; set
+        get => _timeExitNullable?.ToString() ?? string.Empty;
+        set
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -552,7 +568,8 @@ public sealed class Invoices
     [XmlIgnore]
     public BillingType BillingType
     {
-        get => _billingType; set
+        get => _billingType;
+        set
         {
             _billingType = value;
             _billingTypeSet = true;
@@ -568,7 +585,8 @@ public sealed class Invoices
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string BillingTypeInternal
     {
-        get => _billingType.GetInternalValue(); set
+        get => _billingType.GetInternalValue();
+        set
         {
             _billingType = EnumExtensions.GetEnumByInternalValueAttribute<BillingType>(value);
             _billingTypeSet = true;
@@ -582,7 +600,8 @@ public sealed class Invoices
     [XmlElement("notasComMoeda")]
     public InvoicesWithCurrency InvoicesWithCurrency
     {
-        get => _invoicesWithCurrency; set
+        get => _invoicesWithCurrency;
+        set
         {
             _invoicesWithCurrency = value;
             _invoicesWithCurrencySet = true;
@@ -596,7 +615,8 @@ public sealed class Invoices
     [XmlElement("nota")]
     public Invoice Invoice
     {
-        get => _invoice; set
+        get => _invoice;
+        set
         {
             _invoice = value;
             _invoiceSet = true;
@@ -685,7 +705,8 @@ public sealed class Invoices
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeDateExitDuplicationNullableInternal() => _dateExitDuplicationNullableSet;
+    public bool ShouldSerializeDateExitDuplicationNullableInternal() =>
+        _dateExitDuplicationNullableSet;
 
     /// <summary>
     /// Should the serialize date billing nullable internal.
@@ -725,7 +746,6 @@ public sealed class Invoices
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeInvoiceWithCurrency() => _invoicesWithCurrencySet;
 
     /// <summary>
@@ -737,5 +757,4 @@ public sealed class Invoices
     public bool ShouldSerializeInvoice() => _invoiceSet;
 
     #endregion
-
 }

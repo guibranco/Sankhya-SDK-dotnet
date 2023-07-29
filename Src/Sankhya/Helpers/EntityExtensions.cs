@@ -39,13 +39,24 @@ public static class EntityExtensions
             throw new ArgumentNullException(nameof(type));
         }
 
-        if (!typeof(IEntity).IsAssignableFrom(type) &&
-            typeof(EntityDynamicSerialization) != type)
+        if (!typeof(IEntity).IsAssignableFrom(type) && typeof(EntityDynamicSerialization) != type)
         {
-            throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.EntityExtensions_TypeMustInherits, type.FullName, typeof(IEntity).FullName, typeof(EntityDynamicSerialization).FullName));
+            throw new InvalidOperationException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    Resources.EntityExtensions_TypeMustInherits,
+                    type.FullName,
+                    typeof(IEntity).FullName,
+                    typeof(EntityDynamicSerialization).FullName
+                )
+            );
         }
 
-        return !(type.GetCustomAttributes(typeof(EntityAttribute), false) is EntityAttribute[] entities) || !entities.Any()
+        return
+            !(
+                type.GetCustomAttributes(typeof(EntityAttribute), false)
+                is EntityAttribute[] entities
+            ) || !entities.Any()
             ? type.Name.ToUpperInvariant()
             : entities.Single().Name;
     }
@@ -64,13 +75,25 @@ public static class EntityExtensions
             throw new ArgumentNullException(nameof(type));
         }
 
-        if (!typeof(IEntity).IsAssignableFrom(type) &&
-            typeof(EntityDynamicSerialization) != type)
+        if (!typeof(IEntity).IsAssignableFrom(type) && typeof(EntityDynamicSerialization) != type)
         {
-            throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.EntityExtensions_TypeMustInherits, type.FullName, typeof(IEntity).FullName, typeof(EntityDynamicSerialization).FullName));
+            throw new InvalidOperationException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    Resources.EntityExtensions_TypeMustInherits,
+                    type.FullName,
+                    typeof(IEntity).FullName,
+                    typeof(EntityDynamicSerialization).FullName
+                )
+            );
         }
 
-        if (!(type.GetCustomAttributes(typeof(EntityCustomDataAttribute), true) is EntityCustomDataAttribute[] entities) || !entities.Any())
+        if (
+            !(
+                type.GetCustomAttributes(typeof(EntityCustomDataAttribute), true)
+                is EntityCustomDataAttribute[] entities
+            ) || !entities.Any()
+        )
         {
             return new();
         }
@@ -80,7 +103,14 @@ public static class EntityExtensions
             return entities.First();
         }
 
-        throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.EntityExtensions_GetEntityCustomData, type.FullName, typeof(EntityCustomDataAttribute).FullName));
+        throw new InvalidOperationException(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.EntityExtensions_GetEntityCustomData,
+                type.FullName,
+                typeof(EntityCustomDataAttribute).FullName
+            )
+        );
     }
 
     /// <summary>
@@ -91,7 +121,10 @@ public static class EntityExtensions
     public static ServiceAttribute GetService(this ServiceName service)
     {
         var info = typeof(ServiceName).GetField(service.ToString());
-        return info.GetCustomAttributes(typeof(ServiceAttribute), false) is ServiceAttribute[] attributes && attributes.Any()
+        return
+            info.GetCustomAttributes(typeof(ServiceAttribute), false)
+                is ServiceAttribute[] attributes
+            && attributes.Any()
             ? attributes.Single()
             : null;
     }
@@ -102,7 +135,8 @@ public static class EntityExtensions
     /// <typeparam name="T"></typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>EntityResolverResult.</returns>
-    internal static EntityResolverResult ExtractKeys<T>(this T entity) where T : class, IEntity, new()
+    internal static EntityResolverResult ExtractKeys<T>(this T entity)
+        where T : class, IEntity, new()
     {
         var type = typeof(T);
         if (type == typeof(object))
@@ -129,7 +163,14 @@ public static class EntityExtensions
     /// <param name="result">The result.</param>
     /// <param name="type">The type.</param>
     /// <param name="currentEntityName">Name of the current entity.</param>
-    private static void ParseProperty<T>(T entity, PropertyInfo propertyInfo, EntityResolverResult result, Type type, string currentEntityName) where T : class, IEntity, new()
+    private static void ParseProperty<T>(
+        T entity,
+        PropertyInfo propertyInfo,
+        EntityResolverResult result,
+        Type type,
+        string currentEntityName
+    )
+        where T : class, IEntity, new()
     {
         var isCriteria = false;
         var propertyName = propertyInfo.Name;
@@ -146,11 +187,16 @@ public static class EntityExtensions
 
         result.Fields.Add(new() { Name = propertyName });
 
-        var shouldSerializePropertyName = propertyInfo.Name.EndsWith(@"Internal", StringComparison.InvariantCultureIgnoreCase)
+        var shouldSerializePropertyName = propertyInfo.Name.EndsWith(
+            @"Internal",
+            StringComparison.InvariantCultureIgnoreCase
+        )
             ? propertyInfo.Name.Substring(0, propertyInfo.Name.Length - 8)
             : propertyInfo.Name;
 
-        var shouldSerializeMethod = type.GetMethod(string.Concat(@"ShouldSerialize", shouldSerializePropertyName));
+        var shouldSerializeMethod = type.GetMethod(
+            string.Concat(@"ShouldSerialize", shouldSerializePropertyName)
+        );
 
         if (shouldSerializeMethod != null && shouldSerializeMethod.ReturnType == typeof(bool))
         {
@@ -158,9 +204,13 @@ public static class EntityExtensions
         }
         else
         {
-            LogConsumer.Handle(new MissingSerializerHelperEntityException(propertyInfo.Name,
-                currentEntityName,
-                type.FullName));
+            LogConsumer.Handle(
+                new MissingSerializerHelperEntityException(
+                    propertyInfo.Name,
+                    currentEntityName,
+                    type.FullName
+                )
+            );
         }
 
         if (!isCriteria)
@@ -182,11 +232,7 @@ public static class EntityExtensions
             value = value.Abbreviate(customDataProperty.MaxLength, false);
         }
 
-        result.Keys.Add(new()
-        {
-            Name = propertyName,
-            Value = value
-        });
+        result.Keys.Add(new() { Name = propertyName, Value = value });
 
         #endregion
     }
@@ -236,8 +282,14 @@ public static class EntityExtensions
     /// <param name="processDataOnDemand">The process data on demand.</param>
     /// <param name="maxResults">The maximum results.</param>
     /// <returns>IEnumerable&lt;T&gt;.</returns>
-    private static IEnumerable<T> QueryInternal<T>(this ServiceRequest request, TimeSpan timeout, Action<List<T>> processDataOnDemand, int maxResults = -1) where T : class, IEntity, new() => PagedRequestWrapper.GetManagedEnumerator(request, timeout, processDataOnDemand, maxResults);
-
+    private static IEnumerable<T> QueryInternal<T>(
+        this ServiceRequest request,
+        TimeSpan timeout,
+        Action<List<T>> processDataOnDemand,
+        int maxResults = -1
+    )
+        where T : class, IEntity, new() =>
+        PagedRequestWrapper.GetManagedEnumerator(request, timeout, processDataOnDemand, maxResults);
 
     /// <summary>
     /// Queries the specified timeout.
@@ -247,7 +299,11 @@ public static class EntityExtensions
     /// <param name="timeout">The timeout.</param>
     /// <param name="processDataOnDemand">The process data on demand.</param>
     /// <returns>IEnumerable&lt;T&gt;.</returns>
-    public static IEnumerable<T> Query<T>(this T entity, TimeSpan timeout, Action<List<T>> processDataOnDemand = null)
+    public static IEnumerable<T> Query<T>(
+        this T entity,
+        TimeSpan timeout,
+        Action<List<T>> processDataOnDemand = null
+    )
         where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
@@ -269,7 +325,9 @@ public static class EntityExtensions
         this T _,
         ILiteralCriteria criteria,
         TimeSpan timeout,
-        Action<List<T>> processDataOnDemand = null) where T : class, IEntity, new()
+        Action<List<T>> processDataOnDemand = null
+    )
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
@@ -288,7 +346,9 @@ public static class EntityExtensions
     public static IEnumerable<T> Query<T>(
         this T entity,
         EntityQueryOptions options,
-        Action<List<T>> processDataOnDemand = null) where T : class, IEntity, new()
+        Action<List<T>> processDataOnDemand = null
+    )
+        where T : class, IEntity, new()
     {
         if (options == null)
         {
@@ -297,7 +357,12 @@ public static class EntityExtensions
 
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity, options);
-        return QueryInternal(request, options.Timeout, processDataOnDemand, options.MaxResults ?? -1);
+        return QueryInternal(
+            request,
+            options.Timeout,
+            processDataOnDemand,
+            options.MaxResults ?? -1
+        );
     }
 
     /// <summary>
@@ -315,7 +380,9 @@ public static class EntityExtensions
         this T _,
         EntityQueryOptions options,
         ILiteralCriteria literalCriteria,
-        Action<List<T>> processDataOnDemand = null) where T : class, IEntity, new()
+        Action<List<T>> processDataOnDemand = null
+    )
+        where T : class, IEntity, new()
     {
         if (options == null)
         {
@@ -324,7 +391,12 @@ public static class EntityExtensions
 
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(literalCriteria, options);
-        return QueryInternal(request, options.Timeout, processDataOnDemand, options.MaxResults ?? -1);
+        return QueryInternal(
+            request,
+            options.Timeout,
+            processDataOnDemand,
+            options.MaxResults ?? -1
+        );
     }
 
     /// <summary>
@@ -335,10 +407,14 @@ public static class EntityExtensions
     /// <param name="timeout">The timeout.</param>
     /// <param name="maxResults">The maximum results.</param>
     /// <returns>IEnumerable&lt;T&gt;.</returns>
-    public static IEnumerable<T> QueryLight<T>(this T entity, TimeSpan timeout, int maxResults = -1) where T : class, IEntity, new()
+    public static IEnumerable<T> QueryLight<T>(this T entity, TimeSpan timeout, int maxResults = -1)
+        where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
-        request.Resolve(entity, new EntityQueryOptions { IncludeReferences = false, IncludePresentationFields = false });
+        request.Resolve(
+            entity,
+            new EntityQueryOptions { IncludeReferences = false, IncludePresentationFields = false }
+        );
         return QueryInternal<T>(request, timeout, null, maxResults);
     }
 
@@ -357,7 +433,9 @@ public static class EntityExtensions
         this T _,
         ILiteralCriteria criteria,
         EntityQueryOptions options,
-        Action<List<T>> processDataOnDemand = null) where T : class, IEntity, new()
+        Action<List<T>> processDataOnDemand = null
+    )
+        where T : class, IEntity, new()
     {
         if (options == null)
         {
@@ -366,12 +444,17 @@ public static class EntityExtensions
 
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria, options);
-        return QueryInternal(request, options.Timeout, processDataOnDemand, options.MaxResults ?? -1);
+        return QueryInternal(
+            request,
+            options.Timeout,
+            processDataOnDemand,
+            options.MaxResults ?? -1
+        );
     }
 
     #endregion
 
-    #region IEntity On Demand CUD Service Invokers 
+    #region IEntity On Demand CUD Service Invokers
 
     /// <summary>
     /// Updates an <see cref="IEntity" /> instance on demand. This operations does not occurs instantly,
@@ -385,7 +468,9 @@ public static class EntityExtensions
     /// Remember that if a instance is finalized, the entire remaining items in the queue are sent at one time, this mean that in this example,
     /// you can loose the 1000 items (if no requests has been done yet)</remarks>
 
-    public static void UpdateOnDemand<T>(this T entity) where T : class, IEntity, new() => OnDemandRequestFactory.GetInstanceForService<T>(ServiceName.CrudServiceSave).Add(entity);
+    public static void UpdateOnDemand<T>(this T entity)
+        where T : class, IEntity, new() =>
+        OnDemandRequestFactory.GetInstanceForService<T>(ServiceName.CrudServiceSave).Add(entity);
 
     /// <summary>
     /// Removes the on demand.
@@ -394,7 +479,8 @@ public static class EntityExtensions
     /// <param name="entity">The entity.</param>
 
 #pragma warning disable CA1030 // Use events where appropriate
-    public static void RemoveOnDemand<T>(this T entity) where T : class, IEntity, new()
+    public static void RemoveOnDemand<T>(this T entity)
+        where T : class, IEntity, new()
 #pragma warning restore CA1030 // Use events where appropriate
     {
         OnDemandRequestFactory.GetInstanceForService<T>(ServiceName.CrudServiceRemove).Add(entity);

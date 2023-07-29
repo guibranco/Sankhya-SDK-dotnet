@@ -15,25 +15,16 @@ namespace Sankhya.Enums;
 
 using CrispyWaffle.Attributes;
 
-
-
-
 /// <summary>
 /// Enum ServiceRequestType
 /// </summary>
 public enum ServiceRequestType
 {
-
-
-
     /// <summary>
     /// The default
     /// </summary>
     [HumanReadable("Default")]
     Default,
-
-
-
 
     /// <summary>
     /// The simple crud
@@ -41,17 +32,11 @@ public enum ServiceRequestType
     [HumanReadable("Simple CRUD")]
     SimpleCrud,
 
-
-
-
     /// <summary>
     /// The paged crud
     /// </summary>
     [HumanReadable("Paged CRUD (retrieve)")]
     PagedCrud,
-
-
-
 
     /// <summary>
     /// The queryable crud
@@ -59,17 +44,11 @@ public enum ServiceRequestType
     [HumanReadable("Queryable CRUD (retrieve)")]
     QueryableCrud,
 
-
-
-
     /// <summary>
     /// The on demand crud
     /// </summary>
     [HumanReadable("On demand CRUD (Create, Update, Delete)")]
     OnDemandCrud,
-
-
-
 
     /// <summary>
     /// The know services

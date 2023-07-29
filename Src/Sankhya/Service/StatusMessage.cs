@@ -15,6 +15,7 @@ public sealed class StatusMessage
     /// The value
     /// </summary>
     private string _value;
+
     /// <summary>
     /// The value set
     /// </summary>
@@ -32,13 +33,11 @@ public sealed class StatusMessage
     public string Value
     {
         get => _value;
-
         set
         {
             _value = value;
             _valueSet = true;
         }
-
     }
 
     /// <summary>
@@ -69,5 +68,4 @@ public sealed class StatusMessage
     public bool ShouldSerializeValueInternal() => _valueSet;
 
     #endregion
-
 }

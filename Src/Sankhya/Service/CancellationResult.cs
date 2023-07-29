@@ -10,7 +10,6 @@ using CrispyWaffle.Serialization;
 [XmlRoot(ElementName = "resultadoCancelamento")]
 public sealed class CancellationResult
 {
-
     /// <summary>
     /// Gets or sets the total cancelled invoices.
     /// </summary>

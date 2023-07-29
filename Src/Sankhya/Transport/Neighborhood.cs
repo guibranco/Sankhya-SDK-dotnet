@@ -40,11 +40,15 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _code == other._code && _codeSet.Equals(other._codeSet) && string.Equals(_name, other._name) &&
-            _nameSet.Equals(other._nameSet) &&
-            string.Equals(_descriptionCorreios, other._descriptionCorreios) &&
-            _descriptionCorreiosSet.Equals(other._descriptionCorreiosSet) &&
-            _dateChanged.Equals(other._dateChanged) && _dateChangedSet.Equals(other._dateChangedSet);
+        return ReferenceEquals(this, other)
+            || _code == other._code
+                && _codeSet.Equals(other._codeSet)
+                && string.Equals(_name, other._name)
+                && _nameSet.Equals(other._nameSet)
+                && string.Equals(_descriptionCorreios, other._descriptionCorreios)
+                && _descriptionCorreiosSet.Equals(other._descriptionCorreiosSet)
+                && _dateChanged.Equals(other._dateChanged)
+                && _dateChangedSet.Equals(other._dateChangedSet);
     }
 
     /// <summary>
@@ -59,7 +63,8 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj is Neighborhood neighborhood && Equals(neighborhood);
+        return ReferenceEquals(this, obj)
+            || obj is Neighborhood neighborhood && Equals(neighborhood);
     }
 
     /// <summary>
@@ -106,6 +111,7 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     /// The code
     /// </summary>
     private int _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -115,6 +121,7 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -124,6 +131,7 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     /// The description correios
     /// </summary>
     private string _descriptionCorreios;
+
     /// <summary>
     /// The description correios set
     /// </summary>
@@ -133,6 +141,7 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     /// The date changed
     /// </summary>
     private DateTime _dateChanged;
+
     /// <summary>
     /// The date changed set
     /// </summary>
@@ -150,7 +159,8 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     [EntityElement("CODBAI")]
     public int Code
     {
-        get => _code; set
+        get => _code;
+        set
         {
             _code = value;
             _codeSet = true;
@@ -164,7 +174,8 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     [EntityElement("NOMEBAI")]
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
@@ -178,7 +189,8 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     [EntityElement("DESCRICAOCORREIO")]
     public string DescriptionCorreios
     {
-        get => _descriptionCorreios; set
+        get => _descriptionCorreios;
+        set
         {
             _descriptionCorreios = value;
             _descriptionCorreiosSet = true;
@@ -192,13 +204,13 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     [EntityElement("DTALTER")]
     public DateTime DateChanged
     {
-        get => _dateChanged; set
+        get => _dateChanged;
+        set
         {
             _dateChanged = value;
             _dateChangedSet = true;
         }
     }
-
 
     #endregion
 

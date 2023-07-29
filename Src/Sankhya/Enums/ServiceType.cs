@@ -18,24 +18,20 @@ namespace Sankhya.Enums;
 /// </summary>
 public enum ServiceType
 {
-
     /// <summary>
     /// The none
     /// </summary>
     None = 0,
-
 
     /// <summary>
     /// The retrieve
     /// </summary>
     Retrieve = 1,
 
-
     /// <summary>
     /// The non transactional
     /// </summary>
     NonTransactional = 2,
-
 
     /// <summary>
     /// The transactional

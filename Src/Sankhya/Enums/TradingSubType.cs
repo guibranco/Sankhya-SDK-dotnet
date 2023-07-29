@@ -15,13 +15,11 @@ namespace Sankhya.Enums;
 
 using CrispyWaffle.Attributes;
 
-
 /// <summary>
 /// Enum TradingSubType
 /// </summary>
 public enum TradingSubType
 {
-
     /// <summary>
     /// The none
     /// </summary>

@@ -40,14 +40,21 @@ public class Region : IEntity, IEquatable<Region>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _code == other._code && _codeSet == other._codeSet && _codeRegionFather == other._codeRegionFather &&
-            _codeRegionFatherSet == other._codeRegionFatherSet && _codePriceTable == other._codePriceTable &&
-            _codePriceTableSet == other._codePriceTableSet && _codeSeller == other._codeSeller &&
-            _codeSellerSet == other._codeSellerSet && _active == other._active &&
-            _activeSet == other._activeSet &&
-            string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase) &&
-            _nameSet == other._nameSet && Equals(_seller, other._seller) &&
-            _sellerSet == other._sellerSet;
+        return ReferenceEquals(this, other)
+            || _code == other._code
+                && _codeSet == other._codeSet
+                && _codeRegionFather == other._codeRegionFather
+                && _codeRegionFatherSet == other._codeRegionFatherSet
+                && _codePriceTable == other._codePriceTable
+                && _codePriceTableSet == other._codePriceTableSet
+                && _codeSeller == other._codeSeller
+                && _codeSellerSet == other._codeSellerSet
+                && _active == other._active
+                && _activeSet == other._activeSet
+                && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+                && _nameSet == other._nameSet
+                && Equals(_seller, other._seller)
+                && _sellerSet == other._sellerSet;
     }
 
     /// <summary>
@@ -83,7 +90,11 @@ public class Region : IEntity, IEquatable<Region>
             hashCode = (hashCode * 397) ^ _codeSellerSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _active.GetHashCode();
             hashCode = (hashCode * 397) ^ _activeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_name != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _name != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name) : 0
+                );
             hashCode = (hashCode * 397) ^ _nameSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_seller != null ? _seller.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _sellerSet.GetHashCode();
@@ -115,6 +126,7 @@ public class Region : IEntity, IEquatable<Region>
     /// The code
     /// </summary>
     private int _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -124,6 +136,7 @@ public class Region : IEntity, IEquatable<Region>
     /// The code region father
     /// </summary>
     private int _codeRegionFather;
+
     /// <summary>
     /// The code region father set
     /// </summary>
@@ -133,6 +146,7 @@ public class Region : IEntity, IEquatable<Region>
     /// The code price table
     /// </summary>
     private int _codePriceTable;
+
     /// <summary>
     /// The code price table set
     /// </summary>
@@ -142,6 +156,7 @@ public class Region : IEntity, IEquatable<Region>
     /// The code seller
     /// </summary>
     private int _codeSeller;
+
     /// <summary>
     /// The code seller set
     /// </summary>
@@ -151,6 +166,7 @@ public class Region : IEntity, IEquatable<Region>
     /// The active
     /// </summary>
     private bool _active;
+
     /// <summary>
     /// The active set
     /// </summary>
@@ -160,6 +176,7 @@ public class Region : IEntity, IEquatable<Region>
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -169,6 +186,7 @@ public class Region : IEntity, IEquatable<Region>
     /// The seller
     /// </summary>
     private Seller _seller;
+
     /// <summary>
     /// The seller set
     /// </summary>
@@ -185,7 +203,8 @@ public class Region : IEntity, IEquatable<Region>
     [EntityElement("CODREG")]
     public int Code
     {
-        get => _code; set
+        get => _code;
+        set
         {
             _code = value;
             _codeSet = true;
@@ -199,7 +218,8 @@ public class Region : IEntity, IEquatable<Region>
     [EntityElement("CODREGPAI")]
     public int CodeRegionFather
     {
-        get => _codeRegionFather; set
+        get => _codeRegionFather;
+        set
         {
             _codeRegionFather = value;
             _codeRegionFatherSet = true;
@@ -213,7 +233,8 @@ public class Region : IEntity, IEquatable<Region>
     [EntityElement("CODTAB")]
     public int CodePriceTable
     {
-        get => _codePriceTable; set
+        get => _codePriceTable;
+        set
         {
             _codePriceTable = value;
             _codePriceTableSet = true;
@@ -227,7 +248,8 @@ public class Region : IEntity, IEquatable<Region>
     [EntityElement("CODVEND")]
     public int CodeSeller
     {
-        get => _codeSeller; set
+        get => _codeSeller;
+        set
         {
             _codeSeller = value;
             _codeSellerSet = true;
@@ -241,7 +263,8 @@ public class Region : IEntity, IEquatable<Region>
     [EntityIgnore]
     public bool Active
     {
-        get => _active; set
+        get => _active;
+        set
         {
             _active = value;
             _activeSet = true;
@@ -257,7 +280,8 @@ public class Region : IEntity, IEquatable<Region>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ActiveInternal
     {
-        get => _active.ToString(@"S", @"N"); set
+        get => _active.ToString(@"S", @"N");
+        set
         {
             _active = value.ToBoolean();
             _activeSet = true;
@@ -271,7 +295,8 @@ public class Region : IEntity, IEquatable<Region>
     [EntityElement("NOMEREG")]
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
@@ -285,7 +310,8 @@ public class Region : IEntity, IEquatable<Region>
     [EntityReference]
     public Seller Seller
     {
-        get => _seller; set
+        get => _seller;
+        set
         {
             _seller = value;
             _sellerSet = true;
@@ -353,5 +379,4 @@ public class Region : IEntity, IEquatable<Region>
     public bool ShouldSerializeSeller() => _sellerSet;
 
     #endregion
-
 }

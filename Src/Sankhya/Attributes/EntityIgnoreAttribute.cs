@@ -21,5 +21,4 @@ using System;
 /// </summary>
 /// <seealso cref="Attribute" />
 [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
-public sealed class EntityIgnoreAttribute : Attribute
-{ }
+public sealed class EntityIgnoreAttribute : Attribute { }

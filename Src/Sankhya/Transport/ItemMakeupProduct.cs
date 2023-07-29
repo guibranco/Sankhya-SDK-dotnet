@@ -25,14 +25,21 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _codeFeedStock == other._codeFeedStock && _codeFeedStockSet == other._codeFeedStockSet &&
-            _feedStockQuantity == other._feedStockQuantity &&
-            _feedStockQuantitySet == other._feedStockQuantitySet && string.Equals(_observation, other._observation) &&
-            _observationSet == other._observationSet  && Equals(_product, other._product) &&
-            _codeProduct == other._codeProduct && _codeProductSet == other._codeProductSet &&
-            _productSet == other._productSet && _sequence == other._sequence &&
-            _sequenceSet == other._sequenceSet && string.Equals(_volume, other._volume) &&
-            _volumeSet == other._volumeSet;
+        return ReferenceEquals(this, other)
+            || _codeFeedStock == other._codeFeedStock
+                && _codeFeedStockSet == other._codeFeedStockSet
+                && _feedStockQuantity == other._feedStockQuantity
+                && _feedStockQuantitySet == other._feedStockQuantitySet
+                && string.Equals(_observation, other._observation)
+                && _observationSet == other._observationSet
+                && Equals(_product, other._product)
+                && _codeProduct == other._codeProduct
+                && _codeProductSet == other._codeProductSet
+                && _productSet == other._productSet
+                && _sequence == other._sequence
+                && _sequenceSet == other._sequenceSet
+                && string.Equals(_volume, other._volume)
+                && _volumeSet == other._volumeSet;
     }
 
     /// <summary>
@@ -88,7 +95,8 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator ==(ItemMakeupProduct left, ItemMakeupProduct right) => Equals(left, right);
+    public static bool operator ==(ItemMakeupProduct left, ItemMakeupProduct right) =>
+        Equals(left, right);
 
     /// <summary>
     /// Implements the !=.
@@ -96,7 +104,8 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator !=(ItemMakeupProduct left, ItemMakeupProduct right) => !Equals(left, right);
+    public static bool operator !=(ItemMakeupProduct left, ItemMakeupProduct right) =>
+        !Equals(left, right);
 
     #endregion
 
@@ -106,6 +115,7 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     /// The code product
     /// </summary>
     private int _codeProduct;
+
     /// <summary>
     /// The code product set
     /// </summary>
@@ -115,6 +125,7 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     /// The code feed stock
     /// </summary>
     private int _codeFeedStock;
+
     /// <summary>
     /// The code feed stock set
     /// </summary>
@@ -124,6 +135,7 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     /// The feed stock quantity
     /// </summary>
     private decimal _feedStockQuantity;
+
     /// <summary>
     /// The feed stock quantity set
     /// </summary>
@@ -133,6 +145,7 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     /// The volume
     /// </summary>
     private string _volume;
+
     /// <summary>
     /// The volume set
     /// </summary>
@@ -142,6 +155,7 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     /// The sequence
     /// </summary>
     private int _sequence;
+
     /// <summary>
     /// The sequence set
     /// </summary>
@@ -151,6 +165,7 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     /// The observation
     /// </summary>
     private string _observation;
+
     /// <summary>
     /// The observation set
     /// </summary>
@@ -160,6 +175,7 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     /// The product
     /// </summary>
     private Product _product;
+
     /// <summary>
     /// The product set
     /// </summary>
@@ -176,7 +192,8 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     [EntityElement("CODPROD")]
     public int CodeProduct
     {
-        get => _codeProduct; set
+        get => _codeProduct;
+        set
         {
             _codeProduct = value;
             _codeProductSet = true;
@@ -190,7 +207,8 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     [EntityElement("CODMATPRIMA")]
     public int CodeFeedStock
     {
-        get => _codeFeedStock; set
+        get => _codeFeedStock;
+        set
         {
             _codeFeedStock = value;
             _codeFeedStockSet = true;
@@ -204,7 +222,8 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     [EntityElement("QTDMISTURA")]
     public decimal FeedStockQuantity
     {
-        get => _feedStockQuantity; set
+        get => _feedStockQuantity;
+        set
         {
             _feedStockQuantity = value;
             _feedStockQuantitySet = true;
@@ -218,7 +237,8 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     [EntityElement("CODVOL")]
     public string Volume
     {
-        get => _volume; set
+        get => _volume;
+        set
         {
             _volume = value;
             _volumeSet = true;
@@ -232,7 +252,8 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     [EntityElement("SEQUENCIA")]
     public int Sequence
     {
-        get => _sequence; set
+        get => _sequence;
+        set
         {
             _sequence = value;
             _sequenceSet = true;
@@ -246,13 +267,14 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     [EntityElement("OBSERVACAO")]
     public string Observation
     {
-        get => _observation; set
+        get => _observation;
+        set
         {
             _observation = value;
             _observationSet = true;
         }
     }
-    
+
     /// <summary>
     /// Gets or sets the product.
     /// </summary>
@@ -260,7 +282,8 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     [EntityReference("ProdutoMateriaPrima")]
     public Product Product
     {
-        get => _product; set
+        get => _product;
+        set
         {
             _product = value;
             _productSet = true;

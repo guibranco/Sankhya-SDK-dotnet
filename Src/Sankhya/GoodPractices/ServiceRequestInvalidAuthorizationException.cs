@@ -8,13 +8,14 @@ using Sankhya.Properties;
 public class ServiceRequestInvalidAuthorizationException : Exception
 {
     public ServiceRequestInvalidAuthorizationException()
-        : base(Resources.ServiceRequestInvalidAuthorizationException)
-    { }
+        : base(Resources.ServiceRequestInvalidAuthorizationException) { }
 
     public ServiceRequestInvalidAuthorizationException(Exception innerException)
-        : base(Resources.ServiceRequestInvalidAuthorizationException, innerException)
-    { }
+        : base(Resources.ServiceRequestInvalidAuthorizationException, innerException) { }
 
-    protected ServiceRequestInvalidAuthorizationException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestInvalidAuthorizationException(
+        SerializationInfo info,
+        StreamingContext context
+    )
+        : base(info, context) { }
 }

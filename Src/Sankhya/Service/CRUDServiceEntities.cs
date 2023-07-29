@@ -14,6 +14,7 @@ public sealed class CrudServiceEntities
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -23,6 +24,7 @@ public sealed class CrudServiceEntities
     /// The entities
     /// </summary>
     private dynamic[] _entities;
+
     /// <summary>
     /// The entities set
     /// </summary>
@@ -39,7 +41,8 @@ public sealed class CrudServiceEntities
     [XmlAttribute("nome")]
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
@@ -53,7 +56,8 @@ public sealed class CrudServiceEntities
     [XmlArrayItem("entidade")]
     public dynamic[] Entities
     {
-        get => _entities; set
+        get => _entities;
+        set
         {
             _entities = value;
             _entitiesSet = true;
@@ -81,5 +85,4 @@ public sealed class CrudServiceEntities
     public bool ShouldSerializeEntities() => _entitiesSet;
 
     #endregion
-
 }

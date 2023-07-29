@@ -36,17 +36,18 @@ public sealed class OnDemandRequestInstance
     /// <value>The service.</value>
 
     public ServiceName Service { get; set; }
+
     /// <summary>
     /// Gets or sets the type.
     /// </summary>
     /// <value>The type.</value>
 
     public Type Type { get; set; }
+
     /// <summary>
     /// Gets or sets the instance.
     /// </summary>
     /// <value>The instance.</value>
 
     public IOnDemandRequestWrapper Instance { get; set; }
-
 }

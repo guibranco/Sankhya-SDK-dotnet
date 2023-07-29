@@ -31,26 +31,51 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _singleNumber == other._singleNumber && _singleNumberSet == other._singleNumberSet &&
-            _sequence == other._sequence && _sequenceSet == other._sequenceSet &&
-            _codeSeller == other._codeSeller && _codeSellerSet == other._codeSellerSet &&
-            _codeProduct == other._codeProduct && _codeProductSet == other._codeProductSet &&
-            _codeSourceLocal == other._codeSourceLocal && _codeSourceLocalSet == other._codeSourceLocalSet &&
-            _quantityTraded == other._quantityTraded && _quantityTradedSet == other._quantityTradedSet &&
-            string.Equals(_control, other._control, StringComparison.InvariantCultureIgnoreCase) &&
-            _controlSet == other._controlSet && _valueUnit == other._valueUnit &&
-            _valueUnitSet == other._valueUnitSet && _valueTotal == other._valueTotal &&
-            _valueTotalSet == other._valueTotalSet && _productUse == other._productUse &&
-            _productUseSet == other._productUseSet &&
-            string.Equals(_gtin, other._gtin, StringComparison.InvariantCultureIgnoreCase) &&
-            _gtinSet == other._gtinSet &&
-            string.Equals(_gtinTax, other._gtinTax, StringComparison.InvariantCultureIgnoreCase) &&
-            _gtinTaxSet == other._gtinTaxSet && _discountPercentage == other._discountPercentage &&
-            _discountPercentageSet == other._discountPercentageSet &&
-            _discountValue == other._discountValue && _discountValueSet == other._discountValueSet &&
-            string.Equals(_codeVolume, other._codeVolume, StringComparison.InvariantCultureIgnoreCase) &&
-            _codeVolumeSet == other._codeVolumeSet && Equals(_product, other._product) &&
-            _productSet == other._productSet;
+        return ReferenceEquals(this, other)
+            || _singleNumber == other._singleNumber
+                && _singleNumberSet == other._singleNumberSet
+                && _sequence == other._sequence
+                && _sequenceSet == other._sequenceSet
+                && _codeSeller == other._codeSeller
+                && _codeSellerSet == other._codeSellerSet
+                && _codeProduct == other._codeProduct
+                && _codeProductSet == other._codeProductSet
+                && _codeSourceLocal == other._codeSourceLocal
+                && _codeSourceLocalSet == other._codeSourceLocalSet
+                && _quantityTraded == other._quantityTraded
+                && _quantityTradedSet == other._quantityTradedSet
+                && string.Equals(
+                    _control,
+                    other._control,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _controlSet == other._controlSet
+                && _valueUnit == other._valueUnit
+                && _valueUnitSet == other._valueUnitSet
+                && _valueTotal == other._valueTotal
+                && _valueTotalSet == other._valueTotalSet
+                && _productUse == other._productUse
+                && _productUseSet == other._productUseSet
+                && string.Equals(_gtin, other._gtin, StringComparison.InvariantCultureIgnoreCase)
+                && _gtinSet == other._gtinSet
+                && string.Equals(
+                    _gtinTax,
+                    other._gtinTax,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _gtinTaxSet == other._gtinTaxSet
+                && _discountPercentage == other._discountPercentage
+                && _discountPercentageSet == other._discountPercentageSet
+                && _discountValue == other._discountValue
+                && _discountValueSet == other._discountValueSet
+                && string.Equals(
+                    _codeVolume,
+                    other._codeVolume,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _codeVolumeSet == other._codeVolumeSet
+                && Equals(_product, other._product)
+                && _productSet == other._productSet;
     }
 
     /// <summary>
@@ -89,7 +114,13 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
             hashCode = (hashCode * 397) ^ _codeSourceLocalSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _quantityTraded.GetHashCode();
             hashCode = (hashCode * 397) ^ _quantityTradedSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_control != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_control) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _control != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_control)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _controlSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _valueUnit.GetHashCode();
             hashCode = (hashCode * 397) ^ _valueUnitSet.GetHashCode();
@@ -97,15 +128,31 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
             hashCode = (hashCode * 397) ^ _valueTotalSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (int)_productUse;
             hashCode = (hashCode * 397) ^ _productUseSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_gtin != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_gtin) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _gtin != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_gtin) : 0
+                );
             hashCode = (hashCode * 397) ^ _gtinSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_gtinTax != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_gtinTax) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _gtinTax != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_gtinTax)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _gtinTaxSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _discountPercentage.GetHashCode();
             hashCode = (hashCode * 397) ^ _discountPercentageSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _discountValue.GetHashCode();
             hashCode = (hashCode * 397) ^ _discountValueSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_codeVolume != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_codeVolume) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _codeVolume != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_codeVolume)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _codeVolumeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_product != null ? _product.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _productSet.GetHashCode();
@@ -137,6 +184,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The single number
     /// </summary>
     private int? _singleNumber;
+
     /// <summary>
     /// The single number set
     /// </summary>
@@ -146,6 +194,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The sequence
     /// </summary>
     private int? _sequence;
+
     /// <summary>
     /// The sequence set
     /// </summary>
@@ -155,6 +204,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The code seller
     /// </summary>
     private int _codeSeller;
+
     /// <summary>
     /// The code seller set
     /// </summary>
@@ -164,6 +214,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The code product
     /// </summary>
     private int _codeProduct;
+
     /// <summary>
     /// The code product set
     /// </summary>
@@ -173,6 +224,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The code source local
     /// </summary>
     private int _codeSourceLocal;
+
     /// <summary>
     /// The code source local set
     /// </summary>
@@ -182,6 +234,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The operations and benefits fiscal code
     /// </summary>
     private int _operationsAndBenefitsFiscalCode;
+
     /// <summary>
     /// The operations and benefits fiscal code set
     /// </summary>
@@ -191,6 +244,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The quantity traded
     /// </summary>
     private decimal _quantityTraded;
+
     /// <summary>
     /// The quantity traded set
     /// </summary>
@@ -200,6 +254,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The control
     /// </summary>
     private string _control;
+
     /// <summary>
     /// The control set
     /// </summary>
@@ -209,6 +264,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The value unit
     /// </summary>
     private decimal _valueUnit;
+
     /// <summary>
     /// The value unit set
     /// </summary>
@@ -218,6 +274,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The value total
     /// </summary>
     private decimal _valueTotal;
+
     /// <summary>
     /// The value total set
     /// </summary>
@@ -227,6 +284,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The product use
     /// </summary>
     private ProductUse _productUse;
+
     /// <summary>
     /// The product use set
     /// </summary>
@@ -236,6 +294,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The gtin
     /// </summary>
     private string _gtin;
+
     /// <summary>
     /// The gtin set
     /// </summary>
@@ -245,6 +304,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The gtin tax
     /// </summary>
     private string _gtinTax;
+
     /// <summary>
     /// The gtin tax set
     /// </summary>
@@ -254,6 +314,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The discount percentage
     /// </summary>
     private decimal _discountPercentage;
+
     /// <summary>
     /// The discount percentage set
     /// </summary>
@@ -263,6 +324,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The discount value
     /// </summary>
     private decimal _discountValue;
+
     /// <summary>
     /// The discount value set
     /// </summary>
@@ -272,6 +334,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The code volume
     /// </summary>
     private string _codeVolume;
+
     /// <summary>
     /// The code volume set
     /// </summary>
@@ -281,6 +344,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The product
     /// </summary>
     private Product _product;
+
     /// <summary>
     /// The product set
     /// </summary>
@@ -298,7 +362,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityKey]
     public int? SingleNumber
     {
-        get => _singleNumber; set
+        get => _singleNumber;
+        set
         {
             _singleNumber = value;
             _singleNumberSet = true;
@@ -313,7 +378,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityKey]
     public int? Sequence
     {
-        get => _sequence; set
+        get => _sequence;
+        set
         {
             _sequence = value;
             _sequenceSet = true;
@@ -327,7 +393,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityElement("CODVEND")]
     public int CodeSeller
     {
-        get => _codeSeller; set
+        get => _codeSeller;
+        set
         {
             _codeSeller = value;
             _codeSellerSet = true;
@@ -341,7 +408,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityElement("CODPROD")]
     public int CodeProduct
     {
-        get => _codeProduct; set
+        get => _codeProduct;
+        set
         {
             _codeProduct = value;
             _codeProductSet = true;
@@ -355,7 +423,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityElement("CODLOCALORIG")]
     public int CodeSourceLocal
     {
-        get => _codeSourceLocal; set
+        get => _codeSourceLocal;
+        set
         {
             _codeSourceLocal = value;
             _codeSourceLocalSet = true;
@@ -386,7 +455,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityElement("QTDNEG")]
     public decimal QuantityTraded
     {
-        get => _quantityTraded; set
+        get => _quantityTraded;
+        set
         {
             _quantityTraded = value;
             _quantityTradedSet = true;
@@ -400,7 +470,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityElement("CONTROLE")]
     public string Control
     {
-        get => _control; set
+        get => _control;
+        set
         {
             _control = value;
             _controlSet = true;
@@ -414,7 +485,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityElement("VLRUNIT")]
     public decimal ValueUnit
     {
-        get => _valueUnit; set
+        get => _valueUnit;
+        set
         {
             _valueUnit = value;
             _valueUnitSet = true;
@@ -428,7 +500,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityElement("VLRTOT")]
     public decimal ValueTotal
     {
-        get => _valueTotal; set
+        get => _valueTotal;
+        set
         {
             _valueTotal = value;
             _valueTotalSet = true;
@@ -442,7 +515,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityIgnore]
     public ProductUse ProductUse
     {
-        get => _productUse; set
+        get => _productUse;
+        set
         {
             _productUse = value;
             _productUseSet = true;
@@ -458,7 +532,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ProductUseInternal
     {
-        get => _productUse.GetInternalValue(); set
+        get => _productUse.GetInternalValue();
+        set
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -477,7 +552,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityElement("GTINNFE")]
     public string GTIN
     {
-        get => _gtin; set
+        get => _gtin;
+        set
         {
             _gtin = value;
             _gtinSet = true;
@@ -491,7 +567,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityElement("GTINTRIBNFE")]
     public string GTINTax
     {
-        get => _gtinTax; set
+        get => _gtinTax;
+        set
         {
             _gtinTax = value;
             _gtinTaxSet = true;
@@ -505,7 +582,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityElement("PERCDESC")]
     public decimal DiscountPercentage
     {
-        get => _discountPercentage; set
+        get => _discountPercentage;
+        set
         {
             _discountPercentage = value;
             _discountPercentageSet = true;
@@ -519,7 +597,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityElement("VLRDESC")]
     public decimal DiscountValue
     {
-        get => _discountValue; set
+        get => _discountValue;
+        set
         {
             _discountValue = value;
             _discountValueSet = true;
@@ -534,7 +613,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [Localizable(false)]
     public string CodeVolume
     {
-        get => _codeVolume; set
+        get => _codeVolume;
+        set
         {
             _codeVolume = value;
             _codeVolumeSet = true;
@@ -548,7 +628,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EntityReference]
     public Product Product
     {
-        get => _product; set
+        get => _product;
+        set
         {
             _product = value;
             _productSet = true;
@@ -568,7 +649,6 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSingleNumber() => _singleNumberSet;
 
-
     /// <summary>
     /// Should the serialize sequence.
     /// </summary>
@@ -584,7 +664,6 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeSeller() => _codeSellerSet;
-
 
     /// <summary>
     /// Should the serialize code product.
@@ -602,7 +681,6 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeSourceLocal() => _codeSourceLocalSet;
 
-
     /// <summary>
     /// The should serialize operations and benefits fiscal code serialization helper method
     /// </summary>
@@ -611,9 +689,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
-    public bool ShouldSerializeOperationsAndBenefitsFiscalCode() => _operationsAndBenefitsFiscalCodeSet;
-
+    public bool ShouldSerializeOperationsAndBenefitsFiscalCode() =>
+        _operationsAndBenefitsFiscalCodeSet;
 
     /// <summary>
     /// Should the serialize quantity traded.
@@ -654,7 +731,6 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeProductUse() => _productUseSet;
-
 
     /// <summary>
     /// Should the serialize gtin.

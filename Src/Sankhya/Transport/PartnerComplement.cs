@@ -39,38 +39,51 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _code == other._code && _codeSet == other._codeSet &&
-            string.Equals(_zipCodeDelivery,
-                other._zipCodeDelivery,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _zipCodeDeliverySet == other._zipCodeDeliverySet &&
-            _codeAddressDelivery == other._codeAddressDelivery &&
-            _codeAddressDeliverySet == other._codeAddressDeliverySet &&
-            string.Equals(_addressNumberDelivery,
-                other._addressNumberDelivery,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _addressNumberDeliverySet == other._addressNumberDeliverySet &&
-            string.Equals(_addressComplementDelivery,
-                other._addressComplementDelivery,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _addressComplementDeliverySet == other._addressComplementDeliverySet &&
-            _codeNeighborhoodDelivery == other._codeNeighborhoodDelivery &&
-            _codeNeighborhoodDeliverySet == other._codeNeighborhoodDeliverySet &&
-            _codeCityDelivery == other._codeCityDelivery &&
-            _codeCityDeliverySet == other._codeCityDeliverySet &&
-            string.Equals(_latitudeDelivery,
-                other._latitudeDelivery,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _latitudeDeliverySet == other._latitudeDeliverySet &&
-            string.Equals(_longitudeDelivery,
-                other._longitudeDelivery,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _longitudeDeliverySet == other._longitudeDeliverySet &&
-            Equals(_addressDelivery, other._addressDelivery) &&
-            _addressDeliverySet == other._addressDeliverySet &&
-            Equals(_neighborhoodDelivery, other._neighborhoodDelivery) &&
-            _neighborhoodDeliverySet == other._neighborhoodDeliverySet &&
-            Equals(_cityDelivery, other._cityDelivery) && _cityDeliverySet == other._cityDeliverySet;
+        return ReferenceEquals(this, other)
+            || _code == other._code
+                && _codeSet == other._codeSet
+                && string.Equals(
+                    _zipCodeDelivery,
+                    other._zipCodeDelivery,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _zipCodeDeliverySet == other._zipCodeDeliverySet
+                && _codeAddressDelivery == other._codeAddressDelivery
+                && _codeAddressDeliverySet == other._codeAddressDeliverySet
+                && string.Equals(
+                    _addressNumberDelivery,
+                    other._addressNumberDelivery,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _addressNumberDeliverySet == other._addressNumberDeliverySet
+                && string.Equals(
+                    _addressComplementDelivery,
+                    other._addressComplementDelivery,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _addressComplementDeliverySet == other._addressComplementDeliverySet
+                && _codeNeighborhoodDelivery == other._codeNeighborhoodDelivery
+                && _codeNeighborhoodDeliverySet == other._codeNeighborhoodDeliverySet
+                && _codeCityDelivery == other._codeCityDelivery
+                && _codeCityDeliverySet == other._codeCityDeliverySet
+                && string.Equals(
+                    _latitudeDelivery,
+                    other._latitudeDelivery,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _latitudeDeliverySet == other._latitudeDeliverySet
+                && string.Equals(
+                    _longitudeDelivery,
+                    other._longitudeDelivery,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _longitudeDeliverySet == other._longitudeDeliverySet
+                && Equals(_addressDelivery, other._addressDelivery)
+                && _addressDeliverySet == other._addressDeliverySet
+                && Equals(_neighborhoodDelivery, other._neighborhoodDelivery)
+                && _neighborhoodDeliverySet == other._neighborhoodDeliverySet
+                && Equals(_cityDelivery, other._cityDelivery)
+                && _cityDeliverySet == other._cityDeliverySet;
     }
 
     /// <summary>
@@ -85,7 +98,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj is PartnerComplement complement && Equals(complement);
+        return ReferenceEquals(this, obj)
+            || obj is PartnerComplement complement && Equals(complement);
     }
 
     /// <summary>
@@ -98,43 +112,64 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         {
             var hashCode = _code;
             hashCode = (hashCode * 397) ^ _codeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_zipCodeDelivery != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_zipCodeDelivery)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _zipCodeDelivery != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_zipCodeDelivery)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _zipCodeDeliverySet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeAddressDelivery;
             hashCode = (hashCode * 397) ^ _codeAddressDeliverySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_addressNumberDelivery != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_addressNumberDelivery)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _addressNumberDelivery != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
+                            _addressNumberDelivery
+                        )
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _addressNumberDeliverySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_addressComplementDelivery != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_addressComplementDelivery)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _addressComplementDelivery != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
+                            _addressComplementDelivery
+                        )
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _addressComplementDeliverySet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeNeighborhoodDelivery;
             hashCode = (hashCode * 397) ^ _codeNeighborhoodDeliverySet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeCityDelivery;
             hashCode = (hashCode * 397) ^ _codeCityDeliverySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_latitudeDelivery != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_latitudeDelivery)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _latitudeDelivery != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_latitudeDelivery)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _latitudeDeliverySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_longitudeDelivery != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_longitudeDelivery)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _longitudeDelivery != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_longitudeDelivery)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _longitudeDeliverySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_addressDelivery != null
-                ? _addressDelivery.GetHashCode()
-                : 0);
+            hashCode =
+                (hashCode * 397) ^ (_addressDelivery != null ? _addressDelivery.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _addressDeliverySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_neighborhoodDelivery != null
-                ? _neighborhoodDelivery.GetHashCode()
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (_neighborhoodDelivery != null ? _neighborhoodDelivery.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _neighborhoodDeliverySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_cityDelivery != null
-                ? _cityDelivery.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (_cityDelivery != null ? _cityDelivery.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _cityDeliverySet.GetHashCode();
             return hashCode;
         }
@@ -146,7 +181,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator ==(PartnerComplement left, PartnerComplement right) => Equals(left, right);
+    public static bool operator ==(PartnerComplement left, PartnerComplement right) =>
+        Equals(left, right);
 
     /// <summary>
     /// Implements the !=.
@@ -154,7 +190,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator !=(PartnerComplement left, PartnerComplement right) => !Equals(left, right);
+    public static bool operator !=(PartnerComplement left, PartnerComplement right) =>
+        !Equals(left, right);
 
     #endregion
 
@@ -164,6 +201,7 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// The code
     /// </summary>
     private int _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -173,6 +211,7 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// The zip code delivery
     /// </summary>
     private string _zipCodeDelivery;
+
     /// <summary>
     /// The zip code delivery set
     /// </summary>
@@ -182,6 +221,7 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// The code address delivery
     /// </summary>
     private int _codeAddressDelivery;
+
     /// <summary>
     /// The code address delivery set
     /// </summary>
@@ -191,6 +231,7 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// The address number delivery
     /// </summary>
     private string _addressNumberDelivery;
+
     /// <summary>
     /// The address number delivery set
     /// </summary>
@@ -200,6 +241,7 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// The address complement delivery
     /// </summary>
     private string _addressComplementDelivery;
+
     /// <summary>
     /// The address complement delivery set
     /// </summary>
@@ -209,6 +251,7 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// The code neighborhood delivery
     /// </summary>
     private int _codeNeighborhoodDelivery;
+
     /// <summary>
     /// The code neighborhood delivery set
     /// </summary>
@@ -218,6 +261,7 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// The code city delivery
     /// </summary>
     private int _codeCityDelivery;
+
     /// <summary>
     /// The code city delivery set
     /// </summary>
@@ -227,6 +271,7 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// The latitude delivery
     /// </summary>
     private string _latitudeDelivery;
+
     /// <summary>
     /// The latitude delivery set
     /// </summary>
@@ -236,6 +281,7 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// The longitude delivery
     /// </summary>
     private string _longitudeDelivery;
+
     /// <summary>
     /// The longitude delivery set
     /// </summary>
@@ -245,6 +291,7 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// The address delivery
     /// </summary>
     private Address _addressDelivery;
+
     /// <summary>
     /// The address delivery set
     /// </summary>
@@ -254,6 +301,7 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// The neighborhood delivery
     /// </summary>
     private Neighborhood _neighborhoodDelivery;
+
     /// <summary>
     /// The neighborhood delivery set
     /// </summary>
@@ -263,6 +311,7 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// The city delivery
     /// </summary>
     private City _cityDelivery;
+
     /// <summary>
     /// The city delivery set
     /// </summary>
@@ -280,7 +329,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     [EntityKey]
     public int Code
     {
-        get => _code; set
+        get => _code;
+        set
         {
             _code = value;
             _codeSet = true;
@@ -294,7 +344,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     [EntityElement("CEPENTREGA")]
     public string ZipCodeDelivery
     {
-        get => _zipCodeDelivery; set
+        get => _zipCodeDelivery;
+        set
         {
             _zipCodeDelivery = value;
             _zipCodeDeliverySet = true;
@@ -308,7 +359,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     [EntityElement("CODENDENTREGA")]
     public int CodeAddressDelivery
     {
-        get => _codeAddressDelivery; set
+        get => _codeAddressDelivery;
+        set
         {
             _codeAddressDelivery = value;
             _codeAddressDeliverySet = true;
@@ -322,7 +374,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     [EntityElement("NUMENTREGA")]
     public string AddressNumberDelivery
     {
-        get => _addressNumberDelivery; set
+        get => _addressNumberDelivery;
+        set
         {
             _addressNumberDelivery = value;
             _addressNumberDeliverySet = true;
@@ -337,7 +390,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     [EntityCustomData(MaxLength = 30)]
     public string AddressComplementDelivery
     {
-        get => _addressComplementDelivery; set
+        get => _addressComplementDelivery;
+        set
         {
             _addressComplementDelivery = value;
             _addressComplementDeliverySet = true;
@@ -351,7 +405,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     [EntityElement("CODBAIENTREGA")]
     public int CodeNeighborhoodDelivery
     {
-        get => _codeNeighborhoodDelivery; set
+        get => _codeNeighborhoodDelivery;
+        set
         {
             _codeNeighborhoodDelivery = value;
             _codeNeighborhoodDeliverySet = true;
@@ -365,7 +420,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     [EntityElement("CODCIDENTREGA")]
     public int CodeCityDelivery
     {
-        get => _codeCityDelivery; set
+        get => _codeCityDelivery;
+        set
         {
             _codeCityDelivery = value;
             _codeCityDeliverySet = true;
@@ -409,7 +465,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     [EntityReference]
     public Address AddressDelivery
     {
-        get => _addressDelivery; set
+        get => _addressDelivery;
+        set
         {
             _addressDelivery = value;
             _addressDeliverySet = true;
@@ -423,7 +480,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     [EntityReference]
     public Neighborhood NeighborhoodDelivery
     {
-        get => _neighborhoodDelivery; set
+        get => _neighborhoodDelivery;
+        set
         {
             _neighborhoodDelivery = value;
             _neighborhoodDeliverySet = true;
@@ -437,7 +495,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     [EntityReference]
     public City CityDelivery
     {
-        get => _cityDelivery; set
+        get => _cityDelivery;
+        set
         {
             _cityDelivery = value;
             _cityDeliverySet = true;
@@ -496,7 +555,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeLatitudeDelivery() => _latitudeDeliverySet;
 
     /// <summary>
@@ -505,7 +563,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeLongitudeDelivery() => _longitudeDeliverySet;
 
     /// <summary>
@@ -527,5 +584,4 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     public bool ShouldSerializeCityDelivery() => _cityDeliverySet;
 
     #endregion
-
 }

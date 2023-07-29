@@ -12,9 +12,15 @@ using Sankhya.Service;
 public class ServiceRequestTimeoutException : ServiceRequestTemporarilyException
 {
     public ServiceRequestTimeoutException(ServiceName service, ServiceRequest request)
-        : base(string.Format(CultureInfo.CurrentCulture, Resources.ServiceRequestTimeoutException, service.GetHumanReadableValue()), request)
-    { }
+        : base(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.ServiceRequestTimeoutException,
+                service.GetHumanReadableValue()
+            ),
+            request
+        ) { }
 
-    protected ServiceRequestTimeoutException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestTimeoutException(SerializationInfo info, StreamingContext context)
+        : base(info, context) { }
 }

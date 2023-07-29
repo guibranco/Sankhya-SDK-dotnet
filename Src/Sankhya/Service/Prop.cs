@@ -8,13 +8,13 @@ using System.Xml.Serialization;
 /// </summary>
 public sealed class Prop
 {
-
     #region Private Members
 
     /// <summary>
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -24,6 +24,7 @@ public sealed class Prop
     /// The value
     /// </summary>
     private string _value;
+
     /// <summary>
     /// The value set
     /// </summary>
@@ -40,7 +41,8 @@ public sealed class Prop
     [XmlAttribute("name")]
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
@@ -54,7 +56,8 @@ public sealed class Prop
     [XmlAttribute("value")]
     public string Value
     {
-        get => _value; set
+        get => _value;
+        set
         {
             _value = value;
             _valueSet = true;
@@ -82,5 +85,4 @@ public sealed class Prop
     public bool ShouldSerializeValue() => _valueSet;
 
     #endregion
-
 }

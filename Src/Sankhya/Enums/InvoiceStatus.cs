@@ -14,6 +14,7 @@
 namespace Sankhya.Enums;
 
 using CrispyWaffle.Attributes;
+
 /// <summary>
 /// Enum InvoiceStatus
 /// </summary>

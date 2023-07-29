@@ -9,9 +9,8 @@ using Sankhya.Service;
 public class ServiceRequestRepeatedException : ServiceRequestGeneralException
 {
     public ServiceRequestRepeatedException(ServiceRequest request)
-        : base(Resources.ServiceRequestRepeatedException, request)
-    { }
+        : base(Resources.ServiceRequestRepeatedException, request) { }
 
-    protected ServiceRequestRepeatedException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestRepeatedException(SerializationInfo info, StreamingContext context)
+        : base(info, context) { }
 }

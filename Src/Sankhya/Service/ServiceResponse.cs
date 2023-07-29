@@ -31,6 +31,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// The service
     /// </summary>
     private ServiceName _service;
+
     /// <summary>
     /// The service set
     /// </summary>
@@ -40,6 +41,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// The pending printing
     /// </summary>
     private bool _pendingPrinting;
+
     /// <summary>
     /// The pending printing set
     /// </summary>
@@ -49,6 +51,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// The transaction identifier
     /// </summary>
     private Guid _transactionId;
+
     /// <summary>
     /// The transaction identifier set
     /// </summary>
@@ -58,6 +61,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// The status
     /// </summary>
     private ServiceResponseStatus _status;
+
     /// <summary>
     /// The status set
     /// </summary>
@@ -67,6 +71,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// The error code
     /// </summary>
     private int _errorCode;
+
     /// <summary>
     /// The error code set
     /// </summary>
@@ -76,6 +81,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// The error level
     /// </summary>
     private int _errorLevel;
+
     /// <summary>
     /// The error level set
     /// </summary>
@@ -85,6 +91,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// The status message
     /// </summary>
     private StatusMessage _statusMessage;
+
     /// <summary>
     /// The status message set
     /// </summary>
@@ -94,6 +101,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// The response body
     /// </summary>
     private ResponseBody _responseBody;
+
     /// <summary>
     /// The response body set
     /// </summary>
@@ -110,7 +118,8 @@ public sealed class ServiceResponse : IXmlSerializable
     [XmlIgnore]
     public ServiceName Service
     {
-        get => _service; set
+        get => _service;
+        set
         {
             _service = value;
             _serviceSet = true;
@@ -126,7 +135,8 @@ public sealed class ServiceResponse : IXmlSerializable
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ServiceInternal
     {
-        get => _service.GetInternalValue(); set
+        get => _service.GetInternalValue();
+        set
         {
             _service = EnumExtensions.GetEnumByInternalValueAttribute<ServiceName>(value);
             _serviceSet = true;
@@ -140,7 +150,8 @@ public sealed class ServiceResponse : IXmlSerializable
     [XmlIgnore]
     public bool PendingPrinting
     {
-        get => _pendingPrinting; set
+        get => _pendingPrinting;
+        set
         {
             _pendingPrinting = value;
             _pendingPrintingSet = true;
@@ -156,7 +167,8 @@ public sealed class ServiceResponse : IXmlSerializable
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string PendingPrintingInternal
     {
-        get => _pendingPrinting.ToString().ToLower(); set
+        get => _pendingPrinting.ToString().ToLower();
+        set
         {
             _pendingPrinting = value.ToBoolean(@"true|false");
             _pendingPrintingSet = true;
@@ -170,7 +182,8 @@ public sealed class ServiceResponse : IXmlSerializable
     [XmlAttribute("transactionId")]
     public Guid TransactionId
     {
-        get => _transactionId; set
+        get => _transactionId;
+        set
         {
             _transactionId = value;
             _transactionIdSet = true;
@@ -199,7 +212,8 @@ public sealed class ServiceResponse : IXmlSerializable
     [XmlAttribute("errorCode")]
     public int ErrorCode
     {
-        get => _errorCode; set
+        get => _errorCode;
+        set
         {
             _errorCode = value;
             _errorCodeSet = true;
@@ -213,13 +227,13 @@ public sealed class ServiceResponse : IXmlSerializable
     [XmlAttribute("errorLevel")]
     public int ErrorLevel
     {
-        get => _errorLevel; set
+        get => _errorLevel;
+        set
         {
             _errorLevel = value;
             _errorLevelSet = true;
         }
     }
-
 
     /// <summary>
     /// Gets or sets the status message.
@@ -228,7 +242,8 @@ public sealed class ServiceResponse : IXmlSerializable
     [XmlElement("statusMessage")]
     public StatusMessage StatusMessage
     {
-        get => _statusMessage; set
+        get => _statusMessage;
+        set
         {
             _statusMessage = value;
             _statusMessageSet = true;
@@ -242,7 +257,8 @@ public sealed class ServiceResponse : IXmlSerializable
     [XmlElement(ElementName = "responseBody")]
     public ResponseBody ResponseBody
     {
-        get => _responseBody; set
+        get => _responseBody;
+        set
         {
             _responseBody = value;
             _responseBodySet = true;
@@ -325,9 +341,10 @@ public sealed class ServiceResponse : IXmlSerializable
     /// Gets the entities.
     /// </summary>
     /// <value>The entities.</value>
-    public EntityDynamicSerialization[] Entities => ResponseBody.CrudServiceEntities != null
-        ? ResponseBody.CrudServiceEntities.Entities as EntityDynamicSerialization[]
-        : ResponseBody.CrudServiceProviderEntities?.Entities as EntityDynamicSerialization[];
+    public EntityDynamicSerialization[] Entities =>
+        ResponseBody.CrudServiceEntities != null
+            ? ResponseBody.CrudServiceEntities.Entities as EntityDynamicSerialization[]
+            : ResponseBody.CrudServiceProviderEntities?.Entities as EntityDynamicSerialization[];
 
     #endregion
 
@@ -351,14 +368,15 @@ public sealed class ServiceResponse : IXmlSerializable
                 node.ReadOuterXml();
                 continue;
             }
-            if (node.NodeType.Equals(XmlNodeType.EndElement) &&
-                (elementName == @"entidade" || elementName == @"entity" || elementName == @"pk"))
+            if (
+                node.NodeType.Equals(XmlNodeType.EndElement)
+                && (elementName == @"entidade" || elementName == @"entity" || elementName == @"pk")
+            )
             {
                 node.Read();
                 break;
             }
-            if (node.NodeType.Equals(XmlNodeType.Element) &&
-                node.IsEmptyElement)
+            if (node.NodeType.Equals(XmlNodeType.Element) && node.IsEmptyElement)
             {
                 ds.SetMember(node.Name, null);
                 node.Read();
@@ -419,7 +437,6 @@ public sealed class ServiceResponse : IXmlSerializable
     /// method.</returns>
     public XmlSchema GetSchema() => null;
 
-
     /// <summary>
     /// Generates an object from its XML representation.
     /// </summary>
@@ -431,8 +448,10 @@ public sealed class ServiceResponse : IXmlSerializable
         stopwatch.Start();
         try
         {
-            if (reader.MoveToContent() != XmlNodeType.Element
-                || reader.LocalName != SankhyaConstants.ServiceResponse)
+            if (
+                reader.MoveToContent() != XmlNodeType.Element
+                || reader.LocalName != SankhyaConstants.ServiceResponse
+            )
             {
                 return;
             }
@@ -440,8 +459,11 @@ public sealed class ServiceResponse : IXmlSerializable
             ParseAttributes(reader);
 
             reader.Read();
-            if (!reader.IsStartElement() ||
-                reader.LocalName != SankhyaConstants.StatusMessage && reader.LocalName != SankhyaConstants.ResponseBody)
+            if (
+                !reader.IsStartElement()
+                || reader.LocalName != SankhyaConstants.StatusMessage
+                    && reader.LocalName != SankhyaConstants.ResponseBody
+            )
             {
                 return;
             }
@@ -450,10 +472,7 @@ public sealed class ServiceResponse : IXmlSerializable
 
             if (reader.LocalName == SankhyaConstants.StatusMessage)
             {
-                StatusMessage = new()
-                {
-                    ValueInternal = reader.ReadElementContentAsString()
-                };
+                StatusMessage = new() { ValueInternal = reader.ReadElementContentAsString() };
             }
 
             #endregion
@@ -470,7 +489,8 @@ public sealed class ServiceResponse : IXmlSerializable
         finally
         {
             stopwatch.Stop();
-            var diagnostics = $@"ServiceResponse->{Service.GetHumanReadableValue()}.ReadXml(): {stopwatch.Elapsed}";
+            var diagnostics =
+                $@"ServiceResponse->{Service.GetHumanReadableValue()}.ReadXml(): {stopwatch.Elapsed}";
             LogConsumer.Debug(diagnostics);
             reader?.Dispose();
             log?.Dispose();
@@ -487,8 +507,7 @@ public sealed class ServiceResponse : IXmlSerializable
 
         while (!reader.EOF)
         {
-            if (reader.LocalName == "responseBody"
-                || reader.LocalName == "serviceResponse")
+            if (reader.LocalName == "responseBody" || reader.LocalName == "serviceResponse")
             {
                 reader.Read();
             }
@@ -517,7 +536,6 @@ public sealed class ServiceResponse : IXmlSerializable
 
         switch (reader.LocalName)
         {
-
             #region CRUD Service Entity
 
             case SankhyaConstants.EntitiesPtBr:
@@ -565,7 +583,7 @@ public sealed class ServiceResponse : IXmlSerializable
 
             #endregion
 
-            #region Releases 
+            #region Releases
 
             case SankhyaConstants.Releases:
                 ResponseBody.Releases = (SerializerConverter<Releases>)ParseComplexType(reader);
@@ -576,7 +594,8 @@ public sealed class ServiceResponse : IXmlSerializable
             #region Sessions
 
             case SankhyaConstants.Sessions:
-                ResponseBody.Sessions = (SerializerConverter<SessionsResponse>)ParseComplexType(reader);
+                ResponseBody.Sessions =
+                    (SerializerConverter<SessionsResponse>)ParseComplexType(reader);
                 return false;
 
             #endregion
@@ -592,7 +611,8 @@ public sealed class ServiceResponse : IXmlSerializable
             #region Client Event List
 
             case SankhyaConstants.ClientEvents:
-                ResponseBody.ClientEvents = (SerializerConverter<ClientEvents>)ParseComplexType(reader);
+                ResponseBody.ClientEvents =
+                    (SerializerConverter<ClientEvents>)ParseComplexType(reader);
                 return false;
 
             #endregion
@@ -666,8 +686,13 @@ public sealed class ServiceResponse : IXmlSerializable
             #region Default - New elements
 
             default:
-                LogConsumer.Handle(new ServiceResponseUnexpectedElementException(reader.LocalName,
-                    _service.GetHumanReadableValue(), this));
+                LogConsumer.Handle(
+                    new ServiceResponseUnexpectedElementException(
+                        reader.LocalName,
+                        _service.GetHumanReadableValue(),
+                        this
+                    )
+                );
                 new XmlDocument().Load(reader);
                 return false;
 
@@ -681,7 +706,10 @@ public sealed class ServiceResponse : IXmlSerializable
     /// <param name="reader">The reader.</param>
     /// <param name="entities">The entities.</param>
     /// <returns></returns>
-    private bool ProcessCrudServiceProviderEntities(XmlReader reader, List<EntityDynamicSerialization> entities)
+    private bool ProcessCrudServiceProviderEntities(
+        XmlReader reader,
+        List<EntityDynamicSerialization> entities
+    )
     {
         ResponseBody.CrudServiceProviderEntities = new()
         {
@@ -690,8 +718,10 @@ public sealed class ServiceResponse : IXmlSerializable
             TotalPages = reader.GetAttribute(SankhyaConstants.TotalPages).ToInt32()
         };
         reader.Read();
-        if (reader.MoveToContent() == XmlNodeType.Element
-            && reader.LocalName == SankhyaConstants.Metadata)
+        if (
+            reader.MoveToContent() == XmlNodeType.Element
+            && reader.LocalName == SankhyaConstants.Metadata
+        )
         {
             var metadata = new XmlDocument();
             metadata.LoadXml(reader.ReadOuterXml());
@@ -700,8 +730,10 @@ public sealed class ServiceResponse : IXmlSerializable
                 (SerializerConverter<Metadata>)metadata;
         }
 
-        while (reader.MoveToContent() == XmlNodeType.Element &&
-               reader.LocalName == SankhyaConstants.EntityEn)
+        while (
+            reader.MoveToContent() == XmlNodeType.Element
+            && reader.LocalName == SankhyaConstants.EntityEn
+        )
         {
             var entity = ReadDynamic(reader);
             if (ResponseBody.CrudServiceProviderEntities.Metadata != null)
@@ -723,7 +755,10 @@ public sealed class ServiceResponse : IXmlSerializable
     /// <param name="reader">The reader.</param>
     /// <param name="entities">The entities.</param>
     /// <returns></returns>
-    private bool ProcessCrudServiceEntities(XmlReader reader, List<EntityDynamicSerialization> entities)
+    private bool ProcessCrudServiceEntities(
+        XmlReader reader,
+        List<EntityDynamicSerialization> entities
+    )
     {
         ResponseBody.CrudServiceEntities = new()
         {
@@ -734,8 +769,10 @@ public sealed class ServiceResponse : IXmlSerializable
             return true;
         }
 
-        while (reader.MoveToContent() == XmlNodeType.Element &&
-               reader.LocalName == SankhyaConstants.EntityPtBr)
+        while (
+            reader.MoveToContent() == XmlNodeType.Element
+            && reader.LocalName == SankhyaConstants.EntityPtBr
+        )
         {
             entities.Add(ReadDynamic(reader));
         }
@@ -769,7 +806,10 @@ public sealed class ServiceResponse : IXmlSerializable
         }
 
         var transactionId = reader.GetAttribute("transactionId");
-        if (!string.IsNullOrWhiteSpace(transactionId) && Guid.TryParse(transactionId, out var transactionIdGuid))
+        if (
+            !string.IsNullOrWhiteSpace(transactionId)
+            && Guid.TryParse(transactionId, out var transactionIdGuid)
+        )
         {
             TransactionId = transactionIdGuid;
         }
@@ -788,9 +828,11 @@ public sealed class ServiceResponse : IXmlSerializable
         document.AppendChild(root);
         reader.ReadStartElement(rootName);
         XmlNode currentNode;
-        while (reader.NodeType != XmlNodeType.EndElement &&
-               reader.Name != rootName &&
-               (currentNode = document.ReadNode(reader)) != null)
+        while (
+            reader.NodeType != XmlNodeType.EndElement
+            && reader.Name != rootName
+            && (currentNode = document.ReadNode(reader)) != null
+        )
         {
             root.AppendChild(currentNode);
         }
@@ -855,7 +897,8 @@ public sealed class ServiceResponse : IXmlSerializable
         finally
         {
             stopwatch.Stop();
-            var diagnostics = $@"ServiceResponse->{Service.GetHumanReadableValue()}.WriteXml(): {stopwatch.Elapsed}";
+            var diagnostics =
+                $@"ServiceResponse->{Service.GetHumanReadableValue()}.WriteXml(): {stopwatch.Elapsed}";
             LogConsumer.Debug(diagnostics);
         }
     }
@@ -948,6 +991,7 @@ public sealed class ServiceResponse : IXmlSerializable
         writer.WriteValue(ResponseBody.JSessionId);
         writer.WriteEndElement();
     }
+
     /// <summary>
     /// Processes the primary key.
     /// </summary>
@@ -1116,15 +1160,26 @@ public sealed class ServiceResponse : IXmlSerializable
         writer.WriteStartElement(SankhyaConstants.EntitiesEn);
         if (!string.IsNullOrWhiteSpace(ResponseBody.CrudServiceProviderEntities.PagerId))
         {
-            writer.WriteAttributeString(SankhyaConstants.PagerId, ResponseBody.CrudServiceProviderEntities.PagerId);
+            writer.WriteAttributeString(
+                SankhyaConstants.PagerId,
+                ResponseBody.CrudServiceProviderEntities.PagerId
+            );
         }
 
         if (ResponseBody.CrudServiceProviderEntities.TotalPages > 0)
         {
-            writer.WriteAttributeString(SankhyaConstants.TotalPages, ResponseBody.CrudServiceProviderEntities.TotalPages.ToString(CultureInfo.InvariantCulture));
+            writer.WriteAttributeString(
+                SankhyaConstants.TotalPages,
+                ResponseBody.CrudServiceProviderEntities.TotalPages.ToString(
+                    CultureInfo.InvariantCulture
+                )
+            );
         }
 
-        writer.WriteAttributeString(SankhyaConstants.Total, ResponseBody.CrudServiceProviderEntities.Total.ToString(CultureInfo.InvariantCulture));
+        writer.WriteAttributeString(
+            SankhyaConstants.Total,
+            ResponseBody.CrudServiceProviderEntities.Total.ToString(CultureInfo.InvariantCulture)
+        );
 
         XmlDocument xml = ResponseBody.CrudServiceProviderEntities.Metadata?.GetSerializer();
         if (xml?.DocumentElement != null)

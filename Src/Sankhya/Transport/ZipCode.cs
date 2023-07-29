@@ -39,15 +39,23 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
             return false;
         }
 
-        return ReferenceEquals(this, other) || string.Equals(_zip, other._zip) && _zipSet.Equals(other._zipSet) &&
-            string.Equals(_interval, other._interval) && _intervalSet.Equals(other._intervalSet) &&
-            _codeCity == other._codeCity && _codeCitySet.Equals(other._codeCitySet) &&
-            _codeNeighborhood == other._codeNeighborhood &&
-            _codeNeighborhoodSet.Equals(other._codeNeighborhoodSet) && _codeAddress == other._codeAddress &&
-            _codeAddressSet.Equals(other._codeAddressSet) && Equals(_city, other._city) &&
-            _citySet.Equals(other._citySet) && Equals(_neighborhood, other._neighborhood) &&
-            _neighborhoodSet.Equals(other._neighborhoodSet) && Equals(_address, other._address) &&
-            _addressSet.Equals(other._addressSet);
+        return ReferenceEquals(this, other)
+            || string.Equals(_zip, other._zip)
+                && _zipSet.Equals(other._zipSet)
+                && string.Equals(_interval, other._interval)
+                && _intervalSet.Equals(other._intervalSet)
+                && _codeCity == other._codeCity
+                && _codeCitySet.Equals(other._codeCitySet)
+                && _codeNeighborhood == other._codeNeighborhood
+                && _codeNeighborhoodSet.Equals(other._codeNeighborhoodSet)
+                && _codeAddress == other._codeAddress
+                && _codeAddressSet.Equals(other._codeAddressSet)
+                && Equals(_city, other._city)
+                && _citySet.Equals(other._citySet)
+                && Equals(_neighborhood, other._neighborhood)
+                && _neighborhoodSet.Equals(other._neighborhoodSet)
+                && Equals(_address, other._address)
+                && _addressSet.Equals(other._addressSet);
     }
 
     /// <summary>
@@ -117,6 +125,7 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     /// The zip
     /// </summary>
     private string _zip;
+
     /// <summary>
     /// The zip set
     /// </summary>
@@ -126,6 +135,7 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     /// The interval
     /// </summary>
     private string _interval;
+
     /// <summary>
     /// The interval set
     /// </summary>
@@ -135,6 +145,7 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     /// The code city
     /// </summary>
     private int _codeCity;
+
     /// <summary>
     /// The code city set
     /// </summary>
@@ -144,6 +155,7 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     /// The code neighborhood
     /// </summary>
     private int _codeNeighborhood;
+
     /// <summary>
     /// The code neighborhood set
     /// </summary>
@@ -153,6 +165,7 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     /// The code address
     /// </summary>
     private int _codeAddress;
+
     /// <summary>
     /// The code address set
     /// </summary>
@@ -162,6 +175,7 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     /// The city
     /// </summary>
     private City _city;
+
     /// <summary>
     /// The city set
     /// </summary>
@@ -171,6 +185,7 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     /// The neighborhood
     /// </summary>
     private Neighborhood _neighborhood;
+
     /// <summary>
     /// The neighborhood set
     /// </summary>
@@ -180,6 +195,7 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     /// The address
     /// </summary>
     private Address _address;
+
     /// <summary>
     /// The address set
     /// </summary>
@@ -197,7 +213,8 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     [EntityElement("CEP")]
     public string Zip
     {
-        get => _zip; set
+        get => _zip;
+        set
         {
             _zip = value;
             _zipSet = true;
@@ -211,7 +228,8 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     [EntityElement("INTERVALO")]
     public string Interval
     {
-        get => _interval; set
+        get => _interval;
+        set
         {
             _interval = value;
             _intervalSet = true;
@@ -226,7 +244,8 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     [EntityElement("CODCID")]
     public int CodeCity
     {
-        get => _codeCity; set
+        get => _codeCity;
+        set
         {
             _codeCity = value;
             _codeCitySet = true;
@@ -241,12 +260,14 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     [EntityElement("CODBAI")]
     public int CodeNeighborhood
     {
-        get => _codeNeighborhood; set
+        get => _codeNeighborhood;
+        set
         {
             _codeNeighborhood = value;
             _codeNeighborhoodSet = true;
         }
     }
+
     /// <summary>
     /// Gets or sets the code address.
     /// </summary>
@@ -255,7 +276,8 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     [EntityElement("CODEND")]
     public int CodeAddress
     {
-        get => _codeAddress; set
+        get => _codeAddress;
+        set
         {
             _codeAddress = value;
             _codeAddressSet = true;
@@ -269,7 +291,8 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     [EntityReference]
     public City City
     {
-        get => _city; set
+        get => _city;
+        set
         {
             _city = value;
             _citySet = true;
@@ -283,7 +306,8 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     [EntityReference]
     public Neighborhood Neighborhood
     {
-        get => _neighborhood; set
+        get => _neighborhood;
+        set
         {
             _neighborhood = value;
             _neighborhoodSet = true;
@@ -297,7 +321,8 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     [EntityReference]
     public Address Address
     {
-        get => _address; set
+        get => _address;
+        set
         {
             _address = value;
             _addressSet = true;

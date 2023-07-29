@@ -92,7 +92,6 @@ internal class SankhyaWrapper
 
     private static string _internalUserAgent;
 
-
     /// <summary>
     /// The invalid session ids
     /// </summary>
@@ -120,12 +119,13 @@ internal class SankhyaWrapper
     /// <summary>
     /// The MIME types to extensions dictionary
     /// </summary>
-    private static readonly Dictionary<string, string> _mimeTypes2Extensions = new()
-    {
-        {@"image/jpeg", @"jpg"},
-        {@"image/png", @"png"},
-        {@"image/gif", @"gif"}
-    };
+    private static readonly Dictionary<string, string> _mimeTypes2Extensions =
+        new()
+        {
+            { @"image/jpeg", @"jpg" },
+            { @"image/png", @"png" },
+            { @"image/gif", @"gif" }
+        };
 
     #endregion
 
@@ -140,7 +140,12 @@ internal class SankhyaWrapper
     public SankhyaWrapper(string host, int port, ServiceRequestType requestType)
     {
         UserCode = -1;
-        _host = Regex.Replace(host, "^https?://", string.Empty, RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+        _host = Regex.Replace(
+            host,
+            "^https?://",
+            string.Empty,
+            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase
+        );
         _port = port;
         switch (port)
         {
@@ -177,10 +182,16 @@ internal class SankhyaWrapper
         int port,
         ServiceRequestType requestType,
         ServiceEnvironment environment,
-        string databaseName = null)
+        string databaseName = null
+    )
     {
         UserCode = -1;
-        _host = Regex.Replace(host, "^https?://", string.Empty, RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+        _host = Regex.Replace(
+            host,
+            "^https?://",
+            string.Empty,
+            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase
+        );
         _port = port;
         _requestType = requestType.GetHumanReadableValue();
         Environment = environment;
@@ -280,7 +291,8 @@ internal class SankhyaWrapper
             query.Add("mgeSession", _sessionId);
             cookieContainer.Add(
                 new(string.Concat("http://", _host, ":", _port)),
-                new Cookie(SankhyaConstants.SessionIdCookieName, _sessionId));
+                new Cookie(SankhyaConstants.SessionIdCookieName, _sessionId)
+            );
         }
         var builder = new UriBuilder("http", _host, _port, path, query.ToString());
         LogConsumer.Debug(builder.Uri.ToString());
@@ -289,7 +301,6 @@ internal class SankhyaWrapper
         request.CookieContainer = cookieContainer;
         request.UserAgent = $"{EnvironmentHelper.UserAgent} ({InternalUserAgent}+{_requestType})";
         return request;
-
     }
 
     /// <summary>
@@ -301,15 +312,22 @@ internal class SankhyaWrapper
     [Localizable(false)]
     private HttpWebRequest WebRequestFactory(ServiceName service, ServiceModule module)
     {
-        var request = GenericWebRequestFactory($"{module.GetInternalValue()}/service.sbr", new()
-        {
-            {"serviceName", service.GetInternalValue()}
-        });
+        var request = GenericWebRequestFactory(
+            $"{module.GetInternalValue()}/service.sbr",
+            new() { { "serviceName", service.GetInternalValue() } }
+        );
         request.Method = "POST";
         request.ContentType = "text/xml;charset=UTF-8";
         if (service == ServiceName.Login)
         {
-            RegisterUserAgent(_host, _port, _username, _password, request.CookieContainer, _requestType);
+            RegisterUserAgent(
+                _host,
+                _port,
+                _username,
+                _password,
+                request.CookieContainer,
+                _requestType
+            );
         }
 
         return request;
@@ -348,9 +366,7 @@ internal class SankhyaWrapper
     /// <param name="serviceName">Name of the service.</param>
     /// <param name="request">The request.</param>
     /// <returns>ServiceResponse.</returns>
-    private ServiceResponse ServiceInvoker(
-        ServiceName serviceName,
-        ServiceRequest request = null)
+    private ServiceResponse ServiceInvoker(ServiceName serviceName, ServiceRequest request = null)
     {
         var service = serviceName.GetService();
         var lockKey = string.IsNullOrWhiteSpace(_sessionId) ? nameof(ServiceInvoker) : _sessionId;
@@ -358,13 +374,15 @@ internal class SankhyaWrapper
         ServiceResponse result;
         while (true)
         {
-            result = ServiceInvokerInternal(request,
+            result = ServiceInvokerInternal(
+                request,
                 service.Module,
                 serviceName,
                 service.Category,
                 service.Type,
                 lockKey,
-                ref attemptCount);
+                ref attemptCount
+            );
             if (result != null)
             {
                 break;
@@ -392,9 +410,12 @@ internal class SankhyaWrapper
         ServiceCategory category,
         ServiceType type,
         string lockKey,
-        ref int attemptCount)
+        ref int attemptCount
+    )
     {
-        var serviceNameReadable = name.GetHumanReadableValue().RemoveSpaces().ReplaceNonAlphanumeric(string.Empty);
+        var serviceNameReadable = name.GetHumanReadableValue()
+            .RemoveSpaces()
+            .ReplaceNonAlphanumeric(string.Empty);
 
         Interlocked.Increment(ref _requestCount);
 
@@ -406,19 +427,23 @@ internal class SankhyaWrapper
 
         if (category == ServiceCategory.Crud && request != null)
         {
-            LogConsumer.Trace(Resources.SankhyaWrapper_ServiceInvokerInternal_Service,
+            LogConsumer.Trace(
+                Resources.SankhyaWrapper_ServiceInvokerInternal_Service,
                 name.GetHumanReadableValue(),
-                request.RequestBody.Entity?.Name ??
-                request.RequestBody.Entity?.RootEntity ??
-                request.RequestBody.DataSet.RootEntity,
-                ++attemptCount);
+                request.RequestBody.Entity?.Name
+                    ?? request.RequestBody.Entity?.RootEntity
+                    ?? request.RequestBody.DataSet.RootEntity,
+                ++attemptCount
+            );
         }
         else
         {
-            LogConsumer.Trace(Resources.SankhyaWrapper_ServiceInvokerInternal_Module,
+            LogConsumer.Trace(
+                Resources.SankhyaWrapper_ServiceInvokerInternal_Module,
                 module.GetHumanReadableValue(),
                 name.GetHumanReadableValue(),
-                ++attemptCount);
+                ++attemptCount
+            );
         }
 
         try
@@ -467,17 +492,22 @@ internal class SankhyaWrapper
         ServiceType type,
         ServiceRequest request,
         int attemptCount,
-        ref int wait)
+        ref int wait
+    )
     {
         if (attemptCount > 3)
         {
             return false;
         }
 
-        if (type == ServiceType.Transactional &&
-            (e is ServiceRequestCompetitionException ||
-             e is ServiceRequestDeadlockException ||
-             e is ServiceRequestTimeoutException))
+        if (
+            type == ServiceType.Transactional
+            && (
+                e is ServiceRequestCompetitionException
+                || e is ServiceRequestDeadlockException
+                || e is ServiceRequestTimeoutException
+            )
+        )
         {
             return false;
         }
@@ -486,7 +516,15 @@ internal class SankhyaWrapper
         {
             case ServiceRequestInvalidAuthorizationException _:
 
-                if (_invalidSessionIds.Any(sessionId => sessionId.Equals(_sessionId, StringComparison.InvariantCultureIgnoreCase)))
+                if (
+                    _invalidSessionIds.Any(
+                        sessionId =>
+                            sessionId.Equals(
+                                _sessionId,
+                                StringComparison.InvariantCultureIgnoreCase
+                            )
+                    )
+                )
                 {
                     return false;
                 }
@@ -504,7 +542,10 @@ internal class SankhyaWrapper
 
                 var xmlRequest = (string)request.GetSerializer();
 
-                if (xmlRequest.IndexOf(ex.PropertyName, StringComparison.InvariantCultureIgnoreCase) != -1)
+                if (
+                    xmlRequest.IndexOf(ex.PropertyName, StringComparison.InvariantCultureIgnoreCase)
+                    != -1
+                )
                 {
                     return false;
                 }
@@ -529,7 +570,11 @@ internal class SankhyaWrapper
 
                 wait = attemptCount * 15;
 
-                LogConsumer.Warning(Resources.SankhyaWrapper_ServiceInvokerInternal_ReasonIdentifiedTakingSecondsRetry, wait, @"Deadlock");
+                LogConsumer.Warning(
+                    Resources.SankhyaWrapper_ServiceInvokerInternal_ReasonIdentifiedTakingSecondsRetry,
+                    wait,
+                    @"Deadlock"
+                );
 
                 return true;
 
@@ -539,7 +584,11 @@ internal class SankhyaWrapper
 
                 wait = attemptCount * 10;
 
-                LogConsumer.Warning(Resources.SankhyaWrapper_ServiceInvokerInternal_ReasonIdentifiedTakingSecondsRetry, wait, @"Timeout");
+                LogConsumer.Warning(
+                    Resources.SankhyaWrapper_ServiceInvokerInternal_ReasonIdentifiedTakingSecondsRetry,
+                    wait,
+                    @"Timeout"
+                );
 
                 return true;
 
@@ -558,7 +607,11 @@ internal class SankhyaWrapper
 
                 wait = attemptCount * 90;
 
-                LogConsumer.Warning(Resources.SankhyaWrapper_ServiceInvokerInternal_ReasonIdentifiedTakingSecondsRetry, wait, @"Sankhya unavailable");
+                LogConsumer.Warning(
+                    Resources.SankhyaWrapper_ServiceInvokerInternal_ReasonIdentifiedTakingSecondsRetry,
+                    wait,
+                    @"Sankhya unavailable"
+                );
 
                 return true;
 
@@ -568,7 +621,11 @@ internal class SankhyaWrapper
 
                 wait = attemptCount * 30;
 
-                LogConsumer.Warning(Resources.SankhyaWrapper_ServiceInvokerInternal_ReasonIdentifiedTakingSecondsRetry, wait, @"Database unavailable");
+                LogConsumer.Warning(
+                    Resources.SankhyaWrapper_ServiceInvokerInternal_ReasonIdentifiedTakingSecondsRetry,
+                    wait,
+                    @"Database unavailable"
+                );
 
                 return true;
 
@@ -578,7 +635,10 @@ internal class SankhyaWrapper
 
                 wait = attemptCount * 15;
 
-                LogConsumer.Warning(Resources.SankhyaWrapper_ServiceInvokerInternal_CanceledQuery, wait);
+                LogConsumer.Warning(
+                    Resources.SankhyaWrapper_ServiceInvokerInternal_CanceledQuery,
+                    wait
+                );
 
                 return true;
 
@@ -605,7 +665,8 @@ internal class SankhyaWrapper
         ServiceRequest request,
         ServiceModule module,
         int currentRequestCount,
-        string serviceName)
+        string serviceName
+    )
     {
         if (request != null)
         {
@@ -618,9 +679,10 @@ internal class SankhyaWrapper
 
         try
         {
-            webResponse = request == null
-                ? ServiceInvokerInternal(webRequest)
-                : ServiceInvokerInternal(webRequest, (string)request.GetSerializer());
+            webResponse =
+                request == null
+                    ? ServiceInvokerInternal(webRequest)
+                    : ServiceInvokerInternal(webRequest, (string)request.GetSerializer());
 
             return ProcessResponse(service, request, webResponse, currentRequestCount, serviceName);
         }
@@ -645,7 +707,10 @@ internal class SankhyaWrapper
     /// <exception cref="ServiceRequestInvalidAuthorizationException"></exception>
     private Exception HandleWebException(ServiceRequest request, WebException e)
     {
-        if (e.Response is not HttpWebResponse { StatusCode: HttpStatusCode.InternalServerError } webResponse)
+        if (
+            e.Response
+            is not HttpWebResponse { StatusCode: HttpStatusCode.InternalServerError } webResponse
+        )
         {
             return new ServiceRequestInaccessibleException(_host, _port, request, e);
         }
@@ -658,7 +723,14 @@ internal class SankhyaWrapper
             }
 
             using var streamReader = new StreamReader(responseStream);
-            if (streamReader.ReadToEnd().IndexOf(SankhyaConstants.SessionManagerNotStarted, StringComparison.InvariantCultureIgnoreCase) != -1)
+            if (
+                streamReader
+                    .ReadToEnd()
+                    .IndexOf(
+                        SankhyaConstants.SessionManagerNotStarted,
+                        StringComparison.InvariantCultureIgnoreCase
+                    ) != -1
+            )
             {
                 return new ServiceRequestInvalidAuthorizationException(e);
             }
@@ -681,7 +753,8 @@ internal class SankhyaWrapper
         ServiceRequest request,
         WebResponse webResponse,
         int currentRequestCount,
-        string serviceName)
+        string serviceName
+    )
     {
         using var responseStream = webResponse.GetResponseStream();
 
@@ -690,11 +763,16 @@ internal class SankhyaWrapper
             throw new InvalidOperationException(Resources.ResponseStreamIsNull);
         }
 
-        var response = SerializerFactory.GetSerializer<ServiceResponse>().DeserializeFromStream(responseStream);
+        var response = SerializerFactory
+            .GetSerializer<ServiceResponse>()
+            .DeserializeFromStream(responseStream);
 
         if (response != null)
         {
-            LogConsumer.Debug(response, $"Sankhya-{currentRequestCount}-{serviceName}-Response.xml");
+            LogConsumer.Debug(
+                response,
+                $"Sankhya-{currentRequestCount}-{serviceName}-Response.xml"
+            );
         }
 
         if (response?.StatusMessage == null)
@@ -713,7 +791,8 @@ internal class SankhyaWrapper
     /// <param name="request">The request.</param>
     /// <returns>ServiceResponse.</returns>
 
-    public ServiceResponse ServiceInvoker(ServiceRequest request) => ServiceInvoker(request.Service, request);
+    public ServiceResponse ServiceInvoker(ServiceRequest request) =>
+        ServiceInvoker(request.Service, request);
 
     /// <summary>
     /// service invoker as an asynchronous operation.
@@ -725,14 +804,14 @@ internal class SankhyaWrapper
     {
         try
         {
-            return await Task.Run(() => ServiceInvoker(request.Service, request)).ConfigureAwait(false);
+            return await Task.Run(() => ServiceInvoker(request.Service, request))
+                .ConfigureAwait(false);
         }
         catch (AggregateException e)
         {
             throw e.Flatten();
         }
     }
-
 
     /// <summary>
     /// Gets the file internal.
@@ -743,10 +822,10 @@ internal class SankhyaWrapper
     {
         try
         {
-            var request = GenericWebRequestFactory("mge/visualizadorArquivos.mge", new()
-            {
-                {@"chaveArquivo", key}
-            });
+            var request = GenericWebRequestFactory(
+                "mge/visualizadorArquivos.mge",
+                new() { { @"chaveArquivo", key } }
+            );
             request.Method = @"GET";
             request.Headers.Add(@"Accept-Charset", @"UTF-8;q=0.9,*;q=0.7");
             return ProcessFileResponse(key, request);
@@ -778,7 +857,9 @@ internal class SankhyaWrapper
 
         if (!string.IsNullOrWhiteSpace(contentDispositionHeader))
         {
-            result.FileName = new ContentDisposition(contentDispositionHeader.RemoveDiacritics()).FileName;
+            result.FileName = new ContentDisposition(
+                contentDispositionHeader.RemoveDiacritics()
+            ).FileName;
         }
 
         if (!string.IsNullOrWhiteSpace(result.FileName))
@@ -786,9 +867,11 @@ internal class SankhyaWrapper
             result.FileExtension = result.FileName.GetFileExtension().Replace(@".", string.Empty);
         }
 
-        if (string.IsNullOrWhiteSpace(result.FileExtension)
+        if (
+            string.IsNullOrWhiteSpace(result.FileExtension)
             && !string.IsNullOrWhiteSpace(result.ContentType)
-            && _mimeTypes2Extensions.ContainsKey(result.ContentType))
+            && _mimeTypes2Extensions.ContainsKey(result.ContentType)
+        )
         {
             result.FileExtension = _mimeTypes2Extensions[result.ContentType];
         }
@@ -801,7 +884,12 @@ internal class SankhyaWrapper
         }
 
         var message = Encoding.GetEncoding("ISO-8859-1").GetString(result.Data);
-        if (message.IndexOf(SankhyaConstants.FileNotFoundOnServer, StringComparison.InvariantCultureIgnoreCase) != -1)
+        if (
+            message.IndexOf(
+                SankhyaConstants.FileNotFoundOnServer,
+                StringComparison.InvariantCultureIgnoreCase
+            ) != -1
+        )
         {
             throw new InvalidKeyFileException(key);
         }
@@ -868,7 +956,6 @@ internal class SankhyaWrapper
         _password = password;
 
         if (!string.IsNullOrWhiteSpace(_sessionId))
-
         {
             return;
         }
@@ -879,11 +966,7 @@ internal class SankhyaWrapper
 
         var request = new ServiceRequest(ServiceName.Login)
         {
-            RequestBody =
-            {
-                Username = userName,
-                Password = password
-            }
+            RequestBody = { Username = userName, Password = password }
         };
 
         #endregion
@@ -925,7 +1008,12 @@ internal class SankhyaWrapper
     /// <param name="requestType">Type of the request.</param>
     /// <param name="method">The method.</param>
     /// <returns>HttpWebRequest.</returns>
-    private static HttpWebRequest CreateRequest(Uri uri, CookieContainer cookieContainer, string requestType, [Localizable(false)] string method)
+    private static HttpWebRequest CreateRequest(
+        Uri uri,
+        CookieContainer cookieContainer,
+        string requestType,
+        [Localizable(false)] string method
+    )
     {
         var request = (HttpWebRequest)WebRequest.Create(uri);
         request.CookieContainer = cookieContainer;
@@ -950,12 +1038,24 @@ internal class SankhyaWrapper
     /// <param name="requestType">Type of the request.</param>
     /// <exception cref="InvalidOperationException"></exception>
     /// <exception cref="ServiceRequestInaccessibleException">null</exception>
-    private static void RegisterUserAgent(string host, int port, string username, string password, CookieContainer cookieContainer, string requestType)
+    private static void RegisterUserAgent(
+        string host,
+        int port,
+        string username,
+        string password,
+        CookieContainer cookieContainer,
+        string requestType
+    )
     {
         var uriCookie = new UriBuilder("http", host, port, "/mge/");
         var uriDwr = new UriBuilder("http", host, port, "/mge/dwr/exec/DWRController.execute.dwr");
 
-        var webRequestCookie = CreateRequest(uriCookie.Uri, cookieContainer, requestType, string.Empty);
+        var webRequestCookie = CreateRequest(
+            uriCookie.Uri,
+            cookieContainer,
+            requestType,
+            string.Empty
+        );
         var webRequestDwr = CreateRequest(uriDwr.Uri, cookieContainer, requestType, "POST");
 
         try
@@ -1011,9 +1111,10 @@ internal class SankhyaWrapper
             .AppendLine(username)
             .Append(@"c0-e3=string:")
             .AppendLine(password)
-            .AppendLine(@"c0-param0=Object:{acao:reference:c0-e1, nomeUsu:reference:c0-e2, passUsu:reference:c0-e3}")
+            .AppendLine(
+                @"c0-param0=Object:{acao:reference:c0-e1, nomeUsu:reference:c0-e2, passUsu:reference:c0-e3}"
+            )
             .AppendLine(@"xml=true");
-
 
         var bytes = Encoding.UTF8.GetBytes(sb.ToString());
         return bytes;
@@ -1027,21 +1128,38 @@ internal class SankhyaWrapper
     /// <exception cref="InvalidOperationException"></exception>
     private static void ShowVersionInfo(TextReader responseReader, string requestType)
     {
-        if (!requestType.Equals(ServiceRequestType.Default.GetHumanReadableValue(), StringComparison.InvariantCultureIgnoreCase))
+        if (
+            !requestType.Equals(
+                ServiceRequestType.Default.GetHumanReadableValue(),
+                StringComparison.InvariantCultureIgnoreCase
+            )
+        )
         {
             return;
         }
 
         var html = responseReader.ReadToEnd();
-        var stableVersionPattern = new Regex("SYSVERSION = \\\"(?<version>([0-9b].?)+)\\\"", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Multiline);
-        var betaVersionPattern = new Regex("SYSVERSION = \\\"desenvolvimentob(?<version>([0-9])+)\\\"", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Multiline);
+        var stableVersionPattern = new Regex(
+            "SYSVERSION = \\\"(?<version>([0-9b].?)+)\\\"",
+            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Multiline
+        );
+        var betaVersionPattern = new Regex(
+            "SYSVERSION = \\\"desenvolvimentob(?<version>([0-9])+)\\\"",
+            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Multiline
+        );
         if (!stableVersionPattern.IsMatch(html) && !betaVersionPattern.IsMatch(html))
         {
-            throw new InvalidOperationException(Resources.SankhyaWrapper_ShowVersionInfo_SankhyaWVersionNotFound);
+            throw new InvalidOperationException(
+                Resources.SankhyaWrapper_ShowVersionInfo_SankhyaWVersionNotFound
+            );
         }
 
         var version = stableVersionPattern.IsMatch(html)
-            ? Version.Parse(stableVersionPattern.Match(html).Groups[@"version"].Value.Replace(@"b", @".")).ToString()
+            ? Version
+                .Parse(
+                    stableVersionPattern.Match(html).Groups[@"version"].Value.Replace(@"b", @".")
+                )
+                .ToString()
             : $@"[BETA] {betaVersionPattern.Match(html).Groups[@"version"].Value}";
 
         LogConsumer.Info(Resources.SankhyaWrapper_ShowVersionInfo_SankhyaWVersion, version);
@@ -1061,7 +1179,6 @@ internal class SankhyaWrapper
     {
         LogConsumer.Info(Resources.SankhyaWrapper_GetFile_Getting, key);
         return GetFileInternal(key);
-
     }
 
     /// <summary>
@@ -1072,7 +1189,6 @@ internal class SankhyaWrapper
     //TODO issue #67
     public async Task<ServiceFile> GetFileAsync(string key)
     {
-
         try
         {
             return await Task.Run(() => GetFile(key)).ConfigureAwait(false);
@@ -1082,7 +1198,6 @@ internal class SankhyaWrapper
             throw e.Flatten();
         }
     }
-
 
     /// <summary>
     /// Creates the web request.
@@ -1105,7 +1220,10 @@ internal class SankhyaWrapper
     /// <param name="response">The response.</param>
     /// <param name="extension">The extension.</param>
     /// <returns>MemoryStream.</returns>
-    private static MemoryStream ReadStreamAndGetExtension(HttpWebResponse response, out string extension)
+    private static MemoryStream ReadStreamAndGetExtension(
+        HttpWebResponse response,
+        out string extension
+    )
     {
         extension = @"jpg";
 
@@ -1130,7 +1248,6 @@ internal class SankhyaWrapper
         stream?.Close();
 
         return memory;
-
     }
 
     /// <summary>
@@ -1145,9 +1262,11 @@ internal class SankhyaWrapper
         HttpWebResponse response = null;
         try
         {
-            LogConsumer.Info(Resources.SankhyaWrapper_GetImage_Getting, entity,
-                string.Join(@" | ", keys.Select(k => $@"{k.Key}->{k.Value}")));
-
+            LogConsumer.Info(
+                Resources.SankhyaWrapper_GetImage_Getting,
+                entity,
+                string.Join(@" | ", keys.Select(k => $@"{k.Key}->{k.Value}"))
+            );
 
             var imageKeys = string.Concat(keys.Select(k => $@"@{k.Key}={k.Value}"));
 
@@ -1157,7 +1276,10 @@ internal class SankhyaWrapper
 
             if (!string.IsNullOrWhiteSpace(_sessionId))
             {
-                cookies.Add(new($"http://{_host}"), new Cookie(SankhyaConstants.SessionIdCookieName, _sessionId));
+                cookies.Add(
+                    new($"http://{_host}"),
+                    new Cookie(SankhyaConstants.SessionIdCookieName, _sessionId)
+                );
             }
 
             var request = CreateWebRequest(new(url), cookies);
@@ -1168,7 +1290,14 @@ internal class SankhyaWrapper
 
             if (memory.Length == 0)
             {
-                throw new WebException(string.Format(CultureInfo.CurrentCulture, Resources.SankhyaWrapper_GetImage_ImageNotFound, url), WebExceptionStatus.PipelineFailure);
+                throw new WebException(
+                    string.Format(
+                        CultureInfo.CurrentCulture,
+                        Resources.SankhyaWrapper_GetImage_ImageNotFound,
+                        url
+                    ),
+                    WebExceptionStatus.PipelineFailure
+                );
             }
 
             var data = new byte[memory.Length];
@@ -1219,7 +1348,6 @@ internal class SankhyaWrapper
     //TODO issue #67
     public async Task<ServiceFile> GetImageAsync(string entity, Dictionary<string, object> keys)
     {
-
         try
         {
             return await Task.Run(() => GetImage(entity, keys)).ConfigureAwait(false);

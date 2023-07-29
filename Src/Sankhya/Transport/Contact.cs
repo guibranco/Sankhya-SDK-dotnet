@@ -28,42 +28,83 @@ public class Contact : IEntity, IEquatable<Contact>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _code == other._code && _codeSet == other._codeSet && _codePartner == other._codePartner &&
-            _codePartnerSet == other._codePartnerSet &&
-            string.Equals(_zipCode, other._zipCode, StringComparison.InvariantCultureIgnoreCase) &&
-            _zipCodeSet == other._zipCodeSet && _codeAddress == other._codeAddress &&
-            _codeAddressSet == other._codeAddressSet &&
-            string.Equals(_addressComplement,
-                other._addressComplement,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _addressComplementSet == other._addressComplementSet &&
-            string.Equals(_addressNumber, other._addressNumber, StringComparison.InvariantCultureIgnoreCase) &&
-            _addressNumberSet == other._addressNumberSet && _codeNeighborhood == other._codeNeighborhood &&
-            _codeNeighborhoodSet == other._codeNeighborhoodSet && _codeCity == other._codeCity &&
-            _codeCitySet == other._codeCitySet && _codeRegion == other._codeRegion &&
-            _codeRegionSet == other._codeRegionSet &&
-            string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase) &&
-            _nameSet == other._nameSet && _active == other._active && _activeSet == other._activeSet &&
-            string.Equals(_documentIndividual,
-                other._documentIndividual,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _documentIndividualSet == other._documentIndividualSet &&
-            string.Equals(_documentCorporation,
-                other._documentCorporation,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _documentCorporationSet == other._documentCorporationSet &&
-            _registerDate.Equals(other._registerDate) && _registerDateSet == other._registerDateSet &&
-            string.Equals(_emailAddress, other._emailAddress, StringComparison.InvariantCultureIgnoreCase) &&
-            _emailAddressSet == other._emailAddressSet &&
-            string.Equals(_fixedTelephone, other._fixedTelephone, StringComparison.InvariantCultureIgnoreCase) &&
-            _fixedTelephoneSet == other._fixedTelephoneSet &&
-            string.Equals(_mobileTelephone, other._mobileTelephone, StringComparison.InvariantCultureIgnoreCase) &&
-            _mobileTelephoneSet == other._mobileTelephoneSet && Equals(_partner, other._partner) &&
-            _partnerSet == other._partnerSet && Equals(_address, other._address) &&
-            _addressSet == other._addressSet && Equals(_neighborhood, other._neighborhood) &&
-            _neighborhoodSet == other._neighborhoodSet && Equals(_city, other._city) &&
-            _citySet == other._citySet && Equals(_region, other._region) &&
-            _regionSet == other._regionSet;
+        return ReferenceEquals(this, other)
+            || _code == other._code
+                && _codeSet == other._codeSet
+                && _codePartner == other._codePartner
+                && _codePartnerSet == other._codePartnerSet
+                && string.Equals(
+                    _zipCode,
+                    other._zipCode,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _zipCodeSet == other._zipCodeSet
+                && _codeAddress == other._codeAddress
+                && _codeAddressSet == other._codeAddressSet
+                && string.Equals(
+                    _addressComplement,
+                    other._addressComplement,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _addressComplementSet == other._addressComplementSet
+                && string.Equals(
+                    _addressNumber,
+                    other._addressNumber,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _addressNumberSet == other._addressNumberSet
+                && _codeNeighborhood == other._codeNeighborhood
+                && _codeNeighborhoodSet == other._codeNeighborhoodSet
+                && _codeCity == other._codeCity
+                && _codeCitySet == other._codeCitySet
+                && _codeRegion == other._codeRegion
+                && _codeRegionSet == other._codeRegionSet
+                && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+                && _nameSet == other._nameSet
+                && _active == other._active
+                && _activeSet == other._activeSet
+                && string.Equals(
+                    _documentIndividual,
+                    other._documentIndividual,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _documentIndividualSet == other._documentIndividualSet
+                && string.Equals(
+                    _documentCorporation,
+                    other._documentCorporation,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _documentCorporationSet == other._documentCorporationSet
+                && _registerDate.Equals(other._registerDate)
+                && _registerDateSet == other._registerDateSet
+                && string.Equals(
+                    _emailAddress,
+                    other._emailAddress,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _emailAddressSet == other._emailAddressSet
+                && string.Equals(
+                    _fixedTelephone,
+                    other._fixedTelephone,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _fixedTelephoneSet == other._fixedTelephoneSet
+                && string.Equals(
+                    _mobileTelephone,
+                    other._mobileTelephone,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _mobileTelephoneSet == other._mobileTelephoneSet
+                && Equals(_partner, other._partner)
+                && _partnerSet == other._partnerSet
+                && Equals(_address, other._address)
+                && _addressSet == other._addressSet
+                && Equals(_neighborhood, other._neighborhood)
+                && _neighborhoodSet == other._neighborhoodSet
+                && Equals(_city, other._city)
+                && _citySet == other._citySet
+                && Equals(_region, other._region)
+                && _regionSet == other._regionSet;
     }
 
     /// <summary>
@@ -95,13 +136,31 @@ public class Contact : IEntity, IEquatable<Contact>
             hashCode = (hashCode * 397) ^ _codeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codePartner;
             hashCode = (hashCode * 397) ^ _codePartnerSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_zipCode != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_zipCode) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _zipCode != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_zipCode)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _zipCodeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeAddress;
             hashCode = (hashCode * 397) ^ _codeAddressSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_addressComplement != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_addressComplement) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _addressComplement != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_addressComplement)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _addressComplementSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_addressNumber != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_addressNumber) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _addressNumber != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_addressNumber)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _addressNumberSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeNeighborhood;
             hashCode = (hashCode * 397) ^ _codeNeighborhoodSet.GetHashCode();
@@ -109,21 +168,57 @@ public class Contact : IEntity, IEquatable<Contact>
             hashCode = (hashCode * 397) ^ _codeCitySet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeRegion;
             hashCode = (hashCode * 397) ^ _codeRegionSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_name != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _name != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name) : 0
+                );
             hashCode = (hashCode * 397) ^ _nameSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _active.GetHashCode();
             hashCode = (hashCode * 397) ^ _activeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_documentIndividual != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_documentIndividual) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _documentIndividual != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_documentIndividual)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _documentIndividualSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_documentCorporation != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_documentCorporation) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _documentCorporation != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
+                            _documentCorporation
+                        )
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _documentCorporationSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _registerDate.GetHashCode();
             hashCode = (hashCode * 397) ^ _registerDateSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_emailAddress != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_emailAddress) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _emailAddress != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_emailAddress)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _emailAddressSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_fixedTelephone != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_fixedTelephone) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _fixedTelephone != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_fixedTelephone)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _fixedTelephoneSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_mobileTelephone != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_mobileTelephone) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _mobileTelephone != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_mobileTelephone)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _mobileTelephoneSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_partner != null ? _partner.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _partnerSet.GetHashCode();
@@ -163,6 +258,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The code
     /// </summary>
     private int _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -172,6 +268,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The code partner
     /// </summary>
     private int _codePartner;
+
     /// <summary>
     /// The code partner set
     /// </summary>
@@ -181,6 +278,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The zip code
     /// </summary>
     private string _zipCode;
+
     /// <summary>
     /// The zip code set
     /// </summary>
@@ -190,6 +288,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The code address
     /// </summary>
     private int _codeAddress;
+
     /// <summary>
     /// The code address set
     /// </summary>
@@ -199,6 +298,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The address complement
     /// </summary>
     private string _addressComplement;
+
     /// <summary>
     /// The address complement set
     /// </summary>
@@ -208,6 +308,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The address number
     /// </summary>
     private string _addressNumber;
+
     /// <summary>
     /// The address number set
     /// </summary>
@@ -217,6 +318,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The code neighborhood
     /// </summary>
     private int _codeNeighborhood;
+
     /// <summary>
     /// The code neighborhood set
     /// </summary>
@@ -226,6 +328,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The code city
     /// </summary>
     private int _codeCity;
+
     /// <summary>
     /// The code city set
     /// </summary>
@@ -235,6 +338,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The code region
     /// </summary>
     private int _codeRegion;
+
     /// <summary>
     /// The code region set
     /// </summary>
@@ -244,6 +348,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -253,6 +358,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The active
     /// </summary>
     private bool _active;
+
     /// <summary>
     /// The active set
     /// </summary>
@@ -262,6 +368,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The document individual
     /// </summary>
     private string _documentIndividual;
+
     /// <summary>
     /// The document individual set
     /// </summary>
@@ -271,6 +378,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The document corporation
     /// </summary>
     private string _documentCorporation;
+
     /// <summary>
     /// The document corporation set
     /// </summary>
@@ -280,6 +388,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The register date
     /// </summary>
     private DateTime _registerDate;
+
     /// <summary>
     /// The register date set
     /// </summary>
@@ -289,6 +398,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The email address
     /// </summary>
     private string _emailAddress;
+
     /// <summary>
     /// The email address set
     /// </summary>
@@ -298,6 +408,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The fixed telephone
     /// </summary>
     private string _fixedTelephone;
+
     /// <summary>
     /// The fixed telephone set
     /// </summary>
@@ -307,6 +418,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The mobile telephone
     /// </summary>
     private string _mobileTelephone;
+
     /// <summary>
     /// The mobile telephone set
     /// </summary>
@@ -316,6 +428,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The partner
     /// </summary>
     private Partner _partner;
+
     /// <summary>
     /// The partner set
     /// </summary>
@@ -325,6 +438,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The address
     /// </summary>
     private Address _address;
+
     /// <summary>
     /// The address set
     /// </summary>
@@ -334,6 +448,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The neighborhood
     /// </summary>
     private Neighborhood _neighborhood;
+
     /// <summary>
     /// The neighborhood set
     /// </summary>
@@ -343,6 +458,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The city
     /// </summary>
     private City _city;
+
     /// <summary>
     /// The city set
     /// </summary>
@@ -352,6 +468,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The region
     /// </summary>
     private Region _region;
+
     /// <summary>
     /// The region set
     /// </summary>
@@ -366,10 +483,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The code.</value>
     [EntityElement("CODCONTATO")]
-
     public int Code
     {
-        get => _code; set
+        get => _code;
+        set
         {
             _code = value;
             _codeSet = true;
@@ -381,10 +498,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The code partner.</value>
     [EntityElement("CODPARC")]
-
     public int CodePartner
     {
-        get => _codePartner; set
+        get => _codePartner;
+        set
         {
             _codePartner = value;
             _codePartnerSet = true;
@@ -396,10 +513,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The zip code.</value>
     [EntityElement("CEP")]
-
     public string ZipCode
     {
-        get => _zipCode; set
+        get => _zipCode;
+        set
         {
             _zipCode = value;
             _zipCodeSet = true;
@@ -411,10 +528,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The code address.</value>
     [EntityElement("CODEND")]
-
     public int CodeAddress
     {
-        get => _codeAddress; set
+        get => _codeAddress;
+        set
         {
             _codeAddress = value;
             _codeAddressSet = true;
@@ -427,10 +544,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// <value>The address complement.</value>
     [EntityElement("COMPLEMENTO")]
     [EntityCustomData(MaxLength = 30)]
-
     public string AddressComplement
     {
-        get => _addressComplement; set
+        get => _addressComplement;
+        set
         {
             _addressComplement = value;
             _addressComplementSet = true;
@@ -442,10 +559,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The address number.</value>
     [EntityElement("NUMEND")]
-
     public string AddressNumber
     {
-        get => _addressNumber; set
+        get => _addressNumber;
+        set
         {
             _addressNumber = value;
             _addressNumberSet = true;
@@ -457,10 +574,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The code neighborhood.</value>
     [EntityElement("CODBAI")]
-
     public int CodeNeighborhood
     {
-        get => _codeNeighborhood; set
+        get => _codeNeighborhood;
+        set
         {
             _codeNeighborhood = value;
             _codeNeighborhoodSet = true;
@@ -472,10 +589,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The code city.</value>
     [EntityElement("CODCID")]
-
     public int CodeCity
     {
-        get => _codeCity; set
+        get => _codeCity;
+        set
         {
             _codeCity = value;
             _codeCitySet = true;
@@ -487,10 +604,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The code region.</value>
     [EntityElement("CODREG")]
-
     public int CodeRegion
     {
-        get => _codeRegion; set
+        get => _codeRegion;
+        set
         {
             _codeRegion = value;
             _codeRegionSet = true;
@@ -502,10 +619,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The name.</value>
     [EntityElement("NOMECONTATO")]
-
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
@@ -517,10 +634,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The active.</value>
     [EntityIgnore]
-
     public bool Active
     {
-        get => _active; set
+        get => _active;
+        set
         {
             _active = value;
             _activeSet = true;
@@ -534,10 +651,10 @@ public class Contact : IEntity, IEquatable<Contact>
     [EntityElement("ATIVO")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string ActiveInternal
     {
-        get => _active.ToString(@"S", @"N"); set
+        get => _active.ToString(@"S", @"N");
+        set
         {
             _active = value.ToBoolean();
             _activeSet = true;
@@ -549,10 +666,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The document individual.</value>
     [EntityElement("CPF")]
-
     public string DocumentIndividual
     {
-        get => _documentIndividual; set
+        get => _documentIndividual;
+        set
         {
             _documentIndividual = value;
             _documentIndividualSet = true;
@@ -564,10 +681,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The document corporation.</value>
     [EntityElement("CNPJ")]
-
     public string DocumentCorporation
     {
-        get => _documentCorporation; set
+        get => _documentCorporation;
+        set
         {
             _documentCorporation = value;
             _documentCorporationSet = true;
@@ -579,10 +696,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The register date.</value>
     [EntityElement("DTCAD")]
-
     public DateTime RegisterDate
     {
-        get => _registerDate; set
+        get => _registerDate;
+        set
         {
             _registerDate = value;
             _registerDateSet = true;
@@ -594,10 +711,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The email address.</value>
     [EntityElement("EMAIL")]
-
     public string EmailAddress
     {
-        get => _emailAddress; set
+        get => _emailAddress;
+        set
         {
             _emailAddress = value;
             _emailAddressSet = true;
@@ -609,10 +726,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The fixed telephone.</value>
     [EntityElement("TELEFONE")]
-
     public string FixedTelephone
     {
-        get => _fixedTelephone; set
+        get => _fixedTelephone;
+        set
         {
             _fixedTelephone = value;
             _fixedTelephoneSet = true;
@@ -624,10 +741,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The mobile telephone.</value>
     [EntityElement("CELULAR")]
-
     public string MobileTelephone
     {
-        get => _mobileTelephone; set
+        get => _mobileTelephone;
+        set
         {
             _mobileTelephone = value;
             _mobileTelephoneSet = true;
@@ -639,10 +756,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The partner.</value>
     [EntityReference]
-
     public Partner Partner
     {
-        get => _partner; set
+        get => _partner;
+        set
         {
             _partner = value;
             _partnerSet = true;
@@ -654,10 +771,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The address.</value>
     [EntityReference]
-
     public Address Address
     {
-        get => _address; set
+        get => _address;
+        set
         {
             _address = value;
             _addressSet = true;
@@ -669,10 +786,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The neighborhood.</value>
     [EntityReference]
-
     public Neighborhood Neighborhood
     {
-        get => _neighborhood; set
+        get => _neighborhood;
+        set
         {
             _neighborhood = value;
             _neighborhoodSet = true;
@@ -684,10 +801,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The city.</value>
     [EntityReference]
-
     public City City
     {
-        get => _city; set
+        get => _city;
+        set
         {
             _city = value;
             _citySet = true;
@@ -699,10 +816,10 @@ public class Contact : IEntity, IEquatable<Contact>
     /// </summary>
     /// <value>The region.</value>
     [EntityReference]
-
     public Region Region
     {
-        get => _region; set
+        get => _region;
+        set
         {
             _region = value;
             _regionSet = true;
@@ -890,5 +1007,4 @@ public class Contact : IEntity, IEquatable<Contact>
     public bool ShouldSerializeRegion() => _regionSet;
 
     #endregion
-
 }

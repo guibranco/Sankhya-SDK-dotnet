@@ -18,7 +18,6 @@ namespace Sankhya.Enums;
 /// </summary>
 public enum ServiceCategory
 {
-
     /// <summary>
     /// The none
     /// </summary>
