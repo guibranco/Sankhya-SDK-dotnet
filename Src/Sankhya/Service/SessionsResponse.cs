@@ -17,6 +17,7 @@ public sealed class SessionsResponse
     /// The sessions
     /// </summary>
     private Session[] _sessions;
+
     /// <summary>
     /// The sessions set
     /// </summary>
@@ -33,7 +34,8 @@ public sealed class SessionsResponse
     [XmlElement("SESSION")]
     public Session[] Sessions
     {
-        get => _sessions; set
+        get => _sessions;
+        set
         {
             _sessions = value;
             _sessionsSet = true;
@@ -50,7 +52,6 @@ public sealed class SessionsResponse
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializerSessions() => _sessionsSet;
 
     #endregion

@@ -29,6 +29,7 @@ public sealed class Key
     /// The value
     /// </summary>
     private string _value;
+
     /// <summary>
     /// The value set
     /// </summary>
@@ -45,7 +46,8 @@ public sealed class Key
     [XmlAttribute(AttributeName = "valor")]
     public string Value
     {
-        get => _value; set
+        get => _value;
+        set
         {
             _value = value;
             _valueSet = true;

@@ -44,10 +44,10 @@ public sealed class FieldValue : IEquatable<FieldValue>
             return true;
         }
 
-        return string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase) &&
-               _nameSet == other._nameSet &&
-               string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase) &&
-               _valueSet == other._valueSet;
+        return string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+            && _nameSet == other._nameSet
+            && string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase)
+            && _valueSet == other._valueSet;
     }
 
     /// <summary>
@@ -80,13 +80,16 @@ public sealed class FieldValue : IEquatable<FieldValue>
     {
         unchecked
         {
-            var hashCode = _name != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name)
-                : 0;
+            var hashCode =
+                _name != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name) : 0;
             hashCode = (hashCode * 397) ^ _nameSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_value != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_value)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _value != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_value)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _valueSet.GetHashCode();
             return hashCode;
         }
@@ -116,6 +119,7 @@ public sealed class FieldValue : IEquatable<FieldValue>
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -125,6 +129,7 @@ public sealed class FieldValue : IEquatable<FieldValue>
     /// The value
     /// </summary>
     private string _value;
+
     /// <summary>
     /// The value set
     /// </summary>
@@ -141,7 +146,8 @@ public sealed class FieldValue : IEquatable<FieldValue>
     [XmlAttribute(AttributeName = "nome")]
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
@@ -155,7 +161,8 @@ public sealed class FieldValue : IEquatable<FieldValue>
     [XmlText]
     public string Value
     {
-        get => _value; set
+        get => _value;
+        set
         {
             _value = value;
             _valueSet = true;
@@ -179,5 +186,4 @@ public sealed class FieldValue : IEquatable<FieldValue>
     public bool ShouldSerializeValue() => _valueSet;
 
     #endregion
-
 }

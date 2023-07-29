@@ -8,9 +8,11 @@ using Sankhya.Properties;
 public class ServiceRequestExpiredAuthenticationException : Exception
 {
     public ServiceRequestExpiredAuthenticationException()
-        : base(Resources.ServiceRequestExpiredAuthenticationException)
-    { }
+        : base(Resources.ServiceRequestExpiredAuthenticationException) { }
 
-    protected ServiceRequestExpiredAuthenticationException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestExpiredAuthenticationException(
+        SerializationInfo info,
+        StreamingContext context
+    )
+        : base(info, context) { }
 }

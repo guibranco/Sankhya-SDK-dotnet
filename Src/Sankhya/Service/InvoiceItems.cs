@@ -17,6 +17,7 @@ public sealed class InvoiceItems
     /// The single number
     /// </summary>
     private int _singleNumber;
+
     /// <summary>
     /// The single number set
     /// </summary>
@@ -26,6 +27,7 @@ public sealed class InvoiceItems
     /// The online update
     /// </summary>
     private bool _onlineUpdate;
+
     /// <summary>
     /// The online update set
     /// </summary>
@@ -35,6 +37,7 @@ public sealed class InvoiceItems
     /// The inform price
     /// </summary>
     private bool _informPrice;
+
     /// <summary>
     /// The inform price set
     /// </summary>
@@ -44,6 +47,7 @@ public sealed class InvoiceItems
     /// The items
     /// </summary>
     private InvoiceItem[] _items;
+
     /// <summary>
     /// The items set
     /// </summary>
@@ -60,7 +64,8 @@ public sealed class InvoiceItems
     [XmlAttribute("NUNOTA")]
     public int SingleNumber
     {
-        get => _singleNumber; set
+        get => _singleNumber;
+        set
         {
             _singleNumber = value;
             _singleNumberSet = true;
@@ -74,7 +79,8 @@ public sealed class InvoiceItems
     [XmlIgnore]
     public bool OnlineUpdate
     {
-        get => _onlineUpdate; set
+        get => _onlineUpdate;
+        set
         {
             _onlineUpdate = value;
             _onlineUpdateSet = true;
@@ -90,7 +96,8 @@ public sealed class InvoiceItems
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string OnlineUpdateInternal
     {
-        get => _onlineUpdate.ToString(@"S", @"N"); set
+        get => _onlineUpdate.ToString(@"S", @"N");
+        set
         {
             _onlineUpdate = value.ToBoolean();
             _onlineUpdateSet = true;
@@ -140,7 +147,8 @@ public sealed class InvoiceItems
     [XmlElement("item")]
     public InvoiceItem[] Items
     {
-        get => _items; set
+        get => _items;
+        set
         {
             _items = value;
             _itemsSet = true;
@@ -184,5 +192,4 @@ public sealed class InvoiceItems
     public bool ShouldSerializeItems() => _itemsSet;
 
     #endregion
-
 }

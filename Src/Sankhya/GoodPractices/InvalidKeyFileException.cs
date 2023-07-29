@@ -12,6 +12,6 @@ public class InvalidKeyFileException : Exception
         : base(string.Format(CultureInfo.CurrentCulture, Resources.InvalidKeyFileException, key))
     { }
 
-    protected InvalidKeyFileException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected InvalidKeyFileException(SerializationInfo info, StreamingContext context)
+        : base(info, context) { }
 }

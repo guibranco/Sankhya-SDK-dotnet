@@ -42,17 +42,20 @@ public class Address : IEntity, IEquatable<Address>
             return true;
         }
 
-        return _code == other._code && _codeSet == other._codeSet &&
-               string.Equals(_type, other._type, StringComparison.InvariantCultureIgnoreCase) &&
-               _typeSet == other._typeSet &&
-               string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase) &&
-               _nameSet == other._nameSet &&
-               string.Equals(
-                   _descriptionCorreios,
-                   other._descriptionCorreios,
-                   StringComparison.InvariantCultureIgnoreCase) &&
-               _descriptionCorreiosSet == other._descriptionCorreiosSet &&
-               _dateChanged.Equals(other._dateChanged) && _dateChangedSet == other._dateChangedSet;
+        return _code == other._code
+            && _codeSet == other._codeSet
+            && string.Equals(_type, other._type, StringComparison.InvariantCultureIgnoreCase)
+            && _typeSet == other._typeSet
+            && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+            && _nameSet == other._nameSet
+            && string.Equals(
+                _descriptionCorreios,
+                other._descriptionCorreios,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _descriptionCorreiosSet == other._descriptionCorreiosSet
+            && _dateChanged.Equals(other._dateChanged)
+            && _dateChangedSet == other._dateChangedSet;
     }
 
     /// <summary>
@@ -85,17 +88,27 @@ public class Address : IEntity, IEquatable<Address>
         {
             var hashCode = _code;
             hashCode = (hashCode * 397) ^ _codeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_type != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_type)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _type != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_type) : 0
+                );
             hashCode = (hashCode * 397) ^ _typeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_name != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _name != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name) : 0
+                );
             hashCode = (hashCode * 397) ^ _nameSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_descriptionCorreios != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_descriptionCorreios)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _descriptionCorreios != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
+                            _descriptionCorreios
+                        )
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _descriptionCorreiosSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateChanged.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateChangedSet.GetHashCode();
@@ -127,6 +140,7 @@ public class Address : IEntity, IEquatable<Address>
     /// The code
     /// </summary>
     private int _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -136,6 +150,7 @@ public class Address : IEntity, IEquatable<Address>
     /// The type
     /// </summary>
     private string _type;
+
     /// <summary>
     /// The type set
     /// </summary>
@@ -145,6 +160,7 @@ public class Address : IEntity, IEquatable<Address>
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -154,6 +170,7 @@ public class Address : IEntity, IEquatable<Address>
     /// The description correios
     /// </summary>
     private string _descriptionCorreios;
+
     /// <summary>
     /// The description correios set
     /// </summary>
@@ -163,6 +180,7 @@ public class Address : IEntity, IEquatable<Address>
     /// The date changed
     /// </summary>
     private DateTime _dateChanged;
+
     /// <summary>
     /// The date changed set
     /// </summary>
@@ -181,7 +199,6 @@ public class Address : IEntity, IEquatable<Address>
     public int Code
     {
         get => _code;
-
         set
         {
             _code = value;
@@ -196,7 +213,8 @@ public class Address : IEntity, IEquatable<Address>
     [EntityElement("TIPO")]
     public string Type
     {
-        get => _type; set
+        get => _type;
+        set
         {
             _type = value;
             _typeSet = true;
@@ -211,7 +229,8 @@ public class Address : IEntity, IEquatable<Address>
     [EntityCustomData(MaxLength = 60)]
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
@@ -225,7 +244,6 @@ public class Address : IEntity, IEquatable<Address>
     [EntityElement("DESCRICAOCORREIO")]
     public string DescriptionCorreios
     {
-
         get => _descriptionCorreios;
         set
         {
@@ -239,10 +257,10 @@ public class Address : IEntity, IEquatable<Address>
     /// </summary>
     /// <value>The date changed.</value>
     [EntityElement("DTALTER")]
-
     public DateTime DateChanged
     {
-        get => _dateChanged; set
+        get => _dateChanged;
+        set
         {
             _dateChanged = value;
             _dateChangedSet = true;

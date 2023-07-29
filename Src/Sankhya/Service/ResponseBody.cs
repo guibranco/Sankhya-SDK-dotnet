@@ -15,6 +15,7 @@ public sealed class ResponseBody
     /// The code user logged in
     /// </summary>
     private int _codeUserLoggedIn;
+
     /// <summary>
     /// The code user logged in set
     /// </summary>
@@ -24,6 +25,7 @@ public sealed class ResponseBody
     /// The code user
     /// </summary>
     private int _codeUser;
+
     /// <summary>
     /// The code user set
     /// </summary>
@@ -33,6 +35,7 @@ public sealed class ResponseBody
     /// The call identifier
     /// </summary>
     private string _callId;
+
     /// <summary>
     /// The call identifier set
     /// </summary>
@@ -42,6 +45,7 @@ public sealed class ResponseBody
     /// The j session identifier
     /// </summary>
     private string _jSessionId;
+
     /// <summary>
     /// The j session identifier set
     /// </summary>
@@ -51,6 +55,7 @@ public sealed class ResponseBody
     /// The crud service entities
     /// </summary>
     private CrudServiceEntities _crudServiceEntities;
+
     /// <summary>
     /// The crud service entities set
     /// </summary>
@@ -60,6 +65,7 @@ public sealed class ResponseBody
     /// The crud service provider entities
     /// </summary>
     private CrudServiceProviderEntities _crudServiceProviderEntities;
+
     /// <summary>
     /// The crud service provider entities set
     /// </summary>
@@ -69,6 +75,7 @@ public sealed class ResponseBody
     /// The invoice accompaniments
     /// </summary>
     private InvoiceAccompaniments _invoiceAccompaniments;
+
     /// <summary>
     /// The invoice accompaniments set
     /// </summary>
@@ -78,6 +85,7 @@ public sealed class ResponseBody
     /// The users
     /// </summary>
     private Users _users;
+
     /// <summary>
     /// The users set
     /// </summary>
@@ -87,6 +95,7 @@ public sealed class ResponseBody
     /// The invoices
     /// </summary>
     private Invoices _invoices;
+
     /// <summary>
     /// The invoices set
     /// </summary>
@@ -96,6 +105,7 @@ public sealed class ResponseBody
     /// The sessions
     /// </summary>
     private SessionsResponse _sessions;
+
     /// <summary>
     /// The sessions set
     /// </summary>
@@ -105,6 +115,7 @@ public sealed class ResponseBody
     /// The warnings
     /// </summary>
     private Warnings _warnings;
+
     /// <summary>
     /// The warnings set
     /// </summary>
@@ -114,6 +125,7 @@ public sealed class ResponseBody
     /// The cancellation result
     /// </summary>
     private CancellationResult _cancellationResult;
+
     /// <summary>
     /// The cancellation result set
     /// </summary>
@@ -123,6 +135,7 @@ public sealed class ResponseBody
     /// The key
     /// </summary>
     private Key _key;
+
     /// <summary>
     /// The key set
     /// </summary>
@@ -132,6 +145,7 @@ public sealed class ResponseBody
     /// The primary key
     /// </summary>
     private dynamic _primaryKey;
+
     /// <summary>
     /// The primary key set
     /// </summary>
@@ -141,6 +155,7 @@ public sealed class ResponseBody
     /// The client events
     /// </summary>
     private ClientEvents _clientEvents;
+
     /// <summary>
     /// The client events set
     /// </summary>
@@ -150,6 +165,7 @@ public sealed class ResponseBody
     /// The messages
     /// </summary>
     private Messages _messages;
+
     /// <summary>
     /// The messages set
     /// </summary>
@@ -186,7 +202,8 @@ public sealed class ResponseBody
     [XmlElement("codUsuLogado")]
     public int CodeUserLoggedIn
     {
-        get => _codeUserLoggedIn; set
+        get => _codeUserLoggedIn;
+        set
         {
             _codeUserLoggedIn = value;
             _codeUserLoggedInSet = true;
@@ -201,7 +218,6 @@ public sealed class ResponseBody
     public int CodeUser
     {
         get => _codeUser;
-
         set
         {
             _codeUser = value;
@@ -218,7 +234,8 @@ public sealed class ResponseBody
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string CodeUserInternal
     {
-        get => _codeUser.ToString().ToBase64(); set
+        get => _codeUser.ToString().ToBase64();
+        set
         {
             _codeUser = value.FromBase64().ToInt32();
             _codeUserSet = true;
@@ -232,7 +249,8 @@ public sealed class ResponseBody
     [XmlElement("callID")]
     public string CallId
     {
-        get => _callId; set
+        get => _callId;
+        set
         {
             _callId = value;
             _callIdSet = true;
@@ -246,7 +264,8 @@ public sealed class ResponseBody
     [XmlElement("jsessionid")]
     public string JSessionId
     {
-        get => _jSessionId; set
+        get => _jSessionId;
+        set
         {
             _jSessionId = value;
             _jSessionIdSet = true;
@@ -260,7 +279,8 @@ public sealed class ResponseBody
     [XmlElement("entidades")]
     public CrudServiceEntities CrudServiceEntities
     {
-        get => _crudServiceEntities; set
+        get => _crudServiceEntities;
+        set
         {
             _crudServiceEntities = value;
             _crudServiceEntitiesSet = true;
@@ -274,7 +294,8 @@ public sealed class ResponseBody
     [XmlElement("entities")]
     public CrudServiceProviderEntities CrudServiceProviderEntities
     {
-        get => _crudServiceProviderEntities; set
+        get => _crudServiceProviderEntities;
+        set
         {
             _crudServiceProviderEntities = value;
             _crudServiceProviderEntitiesSet = true;
@@ -318,7 +339,8 @@ public sealed class ResponseBody
     [XmlElement("notas")]
     public Invoices Invoices
     {
-        get => _invoices; set
+        get => _invoices;
+        set
         {
             _invoices = value;
             _invoicesSet = true;
@@ -332,7 +354,8 @@ public sealed class ResponseBody
     [XmlElement("SESSIONS")]
     public SessionsResponse Sessions
     {
-        get => _sessions; set
+        get => _sessions;
+        set
         {
             _sessions = value;
             _sessionsSet = true;
@@ -346,7 +369,8 @@ public sealed class ResponseBody
     [XmlElement("avisos")]
     public Warnings Warnings
     {
-        get => _warnings; set
+        get => _warnings;
+        set
         {
             _warnings = value;
             _warningsSet = true;
@@ -360,7 +384,8 @@ public sealed class ResponseBody
     [XmlElement("resultadoCancelamento")]
     public CancellationResult CancellationResult
     {
-        get => _cancellationResult; set
+        get => _cancellationResult;
+        set
         {
             _cancellationResult = value;
             _cancellationResultSet = true;
@@ -374,7 +399,8 @@ public sealed class ResponseBody
     [XmlElement("chave")]
     public Key Key
     {
-        get => _key; set
+        get => _key;
+        set
         {
             _key = value;
             _keySet = true;
@@ -388,7 +414,8 @@ public sealed class ResponseBody
     [XmlArray("PK")]
     public dynamic PrimaryKey
     {
-        get => _primaryKey; set
+        get => _primaryKey;
+        set
         {
             _primaryKey = value;
             _primaryKeySet = true;
@@ -402,7 +429,8 @@ public sealed class ResponseBody
     [XmlElement("clientEvents")]
     public ClientEvents ClientEvents
     {
-        get => _clientEvents; set
+        get => _clientEvents;
+        set
         {
             _clientEvents = value;
             _clientEventsSet = true;

@@ -20,7 +20,6 @@ using CrispyWaffle.Attributes;
 /// </summary>
 public enum OrderHistoryEvent
 {
-
     /// <summary>
     /// The none
     /// </summary>

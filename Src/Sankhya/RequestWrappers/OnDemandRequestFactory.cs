@@ -17,6 +17,7 @@ public static class OnDemandRequestFactory
     /// The synchronize root
     /// </summary>
     private static readonly object _syncRoot = new();
+
     /// <summary>
     /// The instances
     /// </summary>
@@ -38,11 +39,18 @@ public static class OnDemandRequestFactory
         ServiceName service,
         int throughput,
         bool allowAboveThroughput,
-        CancellationToken token) where T : class, IEntity, new()
+        CancellationToken token
+    )
+        where T : class, IEntity, new()
     {
         var instance = new OnDemandRequestInstance
         {
-            Instance = new OnDemandRequestWrapper<T>(service, token, throughput, allowAboveThroughput),
+            Instance = new OnDemandRequestWrapper<T>(
+                service,
+                token,
+                throughput,
+                allowAboveThroughput
+            ),
             Key = guid,
             Service = service,
             Type = typeof(T)
@@ -61,7 +69,13 @@ public static class OnDemandRequestFactory
     /// <param name="allowAboveThroughput"></param>
     /// <returns>The key of the instance created</returns>
 
-    public static Guid CreateInstance<T>(ServiceName service, CancellationToken token, int throughput = 10, bool allowAboveThroughput = true) where T : class, IEntity, new()
+    public static Guid CreateInstance<T>(
+        ServiceName service,
+        CancellationToken token,
+        int throughput = 10,
+        bool allowAboveThroughput = true
+    )
+        where T : class, IEntity, new()
     {
         var guid = Guid.NewGuid();
         CreateInstanceInternal<T>(guid, service, throughput, allowAboveThroughput, token);
@@ -74,7 +88,8 @@ public static class OnDemandRequestFactory
     /// <typeparam name="T"></typeparam>
     /// <param name="service">The service.</param>
     /// <returns>IOnDemandRequestWrapper.</returns>
-    public static IOnDemandRequestWrapper GetInstanceForService<T>(ServiceName service) where T : class, IEntity, new()
+    public static IOnDemandRequestWrapper GetInstanceForService<T>(ServiceName service)
+        where T : class, IEntity, new()
     {
         var type = typeof(T);
 
@@ -98,7 +113,13 @@ public static class OnDemandRequestFactory
 
             var cancellationTokenSource = new CancellationTokenSource();
 
-            return CreateInstanceInternal<T>(guid, service, 10, true, cancellationTokenSource.Token).Instance;
+            return CreateInstanceInternal<T>(
+                guid,
+                service,
+                10,
+                true,
+                cancellationTokenSource.Token
+            ).Instance;
         }
     }
 
@@ -109,7 +130,8 @@ public static class OnDemandRequestFactory
     /// <returns>IOnDemandRequestWrapper.</returns>
 
 
-    public static IOnDemandRequestWrapper GetInstanceByKey(Guid key) => _instances.SingleOrDefault(i => i.Key == key)?.Instance;
+    public static IOnDemandRequestWrapper GetInstanceByKey(Guid key) =>
+        _instances.SingleOrDefault(i => i.Key == key)?.Instance;
 
     /// <summary>
     /// Flushes the by key.
@@ -143,8 +165,6 @@ public static class OnDemandRequestFactory
                 instance.Instance.Dispose();
             }
         }
-        catch (ObjectDisposedException)
-        { }
+        catch (ObjectDisposedException) { }
     }
-
 }

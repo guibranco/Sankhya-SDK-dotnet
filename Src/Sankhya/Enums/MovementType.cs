@@ -15,15 +15,11 @@ namespace Sankhya.Enums;
 
 using CrispyWaffle.Attributes;
 
-
 /// <summary>
 /// Enum MovementType
 /// </summary>
 public enum MovementType
 {
-
-
-
     /// <summary>
     /// The none
     /// </summary>

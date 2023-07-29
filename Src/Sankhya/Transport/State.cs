@@ -39,19 +39,29 @@ public class State : IEntity, IEquatable<State>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _code == other._code && _codeSet.Equals(other._codeSet) &&
-            string.Equals(_initials, other._initials) && _initialsSet.Equals(other._initialsSet) &&
-            string.Equals(_name, other._name) && _nameSet.Equals(other._nameSet) &&
-            _codeCountry == other._codeCountry && _codeCountrySet.Equals(other._codeCountrySet) &&
-            _codePartnerSecretaryOfStateRevenue == other._codePartnerSecretaryOfStateRevenue &&
-            _codePartnerSecretaryOfStateRevenueSet.Equals(other._codePartnerSecretaryOfStateRevenueSet) &&
-            _codeIBGE == other._codeIBGE && _codeIBGESet.Equals(other._codeIBGESet) &&
-            _codeRevenue == other._codeRevenue && _codeRevenueSet.Equals(other._codeRevenueSet) &&
-            _codeRevenueDetailing == other._codeRevenueDetailing &&
-            _codeRevenueDetailingSet.Equals(other._codeRevenueDetailingSet) &&
-            _codeProduct == other._codeProduct && _codeProductSet.Equals(other._codeProductSet) &&
-            string.Equals(_agreementProtocol, other._agreementProtocol) &&
-            _agreementProtocolSet.Equals(other._agreementProtocolSet);
+        return ReferenceEquals(this, other)
+            || _code == other._code
+                && _codeSet.Equals(other._codeSet)
+                && string.Equals(_initials, other._initials)
+                && _initialsSet.Equals(other._initialsSet)
+                && string.Equals(_name, other._name)
+                && _nameSet.Equals(other._nameSet)
+                && _codeCountry == other._codeCountry
+                && _codeCountrySet.Equals(other._codeCountrySet)
+                && _codePartnerSecretaryOfStateRevenue == other._codePartnerSecretaryOfStateRevenue
+                && _codePartnerSecretaryOfStateRevenueSet.Equals(
+                    other._codePartnerSecretaryOfStateRevenueSet
+                )
+                && _codeIBGE == other._codeIBGE
+                && _codeIBGESet.Equals(other._codeIBGESet)
+                && _codeRevenue == other._codeRevenue
+                && _codeRevenueSet.Equals(other._codeRevenueSet)
+                && _codeRevenueDetailing == other._codeRevenueDetailing
+                && _codeRevenueDetailingSet.Equals(other._codeRevenueDetailingSet)
+                && _codeProduct == other._codeProduct
+                && _codeProductSet.Equals(other._codeProductSet)
+                && string.Equals(_agreementProtocol, other._agreementProtocol)
+                && _agreementProtocolSet.Equals(other._agreementProtocolSet);
     }
 
     /// <summary>
@@ -129,6 +139,7 @@ public class State : IEntity, IEquatable<State>
     /// The code
     /// </summary>
     private int _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -138,6 +149,7 @@ public class State : IEntity, IEquatable<State>
     /// The initials
     /// </summary>
     private string _initials;
+
     /// <summary>
     /// The initials set
     /// </summary>
@@ -147,6 +159,7 @@ public class State : IEntity, IEquatable<State>
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -156,6 +169,7 @@ public class State : IEntity, IEquatable<State>
     /// The code country
     /// </summary>
     private int _codeCountry;
+
     /// <summary>
     /// The code country set
     /// </summary>
@@ -165,6 +179,7 @@ public class State : IEntity, IEquatable<State>
     /// The code partner secretary of state revenue
     /// </summary>
     private int _codePartnerSecretaryOfStateRevenue;
+
     /// <summary>
     /// The code partner secretary of state revenue set
     /// </summary>
@@ -174,6 +189,7 @@ public class State : IEntity, IEquatable<State>
     /// The code ibge
     /// </summary>
     private int _codeIBGE;
+
     /// <summary>
     /// The code ibge set
     /// </summary>
@@ -183,6 +199,7 @@ public class State : IEntity, IEquatable<State>
     /// The code revenue
     /// </summary>
     private int _codeRevenue;
+
     /// <summary>
     /// The code revenue set
     /// </summary>
@@ -192,6 +209,7 @@ public class State : IEntity, IEquatable<State>
     /// The code revenue detailing
     /// </summary>
     private int _codeRevenueDetailing;
+
     /// <summary>
     /// The code revenue detailing set
     /// </summary>
@@ -201,6 +219,7 @@ public class State : IEntity, IEquatable<State>
     /// The code product
     /// </summary>
     private int _codeProduct;
+
     /// <summary>
     /// The code product set
     /// </summary>
@@ -210,6 +229,7 @@ public class State : IEntity, IEquatable<State>
     /// The agreement protocol
     /// </summary>
     private string _agreementProtocol;
+
     /// <summary>
     /// The agreement protocol set
     /// </summary>
@@ -228,7 +248,6 @@ public class State : IEntity, IEquatable<State>
     public int Code
     {
         get => _code;
-
         set
         {
             _code = value;
@@ -243,7 +262,8 @@ public class State : IEntity, IEquatable<State>
     [EntityElement("UF")]
     public string Initials
     {
-        get => _initials; set
+        get => _initials;
+        set
         {
             _initials = value;
             _initialsSet = true;
@@ -255,10 +275,10 @@ public class State : IEntity, IEquatable<State>
     /// </summary>
     /// <value>The name.</value>
     [EntityElement("DESCRICAO")]
-
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
@@ -272,7 +292,8 @@ public class State : IEntity, IEquatable<State>
     [EntityElement("CODPAIS")]
     public int CodeCountry
     {
-        get => _codeCountry; set
+        get => _codeCountry;
+        set
         {
             _codeCountry = value;
             _codeCountrySet = true;
@@ -284,10 +305,10 @@ public class State : IEntity, IEquatable<State>
     /// </summary>
     /// <value>The code partner secretary of state revenue.</value>
     [EntityElement("CODPARCSECRECEST")]
-
     public int CodePartnerSecretaryOfStateRevenue
     {
-        get => _codePartnerSecretaryOfStateRevenue; set
+        get => _codePartnerSecretaryOfStateRevenue;
+        set
         {
             _codePartnerSecretaryOfStateRevenue = value;
             _codePartnerSecretaryOfStateRevenueSet = true;
@@ -299,10 +320,10 @@ public class State : IEntity, IEquatable<State>
     /// </summary>
     /// <value>The code ibge.</value>
     [EntityElement("CODIBGE")]
-
     public int CodeIBGE
     {
-        get => _codeIBGE; set
+        get => _codeIBGE;
+        set
         {
             _codeIBGE = value;
             _codeIBGESet = true;
@@ -314,26 +335,25 @@ public class State : IEntity, IEquatable<State>
     /// </summary>
     /// <value>The code revenue.</value>
     [EntityElement("CODSTGNRE")]
-
     public int CodeRevenue
     {
-        get => _codeRevenue; set
+        get => _codeRevenue;
+        set
         {
             _codeRevenue = value;
             _codeRevenueSet = true;
         }
     }
 
-
     /// <summary>
     /// Gets or sets the code revenue detailing.
     /// </summary>
     /// <value>The code revenue detailing.</value>
     [EntityElement("CODDETGNRE")]
-
     public int CodeRevenueDetailing
     {
-        get => _codeRevenueDetailing; set
+        get => _codeRevenueDetailing;
+        set
         {
             _codeRevenueDetailing = value;
             _codeRevenueDetailingSet = true;
@@ -345,10 +365,10 @@ public class State : IEntity, IEquatable<State>
     /// </summary>
     /// <value>The code product.</value>
     [EntityElement("CODPRODGNRE")]
-
     public int CodeProduct
     {
-        get => _codeProduct; set
+        get => _codeProduct;
+        set
         {
             _codeProduct = value;
             _codeProductSet = true;
@@ -360,10 +380,10 @@ public class State : IEntity, IEquatable<State>
     /// </summary>
     /// <value>The agreement protocol.</value>
     [EntityElement("PROTOCOLOCONVENIO")]
-
     public string AgreementProtocol
     {
-        get => _agreementProtocol; set
+        get => _agreementProtocol;
+        set
         {
             _agreementProtocol = value;
             _agreementProtocolSet = true;
@@ -402,7 +422,8 @@ public class State : IEntity, IEquatable<State>
     /// Should the serialize code partner secretary of state revenue.
     /// </summary>
     /// <returns>Boolean.</returns>
-    public bool ShouldSerializeCodePartnerSecretaryOfStateRevenue() => _codePartnerSecretaryOfStateRevenueSet;
+    public bool ShouldSerializeCodePartnerSecretaryOfStateRevenue() =>
+        _codePartnerSecretaryOfStateRevenueSet;
 
     /// <summary>
     /// Should the serialize code IBGE.

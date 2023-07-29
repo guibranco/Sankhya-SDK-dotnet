@@ -112,13 +112,14 @@ public sealed class SankhyaContext
     /// <param name="password">The <paramref name="userName"></paramref> password's</param>
 
     public SankhyaContext(string host, int port, string userName, string password)
-        : this(new Connection
-        {
-            Credentials = new Credentials { Password = password, UserName = userName },
-            Host = host,
-            Port = port
-        })
-    { }
+        : this(
+            new Connection
+            {
+                Credentials = new Credentials { Password = password, UserName = userName },
+                Host = host,
+                Port = port
+            }
+        ) { }
 
     /// <summary>
     /// Finalizes an instance of the <see cref="SankhyaContext" /> class.
@@ -163,7 +164,10 @@ public sealed class SankhyaContext
 
     public Guid AcquireNewSession(ServiceRequestType requestType)
     {
-        LogConsumer.Info(Resources.SankhyaContext_AcquireNewSession_NewSession, requestType.GetHumanReadableValue());
+        LogConsumer.Info(
+            Resources.SankhyaContext_AcquireNewSession_NewSession,
+            requestType.GetHumanReadableValue()
+        );
         var wrapper = new SankhyaWrapper(_connection.Host, _connection.Port, requestType);
         wrapper.Authenticate(_connection.Credentials.UserName, _connection.Credentials.Password);
         var token = Guid.NewGuid();
@@ -173,7 +177,11 @@ public sealed class SankhyaContext
             _onDemandRequestWrappersAttachedTokens.Add(token);
         }
 
-        LogConsumer.Trace(Resources.SankhyaContext_AcquireNewSession_NewSessionStarted, requestType.GetHumanReadableValue(), token);
+        LogConsumer.Trace(
+            Resources.SankhyaContext_AcquireNewSession_NewSessionStarted,
+            requestType.GetHumanReadableValue(),
+            token
+        );
         return token;
     }
 
@@ -249,7 +257,8 @@ public sealed class SankhyaContext
     /// <returns>The service response instance</returns>
 
 
-    public Task<ServiceResponse> ServiceInvokerAsync(ServiceRequest request) => GetWrapper(Token).ServiceInvokerAsync(request);
+    public Task<ServiceResponse> ServiceInvokerAsync(ServiceRequest request) =>
+        GetWrapper(Token).ServiceInvokerAsync(request);
 
     /// <summary>
     /// Invoice a service request in Sankhya WS asynchronous.
@@ -258,7 +267,8 @@ public sealed class SankhyaContext
     /// <param name="token">The token identifying the connection</param>
     /// <returns>The service response instance</returns>
 
-    public Task<ServiceResponse> ServiceInvokerAsync(ServiceRequest request, Guid token) => GetWrapper(token).ServiceInvokerAsync(request);
+    public Task<ServiceResponse> ServiceInvokerAsync(ServiceRequest request, Guid token) =>
+        GetWrapper(token).ServiceInvokerAsync(request);
 
     /// <summary>
     /// Gets the file.
@@ -299,7 +309,8 @@ public sealed class SankhyaContext
     /// <returns>Task&lt;ServiceFile&gt;.</returns>
 
 
-    public Task<ServiceFile> GetFileAsync(string key, Guid token) => GetWrapper(token).GetFileAsync(key);
+    public Task<ServiceFile> GetFileAsync(string key, Guid token) =>
+        GetWrapper(token).GetFileAsync(key);
 
     /// <summary>
     /// Gets the image from a entity (database table) based on entity keys (row's primaries keys).
@@ -312,7 +323,8 @@ public sealed class SankhyaContext
     /// No exception is throw by this method.</remarks>
 
 
-    public ServiceFile GetImage(string entity, Dictionary<string, object> keys) => GetWrapper(Token).GetImage(entity, keys);
+    public ServiceFile GetImage(string entity, Dictionary<string, object> keys) =>
+        GetWrapper(Token).GetImage(entity, keys);
 
     /// <summary>
     /// Gets the image asynchronous.
@@ -322,7 +334,8 @@ public sealed class SankhyaContext
     /// <returns>Task&lt;ServiceImage&gt;.</returns>
 
 
-    public Task<ServiceFile> GetImageAsync(string entity, Dictionary<string, object> keys) => GetWrapper(Token).GetImageAsync(entity, keys);
+    public Task<ServiceFile> GetImageAsync(string entity, Dictionary<string, object> keys) =>
+        GetWrapper(Token).GetImageAsync(entity, keys);
 
     #endregion
 

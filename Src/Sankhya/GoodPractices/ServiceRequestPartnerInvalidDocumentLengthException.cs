@@ -9,9 +9,11 @@ using Sankhya.Service;
 public class ServiceRequestPartnerInvalidDocumentLengthException : ServiceRequestGeneralException
 {
     public ServiceRequestPartnerInvalidDocumentLengthException(ServiceRequest request)
-        : base(Resources.ServiceRequestPartnerInvalidDocumentLengthException, request)
-    { }
+        : base(Resources.ServiceRequestPartnerInvalidDocumentLengthException, request) { }
 
-    protected ServiceRequestPartnerInvalidDocumentLengthException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestPartnerInvalidDocumentLengthException(
+        SerializationInfo info,
+        StreamingContext context
+    )
+        : base(info, context) { }
 }

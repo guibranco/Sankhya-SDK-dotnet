@@ -9,10 +9,24 @@ using Sankhya.Service;
 [Serializable]
 public class ServiceResponseUnexpectedElementException : ServiceRequestGeneralException
 {
-    public ServiceResponseUnexpectedElementException(string elementName, string serviceName, ServiceResponse response)
-        : base(string.Format(CultureInfo.CurrentCulture, Resources.ServiceResponseUnexpectedElementException, elementName, serviceName), null, response)
-    { }
+    public ServiceResponseUnexpectedElementException(
+        string elementName,
+        string serviceName,
+        ServiceResponse response
+    )
+        : base(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.ServiceResponseUnexpectedElementException,
+                elementName,
+                serviceName
+            ),
+            null,
+            response
+        ) { }
 
-    protected ServiceResponseUnexpectedElementException(SerializationInfo info, StreamingContext context)
-    { }
+    protected ServiceResponseUnexpectedElementException(
+        SerializationInfo info,
+        StreamingContext context
+    ) { }
 }

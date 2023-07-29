@@ -23,7 +23,8 @@ using Sankhya.Transport;
 /// <typeparam name="T"></typeparam>
 /// <seealso cref="IOnDemandRequestWrapper" />
 /// <seealso cref="IDisposable" />
-internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper where T : class, IEntity, new()
+internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
+    where T : class, IEntity, new()
 {
     #region Variables
 
@@ -115,16 +116,25 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper where 
     /// <param name="allowAboveThroughput">The allow above throughput</param>
     /// <exception cref="InvalidServiceRequestOperationException"></exception>
 
-    public OnDemandRequestWrapper(ServiceName service, CancellationToken token, int throughput = 10, bool allowAboveThroughput = true)
+    public OnDemandRequestWrapper(
+        ServiceName service,
+        CancellationToken token,
+        int throughput = 10,
+        bool allowAboveThroughput = true
+    )
     {
-        if (service != ServiceName.CrudServiceRemove &&
-            service != ServiceName.CrudServiceSave)
+        if (service != ServiceName.CrudServiceRemove && service != ServiceName.CrudServiceSave)
         {
             throw new InvalidServiceRequestOperationException(service);
         }
 
         _entityName = typeof(T).GetEntityName();
-        LogConsumer.Info(Resources.OnDemandRequestWrapper_OnDemandRequestWrapper_Starting, _entityName, throughput, throughput == 1 ? @"m" : Resources.ItemPluralSufix);
+        LogConsumer.Info(
+            Resources.OnDemandRequestWrapper_OnDemandRequestWrapper_Starting,
+            _entityName,
+            throughput,
+            throughput == 1 ? @"m" : Resources.ItemPluralSufix
+        );
         _context = ServiceLocator.Resolve<SankhyaContext>();
         _service = service;
         _throughput = throughput;
@@ -157,7 +167,13 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper where 
             throw new ObjectDisposedException(Resources.AlreadyDisposed);
         }
 
-        LogConsumer.Debug(string.Format(CultureInfo.CurrentCulture, Resources.OnDemandRequestWrapper_Add, _entityName));
+        LogConsumer.Debug(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.OnDemandRequestWrapper_Add,
+                _entityName
+            )
+        );
         if (_token.IsCancellationRequested || _disposeRequested)
         {
             throw new CanceledOnDemandRequestWrapperException();
@@ -209,7 +225,14 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper where 
     {
         var sessionToken = _context.AcquireNewSession(ServiceRequestType.OnDemandCrud);
 
-        _token.Register(() => LogConsumer.Warning(Resources.OnDemandRequestWrapper_OnDemandRequestWrapper_Cancelling, sessionToken, _entityName));
+        _token.Register(
+            () =>
+                LogConsumer.Warning(
+                    Resources.OnDemandRequestWrapper_OnDemandRequestWrapper_Cancelling,
+                    sessionToken,
+                    _entityName
+                )
+        );
 
         while (true)
         {
@@ -247,7 +270,9 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper where 
 
         var items = new List<T>(_throughput);
 
-        while ((items.Count < _throughput || forceRequest || _allowAboveThroughput) && !_queue.IsEmpty)
+        while (
+            (items.Count < _throughput || forceRequest || _allowAboveThroughput) && !_queue.IsEmpty
+        )
         {
             _flushRequested = false;
 
@@ -268,15 +293,15 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper where 
             return false;
         }
 
-        LogConsumer.Info(Resources.OnDemandRequestWrapper_Process,
+        LogConsumer.Info(
+            Resources.OnDemandRequestWrapper_Process,
             _service == ServiceName.CrudServiceRemove
                 ? Resources.Deleting
                 : Resources.CreatingOrUpdating,
             items.Count,
-            items.Count == 1
-                ? @"m"
-                : Resources.ItemPluralSufix,
-            _entityName);
+            items.Count == 1 ? @"m" : Resources.ItemPluralSufix,
+            _entityName
+        );
 
         var request = new ServiceRequest(_service);
 
@@ -306,7 +331,12 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper where 
     /// <param name="exception">The exception.</param>
     /// <param name="isSecondAttempt">if set to <c>true</c> [is second attempt].</param>
     /// <returns><c>true</c> if processed, <c>false</c> otherwise.</returns>
-    private bool ProcessRequest(ServiceRequest request, Guid token, out Exception exception, bool isSecondAttempt = false)
+    private bool ProcessRequest(
+        ServiceRequest request,
+        Guid token,
+        out Exception exception,
+        bool isSecondAttempt = false
+    )
     {
         exception = null;
 
@@ -373,7 +403,13 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper where 
             }
             else
             {
-                EventsConsumer.Raise(new OnDemandRequestFailureEvent(item, _service == ServiceName.CrudServiceSave, exception));
+                EventsConsumer.Raise(
+                    new OnDemandRequestFailureEvent(
+                        item,
+                        _service == ServiceName.CrudServiceSave,
+                        exception
+                    )
+                );
             }
         }
     }
@@ -397,15 +433,12 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper where 
         LogConsumer.Trace(
             Resources.OnDemandRequestWrapper_Dispose,
             _requestCount,
-            _requestCount == 1
-                ? string.Empty
-                : @"s",
+            _requestCount == 1 ? string.Empty : @"s",
             _entitiesSent,
-            _entitiesSent == 1
-                ? Resources.YSingularSuffix
-                : Resources.YPluralSuffix,
+            _entitiesSent == 1 ? Resources.YSingularSuffix : Resources.YPluralSuffix,
             _entityName,
-            _entitiesSentSuccessfully);
+            _entitiesSentSuccessfully
+        );
 
         _event.Dispose();
         _flushEvent.Dispose();

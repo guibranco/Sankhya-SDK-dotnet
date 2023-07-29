@@ -7,9 +7,8 @@ using System.Runtime.Serialization;
 public class OpenFileException : Exception
 {
     public OpenFileException(string key)
-        : base($@"Unable to open the file with the key {key} in the Sankhya file manager")
-    { }
+        : base($@"Unable to open the file with the key {key} in the Sankhya file manager") { }
 
-    protected OpenFileException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected OpenFileException(SerializationInfo info, StreamingContext context)
+        : base(info, context) { }
 }

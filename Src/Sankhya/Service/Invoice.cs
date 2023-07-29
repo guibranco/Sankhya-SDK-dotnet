@@ -18,6 +18,7 @@ public sealed class Invoice
     /// The value
     /// </summary>
     private int _value;
+
     /// <summary>
     /// The value set
     /// </summary>
@@ -27,6 +28,7 @@ public sealed class Invoice
     /// The single number
     /// </summary>
     private int _singleNumber;
+
     /// <summary>
     /// The single number set
     /// </summary>
@@ -36,6 +38,7 @@ public sealed class Invoice
     /// The single number confirmation
     /// </summary>
     private int _singleNumberConfirmation;
+
     /// <summary>
     /// The single number confirmation set
     /// </summary>
@@ -45,6 +48,7 @@ public sealed class Invoice
     /// The single number duplication
     /// </summary>
     private int _singleNumberDuplication;
+
     /// <summary>
     /// The single number duplication set
     /// </summary>
@@ -54,6 +58,7 @@ public sealed class Invoice
     /// The single number duplication destiny
     /// </summary>
     private int _singleNumberDuplicationDestiny;
+
     /// <summary>
     /// The single number duplication destiny set
     /// </summary>
@@ -63,6 +68,7 @@ public sealed class Invoice
     /// The single number duplication source
     /// </summary>
     private int _singleNumberDuplicationSource;
+
     /// <summary>
     /// The single number duplication source set
     /// </summary>
@@ -72,6 +78,7 @@ public sealed class Invoice
     /// The invoice number
     /// </summary>
     private int _invoiceNumber;
+
     /// <summary>
     /// The invoice number set
     /// </summary>
@@ -81,6 +88,7 @@ public sealed class Invoice
     /// The confirmation central invoices
     /// </summary>
     private bool _confirmationCentralInvoices;
+
     /// <summary>
     /// The confirmation central invoices set
     /// </summary>
@@ -90,6 +98,7 @@ public sealed class Invoice
     /// The is web order
     /// </summary>
     private bool _isWebOrder;
+
     /// <summary>
     /// The is web order set
     /// </summary>
@@ -99,6 +108,7 @@ public sealed class Invoice
     /// The update price item purchase order
     /// </summary>
     private bool _updatePriceItemPurchaseOrder;
+
     /// <summary>
     /// The update price item purchase order set
     /// </summary>
@@ -108,6 +118,7 @@ public sealed class Invoice
     /// The status invoice service
     /// </summary>
     private FiscalInvoiceStatus _statusInvoiceService;
+
     /// <summary>
     /// The status invoice service set
     /// </summary>
@@ -117,6 +128,7 @@ public sealed class Invoice
     /// The status invoice
     /// </summary>
     private FiscalInvoiceStatus _statusInvoice;
+
     /// <summary>
     /// The status invoice set
     /// </summary>
@@ -126,6 +138,7 @@ public sealed class Invoice
     /// The lot number invoice service
     /// </summary>
     private string _lotNumberInvoiceService;
+
     /// <summary>
     /// The lot number invoice service set
     /// </summary>
@@ -135,6 +148,7 @@ public sealed class Invoice
     /// The lot number invoice
     /// </summary>
     private string _lotNumberInvoice;
+
     /// <summary>
     /// The lot number invoice set
     /// </summary>
@@ -144,6 +158,7 @@ public sealed class Invoice
     /// The observation invoice service
     /// </summary>
     private string _observationInvoiceService;
+
     /// <summary>
     /// The observation invoice service set
     /// </summary>
@@ -153,6 +168,7 @@ public sealed class Invoice
     /// The observation invoice
     /// </summary>
     private string _observationInvoice;
+
     /// <summary>
     /// The observation invoice set
     /// </summary>
@@ -162,6 +178,7 @@ public sealed class Invoice
     /// The accompaniments
     /// </summary>
     private Accompaniment[] _accompaniments;
+
     /// <summary>
     /// The accompaniments set
     /// </summary>
@@ -171,6 +188,7 @@ public sealed class Invoice
     /// The props
     /// </summary>
     private Prop[] _props;
+
     /// <summary>
     /// The props set
     /// </summary>
@@ -180,6 +198,7 @@ public sealed class Invoice
     /// The header
     /// </summary>
     private InvoiceHeader _header;
+
     /// <summary>
     /// The header set
     /// </summary>
@@ -189,6 +208,7 @@ public sealed class Invoice
     /// The items
     /// </summary>
     private InvoiceItems _items;
+
     /// <summary>
     /// The items set
     /// </summary>
@@ -205,7 +225,8 @@ public sealed class Invoice
     [XmlIgnore]
     public int Value
     {
-        get => _value; set
+        get => _value;
+        set
         {
             _value = value;
             _valueSet = true;
@@ -221,7 +242,8 @@ public sealed class Invoice
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ValueInternal
     {
-        get => _value.ToString(); set
+        get => _value.ToString();
+        set
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -240,7 +262,8 @@ public sealed class Invoice
     [XmlAttribute("numeroUnico")]
     public int SingleNumber
     {
-        get => _singleNumber; set
+        get => _singleNumber;
+        set
         {
             _singleNumber = value;
             _singleNumberSet = true;
@@ -254,7 +277,8 @@ public sealed class Invoice
     [XmlElement("NUNOTA")]
     public int SingleNumberConfirmation
     {
-        get => _singleNumberConfirmation; set
+        get => _singleNumberConfirmation;
+        set
         {
             _singleNumberConfirmation = value;
             _singleNumberConfirmationSet = true;
@@ -268,7 +292,8 @@ public sealed class Invoice
     [XmlAttribute("NUNOTA")]
     public int SingleNumberDuplication
     {
-        get => _singleNumberDuplication; set
+        get => _singleNumberDuplication;
+        set
         {
             _singleNumberDuplication = value;
             _singleNumberDuplicationSet = true;
@@ -282,7 +307,8 @@ public sealed class Invoice
     [XmlAttribute("nuNota")]
     public int SingleNumberDuplicationDestiny
     {
-        get => _singleNumberDuplicationDestiny; set
+        get => _singleNumberDuplicationDestiny;
+        set
         {
             _singleNumberDuplicationDestiny = value;
             _singleNumberDuplicationDestinySet = true;
@@ -296,7 +322,8 @@ public sealed class Invoice
     [XmlAttribute("nuNotaOrig")]
     public int SingleNumberDuplicationSource
     {
-        get => _singleNumberDuplicationSource; set
+        get => _singleNumberDuplicationSource;
+        set
         {
             _singleNumberDuplicationSource = value;
             _singleNumberDuplicationSourceSet = true;
@@ -310,7 +337,8 @@ public sealed class Invoice
     [XmlAttribute("numeroNota")]
     public int InvoiceNumber
     {
-        get => _invoiceNumber; set
+        get => _invoiceNumber;
+        set
         {
             _invoiceNumber = value;
             _invoiceNumberSet = true;
@@ -324,7 +352,8 @@ public sealed class Invoice
     [XmlIgnore]
     public bool ConfirmationCentralInvoices
     {
-        get => _confirmationCentralInvoices; set
+        get => _confirmationCentralInvoices;
+        set
         {
             _confirmationCentralInvoices = value;
             _confirmationCentralInvoicesSet = true;
@@ -340,7 +369,8 @@ public sealed class Invoice
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ConfirmationCentralInvoicesInternal
     {
-        get => _confirmationCentralInvoices.ToString(@"true", @"false"); set
+        get => _confirmationCentralInvoices.ToString(@"true", @"false");
+        set
         {
             _confirmationCentralInvoices = value.ToBoolean(@"true|false");
             _confirmationCentralInvoicesSet = true;
@@ -354,7 +384,8 @@ public sealed class Invoice
     [XmlIgnore]
     public bool IsWebOrder
     {
-        get => _isWebOrder; set
+        get => _isWebOrder;
+        set
         {
             _isWebOrder = value;
             _isWebOrderSet = true;
@@ -370,7 +401,8 @@ public sealed class Invoice
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string IsWebOrderInternal
     {
-        get => _isWebOrder.ToString(@"true", @"false"); set
+        get => _isWebOrder.ToString(@"true", @"false");
+        set
         {
             _isWebOrder = value.ToBoolean(@"true|false");
             _isWebOrderSet = true;
@@ -384,7 +416,8 @@ public sealed class Invoice
     [XmlIgnore]
     public bool UpdatePriceItemPurchaseOrder
     {
-        get => _updatePriceItemPurchaseOrder; set
+        get => _updatePriceItemPurchaseOrder;
+        set
         {
             _updatePriceItemPurchaseOrder = value;
             _updatePriceItemPurchaseOrderSet = true;
@@ -400,7 +433,8 @@ public sealed class Invoice
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string UpdatePriceItemPurchaseOrderInternal
     {
-        get => _updatePriceItemPurchaseOrder.ToString(@"true", @"false"); set
+        get => _updatePriceItemPurchaseOrder.ToString(@"true", @"false");
+        set
         {
             _updatePriceItemPurchaseOrder = value.ToBoolean(@"true|false");
             _updatePriceItemPurchaseOrderSet = true;
@@ -414,7 +448,8 @@ public sealed class Invoice
     [XmlIgnore]
     public FiscalInvoiceStatus StatusInvoiceService
     {
-        get => _statusInvoiceService; set
+        get => _statusInvoiceService;
+        set
         {
             _statusInvoiceService = value;
             _statusInvoiceServiceSet = true;
@@ -430,9 +465,11 @@ public sealed class Invoice
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string StatusInvoiceServiceInternal
     {
-        get => _statusInvoiceService.GetHumanReadableValue(); set
+        get => _statusInvoiceService.GetHumanReadableValue();
+        set
         {
-            _statusInvoiceService = EnumExtensions.GetEnumByHumanReadableAttribute<FiscalInvoiceStatus>(value);
+            _statusInvoiceService =
+                EnumExtensions.GetEnumByHumanReadableAttribute<FiscalInvoiceStatus>(value);
             _statusInvoiceServiceSet = true;
         }
     }
@@ -444,7 +481,8 @@ public sealed class Invoice
     [XmlIgnore]
     public FiscalInvoiceStatus StatusInvoice
     {
-        get => _statusInvoice; set
+        get => _statusInvoice;
+        set
         {
             _statusInvoice = value;
             _statusInvoiceSet = true;
@@ -463,7 +501,9 @@ public sealed class Invoice
         get => _statusInvoice.GetHumanReadableValue();
         set
         {
-            _statusInvoice = EnumExtensions.GetEnumByHumanReadableAttribute<FiscalInvoiceStatus>(value);
+            _statusInvoice = EnumExtensions.GetEnumByHumanReadableAttribute<FiscalInvoiceStatus>(
+                value
+            );
             _statusInvoiceSet = true;
         }
     }
@@ -475,7 +515,8 @@ public sealed class Invoice
     [XmlAttribute("numeroLoteNfse")]
     public string LotNumberInvoiceService
     {
-        get => _lotNumberInvoiceService; set
+        get => _lotNumberInvoiceService;
+        set
         {
             _lotNumberInvoiceService = value;
             _lotNumberInvoiceServiceSet = true;
@@ -489,7 +530,8 @@ public sealed class Invoice
     [XmlAttribute("numeroLoteNfe")]
     public string LotNumberInvoice
     {
-        get => _lotNumberInvoice; set
+        get => _lotNumberInvoice;
+        set
         {
             _lotNumberInvoice = value;
             _lotNumberInvoiceSet = true;
@@ -503,7 +545,8 @@ public sealed class Invoice
     [XmlAttribute("observacaoNfse")]
     public string ObservationInvoiceService
     {
-        get => _observationInvoiceService; set
+        get => _observationInvoiceService;
+        set
         {
             _observationInvoiceService = value;
             _observationInvoiceServiceSet = true;
@@ -517,7 +560,8 @@ public sealed class Invoice
     [XmlAttribute("observacaoNfe")]
     public string ObservationInvoice
     {
-        get => _observationInvoice; set
+        get => _observationInvoice;
+        set
         {
             _observationInvoice = value;
             _observationInvoiceSet = true;
@@ -531,7 +575,8 @@ public sealed class Invoice
     [XmlElement("acompanhamento")]
     public Accompaniment[] Accompaniments
     {
-        get => _accompaniments; set
+        get => _accompaniments;
+        set
         {
             _accompaniments = value;
             _accompanimentsSet = true;
@@ -546,7 +591,8 @@ public sealed class Invoice
     [XmlArrayItem("prop")]
     public Prop[] Props
     {
-        get => _props; set
+        get => _props;
+        set
         {
             _props = value;
             _propsSet = true;
@@ -560,7 +606,8 @@ public sealed class Invoice
     [XmlElement("cabecalho")]
     public InvoiceHeader Header
     {
-        get => _header; set
+        get => _header;
+        set
         {
             _header = value;
             _headerSet = true;
@@ -574,7 +621,8 @@ public sealed class Invoice
     [XmlElement("itens")]
     public InvoiceItems Items
     {
-        get => _items; set
+        get => _items;
+        set
         {
             _items = value;
             _itemsSet = true;
@@ -623,7 +671,8 @@ public sealed class Invoice
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeSingleNumberDuplicationDestiny() => _singleNumberDuplicationDestinySet;
+    public bool ShouldSerializeSingleNumberDuplicationDestiny() =>
+        _singleNumberDuplicationDestinySet;
 
     /// <summary>
     /// Should the serialize single number duplication source.
@@ -647,7 +696,8 @@ public sealed class Invoice
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeConfirmationCentralInvoicesInternal() => _confirmationCentralInvoicesSet;
+    public bool ShouldSerializeConfirmationCentralInvoicesInternal() =>
+        _confirmationCentralInvoicesSet;
 
     /// <summary>
     /// Should the serialize is web order internal.
@@ -663,7 +713,8 @@ public sealed class Invoice
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeUpdatePriceItemPurchaseOrderInternal() => _updatePriceItemPurchaseOrderSet;
+    public bool ShouldSerializeUpdatePriceItemPurchaseOrderInternal() =>
+        _updatePriceItemPurchaseOrderSet;
 
     /// <summary>
     /// Should the serialize status invoice service internal.
@@ -746,5 +797,4 @@ public sealed class Invoice
     public bool ShouldSerializeItems() => _itemsSet;
 
     #endregion
-
 }

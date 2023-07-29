@@ -10,7 +10,6 @@ using CrispyWaffle.Serialization;
 [Serializer]
 public sealed class Releases
 {
-
     /// <summary>
     /// Gets or sets the release.
     /// </summary>

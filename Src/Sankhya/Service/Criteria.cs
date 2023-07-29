@@ -27,6 +27,7 @@ public sealed class Criteria
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -36,6 +37,7 @@ public sealed class Criteria
     /// The value
     /// </summary>
     private string _value;
+
     /// <summary>
     /// The value set
     /// </summary>
@@ -51,7 +53,8 @@ public sealed class Criteria
     [XmlAttribute(AttributeName = "nome")]
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
@@ -65,7 +68,8 @@ public sealed class Criteria
     [XmlAttribute(AttributeName = "valor")]
     public string Value
     {
-        get => _value; set
+        get => _value;
+        set
         {
             _value = value;
             _valueSet = true;
@@ -85,7 +89,6 @@ public sealed class Criteria
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeName() => _nameSet;
 
-
     /// <summary>
     /// Should the serialize value.
     /// </summary>
@@ -95,5 +98,4 @@ public sealed class Criteria
     public bool ShouldSerializeValue() => _valueSet;
 
     #endregion
-
 }

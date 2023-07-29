@@ -201,7 +201,8 @@ public sealed class RequestBody
     [XmlElement("nota")]
     public Invoice Invoice
     {
-        get => _invoice; set
+        get => _invoice;
+        set
         {
             _invoice = value;
             _invoiceSet = true;
@@ -215,7 +216,8 @@ public sealed class RequestBody
     [XmlElement("entity")]
     public Entity Entity
     {
-        get => _entity; set
+        get => _entity;
+        set
         {
             _entity = value;
             _entitySet = true;
@@ -229,7 +231,8 @@ public sealed class RequestBody
     [XmlElement("dadosBaixa")]
     public LowData LowData
     {
-        get => _lowData; set
+        get => _lowData;
+        set
         {
             _lowData = value;
             _lowDataSet = true;
@@ -243,7 +246,8 @@ public sealed class RequestBody
     [XmlElement("param")]
     public Param Param
     {
-        get => _param; set
+        get => _param;
+        set
         {
             _param = value;
             _paramSet = true;
@@ -257,7 +261,8 @@ public sealed class RequestBody
     [XmlElement("params")]
     public Params Params
     {
-        get => _params; set
+        get => _params;
+        set
         {
             _params = value;
             _paramsSet = true;
@@ -271,7 +276,8 @@ public sealed class RequestBody
     [XmlElement("notas")]
     public Invoices Invoices
     {
-        get => _invoices; set
+        get => _invoices;
+        set
         {
             _invoices = value;
             _invoicesSet = true;
@@ -285,7 +291,8 @@ public sealed class RequestBody
     [XmlElement("SESSION")]
     public Session Session
     {
-        get => _session; set
+        get => _session;
+        set
         {
             _session = value;
             _sessionSet = true;
@@ -299,7 +306,8 @@ public sealed class RequestBody
     [XmlElement("dataSet")]
     public DataSet DataSet
     {
-        get => _dataSet; set
+        get => _dataSet;
+        set
         {
             _dataSet = value;
             _dataSetSet = true;
@@ -313,7 +321,8 @@ public sealed class RequestBody
     [XmlElement("notasCanceladas")]
     public CancelledInvoices CancelledInvoices
     {
-        get => _cancelledInvoices; set
+        get => _cancelledInvoices;
+        set
         {
             _cancelledInvoices = value;
             _cancelledInvoicesSet = true;
@@ -327,7 +336,8 @@ public sealed class RequestBody
     [XmlElement("aviso")]
     public SystemWarning SystemWarning
     {
-        get => _systemWarning; set
+        get => _systemWarning;
+        set
         {
             _systemWarning = value;
             _systemWarningSet = true;
@@ -341,7 +351,8 @@ public sealed class RequestBody
     [XmlElement("mensagem")]
     public SystemMessage SystemMessage
     {
-        get => _systemMessage; set
+        get => _systemMessage;
+        set
         {
             _systemMessage = value;
             _systemMessageSet = true;
@@ -355,7 +366,8 @@ public sealed class RequestBody
     [XmlElement("config")]
     public Config Config
     {
-        get => _config; set
+        get => _config;
+        set
         {
             _config = value;
             _configSet = true;
@@ -369,7 +381,8 @@ public sealed class RequestBody
     [XmlElement("NOMUSU")]
     public string Username
     {
-        get => _username; set
+        get => _username;
+        set
         {
             _username = value;
             _usernameSet = true;
@@ -383,7 +396,8 @@ public sealed class RequestBody
     [XmlElement("INTERNO")]
     public string Password
     {
-        get => _password; set
+        get => _password;
+        set
         {
             _password = value;
             _passwordSet = true;
@@ -398,7 +412,8 @@ public sealed class RequestBody
     [XmlArrayItem("nuNota")]
     public int[] SingleNumbers
     {
-        get => _singleNumbers; set
+        get => _singleNumbers;
+        set
         {
             _singleNumbers = value;
             _singleNumbersSet = true;
@@ -413,7 +428,8 @@ public sealed class RequestBody
     [XmlArrayItem("clientEvent")]
     public ClientEvent[] ClientEvents
     {
-        get => _clientEvents; set
+        get => _clientEvents;
+        set
         {
             _clientEvents = value;
             _clientEventsSet = true;
@@ -427,7 +443,8 @@ public sealed class RequestBody
     [XmlElement("NotificationElem")]
     public NotificationElem NotificationElem
     {
-        get => _notificationElem; set
+        get => _notificationElem;
+        set
         {
             _notificationElem = value;
             _notificationElemSet = true;
@@ -460,7 +477,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeInvoice() => _invoiceSet;
 
     /// <summary>
@@ -469,7 +485,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeEntity() => _entitySet;
 
     /// <summary>
@@ -478,7 +493,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeLowData() => _lowDataSet;
 
     /// <summary>
@@ -487,7 +501,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeParam() => _paramSet;
 
     /// <summary>
@@ -496,7 +509,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeParams() => _paramsSet;
 
     /// <summary>
@@ -505,7 +517,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeInvoices() => _invoicesSet;
 
     /// <summary>
@@ -514,7 +525,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeSession() => _sessionSet;
 
     /// <summary>
@@ -523,7 +533,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeDataSet() => _dataSetSet;
 
     /// <summary>
@@ -532,7 +541,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCancelledInvoices() => _cancelledInvoicesSet;
 
     /// <summary>
@@ -541,7 +549,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeSystemWarning() => _systemWarningSet;
 
     /// <summary>
@@ -550,7 +557,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeSystemMessage() => _systemMessageSet;
 
     /// <summary>
@@ -559,7 +565,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeConfig() => _configSet;
 
     /// <summary>
@@ -568,7 +573,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeUsername() => _usernameSet;
 
     /// <summary>
@@ -577,7 +581,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializePassword() => _passwordSet;
 
     /// <summary>
@@ -586,7 +589,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeSingleNumbers() => _singleNumbersSet;
 
     /// <summary>
@@ -595,7 +597,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeClientEvents() => _clientEventsSet;
 
     /// <summary>
@@ -604,7 +605,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeNotificationElem() => _notificationElemSet;
 
     /// <summary>
@@ -613,7 +613,6 @@ public sealed class RequestBody
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializePaths() => _pathsSet;
 
     #endregion

@@ -10,13 +10,13 @@ using CrispyWaffle.Extensions;
 /// </summary>
 public sealed class NotificationElem
 {
-
     #region Private Members
 
     /// <summary>
     /// The last notification
     /// </summary>
     private DateTime _lastNotification;
+
     /// <summary>
     /// The last notification set
     /// </summary>
@@ -33,7 +33,8 @@ public sealed class NotificationElem
     [XmlIgnore]
     public DateTime LastNotification
     {
-        get => _lastNotification; set
+        get => _lastNotification;
+        set
         {
             _lastNotification = value;
             _lastNotificationSet = true;
@@ -49,7 +50,8 @@ public sealed class NotificationElem
     [EditorBrowsable(EditorBrowsableState.Never)]
     public int LastNotificationInternal
     {
-        get => _lastNotification > DateTime.MinValue ? _lastNotification.ToUnixTimeStamp() : 0; set
+        get => _lastNotification > DateTime.MinValue ? _lastNotification.ToUnixTimeStamp() : 0;
+        set
         {
             _lastNotification = value.FromUnixTimeStamp();
             _lastNotificationSet = true;

@@ -28,6 +28,7 @@ public sealed class Message
     /// The text
     /// </summary>
     private string _text;
+
     /// <summary>
     /// The text set
     /// </summary>
@@ -44,7 +45,8 @@ public sealed class Message
     [XmlText]
     public string Text
     {
-        get => _text; set
+        get => _text;
+        set
         {
             _text = value;
             _textSet = true;

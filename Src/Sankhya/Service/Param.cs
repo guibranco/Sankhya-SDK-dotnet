@@ -27,6 +27,7 @@ public sealed class Param
     /// The financial number
     /// </summary>
     private int _financialNumber;
+
     /// <summary>
     /// The financial number set
     /// </summary>
@@ -36,6 +37,7 @@ public sealed class Param
     /// The financial number upper case
     /// </summary>
     private int _financialNumberUpperCase;
+
     /// <summary>
     /// The financial number upper case set
     /// </summary>
@@ -45,6 +47,7 @@ public sealed class Param
     /// The bank number
     /// </summary>
     private int _bankNumber;
+
     /// <summary>
     /// The bank number set
     /// </summary>
@@ -54,6 +57,7 @@ public sealed class Param
     /// The recompose
     /// </summary>
     private string _recompose;
+
     /// <summary>
     /// The recompose set
     /// </summary>
@@ -63,6 +67,7 @@ public sealed class Param
     /// The revert all anticipation
     /// </summary>
     private string _revertAllAnticipation;
+
     /// <summary>
     /// The revert all anticipation set
     /// </summary>
@@ -109,7 +114,8 @@ public sealed class Param
     [XmlAttribute(AttributeName = "nuBco")]
     public int BankNumber
     {
-        get => _bankNumber; set
+        get => _bankNumber;
+        set
         {
             _bankNumber = value;
             _bankNumberSet = true;
@@ -123,7 +129,8 @@ public sealed class Param
     [XmlAttribute(AttributeName = "recompoe")]
     public string Recompose
     {
-        get => _recompose; set
+        get => _recompose;
+        set
         {
             _recompose = value;
             _recomposeSet = true;
@@ -137,7 +144,8 @@ public sealed class Param
     [XmlAttribute(AttributeName = "estornarTodosAntecipacao")]
     public string RevertAllAnticipation
     {
-        get => _revertAllAnticipation; set
+        get => _revertAllAnticipation;
+        set
         {
             _revertAllAnticipation = value;
             _revertAllAnticipationSet = true;
@@ -154,9 +162,7 @@ public sealed class Param
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeFinancialNumber() => _financialNumberSet;
-
 
     /// <summary>
     /// The should serialize financial number upper case serialization helper method
@@ -164,9 +170,7 @@ public sealed class Param
     /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeFinancialNumberUpperCase() => _financialNumberUpperCaseSet;
-
 
     /// <summary>
     /// Should the serialize bank number.
@@ -174,7 +178,6 @@ public sealed class Param
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeBankNumber() => _bankNumberSet;
 
     /// <summary>
@@ -183,7 +186,6 @@ public sealed class Param
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeRecompose() => _recomposeSet;
 
     /// <summary>
@@ -192,7 +194,6 @@ public sealed class Param
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeRevertAllAnticipation() => _revertAllAnticipationSet;
 
     #endregion

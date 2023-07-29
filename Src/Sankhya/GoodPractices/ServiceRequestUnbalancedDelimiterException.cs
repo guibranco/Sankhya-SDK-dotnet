@@ -9,9 +9,10 @@ using Sankhya.Service;
 public class ServiceRequestUnbalancedDelimiterException : ServiceRequestGeneralException
 {
     public ServiceRequestUnbalancedDelimiterException(ServiceRequest request)
-        : base(Resources.ServiceRequestUnbalancedDelimiterException, request)
-    { }
+        : base(Resources.ServiceRequestUnbalancedDelimiterException, request) { }
 
-    protected ServiceRequestUnbalancedDelimiterException(SerializationInfo info, StreamingContext context)
-    { }
+    protected ServiceRequestUnbalancedDelimiterException(
+        SerializationInfo info,
+        StreamingContext context
+    ) { }
 }

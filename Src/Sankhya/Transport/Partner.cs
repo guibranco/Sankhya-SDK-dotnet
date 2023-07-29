@@ -49,65 +49,136 @@ public class Partner : IEntity, IEquatable<Partner>
             return true;
         }
 
-        return _code == other._code && _codeSet == other._codeSet &&
-               string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase) &&
-               _nameSet == other._nameSet &&
-               string.Equals(_companyName, other._companyName, StringComparison.InvariantCultureIgnoreCase) &&
-               _companyNameSet == other._companyNameSet && _fiscalType == other._fiscalType &&
-               _fiscalTypeSet == other._fiscalTypeSet && _fiscalClassification == other._fiscalClassification &&
-               _fiscalClassificationSet == other._fiscalClassificationSet &&
-               string.Equals(_emailAddress, other._emailAddress, StringComparison.InvariantCultureIgnoreCase) &&
-               _emailAddressSet == other._emailAddressSet &&
-               string.Equals(_emailAddressFiscalInvoice, other._emailAddressFiscalInvoice,
-                   StringComparison.InvariantCultureIgnoreCase) &&
-               _emailAddressFiscalInvoiceSet == other._emailAddressFiscalInvoiceSet &&
-               _isActive == other._isActive && _isActiveSet == other._isActiveSet && _isClient == other._isClient &&
-               _isClientSet == other._isClientSet && _isSeller == other._isSeller &&
-               _isSellerSet == other._isSellerSet && _isUser == other._isUser && _isUserSet == other._isUserSet &&
-               _isSupplier == other._isSupplier && _isSupplierSet == other._isSupplierSet &&
-               string.Equals(_document, other._document, StringComparison.InvariantCultureIgnoreCase) &&
-               _documentSet == other._documentSet &&
-               string.Equals(_identity, other._identity, StringComparison.InvariantCultureIgnoreCase) &&
-               _identitySet == other._identitySet &&
-               string.Equals(_stateInscription, other._stateInscription,
-                   StringComparison.InvariantCultureIgnoreCase) &&
-               _stateInscriptionSet == other._stateInscriptionSet &&
-               string.Equals(_zipCode, other._zipCode, StringComparison.InvariantCultureIgnoreCase) &&
-               _zipCodeSet == other._zipCodeSet && _codeAddress == other._codeAddress &&
-               _codeAddressSet == other._codeAddressSet &&
-               string.Equals(_addressNumber, other._addressNumber, StringComparison.InvariantCultureIgnoreCase) &&
-               _addressNumberSet == other._addressNumberSet &&
-               string.Equals(_addressComplement, other._addressComplement,
-                   StringComparison.InvariantCultureIgnoreCase) &&
-               _addressComplementSet == other._addressComplementSet &&
-               _codeNeighborhood == other._codeNeighborhood && _codeNeighborhoodSet == other._codeNeighborhoodSet &&
-               _codeCity == other._codeCity && _codeCitySet == other._codeCitySet &&
-               _codeRegion == other._codeRegion && _codeRegionSet == other._codeRegionSet &&
-               string.Equals(_telephone, other._telephone, StringComparison.InvariantCultureIgnoreCase) &&
-               _telephoneSet == other._telephoneSet &&
-               string.Equals(_telephoneExtensionLine, other._telephoneExtensionLine,
-                   StringComparison.InvariantCultureIgnoreCase) &&
-               _telephoneExtensionLineSet == other._telephoneExtensionLineSet &&
-               string.Equals(_mobilePhone, other._mobilePhone, StringComparison.InvariantCultureIgnoreCase) &&
-               _mobilePhoneSet == other._mobilePhoneSet && _dateCreated.Equals(other._dateCreated) &&
-               _dateCreatedSet == other._dateCreatedSet && _dateChanged.Equals(other._dateChanged) &&
-               _dateChangedSet == other._dateChangedSet &&
-               _sendFiscalInvoiceByEmail == other._sendFiscalInvoiceByEmail &&
-               _sendFiscalInvoiceByEmailSet == other._sendFiscalInvoiceByEmailSet &&
-               string.Equals(_authorizationGroup, other._authorizationGroup,
-                   StringComparison.InvariantCultureIgnoreCase) &&
-               _authorizationGroupSet == other._authorizationGroupSet &&
-               string.Equals(_latitude, other._latitude, StringComparison.InvariantCultureIgnoreCase) &&
-               _latitudeSet == other._latitudeSet &&
-               string.Equals(_longitude, other._longitude, StringComparison.InvariantCultureIgnoreCase) &&
-               _longitudeSet == other._longitudeSet && 
-               string.Equals(_notes, other._notes, StringComparison.InvariantCultureIgnoreCase) &&
-               _notesSet == other._notesSet && Equals(_address, other._address) &&
-               _addressSet == other._addressSet && Equals(_neighborhood, other._neighborhood) &&
-               _neighborhoodSet == other._neighborhoodSet && Equals(_city, other._city) &&
-               _citySet == other._citySet && Equals(_region, other._region) && _regionSet == other._regionSet &&
-               Equals(_complement, other._complement) && _complementSet == other._complementSet;
-
+        return _code == other._code
+            && _codeSet == other._codeSet
+            && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+            && _nameSet == other._nameSet
+            && string.Equals(
+                _companyName,
+                other._companyName,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _companyNameSet == other._companyNameSet
+            && _fiscalType == other._fiscalType
+            && _fiscalTypeSet == other._fiscalTypeSet
+            && _fiscalClassification == other._fiscalClassification
+            && _fiscalClassificationSet == other._fiscalClassificationSet
+            && string.Equals(
+                _emailAddress,
+                other._emailAddress,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _emailAddressSet == other._emailAddressSet
+            && string.Equals(
+                _emailAddressFiscalInvoice,
+                other._emailAddressFiscalInvoice,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _emailAddressFiscalInvoiceSet == other._emailAddressFiscalInvoiceSet
+            && _isActive == other._isActive
+            && _isActiveSet == other._isActiveSet
+            && _isClient == other._isClient
+            && _isClientSet == other._isClientSet
+            && _isSeller == other._isSeller
+            && _isSellerSet == other._isSellerSet
+            && _isUser == other._isUser
+            && _isUserSet == other._isUserSet
+            && _isSupplier == other._isSupplier
+            && _isSupplierSet == other._isSupplierSet
+            && string.Equals(
+                _document,
+                other._document,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _documentSet == other._documentSet
+            && string.Equals(
+                _identity,
+                other._identity,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _identitySet == other._identitySet
+            && string.Equals(
+                _stateInscription,
+                other._stateInscription,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _stateInscriptionSet == other._stateInscriptionSet
+            && string.Equals(_zipCode, other._zipCode, StringComparison.InvariantCultureIgnoreCase)
+            && _zipCodeSet == other._zipCodeSet
+            && _codeAddress == other._codeAddress
+            && _codeAddressSet == other._codeAddressSet
+            && string.Equals(
+                _addressNumber,
+                other._addressNumber,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _addressNumberSet == other._addressNumberSet
+            && string.Equals(
+                _addressComplement,
+                other._addressComplement,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _addressComplementSet == other._addressComplementSet
+            && _codeNeighborhood == other._codeNeighborhood
+            && _codeNeighborhoodSet == other._codeNeighborhoodSet
+            && _codeCity == other._codeCity
+            && _codeCitySet == other._codeCitySet
+            && _codeRegion == other._codeRegion
+            && _codeRegionSet == other._codeRegionSet
+            && string.Equals(
+                _telephone,
+                other._telephone,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _telephoneSet == other._telephoneSet
+            && string.Equals(
+                _telephoneExtensionLine,
+                other._telephoneExtensionLine,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _telephoneExtensionLineSet == other._telephoneExtensionLineSet
+            && string.Equals(
+                _mobilePhone,
+                other._mobilePhone,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _mobilePhoneSet == other._mobilePhoneSet
+            && _dateCreated.Equals(other._dateCreated)
+            && _dateCreatedSet == other._dateCreatedSet
+            && _dateChanged.Equals(other._dateChanged)
+            && _dateChangedSet == other._dateChangedSet
+            && _sendFiscalInvoiceByEmail == other._sendFiscalInvoiceByEmail
+            && _sendFiscalInvoiceByEmailSet == other._sendFiscalInvoiceByEmailSet
+            && string.Equals(
+                _authorizationGroup,
+                other._authorizationGroup,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _authorizationGroupSet == other._authorizationGroupSet
+            && string.Equals(
+                _latitude,
+                other._latitude,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _latitudeSet == other._latitudeSet
+            && string.Equals(
+                _longitude,
+                other._longitude,
+                StringComparison.InvariantCultureIgnoreCase
+            )
+            && _longitudeSet == other._longitudeSet
+            && string.Equals(_notes, other._notes, StringComparison.InvariantCultureIgnoreCase)
+            && _notesSet == other._notesSet
+            && Equals(_address, other._address)
+            && _addressSet == other._addressSet
+            && Equals(_neighborhood, other._neighborhood)
+            && _neighborhoodSet == other._neighborhoodSet
+            && Equals(_city, other._city)
+            && _citySet == other._citySet
+            && Equals(_region, other._region)
+            && _regionSet == other._regionSet
+            && Equals(_complement, other._complement)
+            && _complementSet == other._complementSet;
     }
 
     /// <summary>
@@ -143,17 +214,41 @@ public class Partner : IEntity, IEquatable<Partner>
         {
             var hashCode = _code;
             hashCode = (hashCode * 397) ^ _codeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_name != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _name != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name) : 0
+                );
             hashCode = (hashCode * 397) ^ _nameSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_companyName != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_companyName) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _companyName != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_companyName)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _companyNameSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (int)_fiscalType;
             hashCode = (hashCode * 397) ^ _fiscalTypeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (int)_fiscalClassification;
             hashCode = (hashCode * 397) ^ _fiscalClassificationSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_emailAddress != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_emailAddress) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _emailAddress != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_emailAddress)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _emailAddressSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_emailAddressFiscalInvoice != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_emailAddressFiscalInvoice) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _emailAddressFiscalInvoice != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
+                            _emailAddressFiscalInvoice
+                        )
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _emailAddressFiscalInvoiceSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _isActive.GetHashCode();
             hashCode = (hashCode * 397) ^ _isActiveSet.GetHashCode();
@@ -165,19 +260,55 @@ public class Partner : IEntity, IEquatable<Partner>
             hashCode = (hashCode * 397) ^ _isUserSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _isSupplier.GetHashCode();
             hashCode = (hashCode * 397) ^ _isSupplierSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_document != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_document) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _document != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_document)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _documentSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_identity != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_identity) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _identity != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_identity)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _identitySet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_stateInscription != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_stateInscription) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _stateInscription != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_stateInscription)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _stateInscriptionSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_zipCode != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_zipCode) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _zipCode != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_zipCode)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _zipCodeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeAddress;
             hashCode = (hashCode * 397) ^ _codeAddressSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_addressNumber != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_addressNumber) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _addressNumber != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_addressNumber)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _addressNumberSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_addressComplement != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_addressComplement) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _addressComplement != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_addressComplement)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _addressComplementSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeNeighborhood;
             hashCode = (hashCode * 397) ^ _codeNeighborhoodSet.GetHashCode();
@@ -185,11 +316,31 @@ public class Partner : IEntity, IEquatable<Partner>
             hashCode = (hashCode * 397) ^ _codeCitySet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeRegion;
             hashCode = (hashCode * 397) ^ _codeRegionSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_telephone != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_telephone) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _telephone != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_telephone)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _telephoneSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_telephoneExtensionLine != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_telephoneExtensionLine) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _telephoneExtensionLine != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
+                            _telephoneExtensionLine
+                        )
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _telephoneExtensionLineSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_mobilePhone != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_mobilePhone) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _mobilePhone != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_mobilePhone)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _mobilePhoneSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateCreated.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateCreatedSet.GetHashCode();
@@ -197,13 +348,37 @@ public class Partner : IEntity, IEquatable<Partner>
             hashCode = (hashCode * 397) ^ _dateChangedSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _sendFiscalInvoiceByEmail.GetHashCode();
             hashCode = (hashCode * 397) ^ _sendFiscalInvoiceByEmailSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_authorizationGroup != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_authorizationGroup) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _authorizationGroup != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_authorizationGroup)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _authorizationGroupSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_latitude != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_latitude) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _latitude != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_latitude)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _latitudeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_longitude != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_longitude) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _longitude != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_longitude)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _longitudeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_notes != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_notes) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _notes != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_notes)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _notesSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (_address != null ? _address.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _addressSet.GetHashCode();
@@ -243,6 +418,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The code
     /// </summary>
     private int _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -252,6 +428,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -261,6 +438,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The company name
     /// </summary>
     private string _companyName;
+
     /// <summary>
     /// The company name set
     /// </summary>
@@ -270,6 +448,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The fiscal type
     /// </summary>
     private FiscalPersonType _fiscalType;
+
     /// <summary>
     /// The fiscal type set
     /// </summary>
@@ -279,6 +458,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The fiscal classification
     /// </summary>
     private FiscalClassification _fiscalClassification;
+
     /// <summary>
     /// The fiscal classification set
     /// </summary>
@@ -288,6 +468,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The email address
     /// </summary>
     private string _emailAddress;
+
     /// <summary>
     /// The email address set
     /// </summary>
@@ -297,6 +478,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The email address fiscal invoice
     /// </summary>
     private string _emailAddressFiscalInvoice;
+
     /// <summary>
     /// The email address fiscal invoice set
     /// </summary>
@@ -306,6 +488,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The is active
     /// </summary>
     private bool _isActive;
+
     /// <summary>
     /// The is active set
     /// </summary>
@@ -315,6 +498,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The is client
     /// </summary>
     private bool _isClient;
+
     /// <summary>
     /// The is client set
     /// </summary>
@@ -324,6 +508,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The is seller
     /// </summary>
     private bool _isSeller;
+
     /// <summary>
     /// The is seller set
     /// </summary>
@@ -333,6 +518,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The is user
     /// </summary>
     private bool _isUser;
+
     /// <summary>
     /// The is user set
     /// </summary>
@@ -342,6 +528,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The is supplier
     /// </summary>
     private bool _isSupplier;
+
     /// <summary>
     /// The is supplier set
     /// </summary>
@@ -351,6 +538,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The document
     /// </summary>
     private string _document;
+
     /// <summary>
     /// The document set
     /// </summary>
@@ -360,6 +548,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The identity
     /// </summary>
     private string _identity;
+
     /// <summary>
     /// The identity set
     /// </summary>
@@ -369,6 +558,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The state inscription
     /// </summary>
     private string _stateInscription;
+
     /// <summary>
     /// The state inscription set
     /// </summary>
@@ -378,6 +568,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The zip code
     /// </summary>
     private string _zipCode;
+
     /// <summary>
     /// The zip code set
     /// </summary>
@@ -387,6 +578,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The code address
     /// </summary>
     private int _codeAddress;
+
     /// <summary>
     /// The code address set
     /// </summary>
@@ -396,6 +588,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The address number
     /// </summary>
     private string _addressNumber;
+
     /// <summary>
     /// The address number set
     /// </summary>
@@ -405,6 +598,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The address complement
     /// </summary>
     private string _addressComplement;
+
     /// <summary>
     /// The address complement set
     /// </summary>
@@ -414,6 +608,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The code neighborhood
     /// </summary>
     private int _codeNeighborhood;
+
     /// <summary>
     /// The code neighborhood set
     /// </summary>
@@ -423,6 +618,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The code city
     /// </summary>
     private int _codeCity;
+
     /// <summary>
     /// The code city set
     /// </summary>
@@ -432,6 +628,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The code region
     /// </summary>
     private int _codeRegion;
+
     /// <summary>
     /// The code region set
     /// </summary>
@@ -441,6 +638,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The telephone
     /// </summary>
     private string _telephone;
+
     /// <summary>
     /// The telephone set
     /// </summary>
@@ -450,6 +648,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The telephone extension line
     /// </summary>
     private string _telephoneExtensionLine;
+
     /// <summary>
     /// The telephone extension line set
     /// </summary>
@@ -459,6 +658,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The mobile phone
     /// </summary>
     private string _mobilePhone;
+
     /// <summary>
     /// The mobile phone set
     /// </summary>
@@ -468,6 +668,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The date created
     /// </summary>
     private DateTime _dateCreated;
+
     /// <summary>
     /// The date created set
     /// </summary>
@@ -477,6 +678,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The date changed
     /// </summary>
     private DateTime _dateChanged;
+
     /// <summary>
     /// The date changed set
     /// </summary>
@@ -486,6 +688,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The send fiscal invoice by email
     /// </summary>
     private bool _sendFiscalInvoiceByEmail;
+
     /// <summary>
     /// The send fiscal invoice by email set
     /// </summary>
@@ -495,6 +698,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The authorization group
     /// </summary>
     private string _authorizationGroup;
+
     /// <summary>
     /// The authorization group set
     /// </summary>
@@ -504,6 +708,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The latitude
     /// </summary>
     private string _latitude;
+
     /// <summary>
     /// The latitude set
     /// </summary>
@@ -513,6 +718,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The longitude
     /// </summary>
     private string _longitude;
+
     /// <summary>
     /// The longitude set
     /// </summary>
@@ -522,6 +728,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The notes
     /// </summary>
     private string _notes;
+
     /// <summary>
     /// The notes set
     /// </summary>
@@ -531,6 +738,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The address
     /// </summary>
     private Address _address;
+
     /// <summary>
     /// The address set
     /// </summary>
@@ -540,6 +748,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The neighborhood
     /// </summary>
     private Neighborhood _neighborhood;
+
     /// <summary>
     /// The neighborhood set
     /// </summary>
@@ -549,6 +758,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The city
     /// </summary>
     private City _city;
+
     /// <summary>
     /// The city set
     /// </summary>
@@ -558,6 +768,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The region
     /// </summary>
     private Region _region;
+
     /// <summary>
     /// The region set
     /// </summary>
@@ -567,6 +778,7 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The complement
     /// </summary>
     private PartnerComplement _complement;
+
     /// <summary>
     /// The complement set
     /// </summary>
@@ -584,7 +796,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityKey]
     public int Code
     {
-        get => _code; set
+        get => _code;
+        set
         {
             _code = value;
             _codeSet = true;
@@ -599,7 +812,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [Localizable(false)]
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
@@ -613,7 +827,6 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityElement("RAZAOSOCIAL")]
     public string CompanyName
     {
-
         get => _companyName;
         set
         {
@@ -629,7 +842,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityIgnore]
     public FiscalPersonType FiscalType
     {
-        get => _fiscalType; set
+        get => _fiscalType;
+        set
         {
             _fiscalType = value;
             _fiscalTypeSet = true;
@@ -642,10 +856,10 @@ public class Partner : IEntity, IEquatable<Partner>
     /// <value>The fiscal type internal.</value>
     [EntityElement("TIPPESSOA")]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string FiscalTypeInternal
     {
-        get => _fiscalType.GetInternalValue(); set
+        get => _fiscalType.GetInternalValue();
+        set
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -664,7 +878,6 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityIgnore]
     public FiscalClassification FiscalClassification
     {
-
         get => _fiscalClassification;
         set
         {
@@ -679,7 +892,6 @@ public class Partner : IEntity, IEquatable<Partner>
     /// <value>The fiscal classification internal.</value>
     [EntityElement("CLASSIFICMS")]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string FiscalClassificationInternal
     {
         get => _fiscalClassification.GetInternalValue();
@@ -690,7 +902,8 @@ public class Partner : IEntity, IEquatable<Partner>
                 return;
             }
 
-            _fiscalClassification = EnumExtensions.GetEnumByInternalValueAttribute<FiscalClassification>(value);
+            _fiscalClassification =
+                EnumExtensions.GetEnumByInternalValueAttribute<FiscalClassification>(value);
             _fiscalClassificationSet = true;
         }
     }
@@ -719,13 +932,14 @@ public class Partner : IEntity, IEquatable<Partner>
     [Localizable(false)]
     public string EmailAddressFiscalInvoice
     {
-        get => _emailAddressFiscalInvoice; set
+        get => _emailAddressFiscalInvoice;
+        set
         {
             _emailAddressFiscalInvoice = value;
             _emailAddressFiscalInvoiceSet = true;
         }
     }
-    
+
     /// <summary>
     /// Gets or sets the is active.
     /// </summary>
@@ -733,7 +947,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityIgnore]
     public bool IsActive
     {
-        get => _isActive; set
+        get => _isActive;
+        set
         {
             _isActive = value;
             _isActiveSet = true;
@@ -746,10 +961,10 @@ public class Partner : IEntity, IEquatable<Partner>
     /// <value>The is active internal.</value>
     [EntityElement("ATIVO")]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string IsActiveInternal
     {
-        get => _isActive.ToString(@"S", @"N"); set
+        get => _isActive.ToString(@"S", @"N");
+        set
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -768,7 +983,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityIgnore]
     public bool IsClient
     {
-        get => _isClient; set
+        get => _isClient;
+        set
         {
             _isClient = value;
             _isClientSet = true;
@@ -781,10 +997,10 @@ public class Partner : IEntity, IEquatable<Partner>
     /// <value>The is client internal.</value>
     [EntityElement("CLIENTE")]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string IsClientInternal
     {
-        get => _isClient.ToString(@"S", @"N"); set
+        get => _isClient.ToString(@"S", @"N");
+        set
         {
             _isClient = value.ToBoolean();
             _isClientSet = true;
@@ -798,8 +1014,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityIgnore]
     public bool IsSeller
     {
-
-        get => _isSeller; set
+        get => _isSeller;
+        set
         {
             _isSeller = value;
             _isSellerSet = true;
@@ -812,10 +1028,10 @@ public class Partner : IEntity, IEquatable<Partner>
     /// <value>The is seller internal.</value>
     [EntityElement("VENDEDOR")]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string IsSellerInternal
     {
-        get => _isSeller.ToString(@"S", @"N"); set
+        get => _isSeller.ToString(@"S", @"N");
+        set
         {
             _isSeller = value.ToBoolean();
             _isSellerSet = true;
@@ -829,8 +1045,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityIgnore]
     public bool IsUser
     {
-
-        get => _isUser; set
+        get => _isUser;
+        set
         {
             _isUser = value;
             _isUserSet = true;
@@ -843,10 +1059,10 @@ public class Partner : IEntity, IEquatable<Partner>
     /// <value>The is user internal.</value>
     [EntityElement("USUARIO")]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string IsUserInternal
     {
-        get => _isUser.ToString(@"S", @"N"); set
+        get => _isUser.ToString(@"S", @"N");
+        set
         {
             _isUser = value.ToBoolean();
             _isUserSet = true;
@@ -860,8 +1076,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityIgnore]
     public bool IsSupplier
     {
-
-        get => _isSupplier; set
+        get => _isSupplier;
+        set
         {
             _isSupplier = value;
             _isSupplierSet = true;
@@ -874,16 +1090,16 @@ public class Partner : IEntity, IEquatable<Partner>
     /// <value>The is supplier internal.</value>
     [EntityElement("FORNECEDOR")]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string IsSupplierInternal
     {
-        get => _isSupplier.ToString(@"S", @"N"); set
+        get => _isSupplier.ToString(@"S", @"N");
+        set
         {
             _isSupplier = value.ToBoolean();
             _isSupplierSet = true;
         }
     }
-    
+
     /// <summary>
     /// Gets or sets the document.
     /// </summary>
@@ -891,7 +1107,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityElement("CGC_CPF", true)]
     public string Document
     {
-        get => _document; set
+        get => _document;
+        set
         {
             _document = value;
             _documentSet = true;
@@ -905,7 +1122,6 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityElement("IDENTINSCESTAD")]
     public string Identity
     {
-
         get => _identity;
         set
         {
@@ -919,7 +1135,6 @@ public class Partner : IEntity, IEquatable<Partner>
     /// </summary>
     /// <value>The state inscription.</value>
     [EntityElement("INSCESTADNAUF")]
-
     public string StateInscription
     {
         get => _stateInscription;
@@ -937,7 +1152,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityElement("CEP")]
     public string ZipCode
     {
-        get => _zipCode; set
+        get => _zipCode;
+        set
         {
             _zipCode = value;
             _zipCodeSet = true;
@@ -951,7 +1167,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityElement("CODEND")]
     public int CodeAddress
     {
-        get => _codeAddress; set
+        get => _codeAddress;
+        set
         {
             _codeAddress = value;
             _codeAddressSet = true;
@@ -966,7 +1183,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [Localizable(false)]
     public string AddressNumber
     {
-        get => _addressNumber; set
+        get => _addressNumber;
+        set
         {
             _addressNumber = value;
             _addressNumberSet = true;
@@ -981,7 +1199,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityCustomData(MaxLength = 30)]
     public string AddressComplement
     {
-        get => _addressComplement; set
+        get => _addressComplement;
+        set
         {
             _addressComplement = value;
             _addressComplementSet = true;
@@ -995,7 +1214,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityElement("CODBAI")]
     public int CodeNeighborhood
     {
-        get => _codeNeighborhood; set
+        get => _codeNeighborhood;
+        set
         {
             _codeNeighborhood = value;
             _codeNeighborhoodSet = true;
@@ -1009,7 +1229,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityElement("CODCID")]
     public int CodeCity
     {
-        get => _codeCity; set
+        get => _codeCity;
+        set
         {
             _codeCity = value;
             _codeCitySet = true;
@@ -1021,10 +1242,10 @@ public class Partner : IEntity, IEquatable<Partner>
     /// </summary>
     /// <value>The code region.</value>
     [EntityElement("CODREG")]
-
     public int CodeRegion
     {
-        get => _codeRegion; set
+        get => _codeRegion;
+        set
         {
             _codeRegion = value;
             _codeRegionSet = true;
@@ -1038,7 +1259,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityElement("TELEFONE")]
     public string Telephone
     {
-        get => _telephone; set
+        get => _telephone;
+        set
         {
             _telephone = value;
             _telephoneSet = true;
@@ -1050,10 +1272,10 @@ public class Partner : IEntity, IEquatable<Partner>
     /// </summary>
     /// <value>The telephone extension line.</value>
     [EntityElement("RAMAL")]
-
     public string TelephoneExtensionLine
     {
-        get => _telephoneExtensionLine; set
+        get => _telephoneExtensionLine;
+        set
         {
             _telephoneExtensionLine = value;
             _telephoneExtensionLineSet = true;
@@ -1067,7 +1289,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityElement("FAX")]
     public string MobilePhone
     {
-        get => _mobilePhone; set
+        get => _mobilePhone;
+        set
         {
             _mobilePhone = value;
             _mobilePhoneSet = true;
@@ -1079,10 +1302,10 @@ public class Partner : IEntity, IEquatable<Partner>
     /// </summary>
     /// <value>The date created.</value>
     [EntityElement("DTCAD")]
-
     public DateTime DateCreated
     {
-        get => _dateCreated; set
+        get => _dateCreated;
+        set
         {
             _dateCreated = value;
             _dateCreatedSet = true;
@@ -1096,7 +1319,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityElement("DTALTER")]
     public DateTime DateChanged
     {
-        get => _dateChanged; set
+        get => _dateChanged;
+        set
         {
             _dateChanged = value;
             _dateChangedSet = true;
@@ -1110,7 +1334,8 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityIgnore]
     public bool SendFiscalInvoiceByEmail
     {
-        get => _sendFiscalInvoiceByEmail; set
+        get => _sendFiscalInvoiceByEmail;
+        set
         {
             _sendFiscalInvoiceByEmail = value;
             _sendFiscalInvoiceByEmailSet = true;
@@ -1123,25 +1348,25 @@ public class Partner : IEntity, IEquatable<Partner>
     /// <value>The send fiscal invoice by email internal.</value>
     [EntityElement("EMAILDANFE")]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string SendFiscalInvoiceByEmailInternal
     {
-        get => _sendFiscalInvoiceByEmail.ToString(@"S", @"N"); set
+        get => _sendFiscalInvoiceByEmail.ToString(@"S", @"N");
+        set
         {
             _sendFiscalInvoiceByEmail = value.ToBoolean();
             _sendFiscalInvoiceByEmailSet = true;
         }
     }
-    
+
     /// <summary>
     /// Gets or sets the authorization group.
     /// </summary>
     /// <value>The authorization group.</value>
     [EntityElement("GRUPOAUTOR")]
-
     public string AuthorizationGroup
     {
-        get => _authorizationGroup; set
+        get => _authorizationGroup;
+        set
         {
             _authorizationGroup = value;
             _authorizationGroupSet = true;
@@ -1155,7 +1380,6 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityElement("LATITUDE")]
     public string Latitude
     {
-
         get => _latitude;
         set
         {
@@ -1171,7 +1395,6 @@ public class Partner : IEntity, IEquatable<Partner>
     [EntityElement("LONGITUDE")]
     public string Longitude
     {
-
         get => _longitude;
         set
         {
@@ -1203,7 +1426,6 @@ public class Partner : IEntity, IEquatable<Partner>
     public Address Address
     {
         get => _address;
-
         set
         {
             _address = value;
@@ -1219,7 +1441,6 @@ public class Partner : IEntity, IEquatable<Partner>
     public Neighborhood Neighborhood
     {
         get => _neighborhood;
-
         set
         {
             _neighborhood = value;
@@ -1247,10 +1468,10 @@ public class Partner : IEntity, IEquatable<Partner>
     /// </summary>
     /// <value>The region.</value>
     [EntityReference]
-
     public Region Region
     {
-        get => _region; set
+        get => _region;
+        set
         {
             _region = value;
             _regionSet = true;
@@ -1265,7 +1486,6 @@ public class Partner : IEntity, IEquatable<Partner>
     public PartnerComplement Complement
     {
         get => _complement;
-
         set
         {
             _complement = value;
@@ -1515,7 +1735,6 @@ public class Partner : IEntity, IEquatable<Partner>
     /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeLatitude() => _latitudeSet;
 
     /// <summary>
@@ -1524,7 +1743,6 @@ public class Partner : IEntity, IEquatable<Partner>
     /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeLongitude() => _longitudeSet;
 
     /// <summary>
@@ -1533,7 +1751,6 @@ public class Partner : IEntity, IEquatable<Partner>
     /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeNotes() => _notesSet;
 
     /// <summary>

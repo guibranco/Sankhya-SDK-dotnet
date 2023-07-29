@@ -12,13 +12,13 @@ using CrispyWaffle.Extensions;
 [XmlType("liberacao")]
 public sealed class Release
 {
-
     #region Private Members
 
     /// <summary>
     /// The key
     /// </summary>
     private int _key;
+
     /// <summary>
     /// The key set
     /// </summary>
@@ -28,6 +28,7 @@ public sealed class Release
     /// The event
     /// </summary>
     private int _event;
+
     /// <summary>
     /// The event set
     /// </summary>
@@ -37,6 +38,7 @@ public sealed class Release
     /// The event description
     /// </summary>
     private string _eventDescription;
+
     /// <summary>
     /// The event description set
     /// </summary>
@@ -46,6 +48,7 @@ public sealed class Release
     /// The table
     /// </summary>
     private string _table;
+
     /// <summary>
     /// The table set
     /// </summary>
@@ -55,6 +58,7 @@ public sealed class Release
     /// The sequence
     /// </summary>
     private int _sequence;
+
     /// <summary>
     /// The sequence set
     /// </summary>
@@ -64,6 +68,7 @@ public sealed class Release
     /// The sequence cascade
     /// </summary>
     private int _sequenceCascade;
+
     /// <summary>
     /// The sequence cascade set
     /// </summary>
@@ -73,6 +78,7 @@ public sealed class Release
     /// The date requested
     /// </summary>
     private DateTime _dateRequested;
+
     /// <summary>
     /// The date requested set
     /// </summary>
@@ -82,6 +88,7 @@ public sealed class Release
     /// The date released
     /// </summary>
     private DateTime _dateReleased;
+
     /// <summary>
     /// The date released set
     /// </summary>
@@ -91,6 +98,7 @@ public sealed class Release
     /// The description
     /// </summary>
     private string _description;
+
     /// <summary>
     /// The description set
     /// </summary>
@@ -100,6 +108,7 @@ public sealed class Release
     /// The releasing
     /// </summary>
     private int _releasing;
+
     /// <summary>
     /// The releasing set
     /// </summary>
@@ -109,6 +118,7 @@ public sealed class Release
     /// The limit
     /// </summary>
     private int _limit;
+
     /// <summary>
     /// The limit set
     /// </summary>
@@ -118,6 +128,7 @@ public sealed class Release
     /// The requester
     /// </summary>
     private int _requester;
+
     /// <summary>
     /// The requester set
     /// </summary>
@@ -127,6 +138,7 @@ public sealed class Release
     /// The total amount
     /// </summary>
     private decimal _totalAmount;
+
     /// <summary>
     /// The total amount set
     /// </summary>
@@ -136,6 +148,7 @@ public sealed class Release
     /// The current amount
     /// </summary>
     private decimal _currentAmount;
+
     /// <summary>
     /// The current amount set
     /// </summary>
@@ -145,6 +158,7 @@ public sealed class Release
     /// The released amount
     /// </summary>
     private decimal _releasedAmount;
+
     /// <summary>
     /// The released amount set
     /// </summary>
@@ -154,6 +168,7 @@ public sealed class Release
     /// The previous requested amount
     /// </summary>
     private decimal _previousRequestedAmount;
+
     /// <summary>
     /// The previous requested amount set
     /// </summary>
@@ -163,6 +178,7 @@ public sealed class Release
     /// The percentage
     /// </summary>
     private decimal _percentage;
+
     /// <summary>
     /// The percentage set
     /// </summary>
@@ -172,6 +188,7 @@ public sealed class Release
     /// The previous percentage
     /// </summary>
     private decimal _previousPercentage;
+
     /// <summary>
     /// The previous percentage set
     /// </summary>
@@ -181,6 +198,7 @@ public sealed class Release
     /// The event type
     /// </summary>
     private string _eventType;
+
     /// <summary>
     /// The event type set
     /// </summary>
@@ -190,6 +208,7 @@ public sealed class Release
     /// The edit releasing
     /// </summary>
     private bool _editReleasing;
+
     /// <summary>
     /// The edit releasing set
     /// </summary>
@@ -199,6 +218,7 @@ public sealed class Release
     /// The edit current amount
     /// </summary>
     private bool _editCurrentAmount;
+
     /// <summary>
     /// The edit current amount set
     /// </summary>
@@ -208,6 +228,7 @@ public sealed class Release
     /// The releasing notes
     /// </summary>
     private string _releasingNotes;
+
     /// <summary>
     /// The releasing notes set
     /// </summary>
@@ -217,6 +238,7 @@ public sealed class Release
     /// The hash
     /// </summary>
     private string _releaseHash;
+
     /// <summary>
     /// The hash set
     /// </summary>
@@ -344,12 +366,16 @@ public sealed class Release
         get => _dateRequested.ToString(@"dd/MM/yyyy HH:mm");
         set
         {
-            if (string.IsNullOrWhiteSpace(value) ||
-                !DateTime.TryParseExact(value,
+            if (
+                string.IsNullOrWhiteSpace(value)
+                || !DateTime.TryParseExact(
+                    value,
                     @"dd/MM/yyyy HH:mm",
                     CultureInfo.InvariantCulture,
                     DateTimeStyles.None,
-                    out var result))
+                    out var result
+                )
+            )
             {
                 return;
             }
@@ -366,7 +392,6 @@ public sealed class Release
     /// The date requested.
     /// </value>
     [XmlIgnore]
-
     public DateTime DateRequested
     {
         get => _dateRequested;
@@ -389,12 +414,16 @@ public sealed class Release
         get => _dateReleased.ToString(@"dd;MM/yyyy HH:mm");
         set
         {
-            if (string.IsNullOrWhiteSpace(value) ||
-                !DateTime.TryParseExact(value,
+            if (
+                string.IsNullOrWhiteSpace(value)
+                || !DateTime.TryParseExact(
+                    value,
                     @"dd/MM/yyyy HH:mm",
                     CultureInfo.InvariantCulture,
                     DateTimeStyles.None,
-                    out var result))
+                    out var result
+                )
+            )
             {
                 return;
             }
@@ -411,7 +440,6 @@ public sealed class Release
     /// The date released.
     /// </value>
     [XmlIgnore]
-
     public DateTime DateReleased
     {
         get => _dateReleased;
@@ -614,7 +642,6 @@ public sealed class Release
     /// </summary>
     /// <value><c>true</c> if [edit releasing]; otherwise, <c>false</c>.</value>
     [XmlIgnore]
-
     public bool EditReleasing
     {
         get => _editReleasing;
@@ -649,7 +676,6 @@ public sealed class Release
     /// The edit current amount flag.
     /// </value>
     [XmlIgnore]
-
     public bool EditCurrentAmount
     {
         get => _editCurrentAmount;
@@ -661,7 +687,7 @@ public sealed class Release
     }
 
     /// <summary>
-    /// Gets or sets the edit current amount internal 
+    /// Gets or sets the edit current amount internal
     /// </summary>
     /// <value>
     /// The edit current amount internal flag as string.
@@ -711,7 +737,6 @@ public sealed class Release
         }
     }
 
-
     #endregion
 
     #region Serializer Helpers
@@ -724,7 +749,6 @@ public sealed class Release
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeKey() => _keySet;
 
     /// <summary>
@@ -735,7 +759,6 @@ public sealed class Release
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeEvent() => _eventSet;
 
     /// <summary>
@@ -746,7 +769,6 @@ public sealed class Release
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeEventDescription() => _eventDescriptionSet;
 
     /// <summary>
@@ -757,7 +779,6 @@ public sealed class Release
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeTable() => _tableSet;
 
     /// <summary>
@@ -768,7 +789,6 @@ public sealed class Release
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeSequence() => _sequenceSet;
 
     /// <summary>
@@ -779,7 +799,6 @@ public sealed class Release
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeSequenceCascade() => _sequenceCascadeSet;
 
     /// <summary>
@@ -790,7 +809,6 @@ public sealed class Release
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeDateRequestedInternal() => _dateRequestedSet;
 
     /// <summary>
@@ -801,7 +819,6 @@ public sealed class Release
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeDateReleased() => _dateReleasedSet;
 
     /// <summary>
@@ -820,7 +837,6 @@ public sealed class Release
     /// <returns><c>true</c> if should serialize, <c>false</c> otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeReleasing() => _releasingSet;
 
     /// <summary>
@@ -947,9 +963,7 @@ public sealed class Release
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeReleaseHash() => _releaseHashSet;
 
     #endregion
-
 }

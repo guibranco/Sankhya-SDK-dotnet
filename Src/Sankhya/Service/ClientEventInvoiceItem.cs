@@ -8,13 +8,13 @@ using System.Xml.Serialization;
 /// </summary>
 public sealed class ClientEventInvoiceItem
 {
-
     #region Private Members
 
     /// <summary>
     /// The single number
     /// </summary>
     private int _singleNumber;
+
     /// <summary>
     /// The single number set
     /// </summary>
@@ -24,6 +24,7 @@ public sealed class ClientEventInvoiceItem
     /// The sequence
     /// </summary>
     private int _sequence;
+
     /// <summary>
     /// The sequence set
     /// </summary>
@@ -33,6 +34,7 @@ public sealed class ClientEventInvoiceItem
     /// The quantity traded
     /// </summary>
     private decimal _quantityTraded;
+
     /// <summary>
     /// The quantity traded set
     /// </summary>
@@ -42,6 +44,7 @@ public sealed class ClientEventInvoiceItem
     /// The code execution
     /// </summary>
     private int _codeExecution;
+
     /// <summary>
     /// The code execution set
     /// </summary>
@@ -51,11 +54,11 @@ public sealed class ClientEventInvoiceItem
     /// The code seller
     /// </summary>
     private int _codeSeller;
+
     /// <summary>
     /// The code seller set
     /// </summary>
     private bool _codeSellerSet;
-
 
     #endregion
 
@@ -68,7 +71,8 @@ public sealed class ClientEventInvoiceItem
     [XmlAttribute("nuNota")]
     public int SingleNumber
     {
-        get => _singleNumber; set
+        get => _singleNumber;
+        set
         {
             _singleNumber = value;
             _singleNumberSet = true;
@@ -82,7 +86,8 @@ public sealed class ClientEventInvoiceItem
     [XmlAttribute("sequencia")]
     public int Sequence
     {
-        get => _sequence; set
+        get => _sequence;
+        set
         {
             _sequence = value;
             _sequenceSet = true;
@@ -96,7 +101,8 @@ public sealed class ClientEventInvoiceItem
     [XmlAttribute("qtdNeg")]
     public decimal QuantityTraded
     {
-        get => _quantityTraded; set
+        get => _quantityTraded;
+        set
         {
             _quantityTraded = value;
             _quantityTradedSet = true;
@@ -110,7 +116,8 @@ public sealed class ClientEventInvoiceItem
     [XmlAttribute("codExec")]
     public int CodeExecution
     {
-        get => _codeExecution; set
+        get => _codeExecution;
+        set
         {
             _codeExecution = value;
             _codeExecutionSet = true;
@@ -124,7 +131,8 @@ public sealed class ClientEventInvoiceItem
     [XmlAttribute("codeVend")]
     public int CodeSeller
     {
-        get => _codeSeller; set
+        get => _codeSeller;
+        set
         {
             _codeSeller = value;
             _codeSellerSet = true;
@@ -176,5 +184,4 @@ public sealed class ClientEventInvoiceItem
     public bool ShouldSerializeCodeSeller() => _codeSellerSet;
 
     #endregion
-
 }

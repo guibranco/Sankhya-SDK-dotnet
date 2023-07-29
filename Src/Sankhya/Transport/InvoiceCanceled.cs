@@ -25,14 +25,21 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _singleNumber == other._singleNumber && _singleNumberSet == other._singleNumberSet &&
-            _codePartner == other._codePartner && _codePartnerSet == other._codePartnerSet &&
-            _dateCanceled.Equals(other._dateCanceled) && _dateCanceledSet == other._dateCanceledSet &&
-            _invoiceNumber == other._invoiceNumber && _invoiceNumberSet == other._invoiceNumberSet &&
-            string.Equals(_cancellationReason,
-                other._cancellationReason,
-                StringComparison.InvariantCultureIgnoreCase) &&
-            _cancellationReasonSet == other._cancellationReasonSet;
+        return ReferenceEquals(this, other)
+            || _singleNumber == other._singleNumber
+                && _singleNumberSet == other._singleNumberSet
+                && _codePartner == other._codePartner
+                && _codePartnerSet == other._codePartnerSet
+                && _dateCanceled.Equals(other._dateCanceled)
+                && _dateCanceledSet == other._dateCanceledSet
+                && _invoiceNumber == other._invoiceNumber
+                && _invoiceNumberSet == other._invoiceNumberSet
+                && string.Equals(
+                    _cancellationReason,
+                    other._cancellationReason,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _cancellationReasonSet == other._cancellationReasonSet;
     }
 
     /// <summary>
@@ -66,7 +73,13 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
             hashCode = (hashCode * 397) ^ _dateCanceledSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _invoiceNumber;
             hashCode = (hashCode * 397) ^ _invoiceNumberSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_cancellationReason != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_cancellationReason) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _cancellationReason != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_cancellationReason)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _cancellationReasonSet.GetHashCode();
             return hashCode;
         }
@@ -78,7 +91,8 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator ==(InvoiceCanceled left, InvoiceCanceled right) => Equals(left, right);
+    public static bool operator ==(InvoiceCanceled left, InvoiceCanceled right) =>
+        Equals(left, right);
 
     /// <summary>
     /// Implements the !=.
@@ -86,7 +100,8 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator !=(InvoiceCanceled left, InvoiceCanceled right) => !Equals(left, right);
+    public static bool operator !=(InvoiceCanceled left, InvoiceCanceled right) =>
+        !Equals(left, right);
 
     #endregion
 
@@ -96,6 +111,7 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     /// The single number
     /// </summary>
     private int _singleNumber;
+
     /// <summary>
     /// The single number set
     /// </summary>
@@ -105,6 +121,7 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     /// The code partner
     /// </summary>
     private int _codePartner;
+
     /// <summary>
     /// The code partner set
     /// </summary>
@@ -114,6 +131,7 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     /// The date canceled
     /// </summary>
     private DateTime _dateCanceled;
+
     /// <summary>
     /// The date canceled set
     /// </summary>
@@ -123,6 +141,7 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     /// The invoice number
     /// </summary>
     private int _invoiceNumber;
+
     /// <summary>
     /// The invoice number set
     /// </summary>
@@ -132,6 +151,7 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     /// The cancellation reason
     /// </summary>
     private string _cancellationReason;
+
     /// <summary>
     /// The cancellation reason set
     /// </summary>
@@ -148,7 +168,6 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     [EntityElement("NUNOTA")]
     public int SingleNumber
     {
-
         get => _singleNumber;
         set
         {
@@ -165,7 +184,6 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     public int CodePartner
     {
         get => _codePartner;
-
         set
         {
             _codePartner = value;
@@ -181,7 +199,6 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     public DateTime DateCanceled
     {
         get => _dateCanceled;
-
         set
         {
             _dateCanceled = value;
@@ -194,7 +211,6 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     /// </summary>
     /// <value>The invoice number.</value>
     [EntityElement("NUMNOTA")]
-
     public int InvoiceNumber
     {
         get => _invoiceNumber;
@@ -213,7 +229,6 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     public string CancellationReason
     {
         get => _cancellationReason;
-
         set
         {
             _cancellationReason = value;
@@ -266,5 +281,4 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     public bool ShouldSerializeCancellationReason() => _cancellationReasonSet;
 
     #endregion
-
 }

@@ -9,9 +9,11 @@ using Sankhya.Service;
 public class ServiceRequestPartnerFiscalClassificationException : ServiceRequestGeneralException
 {
     public ServiceRequestPartnerFiscalClassificationException(ServiceRequest request)
-        : base(Resources.ServiceRequestPartnerFiscalClassificationException, request)
-    { }
+        : base(Resources.ServiceRequestPartnerFiscalClassificationException, request) { }
 
-    protected ServiceRequestPartnerFiscalClassificationException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestPartnerFiscalClassificationException(
+        SerializationInfo info,
+        StreamingContext context
+    )
+        : base(info, context) { }
 }

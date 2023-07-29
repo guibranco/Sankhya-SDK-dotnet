@@ -43,16 +43,29 @@ public class Seller : IEntity, IEquatable<Seller>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _code == other._code && _codeSet == other._codeSet && _codeUser == other._codeUser &&
-            _codeUserSet == other._codeUserSet && _codePartner == other._codePartner &&
-            _codePartnerSet == other._codePartnerSet && _isActive == other._isActive &&
-            _isActiveSet == other._isActiveSet &&
-            string.Equals(_nickname, other._nickname, StringComparison.InvariantCultureIgnoreCase) &&
-            _nicknameSet == other._nicknameSet &&
-            string.Equals(_email, other._email, StringComparison.InvariantCultureIgnoreCase) &&
-            _emailSet == other._emailSet && _type == other._type && _typeSet == other._typeSet &&
-            _dateChanged.Equals(other._dateChanged) && _dateChangedSet == other._dateChangedSet &&
-            Equals(_partner, other._partner) && _partnerSet == other._partnerSet;
+        return ReferenceEquals(this, other)
+            || _code == other._code
+                && _codeSet == other._codeSet
+                && _codeUser == other._codeUser
+                && _codeUserSet == other._codeUserSet
+                && _codePartner == other._codePartner
+                && _codePartnerSet == other._codePartnerSet
+                && _isActive == other._isActive
+                && _isActiveSet == other._isActiveSet
+                && string.Equals(
+                    _nickname,
+                    other._nickname,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _nicknameSet == other._nicknameSet
+                && string.Equals(_email, other._email, StringComparison.InvariantCultureIgnoreCase)
+                && _emailSet == other._emailSet
+                && _type == other._type
+                && _typeSet == other._typeSet
+                && _dateChanged.Equals(other._dateChanged)
+                && _dateChangedSet == other._dateChangedSet
+                && Equals(_partner, other._partner)
+                && _partnerSet == other._partnerSet;
     }
 
     /// <summary>
@@ -88,21 +101,27 @@ public class Seller : IEntity, IEquatable<Seller>
             hashCode = (hashCode * 397) ^ _codePartnerSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _isActive.GetHashCode();
             hashCode = (hashCode * 397) ^ _isActiveSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_nickname != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_nickname)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _nickname != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_nickname)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _nicknameSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_email != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_email)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _email != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_email)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _emailSet.GetHashCode();
             hashCode = (hashCode * 397) ^ (int)_type;
             hashCode = (hashCode * 397) ^ _typeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateChanged.GetHashCode();
             hashCode = (hashCode * 397) ^ _dateChangedSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_partner != null
-                ? _partner.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (_partner != null ? _partner.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _partnerSet.GetHashCode();
             return hashCode;
         }
@@ -132,6 +151,7 @@ public class Seller : IEntity, IEquatable<Seller>
     /// The code
     /// </summary>
     private int _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -141,6 +161,7 @@ public class Seller : IEntity, IEquatable<Seller>
     /// The code user
     /// </summary>
     private int _codeUser;
+
     /// <summary>
     /// The code user set
     /// </summary>
@@ -150,6 +171,7 @@ public class Seller : IEntity, IEquatable<Seller>
     /// The code partner
     /// </summary>
     private int _codePartner;
+
     /// <summary>
     /// The code partner set
     /// </summary>
@@ -159,6 +181,7 @@ public class Seller : IEntity, IEquatable<Seller>
     /// The active
     /// </summary>
     private bool _isActive;
+
     /// <summary>
     /// The active set
     /// </summary>
@@ -168,6 +191,7 @@ public class Seller : IEntity, IEquatable<Seller>
     /// The nickname
     /// </summary>
     private string _nickname;
+
     /// <summary>
     /// The nickname set
     /// </summary>
@@ -177,6 +201,7 @@ public class Seller : IEntity, IEquatable<Seller>
     /// The email
     /// </summary>
     private string _email;
+
     /// <summary>
     /// The email set
     /// </summary>
@@ -186,6 +211,7 @@ public class Seller : IEntity, IEquatable<Seller>
     /// The type
     /// </summary>
     private SellerType _type;
+
     /// <summary>
     /// The type set
     /// </summary>
@@ -195,6 +221,7 @@ public class Seller : IEntity, IEquatable<Seller>
     /// The date changed
     /// </summary>
     private DateTime _dateChanged;
+
     /// <summary>
     /// The date changed set
     /// </summary>
@@ -204,6 +231,7 @@ public class Seller : IEntity, IEquatable<Seller>
     /// The partner
     /// </summary>
     private Partner _partner;
+
     /// <summary>
     /// The partner set
     /// </summary>
@@ -221,7 +249,8 @@ public class Seller : IEntity, IEquatable<Seller>
     [EntityKey]
     public int Code
     {
-        get => _code; set
+        get => _code;
+        set
         {
             _code = value;
             _codeSet = true;
@@ -235,7 +264,8 @@ public class Seller : IEntity, IEquatable<Seller>
     [EntityElement("CODUSU")]
     public int CodeUser
     {
-        get => _codeUser; set
+        get => _codeUser;
+        set
         {
             _codeUser = value;
             _codeUserSet = true;
@@ -249,13 +279,14 @@ public class Seller : IEntity, IEquatable<Seller>
     [EntityElement("CODPARC")]
     public int CodePartner
     {
-        get => _codePartner; set
+        get => _codePartner;
+        set
         {
             _codePartner = value;
             _codePartnerSet = true;
         }
     }
-    
+
     /// <summary>
     /// Gets or sets a value indicating whether this instance is active.
     /// </summary>
@@ -321,7 +352,7 @@ public class Seller : IEntity, IEquatable<Seller>
             _emailSet = true;
         }
     }
-    
+
     /// <summary>
     /// Gets or sets the type.
     /// </summary>
@@ -329,7 +360,8 @@ public class Seller : IEntity, IEquatable<Seller>
     [EntityIgnore]
     public SellerType Type
     {
-        get => _type; set
+        get => _type;
+        set
         {
             _type = value;
             _typeSet = true;
@@ -345,7 +377,8 @@ public class Seller : IEntity, IEquatable<Seller>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string TypeInternal
     {
-        get => _type.GetInternalValue(); set
+        get => _type.GetInternalValue();
+        set
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -364,7 +397,8 @@ public class Seller : IEntity, IEquatable<Seller>
     [EntityElement("DTALTER")]
     public DateTime DateChanged
     {
-        get => _dateChanged; set
+        get => _dateChanged;
+        set
         {
             _dateChanged = value;
             _dateChangedSet = true;
@@ -378,7 +412,8 @@ public class Seller : IEntity, IEquatable<Seller>
     [EntityReference]
     public Partner Partner
     {
-        get => _partner; set
+        get => _partner;
+        set
         {
             _partner = value;
             _partnerSet = true;
@@ -462,5 +497,4 @@ public class Seller : IEntity, IEquatable<Seller>
     public bool ShouldSerializePartner() => _partnerSet;
 
     #endregion
-
 }

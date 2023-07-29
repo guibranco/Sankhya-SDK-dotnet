@@ -8,13 +8,13 @@ using System.Xml.Serialization;
 /// </summary>
 public sealed class CrudServiceProviderEntities
 {
-
     #region Private Members
 
     /// <summary>
     /// The pager identifier
     /// </summary>
     private string _pagerId;
+
     /// <summary>
     /// The pager identifier set
     /// </summary>
@@ -24,6 +24,7 @@ public sealed class CrudServiceProviderEntities
     /// The total pages
     /// </summary>
     private int _totalPages;
+
     /// <summary>
     /// The total pages set
     /// </summary>
@@ -33,6 +34,7 @@ public sealed class CrudServiceProviderEntities
     /// The total
     /// </summary>
     private int _total;
+
     /// <summary>
     /// The total set
     /// </summary>
@@ -42,6 +44,7 @@ public sealed class CrudServiceProviderEntities
     /// The metadata
     /// </summary>
     private Metadata _metadata;
+
     /// <summary>
     /// The metadata set
     /// </summary>
@@ -51,6 +54,7 @@ public sealed class CrudServiceProviderEntities
     /// The entities
     /// </summary>
     private dynamic[] _entities;
+
     /// <summary>
     /// The entities set
     /// </summary>
@@ -67,7 +71,8 @@ public sealed class CrudServiceProviderEntities
     [XmlAttribute("pagerID")]
     public string PagerId
     {
-        get => _pagerId; set
+        get => _pagerId;
+        set
         {
             _pagerId = value;
             _pagerIdSet = true;
@@ -81,7 +86,8 @@ public sealed class CrudServiceProviderEntities
     [XmlAttribute("totalPages")]
     public int TotalPages
     {
-        get => _totalPages; set
+        get => _totalPages;
+        set
         {
             _totalPages = value;
             _totalPagesSet = true;
@@ -95,7 +101,8 @@ public sealed class CrudServiceProviderEntities
     [XmlAttribute("total")]
     public int Total
     {
-        get => _total; set
+        get => _total;
+        set
         {
             _total = value;
             _totalSet = true;
@@ -109,7 +116,8 @@ public sealed class CrudServiceProviderEntities
     [XmlElement("metadata")]
     public Metadata Metadata
     {
-        get => _metadata; set
+        get => _metadata;
+        set
         {
             _metadata = value;
             _metadataSet = true;
@@ -123,7 +131,8 @@ public sealed class CrudServiceProviderEntities
     [XmlArrayItem("entity")]
     public dynamic[] Entities
     {
-        get => _entities; set
+        get => _entities;
+        set
         {
             _entities = value;
             _entitiesSet = true;
@@ -142,7 +151,6 @@ public sealed class CrudServiceProviderEntities
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePagerId() => _pagerIdSet;
 
-
     /// <summary>
     /// Should the serialize total pages.
     /// </summary>
@@ -150,7 +158,6 @@ public sealed class CrudServiceProviderEntities
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeTotalPages() => _totalPagesSet;
-
 
     /// <summary>
     /// Should the serialize total.
@@ -160,7 +167,6 @@ public sealed class CrudServiceProviderEntities
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeTotal() => _totalSet;
 
-
     /// <summary>
     /// Should the serialize metadata.
     /// </summary>
@@ -168,7 +174,6 @@ public sealed class CrudServiceProviderEntities
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMetadata() => _metadataSet;
-
 
     /// <summary>
     /// Should the serialize entities.

@@ -11,7 +11,7 @@ using CrispyWaffle.Serialization;
 [XmlRoot("msgDesvincularRemessa")]
 public sealed class MessageUnlinkShipping
 {
-    #region Private fields 
+    #region Private fields
 
     /// <summary>
     /// The value
@@ -57,5 +57,4 @@ public sealed class MessageUnlinkShipping
     public bool ShouldSerializeValue() => _valueSet;
 
     #endregion
-
 }

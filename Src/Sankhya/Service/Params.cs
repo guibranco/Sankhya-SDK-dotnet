@@ -29,6 +29,7 @@ public sealed class Params
     /// The single number
     /// </summary>
     private int _singleNumber;
+
     /// <summary>
     /// The single number set
     /// </summary>
@@ -38,6 +39,7 @@ public sealed class Params
     /// The code partner
     /// </summary>
     private int _codePartner;
+
     /// <summary>
     /// The code partner set
     /// </summary>
@@ -47,6 +49,7 @@ public sealed class Params
     /// The movement type
     /// </summary>
     private MovementType _movementType;
+
     /// <summary>
     /// The movement type set
     /// </summary>
@@ -63,7 +66,8 @@ public sealed class Params
     [XmlAttribute("nuNota")]
     public int SingleNumber
     {
-        get => _singleNumber; set
+        get => _singleNumber;
+        set
         {
             _singleNumber = value;
             _singleNumberSet = true;
@@ -77,7 +81,8 @@ public sealed class Params
     [XmlAttribute("codParc")]
     public int CodePartner
     {
-        get => _codePartner; set
+        get => _codePartner;
+        set
         {
             _codePartner = value;
             _codePartnerSet = true;
@@ -91,7 +96,8 @@ public sealed class Params
     [XmlIgnore]
     public MovementType MovementType
     {
-        get => _movementType; set
+        get => _movementType;
+        set
         {
             _movementType = value;
             _movementTypeSet = true;
@@ -107,7 +113,8 @@ public sealed class Params
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string MovementTypeInternal
     {
-        get => _movementType.GetInternalValue(); set
+        get => _movementType.GetInternalValue();
+        set
         {
             _movementType = EnumExtensions.GetEnumByInternalValueAttribute<MovementType>(value);
             _movementTypeSet = true;

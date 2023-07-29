@@ -28,6 +28,7 @@ public sealed class Field
     /// The name
     /// </summary>
     private string _name;
+
     /// <summary>
     /// The name set
     /// </summary>
@@ -37,6 +38,7 @@ public sealed class Field
     /// The list
     /// </summary>
     private string _list;
+
     /// <summary>
     /// The list set
     /// </summary>
@@ -46,6 +48,7 @@ public sealed class Field
     /// The except
     /// </summary>
     private bool _except;
+
     /// <summary>
     /// The except set
     /// </summary>
@@ -55,6 +58,7 @@ public sealed class Field
     /// The value
     /// </summary>
     private string _value;
+
     /// <summary>
     /// The value set
     /// </summary>
@@ -71,7 +75,8 @@ public sealed class Field
     [XmlAttribute("name")]
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
@@ -85,7 +90,8 @@ public sealed class Field
     [XmlAttribute("list")]
     public string List
     {
-        get => _list; set
+        get => _list;
+        set
         {
             _list = value;
             _listSet = true;
@@ -99,7 +105,8 @@ public sealed class Field
     [XmlIgnore]
     public bool Except
     {
-        get => _except; set
+        get => _except;
+        set
         {
             _except = value;
             _exceptSet = true;
@@ -115,7 +122,8 @@ public sealed class Field
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ExceptInternal
     {
-        get => _except.ToString(); set
+        get => _except.ToString();
+        set
         {
             _except = value.ToBoolean(@"S|N");
             _exceptSet = true;
@@ -129,7 +137,8 @@ public sealed class Field
     [XmlText]
     public string Value
     {
-        get => _value; set
+        get => _value;
+        set
         {
             _value = value;
             _valueSet = true;
@@ -173,5 +182,4 @@ public sealed class Field
     public bool ShouldSerializeValue() => _valueSet;
 
     #endregion
-
 }

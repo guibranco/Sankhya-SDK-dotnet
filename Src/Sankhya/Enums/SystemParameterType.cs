@@ -62,7 +62,6 @@ public enum SystemParameterType
     [HumanReadable("List")]
     List,
 
-
     /// <summary>
     /// The integer
     /// </summary>

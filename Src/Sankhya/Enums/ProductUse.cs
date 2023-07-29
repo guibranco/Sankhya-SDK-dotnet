@@ -15,7 +15,6 @@ namespace Sankhya.Enums;
 
 using CrispyWaffle.Attributes;
 
-
 /// <summary>
 /// Enum ProductUse
 /// </summary>
@@ -97,7 +96,6 @@ public enum ProductUse
     [InternalValue("P")]
     [HumanReadable("Em processo")]
     InProcess,
-
 
     /// <summary>
     /// The resale

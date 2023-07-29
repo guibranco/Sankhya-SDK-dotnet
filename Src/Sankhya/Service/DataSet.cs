@@ -9,13 +9,13 @@ using CrispyWaffle.Extensions;
 /// </summary>
 public sealed class DataSet
 {
-
     #region Private Members
 
     /// <summary>
     /// The root entity
     /// </summary>
     private string _rootEntity;
+
     /// <summary>
     /// The root entity set
     /// </summary>
@@ -25,6 +25,7 @@ public sealed class DataSet
     /// The include presentation fields
     /// </summary>
     private bool _includePresentationFields;
+
     /// <summary>
     /// The include presentation fields set
     /// </summary>
@@ -34,6 +35,7 @@ public sealed class DataSet
     /// The parallel loader
     /// </summary>
     private bool _parallelLoader;
+
     /// <summary>
     /// The parallel loader set
     /// </summary>
@@ -43,6 +45,7 @@ public sealed class DataSet
     /// The page number
     /// </summary>
     private int _pageNumber;
+
     /// <summary>
     /// The page number set
     /// </summary>
@@ -52,6 +55,7 @@ public sealed class DataSet
     /// The pager identifier
     /// </summary>
     private string _pagerId;
+
     /// <summary>
     /// The pager identifier set
     /// </summary>
@@ -61,6 +65,7 @@ public sealed class DataSet
     /// The data set identifier
     /// </summary>
     private string _dataSetId;
+
     /// <summary>
     /// The data set identifier set
     /// </summary>
@@ -70,6 +75,7 @@ public sealed class DataSet
     /// The data rows
     /// </summary>
     private DataRow[] _dataRows;
+
     /// <summary>
     /// The data rows set
     /// </summary>
@@ -79,6 +85,7 @@ public sealed class DataSet
     /// The literal criteria
     /// </summary>
     private LiteralCriteria _literalCriteria;
+
     /// <summary>
     /// The literal criteria set
     /// </summary>
@@ -88,6 +95,7 @@ public sealed class DataSet
     /// The entities
     /// </summary>
     private Entity[] _entities;
+
     /// <summary>
     /// The entities set
     /// </summary>
@@ -104,7 +112,8 @@ public sealed class DataSet
     [XmlAttribute("rootEntity")]
     public string RootEntity
     {
-        get => _rootEntity; set
+        get => _rootEntity;
+        set
         {
             _rootEntity = value;
             _rootEntitySet = true;
@@ -118,7 +127,6 @@ public sealed class DataSet
     [XmlIgnore]
     public bool IncludePresentationFields
     {
-
         get => _includePresentationFields;
         set
         {
@@ -136,7 +144,8 @@ public sealed class DataSet
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string IncludePresentationFieldsInternal
     {
-        get => _includePresentationFields.ToString(@"S", @"N"); set
+        get => _includePresentationFields.ToString(@"S", @"N");
+        set
         {
             _includePresentationFields = value.ToBoolean();
             _includePresentationFieldsSet = true;
@@ -150,7 +159,6 @@ public sealed class DataSet
     [XmlIgnore]
     public bool ParallelLoader
     {
-
         get => _parallelLoader;
         set
         {
@@ -168,7 +176,8 @@ public sealed class DataSet
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ParallelLoaderInternal
     {
-        get => _parallelLoader.ToString(@"true", @"false"); set
+        get => _parallelLoader.ToString(@"true", @"false");
+        set
         {
             _parallelLoader = value.ToBoolean(@"true");
             _parallelLoaderSet = true;
@@ -182,7 +191,8 @@ public sealed class DataSet
     [XmlAttribute("pageNumber")]
     public int PageNumber
     {
-        get => _pageNumber; set
+        get => _pageNumber;
+        set
         {
             _pageNumber = value;
             _pageNumberSet = true;
@@ -196,7 +206,8 @@ public sealed class DataSet
     [XmlAttribute("pagerID")]
     public string PagerId
     {
-        get => _pagerId; set
+        get => _pagerId;
+        set
         {
             _pagerId = value;
             _pagerIdSet = true;
@@ -210,7 +221,8 @@ public sealed class DataSet
     [XmlAttribute("datasetid")]
     public string DataSetId
     {
-        get => _dataSetId; set
+        get => _dataSetId;
+        set
         {
             _dataSetId = value;
             _dataSetIdSet = true;
@@ -224,7 +236,8 @@ public sealed class DataSet
     [XmlElement("dataRow")]
     public DataRow[] DataRows
     {
-        get => _dataRows; set
+        get => _dataRows;
+        set
         {
             _dataRows = value;
             _dataRowsSet = true;
@@ -238,7 +251,8 @@ public sealed class DataSet
     [XmlElement("criteria")]
     public LiteralCriteria LiteralCriteria
     {
-        get => _literalCriteria; set
+        get => _literalCriteria;
+        set
         {
             _literalCriteria = value;
             _literalCriteriaSet = true;
@@ -252,7 +266,8 @@ public sealed class DataSet
     [XmlElement(ElementName = "entity")]
     public Entity[] Entities
     {
-        get => _entities; set
+        get => _entities;
+        set
         {
             _entities = value;
             _entitiesSet = true;
@@ -336,5 +351,4 @@ public sealed class DataSet
     public bool ShouldSerializeEntities() => _entitiesSet;
 
     #endregion
-
 }

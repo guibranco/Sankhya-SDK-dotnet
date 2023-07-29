@@ -31,18 +31,27 @@ public class User : IEntity, IEquatable<User>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _code == other._code && _codeSet == other._codeSet && _codePartner == other._codePartner &&
-            _codePartnerSet == other._codePartnerSet && _codeSeller == other._codeSeller &&
-            _codeSellerSet == other._codeSellerSet && _codeGroup == other._codeGroup &&
-            _codeGroupSet == other._codeGroupSet &&
-            string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase) &&
-            _nameSet == other._nameSet &&
-            string.Equals(_email, other._email, StringComparison.InvariantCultureIgnoreCase) &&
-            _emailSet == other._emailSet && _accessLimitDate.Equals(other._accessLimitDate) &&
-            _accessLimitDateSet == other._accessLimitDateSet && Equals(_partner, other._partner) &&
-            _partnerSet == other._partnerSet && Equals(_group, other._group) &&
-            _groupSet == other._groupSet && Equals(_seller, other._seller) &&
-            _sellerSet == other._sellerSet;
+        return ReferenceEquals(this, other)
+            || _code == other._code
+                && _codeSet == other._codeSet
+                && _codePartner == other._codePartner
+                && _codePartnerSet == other._codePartnerSet
+                && _codeSeller == other._codeSeller
+                && _codeSellerSet == other._codeSellerSet
+                && _codeGroup == other._codeGroup
+                && _codeGroupSet == other._codeGroupSet
+                && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+                && _nameSet == other._nameSet
+                && string.Equals(_email, other._email, StringComparison.InvariantCultureIgnoreCase)
+                && _emailSet == other._emailSet
+                && _accessLimitDate.Equals(other._accessLimitDate)
+                && _accessLimitDateSet == other._accessLimitDateSet
+                && Equals(_partner, other._partner)
+                && _partnerSet == other._partnerSet
+                && Equals(_group, other._group)
+                && _groupSet == other._groupSet
+                && Equals(_seller, other._seller)
+                && _sellerSet == other._sellerSet;
     }
 
     /// <summary>
@@ -77,27 +86,27 @@ public class User : IEntity, IEquatable<User>
             hashCode = (hashCode * 397) ^ _codeSellerSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeGroup;
             hashCode = (hashCode * 397) ^ _codeGroupSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_name != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _name != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_name) : 0
+                );
             hashCode = (hashCode * 397) ^ _nameSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_email != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_email)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _email != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_email)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _emailSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _accessLimitDate.GetHashCode();
             hashCode = (hashCode * 397) ^ _accessLimitDateSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_partner != null
-                ? _partner.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (_partner != null ? _partner.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _partnerSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_group != null
-                ? _group.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (_group != null ? _group.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _groupSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_seller != null
-                ? _seller.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (_seller != null ? _seller.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _sellerSet.GetHashCode();
             return hashCode;
         }
@@ -127,6 +136,7 @@ public class User : IEntity, IEquatable<User>
     /// The code
     /// </summary>
     private int _code;
+
     /// <summary>
     /// The code set
     /// </summary>
@@ -216,6 +226,7 @@ public class User : IEntity, IEquatable<User>
     /// The seller
     /// </summary>
     private Seller _seller;
+
     /// <summary>
     /// The seller set
     /// </summary>
@@ -233,7 +244,8 @@ public class User : IEntity, IEquatable<User>
     [EntityElement("CODUSU")]
     public int Code
     {
-        get => _code; set
+        get => _code;
+        set
         {
             _code = value;
             _codeSet = true;
@@ -297,7 +309,8 @@ public class User : IEntity, IEquatable<User>
     [Localizable(false)]
     public string Name
     {
-        get => _name; set
+        get => _name;
+        set
         {
             _name = value;
             _nameSet = true;
@@ -311,7 +324,8 @@ public class User : IEntity, IEquatable<User>
     [EntityElement("EMAIL")]
     public string Email
     {
-        get => _email; set
+        get => _email;
+        set
         {
             _email = value;
             _emailSet = true;
@@ -342,7 +356,8 @@ public class User : IEntity, IEquatable<User>
     [EntityReference]
     public Partner Partner
     {
-        get => _partner; set
+        get => _partner;
+        set
         {
             _partner = value;
             _partnerSet = true;
@@ -356,7 +371,8 @@ public class User : IEntity, IEquatable<User>
     [EntityReference]
     public UserGroup Group
     {
-        get => _group; set
+        get => _group;
+        set
         {
             _group = value;
             _groupSet = true;
@@ -390,7 +406,6 @@ public class User : IEntity, IEquatable<User>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCode() => _codeSet;
 
     /// <summary>
@@ -399,7 +414,6 @@ public class User : IEntity, IEquatable<User>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodePartner() => _codePartnerSet;
 
     /// <summary>
@@ -410,7 +424,6 @@ public class User : IEntity, IEquatable<User>
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodeSeller() => _codeSellerSet;
 
     /// <summary>
@@ -419,7 +432,6 @@ public class User : IEntity, IEquatable<User>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodeGroup() => _codeGroupSet;
 
     /// <summary>
@@ -428,7 +440,6 @@ public class User : IEntity, IEquatable<User>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeName() => _nameSet;
 
     /// <summary>
@@ -437,7 +448,6 @@ public class User : IEntity, IEquatable<User>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeEmail() => _emailSet;
 
     /// <summary>
@@ -448,7 +458,6 @@ public class User : IEntity, IEquatable<User>
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeAccessLimitDate() => _accessLimitDateSet;
 
     /// <summary>
@@ -457,7 +466,6 @@ public class User : IEntity, IEquatable<User>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializePartner() => _partnerSet;
 
     /// <summary>
@@ -466,7 +474,6 @@ public class User : IEntity, IEquatable<User>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeGroup() => _groupSet;
 
     /// <summary>
@@ -477,7 +484,6 @@ public class User : IEntity, IEquatable<User>
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeSeller() => _sellerSet;
 
     #endregion

@@ -11,10 +11,21 @@ using Sankhya.Service;
 [Serializable]
 public class ServiceRequestAttributeException : ServiceRequestGeneralException
 {
-    public ServiceRequestAttributeException(string attributeName, ServiceName service, ServiceRequest request)
-        : base(string.Format(CultureInfo.CurrentCulture, Resources.ServiceRequestAttributeException, service.GetHumanReadableValue(), attributeName), request)
-    { }
+    public ServiceRequestAttributeException(
+        string attributeName,
+        ServiceName service,
+        ServiceRequest request
+    )
+        : base(
+            string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.ServiceRequestAttributeException,
+                service.GetHumanReadableValue(),
+                attributeName
+            ),
+            request
+        ) { }
 
-    protected ServiceRequestAttributeException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestAttributeException(SerializationInfo info, StreamingContext context)
+        : base(info, context) { }
 }

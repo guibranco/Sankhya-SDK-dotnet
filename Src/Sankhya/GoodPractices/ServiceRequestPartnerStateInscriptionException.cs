@@ -9,9 +9,11 @@ using Sankhya.Service;
 public class ServiceRequestPartnerStateInscriptionException : ServiceRequestGeneralException
 {
     public ServiceRequestPartnerStateInscriptionException(ServiceRequest request)
-        : base(Resources.ServiceRequestPartnerStateInscriptionException, request)
-    { }
+        : base(Resources.ServiceRequestPartnerStateInscriptionException, request) { }
 
-    protected ServiceRequestPartnerStateInscriptionException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestPartnerStateInscriptionException(
+        SerializationInfo info,
+        StreamingContext context
+    )
+        : base(info, context) { }
 }

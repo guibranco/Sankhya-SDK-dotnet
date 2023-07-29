@@ -37,7 +37,12 @@ public static class ServiceRequestExtensions
     /// <param name="currentLevel">(Optional) the current level.</param>
     /// <returns>A ParseResult.</returns>
     /// <exception cref="TooInnerLevelsException">Thrown when a Too Inner Levels error condition occurs.</exception>
-    private static EntityResolverResult ParseProperties<T>(this ServiceRequest request, T criteria, ReferenceLevel maxLevel, ReferenceLevel currentLevel = ReferenceLevel.None)
+    private static EntityResolverResult ParseProperties<T>(
+        this ServiceRequest request,
+        T criteria,
+        ReferenceLevel maxLevel,
+        ReferenceLevel currentLevel = ReferenceLevel.None
+    )
     {
         var type = typeof(T);
         if (type == typeof(object))
@@ -55,7 +60,17 @@ public static class ServiceRequestExtensions
         var ignoredFields = new List<string>();
         foreach (var propertyInfo in type.GetProperties())
         {
-            ParseProperty(request, criteria, maxLevel, currentLevel, propertyInfo, ignoredFields, result, type, currentEntityName);
+            ParseProperty(
+                request,
+                criteria,
+                maxLevel,
+                currentLevel,
+                propertyInfo,
+                ignoredFields,
+                result,
+                type,
+                currentEntityName
+            );
         }
 
         return result;
@@ -83,7 +98,8 @@ public static class ServiceRequestExtensions
         ICollection<string> ignoredFields,
         EntityResolverResult result,
         Type type,
-        string currentEntityName)
+        string currentEntityName
+    )
     {
         var model = new ParsePropertyModel();
 
@@ -94,15 +110,29 @@ public static class ServiceRequestExtensions
             return;
         }
 
-        if (!model.IsEntityReference &&
-            !model.IgnoreEntityReferenceInline &&
-            (EntityValidation.ReferenceFieldsFirstLevelPattern.IsMatch(model.PropertyName) ||
-             EntityValidation.ReferenceFieldsSecondLevelPattern.IsMatch(model.PropertyName)))
+        if (
+            !model.IsEntityReference
+            && !model.IgnoreEntityReferenceInline
+            && (
+                EntityValidation.ReferenceFieldsFirstLevelPattern.IsMatch(model.PropertyName)
+                || EntityValidation.ReferenceFieldsSecondLevelPattern.IsMatch(model.PropertyName)
+            )
+        )
         {
             model.IsEntityReferenceInline = true;
         }
 
-        ProcessParse(request, criteriaEntity, maxLevel, currentLevel, propertyInfo, result, type, currentEntityName, model);
+        ProcessParse(
+            request,
+            criteriaEntity,
+            maxLevel,
+            currentLevel,
+            propertyInfo,
+            result,
+            type,
+            currentEntityName,
+            model
+        );
     }
 
     /// <summary>
@@ -118,13 +148,30 @@ public static class ServiceRequestExtensions
     /// <param name="type">The type.</param>
     /// <param name="currentEntityName">Name of the current entity.</param>
     /// <param name="model">The model.</param>
-    private static void ProcessParse<T>(ServiceRequest request, T criteriaEntity, ReferenceLevel maxLevel,
-        ReferenceLevel currentLevel, PropertyInfo propertyInfo, EntityResolverResult result, Type type,
-        string currentEntityName, ParsePropertyModel model)
+    private static void ProcessParse<T>(
+        ServiceRequest request,
+        T criteriaEntity,
+        ReferenceLevel maxLevel,
+        ReferenceLevel currentLevel,
+        PropertyInfo propertyInfo,
+        EntityResolverResult result,
+        Type type,
+        string currentEntityName,
+        ParsePropertyModel model
+    )
     {
         if (!model.IsEntityReference && !model.IsEntityReferenceInline)
         {
-            ProcessFieldsAndCriteria(request, criteriaEntity, currentLevel, propertyInfo, result, type, currentEntityName, model);
+            ProcessFieldsAndCriteria(
+                request,
+                criteriaEntity,
+                currentLevel,
+                propertyInfo,
+                result,
+                type,
+                currentEntityName,
+                model
+            );
         }
         else if (model.IsEntityReferenceInline)
         {
@@ -132,7 +179,15 @@ public static class ServiceRequestExtensions
         }
         else
         {
-            ProcessEntityReference(request, criteriaEntity, maxLevel, currentLevel, propertyInfo, result, model);
+            ProcessEntityReference(
+                request,
+                criteriaEntity,
+                maxLevel,
+                currentLevel,
+                propertyInfo,
+                result,
+                model
+            );
         }
     }
 
@@ -148,38 +203,54 @@ public static class ServiceRequestExtensions
     /// <param name="type">The type.</param>
     /// <param name="currentEntityName">Name of the current entity.</param>
     /// <param name="model">The model.</param>
-    private static void ProcessFieldsAndCriteria<T>(ServiceRequest request, T criteriaEntity, ReferenceLevel currentLevel,
-        PropertyInfo propertyInfo, EntityResolverResult result, Type type, string currentEntityName,
-        ParsePropertyModel model)
+    private static void ProcessFieldsAndCriteria<T>(
+        ServiceRequest request,
+        T criteriaEntity,
+        ReferenceLevel currentLevel,
+        PropertyInfo propertyInfo,
+        EntityResolverResult result,
+        Type type,
+        string currentEntityName,
+        ParsePropertyModel model
+    )
     {
-        result.Fields.Add(new()
-        {
-            Name = model.PropertyName
-        });
+        result.Fields.Add(new() { Name = model.PropertyName });
 
-        var shouldSerializePropertyName = propertyInfo.Name.EndsWith(@"Internal", StringComparison.InvariantCultureIgnoreCase)
+        var shouldSerializePropertyName = propertyInfo.Name.EndsWith(
+            @"Internal",
+            StringComparison.InvariantCultureIgnoreCase
+        )
             ? propertyInfo.Name.Substring(0, propertyInfo.Name.Length - 8)
             : propertyInfo.Name;
 
-        var shouldSerializeMethod = type.GetMethod(string.Concat(@"ShouldSerialize", shouldSerializePropertyName));
+        var shouldSerializeMethod = type.GetMethod(
+            string.Concat(@"ShouldSerialize", shouldSerializePropertyName)
+        );
 
-        if (shouldSerializeMethod != null
-            && shouldSerializeMethod.ReturnType == typeof(bool))
+        if (shouldSerializeMethod != null && shouldSerializeMethod.ReturnType == typeof(bool))
         {
             model.IsCriteria = (bool)shouldSerializeMethod.Invoke(criteriaEntity, null);
         }
         else
         {
-            LogConsumer.Handle(new MissingSerializerHelperEntityException(propertyInfo.Name,
-                currentEntityName,
-                type.FullName));
+            LogConsumer.Handle(
+                new MissingSerializerHelperEntityException(
+                    propertyInfo.Name,
+                    currentEntityName,
+                    type.FullName
+                )
+            );
         }
 
-        if (!model.IsCriteria &&
-            (!model.IsEntityKey ||
-             currentLevel != ReferenceLevel.None ||
-             request.Service == ServiceName.CrudServiceSave ||
-             request.Service == ServiceName.CrudSave))
+        if (
+            !model.IsCriteria
+            && (
+                !model.IsEntityKey
+                || currentLevel != ReferenceLevel.None
+                || request.Service == ServiceName.CrudServiceSave
+                || request.Service == ServiceName.CrudSave
+            )
+        )
         {
             return;
         }
@@ -198,42 +269,27 @@ public static class ServiceRequestExtensions
 
         if (model.IsEntityKey)
         {
-            result.Keys.Add(new()
-            {
-                Name = model.PropertyName,
-                Value = value
-            });
+            result.Keys.Add(new() { Name = model.PropertyName, Value = value });
         }
 
         if (model.IsCriteria)
         {
-            result.Criteria.Add(new()
-            {
-                Name = model.PropertyName,
-                Value = value
-            });
+            result.Criteria.Add(new() { Name = model.PropertyName, Value = value });
             var isNumberType = propertyInfo.PropertyType.IsNumericType();
-            var condition = string.Concat(model.PropertyName,
+            var condition = string.Concat(
+                model.PropertyName,
                 @" = ",
-                isNumberType
-                    ? string.Empty
-                    : @"'",
+                isNumberType ? string.Empty : @"'",
                 value,
-                isNumberType
-                    ? string.Empty
-                    : @"'");
-            result.LiteralCriteria.Expression = result.Criteria.Count == 1
-                ? condition
-                : string.Concat(result.LiteralCriteria.Expression,
-                    @" AND ",
-                    condition);
+                isNumberType ? string.Empty : @"'"
+            );
+            result.LiteralCriteria.Expression =
+                result.Criteria.Count == 1
+                    ? condition
+                    : string.Concat(result.LiteralCriteria.Expression, @" AND ", condition);
         }
 
-        result.FieldValues.Add(new()
-        {
-            Name = model.PropertyName,
-            Value = value
-        });
+        result.FieldValues.Add(new() { Name = model.PropertyName, Value = value });
     }
 
     /// <summary>
@@ -247,19 +303,19 @@ public static class ServiceRequestExtensions
         EntityResolverResult result,
         Type type,
         string currentEntityName,
-        ParsePropertyModel model)
+        ParsePropertyModel model
+    )
     {
-        var secondLevel = EntityValidation.ReferenceFieldsSecondLevelPattern.IsMatch(model.PropertyName);
+        var secondLevel = EntityValidation.ReferenceFieldsSecondLevelPattern.IsMatch(
+            model.PropertyName
+        );
         var match = secondLevel
             ? EntityValidation.ReferenceFieldsSecondLevelPattern.Match(model.PropertyName)
             : EntityValidation.ReferenceFieldsFirstLevelPattern.Match(model.PropertyName);
         var referenceEntity = secondLevel
             ? $@"{match.Groups[@"parentEntity"].Value}.{match.Groups[@"entity"].Value}"
             : match.Groups[@"entity"].Value;
-        var referenceField = new Field
-        {
-            Name = match.Groups[@"field"].Value
-        };
+        var referenceField = new Field { Name = match.Groups[@"field"].Value };
 
         if (result.References.ContainsKey(referenceEntity))
         {
@@ -267,20 +323,17 @@ public static class ServiceRequestExtensions
         }
         else
         {
-            result.References.Add(
-                referenceEntity,
-                new()
-                {
-                    referenceField
-                });
+            result.References.Add(referenceEntity, new() { referenceField });
         }
 
-        LogConsumer.Warning(Resources.ServiceRequestExtensions_ParseProperty,
+        LogConsumer.Warning(
+            Resources.ServiceRequestExtensions_ParseProperty,
             referenceEntity,
             referenceField.Name,
             model.PropertyName,
             currentEntityName,
-            type.Name);
+            type.Name
+        );
     }
 
     /// <summary>
@@ -294,8 +347,15 @@ public static class ServiceRequestExtensions
     /// <param name="propertyInfo">The property information.</param>
     /// <param name="result">The result.</param>
     /// <param name="model">The model.</param>
-    private static void ProcessEntityReference<T>(ServiceRequest request, T criteriaEntity, ReferenceLevel maxLevel,
-        ReferenceLevel currentLevel, PropertyInfo propertyInfo, EntityResolverResult result, ParsePropertyModel model)
+    private static void ProcessEntityReference<T>(
+        ServiceRequest request,
+        T criteriaEntity,
+        ReferenceLevel maxLevel,
+        ReferenceLevel currentLevel,
+        PropertyInfo propertyInfo,
+        EntityResolverResult result,
+        ParsePropertyModel model
+    )
     {
         if ((int)maxLevel <= (int)currentLevel)
         {
@@ -304,8 +364,12 @@ public static class ServiceRequestExtensions
 
         var innerType = propertyInfo.PropertyType;
         var innerLevel = (ReferenceLevel)((int)currentLevel + 1);
-        var innerTypeValue = Convert.ChangeType(propertyInfo.GetValue(criteriaEntity, null), innerType, CultureInfo.InvariantCulture)
-                             ?? Activator.CreateInstance(innerType);
+        var innerTypeValue =
+            Convert.ChangeType(
+                propertyInfo.GetValue(criteriaEntity, null),
+                innerType,
+                CultureInfo.InvariantCulture
+            ) ?? Activator.CreateInstance(innerType);
         var innerResult = request.ParseProperties(innerTypeValue, maxLevel, innerLevel);
 
         var innerName = string.IsNullOrWhiteSpace(model.CustomRelationName)
@@ -320,12 +384,7 @@ public static class ServiceRequestExtensions
             }
             else
             {
-                result.References.Add(
-                    innerName,
-                    new()
-                    {
-                        innerField
-                    });
+                result.References.Add(innerName, new() { innerField });
             }
         }
 
@@ -351,11 +410,8 @@ public static class ServiceRequestExtensions
         foreach (var criteria in innerResult.Criteria)
         {
             result.Criteria.Add(
-                new()
-                {
-                    Name = $@"{innerName}->{criteria.Name}",
-                    Value = criteria.Value
-                });
+                new() { Name = $@"{innerName}->{criteria.Name}", Value = criteria.Value }
+            );
         }
     }
 
@@ -366,13 +422,24 @@ public static class ServiceRequestExtensions
     /// <param name="ignoredFields">The ignored fields.</param>
     /// <param name="model">The model.</param>
     /// <returns></returns>
-    private static bool CheckIfElementIsIgnored(PropertyInfo propertyInfo, ICollection<string> ignoredFields,
-        ParsePropertyModel model)
+    private static bool CheckIfElementIsIgnored(
+        PropertyInfo propertyInfo,
+        ICollection<string> ignoredFields,
+        ParsePropertyModel model
+    )
     {
-        if (!model.IsIgnored &&
-            (!ignoredFields.Any(f =>
-                 f.Equals(model.PropertyName, StringComparison.InvariantCultureIgnoreCase)) ||
-             propertyInfo.Name.EndsWith(@"Internal", StringComparison.InvariantCultureIgnoreCase)))
+        if (
+            !model.IsIgnored
+            && (
+                !ignoredFields.Any(
+                    f => f.Equals(model.PropertyName, StringComparison.InvariantCultureIgnoreCase)
+                )
+                || propertyInfo.Name.EndsWith(
+                    @"Internal",
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+            )
+        )
         {
             return false;
         }
@@ -427,14 +494,18 @@ public static class ServiceRequestExtensions
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <param name="request">The request</param>
     /// <exception cref="InvalidServiceRequestOperationException">Thrown when an Invalid Service Request Operation error condition occurs.</exception>
-    public static void Resolve<T>(this ServiceRequest request) where T : class, IEntity, new()
+    public static void Resolve<T>(this ServiceRequest request)
+        where T : class, IEntity, new()
     {
         if (request == null)
         {
             throw new ArgumentNullException(nameof(request));
         }
 
-        if (request.Service != ServiceName.CrudFind && request.Service != ServiceName.CrudServiceFind)
+        if (
+            request.Service != ServiceName.CrudFind
+            && request.Service != ServiceName.CrudServiceFind
+        )
         {
             throw new InvalidServiceRequestOperationException(request.Service);
         }
@@ -458,7 +529,16 @@ public static class ServiceRequestExtensions
                     return;
                 }
 
-                request.RequestBody.Entity.ReferencesFetch = result.References.Select(reference => new ReferenceFetch { Field = reference.Value.ToArray(), Name = reference.Key }).ToArray();
+                request.RequestBody.Entity.ReferencesFetch = result.References
+                    .Select(
+                        reference =>
+                            new ReferenceFetch
+                            {
+                                Field = reference.Value.ToArray(),
+                                Name = reference.Key
+                            }
+                    )
+                    .ToArray();
                 break;
 
             #endregion
@@ -478,7 +558,10 @@ public static class ServiceRequestExtensions
                     new()
                     {
                         Path = string.Empty,
-                        Fieldset = new() {List = string.Join(@",", result.Fields.Select(f => f.Name))}
+                        Fieldset = new()
+                        {
+                            List = string.Join(@",", result.Fields.Select(f => f.Name))
+                        }
                     }
                 };
                 if (!result.References.Any())
@@ -486,11 +569,23 @@ public static class ServiceRequestExtensions
                     request.RequestBody.DataSet.Entities = entities.ToArray();
                     return;
                 }
-                entities.AddRange(result.References.Select(reference => new Entity { Path = reference.Key, Fieldset = new() { List = string.Join(@",", reference.Value.Select(v => v.Name)) } }));
+                entities.AddRange(
+                    result.References.Select(
+                        reference =>
+                            new Entity
+                            {
+                                Path = reference.Key,
+                                Fieldset = new()
+                                {
+                                    List = string.Join(@",", reference.Value.Select(v => v.Name))
+                                }
+                            }
+                    )
+                );
                 request.RequestBody.DataSet.Entities = entities.ToArray();
                 break;
 
-                #endregion
+            #endregion
         }
     }
 
@@ -502,7 +597,12 @@ public static class ServiceRequestExtensions
     /// <param name="criteria">The criteria.</param>
     /// <param name="maxReferenceLevel"></param>
     /// <exception cref="InvalidServiceRequestOperationException"></exception>
-    public static void Resolve<T>(this ServiceRequest request, T criteria, ReferenceLevel maxReferenceLevel = ReferenceLevel.Fourth) where T : class, IEntity, new()
+    public static void Resolve<T>(
+        this ServiceRequest request,
+        T criteria,
+        ReferenceLevel maxReferenceLevel = ReferenceLevel.Fourth
+    )
+        where T : class, IEntity, new()
     {
         if (request == null)
         {
@@ -522,9 +622,11 @@ public static class ServiceRequestExtensions
         }
 
         var result = request.ParseProperties(criteria, maxReference);
-        if (request.Service == ServiceName.CrudFind ||
-            request.Service == ServiceName.CrudSave ||
-            request.Service == ServiceName.CrudRemove)
+        if (
+            request.Service == ServiceName.CrudFind
+            || request.Service == ServiceName.CrudSave
+            || request.Service == ServiceName.CrudRemove
+        )
         {
             request.RequestBody.Entity = new() { Name = result.Name };
         }
@@ -554,8 +656,16 @@ public static class ServiceRequestExtensions
                     return;
                 }
 
-                request.RequestBody.Entity.ReferencesFetch = result.References.Select(reference =>
-                    new ReferenceFetch { Field = reference.Value.ToArray(), Name = reference.Key }).ToArray();
+                request.RequestBody.Entity.ReferencesFetch = result.References
+                    .Select(
+                        reference =>
+                            new ReferenceFetch
+                            {
+                                Field = reference.Value.ToArray(),
+                                Name = reference.Key
+                            }
+                    )
+                    .ToArray();
 
                 break;
 
@@ -583,15 +693,17 @@ public static class ServiceRequestExtensions
                     ParallelLoader = true,
                     DataSetId = string.Concat(DateTime.Now.ToUnixTimeStamp(), @"_1")
                 };
-                var entities =
-                    new List<Entity>
+                var entities = new List<Entity>
+                {
+                    new()
                     {
-                        new()
+                        Path = string.Empty,
+                        Fieldset = new()
                         {
-                            Path = string.Empty,
-                            Fieldset = new() {List = string.Join(@",", result.Fields.Select(f => f.Name))}
+                            List = string.Join(@",", result.Fields.Select(f => f.Name))
                         }
-                    };
+                    }
+                };
                 request.RequestBody.DataSet.LiteralCriteria = result.LiteralCriteria;
                 if (!result.References.Any())
                 {
@@ -599,11 +711,19 @@ public static class ServiceRequestExtensions
                     return;
                 }
 
-                entities.AddRange(result.References.Select(reference => new Entity
-                {
-                    Path = reference.Key,
-                    Fieldset = new() { List = string.Join(@",", reference.Value.Select(v => v.Name)) }
-                }));
+                entities.AddRange(
+                    result.References.Select(
+                        reference =>
+                            new Entity
+                            {
+                                Path = reference.Key,
+                                Fieldset = new()
+                                {
+                                    List = string.Join(@",", reference.Value.Select(v => v.Name))
+                                }
+                            }
+                    )
+                );
                 request.RequestBody.DataSet.Entities = entities.ToArray();
 
                 break;
@@ -620,18 +740,34 @@ public static class ServiceRequestExtensions
                     IncludePresentationFields = false,
                     ParallelLoader = true,
                     DataSetId = string.Concat(DateTime.Now.ToUnixTimeStamp(), @"_1"),
-                    Entities = new[] { new Entity { Path = string.Empty, Fieldset = new() { List = @"*" } } },
+                    Entities = new[]
+                    {
+                        new Entity
+                        {
+                            Path = string.Empty,
+                            Fieldset = new() { List = @"*" }
+                        }
+                    },
                     DataRows = new[]
                     {
-                        new DataRow
-                        {
-                            Keys = new(), LocalFields = new()
-                        }
+                        new DataRow { Keys = new(), LocalFields = new() }
                     }
                 };
-                result.Keys.ForEach(k => request.RequestBody.DataSet.DataRows.Single().Keys.SetMember(k.Name, k.Value));
-                result.FieldValues.Except(result.Keys).ToList().ForEach(f =>
-                    request.RequestBody.DataSet.DataRows.Single().LocalFields.SetMember(f.Name, f.Value));
+                result.Keys.ForEach(
+                    k =>
+                        request.RequestBody.DataSet.DataRows
+                            .Single()
+                            .Keys.SetMember(k.Name, k.Value)
+                );
+                result.FieldValues
+                    .Except(result.Keys)
+                    .ToList()
+                    .ForEach(
+                        f =>
+                            request.RequestBody.DataSet.DataRows
+                                .Single()
+                                .LocalFields.SetMember(f.Name, f.Value)
+                    );
 
                 break;
 
@@ -645,9 +781,14 @@ public static class ServiceRequestExtensions
                 {
                     RootEntity = result.Name,
                     DataSetId = string.Concat(DateTime.Now.ToUnixTimeStamp(), @"_2"),
-                    Ids = new[] { new EntityDynamicSerialization(DynamicSerializationOption.Uppercase) }
+                    Ids = new[]
+                    {
+                        new EntityDynamicSerialization(DynamicSerializationOption.Uppercase)
+                    }
                 };
-                result.Keys.ForEach(k => request.RequestBody.Entity.Ids[0].SetMember(k.Name, k.Value));
+                result.Keys.ForEach(
+                    k => request.RequestBody.Entity.Ids[0].SetMember(k.Name, k.Value)
+                );
 
                 break;
 
@@ -665,14 +806,17 @@ public static class ServiceRequestExtensions
     /// <param name="request">The request</param>
     /// <param name="criteriaList">The criteria list to create/update/save or exclude/remove.</param>
     /// <exception cref="InvalidServiceRequestOperationException">Thrown when an Invalid Service Request Operation error condition occurs.</exception>
-    public static void Resolve<T>(this ServiceRequest request, ICollection<T> criteriaList) where T : class, IEntity, new()
+    public static void Resolve<T>(this ServiceRequest request, ICollection<T> criteriaList)
+        where T : class, IEntity, new()
     {
         if (request == null)
         {
             throw new ArgumentNullException(nameof(request));
         }
 
-        var results = criteriaList.Select(criteria => request.ParseProperties(criteria, ReferenceLevel.Third)).ToList();
+        var results = criteriaList
+            .Select(criteria => request.ParseProperties(criteria, ReferenceLevel.Third))
+            .ToList();
 
         var sample = results.First();
 
@@ -681,15 +825,21 @@ public static class ServiceRequestExtensions
             #region CRUD Service Save
 
             case ServiceName.CrudServiceSave:
-                request.RequestBody.DataSet =
-                    new()
+                request.RequestBody.DataSet = new()
+                {
+                    RootEntity = sample.Name,
+                    IncludePresentationFields = false,
+                    ParallelLoader = true,
+                    DataSetId = string.Concat(DateTime.Now.ToUnixTimeStamp(), @"_1"),
+                    Entities = new[]
                     {
-                        RootEntity = sample.Name,
-                        IncludePresentationFields = false,
-                        ParallelLoader = true,
-                        DataSetId = string.Concat(DateTime.Now.ToUnixTimeStamp(), @"_1"),
-                        Entities = new[] { new Entity { Path = string.Empty, Fieldset = new() { List = @"*" } } }
-                    };
+                        new Entity
+                        {
+                            Path = string.Empty,
+                            Fieldset = new() { List = @"*" }
+                        }
+                    }
+                };
                 var dataRows = new List<DataRow>();
                 foreach (var result in results)
                 {
@@ -747,7 +897,8 @@ public static class ServiceRequestExtensions
     /// <param name="request">The request</param>
     /// <param name="literalCriteria">The literal criteria.</param>
     /// <exception cref="InvalidServiceRequestOperationException">Throws when the <paramref name="literalCriteria" /> is not a instance of <seealso cref="LiteralCriteria" /> and the <seealso cref="ServiceName" /> of the <paramref name="request" /> is not CRUD_FIND or CRUD_SERVICE_FIND and also <paramref name="literalCriteria" /> is not a instance of <seealso cref="LiteralCriteriaSql" /> and the <seealso cref="ServiceName" /> is CRUD_FIND.</exception>
-    public static void Resolve<T>(this ServiceRequest request, ILiteralCriteria literalCriteria) where T : class, IEntity, new()
+    public static void Resolve<T>(this ServiceRequest request, ILiteralCriteria literalCriteria)
+        where T : class, IEntity, new()
     {
         request.Resolve<T>();
         var literal = literalCriteria as LiteralCriteria;
@@ -776,7 +927,8 @@ public static class ServiceRequestExtensions
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <param name="request">The request</param>
     /// <param name="literalCriteriaBuilder">The literal criteria builder.</param>
-    public static void Resolve<T>(this ServiceRequest request, StringBuilder literalCriteriaBuilder) where T : class, IEntity, new()
+    public static void Resolve<T>(this ServiceRequest request, StringBuilder literalCriteriaBuilder)
+        where T : class, IEntity, new()
     {
         if (literalCriteriaBuilder == null)
         {
@@ -796,8 +948,7 @@ public static class ServiceRequestExtensions
     /// <exception cref="NotImplementedException"></exception>
     // TODO issue #68
     public static void Resolve<T>(this ServiceRequest request, Expression<Func<T, bool>> predicate)
-        where T : class, IEntity, new() =>
-        throw new NotImplementedException();
+        where T : class, IEntity, new() => throw new NotImplementedException();
 
     /// <summary>
     /// Resolves the specified entity.
@@ -807,10 +958,7 @@ public static class ServiceRequestExtensions
     /// <param name="entity">The entity.</param>
     /// <param name="options">The options.</param>
     /// <exception cref="InvalidServiceRequestOperationException"></exception>
-    public static void Resolve<T>(
-        this ServiceRequest request,
-        T entity,
-        EntityQueryOptions options)
+    public static void Resolve<T>(this ServiceRequest request, T entity, EntityQueryOptions options)
         where T : class, IEntity, new()
     {
         if (request == null)
@@ -828,11 +976,12 @@ public static class ServiceRequestExtensions
             case ServiceName.CrudFind:
                 if (options.IncludePresentationFields.HasValue)
                 {
-                    request.RequestBody.Entity.IncludePresentationFields = options.IncludePresentationFields.Value;
+                    request.RequestBody.Entity.IncludePresentationFields = options
+                        .IncludePresentationFields
+                        .Value;
                 }
 
-                if (options.IncludeReferences.HasValue &&
-                    !options.IncludeReferences.Value)
+                if (options.IncludeReferences.HasValue && !options.IncludeReferences.Value)
                 {
                     request.RequestBody.Entity.ReferencesFetch = null;
                 }
@@ -846,13 +995,16 @@ public static class ServiceRequestExtensions
             case ServiceName.CrudServiceFind:
                 if (options.IncludePresentationFields.HasValue)
                 {
-                    request.RequestBody.DataSet.IncludePresentationFields = options.IncludePresentationFields.Value;
+                    request.RequestBody.DataSet.IncludePresentationFields = options
+                        .IncludePresentationFields
+                        .Value;
                 }
 
-                if (options.IncludeReferences.HasValue &&
-                    !options.IncludeReferences.Value)
+                if (options.IncludeReferences.HasValue && !options.IncludeReferences.Value)
                 {
-                    request.RequestBody.DataSet.Entities = request.RequestBody.DataSet.Entities.Where(e => string.IsNullOrWhiteSpace(e.Path)).ToArray();
+                    request.RequestBody.DataSet.Entities = request.RequestBody.DataSet.Entities
+                        .Where(e => string.IsNullOrWhiteSpace(e.Path))
+                        .ToArray();
                 }
 
                 if (options.UseWildcardFields.HasValue && options.UseWildcardFields.Value)
@@ -879,7 +1031,9 @@ public static class ServiceRequestExtensions
     public static void Resolve<T>(
         this ServiceRequest request,
         ILiteralCriteria criteria,
-        EntityQueryOptions options) where T : class, IEntity, new()
+        EntityQueryOptions options
+    )
+        where T : class, IEntity, new()
     {
         if (request == null)
         {
@@ -915,18 +1069,23 @@ public static class ServiceRequestExtensions
     /// <param name="request">The request.</param>
     /// <param name="options">The options.</param>
     /// <exception cref="NotImplementedException"></exception>
-    private static void ResolveCrudServiceFindInternal(ServiceRequest request, EntityQueryOptions options)
+    private static void ResolveCrudServiceFindInternal(
+        ServiceRequest request,
+        EntityQueryOptions options
+    )
     {
         if (options.IncludePresentationFields.HasValue)
         {
-            request.RequestBody.DataSet.IncludePresentationFields = options.IncludePresentationFields.Value;
+            request.RequestBody.DataSet.IncludePresentationFields = options
+                .IncludePresentationFields
+                .Value;
         }
 
-        if (options.IncludeReferences.HasValue &&
-            !options.IncludeReferences.Value)
+        if (options.IncludeReferences.HasValue && !options.IncludeReferences.Value)
         {
             request.RequestBody.DataSet.Entities = request.RequestBody.DataSet.Entities
-                .Where(e => string.IsNullOrWhiteSpace(e.Path)).ToArray();
+                .Where(e => string.IsNullOrWhiteSpace(e.Path))
+                .ToArray();
         }
 
         if (options.MaxReferenceDepth.HasValue)
@@ -954,11 +1113,12 @@ public static class ServiceRequestExtensions
     {
         if (options.IncludePresentationFields.HasValue)
         {
-            request.RequestBody.Entity.IncludePresentationFields = options.IncludePresentationFields.Value;
+            request.RequestBody.Entity.IncludePresentationFields = options
+                .IncludePresentationFields
+                .Value;
         }
 
-        if (options.IncludeReferences.HasValue &&
-            !options.IncludeReferences.Value)
+        if (options.IncludeReferences.HasValue && !options.IncludeReferences.Value)
         {
             request.RequestBody.Entity.ReferencesFetch = null;
         }

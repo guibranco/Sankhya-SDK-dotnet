@@ -24,15 +24,27 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _codeProduct == other._codeProduct && _codeProductSet == other._codeProductSet &&
-            _codeCompany == other._codeCompany && _codeCompanySet == other._codeCompanySet &&
-            _date.Equals(other._date) && _dateSet == other._dateSet && _codeLocal == other._codeLocal &&
-            _codeLocalSet == other._codeLocalSet &&
-            string.Equals(_control, other._control, StringComparison.InvariantCultureIgnoreCase) &&
-            _controlSet == other._controlSet && _singleNumber == other._singleNumber &&
-            _singleNumberSet == other._singleNumberSet && _sequence == other._sequence &&
-            _sequenceSet == other._sequenceSet && _costReplacement == other._costReplacement &&
-            _costReplacementSet == other._costReplacementSet;
+        return ReferenceEquals(this, other)
+            || _codeProduct == other._codeProduct
+                && _codeProductSet == other._codeProductSet
+                && _codeCompany == other._codeCompany
+                && _codeCompanySet == other._codeCompanySet
+                && _date.Equals(other._date)
+                && _dateSet == other._dateSet
+                && _codeLocal == other._codeLocal
+                && _codeLocalSet == other._codeLocalSet
+                && string.Equals(
+                    _control,
+                    other._control,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _controlSet == other._controlSet
+                && _singleNumber == other._singleNumber
+                && _singleNumberSet == other._singleNumberSet
+                && _sequence == other._sequence
+                && _sequenceSet == other._sequenceSet
+                && _costReplacement == other._costReplacement
+                && _costReplacementSet == other._costReplacementSet;
     }
 
     /// <summary>
@@ -66,7 +78,13 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
             hashCode = (hashCode * 397) ^ _dateSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeLocal;
             hashCode = (hashCode * 397) ^ _codeLocalSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_control != null ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_control) : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _control != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_control)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _controlSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _singleNumber;
             hashCode = (hashCode * 397) ^ _singleNumberSet.GetHashCode();
@@ -102,6 +120,7 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// The code product
     /// </summary>
     private int _codeProduct;
+
     /// <summary>
     /// The code product set
     /// </summary>
@@ -111,6 +130,7 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// The code company
     /// </summary>
     private int _codeCompany;
+
     /// <summary>
     /// The code company set
     /// </summary>
@@ -120,6 +140,7 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// The date
     /// </summary>
     private DateTime _date;
+
     /// <summary>
     /// The date set
     /// </summary>
@@ -129,6 +150,7 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// The code local
     /// </summary>
     private int _codeLocal;
+
     /// <summary>
     /// The code local set
     /// </summary>
@@ -138,6 +160,7 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// The control
     /// </summary>
     private string _control;
+
     /// <summary>
     /// The control set
     /// </summary>
@@ -147,6 +170,7 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// The single number
     /// </summary>
     private int _singleNumber;
+
     /// <summary>
     /// The single number set
     /// </summary>
@@ -156,6 +180,7 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// The sequence
     /// </summary>
     private int _sequence;
+
     /// <summary>
     /// The sequence set
     /// </summary>
@@ -165,6 +190,7 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// The cost replacement
     /// </summary>
     private decimal _costReplacement;
+
     /// <summary>
     /// The cost replacement set
     /// </summary>
@@ -183,7 +209,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     public int CodeProduct
     {
         get => _codeProduct;
-
         set
         {
             _codeProduct = value;
@@ -196,7 +221,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// </summary>
     /// <value>The code company.</value>
     [EntityElement("CODEMP")]
-
     public int CodeCompany
     {
         get => _codeCompany;
@@ -213,7 +237,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// <value>The date.</value>
     [EntityElement("DTATUAL")]
     [EntityKey]
-
     public DateTime Date
     {
         get => _date;
@@ -230,7 +253,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// <value>The code local.</value>
     [EntityElement("CODLOCAL")]
     [EntityKey]
-
     public int CodeLocal
     {
         get => _codeLocal;
@@ -247,7 +269,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// <value>The control.</value>
     [EntityElement("CONTROLE")]
     [EntityKey]
-
     public string Control
     {
         get => _control;
@@ -264,7 +285,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// <value>The single number.</value>
     [EntityElement("NUNOTA")]
     [EntityKey]
-
     public int SingleNumber
     {
         get => _singleNumber;
@@ -274,13 +294,13 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
             _singleNumberSet = true;
         }
     }
+
     /// <summary>
     /// Gets or sets the sequence.
     /// </summary>
     /// <value>The sequence.</value>
     [EntityElement("SEQUENCIA")]
     [EntityKey]
-
     public int Sequence
     {
         get => _sequence;

@@ -16,7 +16,7 @@ using Sankhya.Properties;
 [Entity("CabecalhoNotaExcluida")]
 public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion>
 {
-    #region Equality Members 
+    #region Equality Members
 
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
@@ -32,31 +32,57 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
             return false;
         }
 
-        return ReferenceEquals(this, other) || _singleNumber == other._singleNumber && _singleNumberSet == other._singleNumberSet &&
-            _invoiceNumber == other._invoiceNumber && _invoiceNumberSet == other._invoiceNumberSet &&
-            _dateTraded.Equals(other._dateTraded) && _dateTradedSet == other._dateTradedSet &&
-            _invoiceValue == other._invoiceValue && _invoiceValueSet == other._invoiceValueSet &&
-            _movementType == other._movementType && _movementTypeSet == other._movementTypeSet &&
-            _dateExclusion.Equals(other._dateExclusion) && _dateExclusionSet == other._dateExclusionSet &&
-            _codePartner == other._codePartner && _codePartnerSet == other._codePartnerSet &&
-            _codeSeller == other._codeSeller && _codeSellerSet == other._codeSellerSet &&
-            _codeCompany == other._codeCompany && _codeCompanySet == other._codeCompanySet &&
-            _codeResultCenter == other._codeResultCenter &&
-            _codeResultCenterSet == other._codeResultCenterSet && _codeTradeType == other._codeTradeType &&
-            _codeTradeTypeSet == other._codeTradeTypeSet &&
-            _codeOperationType == other._codeOperationType &&
-            _codeOperationTypeSet == other._codeOperationTypeSet &&
-            _dateChanged.Equals(other._dateChanged) && _dateChangedSet == other._dateChangedSet &&
-            _dateEntryExit.Equals(other._dateEntryExit) && _dateEntryExitSet == other._dateEntryExitSet &&
-            _dateMovement.Equals(other._dateMovement) && _dateMovementSet == other._dateMovementSet &&
-            _timeMovement.Equals(other._timeMovement) && _timeMovementSet == other._timeMovementSet &&
-            string.Equals(_invoiceSeries, other._invoiceSeries, StringComparison.InvariantCultureIgnoreCase) &&
-            _invoiceSeriesSet == other._invoiceSeriesSet &&
-            string.Equals(_hostName, other._hostName, StringComparison.InvariantCultureIgnoreCase) &&
-            _hostNameSet == other._hostNameSet && Equals(_tradingType, other._tradingType) &&
-            _tradingTypeSet == other._tradingTypeSet && Equals(_user, other._user) &&
-            _userSet == other._userSet && Equals(_seller, other._seller) &&
-            _sellerSet == other._sellerSet;
+        return ReferenceEquals(this, other)
+            || _singleNumber == other._singleNumber
+                && _singleNumberSet == other._singleNumberSet
+                && _invoiceNumber == other._invoiceNumber
+                && _invoiceNumberSet == other._invoiceNumberSet
+                && _dateTraded.Equals(other._dateTraded)
+                && _dateTradedSet == other._dateTradedSet
+                && _invoiceValue == other._invoiceValue
+                && _invoiceValueSet == other._invoiceValueSet
+                && _movementType == other._movementType
+                && _movementTypeSet == other._movementTypeSet
+                && _dateExclusion.Equals(other._dateExclusion)
+                && _dateExclusionSet == other._dateExclusionSet
+                && _codePartner == other._codePartner
+                && _codePartnerSet == other._codePartnerSet
+                && _codeSeller == other._codeSeller
+                && _codeSellerSet == other._codeSellerSet
+                && _codeCompany == other._codeCompany
+                && _codeCompanySet == other._codeCompanySet
+                && _codeResultCenter == other._codeResultCenter
+                && _codeResultCenterSet == other._codeResultCenterSet
+                && _codeTradeType == other._codeTradeType
+                && _codeTradeTypeSet == other._codeTradeTypeSet
+                && _codeOperationType == other._codeOperationType
+                && _codeOperationTypeSet == other._codeOperationTypeSet
+                && _dateChanged.Equals(other._dateChanged)
+                && _dateChangedSet == other._dateChangedSet
+                && _dateEntryExit.Equals(other._dateEntryExit)
+                && _dateEntryExitSet == other._dateEntryExitSet
+                && _dateMovement.Equals(other._dateMovement)
+                && _dateMovementSet == other._dateMovementSet
+                && _timeMovement.Equals(other._timeMovement)
+                && _timeMovementSet == other._timeMovementSet
+                && string.Equals(
+                    _invoiceSeries,
+                    other._invoiceSeries,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _invoiceSeriesSet == other._invoiceSeriesSet
+                && string.Equals(
+                    _hostName,
+                    other._hostName,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _hostNameSet == other._hostNameSet
+                && Equals(_tradingType, other._tradingType)
+                && _tradingTypeSet == other._tradingTypeSet
+                && Equals(_user, other._user)
+                && _userSet == other._userSet
+                && Equals(_seller, other._seller)
+                && _sellerSet == other._sellerSet;
     }
 
     /// <summary>
@@ -71,7 +97,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj is InvoiceHeaderExclusion exclusion && Equals(exclusion);
+        return ReferenceEquals(this, obj)
+            || obj is InvoiceHeaderExclusion exclusion && Equals(exclusion);
     }
 
     /// <summary>
@@ -115,25 +142,27 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
             hashCode = (hashCode * 397) ^ _dateMovementSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _timeMovement.GetHashCode();
             hashCode = (hashCode * 397) ^ _timeMovementSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_invoiceSeries != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_invoiceSeries)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _invoiceSeries != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_invoiceSeries)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _invoiceSeriesSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_hostName != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_hostName)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _hostName != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_hostName)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _hostNameSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_tradingType != null
-                ? _tradingType.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (_tradingType != null ? _tradingType.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _tradingTypeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_user != null
-                ? _user.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (_user != null ? _user.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _userSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_seller != null
-                ? _seller.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (_seller != null ? _seller.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _sellerSet.GetHashCode();
             return hashCode;
         }
@@ -145,7 +174,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <param name="left">The first value to compare.</param>
     /// <param name="right">The second value to compare.</param>
     /// <returns>true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise, false.</returns>
-    public static bool operator ==(InvoiceHeaderExclusion left, InvoiceHeaderExclusion right) => Equals(left, right);
+    public static bool operator ==(InvoiceHeaderExclusion left, InvoiceHeaderExclusion right) =>
+        Equals(left, right);
 
     /// <summary>
     /// Returns a value that indicates whether two <see cref="InvoiceHeaderExclusion" /> objects have different values.
@@ -153,7 +183,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <param name="left">The first value to compare.</param>
     /// <param name="right">The second value to compare.</param>
     /// <returns>true if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise, false.</returns>
-    public static bool operator !=(InvoiceHeaderExclusion left, InvoiceHeaderExclusion right) => !Equals(left, right);
+    public static bool operator !=(InvoiceHeaderExclusion left, InvoiceHeaderExclusion right) =>
+        !Equals(left, right);
 
     #endregion
 
@@ -163,6 +194,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The single number
     /// </summary>
     private int _singleNumber;
+
     /// <summary>
     /// The single number set
     /// </summary>
@@ -172,6 +204,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The invoice number
     /// </summary>
     private int _invoiceNumber;
+
     /// <summary>
     /// The invoice number set
     /// </summary>
@@ -181,6 +214,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The date traded
     /// </summary>
     private DateTime _dateTraded;
+
     /// <summary>
     /// The date traded set
     /// </summary>
@@ -190,6 +224,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The invoice value
     /// </summary>
     private decimal _invoiceValue;
+
     /// <summary>
     /// The invoice value set
     /// </summary>
@@ -199,6 +234,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The movement type
     /// </summary>
     private MovementType _movementType;
+
     /// <summary>
     /// The movement type set
     /// </summary>
@@ -208,6 +244,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The date exclusion
     /// </summary>
     private DateTime _dateExclusion;
+
     /// <summary>
     /// The date exclusion set
     /// </summary>
@@ -217,6 +254,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The code partner
     /// </summary>
     private int _codePartner;
+
     /// <summary>
     /// The code partner set
     /// </summary>
@@ -226,6 +264,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The code seller
     /// </summary>
     private int _codeSeller;
+
     /// <summary>
     /// The code seller set
     /// </summary>
@@ -235,6 +274,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The code company
     /// </summary>
     private int _codeCompany;
+
     /// <summary>
     /// The code company set
     /// </summary>
@@ -244,6 +284,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The code result center
     /// </summary>
     private int _codeResultCenter;
+
     /// <summary>
     /// The code result center set
     /// </summary>
@@ -253,6 +294,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The code trade type
     /// </summary>
     private int _codeTradeType;
+
     /// <summary>
     /// The code trade type set
     /// </summary>
@@ -262,6 +304,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The code operation type
     /// </summary>
     private int _codeOperationType;
+
     /// <summary>
     /// The code operation type set
     /// </summary>
@@ -271,6 +314,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The date changed
     /// </summary>
     private DateTime _dateChanged;
+
     /// <summary>
     /// The date changed set
     /// </summary>
@@ -280,6 +324,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The date entry exit
     /// </summary>
     private DateTime _dateEntryExit;
+
     /// <summary>
     /// The date entry exit set
     /// </summary>
@@ -289,6 +334,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The date movement
     /// </summary>
     private DateTime _dateMovement;
+
     /// <summary>
     /// The date movement set
     /// </summary>
@@ -298,6 +344,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The time movement
     /// </summary>
     private TimeSpan _timeMovement;
+
     /// <summary>
     /// The time movement set
     /// </summary>
@@ -307,6 +354,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The invoice series
     /// </summary>
     private string _invoiceSeries;
+
     /// <summary>
     /// The invoice series set
     /// </summary>
@@ -316,6 +364,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The host name
     /// </summary>
     private string _hostName;
+
     /// <summary>
     /// The host name set
     /// </summary>
@@ -325,6 +374,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The trading type
     /// </summary>
     private TradingType _tradingType;
+
     /// <summary>
     /// The trading type set
     /// </summary>
@@ -334,6 +384,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The user
     /// </summary>
     private User _user;
+
     /// <summary>
     /// The user set
     /// </summary>
@@ -343,6 +394,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The seller
     /// </summary>
     private Seller _seller;
+
     /// <summary>
     /// The seller set
     /// </summary>
@@ -359,13 +411,13 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("NUNOTA")]
     public int SingleNumber
     {
-        get => _singleNumber; set
+        get => _singleNumber;
+        set
         {
             _singleNumber = value;
             _singleNumberSet = true;
         }
     }
-
 
     /// <summary>
     /// Gets or sets the invoice number.
@@ -374,13 +426,12 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("NUMNOTA")]
     public int InvoiceNumber
     {
-        get => _invoiceNumber; set
+        get => _invoiceNumber;
+        set
         {
-
             _invoiceNumber = value;
             _invoiceNumberSet = true;
         }
-
     }
 
     /// <summary>
@@ -390,7 +441,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("DTNEG")]
     public DateTime DateTraded
     {
-        get => _dateTraded; set
+        get => _dateTraded;
+        set
         {
             _dateTraded = value;
             _dateTradedSet = true;
@@ -404,7 +456,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("VLRNOTA")]
     public decimal InvoiceValue
     {
-        get => _invoiceValue; set
+        get => _invoiceValue;
+        set
         {
             _invoiceValue = value;
             _invoiceValueSet = true;
@@ -418,7 +471,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityIgnore]
     public MovementType MovementType
     {
-        get => _movementType; set
+        get => _movementType;
+        set
         {
             _movementType = value;
             _movementTypeSet = true;
@@ -434,7 +488,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string MovementTypeInternal
     {
-        get => _movementType.GetInternalValue(); set
+        get => _movementType.GetInternalValue();
+        set
         {
             _movementType = EnumExtensions.GetEnumByInternalValueAttribute<MovementType>(value);
             _movementTypeSet = true;
@@ -448,7 +503,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("DHEXCLUSAO")]
     public DateTime DateExclusion
     {
-        get => _dateExclusion; set
+        get => _dateExclusion;
+        set
         {
             _dateExclusion = value;
             _dateExclusionSet = true;
@@ -462,7 +518,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("CODPARC")]
     public int CodePartner
     {
-        get => _codePartner; set
+        get => _codePartner;
+        set
         {
             _codePartner = value;
             _codePartnerSet = true;
@@ -476,7 +533,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("CODVEND")]
     public int CodeSeller
     {
-        get => _codeSeller; set
+        get => _codeSeller;
+        set
         {
             _codeSeller = value;
             _codeSellerSet = true;
@@ -490,7 +548,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("CODEMP")]
     public int CodeCompany
     {
-        get => _codeCompany; set
+        get => _codeCompany;
+        set
         {
             _codeCompany = value;
             _codeCompanySet = true;
@@ -504,7 +563,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("CODCENCUS")]
     public int CodeResultCenter
     {
-        get => _codeResultCenter; set
+        get => _codeResultCenter;
+        set
         {
             _codeResultCenter = value;
             _codeResultCenterSet = true;
@@ -518,7 +578,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("CODTIPVENDA")]
     public int CodeTradeType
     {
-        get => _codeTradeType; set
+        get => _codeTradeType;
+        set
         {
             _codeTradeType = value;
             _codeTradeTypeSet = true;
@@ -532,7 +593,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("CODTIPOPER")]
     public int CodeOperationType
     {
-        get => _codeOperationType; set
+        get => _codeOperationType;
+        set
         {
             _codeOperationType = value;
             _codeOperationTypeSet = true;
@@ -546,7 +608,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("DTALTER")]
     public DateTime DateChanged
     {
-        get => _dateChanged; set
+        get => _dateChanged;
+        set
         {
             _dateChanged = value;
             _dateChangedSet = true;
@@ -560,7 +623,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("DTENTSAI")]
     public DateTime DateEntryExit
     {
-        get => _dateEntryExit; set
+        get => _dateEntryExit;
+        set
         {
             _dateEntryExit = value;
             _dateEntryExitSet = true;
@@ -574,7 +638,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("DTMOV")]
     public DateTime DateMovement
     {
-        get => _dateMovement; set
+        get => _dateMovement;
+        set
         {
             _dateMovement = value;
             _dateMovementSet = true;
@@ -588,7 +653,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityIgnore]
     public TimeSpan TimeMovement
     {
-        get => _timeMovement; set
+        get => _timeMovement;
+        set
         {
             _timeMovement = value;
             _timeMovementSet = true;
@@ -605,7 +671,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string TimeMovementInternal
     {
-        get => string.Concat(_timeMovement.Hours, _timeMovement.Minutes, _timeMovement.Seconds); set
+        get => string.Concat(_timeMovement.Hours, _timeMovement.Minutes, _timeMovement.Seconds);
+        set
         {
             if (value == null)
             {
@@ -618,22 +685,50 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
                     _timeMovement = new(value.ToInt32(), 0, 0);
                     break;
                 case 2:
-                    _timeMovement = new(value.Substring(0, 1).ToInt32(), value.Substring(1, 1).ToInt32(), 0);
+                    _timeMovement = new(
+                        value.Substring(0, 1).ToInt32(),
+                        value.Substring(1, 1).ToInt32(),
+                        0
+                    );
                     break;
                 case 3:
-                    _timeMovement = new(value.Substring(0, 2).ToInt32(), value.Substring(2, 1).ToInt32(), 0);
+                    _timeMovement = new(
+                        value.Substring(0, 2).ToInt32(),
+                        value.Substring(2, 1).ToInt32(),
+                        0
+                    );
                     break;
                 case 4:
-                    _timeMovement = new(value.Substring(0, 2).ToInt32(), value.Substring(2, 2).ToInt32(), 0);
+                    _timeMovement = new(
+                        value.Substring(0, 2).ToInt32(),
+                        value.Substring(2, 2).ToInt32(),
+                        0
+                    );
                     break;
                 case 5:
-                    _timeMovement = new(value.Substring(0, 2).ToInt32(), value.Substring(2, 2).ToInt32(), value.Substring(4, 1).ToInt32());
+                    _timeMovement = new(
+                        value.Substring(0, 2).ToInt32(),
+                        value.Substring(2, 2).ToInt32(),
+                        value.Substring(4, 1).ToInt32()
+                    );
                     break;
                 case 6:
-                    _timeMovement = new(value.Substring(0, 2).ToInt32(), value.Substring(2, 2).ToInt32(), value.Substring(4, 2).ToInt32());
+                    _timeMovement = new(
+                        value.Substring(0, 2).ToInt32(),
+                        value.Substring(2, 2).ToInt32(),
+                        value.Substring(4, 2).ToInt32()
+                    );
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(value), value, string.Format(CultureInfo.CurrentCulture, Resources.TheValueMustHaveBetween1and6digits, nameof(TimeMovement)));
+                    throw new ArgumentOutOfRangeException(
+                        nameof(value),
+                        value,
+                        string.Format(
+                            CultureInfo.CurrentCulture,
+                            Resources.TheValueMustHaveBetween1and6digits,
+                            nameof(TimeMovement)
+                        )
+                    );
             }
             _timeMovementSet = true;
         }
@@ -646,7 +741,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("SERIENOTA")]
     public string InvoiceSeries
     {
-        get => _invoiceSeries; set
+        get => _invoiceSeries;
+        set
         {
             _invoiceSeries = value;
             _invoiceSeriesSet = true;
@@ -660,7 +756,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [EntityElement("HOSTNAME")]
     public string HostName
     {
-        get => _hostName; set
+        get => _hostName;
+        set
         {
             _hostName = value;
             _hostNameSet = true;
@@ -728,7 +825,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeSingleNumber() => _singleNumberSet;
 
     /// <summary>
@@ -737,7 +833,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeInvoiceNumber() => _invoiceNumberSet;
 
     /// <summary>
@@ -746,7 +841,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeDateTraded() => _dateTradedSet;
 
     /// <summary>
@@ -755,7 +849,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeInvoiceValue() => _invoiceValueSet;
 
     /// <summary>
@@ -764,7 +857,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeMovementType() => _movementTypeSet;
 
     /// <summary>
@@ -773,7 +865,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeDateExclusion() => _dateExclusionSet;
 
     /// <summary>
@@ -782,7 +873,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodePartner() => _codePartnerSet;
 
     /// <summary>
@@ -791,7 +881,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodeSeller() => _codeSellerSet;
 
     /// <summary>
@@ -800,7 +889,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodeCompany() => _codeCompanySet;
 
     /// <summary>
@@ -809,7 +897,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodeResultCenter() => _codeResultCenterSet;
 
     /// <summary>
@@ -818,7 +905,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodeTradeType() => _codeTradeTypeSet;
 
     /// <summary>
@@ -827,7 +913,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeCodeOperationType() => _codeOperationTypeSet;
 
     /// <summary>
@@ -836,7 +921,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeDateChanged() => _dateChangedSet;
 
     /// <summary>
@@ -845,7 +929,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeDateEntryExit() => _dateEntryExitSet;
 
     /// <summary>
@@ -854,7 +937,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeDateMovement() => _dateMovementSet;
 
     /// <summary>
@@ -889,7 +971,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeTradingType() => _tradingTypeSet;
 
     /// <summary>
@@ -900,7 +981,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeUser() => _userSet;
 
     /// <summary>
@@ -911,7 +991,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public bool ShouldSerializeSeller() => _sellerSet;
 
     #endregion

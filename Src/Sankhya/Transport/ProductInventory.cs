@@ -30,20 +30,35 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
             return false;
         }
 
-        return ReferenceEquals(this, other) || _codeProduct == other._codeProduct && _codeProductSet == other._codeProductSet
-            && _codeCompany == other._codeCompany && _codeCompanySet == other._codeCompanySet
-            && _codeLocal == other._codeLocal && _codeLocalSet == other._codeLocalSet
-            && _codePartner == other._codePartner && _codePartnerSet == other._codePartnerSet
-            && string.Equals(_control, other._control, StringComparison.InvariantCultureIgnoreCase)
-            && _controlSet == other._controlSet && _quantity == other._quantity
-            && _quantitySet == other._quantitySet && _reserved == other._reserved
-            && _reservedSet == other._reservedSet && _minAllowedQuantity == other._minAllowedQuantity
-            && _minAllowedQuantitySet == other._minAllowedQuantitySet
-            && _maxAllowedQuantity == other._maxAllowedQuantity
-            && _maxAllowedQuantitySet == other._maxAllowedQuantitySet && _type == other._type
-            && _typeSet == other._typeSet && Equals(_product, other._product)
-            && _productSet == other._productSet && Equals(_partner, other._partner)
-            && _partnerSet == other._partnerSet;
+        return ReferenceEquals(this, other)
+            || _codeProduct == other._codeProduct
+                && _codeProductSet == other._codeProductSet
+                && _codeCompany == other._codeCompany
+                && _codeCompanySet == other._codeCompanySet
+                && _codeLocal == other._codeLocal
+                && _codeLocalSet == other._codeLocalSet
+                && _codePartner == other._codePartner
+                && _codePartnerSet == other._codePartnerSet
+                && string.Equals(
+                    _control,
+                    other._control,
+                    StringComparison.InvariantCultureIgnoreCase
+                )
+                && _controlSet == other._controlSet
+                && _quantity == other._quantity
+                && _quantitySet == other._quantitySet
+                && _reserved == other._reserved
+                && _reservedSet == other._reservedSet
+                && _minAllowedQuantity == other._minAllowedQuantity
+                && _minAllowedQuantitySet == other._minAllowedQuantitySet
+                && _maxAllowedQuantity == other._maxAllowedQuantity
+                && _maxAllowedQuantitySet == other._maxAllowedQuantitySet
+                && _type == other._type
+                && _typeSet == other._typeSet
+                && Equals(_product, other._product)
+                && _productSet == other._productSet
+                && Equals(_partner, other._partner)
+                && _partnerSet == other._partnerSet;
     }
 
     /// <summary>
@@ -85,9 +100,13 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
             hashCode = (hashCode * 397) ^ _codeLocalSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codePartner;
             hashCode = (hashCode * 397) ^ _codePartnerSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_control != null
-                ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_control)
-                : 0);
+            hashCode =
+                (hashCode * 397)
+                ^ (
+                    _control != null
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(_control)
+                        : 0
+                );
             hashCode = (hashCode * 397) ^ _controlSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _quantity.GetHashCode();
             hashCode = (hashCode * 397) ^ _quantitySet.GetHashCode();
@@ -99,13 +118,9 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
             hashCode = (hashCode * 397) ^ _maxAllowedQuantitySet.GetHashCode();
             hashCode = (hashCode * 397) ^ (int)_type;
             hashCode = (hashCode * 397) ^ _typeSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_product != null
-                ? _product.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (_product != null ? _product.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _productSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ (_partner != null
-                ? _partner.GetHashCode()
-                : 0);
+            hashCode = (hashCode * 397) ^ (_partner != null ? _partner.GetHashCode() : 0);
             hashCode = (hashCode * 397) ^ _partnerSet.GetHashCode();
             return hashCode;
         }
@@ -117,7 +132,8 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator ==(ProductInventory left, ProductInventory right) => Equals(left, right);
+    public static bool operator ==(ProductInventory left, ProductInventory right) =>
+        Equals(left, right);
 
     /// <summary>
     /// Implements the !=.
@@ -125,7 +141,8 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
-    public static bool operator !=(ProductInventory left, ProductInventory right) => !Equals(left, right);
+    public static bool operator !=(ProductInventory left, ProductInventory right) =>
+        !Equals(left, right);
 
     #endregion
 
@@ -135,6 +152,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The code product
     /// </summary>
     private int _codeProduct;
+
     /// <summary>
     /// The code product set
     /// </summary>
@@ -144,6 +162,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The code company
     /// </summary>
     private int _codeCompany;
+
     /// <summary>
     /// The code company set
     /// </summary>
@@ -153,6 +172,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The code local
     /// </summary>
     private int _codeLocal;
+
     /// <summary>
     /// The code local set
     /// </summary>
@@ -162,6 +182,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The code partner
     /// </summary>
     private int _codePartner;
+
     /// <summary>
     /// The code partner set
     /// </summary>
@@ -171,6 +192,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The control
     /// </summary>
     private string _control;
+
     /// <summary>
     /// The control set
     /// </summary>
@@ -180,6 +202,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The quantity
     /// </summary>
     private decimal _quantity;
+
     /// <summary>
     /// The quantity set
     /// </summary>
@@ -189,6 +212,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The reserved
     /// </summary>
     private decimal _reserved;
+
     /// <summary>
     /// The reserved set
     /// </summary>
@@ -198,6 +222,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The minimum allowed quantity
     /// </summary>
     private decimal _minAllowedQuantity;
+
     /// <summary>
     /// The minimum allowed quantity set
     /// </summary>
@@ -207,6 +232,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The maximum allowed quantity
     /// </summary>
     private decimal _maxAllowedQuantity;
+
     /// <summary>
     /// The maximum allowed quantity set
     /// </summary>
@@ -216,6 +242,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The type
     /// </summary>
     private InventoryType _type;
+
     /// <summary>
     /// The type set
     /// </summary>
@@ -225,6 +252,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The product
     /// </summary>
     private Product _product;
+
     /// <summary>
     /// The product set
     /// </summary>
@@ -234,6 +262,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The partner
     /// </summary>
     private Partner _partner;
+
     /// <summary>
     /// The partner set
     /// </summary>
@@ -283,7 +312,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     [EntityKey]
     public int CodeLocal
     {
-
         get => _codeLocal;
         set
         {
@@ -299,7 +327,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     [EntityElement("CODPARC")]
     public int CodePartner
     {
-
         get => _codePartner;
         set
         {
@@ -353,13 +380,12 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
             _reservedSet = true;
         }
     }
-    
+
     /// <summary>
     /// Gets or sets the minimum allowed quantity.
     /// </summary>
     /// <value>The minimum allowed quantity.</value>
     [EntityElement("ESTMIN")]
-
     public decimal MinAllowedQuantity
     {
         get => _minAllowedQuantity;
@@ -375,7 +401,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// </summary>
     /// <value>The maximum allowed quantity.</value>
     [EntityElement("ESTMAX")]
-
     public decimal MaxAllowedQuantity
     {
         get => _maxAllowedQuantity;
@@ -408,7 +433,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     [EntityElement("TIPO")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-
     public string TypeInternal
     {
         get => _type.GetInternalValue();
@@ -439,7 +463,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// </summary>
     /// <value>The partner.</value>
     [EntityReference]
-
     public Partner Partner
     {
         get => _partner;

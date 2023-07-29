@@ -14,6 +14,7 @@ public sealed class SystemMessage
     /// The content
     /// </summary>
     private string _content;
+
     /// <summary>
     /// The content set
     /// </summary>
@@ -23,6 +24,7 @@ public sealed class SystemMessage
     /// The recipients
     /// </summary>
     private SystemWarningRecipient[] _recipients;
+
     /// <summary>
     /// The recipients set
     /// </summary>
@@ -39,7 +41,8 @@ public sealed class SystemMessage
     [XmlElement("conteudo")]
     public string Content
     {
-        get => _content; set
+        get => _content;
+        set
         {
             _content = value;
             _contentSet = true;
@@ -53,7 +56,8 @@ public sealed class SystemMessage
     [XmlElement("destinatario")]
     public SystemWarningRecipient[] Recipients
     {
-        get => _recipients; set
+        get => _recipients;
+        set
         {
             _recipients = value;
             _recipientsSet = true;
@@ -81,5 +85,4 @@ public sealed class SystemMessage
     public bool ShouldSerializeRecipients() => _recipientsSet;
 
     #endregion
-
 }

@@ -7,9 +7,11 @@ using System.Runtime.Serialization;
 public class CanceledOnDemandRequestWrapperException : Exception
 {
     public CanceledOnDemandRequestWrapperException()
-        : base("Cannot add new items to a cancelled on demand request wrapper instance")
-    { }
+        : base("Cannot add new items to a cancelled on demand request wrapper instance") { }
 
-    protected CanceledOnDemandRequestWrapperException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected CanceledOnDemandRequestWrapperException(
+        SerializationInfo info,
+        StreamingContext context
+    )
+        : base(info, context) { }
 }

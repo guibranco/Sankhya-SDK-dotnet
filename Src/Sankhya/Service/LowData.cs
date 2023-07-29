@@ -15,6 +15,7 @@ public sealed class LowData
     /// The financial numbers list
     /// </summary>
     private string _financialNumbersList;
+
     /// <summary>
     /// The financial numbers list set
     /// </summary>
@@ -31,7 +32,8 @@ public sealed class LowData
     [XmlAttribute("listaNuFins")]
     public string FinancialNumbersList
     {
-        get => _financialNumbersList; set
+        get => _financialNumbersList;
+        set
         {
             _financialNumbersList = value;
             _financialNumbersListSet = true;

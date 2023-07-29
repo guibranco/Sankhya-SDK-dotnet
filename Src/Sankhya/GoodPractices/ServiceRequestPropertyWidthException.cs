@@ -14,24 +14,29 @@ public class ServiceRequestPropertyWidthException : ServiceRequestGeneralExcepti
         string propertyName,
         ServiceRequest request,
         int widthAllowed,
-        int currentWidth)
+        int currentWidth
+    )
         : base(
-            string.Format(CultureInfo.CurrentCulture,
+            string.Format(
+                CultureInfo.CurrentCulture,
                 Resources.ServiceRequestPropertyWidthException,
                 request?.Service.GetHumanReadableValue(),
                 propertyName,
-                request?.RequestBody.Entity?.Name ?? request?.RequestBody.Entity?.RootEntity ??
-                request?.RequestBody.DataSet.RootEntity,
+                request?.RequestBody.Entity?.Name
+                    ?? request?.RequestBody.Entity?.RootEntity
+                    ?? request?.RequestBody.DataSet.RootEntity,
                 currentWidth,
-                widthAllowed),
-            request)
+                widthAllowed
+            ),
+            request
+        )
     {
         PropertyName = propertyName;
         AllowedWidth = widthAllowed;
     }
 
-    protected ServiceRequestPropertyWidthException(SerializationInfo info, StreamingContext context) : base(info, context)
-    { }
+    protected ServiceRequestPropertyWidthException(SerializationInfo info, StreamingContext context)
+        : base(info, context) { }
 
     public string PropertyName { get; }
 
