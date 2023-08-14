@@ -28,5 +28,7 @@ jobs:
         env:
           DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
         run: |
-          dotnet test ./Tests/Sankhya.Tests/Sankhya.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
+          dotnet build -c Debug --verbosity minimal
+          cp ./Src/Sankhya/bin/Debug/netstandard2.1/pt-br/Sankhya.resources.dll ./Tests/Sankhya.Tests/bin/Debug/net7.0/pt-br/
+          dotnet test -c Debug --verbosity minimal --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
           ./bin/deepsource report --analyzer test-coverage --key csharp --value-file ./Tests/Sankhya.Tests/coverage.cobertura.xml
