@@ -40,7 +40,6 @@ jobs:
           name: coverage
           path: Tests\Sankhya.Tests\coverage.cobertura.xml
 
-
   deep-source:
     name: Deep Source Coverage report
     needs: build
