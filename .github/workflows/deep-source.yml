@@ -15,9 +15,9 @@ jobs:
   build:
     name: Build
     runs-on: windows-latest
-    
+
     steps:
-    
+
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
@@ -31,7 +31,7 @@ jobs:
         env:
           DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
         run: |
-          dotnet build -c Release --verbosity minimal          
+          dotnet build -c Release --verbosity minimal
           dotnet test -c Release --verbosity minimal --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
 
       - name: Upload artifact test coverage
