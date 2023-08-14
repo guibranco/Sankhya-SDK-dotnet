@@ -7,27 +7,60 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  DeepSource:
-    name: Deep Source Coverage report
-    runs-on: ubuntu-latest
+  build:
+    name: Build
+    runs-on: windows-latest
+
     steps:
+
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
-      - name: Install DeepSource scanner
-        run: curl https://deepsource.io/cli | sh
-
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x'
+          dotnet-version: '7'
 
-      - name: Build and analyze
+      - name: Build and test
         env:
           DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
         run: |
-          dotnet build -c Debug --verbosity minimal
-          dotnet test  -c Debug --verbosity minimal --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
-          ./bin/deepsource report --analyzer test-coverage --key csharp --value-file ./Tests/Sankhya.Tests/coverage.cobertura.xml
+          dotnet build -c Release --verbosity minimal
+          dotnet test -c Release --verbosity minimal --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
+
+      - name: Upload artifact test coverage
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: coverage
+          path: Tests\Sankhya.Tests\coverage.cobertura.xml
+
+  deep-source:
+    name: Deep Source Coverage report
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Download artifact test coverage
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage
+
+      - name: Install DeepSource scanner
+        run: curl https://deepsource.io/cli | sh
+
+      - name: Analyze
+        env:
+          DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
+        run: ./bin/deepsource report --analyzer test-coverage --key csharp --value-file coverage.cobertura.xml
