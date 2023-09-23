@@ -1,4 +1,5 @@
 theme: jekyll-theme-leap-day
 title: Sankhya SDK (.NET)
+description: 📊 ⚙️ Sankhya platform .NET SDK
 logo: https://raw.githubusercontent.com/guibranco/Sankhya-SDK-dotnet/master/packageLogo.png
 show_downloads: true
