@@ -1,9 +1,9 @@
-﻿namespace Sankhya.GoodPractices;
-
-using System;
+﻿using System;
 using System.Globalization;
 using System.Runtime.Serialization;
 using Sankhya.Service;
+
+namespace Sankhya.GoodPractices;
 
 [Serializable]
 public class NoItemsConfirmInvoiceException : ServiceRequestGeneralException

@@ -11,13 +11,13 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Transport;
-
-using CrispyWaffle.Extensions;
-using System.ComponentModel;
 
 using System;
+using System.ComponentModel;
+using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class Region. This class cannot be inherited.

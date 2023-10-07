@@ -1,9 +1,9 @@
-﻿namespace Sankhya.Service;
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Xml.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// An invoice accompaniment.

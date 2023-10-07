@@ -1,6 +1,4 @@
-﻿namespace Sankhya.RequestWrappers;
-
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,6 +9,8 @@ using Sankhya.GoodPractices;
 using Sankhya.Helpers;
 using Sankhya.Service;
 using Sankhya.Transport;
+
+namespace Sankhya.RequestWrappers;
 
 /// <summary>
 /// Class SimpleCRUDRequestWrapper. This class cannot be inherited.

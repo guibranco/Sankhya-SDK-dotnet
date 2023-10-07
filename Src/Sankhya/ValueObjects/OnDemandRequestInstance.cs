@@ -11,11 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.ValueObjects;
 
 using System;
 using Sankhya.Enums;
 using Sankhya.RequestWrappers;
+
+namespace Sankhya.ValueObjects;
 
 /// <summary>
 /// Class OnDemandRequestInstance. This class cannot be inherited.

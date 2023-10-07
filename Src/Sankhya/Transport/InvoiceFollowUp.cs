@@ -1,12 +1,12 @@
-﻿namespace Sankhya.Transport;
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Globalization;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
 using Sankhya.Enums;
 using Sankhya.Properties;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class InvoiceFollowUp. This class cannot be inherited.

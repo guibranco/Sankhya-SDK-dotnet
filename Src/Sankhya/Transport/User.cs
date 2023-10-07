@@ -1,10 +1,10 @@
-﻿namespace Sankhya.Transport;
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class User. This class cannot be inherited.

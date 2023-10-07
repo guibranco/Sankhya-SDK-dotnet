@@ -11,11 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service;
 
 using System.ComponentModel;
-
 using System.Xml.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class Message. This class cannot be inherited.

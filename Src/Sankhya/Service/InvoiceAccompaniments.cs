@@ -1,7 +1,7 @@
-﻿namespace Sankhya.Service;
-
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 using CrispyWaffle.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class InvoiceAccompaniments. This class cannot be inherited.

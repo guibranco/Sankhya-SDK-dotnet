@@ -1,11 +1,8 @@
-﻿namespace Sankhya.Helpers;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Log;
 using Sankhya.Attributes;
@@ -16,6 +13,8 @@ using Sankhya.RequestWrappers;
 using Sankhya.Service;
 using Sankhya.Transport;
 using Sankhya.ValueObjects;
+
+namespace Sankhya.Helpers;
 
 /// <summary>
 /// Entity extensions

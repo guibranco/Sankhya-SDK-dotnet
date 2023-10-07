@@ -1,10 +1,10 @@
-﻿namespace Sankhya.GoodPractices;
-
-using System;
+﻿using System;
 using System.Runtime.Serialization;
 using System.Xml;
 using CrispyWaffle.GoodPractices;
 using Sankhya.Properties;
+
+namespace Sankhya.GoodPractices;
 
 [Serializable]
 public class ServiceRequestInvalidOperationException : Exception, IXmlServiceException

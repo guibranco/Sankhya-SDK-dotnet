@@ -11,14 +11,13 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service;
 
+using System;
 using System.ComponentModel;
-using System.Data.Common;
 using System.Text;
 using System.Xml.Serialization;
 
-using System;
+namespace Sankhya.Service;
 
 /// <summary>
 /// A literal criteria.

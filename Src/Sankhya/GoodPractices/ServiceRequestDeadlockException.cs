@@ -1,8 +1,8 @@
-﻿namespace Sankhya.GoodPractices;
-
-using System;
+﻿using System;
 using System.Runtime.Serialization;
 using Sankhya.Service;
+
+namespace Sankhya.GoodPractices;
 
 [Serializable]
 public class ServiceRequestDeadlockException : ServiceRequestTemporarilyException

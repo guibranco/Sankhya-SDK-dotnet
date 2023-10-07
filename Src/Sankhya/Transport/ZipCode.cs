@@ -11,11 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Transport;
 
-using CrispyWaffle.Serialization;
 using System;
+using CrispyWaffle.Serialization;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class ZipCode.

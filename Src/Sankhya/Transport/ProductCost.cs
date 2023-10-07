@@ -1,7 +1,7 @@
-﻿namespace Sankhya.Transport;
-
-using System;
+﻿using System;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class ProductCost. This class cannot be inherited.

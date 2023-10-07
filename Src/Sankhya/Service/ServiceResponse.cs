@@ -1,6 +1,4 @@
-﻿namespace Sankhya.Service;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -15,6 +13,8 @@ using CrispyWaffle.Serialization;
 using Sankhya.Enums;
 using Sankhya.GoodPractices;
 using Sankhya.Helpers;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// A service response.
@@ -827,11 +827,10 @@ public sealed class ServiceResponse : IXmlSerializable
         var root = document.CreateElement(rootName);
         document.AppendChild(root);
         reader.ReadStartElement(rootName);
-        XmlNode currentNode;
         while (
             reader.NodeType != XmlNodeType.EndElement
             && reader.Name != rootName
-            && (currentNode = document.ReadNode(reader)) != null
+            && document.ReadNode(reader) is { } currentNode
         )
         {
             root.AppendChild(currentNode);

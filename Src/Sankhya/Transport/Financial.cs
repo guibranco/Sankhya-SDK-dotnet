@@ -1,10 +1,10 @@
-﻿namespace Sankhya.Transport;
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Globalization;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class Financial. This class cannot be inherited.

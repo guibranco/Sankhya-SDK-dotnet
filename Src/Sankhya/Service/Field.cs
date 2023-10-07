@@ -11,11 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service;
 
-using CrispyWaffle.Extensions;
 using System.ComponentModel;
 using System.Xml.Serialization;
+using CrispyWaffle.Extensions;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class Field. This class cannot be inherited.

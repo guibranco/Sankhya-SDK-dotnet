@@ -1,10 +1,10 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
 using Sankhya.Enums;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// A service request.

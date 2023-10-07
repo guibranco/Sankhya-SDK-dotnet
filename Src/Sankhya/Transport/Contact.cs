@@ -1,9 +1,9 @@
-﻿namespace Sankhya.Transport;
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class Contact. This class cannot be inherited.

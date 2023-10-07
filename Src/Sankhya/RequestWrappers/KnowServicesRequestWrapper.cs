@@ -1,6 +1,4 @@
-﻿namespace Sankhya.RequestWrappers;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -16,6 +14,8 @@ using Sankhya.Properties;
 using Sankhya.Service;
 using Sankhya.Transport;
 using Sankhya.ValueObjects;
+
+namespace Sankhya.RequestWrappers;
 
 /// <summary>
 /// Class KnowServicesRequestWrapper.

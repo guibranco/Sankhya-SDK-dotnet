@@ -1,9 +1,9 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
 using Sankhya.Transport;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class InvoiceItems. This class cannot be inherited.

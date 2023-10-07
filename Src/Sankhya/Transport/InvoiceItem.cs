@@ -1,12 +1,12 @@
-﻿namespace Sankhya.Transport;
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
 using Sankhya.Attributes;
 using Sankhya.Enums;
 using Sankhya.Helpers;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class InvoiceItem. This class cannot be inherited.

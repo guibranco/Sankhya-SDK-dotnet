@@ -1,11 +1,11 @@
-﻿namespace Sankhya.GoodPractices;
-
-using System;
+﻿using System;
 using System.Globalization;
 using System.Runtime.Serialization;
 using CrispyWaffle.Extensions;
 using Sankhya.Enums;
 using Sankhya.Properties;
+
+namespace Sankhya.GoodPractices;
 
 [Serializable]
 public class InvalidServiceRequestOperationException : Exception

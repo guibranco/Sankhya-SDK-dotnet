@@ -11,9 +11,10 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.ValueObjects;
 
 using System;
+
+namespace Sankhya.ValueObjects;
 
 /// <summary>
 /// Class PagedRequestEventArgs. This class cannot be inherited.

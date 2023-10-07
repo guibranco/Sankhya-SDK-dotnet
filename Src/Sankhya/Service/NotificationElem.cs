@@ -1,9 +1,9 @@
-﻿namespace Sankhya.Service;
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class NotificationElem. This class cannot be inherited.

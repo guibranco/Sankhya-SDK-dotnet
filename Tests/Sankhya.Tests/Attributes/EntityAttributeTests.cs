@@ -1,7 +1,7 @@
-namespace Sankhya.Tests.Attributes;
-
 using Sankhya.Attributes;
 using Xunit;
+
+namespace Sankhya.Tests.Attributes;
 
 public class EntityAttributeTests
 {

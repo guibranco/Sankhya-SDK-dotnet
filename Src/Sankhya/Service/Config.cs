@@ -11,11 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service;
-
-using CrispyWaffle.Serialization;
 
 using System.Xml.Serialization;
+using CrispyWaffle.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class Config. This class cannot be inherited.

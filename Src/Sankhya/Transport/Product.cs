@@ -1,17 +1,15 @@
 ﻿//
 
-namespace Sankhya.Transport;
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-
 using CrispyWaffle.Extensions;
-
 using Sankhya.Attributes;
 using Sankhya.Enums;
 using Sankhya.ValueObjects;
+
+namespace Sankhya.Transport;
 
 [Entity("Produto")]
 public class Product : IEntity, IEquatable<Product>

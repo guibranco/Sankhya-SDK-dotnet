@@ -1,7 +1,7 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class SystemMessage. This class cannot be inherited.

@@ -1,6 +1,4 @@
-﻿namespace Sankhya.Helpers;
-
-using System;
+﻿using System;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -10,6 +8,8 @@ using CrispyWaffle.Utilities;
 using Sankhya.Attributes;
 using Sankhya.Enums;
 using Sankhya.Service;
+
+namespace Sankhya.Helpers;
 
 /// <summary>
 /// The entity dynamic serialization class

@@ -1,7 +1,7 @@
-﻿namespace Sankhya.GoodPractices;
-
-using System;
+﻿using System;
 using System.Runtime.Serialization;
+
+namespace Sankhya.GoodPractices;
 
 [Serializable]
 public class OpenFileException : Exception

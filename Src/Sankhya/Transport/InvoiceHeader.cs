@@ -1,6 +1,4 @@
-﻿namespace Sankhya.Transport;
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Globalization;
 using CrispyWaffle.Extensions;
@@ -8,6 +6,8 @@ using Sankhya.Attributes;
 using Sankhya.Enums;
 using Sankhya.Helpers;
 using Sankhya.Properties;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class InvoiceHeader. This class cannot be inherited.
@@ -117,7 +117,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
             return false;
         if (ReferenceEquals(this, obj))
             return true;
-        if (obj.GetType() != this.GetType())
+        if (obj.GetType() != GetType())
             return false;
         return Equals((InvoiceHeader)obj);
     }

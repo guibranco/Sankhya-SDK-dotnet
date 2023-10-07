@@ -11,10 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Validations;
 
 using System;
 using System.Text.RegularExpressions;
+
+namespace Sankhya.Validations;
 
 /// <summary>
 /// Class EntityValidation.

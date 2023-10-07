@@ -1,9 +1,9 @@
-﻿namespace Sankhya.GoodPractices;
-
-using System;
+﻿using System;
 using System.Globalization;
 using Sankhya.Properties;
 using Sankhya.Service;
+
+namespace Sankhya.GoodPractices;
 
 [Serializable]
 public class ServiceRequestInvalidRelationException : ServiceRequestGeneralException

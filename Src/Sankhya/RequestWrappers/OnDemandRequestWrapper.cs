@@ -1,6 +1,4 @@
-﻿namespace Sankhya.RequestWrappers;
-
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
@@ -16,6 +14,8 @@ using Sankhya.Helpers;
 using Sankhya.Properties;
 using Sankhya.Service;
 using Sankhya.Transport;
+
+namespace Sankhya.RequestWrappers;
 
 /// <summary>
 /// Class OnDemandRequestWrapper. This class cannot be inherited.

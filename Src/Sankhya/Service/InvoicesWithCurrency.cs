@@ -1,8 +1,8 @@
 ﻿//
 
-namespace Sankhya.Service;
-
 using System.Xml.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 ///     The notas com moeda.

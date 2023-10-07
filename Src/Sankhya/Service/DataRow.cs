@@ -1,7 +1,7 @@
-﻿namespace Sankhya.Service;
-
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 using Sankhya.Helpers;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class DataRow. This class cannot be inherited.

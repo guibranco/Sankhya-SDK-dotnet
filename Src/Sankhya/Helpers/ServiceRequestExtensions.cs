@@ -1,13 +1,10 @@
-﻿namespace Sankhya.Helpers;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
-
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Log;
 using CrispyWaffle.Utilities;
@@ -19,6 +16,8 @@ using Sankhya.Service;
 using Sankhya.Transport;
 using Sankhya.Validations;
 using Sankhya.ValueObjects;
+
+namespace Sankhya.Helpers;
 
 /// <summary>
 /// Implements service request extensions methods.

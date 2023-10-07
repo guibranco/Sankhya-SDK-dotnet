@@ -1,10 +1,10 @@
-﻿namespace Sankhya.Transport;
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
 using Sankhya.Enums;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class FiscalInvoiceHeader.

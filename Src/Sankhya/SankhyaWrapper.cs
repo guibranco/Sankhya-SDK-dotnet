@@ -1,6 +1,4 @@
-﻿namespace Sankhya;
-
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mime;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -24,6 +23,8 @@ using Sankhya.Helpers;
 using Sankhya.Properties;
 using Sankhya.Service;
 using Sankhya.ValueObjects;
+
+namespace Sankhya;
 
 /// <summary>
 /// Class ServiceWrapper. This class cannot be inherited.
@@ -110,7 +111,7 @@ internal class SankhyaWrapper
                 return _internalUserAgent;
             }
 
-            var assembly = System.Reflection.Assembly.GetAssembly(typeof(SankhyaWrapper)).GetName();
+            var assembly = Assembly.GetAssembly(typeof(SankhyaWrapper)).GetName();
             _internalUserAgent = $@"{assembly.Name}/{assembly.Version}";
             return _internalUserAgent;
         }

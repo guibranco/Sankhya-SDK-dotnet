@@ -11,9 +11,10 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.ValueObjects;
 
 using Sankhya.Attributes;
+
+namespace Sankhya.ValueObjects;
 
 /// <summary>
 /// Class ParsePropertyModel. This class cannot be inherited.

@@ -11,12 +11,13 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Transport;
 
-using CrispyWaffle.Serialization;
-using System.ComponentModel;
 using System;
+using System.ComponentModel;
+using CrispyWaffle.Serialization;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// The city entity

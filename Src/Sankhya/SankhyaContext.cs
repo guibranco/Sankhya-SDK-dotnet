@@ -1,6 +1,4 @@
-﻿namespace Sankhya;
-
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +11,8 @@ using Sankhya.Properties;
 using Sankhya.RequestWrappers;
 using Sankhya.Service;
 using Sankhya.ValueObjects;
+
+namespace Sankhya;
 
 /// <summary>
 /// A SankhyaContext instance is a generic Unit of Work pattern for consuming Sankhya web service.

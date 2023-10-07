@@ -1,9 +1,9 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
 using Sankhya.Enums;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class SystemWarningRecipient. This class cannot be inherited.

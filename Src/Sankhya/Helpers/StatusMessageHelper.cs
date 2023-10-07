@@ -1,6 +1,4 @@
-﻿namespace Sankhya.Helpers;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -9,6 +7,8 @@ using Sankhya.Enums;
 using Sankhya.GoodPractices;
 using Sankhya.Service;
 using Sankhya.Validations;
+
+namespace Sankhya.Helpers;
 
 /// <summary>
 /// The status message helper class.

@@ -1,12 +1,12 @@
-﻿namespace Sankhya.Service;
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
 using Sankhya.Enums;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class Invoices. This class cannot be inherited.

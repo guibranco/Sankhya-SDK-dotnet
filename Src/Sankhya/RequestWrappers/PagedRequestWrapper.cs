@@ -1,6 +1,4 @@
-﻿namespace Sankhya.RequestWrappers;
-
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,6 +17,8 @@ using Sankhya.Properties;
 using Sankhya.Service;
 using Sankhya.Transport;
 using Sankhya.ValueObjects;
+
+namespace Sankhya.RequestWrappers;
 
 /// <summary>
 /// An erp managed service request.

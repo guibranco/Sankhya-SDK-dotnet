@@ -1,8 +1,8 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class StatusMessage. This class cannot be inherited.

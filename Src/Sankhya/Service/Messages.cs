@@ -11,12 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service;
 
-using CrispyWaffle.Serialization;
 using System.ComponentModel;
-
 using System.Xml.Serialization;
+using CrispyWaffle.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class Messages. This class cannot be inherited.

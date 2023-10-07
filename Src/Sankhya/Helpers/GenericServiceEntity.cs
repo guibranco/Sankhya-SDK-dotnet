@@ -1,18 +1,16 @@
-﻿namespace Sankhya.Helpers;
-
-using System;
+﻿using System;
 using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Log;
-
 using Sankhya.Attributes;
 using Sankhya.GoodPractices;
 using Sankhya.Transport;
+
+namespace Sankhya.Helpers;
 
 /// <summary>
 /// Class GenericServiceEntity.

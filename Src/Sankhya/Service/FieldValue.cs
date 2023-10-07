@@ -11,11 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service;
-
-using System.Xml.Serialization;
 
 using System;
+using System.Xml.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class FieldValue. This class cannot be inherited.

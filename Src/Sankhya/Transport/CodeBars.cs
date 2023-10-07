@@ -11,11 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Transport;
 
 using System;
 using System.ComponentModel;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class CodeBars. This class cannot be inherited.

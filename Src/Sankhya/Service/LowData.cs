@@ -1,7 +1,7 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
+
+namespace Sankhya.Service;
 
 //TODO: issue #60
 /// <summary>

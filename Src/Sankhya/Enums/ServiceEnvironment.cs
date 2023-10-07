@@ -1,6 +1,6 @@
-﻿namespace Sankhya.Enums;
+﻿using CrispyWaffle.Attributes;
 
-using CrispyWaffle.Attributes;
+namespace Sankhya.Enums;
 
 /// <summary>
 /// Enum ServiceEnvironment

@@ -1,8 +1,8 @@
-﻿namespace Sankhya.Transport;
-
-using System;
+﻿using System;
 using CrispyWaffle.Serialization;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class ProductAlternativeImage. This class cannot be inherited.

@@ -1,8 +1,8 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// The message unlink shipping class.

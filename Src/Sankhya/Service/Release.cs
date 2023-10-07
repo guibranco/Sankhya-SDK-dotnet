@@ -1,10 +1,10 @@
-﻿namespace Sankhya.Service;
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class Release. This class cannot be inherited.
