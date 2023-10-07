@@ -24,7 +24,6 @@ public class ServiceRequestInvalidOperationException : Exception, IXmlServiceExc
 
     #region Implementation of IServiceException
 
-
     public XmlDocument Request { get; }
 
     public XmlDocument Response { get; }

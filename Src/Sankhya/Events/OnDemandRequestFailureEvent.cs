@@ -11,12 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Events;
-
-using CrispyWaffle.Events;
 
 using System;
+using CrispyWaffle.Events;
 using Sankhya.Transport;
+
+namespace Sankhya.Events;
 
 /// <summary>
 /// The on demand request failure event class.

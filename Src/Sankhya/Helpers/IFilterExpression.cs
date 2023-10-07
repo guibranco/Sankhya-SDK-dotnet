@@ -11,9 +11,10 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 namespace Sankhya.Helpers;
 
-//TODO issue #68 (Integração Service)
+// TODO: issue #29
 /// <summary>
 /// Interface IFilterExpression
 /// </summary>

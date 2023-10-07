@@ -19,7 +19,6 @@ namespace Sankhya.Helpers;
 /// <summary>
 /// Entity extensions
 /// </summary>
-
 public static class EntityExtensions
 {
     #region Helper methods

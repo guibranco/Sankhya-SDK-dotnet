@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using CrispyWaffle.Extensions;
+﻿using CrispyWaffle.Extensions;
 using Sankhya.Enums;
 using Sankhya.GoodPractices;
 using Sankhya.Service;
 using Sankhya.Validations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Sankhya.Helpers;
 
@@ -24,14 +24,14 @@ internal static class StatusMessageHelper
     private static readonly Dictionary<
         string,
         Func<string, ServiceName, ServiceRequest, ServiceResponse, Exception>
-    > _commonMessages;
+    > CommonMessages;
 
     #endregion
 
     #region ~Ctors
 
     static StatusMessageHelper() =>
-        _commonMessages = new()
+        CommonMessages = new()
         {
             {
                 @"Delimitador ''' desbalanceado",
@@ -178,7 +178,7 @@ internal static class StatusMessageHelper
         Match match;
         var statusMessage = response.StatusMessage.Value;
 
-        var kvp = _commonMessages.FirstOrDefault(
+        var kvp = CommonMessages.FirstOrDefault(
             item =>
                 statusMessage.IndexOf(item.Key, StringComparison.InvariantCultureIgnoreCase) != -1
         );
@@ -227,6 +227,7 @@ internal static class StatusMessageHelper
                 request
             );
         }
+
         if (EntityValidation.PropertyNotFoundPattern.IsMatch(statusMessage))
         {
             match = EntityValidation.PropertyNotFoundPattern.Match(statusMessage);
@@ -236,6 +237,7 @@ internal static class StatusMessageHelper
                 request
             );
         }
+
         if (EntityValidation.MissingRelationPattern.IsMatch(statusMessage))
         {
             match = EntityValidation.MissingRelationPattern.Match(statusMessage);
@@ -245,6 +247,7 @@ internal static class StatusMessageHelper
                 request
             );
         }
+
         if (EntityValidation.PropertyForeignKeyRestrictionPattern.IsMatch(statusMessage))
         {
             match = EntityValidation.PropertyForeignKeyRestrictionPattern.Match(statusMessage);
@@ -255,6 +258,7 @@ internal static class StatusMessageHelper
                 response
             );
         }
+
         if (EntityValidation.DuplicatedDocumentPattern.IsMatch(statusMessage))
         {
             match = EntityValidation.DuplicatedDocumentPattern.Match(statusMessage);
@@ -264,6 +268,7 @@ internal static class StatusMessageHelper
                 response
             );
         }
+
         if (EntityValidation.BusinessRuleRestrictionPattern.IsMatch(statusMessage))
         {
             match = EntityValidation.BusinessRuleRestrictionPattern.Match(statusMessage);
@@ -274,6 +279,7 @@ internal static class StatusMessageHelper
                 response
             );
         }
+
         if (EntityValidation.FullTransactionLogsPattern.IsMatch(statusMessage))
         {
             match = EntityValidation.FullTransactionLogsPattern.Match(statusMessage);
@@ -283,6 +289,7 @@ internal static class StatusMessageHelper
                 response
             );
         }
+
         if (EntityValidation.MissingAttributePattern.IsMatch(statusMessage))
         {
             match = EntityValidation.MissingAttributePattern.Match(statusMessage);
@@ -292,6 +299,7 @@ internal static class StatusMessageHelper
                 request
             );
         }
+
         if (!EntityValidation.PropertyWidthErrorPattern.IsMatch(statusMessage))
         {
             throw new ServiceRequestUnexpectedResultException(statusMessage, request, response);

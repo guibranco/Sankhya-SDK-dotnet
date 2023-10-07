@@ -33,7 +33,6 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
     /// method and consumed by the
     /// <see cref="ReadXml(XmlReader)" />
     /// method.</returns>
-
     public XmlSchema GetSchema() => null;
 
     /// <summary>
