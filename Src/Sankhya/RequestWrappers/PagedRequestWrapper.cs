@@ -266,6 +266,7 @@ internal sealed class PagedRequestWrapper
         {
             OnLoadPageError(page, e);
         }
+
         return false;
     }
 
@@ -550,6 +551,7 @@ internal sealed class PagedRequestWrapper
             temp.ForEach(stronglyTypedCollection.Add);
             return;
         }
+
         wrapper._onDemandTasks.Add(
             Task.Factory.StartNew(
                 () => LoadOnDemandData(processOnDemandData, temp, stronglyTypedCollection, cts),

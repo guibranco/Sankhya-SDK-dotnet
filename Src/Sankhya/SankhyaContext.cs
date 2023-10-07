@@ -31,7 +31,7 @@ public sealed class SankhyaContext
     /// <summary>
     /// The wrappers
     /// </summary>
-    private static readonly ConcurrentDictionary<Guid, SankhyaWrapper> _wrappers = new();
+    private static readonly ConcurrentDictionary<Guid, SankhyaWrapper> Wrappers = new();
 
     /// <summary>
     /// The connection
@@ -138,14 +138,14 @@ public sealed class SankhyaContext
     /// <returns>A instance of <seealso cref="SankhyaWrapper" /></returns>
     private static SankhyaWrapper GetWrapper(Guid token)
     {
-        if (!_wrappers.ContainsKey(token))
+        if (!Wrappers.ContainsKey(token))
         {
             return null;
         }
 
         while (true)
         {
-            if (_wrappers.TryGetValue(token, out var wrapper))
+            if (Wrappers.TryGetValue(token, out var wrapper))
             {
                 return wrapper;
             }
@@ -171,7 +171,7 @@ public sealed class SankhyaContext
         var wrapper = new SankhyaWrapper(_connection.Host, _connection.Port, requestType);
         wrapper.Authenticate(_connection.Credentials.UserName, _connection.Credentials.Password);
         var token = Guid.NewGuid();
-        _wrappers.TryAdd(token, wrapper);
+        Wrappers.TryAdd(token, wrapper);
         if (requestType == ServiceRequestType.OnDemandCrud)
         {
             _onDemandRequestWrappersAttachedTokens.Add(token);
@@ -192,13 +192,13 @@ public sealed class SankhyaContext
 
     public void FinalizeSession(Guid token)
     {
-        if (token == Token || !_wrappers.ContainsKey(token))
+        if (token == Token || !Wrappers.ContainsKey(token))
         {
             return;
         }
 
         LogConsumer.Trace(Resources.SankhyaContext_FinalizeSession_FinalizeSession, token);
-        if (!_wrappers.TryRemove(token, out var wrapper))
+        if (!Wrappers.TryRemove(token, out var wrapper))
         {
             return;
         }
@@ -373,11 +373,11 @@ public sealed class SankhyaContext
             OnDemandRequestFactory.FinalizeAll();
         }
 
-        while (_wrappers.Any())
+        while (Wrappers.Any())
         {
-            foreach (var item in _wrappers)
+            foreach (var item in Wrappers)
             {
-                if (_wrappers.TryRemove(item.Key, out var wrapper))
+                if (Wrappers.TryRemove(item.Key, out var wrapper))
                 {
                     wrapper.Dispose();
                 }

@@ -471,4 +471,10 @@
   <data name="SankhyaWrapper_ReadStream_Exception" xml:space="preserve">
     <value>Invalid read size</value>
   </data>
+  <data name="EntityDynamicSerialization_ChangeKeys" xml:space="preserve">
+	  <value>Key count in metadata is different from key count in dictionary</value>
+  </data>
+  <data name="SimpleCRUDRequestWrapper_UpdateAsync_Invalid" xml:space="preserve">
+	  <value>Invalid asynchronous update request</value>
+  </data>
 </root>

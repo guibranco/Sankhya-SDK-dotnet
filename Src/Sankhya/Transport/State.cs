@@ -52,8 +52,8 @@ public class State : IEntity, IEquatable<State>
                 && _codePartnerSecretaryOfStateRevenueSet.Equals(
                     other._codePartnerSecretaryOfStateRevenueSet
                 )
-                && _codeIBGE == other._codeIBGE
-                && _codeIBGESet.Equals(other._codeIBGESet)
+                && _codeIbge == other._codeIbge
+                && _codeIbgeSet.Equals(other._codeIbgeSet)
                 && _codeRevenue == other._codeRevenue
                 && _codeRevenueSet.Equals(other._codeRevenueSet)
                 && _codeRevenueDetailing == other._codeRevenueDetailing
@@ -103,8 +103,8 @@ public class State : IEntity, IEquatable<State>
             hashCode = (hashCode * 397) ^ _codeCountrySet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codePartnerSecretaryOfStateRevenue;
             hashCode = (hashCode * 397) ^ _codePartnerSecretaryOfStateRevenueSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codeIBGE;
-            hashCode = (hashCode * 397) ^ _codeIBGESet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _codeIbge;
+            hashCode = (hashCode * 397) ^ _codeIbgeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeRevenue;
             hashCode = (hashCode * 397) ^ _codeRevenueSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeRevenueDetailing;
@@ -188,12 +188,12 @@ public class State : IEntity, IEquatable<State>
     /// <summary>
     /// The code ibge
     /// </summary>
-    private int _codeIBGE;
+    private int _codeIbge;
 
     /// <summary>
     /// The code ibge set
     /// </summary>
-    private bool _codeIBGESet;
+    private bool _codeIbgeSet;
 
     /// <summary>
     /// The code revenue
@@ -320,13 +320,13 @@ public class State : IEntity, IEquatable<State>
     /// </summary>
     /// <value>The code ibge.</value>
     [EntityElement("CODIBGE")]
-    public int CodeIBGE
+    public int CodeIbge
     {
-        get => _codeIBGE;
+        get => _codeIbge;
         set
         {
-            _codeIBGE = value;
-            _codeIBGESet = true;
+            _codeIbge = value;
+            _codeIbgeSet = true;
         }
     }
 
@@ -429,7 +429,7 @@ public class State : IEntity, IEquatable<State>
     /// Should the serialize code IBGE.
     /// </summary>
     /// <returns>Boolean.</returns>
-    public bool ShouldSerializeCodeIBGE() => _codeIBGESet;
+    public bool ShouldSerializeCodeIbge() => _codeIbgeSet;
 
     /// <summary>
     /// Should the serialize code revenue.

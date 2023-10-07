@@ -22,12 +22,12 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// The Sankhya context.
     /// </summary>
-    private static readonly SankhyaContext _context = ServiceLocator.Resolve<SankhyaContext>();
+    private static readonly SankhyaContext Context = ServiceLocator.Resolve<SankhyaContext>();
 
     /// <summary>
     /// The session token.
     /// </summary>
-    private static readonly Guid _sessionToken = _context.AcquireNewSession(
+    private static readonly Guid SessionToken = Context.AcquireNewSession(
         ServiceRequestType.SimpleCrud
     );
 
@@ -47,7 +47,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity);
-        var response = _context.ServiceInvoker(request, _sessionToken);
+        var response = Context.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             return null;
@@ -92,7 +92,7 @@ public static class SimpleCrudRequestWrapper
                 .ToArray();
         }
 
-        var response = _context.ServiceInvoker(request, _sessionToken);
+        var response = Context.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             return null;
@@ -122,8 +122,8 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity);
-        return await _context
-            .ServiceInvokerAsync(request, _sessionToken)
+        return await Context
+            .ServiceInvokerAsync(request, SessionToken)
             .ContinueWith(t =>
             {
                 if (t.Result.Entities == null || t.Result.Entities.Length == 0)
@@ -157,7 +157,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
-        var response = _context.ServiceInvoker(request, _sessionToken);
+        var response = Context.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             return null;
@@ -187,8 +187,8 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
-        return await _context
-            .ServiceInvokerAsync(request, _sessionToken)
+        return await Context
+            .ServiceInvokerAsync(request, SessionToken)
             .ContinueWith(t =>
             {
                 if (t.Result.Entities == null || t.Result.Entities.Length == 0)
@@ -232,7 +232,7 @@ public static class SimpleCrudRequestWrapper
             request.Resolve(entity);
         }
 
-        var response = _context.ServiceInvoker(request, _sessionToken);
+        var response = Context.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             throw new ServiceRequestUnexpectedResultException(request, response);
@@ -263,8 +263,8 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity);
-        return await _context
-            .ServiceInvokerAsync(request, _sessionToken)
+        return await Context
+            .ServiceInvokerAsync(request, SessionToken)
             .ContinueWith(t =>
             {
                 if (t.Result.Entities == null || t.Result.Entities.Length == 0)
@@ -299,7 +299,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
-        var response = _context.ServiceInvoker(request, _sessionToken);
+        var response = Context.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             throw new ServiceRequestUnexpectedResultException(request, response);
@@ -330,8 +330,8 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
-        return await _context
-            .ServiceInvokerAsync(request, _sessionToken)
+        return await Context
+            .ServiceInvokerAsync(request, SessionToken)
             .ContinueWith(t =>
             {
                 if (t.Result.Entities == null || t.Result.Entities.Length == 0)
@@ -494,7 +494,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceSave);
         request.Resolve(entity);
-        var response = _context.ServiceInvoker(request, _sessionToken);
+        var response = Context.ServiceInvoker(request, SessionToken);
         if (response.Entities == null)
         {
             throw new ServiceRequestUnexpectedResultException(request, response);
@@ -515,8 +515,8 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceSave);
         request.Resolve(entity);
-        await _context
-            .ServiceInvokerAsync(request, _sessionToken)
+        await Context
+            .ServiceInvokerAsync(request, SessionToken)
             .ContinueWith(t => ConvertToType<T>(t, request), token)
             .ConfigureAwait(false);
     }
@@ -567,7 +567,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceRemove);
         request.Resolve(entity);
-        _context.ServiceInvoker(request, _sessionToken);
+        Context.ServiceInvoker(request, SessionToken);
     }
 
     /// <summary>
@@ -582,7 +582,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceRemove);
         request.Resolve(entity);
-        await _context.ServiceInvokerAsync(request, _sessionToken).ConfigureAwait(false);
+        await Context.ServiceInvokerAsync(request, SessionToken).ConfigureAwait(false);
     }
 
     #endregion

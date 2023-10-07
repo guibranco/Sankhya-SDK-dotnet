@@ -16,13 +16,12 @@ public static class OnDemandRequestFactory
     /// <summary>
     /// The synchronize root
     /// </summary>
-    private static readonly object _syncRoot = new();
+    private static readonly object SyncRoot = new();
 
     /// <summary>
     /// The instances
     /// </summary>
-
-    private static readonly ConcurrentBag<OnDemandRequestInstance> _instances = new();
+    private static readonly ConcurrentBag<OnDemandRequestInstance> Instances = new();
 
     /// <summary>
     /// Creates the instance internal.
@@ -55,7 +54,7 @@ public static class OnDemandRequestFactory
             Service = service,
             Type = typeof(T)
         };
-        _instances.Add(instance);
+        Instances.Add(instance);
         return instance;
     }
 
@@ -68,7 +67,6 @@ public static class OnDemandRequestFactory
     /// <param name="throughput"></param>
     /// <param name="allowAboveThroughput"></param>
     /// <returns>The key of the instance created</returns>
-
     public static Guid CreateInstance<T>(
         ServiceName service,
         CancellationToken token,
@@ -93,16 +91,16 @@ public static class OnDemandRequestFactory
     {
         var type = typeof(T);
 
-        var result = _instances.SingleOrDefault(i => i.Service == service && i.Type == type);
+        var result = Instances.SingleOrDefault(i => i.Service == service && i.Type == type);
 
         if (result != null)
         {
             return result.Instance;
         }
 
-        lock (_syncRoot)
+        lock (SyncRoot)
         {
-            result = _instances.SingleOrDefault(i => i.Service == service && i.Type == type);
+            result = Instances.SingleOrDefault(i => i.Service == service && i.Type == type);
 
             if (result != null)
             {
@@ -128,25 +126,21 @@ public static class OnDemandRequestFactory
     /// </summary>
     /// <param name="key">The key.</param>
     /// <returns>IOnDemandRequestWrapper.</returns>
-
-
     public static IOnDemandRequestWrapper GetInstanceByKey(Guid key) =>
-        _instances.SingleOrDefault(i => i.Key == key)?.Instance;
+        Instances.SingleOrDefault(i => i.Key == key)?.Instance;
 
     /// <summary>
     /// Flushes the by key.
     /// </summary>
     /// <param name="key">The key.</param>
-
     public static void FlushByKey(Guid key) => GetInstanceByKey(key)?.Flush();
 
     /// <summary>
     /// Flushes all.
     /// </summary>
-
     public static void FlushAll()
     {
-        foreach (var instance in _instances)
+        foreach (var instance in Instances)
         {
             instance.Instance.Flush();
         }
@@ -155,12 +149,11 @@ public static class OnDemandRequestFactory
     /// <summary>
     /// Finalizes all instances.
     /// </summary>
-
     public static void FinalizeAll()
     {
         try
         {
-            while (_instances.TryTake(out var instance))
+            while (Instances.TryTake(out var instance))
             {
                 instance.Instance.Dispose();
             }

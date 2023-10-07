@@ -550,7 +550,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// </summary>
     /// <value>The gtin.</value>
     [EntityElement("GTINNFE")]
-    public string GTIN
+    public string Gtin
     {
         get => _gtin;
         set
@@ -565,7 +565,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// </summary>
     /// <value>The gtin tax.</value>
     [EntityElement("GTINTRIBNFE")]
-    public string GTINTax
+    public string GtinTax
     {
         get => _gtinTax;
         set
@@ -738,7 +738,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeGTIN() => _gtinSet;
+    public bool ShouldSerializeGtin() => _gtinSet;
 
     /// <summary>
     /// Should the serialize gtin tax.
@@ -746,7 +746,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeGTINTax() => _gtinTaxSet;
+    public bool ShouldSerializeGtinTax() => _gtinTaxSet;
 
     /// <summary>
     /// Should the serialize discount percentage.

@@ -270,7 +270,6 @@ public static class EntityExtensions
 
     #region IEntity Simple CRUD Service Invokers
 
-
     /// <summary>
     /// Queries the internal.
     /// </summary>
@@ -465,7 +464,6 @@ public static class EntityExtensions
     /// For example, if the queue has the length of 10 items, and are sent 1000 items, if one of this items are with error, 10 items will not persist the state but the other 990 will be persisted in a normal lifecycle.
     /// Remember that if a instance is finalized, the entire remaining items in the queue are sent at one time, this mean that in this example,
     /// you can loose the 1000 items (if no requests has been done yet)</remarks>
-
     public static void UpdateOnDemand<T>(this T entity)
         where T : class, IEntity, new() =>
         OnDemandRequestFactory.GetInstanceForService<T>(ServiceName.CrudServiceSave).Add(entity);
@@ -475,7 +473,6 @@ public static class EntityExtensions
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="entity">The entity.</param>
-
 #pragma warning disable CA1030 // Use events where appropriate
     public static void RemoveOnDemand<T>(this T entity)
         where T : class, IEntity, new()

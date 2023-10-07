@@ -37,7 +37,7 @@ internal class SankhyaWrapper
     /// <summary>
     /// The locks
     /// </summary>
-    private static readonly ConcurrentDictionary<string, object> _locks = new();
+    private static readonly ConcurrentDictionary<string, object> Locks = new();
 
     /// <summary>
     /// The disposed
@@ -96,7 +96,7 @@ internal class SankhyaWrapper
     /// <summary>
     /// The invalid session ids
     /// </summary>
-    private static readonly List<string> _invalidSessionIds = new();
+    private static readonly List<string> InvalidSessionIds = new();
 
     /// <summary>
     /// Gets the internal user agent.
@@ -120,7 +120,7 @@ internal class SankhyaWrapper
     /// <summary>
     /// The MIME types to extensions dictionary
     /// </summary>
-    private static readonly Dictionary<string, string> _mimeTypes2Extensions =
+    private static readonly Dictionary<string, string> MimeTypes2Extensions =
         new()
         {
             { @"image/jpeg", @"jpg" },
@@ -422,7 +422,7 @@ internal class SankhyaWrapper
 
         var wait = 0;
 
-        var currentLock = _locks.GetOrAdd(lockKey, _ => new());
+        var currentLock = Locks.GetOrAdd(lockKey, _ => new());
 
         Monitor.Enter(currentLock);
 
@@ -518,7 +518,7 @@ internal class SankhyaWrapper
             case ServiceRequestInvalidAuthorizationException _:
 
                 if (
-                    _invalidSessionIds.Any(
+                    InvalidSessionIds.Any(
                         sessionId =>
                             sessionId.Equals(
                                 _sessionId,
@@ -871,10 +871,10 @@ internal class SankhyaWrapper
         if (
             string.IsNullOrWhiteSpace(result.FileExtension)
             && !string.IsNullOrWhiteSpace(result.ContentType)
-            && _mimeTypes2Extensions.ContainsKey(result.ContentType)
+            && MimeTypes2Extensions.ContainsKey(result.ContentType)
         )
         {
-            result.FileExtension = _mimeTypes2Extensions[result.ContentType];
+            result.FileExtension = MimeTypes2Extensions[result.ContentType];
         }
 
         ReadStream(key, response, result);
@@ -997,7 +997,7 @@ internal class SankhyaWrapper
         }
 
         ServiceInvoker(ServiceName.Logout);
-        _invalidSessionIds.Add(_sessionId);
+        InvalidSessionIds.Add(_sessionId);
         _sessionId = string.Empty;
     }
 
@@ -1230,9 +1230,9 @@ internal class SankhyaWrapper
 
         using var stream = response.GetResponseStream();
 
-        if (_mimeTypes2Extensions.ContainsKey(response.ContentType))
+        if (MimeTypes2Extensions.ContainsKey(response.ContentType))
         {
-            extension = _mimeTypes2Extensions[response.ContentType];
+            extension = MimeTypes2Extensions[response.ContentType];
         }
 
         var memory = new MemoryStream();
