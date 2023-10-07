@@ -85,13 +85,13 @@ public static class KnowServicesRequestWrapper
     #region Communications Methods
 
     /// <summary>
-    /// Sends the warning.
+    /// Sends a warning message to specific users or users groups. Can also be used to send a general warning (for all).
     /// </summary>
     /// <param name="title">The title.</param>
     /// <param name="description">The description.</param>
-    /// <param name="tip">The tip.</param>
-    /// <param name="level">The level.</param>
-    /// <param name="recipients">The recipients.</param>
+    /// <param name="tip">(optional) The tip.</param>
+    /// <param name="level">The level of the warning <see cref="SankhyaWarningLevel"/>.</param>
+    /// <param name="recipients">(optional) The recipients (A list of users or groups, or null to send to all).</param>
     public static void SendWarning(
         [Localizable(false)] string title,
         [Localizable(false)] string description,
@@ -134,7 +134,7 @@ public static class KnowServicesRequestWrapper
     }
 
     /// <summary>
-    /// Sends the message.
+    /// Sends a direct message to a user or group of for all users in the system.
     /// </summary>
     /// <param name="content">The content.</param>
     /// <param name="recipients">The recipients.</param>
@@ -160,7 +160,7 @@ public static class KnowServicesRequestWrapper
     }
 
     /// <summary>
-    /// Receives the messages pending reading.
+    /// Receives the messages pending reading, for the current logged-in user.
     /// </summary>
     /// <returns>String.</returns>
     public static string ReceiveMessages()

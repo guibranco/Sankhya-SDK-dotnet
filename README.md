@@ -56,10 +56,125 @@ Download the latest zip file from the [Release](https://github.com/GuiBranco/San
 
 ## Features
 
-**TODO**
+This SDK implements many Sankhya's web service. Some of then are called `Know Services`.
+If the service that you looking for is not set in the SDK you can implement the service request/response by your own (and use it on your code or submit a pull request to this repository).
+
+There are also some `Request Wrappers` that allows you to make some requests in an easy way.
+
+### Known Services
+
+- MobileLoginSP
+  - login
+  - logout
+- CRUD
+  - find
+  - remove
+  - save
+- CRUDServiceProvider
+  - loadRecords
+  - removeRecord
+  - saveRecord
+- ServicosNfeSP
+  - buscaProcessamentoLote
+  - gerarLote
+  - getAcompanhamentosNota
+- CACSP
+  - incluirNota
+  - incluirAlterarCabecalhoNota
+  - incluirAlterarItemNota
+  - confirmarNota
+  - cancelarNota
+  - duplicarNota
+  - excluirNotas
+  - excluirItemNota
+  - ligarPedidoNota
+  - marcarPedidosComoNaoPendentes
+- SelecaoDocumentoSP
+  - faturar
+- BaixaAutomaticaSP
+  - baixar
+- BaixaFinanceiroSP
+  - estornarTitulo
+- AvisoSistemaSP
+  - getNovosAvisos
+  - enviarAviso
+  - enviarMensagem
+- RepositorioArquivoSP
+  - abreArquivo
+- ImportacaoImagemSP
+  - deletaArquivos
+- SessionManagerSP
+  - getCoreSessions
+  - killSession
+- MovimentacaoFinanceiraSP
+  - desvincularRemessa
+
+### Request Wrappers
+
+- Know Services Request Wrapper - This implements all known services described below, with predefined parameters, if the existing parameter set doesn't suit your need, you can execute the request without the wrapper.
+- On Demand Request Wrapper - This manage the request reusing the authentication flow, so it holds the same session over multiple requests.
+- Paged Request Wrapper - Retrieve data using paged CRUD.
+
+### Main Wrappers
+
+- Low Level Sankhya Wrapper - **NOT IMPLEMENTED YET**.
+- Sankhya Wrapper -  The main wrapper.
+  
+### Sankhya Wrapper
+
+The *last mile operations* are done on this wrappers.
+ALl HTTP request/responses, login/logout, serialization, download/upload operations are defined on this class.
+
+**Avoid** usage of this class directly from you implementation. Only call methods of this class if you are extending the usage of the SDK or even implementing a new feature for the SDK, otherwise, prefer using one of the request wrappers, or the Sankhya Context class.
 
 ---
 
 ## Usage
 
-**TODO**
+### Service registration (IoC / DI)
+
+This SDK is based on [CrispyWaffle toolkit](https://github.com/guibranco/CrispyWaffle), so you can use it's [Service Locator](https://guibranco.github.io/CrispyWaffle/user-guide/serviceLocator/) feature to register it.
+
+Assuming you are using Crispy Waffle, you can register the Sankhya wrapper in the Bootstrapper.cs file this way:
+
+```cs
+var connectionSankhya = new Connection(); //Fill in your details
+ServiceLocator.Register(() => new SankhyaContext(connectionSankhya), LifeStyle.Singleton);
+```
+
+Later, when you need to access the [Sankhya Context]() in you code, you can just pass it as constructor's argument or retrieve it from **Service Locator**
+
+#### Constructor argument
+
+```cs
+public class MyClass {
+
+    private readonly SankhyaContext _sankhyaContext;
+
+    public MyClass(SankhyaContext sankyaContext) {
+        _sankhyaContext = sankhyaContext ?? throw new ArgumentNullException(nameof(sankhyaContext));
+    }
+}
+```
+
+#### Retrieving manually
+
+```cs
+var sankhyaContext = ServiceLocator.Resolve<SankhyaContext>();
+```
+
+### Know Services Wrapper
+
+The `KnowServicesRequestWrapper` is a static class that can be used anywhere, since SankhyaContext is registered through ServiceLocator.
+
+### Session management
+
+You can use this to get all active sessions in Sankhya and kill one by one:
+
+```cs
+var sessions = KnowServicesRequestWrapper.GetSessions();
+foreach (var session in sessions) {
+    KnowServicesRequestWrapper.KillSession(session.Id);
+}
+```
+
