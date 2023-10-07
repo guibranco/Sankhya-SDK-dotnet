@@ -115,7 +115,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
     /// <param name="throughput">The throughput.</param>
     /// <param name="allowAboveThroughput">The allow above throughput</param>
     /// <exception cref="InvalidServiceRequestOperationException"></exception>
-
     public OnDemandRequestWrapper(
         ServiceName service,
         CancellationToken token,
@@ -187,7 +186,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
     /// Flushes this instance.
     /// </summary>
     /// <exception cref="ObjectDisposedException"></exception>
-
     public void Flush()
     {
         if (_disposeRequested)

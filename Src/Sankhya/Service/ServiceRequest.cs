@@ -9,7 +9,6 @@ namespace Sankhya.Service;
 /// <summary>
 /// A service request.
 /// </summary>
-
 [Serializer]
 [XmlRoot(ElementName = "serviceRequest")]
 public sealed class ServiceRequest
@@ -127,7 +126,6 @@ public sealed class ServiceRequest
     /// Constructor.
     /// </summary>
     /// <param name="service">The service.</param>
-
     public ServiceRequest(ServiceName service)
     {
         Service = service;

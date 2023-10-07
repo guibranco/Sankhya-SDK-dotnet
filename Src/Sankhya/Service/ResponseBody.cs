@@ -492,7 +492,6 @@ public sealed class ResponseBody
     /// Should the serialize code user logged in.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeUserLoggedIn() => _codeUserLoggedInSet;
@@ -501,7 +500,6 @@ public sealed class ResponseBody
     /// Should the serialize code user internal.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeUserInternal() => _codeUserSet;
@@ -510,7 +508,6 @@ public sealed class ResponseBody
     /// Should the serialize call identifier.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCallId() => _callIdSet;
@@ -519,7 +516,6 @@ public sealed class ResponseBody
     /// Should the serialize j session identifier.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeJSessionId() => _jSessionIdSet;
@@ -528,7 +524,6 @@ public sealed class ResponseBody
     /// Should the serialize crud service entities.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCrudServiceEntities() => _crudServiceEntitiesSet;
@@ -537,7 +532,6 @@ public sealed class ResponseBody
     /// Should the serialize crud service provider entities.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCrudServiceProviderEntities() => _crudServiceProviderEntitiesSet;
@@ -546,7 +540,6 @@ public sealed class ResponseBody
     /// Should the serialize accompaniments invoices.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeAccompanimentsInvoices() => _invoiceAccompanimentsSet;
@@ -555,7 +548,6 @@ public sealed class ResponseBody
     /// Should the serialize users.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeUsers() => _usersSet;
@@ -565,7 +557,6 @@ public sealed class ResponseBody
     /// </summary>
     /// <returns>Boolean.</returns>
 
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoices() => _invoicesSet;
@@ -574,7 +565,6 @@ public sealed class ResponseBody
     /// Should the serialize sessions.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSessions() => _sessionsSet;
@@ -583,7 +573,6 @@ public sealed class ResponseBody
     /// Should the serialize warnings.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeWarnings() => _warningsSet;
@@ -594,7 +583,6 @@ public sealed class ResponseBody
     /// <returns>Boolean.</returns>
 
 
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCancellationResult() => _cancellationResultSet;
@@ -603,7 +591,6 @@ public sealed class ResponseBody
     /// Should the serialize key.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeKey() => _keySet;
@@ -612,7 +599,6 @@ public sealed class ResponseBody
     /// Should the serialize primary key.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePrimaryKey() => _primaryKeySet;
@@ -621,7 +607,6 @@ public sealed class ResponseBody
     /// Should the serialize client events.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeClientEvents() => _clientEventsSet;
@@ -630,7 +615,6 @@ public sealed class ResponseBody
     /// Should the serialize messages.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMessages() => _messagesSet;
@@ -639,7 +623,6 @@ public sealed class ResponseBody
     /// Should the serialize releases.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeReleases() => _releasesSet;
@@ -648,7 +631,6 @@ public sealed class ResponseBody
     /// Should the serialize message unlink shipping.
     /// </summary>
     /// <returns></returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMessageUnlinkShipping() => _messageUnlinkShippingSet;

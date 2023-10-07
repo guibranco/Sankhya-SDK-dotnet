@@ -27,7 +27,6 @@ public static class KnowServicesRequestWrapper
     /// <summary>
     /// The Sankhya context.
     /// </summary>
-
     private static readonly SankhyaContext Context;
 
     /// <summary>
@@ -698,7 +697,6 @@ public static class KnowServicesRequestWrapper
     /// <param name="financialNumbers">The financial numbers.</param>
     /// <param name="codeAccount">The code account.</param>
     /// <exception cref="MarkAsPaymentPaidException"></exception>
-
     public static void FlagAsPaymentsPaid(IEnumerable<int> financialNumbers, int codeAccount)
     {
         var financialNumbersList = financialNumbers as List<int> ?? financialNumbers.ToList();
@@ -750,7 +748,6 @@ public static class KnowServicesRequestWrapper
     /// Reverses the payments.
     /// </summary>
     /// <param name="financialNumbers">The financial numbers.</param>
-
     public static void ReversePayments(IEnumerable<int> financialNumbers)
     {
         var financialNumbersList = financialNumbers as List<int> ?? financialNumbers.ToList();
@@ -785,7 +782,6 @@ public static class KnowServicesRequestWrapper
     /// </summary>
     /// <param name="financialNumber">The financial number.</param>
     /// <exception cref="UnlinkShippingException"></exception>
-
     public static void UnlinkShipping(int financialNumber)
     {
         var request = new ServiceRequest(ServiceName.UnlinkShipping)
@@ -891,7 +887,6 @@ public static class KnowServicesRequestWrapper
     /// <typeparam name="T"></typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>ServiceImage.</returns>
-
     public static async Task<ServiceFile> GetImageAsync<T>(this T entity)
         where T : class, IEntity, new()
     {

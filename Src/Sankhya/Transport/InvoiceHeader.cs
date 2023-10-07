@@ -1255,6 +1255,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
                         )
                     );
             }
+
             _movementTimeSet = true;
         }
     }

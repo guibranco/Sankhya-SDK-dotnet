@@ -477,6 +477,7 @@ public static class ServiceRequestExtensions
                     continue;
             }
         }
+
         if (string.IsNullOrWhiteSpace(model.PropertyName))
         {
             model.PropertyName = propertyInfo.Name;
@@ -568,6 +569,7 @@ public static class ServiceRequestExtensions
                     request.RequestBody.DataSet.Entities = entities.ToArray();
                     return;
                 }
+
                 entities.AddRange(
                     result.References.Select(
                         reference =>
@@ -817,7 +819,7 @@ public static class ServiceRequestExtensions
             .Select(criteria => request.ParseProperties(criteria, ReferenceLevel.Third))
             .ToList();
 
-        var sample = results.First();
+        var sample = results[0];
 
         switch (request.Service)
         {
@@ -856,6 +858,7 @@ public static class ServiceRequestExtensions
                         .ToList()
                         .ForEach(v => dataRow.LocalFields.SetMember(v.Name, v.Value));
                 }
+
                 request.RequestBody.DataSet.DataRows = dataRows.ToArray();
                 break;
 
@@ -871,6 +874,7 @@ public static class ServiceRequestExtensions
                     ids.Add(id);
                     result.Keys.ForEach(k => id.SetMember(k.Name, k.Value));
                 }
+
                 request.RequestBody.Entity = new()
                 {
                     RootEntity = sample.Name,
@@ -945,7 +949,7 @@ public static class ServiceRequestExtensions
     /// <param name="predicate">The predicate to use as literal criteria</param>
     /// <exception cref="NotImplementedException"></exception>
     /// <exception cref="NotImplementedException"></exception>
-    // TODO issue #68
+    // TODO: issue #29
     public static void Resolve<T>(this ServiceRequest request, Expression<Func<T, bool>> predicate)
         where T : class, IEntity, new() => throw new NotImplementedException();
 
@@ -969,6 +973,7 @@ public static class ServiceRequestExtensions
         {
             throw new ArgumentNullException(nameof(options));
         }
+
         request.Resolve(entity, options.MaxReferenceDepth ?? ReferenceLevel.Fourth);
         switch (request.Service)
         {

@@ -60,7 +60,6 @@ public sealed class Messages
 
     #region Serializer Helpers
 
-
     /// <summary>
     /// Should the serialize message.
     /// </summary>

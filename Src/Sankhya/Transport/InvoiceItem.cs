@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
 using Sankhya.Attributes;
@@ -98,6 +99,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
     // ReSharper disable once MethodTooLong
+    [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
     public override int GetHashCode()
     {
         unchecked
@@ -639,7 +641,6 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     #endregion
 
     #region Serializer Helpers
-
 
     /// <summary>
     /// Should the serialize single number.

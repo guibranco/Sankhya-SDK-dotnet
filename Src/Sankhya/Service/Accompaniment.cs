@@ -163,7 +163,6 @@ public sealed class Accompaniment
 
     #region Serializer Helpers
 
-
     /// <summary>
     /// Should the serialize date internal.
     /// </summary>

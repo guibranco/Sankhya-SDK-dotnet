@@ -29,7 +29,6 @@ namespace Sankhya;
 /// <summary>
 /// Class ServiceWrapper. This class cannot be inherited.
 /// </summary>
-
 internal class SankhyaWrapper
 {
     #region Private fields
@@ -42,55 +41,46 @@ internal class SankhyaWrapper
     /// <summary>
     /// The disposed
     /// </summary>
-
     private bool _disposed;
 
     /// <summary>
     /// The session identifier
     /// </summary>
-
     private string _sessionId;
 
     /// <summary>
     /// The username
     /// </summary>
-
     private string _username;
 
     /// <summary>
     /// The password
     /// </summary>
-
     private string _password;
 
     /// <summary>
     /// The host
     /// </summary>
-
     private readonly string _host;
 
     /// <summary>
     /// The port
     /// </summary>
-
     private readonly int _port;
 
     /// <summary>
     /// The request type
     /// </summary>
-
     private readonly string _requestType;
 
     /// <summary>
     /// The request count
     /// </summary>
-
     private static int _requestCount;
 
     /// <summary>
     /// The internal user agent
     /// </summary>
-
     private static string _internalUserAgent;
 
     /// <summary>
@@ -166,6 +156,7 @@ internal class SankhyaWrapper
                 Environment = ServiceEnvironment.None;
                 break;
         }
+
         _requestType = requestType.GetHumanReadableValue();
     }
 
@@ -295,6 +286,7 @@ internal class SankhyaWrapper
                 new Cookie(SankhyaConstants.SessionIdCookieName, _sessionId)
             );
         }
+
         var builder = new UriBuilder("http", _host, _port, path, query.ToString());
         LogConsumer.Debug(builder.Uri.ToString());
         var request = (HttpWebRequest)WebRequest.Create(builder.Uri);
@@ -389,6 +381,7 @@ internal class SankhyaWrapper
                 break;
             }
         }
+
         return result;
     }
 
@@ -472,6 +465,7 @@ internal class SankhyaWrapper
 
             Monitor.Exit(currentLock);
         }
+
         return null;
     }
 
@@ -736,6 +730,7 @@ internal class SankhyaWrapper
                 return new ServiceRequestInvalidAuthorizationException(e);
             }
         }
+
         return new ServiceRequestInaccessibleException(_host, _port, request, e);
     }
 
@@ -791,7 +786,6 @@ internal class SankhyaWrapper
     /// </summary>
     /// <param name="request">The request.</param>
     /// <returns>ServiceResponse.</returns>
-
     public ServiceResponse ServiceInvoker(ServiceRequest request) =>
         ServiceInvoker(request.Service, request);
 
@@ -835,6 +829,7 @@ internal class SankhyaWrapper
         {
             LogConsumer.Handle(e);
         }
+
         return new();
     }
 
@@ -950,7 +945,6 @@ internal class SankhyaWrapper
     /// </summary>
     /// <param name="userName">Name of the user.</param>
     /// <param name="password">The password.</param>
-
     public void Authenticate(string userName, string password)
     {
         _username = userName;
@@ -1175,7 +1169,6 @@ internal class SankhyaWrapper
     /// </summary>
     /// <param name="key">The key.</param>
     /// <returns>ServiceFile.</returns>
-
     public ServiceFile GetFile(string key)
     {
         LogConsumer.Info(Resources.SankhyaWrapper_GetFile_Getting, key);

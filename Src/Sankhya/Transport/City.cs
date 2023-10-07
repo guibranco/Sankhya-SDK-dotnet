@@ -23,7 +23,6 @@ namespace Sankhya.Transport;
 /// The city entity
 /// </summary>
 /// <seealso cref="IEntity" />
-
 [Serializer]
 [Entity("Cidade")]
 public class City : IEntity, IEquatable<City>

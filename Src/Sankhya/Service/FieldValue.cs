@@ -31,7 +31,6 @@ public sealed class FieldValue : IEquatable<FieldValue>
     /// </summary>
     /// <param name="other">An object to compare with this object.</param>
     /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-
     public bool Equals(FieldValue other)
     {
         if (ReferenceEquals(null, other))
@@ -55,7 +54,6 @@ public sealed class FieldValue : IEquatable<FieldValue>
     /// </summary>
     /// <param name="obj">The object to compare with the current object.</param>
     /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
-
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -75,7 +73,6 @@ public sealed class FieldValue : IEquatable<FieldValue>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
-
     public override int GetHashCode()
     {
         unchecked

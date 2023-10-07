@@ -403,6 +403,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
                         )
                     );
             }
+
             _timeOccurrenceSet = true;
         }
     }

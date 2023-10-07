@@ -325,6 +325,7 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
             _costReplacementSet = true;
         }
     }
+
     #endregion
 
     #region Serializer Helpers

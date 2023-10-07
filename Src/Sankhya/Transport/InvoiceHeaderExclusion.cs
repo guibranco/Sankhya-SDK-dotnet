@@ -730,6 +730,7 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
                         )
                     );
             }
+
             _timeMovementSet = true;
         }
     }

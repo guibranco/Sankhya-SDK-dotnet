@@ -368,6 +368,7 @@ public sealed class ServiceResponse : IXmlSerializable
                 node.ReadOuterXml();
                 continue;
             }
+
             if (
                 node.NodeType.Equals(XmlNodeType.EndElement)
                 && (elementName == @"entidade" || elementName == @"entity" || elementName == @"pk")
@@ -376,12 +377,14 @@ public sealed class ServiceResponse : IXmlSerializable
                 node.Read();
                 break;
             }
+
             if (node.NodeType.Equals(XmlNodeType.Element) && node.IsEmptyElement)
             {
                 ds.SetMember(node.Name, null);
                 node.Read();
                 continue;
             }
+
             if (node.NodeType.Equals(XmlNodeType.Element))
             {
                 ds.SetMember(elementName, node.ReadElementContentAsString());
@@ -415,6 +418,7 @@ public sealed class ServiceResponse : IXmlSerializable
                     writer.WriteRaw(doc.DocumentElement.OuterXml);
                 }
             }
+
             writer.WriteEndElement();
         }
     }

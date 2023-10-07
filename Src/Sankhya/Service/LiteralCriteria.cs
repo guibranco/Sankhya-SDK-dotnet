@@ -23,7 +23,6 @@ namespace Sankhya.Service;
 /// A literal criteria.
 /// </summary>
 /// <seealso cref="ILiteralCriteria" />
-
 public sealed class LiteralCriteria : ILiteralCriteria
 {
     #region Public properties

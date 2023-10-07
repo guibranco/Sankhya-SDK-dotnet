@@ -267,6 +267,7 @@ public class Address : IEntity, IEquatable<Address>
             _dateChangedSet = true;
         }
     }
+
     #endregion
 
     #region Serializer Helpers

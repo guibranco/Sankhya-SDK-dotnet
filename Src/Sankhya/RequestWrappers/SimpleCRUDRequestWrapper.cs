@@ -488,7 +488,6 @@ public static class SimpleCrudRequestWrapper
     /// <param name="entity">The entity.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
-
     public static T Update<T>(this T entity)
         where T : class, IEntity, new()
     {
@@ -561,7 +560,6 @@ public static class SimpleCrudRequestWrapper
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="entity">The entity.</param>
-
     public static void Remove<T>(this T entity)
         where T : class, IEntity, new()
     {
@@ -576,7 +574,6 @@ public static class SimpleCrudRequestWrapper
     /// <typeparam name="T"></typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>Task.</returns>
-
     public static async Task RemoveAsync<T>(this T entity)
         where T : class, IEntity, new()
     {

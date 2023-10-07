@@ -7,7 +7,6 @@ namespace Sankhya.Service;
 /// <summary>
 ///     The notas canceladas.
 /// </summary>
-
 public sealed class CancelledInvoices
 {
     /// <summary>

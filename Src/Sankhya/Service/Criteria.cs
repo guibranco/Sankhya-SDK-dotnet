@@ -47,6 +47,7 @@ public sealed class Criteria
     #endregion
 
     #region Public Properties
+
     /// <summary>
     /// Gets or sets the name.
     /// </summary>
@@ -80,7 +81,6 @@ public sealed class Criteria
     #endregion
 
     #region Serializer Helpers
-
 
     /// <summary>
     /// Should the name of the serialize.
