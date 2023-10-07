@@ -556,7 +556,6 @@ public sealed class ResponseBody
     /// Should the serialize invoices.
     /// </summary>
     /// <returns>Boolean.</returns>
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoices() => _invoicesSet;
@@ -581,8 +580,6 @@ public sealed class ResponseBody
     /// Should the serialize cancellation result.
     /// </summary>
     /// <returns>Boolean.</returns>
-
-
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCancellationResult() => _cancellationResultSet;

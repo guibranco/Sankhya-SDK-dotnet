@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
 
@@ -128,6 +129,7 @@ public class Contact : IEntity, IEquatable<Contact>
     /// <returns>A hash code for the current object.</returns>
     // ReSharper disable once FunctionComplexityOverflow
     // ReSharper disable once MethodTooLong
+    [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
     public override int GetHashCode()
     {
         unchecked

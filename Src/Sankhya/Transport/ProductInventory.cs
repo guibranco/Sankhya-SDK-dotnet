@@ -66,7 +66,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// </summary>
     /// <param name="obj">The object to compare with the current object.</param>
     /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
-
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -87,7 +86,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
-
     public override int GetHashCode()
     {
         unchecked

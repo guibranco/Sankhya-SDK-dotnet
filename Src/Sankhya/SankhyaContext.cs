@@ -22,7 +22,6 @@ namespace Sankhya;
 /// It's also have support for async service requests.
 /// Internally it uses a instance of <seealso cref="SankhyaWrapper" /> class.
 /// </summary>
-
 [ConnectionName("Sankhya")]
 public sealed class SankhyaContext
 {

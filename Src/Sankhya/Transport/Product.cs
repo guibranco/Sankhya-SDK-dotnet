@@ -917,7 +917,6 @@ public class Product : IEntity, IEquatable<Product>
     /// <summary>
     /// The codes bars
     /// </summary>
-
     public readonly Collection<CodeBars> CodesBars;
 
     #endregion

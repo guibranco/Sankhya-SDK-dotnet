@@ -494,7 +494,6 @@ public class User : IEntity, IEquatable<User>
     /// Returns a string that represents the current object.
     /// </summary>
     /// <returns>A string that represents the current object.</returns>
-
     public override string ToString() =>
         Partner.Name.IndexOf(@"SEM PARCEIRO", StringComparison.InvariantCultureIgnoreCase) != -1
             ? Name

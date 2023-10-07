@@ -13,6 +13,7 @@
 // ***********************************************************************
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Sankhya.Attributes;
 
 namespace Sankhya.Transport;
@@ -83,6 +84,7 @@ public class Address : IEntity, IEquatable<Address>
     /// Serves as a hash function for a particular type.
     /// </summary>
     /// <returns>A hash code for the current <see cref="Object" />.</returns>
+    [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
     public override int GetHashCode()
     {
         unchecked
