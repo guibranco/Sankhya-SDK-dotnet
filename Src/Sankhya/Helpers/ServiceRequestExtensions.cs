@@ -493,9 +493,9 @@ public static class ServiceRequestExtensions
     /// Request with type.
     /// </summary>
     /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The request</param>
-    /// <exception cref="ArgumentNullException">request</exception>
-    /// <exception cref="InvalidServiceRequestOperationException"></exception>
+    /// <param name="request">The request.</param>
+    /// <exception cref="ArgumentNullException">request.</exception>
+    /// <exception cref="InvalidServiceRequestOperationException">Invalid service request operation.</exception>
     public static void Resolve<T>(this ServiceRequest request)
         where T : class, IEntity, new()
     {
@@ -588,12 +588,12 @@ public static class ServiceRequestExtensions
     /// Request with type.
     /// </summary>
     /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The request</param>
+    /// <param name="request">The request.</param>
     /// <param name="criteria">The criteria.</param>
     /// <param name="maxReferenceLevel">The maximum reference level.</param>
-    /// <exception cref="ArgumentNullException">request</exception>
-    /// <exception cref="ArgumentNullException">criteria</exception>
-    /// <exception cref="InvalidServiceRequestOperationException"></exception>
+    /// <exception cref="ArgumentNullException">request.</exception>
+    /// <exception cref="ArgumentNullException">criteria.</exception>
+    /// <exception cref="InvalidServiceRequestOperationException">Invalid service request operation.</exception>
     public static void Resolve<T>(
         this ServiceRequest request,
         T criteria,
@@ -782,7 +782,7 @@ public static class ServiceRequestExtensions
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="criteriaList">The criteria list to create/update/save or exclude/remove.</param>
-    /// <exception cref="ArgumentNullException">request</exception>
+    /// <exception cref="ArgumentNullException">request.</exception>
     /// <exception cref="InvalidServiceRequestOperationException">Invalid service request operation.</exception>
     public static void Resolve<T>(this ServiceRequest request, ICollection<T> criteriaList)
         where T : class, IEntity, new()
@@ -868,7 +868,7 @@ public static class ServiceRequestExtensions
     /// <typeparam name="T">Generic type parameter. Must be a <seealso cref="IEntity" /> entity.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="literalCriteria">The literal criteria.</param>
-    /// <exception cref="InvalidServiceRequestOperationException"></exception>
+    /// <exception cref="InvalidServiceRequestOperationException">Invalid operation.</exception>
     public static void Resolve<T>(this ServiceRequest request, ILiteralCriteria literalCriteria)
         where T : class, IEntity, new()
     {
@@ -897,9 +897,9 @@ public static class ServiceRequestExtensions
     /// Request with type.
     /// </summary>
     /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The request</param>
+    /// <param name="request">The request.</param>
     /// <param name="literalCriteriaBuilder">The literal criteria builder.</param>
-    /// <exception cref="ArgumentNullException">literalCriteriaBuilder</exception>
+    /// <exception cref="ArgumentNullException">literalCriteriaBuilder.</exception>
     public static void Resolve<T>(this ServiceRequest request, StringBuilder literalCriteriaBuilder)
         where T : class, IEntity, new()
     {
@@ -917,7 +917,7 @@ public static class ServiceRequestExtensions
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="predicate">The predicate to use as literal criteria.</param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="NotImplementedException">Method not implemented.</exception>
     // TODO: issue #29
     public static void Resolve<T>(this ServiceRequest request, Expression<Func<T, bool>> predicate)
         where T : class, IEntity, new() => throw new NotImplementedException();
@@ -929,8 +929,8 @@ public static class ServiceRequestExtensions
     /// <param name="request">The request.</param>
     /// <param name="entity">The entity.</param>
     /// <param name="options">The options.</param>
-    /// <exception cref="ArgumentNullException">request</exception>
-    /// <exception cref="ArgumentNullException">options</exception>
+    /// <exception cref="ArgumentNullException">request.</exception>
+    /// <exception cref="ArgumentNullException">options.</exception>
     /// <exception cref="InvalidServiceRequestOperationException">Invalid Service Request Operation Exception.</exception>
     public static void Resolve<T>(this ServiceRequest request, T entity, EntityQueryOptions options)
         where T : class, IEntity, new()
@@ -1002,9 +1002,8 @@ public static class ServiceRequestExtensions
     /// <param name="request">The request.</param>
     /// <param name="criteria">The criteria.</param>
     /// <param name="options">The options.</param>
-    /// <exception cref="ArgumentNullException">request</exception>
-    /// <exception cref="ArgumentNullException">options</exception>
-    /// <exception cref="InvalidServiceRequestOperationException">INvalid service request operation exception.</exception>
+    /// <exception cref="ArgumentNullException">Argument is null when it was requested.</exception>
+    /// <exception cref="InvalidServiceRequestOperationException">Invalid service request operation exception.</exception>
     public static void Resolve<T>(
         this ServiceRequest request,
         ILiteralCriteria criteria,
@@ -1043,7 +1042,7 @@ public static class ServiceRequestExtensions
     /// </summary>
     /// <param name="request">The request.</param>
     /// <param name="options">The options.</param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="NotImplementedException">Method not implemented.</exception>
     private static void ResolveCrudServiceFindInternal(
         ServiceRequest request,
         EntityQueryOptions options
@@ -1083,7 +1082,7 @@ public static class ServiceRequestExtensions
     /// </summary>
     /// <param name="request">The request.</param>
     /// <param name="options">The options.</param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="NotImplementedException">Method not implemented.</exception>
     private static void ResolveCrudFindInternal(ServiceRequest request, EntityQueryOptions options)
     {
         if (options.IncludePresentationFields.HasValue)
