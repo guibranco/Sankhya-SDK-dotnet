@@ -1,10 +1,10 @@
-﻿namespace Sankhya.Transport;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
 using Sankhya.Enums;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class ProductSuggestedSale. This class cannot be inherited.
@@ -13,8 +13,6 @@ using Sankhya.Enums;
 [Entity("VendaCasada")]
 public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -61,6 +59,11 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -100,10 +103,6 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(ProductSuggestedSale left, ProductSuggestedSale right) =>
         !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The code source
@@ -164,10 +163,6 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// The product suggestion set
     /// </summary>
     private bool _productSuggestionSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code source.
@@ -293,10 +288,6 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code source.
     /// </summary>
@@ -332,6 +323,4 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeProductSuggestion() => _productSuggestionSet;
-
-    #endregion
 }

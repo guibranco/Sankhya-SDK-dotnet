@@ -1,13 +1,13 @@
-﻿namespace Sankhya.Transport;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
 using Sankhya.Enums;
 using Sankhya.Helpers;
 using Sankhya.Properties;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class InvoiceHeader. This class cannot be inherited.
@@ -17,8 +17,6 @@ using Sankhya.Properties;
 [Entity("CabecalhoNota")]
 public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -117,7 +115,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
             return false;
         if (ReferenceEquals(this, obj))
             return true;
-        if (obj.GetType() != this.GetType())
+        if (obj.GetType() != GetType())
             return false;
         return Equals((InvoiceHeader)obj);
     }
@@ -128,6 +126,11 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <returns>A hash code for the current object.</returns>
     // ReSharper disable once FunctionComplexityOverflow
     // ReSharper disable once MethodTooLong
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -234,10 +237,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(InvoiceHeader left, InvoiceHeader right) => !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The single number
@@ -578,10 +577,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The seller set
     /// </summary>
     private bool _sellerSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -1255,6 +1250,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
                         )
                     );
             }
+
             _movementTimeSet = true;
         }
     }
@@ -1350,10 +1346,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
             _sellerSet = true;
         }
     }
-
-    #endregion
-
-    #region Serializer Helpers
 
     /// <summary>
     /// Should the serialize single number.
@@ -1630,6 +1622,4 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSeller() => _sellerSet;
-
-    #endregion
 }

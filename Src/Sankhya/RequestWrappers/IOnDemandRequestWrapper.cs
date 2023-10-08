@@ -11,10 +11,10 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.RequestWrappers;
 
-using System;
 using Sankhya.Transport;
+
+namespace Sankhya.RequestWrappers;
 
 /// <summary>
 /// Interface IOnDemandRequestWrapper

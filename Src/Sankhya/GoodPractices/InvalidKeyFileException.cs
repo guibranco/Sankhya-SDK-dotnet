@@ -1,9 +1,8 @@
-﻿namespace Sankhya.GoodPractices;
-
-using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Runtime.Serialization;
 using Sankhya.Properties;
+
+namespace Sankhya.GoodPractices;
 
 [Serializable]
 public class InvalidKeyFileException : Exception

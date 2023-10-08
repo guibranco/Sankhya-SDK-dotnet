@@ -1,13 +1,11 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using Sankhya.Helpers;
 
+namespace Sankhya.Service;
+
 public sealed class Entity
 {
-    #region Private Members
-
     /// <summary>
     /// The name
     /// </summary>
@@ -157,10 +155,6 @@ public sealed class Entity
     /// The ids set
     /// </summary>
     private bool _idsSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the name.
@@ -389,10 +383,6 @@ public sealed class Entity
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the name of the serialize.
     /// </summary>
@@ -512,6 +502,4 @@ public sealed class Entity
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeIds() => _idsSet;
-
-    #endregion
 }

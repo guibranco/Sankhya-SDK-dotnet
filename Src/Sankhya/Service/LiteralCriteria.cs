@@ -11,24 +11,19 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service;
 
 using System.ComponentModel;
-using System.Data.Common;
 using System.Text;
 using System.Xml.Serialization;
 
-using System;
+namespace Sankhya.Service;
 
 /// <summary>
 /// A literal criteria.
 /// </summary>
 /// <seealso cref="ILiteralCriteria" />
-
 public sealed class LiteralCriteria : ILiteralCriteria
 {
-    #region Public properties
-
     /// <summary>
     /// Gets or sets the expression.
     /// </summary>
@@ -44,10 +39,6 @@ public sealed class LiteralCriteria : ILiteralCriteria
     /// <value>The parameters.</value>
     [XmlElement(ElementName = "parameter")]
     public Parameter[] Parameters { get; set; }
-
-    #endregion
-
-    #region ~Ctor
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LiteralCriteria" /> class.
@@ -74,6 +65,4 @@ public sealed class LiteralCriteria : ILiteralCriteria
 
         Expression = expressionBuilder.ToString();
     }
-
-    #endregion
 }

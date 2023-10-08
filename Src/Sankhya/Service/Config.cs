@@ -11,11 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service;
-
-using CrispyWaffle.Serialization;
 
 using System.Xml.Serialization;
+using CrispyWaffle.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class Config. This class cannot be inherited.
@@ -24,8 +24,6 @@ using System.Xml.Serialization;
 [XmlRoot(ElementName = "config")]
 public sealed class Config
 {
-    #region Private Members
-
     /// <summary>
     /// The path
     /// </summary>
@@ -35,10 +33,6 @@ public sealed class Config
     /// The path set
     /// </summary>
     private bool _pathSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the path.
@@ -55,15 +49,9 @@ public sealed class Config
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize path.
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializePath() => _pathSet;
-
-    #endregion
 }

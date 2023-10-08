@@ -1,7 +1,7 @@
-﻿namespace Sankhya.Transport;
-
-using System;
+﻿using System.Diagnostics.CodeAnalysis;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class ProductCost. This class cannot be inherited.
@@ -10,8 +10,6 @@ using Sankhya.Attributes;
 [Entity("Custo")]
 public class ProductCost : IEntity, IEquatable<ProductCost>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -66,6 +64,11 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -111,10 +114,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(ProductCost left, ProductCost right) => !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The code product
@@ -195,10 +194,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// The cost replacement set
     /// </summary>
     private bool _costReplacementSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code product.
@@ -325,9 +320,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
             _costReplacementSet = true;
         }
     }
-    #endregion
-
-    #region Serializer Helpers
 
     /// <summary>
     /// Should the serialize code product.
@@ -376,6 +368,4 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeCostReplacement() => _costReplacementSet;
-
-    #endregion
 }

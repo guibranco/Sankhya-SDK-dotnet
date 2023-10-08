@@ -1,12 +1,11 @@
-﻿namespace Sankhya.Service;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Globalization;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
 using Sankhya.Enums;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class Invoices. This class cannot be inherited.
@@ -15,8 +14,6 @@ using Sankhya.Enums;
 [Serializer]
 public sealed class Invoices
 {
-    #region Private Members
-
     /// <summary>
     /// The single numbers
     /// </summary>
@@ -176,10 +173,6 @@ public sealed class Invoices
     /// The invoice set
     /// </summary>
     private bool _invoiceSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single numbers.
@@ -623,10 +616,6 @@ public sealed class Invoices
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single numbers.
     /// </summary>
@@ -755,6 +744,4 @@ public sealed class Invoices
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoice() => _invoiceSet;
-
-    #endregion
 }

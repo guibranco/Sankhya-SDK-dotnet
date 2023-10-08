@@ -1,17 +1,15 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
 using Sankhya.Enums;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class SystemWarningRecipient. This class cannot be inherited.
 /// </summary>
 public sealed class SystemWarningRecipient
 {
-    #region Private Members
-
     /// <summary>
     /// The identifier
     /// </summary>
@@ -31,10 +29,6 @@ public sealed class SystemWarningRecipient
     /// The type set
     /// </summary>
     private bool _typeSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the identifier.
@@ -83,10 +77,6 @@ public sealed class SystemWarningRecipient
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize identifier.
     /// </summary>
@@ -102,6 +92,4 @@ public sealed class SystemWarningRecipient
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeTypeInternal() => _typeSet;
-
-    #endregion
 }

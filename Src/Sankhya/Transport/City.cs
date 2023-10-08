@@ -11,24 +11,22 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Transport;
 
-using CrispyWaffle.Serialization;
 using System.ComponentModel;
-using System;
+using System.Diagnostics.CodeAnalysis;
+using CrispyWaffle.Serialization;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// The city entity
 /// </summary>
 /// <seealso cref="IEntity" />
-
 [Serializer]
 [Entity("Cidade")]
 public class City : IEntity, IEquatable<City>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -98,6 +96,11 @@ public class City : IEntity, IEquatable<City>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -167,10 +170,6 @@ public class City : IEntity, IEquatable<City>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(City left, City right) => !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The code
@@ -281,10 +280,6 @@ public class City : IEntity, IEquatable<City>
     /// The longitude set
     /// </summary>
     private bool _longitudeSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -452,10 +447,6 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -543,6 +534,4 @@ public class City : IEntity, IEquatable<City>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRegion() => _regionSet;
-
-    #endregion
 }

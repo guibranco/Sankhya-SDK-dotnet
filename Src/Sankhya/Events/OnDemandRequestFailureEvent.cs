@@ -11,12 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Events;
 
 using CrispyWaffle.Events;
-
-using System;
 using Sankhya.Transport;
+
+namespace Sankhya.Events;
 
 /// <summary>
 /// The on demand request failure event class.
@@ -24,8 +23,6 @@ using Sankhya.Transport;
 /// <seealso cref="IEvent" />
 public class OnDemandRequestFailureEvent : IEvent
 {
-    #region Public properties
-
     /// <summary>
     /// Gets the entity.
     /// </summary>
@@ -44,10 +41,6 @@ public class OnDemandRequestFailureEvent : IEvent
     /// <value><c>true</c> if this instance is update; otherwise, <c>false</c>.</value>
     public bool IsUpdate { get; }
 
-    #endregion
-
-    #region ~Ctors
-
     /// <summary>
     /// Initializes a new instance of the <see cref="OnDemandRequestFailureEvent" /> class.
     /// </summary>
@@ -60,6 +53,4 @@ public class OnDemandRequestFailureEvent : IEvent
         Exception = exception;
         IsUpdate = isUpdate;
     }
-
-    #endregion
 }

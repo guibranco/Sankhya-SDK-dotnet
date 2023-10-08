@@ -1,11 +1,11 @@
-﻿namespace Sankhya.Transport;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
 using Sankhya.Attributes;
 using Sankhya.Enums;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class ProductInventory. This class cannot be inherited.
@@ -15,8 +15,6 @@ using Sankhya.Enums;
 [Serializer]
 public class ProductInventory : IEntity, IEquatable<ProductInventory>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -66,7 +64,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// </summary>
     /// <param name="obj">The object to compare with the current object.</param>
     /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
-
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -87,7 +84,11 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
-
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -143,10 +144,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(ProductInventory left, ProductInventory right) =>
         !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The code product
@@ -267,10 +264,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The partner set
     /// </summary>
     private bool _partnerSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code product.
@@ -473,10 +466,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code product.
     /// </summary>
@@ -572,6 +561,4 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePartner() => _partnerSet;
-
-    #endregion
 }

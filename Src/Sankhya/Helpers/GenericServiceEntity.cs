@@ -1,18 +1,15 @@
-﻿namespace Sankhya.Helpers;
-
-using System;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Log;
-
 using Sankhya.Attributes;
 using Sankhya.GoodPractices;
 using Sankhya.Transport;
+
+namespace Sankhya.Helpers;
 
 /// <summary>
 /// Class GenericServiceEntity.
@@ -21,8 +18,6 @@ using Sankhya.Transport;
 /// <seealso cref="IEntity" />
 public abstract class GenericServiceEntity : IXmlSerializable, IEntity
 {
-    #region Implementation of IXmlSerializable
-
     /// <summary>
     /// This method is reserved and should not be used.When implementing the IXmlSerializable
     /// interface, you should return null (Nothing in Visual Basic) from this method, and instead,
@@ -35,14 +30,13 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
     /// method and consumed by the
     /// <see cref="ReadXml(XmlReader)" />
     /// method.</returns>
-
     public XmlSchema GetSchema() => null;
 
     /// <summary>
     /// Generates an object from its XML representation.
     /// </summary>
     /// <param name="reader">The <see cref="System.Xml.XmlReader" /> stream from which the object is deserialized.</param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="NotImplementedException">Not implemented.</exception>
     public void ReadXml(XmlReader reader) => throw new NotImplementedException();
 
     /// <summary>
@@ -59,8 +53,6 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
             WriteXmlElement(writer, property, type, currentEntityName);
         }
     }
-
-    #endregion
 
     /// <summary>
     /// Writes the XML element.

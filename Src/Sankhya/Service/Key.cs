@@ -11,10 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service;
 
-using CrispyWaffle.Serialization;
 using System.Xml.Serialization;
+using CrispyWaffle.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class Key. This class cannot be inherited.
@@ -23,8 +24,6 @@ using System.Xml.Serialization;
 [XmlRoot("chave")]
 public sealed class Key
 {
-    #region Private Members
-
     /// <summary>
     /// The value
     /// </summary>
@@ -34,10 +33,6 @@ public sealed class Key
     /// The value set
     /// </summary>
     private bool _valueSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the value.
@@ -54,15 +49,9 @@ public sealed class Key
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize value.
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeValue() => _valueSet;
-
-    #endregion
 }

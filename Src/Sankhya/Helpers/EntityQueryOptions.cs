@@ -11,10 +11,10 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Helpers;
 
-using System;
 using Sankhya.Enums;
+
+namespace Sankhya.Helpers;
 
 /// <summary>
 /// Class EntityQueryOptions. This class cannot be inherited.

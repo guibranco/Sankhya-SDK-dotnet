@@ -11,9 +11,8 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Attributes;
 
-using System;
+namespace Sankhya.Attributes;
 
 /// <summary>
 /// Class EntityKeyAttribute. This class cannot be inherited.

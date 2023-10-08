@@ -1,11 +1,5 @@
-﻿namespace Sankhya.RequestWrappers;
-
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
 using System.Globalization;
-using System.Linq;
-using System.Threading;
 using CrispyWaffle.Composition;
 using CrispyWaffle.Events;
 using CrispyWaffle.Log;
@@ -17,17 +11,17 @@ using Sankhya.Properties;
 using Sankhya.Service;
 using Sankhya.Transport;
 
+namespace Sankhya.RequestWrappers;
+
 /// <summary>
 /// Class OnDemandRequestWrapper. This class cannot be inherited.
 /// </summary>
-/// <typeparam name="T"></typeparam>
+/// <typeparam name="T">The type parameter.</typeparam>
 /// <seealso cref="IOnDemandRequestWrapper" />
 /// <seealso cref="IDisposable" />
 internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
     where T : class, IEntity, new()
 {
-    #region Variables
-
     /// <summary>
     /// The context
     /// </summary>
@@ -103,10 +97,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
     /// </summary>
     private readonly ManualResetEvent _flushEvent;
 
-    #endregion
-
-    #region Methods
-
     /// <summary>
     /// Initializes a new instance of the <see cref="OnDemandRequestWrapper{T}" /> class.
     /// </summary>
@@ -115,7 +105,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
     /// <param name="throughput">The throughput.</param>
     /// <param name="allowAboveThroughput">The allow above throughput</param>
     /// <exception cref="InvalidServiceRequestOperationException"></exception>
-
     public OnDemandRequestWrapper(
         ServiceName service,
         CancellationToken token,
@@ -187,7 +176,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
     /// Flushes this instance.
     /// </summary>
     /// <exception cref="ObjectDisposedException"></exception>
-
     public void Flush()
     {
         if (_disposeRequested)
@@ -414,10 +402,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
         }
     }
 
-    #endregion
-
-    #region Implementation of IDisposable
-
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
     /// </summary>
@@ -443,6 +427,4 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
         _event.Dispose();
         _flushEvent.Dispose();
     }
-
-    #endregion
 }

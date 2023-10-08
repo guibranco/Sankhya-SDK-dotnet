@@ -1,7 +1,4 @@
-﻿namespace Sankhya.Helpers;
-
-using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
 using CrispyWaffle.Extensions;
@@ -11,14 +8,14 @@ using Sankhya.Attributes;
 using Sankhya.Enums;
 using Sankhya.Service;
 
+namespace Sankhya.Helpers;
+
 /// <summary>
-/// The entity dynamic serialization class
+/// The entity dynamic serialization class.
 /// </summary>
 /// <seealso cref="DynamicSerialization" />
 public class EntityDynamicSerialization : DynamicSerialization
 {
-    #region ~Ctor
-
     /// <summary>
     /// Initializes a new instance of the <see cref="EntityDynamicSerialization" /> class.
     /// </summary>
@@ -39,10 +36,6 @@ public class EntityDynamicSerialization : DynamicSerialization
     // ReSharper disable once UnusedMember.Global
     protected EntityDynamicSerialization(SerializationInfo info, StreamingContext context)
         : base(info, context) { }
-
-    #endregion
-
-    #region Private methods
 
     /// <summary>
     /// Parse entity.
@@ -79,7 +72,7 @@ public class EntityDynamicSerialization : DynamicSerialization
     /// <summary>
     /// Processes the property.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="instance">The instance.</param>
     /// <param name="maxInnerLevel">The maximum inner level.</param>
     /// <param name="prefix">The prefix.</param>
@@ -97,8 +90,6 @@ public class EntityDynamicSerialization : DynamicSerialization
         var isEntityReference = false;
         var propertyName = propertyInfo.Name;
         var customRelationName = string.Empty;
-
-        #region Custom Attributes
 
         foreach (var customAttribute in propertyInfo.GetCustomAttributes(true))
         {
@@ -122,14 +113,10 @@ public class EntityDynamicSerialization : DynamicSerialization
             propertyName = attribute.ElementName;
         }
 
-        #endregion
-
         if (!string.IsNullOrWhiteSpace(prefix))
         {
             propertyName = $@"{prefix}_{propertyName}";
         }
-
-        #region Entity reference
 
         if (isEntityReference)
         {
@@ -169,8 +156,6 @@ public class EntityDynamicSerialization : DynamicSerialization
             }
         }
 
-        #endregion
-
         if (
             !Dictionary.ContainsKey(propertyName) && !Dictionary.ContainsKey(propertyName.ToUpper())
         )
@@ -178,8 +163,8 @@ public class EntityDynamicSerialization : DynamicSerialization
             return;
         }
 
-        var valueInDictionary = Dictionary.ContainsKey(propertyName)
-            ? Dictionary[propertyName]
+        var valueInDictionary = Dictionary.TryGetValue(propertyName, out var valueLowerCase)
+            ? valueLowerCase
             : Dictionary[propertyName.ToUpper()];
         var propertyType = propertyInfo.PropertyType;
         if (Nullable.GetUnderlyingType(propertyType) != null)
@@ -259,17 +244,11 @@ public class EntityDynamicSerialization : DynamicSerialization
         }
     }
 
-    #endregion
-
-    #region Public methods
-
     /// <summary>
     /// Converts this object to a type.
     /// </summary>
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <returns>object converted to a type&lt; t&gt;</returns>
-
-
     public T ConvertToType<T>()
         where T : class, new()
     {
@@ -280,12 +259,10 @@ public class EntityDynamicSerialization : DynamicSerialization
     }
 
     /// <summary>
-    /// Change keys.
+    /// Changes the keys.
     /// </summary>
     /// <param name="newKeys">The new keys.</param>
-    /// <exception cref="IndexOutOfRangeException"></exception>
-    /// <exception cref="IndexOutOfRangeException">The key count in metadata is different than the key count in the dictionary</exception>
-
+    /// <exception cref="System.InvalidOperationException">The key count in metadata is different than the key count in the dictionary</exception>
     public void ChangeKeys(Metadata newKeys)
     {
         if (newKeys == null)
@@ -295,7 +272,7 @@ public class EntityDynamicSerialization : DynamicSerialization
 
         if (newKeys.Fields.Length != Dictionary.Count)
         {
-            throw new IndexOutOfRangeException(
+            throw new InvalidOperationException(
                 "The key count in metadata is different than the key count in the dictionary"
             );
         }
@@ -312,6 +289,4 @@ public class EntityDynamicSerialization : DynamicSerialization
             index++;
         }
     }
-
-    #endregion
 }

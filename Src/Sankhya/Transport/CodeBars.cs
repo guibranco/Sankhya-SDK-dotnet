@@ -11,11 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Transport;
 
-using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class CodeBars. This class cannot be inherited.
@@ -24,8 +25,6 @@ using Sankhya.Attributes;
 [Entity("CodigoBarras")]
 public class CodeBars : IEntity, IEquatable<CodeBars>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -74,6 +73,11 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -114,10 +118,6 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(CodeBars left, CodeBars right) => !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The code
@@ -168,10 +168,6 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// The date changed set
     /// </summary>
     private bool _dateChangedSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -249,10 +245,6 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -292,6 +284,4 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateChanged() => _dateChangedSet;
-
-    #endregion
 }

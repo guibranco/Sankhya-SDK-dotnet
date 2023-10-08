@@ -1,8 +1,7 @@
-﻿namespace Sankhya.GoodPractices;
-
-using System;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using Sankhya.Properties;
+
+namespace Sankhya.GoodPractices;
 
 [Serializable]
 public class ServiceRequestExpiredAuthenticationException : Exception

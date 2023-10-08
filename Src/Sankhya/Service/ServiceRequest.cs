@@ -1,21 +1,18 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
 using Sankhya.Enums;
 
+namespace Sankhya.Service;
+
 /// <summary>
 /// A service request.
 /// </summary>
-
 [Serializer]
 [XmlRoot(ElementName = "serviceRequest")]
 public sealed class ServiceRequest
 {
-    #region Private Members
-
     /// <summary>
     /// The service
     /// </summary>
@@ -35,10 +32,6 @@ public sealed class ServiceRequest
     /// The request body set
     /// </summary>
     private bool _requestBodySet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// The Service Name as SankhyaService enum
@@ -90,10 +83,6 @@ public sealed class ServiceRequest
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize service internal.
     /// </summary>
@@ -110,10 +99,6 @@ public sealed class ServiceRequest
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRequestBody() => _requestBodySet;
 
-    #endregion
-
-    #region ~Ctor
-
     /// <summary>
     /// Default constructor.
     /// </summary>
@@ -127,12 +112,9 @@ public sealed class ServiceRequest
     /// Constructor.
     /// </summary>
     /// <param name="service">The service.</param>
-
     public ServiceRequest(ServiceName service)
     {
         Service = service;
         RequestBody = new();
     }
-
-    #endregion
 }

@@ -1,13 +1,11 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
 
+namespace Sankhya.Service;
+
 public sealed class Session
 {
-    #region Private Members
-
     /// <summary>
     /// The identifier
     /// </summary>
@@ -117,10 +115,6 @@ public sealed class Session
     /// The user name set
     /// </summary>
     private bool _userNameSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the identifier.
@@ -304,10 +298,6 @@ public sealed class Session
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize identifier.
     /// </summary>
@@ -395,6 +385,4 @@ public sealed class Session
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeUserName() => _userNameSet;
-
-    #endregion
 }

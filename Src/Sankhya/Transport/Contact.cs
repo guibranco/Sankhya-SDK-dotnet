@@ -1,9 +1,9 @@
-﻿namespace Sankhya.Transport;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class Contact. This class cannot be inherited.
@@ -12,8 +12,6 @@ using Sankhya.Attributes;
 [Entity("Contato")]
 public class Contact : IEntity, IEquatable<Contact>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -128,6 +126,11 @@ public class Contact : IEntity, IEquatable<Contact>
     /// <returns>A hash code for the current object.</returns>
     // ReSharper disable once FunctionComplexityOverflow
     // ReSharper disable once MethodTooLong
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -249,10 +252,6 @@ public class Contact : IEntity, IEquatable<Contact>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(Contact left, Contact right) => !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The code
@@ -473,10 +472,6 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The region set
     /// </summary>
     private bool _regionSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -826,10 +821,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -1005,6 +996,4 @@ public class Contact : IEntity, IEquatable<Contact>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRegion() => _regionSet;
-
-    #endregion
 }

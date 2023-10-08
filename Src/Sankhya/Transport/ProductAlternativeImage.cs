@@ -1,8 +1,8 @@
-﻿namespace Sankhya.Transport;
-
-using System;
+﻿using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Serialization;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class ProductAlternativeImage. This class cannot be inherited.
@@ -12,8 +12,6 @@ using Sankhya.Attributes;
 [Entity("ImagemAlternativaProduto")]
 public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeImage>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -62,6 +60,11 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -103,10 +106,6 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(ProductAlternativeImage left, ProductAlternativeImage right) =>
         !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The code
@@ -157,10 +156,6 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// The date changed set
     /// </summary>
     private bool _dateChangedSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -240,10 +235,6 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -273,6 +264,4 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeDateChanged() => _dateChangedSet;
-
-    #endregion
 }

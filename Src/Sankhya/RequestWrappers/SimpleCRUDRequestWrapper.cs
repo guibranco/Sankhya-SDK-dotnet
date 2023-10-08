@@ -1,10 +1,4 @@
-﻿namespace Sankhya.RequestWrappers;
-
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using CrispyWaffle.Composition;
+﻿using CrispyWaffle.Composition;
 using CrispyWaffle.Log;
 using Sankhya.Enums;
 using Sankhya.GoodPractices;
@@ -12,33 +6,29 @@ using Sankhya.Helpers;
 using Sankhya.Service;
 using Sankhya.Transport;
 
+namespace Sankhya.RequestWrappers;
+
 /// <summary>
 /// Class SimpleCRUDRequestWrapper. This class cannot be inherited.
 /// </summary>
 public static class SimpleCrudRequestWrapper
 {
-    #region Private Members
-
     /// <summary>
     /// The Sankhya context.
     /// </summary>
-    private static readonly SankhyaContext _context = ServiceLocator.Resolve<SankhyaContext>();
+    private static readonly SankhyaContext Context = ServiceLocator.Resolve<SankhyaContext>();
 
     /// <summary>
     /// The session token.
     /// </summary>
-    private static readonly Guid _sessionToken = _context.AcquireNewSession(
+    private static readonly Guid SessionToken = Context.AcquireNewSession(
         ServiceRequestType.SimpleCrud
     );
-
-    #endregion
-
-    #region Retrieve Methods
 
     /// <summary>
     /// Determines whether this instance [can find internal] the specified entity.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
@@ -47,7 +37,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity);
-        var response = _context.ServiceInvoker(request, _sessionToken);
+        var response = Context.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             return null;
@@ -68,7 +58,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Determines whether this instance [can find internal] the specified entity.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <param name="options">The options.</param>
     /// <returns></returns>
@@ -92,7 +82,7 @@ public static class SimpleCrudRequestWrapper
                 .ToArray();
         }
 
-        var response = _context.ServiceInvoker(request, _sessionToken);
+        var response = Context.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             return null;
@@ -113,7 +103,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Determines whether this instance [can find internal] the specified entity.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
@@ -122,8 +112,8 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity);
-        return await _context
-            .ServiceInvokerAsync(request, _sessionToken)
+        return await Context
+            .ServiceInvokerAsync(request, SessionToken)
             .ContinueWith(t =>
             {
                 if (t.Result.Entities == null || t.Result.Entities.Length == 0)
@@ -148,7 +138,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Determines whether this instance [can find internal] the specified criteria.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
@@ -157,7 +147,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
-        var response = _context.ServiceInvoker(request, _sessionToken);
+        var response = Context.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             return null;
@@ -178,7 +168,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Determines whether this instance [can find internal] the specified criteria.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
@@ -187,8 +177,8 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
-        return await _context
-            .ServiceInvokerAsync(request, _sessionToken)
+        return await Context
+            .ServiceInvokerAsync(request, SessionToken)
             .ContinueWith(t =>
             {
                 if (t.Result.Entities == null || t.Result.Entities.Length == 0)
@@ -213,7 +203,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Musts the find internal.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <param name="options">The entity query options</param>
     /// <returns>T.</returns>
@@ -232,7 +222,7 @@ public static class SimpleCrudRequestWrapper
             request.Resolve(entity);
         }
 
-        var response = _context.ServiceInvoker(request, _sessionToken);
+        var response = Context.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             throw new ServiceRequestUnexpectedResultException(request, response);
@@ -253,7 +243,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Musts the find internal.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
@@ -263,8 +253,8 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity);
-        return await _context
-            .ServiceInvokerAsync(request, _sessionToken)
+        return await Context
+            .ServiceInvokerAsync(request, SessionToken)
             .ContinueWith(t =>
             {
                 if (t.Result.Entities == null || t.Result.Entities.Length == 0)
@@ -289,7 +279,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Musts the find internal.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
@@ -299,7 +289,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
-        var response = _context.ServiceInvoker(request, _sessionToken);
+        var response = Context.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             throw new ServiceRequestUnexpectedResultException(request, response);
@@ -320,7 +310,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Musts find entity internal as asynchronous operation.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
@@ -330,8 +320,8 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
-        return await _context
-            .ServiceInvokerAsync(request, _sessionToken)
+        return await Context
+            .ServiceInvokerAsync(request, SessionToken)
             .ContinueWith(t =>
             {
                 if (t.Result.Entities == null || t.Result.Entities.Length == 0)
@@ -433,7 +423,7 @@ public static class SimpleCrudRequestWrapper
     /// The criteria must be valid, and result in only one item in database/Sankhya.
     /// If none or more than one result is returned by Sankhya, a exception is thrown
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <param name="options">The options.</param>
     /// <returns></returns>
@@ -457,7 +447,7 @@ public static class SimpleCrudRequestWrapper
     /// If none entity matches the criteria, throws a exception of type <seealso cref="ServiceRequestUnexpectedResultException" />,
     /// if more than one is found, throws a exception of type <seealso cref="ServiceRequestTooManyResultsException" />
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="_">The entity.</param>
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
@@ -469,7 +459,7 @@ public static class SimpleCrudRequestWrapper
     /// If none entity matches the criteria, throws a exception of type <seealso cref="ServiceRequestUnexpectedResultException" />,
     /// if more than one is found, throws a exception of type <seealso cref="ServiceRequestTooManyResultsException" />
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="_">The entity.</param>
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
@@ -477,24 +467,19 @@ public static class SimpleCrudRequestWrapper
         where T : class, IEntity, new() =>
         await MustFindInternalAsync<T>(criteria).ConfigureAwait(false);
 
-    #endregion
-
-    #region Create / Update Methods
-
     /// <summary>
     /// Updates the specified context.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
-
     public static T Update<T>(this T entity)
         where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceSave);
         request.Resolve(entity);
-        var response = _context.ServiceInvoker(request, _sessionToken);
+        var response = Context.ServiceInvoker(request, SessionToken);
         if (response.Entities == null)
         {
             throw new ServiceRequestUnexpectedResultException(request, response);
@@ -515,8 +500,8 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceSave);
         request.Resolve(entity);
-        await _context
-            .ServiceInvokerAsync(request, _sessionToken)
+        await Context
+            .ServiceInvokerAsync(request, SessionToken)
             .ContinueWith(t => ConvertToType<T>(t, request), token)
             .ConfigureAwait(false);
     }
@@ -524,7 +509,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Converts to type.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="t">The t.</param>
     /// <param name="request">The request.</param>
     /// <returns>T.</returns>
@@ -552,38 +537,30 @@ public static class SimpleCrudRequestWrapper
         return t.Result.Entities.Single().ConvertToType<T>();
     }
 
-    #endregion
-
-    #region Delete Methods
-
     /// <summary>
     /// Removes the specified entity.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
-
     public static void Remove<T>(this T entity)
         where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceRemove);
         request.Resolve(entity);
-        _context.ServiceInvoker(request, _sessionToken);
+        Context.ServiceInvoker(request, SessionToken);
     }
 
     /// <summary>
     /// remove as an asynchronous operation.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>Task.</returns>
-
     public static async Task RemoveAsync<T>(this T entity)
         where T : class, IEntity, new()
     {
         var request = new ServiceRequest(ServiceName.CrudServiceRemove);
         request.Resolve(entity);
-        await _context.ServiceInvokerAsync(request, _sessionToken).ConfigureAwait(false);
+        await Context.ServiceInvokerAsync(request, SessionToken).ConfigureAwait(false);
     }
-
-    #endregion
 }

@@ -1,8 +1,8 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class SessionsResponse. This class cannot be inherited.
@@ -11,8 +11,6 @@ using CrispyWaffle.Serialization;
 [Serializer]
 public sealed class SessionsResponse
 {
-    #region Private members
-
     /// <summary>
     /// The sessions
     /// </summary>
@@ -22,10 +20,6 @@ public sealed class SessionsResponse
     /// The sessions set
     /// </summary>
     private bool _sessionsSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the sessions.
@@ -42,10 +36,6 @@ public sealed class SessionsResponse
         }
     }
 
-    #endregion
-
-    #region Serialization helpers
-
     /// <summary>
     /// Should the serializer sessions.
     /// </summary>
@@ -53,6 +43,4 @@ public sealed class SessionsResponse
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializerSessions() => _sessionsSet;
-
-    #endregion
 }

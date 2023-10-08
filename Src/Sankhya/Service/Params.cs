@@ -11,20 +11,19 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service;
 
-using CrispyWaffle.Extensions;
 using System.ComponentModel;
 using System.Xml.Serialization;
+using CrispyWaffle.Extensions;
 using Sankhya.Enums;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class Params. This class cannot be inherited.
 /// </summary>
 public sealed class Params
 {
-    #region Private Members
-
     /// <summary>
     /// The single number
     /// </summary>
@@ -54,10 +53,6 @@ public sealed class Params
     /// The movement type set
     /// </summary>
     private bool _movementTypeSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -121,10 +116,6 @@ public sealed class Params
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single number.
     /// </summary>
@@ -148,6 +139,4 @@ public sealed class Params
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMovementTypeInternal() => _movementTypeSet;
-
-    #endregion
 }

@@ -1,9 +1,9 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
 using Sankhya.Transport;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class InvoiceItems. This class cannot be inherited.
@@ -11,8 +11,6 @@ using Sankhya.Transport;
 [XmlRoot("items")]
 public sealed class InvoiceItems
 {
-    #region Private Members
-
     /// <summary>
     /// The single number
     /// </summary>
@@ -52,10 +50,6 @@ public sealed class InvoiceItems
     /// The items set
     /// </summary>
     private bool _itemsSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -155,10 +149,6 @@ public sealed class InvoiceItems
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single number.
     /// </summary>
@@ -190,6 +180,4 @@ public sealed class InvoiceItems
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeItems() => _itemsSet;
-
-    #endregion
 }

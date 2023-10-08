@@ -11,11 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Transport;
 
-using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class PartnerComplement. This class cannot be inherited.
@@ -24,8 +25,6 @@ using Sankhya.Attributes;
 [Entity("ComplementoParc")]
 public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -106,6 +105,11 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -192,10 +196,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(PartnerComplement left, PartnerComplement right) =>
         !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The code
@@ -316,10 +316,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// The city delivery set
     /// </summary>
     private bool _cityDeliverySet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -503,10 +499,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -582,6 +574,4 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeCityDelivery() => _cityDeliverySet;
-
-    #endregion
 }

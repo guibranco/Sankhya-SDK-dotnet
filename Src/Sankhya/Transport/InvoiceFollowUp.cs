@@ -1,12 +1,12 @@
-﻿namespace Sankhya.Transport;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
 using Sankhya.Enums;
 using Sankhya.Properties;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class InvoiceFollowUp. This class cannot be inherited.
@@ -15,8 +15,6 @@ using Sankhya.Properties;
 [Entity("AcompanhamentoNota")]
 public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -65,7 +63,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// </summary>
     /// <param name="obj">The object to compare with the current object.</param>
     /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
-
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -80,7 +77,11 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
-
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -135,10 +136,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(InvoiceFollowUp left, InvoiceFollowUp right) =>
         !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The single number
@@ -249,10 +246,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// The invoice item set
     /// </summary>
     private bool _invoiceItemSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -403,6 +396,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
                         )
                     );
             }
+
             _timeOccurrenceSet = true;
         }
     }
@@ -533,10 +527,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single number.
     /// </summary>
@@ -624,6 +614,4 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoiceItem() => _invoiceItemSet;
-
-    #endregion
 }

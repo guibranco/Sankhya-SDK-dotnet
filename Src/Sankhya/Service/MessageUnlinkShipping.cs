@@ -1,8 +1,8 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// The message unlink shipping class.
@@ -11,8 +11,6 @@ using CrispyWaffle.Serialization;
 [XmlRoot("msgDesvincularRemessa")]
 public sealed class MessageUnlinkShipping
 {
-    #region Private fields
-
     /// <summary>
     /// The value
     /// </summary>
@@ -22,10 +20,6 @@ public sealed class MessageUnlinkShipping
     /// The value set
     /// </summary>
     private bool _valueSet;
-
-    #endregion
-
-    #region Public properties
 
     /// <summary>
     /// Gets or sets the value.
@@ -44,10 +38,6 @@ public sealed class MessageUnlinkShipping
         }
     }
 
-    #endregion
-
-    #region Serializer helpers
-
     /// <summary>
     /// Should the serialize value.
     /// </summary>
@@ -55,6 +45,4 @@ public sealed class MessageUnlinkShipping
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeValue() => _valueSet;
-
-    #endregion
 }

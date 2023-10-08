@@ -11,10 +11,10 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.ValueObjects;
 
-using System.Collections.Generic;
 using Sankhya.Service;
+
+namespace Sankhya.ValueObjects;
 
 /// <summary>
 /// Class EntityResolverResult. This class cannot be inherited.

@@ -1,17 +1,14 @@
-﻿namespace Sankhya.Service;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Globalization;
 using System.Xml.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// An invoice accompaniment.
 /// </summary>
 public sealed class Accompaniment
 {
-    #region Private Members
-
     /// <summary>
     /// The date
     /// </summary>
@@ -51,10 +48,6 @@ public sealed class Accompaniment
     /// The user set
     /// </summary>
     private bool _userSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the date.
@@ -159,11 +152,6 @@ public sealed class Accompaniment
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
-
     /// <summary>
     /// Should the serialize date internal.
     /// </summary>
@@ -195,6 +183,4 @@ public sealed class Accompaniment
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeUser() => _userSet;
-
-    #endregion
 }

@@ -11,18 +11,17 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service;
 
 using System.ComponentModel;
 using System.Xml.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class Criteria. This class cannot be inherited.
 /// </summary>
 public sealed class Criteria
 {
-    #region Private Members
-
     /// <summary>
     /// The name
     /// </summary>
@@ -43,9 +42,6 @@ public sealed class Criteria
     /// </summary>
     private bool _valueSet;
 
-    #endregion
-
-    #region Public Properties
     /// <summary>
     /// Gets or sets the name.
     /// </summary>
@@ -76,11 +72,6 @@ public sealed class Criteria
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
-
     /// <summary>
     /// Should the name of the serialize.
     /// </summary>
@@ -96,6 +87,4 @@ public sealed class Criteria
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeValue() => _valueSet;
-
-    #endregion
 }

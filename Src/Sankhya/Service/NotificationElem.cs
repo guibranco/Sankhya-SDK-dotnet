@@ -1,17 +1,14 @@
-﻿namespace Sankhya.Service;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class NotificationElem. This class cannot be inherited.
 /// </summary>
 public sealed class NotificationElem
 {
-    #region Private Members
-
     /// <summary>
     /// The last notification
     /// </summary>
@@ -21,10 +18,6 @@ public sealed class NotificationElem
     /// The last notification set
     /// </summary>
     private bool _lastNotificationSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the last notification.
@@ -58,10 +51,6 @@ public sealed class NotificationElem
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize last notification.
     /// </summary>
@@ -69,6 +58,4 @@ public sealed class NotificationElem
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeLastNotification() => _lastNotificationSet;
-
-    #endregion
 }

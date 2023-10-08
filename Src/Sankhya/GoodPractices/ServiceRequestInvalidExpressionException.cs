@@ -1,11 +1,10 @@
-﻿namespace Sankhya.GoodPractices;
-
-using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Runtime.Serialization;
 using Sankhya.Enums;
 using Sankhya.Properties;
 using Sankhya.Service;
+
+namespace Sankhya.GoodPractices;
 
 [Serializable]
 public class ServiceRequestInvalidExpressionException : ServiceRequestGeneralException

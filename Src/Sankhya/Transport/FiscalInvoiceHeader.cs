@@ -1,10 +1,10 @@
-﻿namespace Sankhya.Transport;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
 using Sankhya.Enums;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class FiscalInvoiceHeader.
@@ -13,8 +13,6 @@ using Sankhya.Enums;
 [Entity("CabecalhoNota")]
 public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -49,7 +47,6 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     /// </summary>
     /// <param name="obj">The object to compare with the current object.</param>
     /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
-
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -70,7 +67,11 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
-
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -109,10 +110,6 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(FiscalInvoiceHeader left, FiscalInvoiceHeader right) =>
         !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The single number
@@ -163,10 +160,6 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     /// The invoice key set
     /// </summary>
     private bool _invoiceKeySet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -262,10 +255,6 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single number.
     /// </summary>
@@ -305,6 +294,4 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoiceKey() => _invoiceKeySet;
-
-    #endregion
 }

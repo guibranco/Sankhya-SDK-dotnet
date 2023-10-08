@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 namespace Sankhya.ValueObjects;
 
 /// <summary>

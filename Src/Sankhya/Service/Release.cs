@@ -1,10 +1,9 @@
-﻿namespace Sankhya.Service;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Globalization;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class Release. This class cannot be inherited.
@@ -12,8 +11,6 @@ using CrispyWaffle.Extensions;
 [XmlType("liberacao")]
 public sealed class Release
 {
-    #region Private Members
-
     /// <summary>
     /// The key
     /// </summary>
@@ -243,10 +240,6 @@ public sealed class Release
     /// The hash set
     /// </summary>
     private bool _releaseHashSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the key
@@ -737,10 +730,6 @@ public sealed class Release
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// The should serialize key serialization helper method
     /// </summary>
@@ -964,6 +953,4 @@ public sealed class Release
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeReleaseHash() => _releaseHashSet;
-
-    #endregion
 }

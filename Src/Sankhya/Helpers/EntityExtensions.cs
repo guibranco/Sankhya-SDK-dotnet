@@ -1,11 +1,5 @@
-﻿namespace Sankhya.Helpers;
-
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using System.Reflection;
-
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Log;
 using Sankhya.Attributes;
@@ -17,14 +11,13 @@ using Sankhya.Service;
 using Sankhya.Transport;
 using Sankhya.ValueObjects;
 
+namespace Sankhya.Helpers;
+
 /// <summary>
 /// Entity extensions
 /// </summary>
-
 public static class EntityExtensions
 {
-    #region Helper methods
-
     /// <summary>
     /// A Type extension method that gets entity name for a IEntity implementation
     /// </summary>
@@ -132,7 +125,7 @@ public static class EntityExtensions
     /// <summary>
     /// Extracts the keys.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>EntityResolverResult.</returns>
     internal static EntityResolverResult ExtractKeys<T>(this T entity)
@@ -157,7 +150,7 @@ public static class EntityExtensions
     /// <summary>
     /// Parses the property.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <param name="propertyInfo">The property information.</param>
     /// <param name="result">The result.</param>
@@ -182,8 +175,6 @@ public static class EntityExtensions
         {
             return;
         }
-
-        #region Fields & Keys & Criterios
 
         result.Fields.Add(new() { Name = propertyName });
 
@@ -233,8 +224,6 @@ public static class EntityExtensions
         }
 
         result.Keys.Add(new() { Name = propertyName, Value = value });
-
-        #endregion
     }
 
     /// <summary>
@@ -268,15 +257,10 @@ public static class EntityExtensions
         return isEntityKey;
     }
 
-    #endregion
-
-    #region IEntity Simple CRUD Service Invokers
-
-
     /// <summary>
     /// Queries the internal.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="timeout">The timeout.</param>
     /// <param name="processDataOnDemand">The process data on demand.</param>
@@ -294,7 +278,7 @@ public static class EntityExtensions
     /// <summary>
     /// Queries the specified timeout.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <param name="timeout">The timeout.</param>
     /// <param name="processDataOnDemand">The process data on demand.</param>
@@ -314,7 +298,7 @@ public static class EntityExtensions
     /// <summary>
     /// Queries the specified criteria.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="_">The entity.</param>
     /// <param name="criteria">The criteria.</param>
     /// <param name="timeout">The timeout.</param>
@@ -337,7 +321,7 @@ public static class EntityExtensions
     /// <summary>
     /// Queries the specified options.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <param name="options">The options.</param>
     /// <param name="processDataOnDemand">The process data on demand.</param>
@@ -368,7 +352,7 @@ public static class EntityExtensions
     /// <summary>
     /// Queries the specified options.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="_">The entity.</param>
     /// <param name="options">The options.</param>
     /// <param name="literalCriteria">The literal criteria.</param>
@@ -402,7 +386,7 @@ public static class EntityExtensions
     /// <summary>
     /// Queries the light.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <param name="timeout">The timeout.</param>
     /// <param name="maxResults">The maximum results.</param>
@@ -421,7 +405,7 @@ public static class EntityExtensions
     /// <summary>
     /// Queries the specified criteria.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="_">The entity.</param>
     /// <param name="criteria">The criteria.</param>
     /// <param name="options">The options.</param>
@@ -452,22 +436,17 @@ public static class EntityExtensions
         );
     }
 
-    #endregion
-
-    #region IEntity On Demand CUD Service Invokers
-
     /// <summary>
     /// Updates an <see cref="IEntity" /> instance on demand. This operations does not occurs instantly,
     /// but when a stipulated quantity of items are added to a queue or when the OnDemandRequestWrapper
     /// of this type is finalized.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <remarks>This operation runs in a separated thread and may fail if one or more items in the queue fail to update (consistency validation, network error, business validation). If this occurs, the entire set state will be lost. The set size vary depending in the queue/throughput size or the items remaining in the queue when the instance is finalized.
     /// For example, if the queue has the length of 10 items, and are sent 1000 items, if one of this items are with error, 10 items will not persist the state but the other 990 will be persisted in a normal lifecycle.
     /// Remember that if a instance is finalized, the entire remaining items in the queue are sent at one time, this mean that in this example,
     /// you can loose the 1000 items (if no requests has been done yet)</remarks>
-
     public static void UpdateOnDemand<T>(this T entity)
         where T : class, IEntity, new() =>
         OnDemandRequestFactory.GetInstanceForService<T>(ServiceName.CrudServiceSave).Add(entity);
@@ -475,9 +454,8 @@ public static class EntityExtensions
     /// <summary>
     /// Removes the on demand.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
-
 #pragma warning disable CA1030 // Use events where appropriate
     public static void RemoveOnDemand<T>(this T entity)
         where T : class, IEntity, new()
@@ -485,6 +463,4 @@ public static class EntityExtensions
     {
         OnDemandRequestFactory.GetInstanceForService<T>(ServiceName.CrudServiceRemove).Add(entity);
     }
-
-    #endregion
 }

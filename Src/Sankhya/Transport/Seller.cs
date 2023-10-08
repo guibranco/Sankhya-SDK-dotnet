@@ -11,13 +11,14 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Transport;
 
-using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
 using Sankhya.Enums;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class Seller. This class cannot be inherited.
@@ -27,8 +28,6 @@ using Sankhya.Enums;
 [Entity("Vendedor")]
 public class Seller : IEntity, IEquatable<Seller>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -73,7 +72,6 @@ public class Seller : IEntity, IEquatable<Seller>
     /// </summary>
     /// <param name="obj">The object to compare with the current object.</param>
     /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
-
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -88,7 +86,11 @@ public class Seller : IEntity, IEquatable<Seller>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
-
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -142,10 +144,6 @@ public class Seller : IEntity, IEquatable<Seller>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(Seller left, Seller right) => !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The code
@@ -236,10 +234,6 @@ public class Seller : IEntity, IEquatable<Seller>
     /// The partner set
     /// </summary>
     private bool _partnerSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -420,10 +414,6 @@ public class Seller : IEntity, IEquatable<Seller>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -495,6 +485,4 @@ public class Seller : IEntity, IEquatable<Seller>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePartner() => _partnerSet;
-
-    #endregion
 }

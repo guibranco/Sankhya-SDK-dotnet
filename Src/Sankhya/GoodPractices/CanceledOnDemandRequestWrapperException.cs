@@ -1,7 +1,6 @@
-﻿namespace Sankhya.GoodPractices;
+﻿using System.Runtime.Serialization;
 
-using System;
-using System.Runtime.Serialization;
+namespace Sankhya.GoodPractices;
 
 [Serializable]
 public class CanceledOnDemandRequestWrapperException : Exception

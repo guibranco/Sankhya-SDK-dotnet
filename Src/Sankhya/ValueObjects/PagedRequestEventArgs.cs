@@ -11,17 +11,14 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.ValueObjects;
 
-using System;
+namespace Sankhya.ValueObjects;
 
 /// <summary>
 /// Class PagedRequestEventArgs. This class cannot be inherited.
 /// </summary>
 public sealed class PagedRequestEventArgs
 {
-    #region Public properties
-
     /// <summary>
     /// Gets the type.
     /// </summary>
@@ -35,7 +32,7 @@ public sealed class PagedRequestEventArgs
     public int QuantityLoaded { get; }
 
     /// <summary>
-    /// Converts to total loaded.
+    /// Gets the total loaded.
     /// </summary>
     /// <value>The total loaded.</value>
     public int TotalLoaded { get; }
@@ -57,10 +54,6 @@ public sealed class PagedRequestEventArgs
     /// </summary>
     /// <value>The exception.</value>
     public Exception Exception { get; }
-
-    #endregion
-
-    #region ~Ctors
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PagedRequestEventArgs" /> class.
@@ -99,6 +92,4 @@ public sealed class PagedRequestEventArgs
         TotalLoaded = totalLoaded;
         Exception = exception;
     }
-
-    #endregion
 }

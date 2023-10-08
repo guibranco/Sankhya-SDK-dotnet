@@ -1,9 +1,9 @@
-﻿namespace Sankhya.Transport;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class UserGroup. This class cannot be inherited.
@@ -13,8 +13,6 @@ using Sankhya.Attributes;
 [Entity("GrupoUsuario")]
 public class UserGroup : IEntity, IEquatable<UserGroup>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -73,6 +71,11 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -123,10 +126,6 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// <returns>true if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise, false.</returns>
     public static bool operator !=(UserGroup left, UserGroup right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -176,10 +175,6 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// The email address set
     /// </summary>
     private bool _emailAddressSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -273,10 +268,6 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -316,6 +307,4 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeEmailAddress() => _emailAddressSet;
-
-    #endregion
 }

@@ -1,10 +1,10 @@
-﻿namespace Sankhya.Transport;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class Financial. This class cannot be inherited.
@@ -13,8 +13,6 @@ using Sankhya.Attributes;
 [Entity("Financeiro")]
 public class Financial : IEntity, IEquatable<Financial>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -80,6 +78,11 @@ public class Financial : IEntity, IEquatable<Financial>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -139,10 +142,6 @@ public class Financial : IEntity, IEquatable<Financial>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(Financial left, Financial right) => !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The single number
@@ -233,10 +232,6 @@ public class Financial : IEntity, IEquatable<Financial>
     /// The code result center set
     /// </summary>
     private bool _codeResultCenterSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -421,10 +416,6 @@ public class Financial : IEntity, IEquatable<Financial>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single number.
     /// </summary>
@@ -496,6 +487,4 @@ public class Financial : IEntity, IEquatable<Financial>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeResultCenter() => _codeResultCenterSet;
-
-    #endregion
 }

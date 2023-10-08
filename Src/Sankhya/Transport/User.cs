@@ -1,10 +1,10 @@
-﻿namespace Sankhya.Transport;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class User. This class cannot be inherited.
@@ -15,8 +15,6 @@ using Sankhya.Attributes;
 [Entity("Usuario")]
 public class User : IEntity, IEquatable<User>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -74,6 +72,11 @@ public class User : IEntity, IEquatable<User>
     /// Serves as a hash function for a particular type.
     /// </summary>
     /// <returns>A hash code for the current <see cref="Object" />.</returns>
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -127,10 +130,6 @@ public class User : IEntity, IEquatable<User>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operation.</returns>
     public static bool operator !=(User left, User right) => !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The code
@@ -231,10 +230,6 @@ public class User : IEntity, IEquatable<User>
     /// The seller set
     /// </summary>
     private bool _sellerSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -396,10 +391,6 @@ public class User : IEntity, IEquatable<User>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -486,19 +477,12 @@ public class User : IEntity, IEquatable<User>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSeller() => _sellerSet;
 
-    #endregion
-
-    #region Overrides of Object
-
     /// <summary>
     /// Returns a string that represents the current object.
     /// </summary>
     /// <returns>A string that represents the current object.</returns>
-
     public override string ToString() =>
         Partner.Name.IndexOf(@"SEM PARCEIRO", StringComparison.InvariantCultureIgnoreCase) != -1
             ? Name
             : $@"{Name} - {Partner.Name.ToCamelCase()}";
-
-    #endregion
 }

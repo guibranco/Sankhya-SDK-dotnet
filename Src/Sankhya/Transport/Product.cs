@@ -1,23 +1,42 @@
-﻿//
+﻿// ***********************************************************************
+// Assembly         : Sankhya
+// Author           : GuilhermeStracini
+// Created          : 10-07-2023
+//
+// Last Modified By : GuilhermeStracini
+// Last Modified On : 10-08-2023
+// ***********************************************************************
+// <copyright file="Product.cs" company="Guilherme Branco Stracini">
+//     © 2023 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
-namespace Sankhya.Transport;
-
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
-
 using Sankhya.Attributes;
 using Sankhya.Enums;
 using Sankhya.ValueObjects;
 
+namespace Sankhya.Transport;
+
+/// <summary>
+/// Class Product.
+/// Implements the <see cref="Sankhya.Transport.IEntity" />
+/// Implements the <see cref="Product" />
+/// </summary>
+/// <seealso cref="Sankhya.Transport.IEntity" />
+/// <seealso cref="Product" />
 [Entity("Produto")]
 public class Product : IEntity, IEquatable<Product>
 {
-    #region Equality members
-
+    /// <summary>
+    /// Indicates whether the current object is equal to another object of the same type.
+    /// </summary>
+    /// <param name="other">An object to compare with this object.</param>
+    /// <returns>true if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.</returns>
     public bool Equals(Product other)
     {
         if (ReferenceEquals(null, other))
@@ -26,34 +45,27 @@ public class Product : IEntity, IEquatable<Product>
         }
 
         return ReferenceEquals(this, other)
-            || _code == other._code
+            || (
+                _code == other._code
                 && _codeSet == other._codeSet
                 && _isActive == other._isActive
                 && _isActiveSet == other._isActiveSet
-                && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_name, other._name, StringComparison.OrdinalIgnoreCase)
                 && _nameSet == other._nameSet
-                && string.Equals(
-                    _complement,
-                    other._complement,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_complement, other._complement, StringComparison.OrdinalIgnoreCase)
                 && _complementSet == other._complementSet
                 && string.Equals(
                     _description,
                     other._description,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _descriptionSet == other._descriptionSet
-                && string.Equals(
-                    _codeVolume,
-                    other._codeVolume,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_codeVolume, other._codeVolume, StringComparison.OrdinalIgnoreCase)
                 && _codeVolumeSet == other._codeVolumeSet
                 && string.Equals(
                     _codeVolumeComponent,
                     other._codeVolumeComponent,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _codeVolumeComponentSet == other._codeVolumeComponentSet
                 && _codeGroup == other._codeGroup
@@ -64,13 +76,9 @@ public class Product : IEntity, IEquatable<Product>
                 && _grossWeightSet == other._grossWeightSet
                 && _quantity == other._quantity
                 && _quantitySet == other._quantitySet
-                && string.Equals(_brand, other._brand, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_brand, other._brand, StringComparison.OrdinalIgnoreCase)
                 && _brandSet == other._brandSet
-                && string.Equals(
-                    _reference,
-                    other._reference,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_reference, other._reference, StringComparison.OrdinalIgnoreCase)
                 && _referenceSet == other._referenceSet
                 && _width == other._width
                 && _widthSet == other._widthSet
@@ -82,7 +90,7 @@ public class Product : IEntity, IEquatable<Product>
                 && _sourceSet == other._sourceSet
                 && _isSaleAllowedOutsideKit == other._isSaleAllowedOutsideKit
                 && _isSaleAllowedOutsideKitSet == other._isSaleAllowedOutsideKitSet
-                && string.Equals(_ncm, other._ncm, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_ncm, other._ncm, StringComparison.OrdinalIgnoreCase)
                 && _ncmSet == other._ncmSet
                 && _use == other._use
                 && _useSet == other._useSet
@@ -96,9 +104,15 @@ public class Product : IEntity, IEquatable<Product>
                 && Equals(AlternativeImages, other.AlternativeImages)
                 && Equals(Suggestions, other.Suggestions)
                 && Equals(CodesBars, other.CodesBars)
-                && Equals(Image, other.Image);
+                && Equals(Image, other.Image)
+            );
     }
 
+    /// <summary>
+    /// Determines whether the specified <see cref="object" /> is equal to this instance.
+    /// </summary>
+    /// <param name="obj">The object to compare with the current object.</param>
+    /// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -106,9 +120,18 @@ public class Product : IEntity, IEquatable<Product>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj.GetType() == GetType() && Equals((Product)obj);
+        return ReferenceEquals(this, obj) || (obj.GetType() == GetType() && Equals((Product)obj));
     }
 
+    /// <summary>
+    /// Returns a hash code for this instance.
+    /// </summary>
+    /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -217,156 +240,164 @@ public class Product : IEntity, IEquatable<Product>
         }
     }
 
+    /// <summary>
+    /// Implements the == operator.
+    /// </summary>
+    /// <param name="left">The left.</param>
+    /// <param name="right">The right.</param>
+    /// <returns>The result of the operator.</returns>
     public static bool operator ==(Product left, Product right) => Equals(left, right);
 
+    /// <summary>
+    /// Implements the != operator.
+    /// </summary>
+    /// <param name="left">The left.</param>
+    /// <param name="right">The right.</param>
+    /// <returns>The result of the operator.</returns>
     public static bool operator !=(Product left, Product right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
-    /// The code
+    /// The code.
     /// </summary>
     private int _code;
 
     /// <summary>
-    /// The code set
+    /// The code set.
     /// </summary>
     private bool _codeSet;
 
     /// <summary>
-    /// The is active
+    /// The is active.
     /// </summary>
     private bool _isActive;
 
     /// <summary>
-    /// The is active set
+    /// The is active set.
     /// </summary>
     private bool _isActiveSet;
 
     /// <summary>
-    /// The name
+    /// The name.
     /// </summary>
     private string _name;
 
     /// <summary>
-    /// The name set
+    /// The name set.
     /// </summary>
     private bool _nameSet;
 
     /// <summary>
-    /// The complement
+    /// The complement.
     /// </summary>
     private string _complement;
 
     /// <summary>
-    /// The complement set
+    /// The complement set.
     /// </summary>
     private bool _complementSet;
 
     /// <summary>
-    /// The description
+    /// The description.
     /// </summary>
     private string _description;
 
     /// <summary>
-    /// The description set
+    /// The description set.
     /// </summary>
     private bool _descriptionSet;
 
     /// <summary>
-    /// The code volume
+    /// The code volume.
     /// </summary>
     private string _codeVolume;
 
     /// <summary>
-    /// The code volume set
+    /// The code volume set.
     /// </summary>
     private bool _codeVolumeSet;
 
     /// <summary>
-    /// The code volume component
+    /// The code volume component.
     /// </summary>
     private string _codeVolumeComponent;
 
     /// <summary>
-    /// The code volume component set
+    /// The code volume component set.
     /// </summary>
     private bool _codeVolumeComponentSet;
 
     /// <summary>
-    /// The code group
+    /// The code group.
     /// </summary>
     private int _codeGroup;
 
     /// <summary>
-    /// The code group set
+    /// The code group set.
     /// </summary>
     private bool _codeGroupSet;
 
     /// <summary>
-    /// The net weight
+    /// The net weight.
     /// </summary>
     private decimal _netWeight;
 
     /// <summary>
-    /// The net weight set
+    /// The net weight set.
     /// </summary>
     private bool _netWeightSet;
 
     /// <summary>
-    /// The gross weight
+    /// The gross weight.
     /// </summary>
     private decimal _grossWeight;
 
     /// <summary>
-    /// The gross weight set
+    /// The gross weight set.
     /// </summary>
     private bool _grossWeightSet;
 
     /// <summary>
-    /// The quantity
+    /// The quantity.
     /// </summary>
     private decimal _quantity;
 
     /// <summary>
-    /// The quantity set
+    /// The quantity set.
     /// </summary>
     private bool _quantitySet;
 
     /// <summary>
-    /// The brand
+    /// The brand.
     /// </summary>
     private string _brand;
 
     /// <summary>
-    /// The brand set
+    /// The brand set.
     /// </summary>
     private bool _brandSet;
 
     /// <summary>
-    /// The reference
+    /// The reference.
     /// </summary>
     private string _reference;
 
     /// <summary>
-    /// The reference set
+    /// The reference set.
     /// </summary>
     private bool _referenceSet;
 
     /// <summary>
-    /// The width
+    /// The width.
     /// </summary>
     private decimal _width;
 
     /// <summary>
-    /// The width set
+    /// The width set.
     /// </summary>
     private bool _widthSet;
 
     /// <summary>
-    /// The height
+    /// The height.
     /// </summary>
     private decimal _height;
 
@@ -454,10 +485,6 @@ public class Product : IEntity, IEquatable<Product>
     /// The cost set
     /// </summary>
     private bool _costSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -812,9 +839,7 @@ public class Product : IEntity, IEquatable<Product>
     /// <summary>
     /// Gets or sets the use.
     /// </summary>
-    /// <value>
-    /// The use.
-    /// </value>
+    /// <value>The use.</value>
     [EntityIgnore]
     public ProductUse Use
     {
@@ -829,9 +854,7 @@ public class Product : IEntity, IEquatable<Product>
     /// <summary>
     /// Gets or sets the use internal.
     /// </summary>
-    /// <value>
-    /// The use internal.
-    /// </value>
+    /// <value>The use internal.</value>
     [EntityElement("USOPROD")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -863,9 +886,7 @@ public class Product : IEntity, IEquatable<Product>
     /// <summary>
     /// Gets or sets the product replacement.
     /// </summary>
-    /// <value>
-    /// The product replacement.
-    /// </value>
+    /// <value>The product replacement.</value>
     [EntityReference("Produto_AD002")]
     public Product ProductReplacement
     {
@@ -895,9 +916,7 @@ public class Product : IEntity, IEquatable<Product>
     /// <summary>
     /// Gets or sets the image.
     /// </summary>
-    /// <value>
-    /// The image.
-    /// </value>
+    /// <value>The image.</value>
     [EntityIgnore]
     public Lazy<ServiceFile> Image { get; set; }
 
@@ -919,12 +938,7 @@ public class Product : IEntity, IEquatable<Product>
     /// <summary>
     /// The codes bars
     /// </summary>
-
     public readonly Collection<CodeBars> CodesBars;
-
-    #endregion
-
-    #region Serializer Helpers
 
     /// <summary>
     /// Should the serialize code.
@@ -1081,9 +1095,7 @@ public class Product : IEntity, IEquatable<Product>
     /// <summary>
     /// The should serialize use serialization helper method
     /// </summary>
-    /// <returns>
-    /// Returns <c>true</c> when the field should be serialized, false otherwise
-    /// </returns>
+    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeUse() => _useSet;
@@ -1099,9 +1111,7 @@ public class Product : IEntity, IEquatable<Product>
     /// <summary>
     /// The should serialize product replacement serialization helper method
     /// </summary>
-    /// <returns>
-    /// Returns <c>true</c> when the field should be serialized, false otherwise
-    /// </returns>
+    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeProductReplacement() => _productReplacementSet;
@@ -1114,12 +1124,8 @@ public class Product : IEntity, IEquatable<Product>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCost() => _costSet;
 
-    #endregion
-
-    #region Constructor
-
     /// <summary>
-    /// Initializes a new instance of the <see cref="Product"/> class.
+    /// Initializes a new instance of the <see cref="Product" /> class.
     /// </summary>
     public Product()
     {
@@ -1128,6 +1134,4 @@ public class Product : IEntity, IEquatable<Product>
         Suggestions = new();
         CodesBars = new();
     }
-
-    #endregion
 }

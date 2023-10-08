@@ -11,12 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Transport;
 
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Serialization;
-
-using System;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class State. This class cannot be inherited.
@@ -52,8 +52,8 @@ public class State : IEntity, IEquatable<State>
                 && _codePartnerSecretaryOfStateRevenueSet.Equals(
                     other._codePartnerSecretaryOfStateRevenueSet
                 )
-                && _codeIBGE == other._codeIBGE
-                && _codeIBGESet.Equals(other._codeIBGESet)
+                && _codeIbge == other._codeIbge
+                && _codeIbgeSet.Equals(other._codeIbgeSet)
                 && _codeRevenue == other._codeRevenue
                 && _codeRevenueSet.Equals(other._codeRevenueSet)
                 && _codeRevenueDetailing == other._codeRevenueDetailing
@@ -89,6 +89,11 @@ public class State : IEntity, IEquatable<State>
     /// Serves as a hash function for a particular type.
     /// </summary>
     /// <returns>A hash code for the current <see cref="Object" />.</returns>
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -103,8 +108,8 @@ public class State : IEntity, IEquatable<State>
             hashCode = (hashCode * 397) ^ _codeCountrySet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codePartnerSecretaryOfStateRevenue;
             hashCode = (hashCode * 397) ^ _codePartnerSecretaryOfStateRevenueSet.GetHashCode();
-            hashCode = (hashCode * 397) ^ _codeIBGE;
-            hashCode = (hashCode * 397) ^ _codeIBGESet.GetHashCode();
+            hashCode = (hashCode * 397) ^ _codeIbge;
+            hashCode = (hashCode * 397) ^ _codeIbgeSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeRevenue;
             hashCode = (hashCode * 397) ^ _codeRevenueSet.GetHashCode();
             hashCode = (hashCode * 397) ^ _codeRevenueDetailing;
@@ -132,8 +137,6 @@ public class State : IEntity, IEquatable<State>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(State left, State right) => !Equals(left, right);
-
-    #region Private Members
 
     /// <summary>
     /// The code
@@ -188,12 +191,12 @@ public class State : IEntity, IEquatable<State>
     /// <summary>
     /// The code ibge
     /// </summary>
-    private int _codeIBGE;
+    private int _codeIbge;
 
     /// <summary>
     /// The code ibge set
     /// </summary>
-    private bool _codeIBGESet;
+    private bool _codeIbgeSet;
 
     /// <summary>
     /// The code revenue
@@ -234,10 +237,6 @@ public class State : IEntity, IEquatable<State>
     /// The agreement protocol set
     /// </summary>
     private bool _agreementProtocolSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -320,13 +319,13 @@ public class State : IEntity, IEquatable<State>
     /// </summary>
     /// <value>The code ibge.</value>
     [EntityElement("CODIBGE")]
-    public int CodeIBGE
+    public int CodeIbge
     {
-        get => _codeIBGE;
+        get => _codeIbge;
         set
         {
-            _codeIBGE = value;
-            _codeIBGESet = true;
+            _codeIbge = value;
+            _codeIbgeSet = true;
         }
     }
 
@@ -390,10 +389,6 @@ public class State : IEntity, IEquatable<State>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -429,7 +424,7 @@ public class State : IEntity, IEquatable<State>
     /// Should the serialize code IBGE.
     /// </summary>
     /// <returns>Boolean.</returns>
-    public bool ShouldSerializeCodeIBGE() => _codeIBGESet;
+    public bool ShouldSerializeCodeIbge() => _codeIbgeSet;
 
     /// <summary>
     /// Should the serialize code revenue.
@@ -454,6 +449,4 @@ public class State : IEntity, IEquatable<State>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeAgreementProtocol() => _agreementProtocolSet;
-
-    #endregion
 }

@@ -1,15 +1,13 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class SystemMessage. This class cannot be inherited.
 /// </summary>
 public sealed class SystemMessage
 {
-    #region Private Members
-
     /// <summary>
     /// The content
     /// </summary>
@@ -29,10 +27,6 @@ public sealed class SystemMessage
     /// The recipients set
     /// </summary>
     private bool _recipientsSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the content.
@@ -64,10 +58,6 @@ public sealed class SystemMessage
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the content of the serialize.
     /// </summary>
@@ -83,6 +73,4 @@ public sealed class SystemMessage
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRecipients() => _recipientsSet;
-
-    #endregion
 }

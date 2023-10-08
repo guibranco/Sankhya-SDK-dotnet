@@ -11,9 +11,8 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Attributes;
 
-using System;
+namespace Sankhya.Attributes;
 
 /// <summary>
 /// Class EntityCustomDataAttribute. This class cannot be inherited.

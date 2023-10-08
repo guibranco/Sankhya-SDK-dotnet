@@ -11,14 +11,15 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Transport;
 
-using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
 using Sankhya.Attributes;
 using Sankhya.Enums;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class Partner.
@@ -28,8 +29,6 @@ using Sankhya.Enums;
 [Entity("Parceiro")]
 public class Partner : IEntity, IEquatable<Partner>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -208,6 +207,11 @@ public class Partner : IEntity, IEquatable<Partner>
     // ReSharper disable once FunctionComplexityOverflow
     // ReSharper disable once CyclomaticComplexity
     // ReSharper disable once MethodTooLong
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -410,67 +414,63 @@ public class Partner : IEntity, IEquatable<Partner>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(Partner left, Partner right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
-    /// The code
+    /// The code.
     /// </summary>
     private int _code;
 
     /// <summary>
-    /// The code set
+    /// The code set.
     /// </summary>
     private bool _codeSet;
 
     /// <summary>
-    /// The name
+    /// The name.
     /// </summary>
     private string _name;
 
     /// <summary>
-    /// The name set
+    /// The name set.
     /// </summary>
     private bool _nameSet;
 
     /// <summary>
-    /// The company name
+    /// The company name.
     /// </summary>
     private string _companyName;
 
     /// <summary>
-    /// The company name set
+    /// The company name set.
     /// </summary>
     private bool _companyNameSet;
 
     /// <summary>
-    /// The fiscal type
+    /// The fiscal type.
     /// </summary>
     private FiscalPersonType _fiscalType;
 
     /// <summary>
-    /// The fiscal type set
+    /// The fiscal type set.
     /// </summary>
     private bool _fiscalTypeSet;
 
     /// <summary>
-    /// The fiscal classification
+    /// The fiscal classification.
     /// </summary>
     private FiscalClassification _fiscalClassification;
 
     /// <summary>
-    /// The fiscal classification set
+    /// The fiscal classification set.
     /// </summary>
     private bool _fiscalClassificationSet;
 
     /// <summary>
-    /// The email address
+    /// The email address.
     /// </summary>
     private string _emailAddress;
 
     /// <summary>
-    /// The email address set
+    /// The email address set.
     /// </summary>
     private bool _emailAddressSet;
 
@@ -783,10 +783,6 @@ public class Partner : IEntity, IEquatable<Partner>
     /// The complement set
     /// </summary>
     private bool _complementSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -1493,10 +1489,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -1792,6 +1784,4 @@ public class Partner : IEntity, IEquatable<Partner>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeComplement() => _complementSet;
-
-    #endregion
 }

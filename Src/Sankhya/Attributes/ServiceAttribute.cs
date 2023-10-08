@@ -11,10 +11,10 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Attributes;
 
-using System;
 using Sankhya.Enums;
+
+namespace Sankhya.Attributes;
 
 /// <summary>
 /// Class ServiceAttribute. This class cannot be inherited.

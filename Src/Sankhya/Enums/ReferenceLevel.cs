@@ -12,9 +12,9 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Sankhya.Enums;
-
 using CrispyWaffle.Attributes;
+
+namespace Sankhya.Enums;
 
 /// <summary>
 /// Enum ReferenceLevel

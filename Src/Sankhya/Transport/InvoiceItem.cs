@@ -1,12 +1,12 @@
-﻿namespace Sankhya.Transport;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
 using Sankhya.Attributes;
 using Sankhya.Enums;
 using Sankhya.Helpers;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class InvoiceItem. This class cannot be inherited.
@@ -16,8 +16,6 @@ using Sankhya.Helpers;
 [Serializer]
 public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -98,6 +96,11 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
     // ReSharper disable once MethodTooLong
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -175,10 +178,6 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(InvoiceItem left, InvoiceItem right) => !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The single number
@@ -349,10 +348,6 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// The product set
     /// </summary>
     private bool _productSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -550,7 +545,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// </summary>
     /// <value>The gtin.</value>
     [EntityElement("GTINNFE")]
-    public string GTIN
+    public string Gtin
     {
         get => _gtin;
         set
@@ -565,7 +560,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// </summary>
     /// <value>The gtin tax.</value>
     [EntityElement("GTINTRIBNFE")]
-    public string GTINTax
+    public string GtinTax
     {
         get => _gtinTax;
         set
@@ -635,11 +630,6 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
             _productSet = true;
         }
     }
-
-    #endregion
-
-    #region Serializer Helpers
-
 
     /// <summary>
     /// Should the serialize single number.
@@ -738,7 +728,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeGTIN() => _gtinSet;
+    public bool ShouldSerializeGtin() => _gtinSet;
 
     /// <summary>
     /// Should the serialize gtin tax.
@@ -746,7 +736,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public bool ShouldSerializeGTINTax() => _gtinTaxSet;
+    public bool ShouldSerializeGtinTax() => _gtinTaxSet;
 
     /// <summary>
     /// Should the serialize discount percentage.
@@ -779,6 +769,4 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeProduct() => _productSet;
-
-    #endregion
 }

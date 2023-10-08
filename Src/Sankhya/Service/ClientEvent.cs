@@ -1,8 +1,8 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class ClientEvent. This class cannot be inherited.
@@ -10,8 +10,6 @@ using CrispyWaffle.Serialization;
 [Serializer]
 public sealed class ClientEvent
 {
-    #region Private Members
-
     /// <summary>
     /// The identifier
     /// </summary>
@@ -51,10 +49,6 @@ public sealed class ClientEvent
     /// The text set
     /// </summary>
     private bool _textSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the identifier.
@@ -117,10 +111,6 @@ public sealed class ClientEvent
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize identifier.
     /// </summary>
@@ -152,6 +142,4 @@ public sealed class ClientEvent
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeText() => _textSet;
-
-    #endregion
 }

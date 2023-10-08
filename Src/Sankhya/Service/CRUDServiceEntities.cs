@@ -1,15 +1,13 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// The CRUD service entities
 /// </summary>
 public sealed class CrudServiceEntities
 {
-    #region Private Members
-
     /// <summary>
     /// The name
     /// </summary>
@@ -29,10 +27,6 @@ public sealed class CrudServiceEntities
     /// The entities set
     /// </summary>
     private bool _entitiesSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the name.
@@ -64,10 +58,6 @@ public sealed class CrudServiceEntities
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the name of the serialize.
     /// </summary>
@@ -83,6 +73,4 @@ public sealed class CrudServiceEntities
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeEntities() => _entitiesSet;
-
-    #endregion
 }

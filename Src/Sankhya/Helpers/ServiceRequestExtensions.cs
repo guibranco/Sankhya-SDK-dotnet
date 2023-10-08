@@ -1,13 +1,21 @@
-﻿namespace Sankhya.Helpers;
+﻿// ***********************************************************************
+// Assembly         : Sankhya
+// Author           : GuilhermeStracini
+// Created          : 10-07-2023
+//
+// Last Modified By : GuilhermeStracini
+// Last Modified On : 10-08-2023
+// ***********************************************************************
+// <copyright file="ServiceRequestExtensions.cs" company="Guilherme Branco Stracini">
+//     © 2023 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
-
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Log;
 using CrispyWaffle.Utilities;
@@ -20,18 +28,18 @@ using Sankhya.Transport;
 using Sankhya.Validations;
 using Sankhya.ValueObjects;
 
+namespace Sankhya.Helpers;
+
 /// <summary>
 /// Implements service request extensions methods.
 /// </summary>
 public static class ServiceRequestExtensions
 {
-    #region Private methods
-
     /// <summary>
     /// Parse properties.
     /// </summary>
     /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The Service Request</param>
+    /// <param name="request">The Service Request.</param>
     /// <param name="criteria">The criteria.</param>
     /// <param name="maxLevel">(Optional) the maximum level.</param>
     /// <param name="currentLevel">(Optional) the current level.</param>
@@ -79,7 +87,7 @@ public static class ServiceRequestExtensions
     /// <summary>
     /// Parses the property.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="criteriaEntity">The entity used as criteria.</param>
     /// <param name="maxLevel">The maximum level.</param>
@@ -138,7 +146,7 @@ public static class ServiceRequestExtensions
     /// <summary>
     /// Processes the parse.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="criteriaEntity">The criteria entity.</param>
     /// <param name="maxLevel">The maximum level.</param>
@@ -194,7 +202,7 @@ public static class ServiceRequestExtensions
     /// <summary>
     /// Processes the fields and criteria.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="criteriaEntity">The criteria entity.</param>
     /// <param name="currentLevel">The current level.</param>
@@ -339,7 +347,7 @@ public static class ServiceRequestExtensions
     /// <summary>
     /// Processes the entity reference.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="criteriaEntity">The criteria entity.</param>
     /// <param name="maxLevel">The maximum level.</param>
@@ -421,7 +429,7 @@ public static class ServiceRequestExtensions
     /// <param name="propertyInfo">The property information.</param>
     /// <param name="ignoredFields">The ignored fields.</param>
     /// <param name="model">The model.</param>
-    /// <returns></returns>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     private static bool CheckIfElementIsIgnored(
         PropertyInfo propertyInfo,
         ICollection<string> ignoredFields,
@@ -478,22 +486,20 @@ public static class ServiceRequestExtensions
                     continue;
             }
         }
+
         if (string.IsNullOrWhiteSpace(model.PropertyName))
         {
             model.PropertyName = propertyInfo.Name;
         }
     }
 
-    #endregion
-
-    #region IEntity CRUD Resolvers
-
     /// <summary>
     /// Request with type.
     /// </summary>
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <param name="request">The request</param>
-    /// <exception cref="InvalidServiceRequestOperationException">Thrown when an Invalid Service Request Operation error condition occurs.</exception>
+    /// <exception cref="System.ArgumentNullException">request</exception>
+    /// <exception cref="Sankhya.GoodPractices.InvalidServiceRequestOperationException"></exception>
     public static void Resolve<T>(this ServiceRequest request)
         where T : class, IEntity, new()
     {
@@ -515,8 +521,6 @@ public static class ServiceRequestExtensions
 
         switch (request.Service)
         {
-            #region CRUD Find
-
             case ServiceName.CrudFind:
                 request.RequestBody.Entity = new()
                 {
@@ -540,10 +544,6 @@ public static class ServiceRequestExtensions
                     )
                     .ToArray();
                 break;
-
-            #endregion
-
-            #region CRUD Service Find
 
             case ServiceName.CrudServiceFind:
                 request.RequestBody.DataSet = new()
@@ -569,6 +569,7 @@ public static class ServiceRequestExtensions
                     request.RequestBody.DataSet.Entities = entities.ToArray();
                     return;
                 }
+
                 entities.AddRange(
                     result.References.Select(
                         reference =>
@@ -584,8 +585,6 @@ public static class ServiceRequestExtensions
                 );
                 request.RequestBody.DataSet.Entities = entities.ToArray();
                 break;
-
-            #endregion
         }
     }
 
@@ -595,7 +594,9 @@ public static class ServiceRequestExtensions
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <param name="request">The request</param>
     /// <param name="criteria">The criteria.</param>
-    /// <param name="maxReferenceLevel"></param>
+    /// <param name="maxReferenceLevel">The maximum reference level.</param>
+    /// <exception cref="System.ArgumentNullException">request</exception>
+    /// <exception cref="System.ArgumentNullException">criteria</exception>
     /// <exception cref="InvalidServiceRequestOperationException"></exception>
     public static void Resolve<T>(
         this ServiceRequest request,
@@ -639,13 +640,11 @@ public static class ServiceRequestExtensions
     /// </summary>
     /// <param name="request">The request.</param>
     /// <param name="result">The result.</param>
-    /// <exception cref="InvalidServiceRequestOperationException"></exception>
+    /// <exception cref="InvalidServiceRequestOperationException">Invalid Service Request Operation.</exception>
     private static void HandleService(ServiceRequest request, EntityResolverResult result)
     {
         switch (request.Service)
         {
-            #region CRUD Find
-
             case ServiceName.CrudFind:
 
                 request.RequestBody.Entity.Criteria = result.Criteria.ToArray();
@@ -669,20 +668,12 @@ public static class ServiceRequestExtensions
 
                 break;
 
-            #endregion
-
-            #region CRUD Save | CRUD Remove
-
             case ServiceName.CrudSave:
             case ServiceName.CrudRemove:
 
                 request.RequestBody.Entity.Campos = result.FieldValues.ToArray();
 
                 break;
-
-            #endregion
-
-            #region CRUD Service Find
 
             case ServiceName.CrudServiceFind:
 
@@ -728,10 +719,6 @@ public static class ServiceRequestExtensions
 
                 break;
 
-            #endregion
-
-            #region CRUD Service Save
-
             case ServiceName.CrudServiceSave:
 
                 request.RequestBody.DataSet = new()
@@ -771,10 +758,6 @@ public static class ServiceRequestExtensions
 
                 break;
 
-            #endregion
-
-            #region CRUD Service Remove
-
             case ServiceName.CrudServiceRemove:
 
                 request.RequestBody.Entity = new()
@@ -792,8 +775,6 @@ public static class ServiceRequestExtensions
 
                 break;
 
-            #endregion
-
             default:
                 throw new InvalidServiceRequestOperationException(request.Service);
         }
@@ -803,9 +784,10 @@ public static class ServiceRequestExtensions
     /// Request with type.
     /// </summary>
     /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The request</param>
+    /// <param name="request">The request.</param>
     /// <param name="criteriaList">The criteria list to create/update/save or exclude/remove.</param>
-    /// <exception cref="InvalidServiceRequestOperationException">Thrown when an Invalid Service Request Operation error condition occurs.</exception>
+    /// <exception cref="System.ArgumentNullException">request</exception>
+    /// <exception cref="Sankhya.GoodPractices.InvalidServiceRequestOperationException"></exception>
     public static void Resolve<T>(this ServiceRequest request, ICollection<T> criteriaList)
         where T : class, IEntity, new()
     {
@@ -818,12 +800,10 @@ public static class ServiceRequestExtensions
             .Select(criteria => request.ParseProperties(criteria, ReferenceLevel.Third))
             .ToList();
 
-        var sample = results.First();
+        var sample = results[0];
 
         switch (request.Service)
         {
-            #region CRUD Service Save
-
             case ServiceName.CrudServiceSave:
                 request.RequestBody.DataSet = new()
                 {
@@ -857,12 +837,9 @@ public static class ServiceRequestExtensions
                         .ToList()
                         .ForEach(v => dataRow.LocalFields.SetMember(v.Name, v.Value));
                 }
+
                 request.RequestBody.DataSet.DataRows = dataRows.ToArray();
                 break;
-
-            #endregion
-
-            #region CRUD Service Remove
 
             case ServiceName.CrudServiceRemove:
                 var ids = new List<EntityDynamicSerialization>();
@@ -872,6 +849,7 @@ public static class ServiceRequestExtensions
                     ids.Add(id);
                     result.Keys.ForEach(k => id.SetMember(k.Name, k.Value));
                 }
+
                 request.RequestBody.Entity = new()
                 {
                     RootEntity = sample.Name,
@@ -879,8 +857,6 @@ public static class ServiceRequestExtensions
                     Ids = ids.ToArray()
                 };
                 break;
-
-            #endregion
 
             default:
                 throw new InvalidServiceRequestOperationException(request.Service);
@@ -896,7 +872,7 @@ public static class ServiceRequestExtensions
     /// <typeparam name="T">Generic type parameter. Must be a <seealso cref="IEntity" /> entity.</typeparam>
     /// <param name="request">The request</param>
     /// <param name="literalCriteria">The literal criteria.</param>
-    /// <exception cref="InvalidServiceRequestOperationException">Throws when the <paramref name="literalCriteria" /> is not a instance of <seealso cref="LiteralCriteria" /> and the <seealso cref="ServiceName" /> of the <paramref name="request" /> is not CRUD_FIND or CRUD_SERVICE_FIND and also <paramref name="literalCriteria" /> is not a instance of <seealso cref="LiteralCriteriaSql" /> and the <seealso cref="ServiceName" /> is CRUD_FIND.</exception>
+    /// <exception cref="Sankhya.GoodPractices.InvalidServiceRequestOperationException"></exception>
     public static void Resolve<T>(this ServiceRequest request, ILiteralCriteria literalCriteria)
         where T : class, IEntity, new()
     {
@@ -927,6 +903,7 @@ public static class ServiceRequestExtensions
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <param name="request">The request</param>
     /// <param name="literalCriteriaBuilder">The literal criteria builder.</param>
+    /// <exception cref="System.ArgumentNullException">literalCriteriaBuilder</exception>
     public static void Resolve<T>(this ServiceRequest request, StringBuilder literalCriteriaBuilder)
         where T : class, IEntity, new()
     {
@@ -942,22 +919,23 @@ public static class ServiceRequestExtensions
     /// Request with type using predicate.
     /// </summary>
     /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The request</param>
-    /// <param name="predicate">The predicate to use as literal criteria</param>
-    /// <exception cref="NotImplementedException"></exception>
-    /// <exception cref="NotImplementedException"></exception>
-    // TODO issue #68
+    /// <param name="request">The request.</param>
+    /// <param name="predicate">The predicate to use as literal criteria.</param>
+    /// <exception cref="System.NotImplementedException"></exception>
+    // TODO: issue #29
     public static void Resolve<T>(this ServiceRequest request, Expression<Func<T, bool>> predicate)
         where T : class, IEntity, new() => throw new NotImplementedException();
 
     /// <summary>
     /// Resolves the specified entity.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="entity">The entity.</param>
     /// <param name="options">The options.</param>
-    /// <exception cref="InvalidServiceRequestOperationException"></exception>
+    /// <exception cref="System.ArgumentNullException">request</exception>
+    /// <exception cref="System.ArgumentNullException">options</exception>
+    /// <exception cref="InvalidServiceRequestOperationException">Invalid Service Request Operation Exception.</exception>
     public static void Resolve<T>(this ServiceRequest request, T entity, EntityQueryOptions options)
         where T : class, IEntity, new()
     {
@@ -970,6 +948,7 @@ public static class ServiceRequestExtensions
         {
             throw new ArgumentNullException(nameof(options));
         }
+
         request.Resolve(entity, options.MaxReferenceDepth ?? ReferenceLevel.Fourth);
         switch (request.Service)
         {
@@ -1023,11 +1002,13 @@ public static class ServiceRequestExtensions
     /// <summary>
     /// Resolves the specified criteria.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="criteria">The criteria.</param>
     /// <param name="options">The options.</param>
-    /// <exception cref="InvalidServiceRequestOperationException"></exception>
+    /// <exception cref="System.ArgumentNullException">request</exception>
+    /// <exception cref="System.ArgumentNullException">options</exception>
+    /// <exception cref="InvalidServiceRequestOperationException">INvalid service request operation exception.</exception>
     public static void Resolve<T>(
         this ServiceRequest request,
         ILiteralCriteria criteria,
@@ -1061,14 +1042,12 @@ public static class ServiceRequestExtensions
         }
     }
 
-    #endregion
-
     /// <summary>
     /// Resolves the crud service find internal.
     /// </summary>
     /// <param name="request">The request.</param>
     /// <param name="options">The options.</param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="System.NotImplementedException"></exception>
     private static void ResolveCrudServiceFindInternal(
         ServiceRequest request,
         EntityQueryOptions options
@@ -1108,7 +1087,7 @@ public static class ServiceRequestExtensions
     /// </summary>
     /// <param name="request">The request.</param>
     /// <param name="options">The options.</param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="System.NotImplementedException"></exception>
     private static void ResolveCrudFindInternal(ServiceRequest request, EntityQueryOptions options)
     {
         if (options.IncludePresentationFields.HasValue)

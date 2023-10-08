@@ -1,6 +1,6 @@
-﻿namespace Sankhya.Service;
+﻿using System.Xml.Serialization;
 
-using System.Xml.Serialization;
+namespace Sankhya.Service;
 
 public sealed class ReferenceFetch
 {

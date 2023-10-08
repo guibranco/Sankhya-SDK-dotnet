@@ -11,10 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Enums;
 
 using CrispyWaffle.Attributes;
 using Sankhya.Attributes;
+
+namespace Sankhya.Enums;
 
 /// <summary>
 /// Enum ServiceName

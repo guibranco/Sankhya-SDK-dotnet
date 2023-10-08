@@ -1,13 +1,6 @@
-﻿namespace Sankhya.RequestWrappers;
-
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using CrispyWaffle.Cache;
 using CrispyWaffle.Composition;
 using CrispyWaffle.Infrastructure;
@@ -20,20 +13,20 @@ using Sankhya.Service;
 using Sankhya.Transport;
 using Sankhya.ValueObjects;
 
+namespace Sankhya.RequestWrappers;
+
 /// <summary>
 /// An erp managed service request.
 /// </summary>
 internal sealed class PagedRequestWrapper
 {
-    #region Private fields
-
     /// <summary>
     /// all pages loaded.
     /// </summary>
     private readonly AutoResetEvent _allPagesLoaded = new(false);
 
     /// <summary>
-    /// The on demand tasks
+    /// The on demand tasks.
     /// </summary>
     private readonly List<Task> _onDemandTasks = new();
 
@@ -58,12 +51,12 @@ internal sealed class PagedRequestWrapper
     private bool _set;
 
     /// <summary>
-    /// The entity name
+    /// The entity name.
     /// </summary>
     private readonly string _entityName;
 
     /// <summary>
-    /// The maximum results
+    /// The maximum results.
     /// </summary>
     private readonly int _maxResults;
 
@@ -78,18 +71,14 @@ internal sealed class PagedRequestWrapper
     private readonly ServiceRequest _request;
 
     /// <summary>
-    /// The cache key/
+    /// The cache key.
     /// </summary>
     private readonly string _cacheKey;
 
     /// <summary>
-    /// The type
+    /// The type.
     /// </summary>
     private readonly Type _type;
-
-    #endregion
-
-    #region Delegates & Events
 
     /// <summary>
     /// The page processed handler delegate.
@@ -113,30 +102,26 @@ internal sealed class PagedRequestWrapper
     public delegate void PageNotLoadedHandler(object sender, PagedRequestEventArgs e);
 
     /// <summary>
-    /// Occurs when [page loaded successfully].
+    /// Occurs when page loaded successfully.
     /// </summary>
-    public event PageLoadedSuccessfullyHandler PageLoadedSuccessfully;
+    public event PageLoadedSuccessfullyHandler PageLoadedSuccessfullyEventHandler;
 
     /// <summary>
-    /// Occurs when [page processed].
+    /// Occurs when page processed.
     /// </summary>
-    public static event PageProcessedHandler PageProcessed;
+    public static event PageProcessedHandler PageProcessedEventHandler;
 
     /// <summary>
     /// Occurs when [page not loaded].
     /// </summary>
     public event PageNotLoadedHandler PageLoadedError;
 
-    #endregion
-
-    #region ~Ctors
-
     /// <summary>
-    /// Constructor.
+    /// Initializes a new instance of the <see cref="PagedRequestWrapper"/> class.
     /// </summary>
     /// <param name="type">The type.</param>
     /// <param name="request">The request.</param>
-    /// <param name="maxResults">The maximum number of results that the wrapper should return, -1 for all</param>
+    /// <param name="maxResults">The maximum results.</param>
     private PagedRequestWrapper(Type type, ServiceRequest request, int maxResults)
     {
         _context = ServiceLocator.Resolve<SankhyaContext>();
@@ -153,10 +138,6 @@ internal sealed class PagedRequestWrapper
         _type = type;
     }
 
-    #endregion
-
-    #region Private methods
-
     /// <summary>
     /// Called when [load page successfully].
     /// </summary>
@@ -165,7 +146,7 @@ internal sealed class PagedRequestWrapper
     /// <param name="totalPages">The total pages.</param>
     private void OnLoadPageSuccessfully(int quantityLoaded, int currentPageNumber, int totalPages)
     {
-        if (PageLoadedSuccessfully == null && PageProcessed == null)
+        if (PageLoadedSuccessfullyEventHandler == null && PageProcessedEventHandler == null)
         {
             return;
         }
@@ -182,8 +163,8 @@ internal sealed class PagedRequestWrapper
             currentPageNumber,
             totalPages
         );
-        PageLoadedSuccessfully?.Invoke(this, eventArgs);
-        PageProcessed?.Invoke(this, eventArgs);
+        PageLoadedSuccessfullyEventHandler?.Invoke(this, eventArgs);
+        PageProcessedEventHandler?.Invoke(this, eventArgs);
     }
 
     /// <summary>
@@ -195,7 +176,7 @@ internal sealed class PagedRequestWrapper
     {
         var ex = new PagedRequestException(_request, exception);
 
-        if (PageLoadedError == null && PageProcessed == null)
+        if (PageLoadedError == null && PageProcessedEventHandler == null)
         {
             LogConsumer.Handle(ex);
             return;
@@ -212,7 +193,7 @@ internal sealed class PagedRequestWrapper
 
         PageLoadedError?.Invoke(this, eventArgs);
 
-        PageProcessed?.Invoke(this, eventArgs);
+        PageProcessedEventHandler?.Invoke(this, eventArgs);
     }
 
     /// <summary>
@@ -266,6 +247,7 @@ internal sealed class PagedRequestWrapper
         {
             OnLoadPageError(page, e);
         }
+
         return false;
     }
 
@@ -273,7 +255,7 @@ internal sealed class PagedRequestWrapper
     /// Loads the response.
     /// </summary>
     /// <param name="token">The token.</param>
-    /// <exception cref="ServiceRequestRepeatedException"></exception>
+    /// <exception cref="ServiceRequestRepeatedException">Repeated request detected.</exception>
     private void LoadResponse(CancellationToken token)
     {
         if (_set)
@@ -312,7 +294,7 @@ internal sealed class PagedRequestWrapper
             !firstPage
             || quantityLoaded != 150
             || token.IsCancellationRequested
-            || _maxResults != -1 && _maxResults <= quantityLoaded
+            || (_maxResults != -1 && _maxResults <= quantityLoaded)
         )
         {
             Close();
@@ -421,14 +403,14 @@ internal sealed class PagedRequestWrapper
     /// <summary>
     /// Gets the managed enumerator internal.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type param.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="processOnDemandData">The process on demand data.</param>
     /// <param name="maxResults">The maximum results.</param>
     /// <param name="entityName">Name of the entity.</param>
     /// <param name="cts">The CTS.</param>
     /// <param name="stronglyTypedCollection">The strongly typed collection.</param>
-    /// <returns></returns>
+    /// <returns>The exception.</returns>
     private static ServiceRequestGeneralException GetManagedEnumeratorInternal<T>(
         ServiceRequest request,
         Action<List<T>> processOnDemandData,
@@ -458,7 +440,7 @@ internal sealed class PagedRequestWrapper
                 wrapper,
                 e.Exception
             );
-        wrapper.PageLoadedSuccessfully += (_, e) =>
+        wrapper.PageLoadedSuccessfullyEventHandler += (_, e) =>
             HandlePageLoaded(
                 processOnDemandData,
                 entityName,
@@ -503,7 +485,7 @@ internal sealed class PagedRequestWrapper
     /// <summary>
     /// Handles the page loaded.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="processOnDemandData">The process on demand data.</param>
     /// <param name="entityName">Name of the entity.</param>
     /// <param name="cts">The CTS.</param>
@@ -524,12 +506,14 @@ internal sealed class PagedRequestWrapper
     )
         where T : class, IEntity, new()
     {
+        var ofTotal =
+            totalPages > 0
+                ? string.Format(CultureInfo.CurrentCulture, Resources.OfTotal, totalPages)
+                : string.Empty;
         LogConsumer.Info(
             Resources.PagedRequestWrapper_GetManagedEnumerator_PageLoaded,
             currentPageNumber,
-            totalPages > 0
-                ? string.Format(CultureInfo.CurrentCulture, Resources.OfTotal, totalPages)
-                : string.Empty,
+            ofTotal,
             entityName,
             quantityLoaded,
             quantityLoaded == 1 ? Resources.YSingularSuffix : Resources.YPluralSuffix
@@ -550,6 +534,7 @@ internal sealed class PagedRequestWrapper
             temp.ForEach(stronglyTypedCollection.Add);
             return;
         }
+
         wrapper._onDemandTasks.Add(
             Task.Factory.StartNew(
                 () => LoadOnDemandData(processOnDemandData, temp, stronglyTypedCollection, cts),
@@ -563,7 +548,7 @@ internal sealed class PagedRequestWrapper
     /// <summary>
     /// Loads the on demand data.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="processOnDemandData">The process on demand data.</param>
     /// <param name="temp">The temporary.</param>
     /// <param name="stronglyTypedCollection">The strongly typed collection.</param>
@@ -594,7 +579,7 @@ internal sealed class PagedRequestWrapper
     /// <summary>
     /// Handles the page loaded error.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entityName">Name of the entity.</param>
     /// <param name="cts">The CTS.</param>
     /// <param name="stronglyTypedCollection">The strongly typed collection.</param>
@@ -656,14 +641,10 @@ internal sealed class PagedRequestWrapper
             )
         );
 
-    #endregion
-
-    #region Public methods
-
     /// <summary>
     /// Gets the managed enumerator.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="timeout">The timeout.</param>
     /// <param name="processOnDemandData">The process on demand data.</param>
@@ -736,15 +717,9 @@ internal sealed class PagedRequestWrapper
         }
     }
 
-    #endregion
-
-    #region Implementation of IDisposable
-
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting
     /// unmanaged resources.
     /// </summary>
     private void Dispose() => Close();
-
-    #endregion
 }

@@ -11,12 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Transport;
 
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Serialization;
-
-using System;
 using Sankhya.Attributes;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class Neighborhood. This class cannot be inherited.
@@ -26,8 +26,6 @@ using Sankhya.Attributes;
 [Entity("Bairro")]
 public class Neighborhood : IEntity, IEquatable<Neighborhood>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -71,6 +69,11 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     /// Serves as a hash function for a particular type.
     /// </summary>
     /// <returns>A hash code for the current <see cref="Object" />.</returns>
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -102,10 +105,6 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(Neighborhood left, Neighborhood right) => !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The code
@@ -146,10 +145,6 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     /// The date changed set
     /// </summary>
     private bool _dateChangedSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -212,10 +207,6 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -239,6 +230,4 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeDateChanged() => _dateChangedSet;
-
-    #endregion
 }

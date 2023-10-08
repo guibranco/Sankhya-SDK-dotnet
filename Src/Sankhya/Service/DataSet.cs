@@ -1,16 +1,14 @@
-﻿namespace Sankhya.Service;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
+
+namespace Sankhya.Service;
 
 /// <summary>
 /// A data set.
 /// </summary>
 public sealed class DataSet
 {
-    #region Private Members
-
     /// <summary>
     /// The root entity
     /// </summary>
@@ -100,10 +98,6 @@ public sealed class DataSet
     /// The entities set
     /// </summary>
     private bool _entitiesSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the root entity.
@@ -274,10 +268,6 @@ public sealed class DataSet
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize root entity.
     /// </summary>
@@ -349,6 +339,4 @@ public sealed class DataSet
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeEntities() => _entitiesSet;
-
-    #endregion
 }

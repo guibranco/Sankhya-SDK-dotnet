@@ -1,10 +1,10 @@
-﻿namespace Sankhya.Transport;
-
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
 using Sankhya.Enums;
+
+namespace Sankhya.Transport;
 
 /// <summary>
 /// Class TradingType. This class cannot be inherited.
@@ -13,8 +13,6 @@ using Sankhya.Enums;
 [Entity("TipoNegociacao")]
 public class TradingType : IEntity, IEquatable<TradingType>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -61,6 +59,11 @@ public class TradingType : IEntity, IEquatable<TradingType>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -98,10 +101,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(TradingType left, TradingType right) => !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The code
@@ -142,10 +141,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
     /// The sub type set
     /// </summary>
     private bool _subTypeSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -240,10 +235,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -275,6 +266,4 @@ public class TradingType : IEntity, IEquatable<TradingType>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSubType() => _subTypeSet;
-
-    #endregion
 }

@@ -1,7 +1,6 @@
-﻿namespace Sankhya;
+﻿using Sankhya.Enums;
 
-using System;
-using Sankhya.Enums;
+namespace Sankhya;
 
 /// <summary>
 /// The low level sankhya wrapper class.

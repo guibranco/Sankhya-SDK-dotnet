@@ -11,11 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Sankhya.Service;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 
-using System;
+namespace Sankhya.Service;
 
 /// <summary>
 /// Class FieldValue. This class cannot be inherited.
@@ -24,14 +24,11 @@ using System;
 /// <seealso cref="IEquatable{FieldValue}" />
 public sealed class FieldValue : IEquatable<FieldValue>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
     /// <param name="other">An object to compare with this object.</param>
     /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-
     public bool Equals(FieldValue other)
     {
         if (ReferenceEquals(null, other))
@@ -55,7 +52,6 @@ public sealed class FieldValue : IEquatable<FieldValue>
     /// </summary>
     /// <param name="obj">The object to compare with the current object.</param>
     /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
-
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -75,7 +71,11 @@ public sealed class FieldValue : IEquatable<FieldValue>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
-
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -111,10 +111,6 @@ public sealed class FieldValue : IEquatable<FieldValue>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(FieldValue left, FieldValue right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The name
     /// </summary>
@@ -134,10 +130,6 @@ public sealed class FieldValue : IEquatable<FieldValue>
     /// The value set
     /// </summary>
     private bool _valueSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the name.
@@ -169,10 +161,6 @@ public sealed class FieldValue : IEquatable<FieldValue>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the name of the serialize.
     /// </summary>
@@ -184,6 +172,4 @@ public sealed class FieldValue : IEquatable<FieldValue>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeValue() => _valueSet;
-
-    #endregion
 }
