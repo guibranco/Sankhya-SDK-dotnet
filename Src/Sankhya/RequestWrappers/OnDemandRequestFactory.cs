@@ -11,7 +11,7 @@ namespace Sankhya.RequestWrappers;
 public static class OnDemandRequestFactory
 {
     /// <summary>
-    /// The synchronize root
+    /// The synchronize root.
     /// </summary>
     private static readonly object SyncRoot = new();
 

@@ -815,7 +815,7 @@ public static class KnowServicesRequestWrapper
         {
             RequestBody =
             {
-                Paths = pathsArray.Select(path => new Path { Value = path }).ToArray(),
+                Paths = pathsArray.Select(path => new Service.Path { Value = path }).ToArray(),
                 ClientEvents = new[]
                 {
                     new ClientEvent { Text = @"br.com.sankhya.actionbutton.clientconfirm" }
