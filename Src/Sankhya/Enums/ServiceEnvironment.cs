@@ -17,7 +17,7 @@ using CrispyWaffle.Attributes;
 namespace Sankhya.Enums;
 
 /// <summary>
-/// Enum ServiceEnvironment
+/// Enum ServiceEnvironment.
 /// </summary>
 public enum ServiceEnvironment
 {
