@@ -1,4 +1,18 @@
-﻿using System.Globalization;
+﻿// ***********************************************************************
+// Assembly         : Sankhya
+// Author           : GuilhermeStracini
+// Created          : 10-07-2023
+//
+// Last Modified By : GuilhermeStracini
+// Last Modified On : 10-08-2023
+// ***********************************************************************
+// <copyright file="ServiceRequestExtensions.cs" company="Guilherme Branco Stracini">
+//     © 2023 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+using System.Globalization;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
@@ -25,7 +39,7 @@ public static class ServiceRequestExtensions
     /// Parse properties.
     /// </summary>
     /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The Service Request</param>
+    /// <param name="request">The Service Request.</param>
     /// <param name="criteria">The criteria.</param>
     /// <param name="maxLevel">(Optional) the maximum level.</param>
     /// <param name="currentLevel">(Optional) the current level.</param>
@@ -415,7 +429,7 @@ public static class ServiceRequestExtensions
     /// <param name="propertyInfo">The property information.</param>
     /// <param name="ignoredFields">The ignored fields.</param>
     /// <param name="model">The model.</param>
-    /// <returns></returns>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     private static bool CheckIfElementIsIgnored(
         PropertyInfo propertyInfo,
         ICollection<string> ignoredFields,
@@ -484,7 +498,8 @@ public static class ServiceRequestExtensions
     /// </summary>
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <param name="request">The request</param>
-    /// <exception cref="InvalidServiceRequestOperationException">Thrown when an Invalid Service Request Operation error condition occurs.</exception>
+    /// <exception cref="System.ArgumentNullException">request</exception>
+    /// <exception cref="Sankhya.GoodPractices.InvalidServiceRequestOperationException"></exception>
     public static void Resolve<T>(this ServiceRequest request)
         where T : class, IEntity, new()
     {
@@ -579,7 +594,9 @@ public static class ServiceRequestExtensions
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <param name="request">The request</param>
     /// <param name="criteria">The criteria.</param>
-    /// <param name="maxReferenceLevel"></param>
+    /// <param name="maxReferenceLevel">The maximum reference level.</param>
+    /// <exception cref="System.ArgumentNullException">request</exception>
+    /// <exception cref="System.ArgumentNullException">criteria</exception>
     /// <exception cref="InvalidServiceRequestOperationException"></exception>
     public static void Resolve<T>(
         this ServiceRequest request,
@@ -769,7 +786,8 @@ public static class ServiceRequestExtensions
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="criteriaList">The criteria list to create/update/save or exclude/remove.</param>
-    /// <exception cref="InvalidServiceRequestOperationException">Thrown when an Invalid Service Request Operation error condition occurs.</exception>
+    /// <exception cref="System.ArgumentNullException">request</exception>
+    /// <exception cref="Sankhya.GoodPractices.InvalidServiceRequestOperationException"></exception>
     public static void Resolve<T>(this ServiceRequest request, ICollection<T> criteriaList)
         where T : class, IEntity, new()
     {
@@ -854,7 +872,7 @@ public static class ServiceRequestExtensions
     /// <typeparam name="T">Generic type parameter. Must be a <seealso cref="IEntity" /> entity.</typeparam>
     /// <param name="request">The request</param>
     /// <param name="literalCriteria">The literal criteria.</param>
-    /// <exception cref="InvalidServiceRequestOperationException">Throws when the <paramref name="literalCriteria" /> is not a instance of <seealso cref="LiteralCriteria" /> and the <seealso cref="ServiceName" /> of the <paramref name="request" /> is not CRUD_FIND or CRUD_SERVICE_FIND and also <paramref name="literalCriteria" /> is not a instance of <seealso cref="LiteralCriteriaSql" /> and the <seealso cref="ServiceName" /> is CRUD_FIND.</exception>
+    /// <exception cref="Sankhya.GoodPractices.InvalidServiceRequestOperationException"></exception>
     public static void Resolve<T>(this ServiceRequest request, ILiteralCriteria literalCriteria)
         where T : class, IEntity, new()
     {
@@ -885,6 +903,7 @@ public static class ServiceRequestExtensions
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <param name="request">The request</param>
     /// <param name="literalCriteriaBuilder">The literal criteria builder.</param>
+    /// <exception cref="System.ArgumentNullException">literalCriteriaBuilder</exception>
     public static void Resolve<T>(this ServiceRequest request, StringBuilder literalCriteriaBuilder)
         where T : class, IEntity, new()
     {
@@ -902,7 +921,7 @@ public static class ServiceRequestExtensions
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="predicate">The predicate to use as literal criteria.</param>
-    /// <exception cref="NotImplementedException">Method not implemented.</exception>
+    /// <exception cref="System.NotImplementedException"></exception>
     // TODO: issue #29
     public static void Resolve<T>(this ServiceRequest request, Expression<Func<T, bool>> predicate)
         where T : class, IEntity, new() => throw new NotImplementedException();
@@ -914,6 +933,8 @@ public static class ServiceRequestExtensions
     /// <param name="request">The request.</param>
     /// <param name="entity">The entity.</param>
     /// <param name="options">The options.</param>
+    /// <exception cref="System.ArgumentNullException">request</exception>
+    /// <exception cref="System.ArgumentNullException">options</exception>
     /// <exception cref="InvalidServiceRequestOperationException">Invalid Service Request Operation Exception.</exception>
     public static void Resolve<T>(this ServiceRequest request, T entity, EntityQueryOptions options)
         where T : class, IEntity, new()
@@ -985,6 +1006,8 @@ public static class ServiceRequestExtensions
     /// <param name="request">The request.</param>
     /// <param name="criteria">The criteria.</param>
     /// <param name="options">The options.</param>
+    /// <exception cref="System.ArgumentNullException">request</exception>
+    /// <exception cref="System.ArgumentNullException">options</exception>
     /// <exception cref="InvalidServiceRequestOperationException">INvalid service request operation exception.</exception>
     public static void Resolve<T>(
         this ServiceRequest request,
@@ -1024,7 +1047,7 @@ public static class ServiceRequestExtensions
     /// </summary>
     /// <param name="request">The request.</param>
     /// <param name="options">The options.</param>
-    /// <exception cref="NotImplementedException">Not implemented.</exception>
+    /// <exception cref="System.NotImplementedException"></exception>
     private static void ResolveCrudServiceFindInternal(
         ServiceRequest request,
         EntityQueryOptions options
@@ -1064,7 +1087,7 @@ public static class ServiceRequestExtensions
     /// </summary>
     /// <param name="request">The request.</param>
     /// <param name="options">The options.</param>
-    /// <exception cref="NotImplementedException">Not implemented.</exception>
+    /// <exception cref="System.NotImplementedException"></exception>
     private static void ResolveCrudFindInternal(ServiceRequest request, EntityQueryOptions options)
     {
         if (options.IncludePresentationFields.HasValue)
