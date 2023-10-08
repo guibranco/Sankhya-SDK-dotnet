@@ -1,6 +1,6 @@
 # Sankhya SDK
 
-The [Sankhya ERP](https://www.nuget.org/packages/Sankhya) SDK for .NET projects (both Core & Framework).
+📊⚙️ [Sankhya](https://www.sankhya.com.br/) .NET SDK.
 
 [![GitHub license](https://img.shields.io/github/license/guibranco/Sankhya-SDK-dotnet)](https://github.com/guibranco/Sankhya-SDK-dotnet)
 [![Time tracker](https://wakatime.com/badge/github/guibranco/Sankhya-SDK-dotnet.svg)](https://wakatime.com/badge/github/guibranco/Sankhya-SDK-dotnet)
