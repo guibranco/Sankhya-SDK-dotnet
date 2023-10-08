@@ -1,9 +1,22 @@
-﻿//
+﻿// ***********************************************************************
+// Assembly         : Sankhya
+// Author           : GuilhermeStracini
+// Created          : 10-07-2023
+//
+// Last Modified By : GuilhermeStracini
+// Last Modified On : 10-08-2023
+// ***********************************************************************
+// <copyright file="Product.cs" company="Guilherme Branco Stracini">
+//     © 2023 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
 using Sankhya.Enums;
@@ -11,11 +24,23 @@ using Sankhya.ValueObjects;
 
 namespace Sankhya.Transport;
 
+/// <summary>
+/// Class Product.
+/// Implements the <see cref="Sankhya.Transport.IEntity" />
+/// Implements the <see cref="System.IEquatable{Sankhya.Transport.Product}" />
+/// </summary>
+/// <seealso cref="Sankhya.Transport.IEntity" />
+/// <seealso cref="System.IEquatable{Sankhya.Transport.Product}" />
 [Entity("Produto")]
 public class Product : IEntity, IEquatable<Product>
 {
     #region Equality members
 
+    /// <summary>
+    /// Indicates whether the current object is equal to another object of the same type.
+    /// </summary>
+    /// <param name="other">An object to compare with this object.</param>
+    /// <returns>true if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.</returns>
     public bool Equals(Product other)
     {
         if (ReferenceEquals(null, other))
@@ -97,6 +122,11 @@ public class Product : IEntity, IEquatable<Product>
                 && Equals(Image, other.Image);
     }
 
+    /// <summary>
+    /// Determines whether the specified <see cref="System.Object" /> is equal to this instance.
+    /// </summary>
+    /// <param name="obj">The object to compare with the current object.</param>
+    /// <returns><c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -107,6 +137,11 @@ public class Product : IEntity, IEquatable<Product>
         return ReferenceEquals(this, obj) || obj.GetType() == GetType() && Equals((Product)obj);
     }
 
+    /// <summary>
+    /// Returns a hash code for this instance.
+    /// </summary>
+    /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+    [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
     public override int GetHashCode()
     {
         unchecked
@@ -215,8 +250,20 @@ public class Product : IEntity, IEquatable<Product>
         }
     }
 
+    /// <summary>
+    /// Implements the == operator.
+    /// </summary>
+    /// <param name="left">The left.</param>
+    /// <param name="right">The right.</param>
+    /// <returns>The result of the operator.</returns>
     public static bool operator ==(Product left, Product right) => Equals(left, right);
 
+    /// <summary>
+    /// Implements the != operator.
+    /// </summary>
+    /// <param name="left">The left.</param>
+    /// <param name="right">The right.</param>
+    /// <returns>The result of the operator.</returns>
     public static bool operator !=(Product left, Product right) => !Equals(left, right);
 
     #endregion
@@ -810,9 +857,7 @@ public class Product : IEntity, IEquatable<Product>
     /// <summary>
     /// Gets or sets the use.
     /// </summary>
-    /// <value>
-    /// The use.
-    /// </value>
+    /// <value>The use.</value>
     [EntityIgnore]
     public ProductUse Use
     {
@@ -827,9 +872,7 @@ public class Product : IEntity, IEquatable<Product>
     /// <summary>
     /// Gets or sets the use internal.
     /// </summary>
-    /// <value>
-    /// The use internal.
-    /// </value>
+    /// <value>The use internal.</value>
     [EntityElement("USOPROD")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -861,9 +904,7 @@ public class Product : IEntity, IEquatable<Product>
     /// <summary>
     /// Gets or sets the product replacement.
     /// </summary>
-    /// <value>
-    /// The product replacement.
-    /// </value>
+    /// <value>The product replacement.</value>
     [EntityReference("Produto_AD002")]
     public Product ProductReplacement
     {
@@ -893,9 +934,7 @@ public class Product : IEntity, IEquatable<Product>
     /// <summary>
     /// Gets or sets the image.
     /// </summary>
-    /// <value>
-    /// The image.
-    /// </value>
+    /// <value>The image.</value>
     [EntityIgnore]
     public Lazy<ServiceFile> Image { get; set; }
 
@@ -1078,9 +1117,7 @@ public class Product : IEntity, IEquatable<Product>
     /// <summary>
     /// The should serialize use serialization helper method
     /// </summary>
-    /// <returns>
-    /// Returns <c>true</c> when the field should be serialized, false otherwise
-    /// </returns>
+    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeUse() => _useSet;
@@ -1096,9 +1133,7 @@ public class Product : IEntity, IEquatable<Product>
     /// <summary>
     /// The should serialize product replacement serialization helper method
     /// </summary>
-    /// <returns>
-    /// Returns <c>true</c> when the field should be serialized, false otherwise
-    /// </returns>
+    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeProductReplacement() => _productReplacementSet;
@@ -1116,7 +1151,7 @@ public class Product : IEntity, IEquatable<Product>
     #region Constructor
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Product"/> class.
+    /// Initializes a new instance of the <see cref="Product" /> class.
     /// </summary>
     public Product()
     {

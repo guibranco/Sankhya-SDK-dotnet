@@ -14,6 +14,7 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
 using Sankhya.Attributes;
@@ -209,6 +210,7 @@ public class Partner : IEntity, IEquatable<Partner>
     // ReSharper disable once FunctionComplexityOverflow
     // ReSharper disable once CyclomaticComplexity
     // ReSharper disable once MethodTooLong
+    [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
     public override int GetHashCode()
     {
         unchecked

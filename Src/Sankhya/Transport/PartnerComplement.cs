@@ -14,6 +14,7 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using Sankhya.Attributes;
 
 namespace Sankhya.Transport;
@@ -107,6 +108,7 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
+    [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
     public override int GetHashCode()
     {
         unchecked
