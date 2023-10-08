@@ -72,7 +72,7 @@ public class EntityDynamicSerialization : DynamicSerialization
     /// <summary>
     /// Processes the property.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="instance">The instance.</param>
     /// <param name="maxInnerLevel">The maximum inner level.</param>
     /// <param name="prefix">The prefix.</param>
@@ -259,11 +259,10 @@ public class EntityDynamicSerialization : DynamicSerialization
     }
 
     /// <summary>
-    /// Change keys.
+    /// Changes the keys.
     /// </summary>
     /// <param name="newKeys">The new keys.</param>
-    /// <exception cref="IndexOutOfRangeException"></exception>
-    /// <exception cref="IndexOutOfRangeException">The key count in metadata is different than the key count in the dictionary</exception>
+    /// <exception cref="System.InvalidOperationException">The key count in metadata is different than the key count in the dictionary</exception>
     public void ChangeKeys(Metadata newKeys)
     {
         if (newKeys == null)
@@ -273,7 +272,7 @@ public class EntityDynamicSerialization : DynamicSerialization
 
         if (newKeys.Fields.Length != Dictionary.Count)
         {
-            throw new IndexOutOfRangeException(
+            throw new InvalidOperationException(
                 "The key count in metadata is different than the key count in the dictionary"
             );
         }

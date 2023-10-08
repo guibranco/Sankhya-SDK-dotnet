@@ -23,7 +23,7 @@ public static class OnDemandRequestFactory
     /// <summary>
     /// Creates the instance internal.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="guid">The unique identifier.</param>
     /// <param name="service">The service.</param>
     /// <param name="throughput">The throughput.</param>
@@ -58,7 +58,7 @@ public static class OnDemandRequestFactory
     /// <summary>
     /// Creates a new instance of OnDemandRequestWrapper and assign a key for it.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="service"></param>
     /// <param name="token"></param>
     /// <param name="throughput"></param>
@@ -80,7 +80,7 @@ public static class OnDemandRequestFactory
     /// <summary>
     /// Gets the instance for service.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="service">The service.</param>
     /// <returns>IOnDemandRequestWrapper.</returns>
     public static IOnDemandRequestWrapper GetInstanceForService<T>(ServiceName service)

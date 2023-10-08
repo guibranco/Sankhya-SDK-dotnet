@@ -403,14 +403,14 @@ internal sealed class PagedRequestWrapper
     /// <summary>
     /// Gets the managed enumerator internal.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type param.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="processOnDemandData">The process on demand data.</param>
     /// <param name="maxResults">The maximum results.</param>
     /// <param name="entityName">Name of the entity.</param>
     /// <param name="cts">The CTS.</param>
     /// <param name="stronglyTypedCollection">The strongly typed collection.</param>
-    /// <returns></returns>
+    /// <returns>The exception.<returns>
     private static ServiceRequestGeneralException GetManagedEnumeratorInternal<T>(
         ServiceRequest request,
         Action<List<T>> processOnDemandData,
@@ -485,7 +485,7 @@ internal sealed class PagedRequestWrapper
     /// <summary>
     /// Handles the page loaded.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="processOnDemandData">The process on demand data.</param>
     /// <param name="entityName">Name of the entity.</param>
     /// <param name="cts">The CTS.</param>
@@ -546,7 +546,7 @@ internal sealed class PagedRequestWrapper
     /// <summary>
     /// Loads the on demand data.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="processOnDemandData">The process on demand data.</param>
     /// <param name="temp">The temporary.</param>
     /// <param name="stronglyTypedCollection">The strongly typed collection.</param>
@@ -577,7 +577,7 @@ internal sealed class PagedRequestWrapper
     /// <summary>
     /// Handles the page loaded error.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entityName">Name of the entity.</param>
     /// <param name="cts">The CTS.</param>
     /// <param name="stronglyTypedCollection">The strongly typed collection.</param>
@@ -642,7 +642,7 @@ internal sealed class PagedRequestWrapper
     /// <summary>
     /// Gets the managed enumerator.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="timeout">The timeout.</param>
     /// <param name="processOnDemandData">The process on demand data.</param>

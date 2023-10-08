@@ -45,34 +45,27 @@ public class Product : IEntity, IEquatable<Product>
         }
 
         return ReferenceEquals(this, other)
-            || _code == other._code
+            || (
+                _code == other._code
                 && _codeSet == other._codeSet
                 && _isActive == other._isActive
                 && _isActiveSet == other._isActiveSet
-                && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_name, other._name, StringComparison.OrdinalIgnoreCase)
                 && _nameSet == other._nameSet
-                && string.Equals(
-                    _complement,
-                    other._complement,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_complement, other._complement, StringComparison.OrdinalIgnoreCase)
                 && _complementSet == other._complementSet
                 && string.Equals(
                     _description,
                     other._description,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _descriptionSet == other._descriptionSet
-                && string.Equals(
-                    _codeVolume,
-                    other._codeVolume,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_codeVolume, other._codeVolume, StringComparison.OrdinalIgnoreCase)
                 && _codeVolumeSet == other._codeVolumeSet
                 && string.Equals(
                     _codeVolumeComponent,
                     other._codeVolumeComponent,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _codeVolumeComponentSet == other._codeVolumeComponentSet
                 && _codeGroup == other._codeGroup
@@ -83,13 +76,9 @@ public class Product : IEntity, IEquatable<Product>
                 && _grossWeightSet == other._grossWeightSet
                 && _quantity == other._quantity
                 && _quantitySet == other._quantitySet
-                && string.Equals(_brand, other._brand, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_brand, other._brand, StringComparison.OrdinalIgnoreCase)
                 && _brandSet == other._brandSet
-                && string.Equals(
-                    _reference,
-                    other._reference,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_reference, other._reference, StringComparison.OrdinalIgnoreCase)
                 && _referenceSet == other._referenceSet
                 && _width == other._width
                 && _widthSet == other._widthSet
@@ -101,7 +90,7 @@ public class Product : IEntity, IEquatable<Product>
                 && _sourceSet == other._sourceSet
                 && _isSaleAllowedOutsideKit == other._isSaleAllowedOutsideKit
                 && _isSaleAllowedOutsideKitSet == other._isSaleAllowedOutsideKitSet
-                && string.Equals(_ncm, other._ncm, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_ncm, other._ncm, StringComparison.OrdinalIgnoreCase)
                 && _ncmSet == other._ncmSet
                 && _use == other._use
                 && _useSet == other._useSet
@@ -115,14 +104,15 @@ public class Product : IEntity, IEquatable<Product>
                 && Equals(AlternativeImages, other.AlternativeImages)
                 && Equals(Suggestions, other.Suggestions)
                 && Equals(CodesBars, other.CodesBars)
-                && Equals(Image, other.Image);
+                && Equals(Image, other.Image)
+            );
     }
 
     /// <summary>
-    /// Determines whether the specified <see cref="System.Object" /> is equal to this instance.
+    /// Determines whether the specified <see cref="object" /> is equal to this instance.
     /// </summary>
     /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns><c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+    /// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -130,14 +120,18 @@ public class Product : IEntity, IEquatable<Product>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj.GetType() == GetType() && Equals((Product)obj);
+        return ReferenceEquals(this, obj) || (obj.GetType() == GetType() && Equals((Product)obj));
     }
 
     /// <summary>
     /// Returns a hash code for this instance.
     /// </summary>
     /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
-    [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -263,147 +257,147 @@ public class Product : IEntity, IEquatable<Product>
     public static bool operator !=(Product left, Product right) => !Equals(left, right);
 
     /// <summary>
-    /// The code
+    /// The code.
     /// </summary>
     private int _code;
 
     /// <summary>
-    /// The code set
+    /// The code set.
     /// </summary>
     private bool _codeSet;
 
     /// <summary>
-    /// The is active
+    /// The is active.
     /// </summary>
     private bool _isActive;
 
     /// <summary>
-    /// The is active set
+    /// The is active set.
     /// </summary>
     private bool _isActiveSet;
 
     /// <summary>
-    /// The name
+    /// The name.
     /// </summary>
     private string _name;
 
     /// <summary>
-    /// The name set
+    /// The name set.
     /// </summary>
     private bool _nameSet;
 
     /// <summary>
-    /// The complement
+    /// The complement.
     /// </summary>
     private string _complement;
 
     /// <summary>
-    /// The complement set
+    /// The complement set.
     /// </summary>
     private bool _complementSet;
 
     /// <summary>
-    /// The description
+    /// The description.
     /// </summary>
     private string _description;
 
     /// <summary>
-    /// The description set
+    /// The description set.
     /// </summary>
     private bool _descriptionSet;
 
     /// <summary>
-    /// The code volume
+    /// The code volume.
     /// </summary>
     private string _codeVolume;
 
     /// <summary>
-    /// The code volume set
+    /// The code volume set.
     /// </summary>
     private bool _codeVolumeSet;
 
     /// <summary>
-    /// The code volume component
+    /// The code volume component.
     /// </summary>
     private string _codeVolumeComponent;
 
     /// <summary>
-    /// The code volume component set
+    /// The code volume component set.
     /// </summary>
     private bool _codeVolumeComponentSet;
 
     /// <summary>
-    /// The code group
+    /// The code group.
     /// </summary>
     private int _codeGroup;
 
     /// <summary>
-    /// The code group set
+    /// The code group set.
     /// </summary>
     private bool _codeGroupSet;
 
     /// <summary>
-    /// The net weight
+    /// The net weight.
     /// </summary>
     private decimal _netWeight;
 
     /// <summary>
-    /// The net weight set
+    /// The net weight set.
     /// </summary>
     private bool _netWeightSet;
 
     /// <summary>
-    /// The gross weight
+    /// The gross weight.
     /// </summary>
     private decimal _grossWeight;
 
     /// <summary>
-    /// The gross weight set
+    /// The gross weight set.
     /// </summary>
     private bool _grossWeightSet;
 
     /// <summary>
-    /// The quantity
+    /// The quantity.
     /// </summary>
     private decimal _quantity;
 
     /// <summary>
-    /// The quantity set
+    /// The quantity set.
     /// </summary>
     private bool _quantitySet;
 
     /// <summary>
-    /// The brand
+    /// The brand.
     /// </summary>
     private string _brand;
 
     /// <summary>
-    /// The brand set
+    /// The brand set.
     /// </summary>
     private bool _brandSet;
 
     /// <summary>
-    /// The reference
+    /// The reference.
     /// </summary>
     private string _reference;
 
     /// <summary>
-    /// The reference set
+    /// The reference set.
     /// </summary>
     private bool _referenceSet;
 
     /// <summary>
-    /// The width
+    /// The width.
     /// </summary>
     private decimal _width;
 
     /// <summary>
-    /// The width set
+    /// The width set.
     /// </summary>
     private bool _widthSet;
 
     /// <summary>
-    /// The height
+    /// The height.
     /// </summary>
     private decimal _height;
 

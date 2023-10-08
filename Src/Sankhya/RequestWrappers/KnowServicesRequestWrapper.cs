@@ -814,7 +814,7 @@ public static class KnowServicesRequestWrapper
     /// <summary>
     /// Gets the image of an item (entity) based on item keys.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>ServiceImage.</returns>
     public static ServiceFile GetImage<T>(this T entity)
@@ -835,7 +835,7 @@ public static class KnowServicesRequestWrapper
     /// <summary>
     /// Gets the image of an item (entity) based on item keys.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>ServiceImage.</returns>
     public static async Task<ServiceFile> GetImageAsync<T>(this T entity)

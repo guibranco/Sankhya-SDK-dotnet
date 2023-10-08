@@ -420,40 +420,42 @@ public sealed class ServiceResponse : IXmlSerializable
     /// <summary>
     /// Generates an object from its XML representation.
     /// </summary>
-    /// <param name="originalReader">The <see cref="System.Xml.XmlReader" /> stream from which the object is deserialized.</param>
-    public void ReadXml(XmlReader originalReader)
+    /// <param name="reader">The <see cref="System.Xml.XmlReader" /> stream from which the object is deserialized.</param>
+    public void ReadXml(XmlReader reader)
     {
-        originalReader.DuplicateReaders(out var reader, out var log);
+        reader.DuplicateReaders(out var clonedReader, out var log);
         var stopwatch = new Stopwatch();
         stopwatch.Start();
         try
         {
             if (
-                reader.MoveToContent() != XmlNodeType.Element
-                || reader.LocalName != SankhyaConstants.ServiceResponse
+                clonedReader.MoveToContent() != XmlNodeType.Element
+                || clonedReader.LocalName != SankhyaConstants.ServiceResponse
             )
             {
                 return;
             }
 
-            ParseAttributes(reader);
+            ParseAttributes(clonedReader);
 
-            reader.Read();
+            clonedReader.Read();
             if (
-                !reader.IsStartElement()
-                || reader.LocalName != SankhyaConstants.StatusMessage
-                    && reader.LocalName != SankhyaConstants.ResponseBody
+                !clonedReader.IsStartElement()
+                || (
+                    clonedReader.LocalName != SankhyaConstants.StatusMessage
+                    && clonedReader.LocalName != SankhyaConstants.ResponseBody
+                )
             )
             {
                 return;
             }
 
-            if (reader.LocalName == SankhyaConstants.StatusMessage)
+            if (clonedReader.LocalName == SankhyaConstants.StatusMessage)
             {
-                StatusMessage = new() { ValueInternal = reader.ReadElementContentAsString() };
+                StatusMessage = new() { ValueInternal = clonedReader.ReadElementContentAsString() };
             }
 
-            ParseResponseBody(reader);
+            ParseResponseBody(clonedReader);
         }
         catch (Exception e)
         {
@@ -468,7 +470,7 @@ public sealed class ServiceResponse : IXmlSerializable
             var diagnostics =
                 $@"ServiceResponse->{Service.GetHumanReadableValue()}.ReadXml(): {stopwatch.Elapsed}";
             LogConsumer.Debug(diagnostics);
-            reader?.Dispose();
+            clonedReader?.Dispose();
             log?.Dispose();
         }
     }
@@ -605,7 +607,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// </summary>
     /// <param name="reader">The reader.</param>
     /// <param name="entities">The entities.</param>
-    /// <returns></returns>
+    /// <returns>Trie of processed.</returns>
     private bool ProcessCrudServiceProviderEntities(
         XmlReader reader,
         List<EntityDynamicSerialization> entities
@@ -654,7 +656,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// </summary>
     /// <param name="reader">The reader.</param>
     /// <param name="entities">The entities.</param>
-    /// <returns></returns>
+    /// <returns>True if processed.</returns>
     private bool ProcessCrudServiceEntities(
         XmlReader reader,
         List<EntityDynamicSerialization> entities
@@ -795,9 +797,9 @@ public sealed class ServiceResponse : IXmlSerializable
     }
 
     /// <summary>
-    /// Writes the response body elements to the writer
+    /// Writes the response body elements to the writer.
     /// </summary>
-    /// <param name="writer"><see cref="XmlWriter" /></param>
+    /// <param name="writer"><see cref="XmlWriter" />The XML writer.</param>
     private void WriteResponseBodyElements(XmlWriter writer)
     {
         ProcessCrudServiceEntity(writer);
@@ -1133,12 +1135,18 @@ public sealed class ServiceResponse : IXmlSerializable
 
         if (_errorCodeSet)
         {
-            writer.WriteAttributeString("errorCode", ErrorCode.ToString());
+            writer.WriteAttributeString(
+                "errorCode",
+                ErrorCode.ToString(CultureInfo.InvariantCulture)
+            );
         }
 
         if (_errorLevelSet)
         {
-            writer.WriteAttributeString("errorLevel", ErrorLevel.ToString());
+            writer.WriteAttributeString(
+                "errorLevel",
+                ErrorLevel.ToString(CultureInfo.InvariantCulture)
+            );
         }
     }
 }

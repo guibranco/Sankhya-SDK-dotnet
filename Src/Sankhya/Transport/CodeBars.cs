@@ -73,7 +73,11 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// Serves as the default hash function.
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
-    [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked

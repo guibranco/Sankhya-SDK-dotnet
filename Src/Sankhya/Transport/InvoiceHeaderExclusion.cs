@@ -104,7 +104,11 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// </summary>
     /// <returns>A hash code for the current object.</returns>
     // ReSharper disable once MethodTooLong
-    [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked

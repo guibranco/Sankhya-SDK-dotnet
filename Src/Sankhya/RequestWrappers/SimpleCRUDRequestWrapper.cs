@@ -28,7 +28,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Determines whether this instance [can find internal] the specified entity.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
@@ -58,7 +58,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Determines whether this instance [can find internal] the specified entity.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <param name="options">The options.</param>
     /// <returns></returns>
@@ -103,7 +103,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Determines whether this instance [can find internal] the specified entity.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
@@ -138,7 +138,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Determines whether this instance [can find internal] the specified criteria.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
@@ -168,7 +168,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Determines whether this instance [can find internal] the specified criteria.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestTooManyResultsException"></exception>
@@ -203,7 +203,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Musts the find internal.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <param name="options">The entity query options</param>
     /// <returns>T.</returns>
@@ -243,7 +243,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Musts the find internal.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
@@ -279,7 +279,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Musts the find internal.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
@@ -310,7 +310,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Musts find entity internal as asynchronous operation.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
@@ -423,7 +423,7 @@ public static class SimpleCrudRequestWrapper
     /// The criteria must be valid, and result in only one item in database/Sankhya.
     /// If none or more than one result is returned by Sankhya, a exception is thrown
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <param name="options">The options.</param>
     /// <returns></returns>
@@ -447,7 +447,7 @@ public static class SimpleCrudRequestWrapper
     /// If none entity matches the criteria, throws a exception of type <seealso cref="ServiceRequestUnexpectedResultException" />,
     /// if more than one is found, throws a exception of type <seealso cref="ServiceRequestTooManyResultsException" />
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="_">The entity.</param>
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
@@ -459,7 +459,7 @@ public static class SimpleCrudRequestWrapper
     /// If none entity matches the criteria, throws a exception of type <seealso cref="ServiceRequestUnexpectedResultException" />,
     /// if more than one is found, throws a exception of type <seealso cref="ServiceRequestTooManyResultsException" />
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="_">The entity.</param>
     /// <param name="criteria">The criteria.</param>
     /// <returns>T.</returns>
@@ -470,7 +470,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Updates the specified context.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
@@ -509,7 +509,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Converts to type.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="t">The t.</param>
     /// <param name="request">The request.</param>
     /// <returns>T.</returns>
@@ -540,7 +540,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Removes the specified entity.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     public static void Remove<T>(this T entity)
         where T : class, IEntity, new()
@@ -553,7 +553,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// remove as an asynchronous operation.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>Task.</returns>
     public static async Task RemoveAsync<T>(this T entity)

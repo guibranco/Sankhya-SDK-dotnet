@@ -207,7 +207,11 @@ public class Partner : IEntity, IEquatable<Partner>
     // ReSharper disable once FunctionComplexityOverflow
     // ReSharper disable once CyclomaticComplexity
     // ReSharper disable once MethodTooLong
-    [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked
@@ -411,62 +415,62 @@ public class Partner : IEntity, IEquatable<Partner>
     public static bool operator !=(Partner left, Partner right) => !Equals(left, right);
 
     /// <summary>
-    /// The code
+    /// The code.
     /// </summary>
     private int _code;
 
     /// <summary>
-    /// The code set
+    /// The code set.
     /// </summary>
     private bool _codeSet;
 
     /// <summary>
-    /// The name
+    /// The name.
     /// </summary>
     private string _name;
 
     /// <summary>
-    /// The name set
+    /// The name set.
     /// </summary>
     private bool _nameSet;
 
     /// <summary>
-    /// The company name
+    /// The company name.
     /// </summary>
     private string _companyName;
 
     /// <summary>
-    /// The company name set
+    /// The company name set.
     /// </summary>
     private bool _companyNameSet;
 
     /// <summary>
-    /// The fiscal type
+    /// The fiscal type.
     /// </summary>
     private FiscalPersonType _fiscalType;
 
     /// <summary>
-    /// The fiscal type set
+    /// The fiscal type set.
     /// </summary>
     private bool _fiscalTypeSet;
 
     /// <summary>
-    /// The fiscal classification
+    /// The fiscal classification.
     /// </summary>
     private FiscalClassification _fiscalClassification;
 
     /// <summary>
-    /// The fiscal classification set
+    /// The fiscal classification set.
     /// </summary>
     private bool _fiscalClassificationSet;
 
     /// <summary>
-    /// The email address
+    /// The email address.
     /// </summary>
     private string _emailAddress;
 
     /// <summary>
-    /// The email address set
+    /// The email address set.
     /// </summary>
     private bool _emailAddressSet;
 

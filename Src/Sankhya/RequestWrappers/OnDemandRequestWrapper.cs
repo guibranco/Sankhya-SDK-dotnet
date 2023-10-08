@@ -16,7 +16,7 @@ namespace Sankhya.RequestWrappers;
 /// <summary>
 /// Class OnDemandRequestWrapper. This class cannot be inherited.
 /// </summary>
-/// <typeparam name="T"></typeparam>
+/// <typeparam name="T">The type parameter.</typeparam>
 /// <seealso cref="IOnDemandRequestWrapper" />
 /// <seealso cref="IDisposable" />
 internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper

@@ -72,7 +72,11 @@ public class User : IEntity, IEquatable<User>
     /// Serves as a hash function for a particular type.
     /// </summary>
     /// <returns>A hash code for the current <see cref="Object" />.</returns>
-    [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
+    [SuppressMessage(
+        "ReSharper",
+        "NonReadonlyMemberInGetHashCode",
+        Justification = "Used to compute hash internally"
+    )]
     public override int GetHashCode()
     {
         unchecked

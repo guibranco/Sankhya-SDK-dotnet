@@ -73,7 +73,7 @@ public static class ServiceRequestExtensions
     /// <summary>
     /// Parses the property.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="criteriaEntity">The entity used as criteria.</param>
     /// <param name="maxLevel">The maximum level.</param>
@@ -132,7 +132,7 @@ public static class ServiceRequestExtensions
     /// <summary>
     /// Processes the parse.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="criteriaEntity">The criteria entity.</param>
     /// <param name="maxLevel">The maximum level.</param>
@@ -188,7 +188,7 @@ public static class ServiceRequestExtensions
     /// <summary>
     /// Processes the fields and criteria.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="criteriaEntity">The criteria entity.</param>
     /// <param name="currentLevel">The current level.</param>
@@ -333,7 +333,7 @@ public static class ServiceRequestExtensions
     /// <summary>
     /// Processes the entity reference.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="criteriaEntity">The criteria entity.</param>
     /// <param name="maxLevel">The maximum level.</param>
@@ -623,7 +623,7 @@ public static class ServiceRequestExtensions
     /// </summary>
     /// <param name="request">The request.</param>
     /// <param name="result">The result.</param>
-    /// <exception cref="InvalidServiceRequestOperationException"></exception>
+    /// <exception cref="InvalidServiceRequestOperationException">Invalid Service Request Operation.</exception>
     private static void HandleService(ServiceRequest request, EntityResolverResult result)
     {
         switch (request.Service)
@@ -767,7 +767,7 @@ public static class ServiceRequestExtensions
     /// Request with type.
     /// </summary>
     /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The request</param>
+    /// <param name="request">The request.</param>
     /// <param name="criteriaList">The criteria list to create/update/save or exclude/remove.</param>
     /// <exception cref="InvalidServiceRequestOperationException">Thrown when an Invalid Service Request Operation error condition occurs.</exception>
     public static void Resolve<T>(this ServiceRequest request, ICollection<T> criteriaList)
@@ -900,10 +900,9 @@ public static class ServiceRequestExtensions
     /// Request with type using predicate.
     /// </summary>
     /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The request</param>
-    /// <param name="predicate">The predicate to use as literal criteria</param>
-    /// <exception cref="NotImplementedException"></exception>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <param name="request">The request.</param>
+    /// <param name="predicate">The predicate to use as literal criteria.</param>
+    /// <exception cref="NotImplementedException">Method not implemented.</exception>
     // TODO: issue #29
     public static void Resolve<T>(this ServiceRequest request, Expression<Func<T, bool>> predicate)
         where T : class, IEntity, new() => throw new NotImplementedException();
@@ -911,11 +910,11 @@ public static class ServiceRequestExtensions
     /// <summary>
     /// Resolves the specified entity.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="entity">The entity.</param>
     /// <param name="options">The options.</param>
-    /// <exception cref="InvalidServiceRequestOperationException"></exception>
+    /// <exception cref="InvalidServiceRequestOperationException">Invalid Service Request Operation Exception.</exception>
     public static void Resolve<T>(this ServiceRequest request, T entity, EntityQueryOptions options)
         where T : class, IEntity, new()
     {
@@ -982,11 +981,11 @@ public static class ServiceRequestExtensions
     /// <summary>
     /// Resolves the specified criteria.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="criteria">The criteria.</param>
     /// <param name="options">The options.</param>
-    /// <exception cref="InvalidServiceRequestOperationException"></exception>
+    /// <exception cref="InvalidServiceRequestOperationException">INvalid service request operation exception.</exception>
     public static void Resolve<T>(
         this ServiceRequest request,
         ILiteralCriteria criteria,
