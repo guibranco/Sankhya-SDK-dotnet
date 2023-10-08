@@ -35,7 +35,7 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
                 && string.Equals(
                     _cancellationReason,
                     other._cancellationReason,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _cancellationReasonSet == other._cancellationReasonSet;
     }

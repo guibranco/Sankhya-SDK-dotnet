@@ -14,13 +14,16 @@ namespace Sankhya.Helpers;
 internal static class StatusMessageHelper
 {
     /// <summary>
-    /// The common messages
+    /// The common messages.
     /// </summary>
     private static readonly Dictionary<
         string,
         Func<string, ServiceName, ServiceRequest, ServiceResponse, Exception>
     > CommonMessages;
 
+    /// <summary>
+    /// Initializes static members of the <see cref="StatusMessageHelper"/> class.
+    /// </summary>
     static StatusMessageHelper() =>
         CommonMessages = new()
         {
@@ -148,16 +151,16 @@ internal static class StatusMessageHelper
     /// <param name="service">The service.</param>
     /// <param name="request">The request.</param>
     /// <param name="response">The response.</param>
-    /// <exception cref="ServiceRequestPropertyValueException"></exception>
-    /// <exception cref="ServiceRequestPropertyNameException"></exception>
-    /// <exception cref="ServiceRequestInvalidRelationException"></exception>
-    /// <exception cref="ServiceRequestForeignKeyException"></exception>
-    /// <exception cref="ServiceRequestDuplicatedDocumentException"></exception>
-    /// <exception cref="ServiceRequestBusinessRuleRestrictionException"></exception>
-    /// <exception cref="ServiceRequestFullTransactionLogsException"></exception>
-    /// <exception cref="ServiceRequestAttributeException"></exception>
-    /// <exception cref="ServiceRequestUnexpectedResultException"></exception>
-    /// <exception cref="ServiceRequestPropertyWidthException"></exception>
+    /// <exception cref="ServiceRequestPropertyValueException">Invalid property value.</exception>
+    /// <exception cref="ServiceRequestPropertyNameException">Invalid property name.</exception>
+    /// <exception cref="ServiceRequestInvalidRelationException">Invalid relation.</exception>
+    /// <exception cref="ServiceRequestForeignKeyException">Invalid foreign key.</exception>
+    /// <exception cref="ServiceRequestDuplicatedDocumentException">Duplicated document found.</exception>
+    /// <exception cref="ServiceRequestBusinessRuleRestrictionException">Business rule restriction.</exception>
+    /// <exception cref="ServiceRequestFullTransactionLogsException">Transaction log is full.</exception>
+    /// <exception cref="ServiceRequestAttributeException">Invalid request attribute.</exception>
+    /// <exception cref="ServiceRequestUnexpectedResultException">Unexpected result.</exception>
+    /// <exception cref="ServiceRequestPropertyWidthException">Invalid property width.</exception>
     public static void ProcessStatusMessage(
         ServiceName service,
         ServiceRequest request,
@@ -168,8 +171,7 @@ internal static class StatusMessageHelper
         var statusMessage = response.StatusMessage.Value;
 
         var kvp = CommonMessages.FirstOrDefault(
-            item =>
-                statusMessage.IndexOf(item.Key, StringComparison.InvariantCultureIgnoreCase) != -1
+            item => statusMessage.IndexOf(item.Key, StringComparison.OrdinalIgnoreCase) != -1
         );
 
         if (kvp.Value != null)

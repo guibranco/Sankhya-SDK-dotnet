@@ -31,24 +31,20 @@ public class Contact : IEntity, IEquatable<Contact>
                 && _codeSet == other._codeSet
                 && _codePartner == other._codePartner
                 && _codePartnerSet == other._codePartnerSet
-                && string.Equals(
-                    _zipCode,
-                    other._zipCode,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_zipCode, other._zipCode, StringComparison.OrdinalIgnoreCase)
                 && _zipCodeSet == other._zipCodeSet
                 && _codeAddress == other._codeAddress
                 && _codeAddressSet == other._codeAddressSet
                 && string.Equals(
                     _addressComplement,
                     other._addressComplement,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _addressComplementSet == other._addressComplementSet
                 && string.Equals(
                     _addressNumber,
                     other._addressNumber,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _addressNumberSet == other._addressNumberSet
                 && _codeNeighborhood == other._codeNeighborhood
@@ -57,20 +53,20 @@ public class Contact : IEntity, IEquatable<Contact>
                 && _codeCitySet == other._codeCitySet
                 && _codeRegion == other._codeRegion
                 && _codeRegionSet == other._codeRegionSet
-                && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_name, other._name, StringComparison.OrdinalIgnoreCase)
                 && _nameSet == other._nameSet
                 && _active == other._active
                 && _activeSet == other._activeSet
                 && string.Equals(
                     _documentIndividual,
                     other._documentIndividual,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _documentIndividualSet == other._documentIndividualSet
                 && string.Equals(
                     _documentCorporation,
                     other._documentCorporation,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _documentCorporationSet == other._documentCorporationSet
                 && _registerDate.Equals(other._registerDate)
@@ -78,19 +74,19 @@ public class Contact : IEntity, IEquatable<Contact>
                 && string.Equals(
                     _emailAddress,
                     other._emailAddress,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _emailAddressSet == other._emailAddressSet
                 && string.Equals(
                     _fixedTelephone,
                     other._fixedTelephone,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _fixedTelephoneSet == other._fixedTelephoneSet
                 && string.Equals(
                     _mobileTelephone,
                     other._mobileTelephone,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _mobileTelephoneSet == other._mobileTelephoneSet
                 && Equals(_partner, other._partner)

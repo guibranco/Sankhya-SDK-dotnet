@@ -22,41 +22,6 @@ namespace Sankhya.ValueObjects;
 public sealed class EntityResolverResult
 {
     /// <summary>
-    /// The name
-    /// </summary>
-    public readonly string Name;
-
-    /// <summary>
-    /// The field values
-    /// </summary>
-    public readonly List<FieldValue> FieldValues;
-
-    /// <summary>
-    /// The keys
-    /// </summary>
-    public readonly List<FieldValue> Keys;
-
-    /// <summary>
-    /// The criteria
-    /// </summary>
-    public readonly List<Criteria> Criteria;
-
-    /// <summary>
-    /// The fields
-    /// </summary>
-    public readonly List<Field> Fields;
-
-    /// <summary>
-    /// The references
-    /// </summary>
-    public readonly Dictionary<string, List<Field>> References;
-
-    /// <summary>
-    /// The literal criteria
-    /// </summary>
-    public readonly LiteralCriteria LiteralCriteria;
-
-    /// <summary>
     /// Initializes a new instance of the <see cref="EntityResolverResult" /> class.
     /// </summary>
     /// <param name="name">The name.</param>
@@ -70,4 +35,39 @@ public sealed class EntityResolverResult
         References = new();
         LiteralCriteria = new();
     }
+
+    /// <summary>
+    /// The name
+    /// </summary>
+    public string Name { get; }
+
+    /// <summary>
+    /// The field values
+    /// </summary>
+    public List<FieldValue> FieldValues { get; }
+
+    /// <summary>
+    /// The keys
+    /// </summary>
+    public List<FieldValue> Keys { get; }
+
+    /// <summary>
+    /// The criteria
+    /// </summary>
+    public List<Criteria> Criteria { get; }
+
+    /// <summary>
+    /// The fields
+    /// </summary>
+    public List<Field> Fields { get; }
+
+    /// <summary>
+    /// The references
+    /// </summary>
+    public Dictionary<string, List<Field>> References { get; }
+
+    /// <summary>
+    /// The literal criteria
+    /// </summary>
+    public LiteralCriteria LiteralCriteria { get; }
 }

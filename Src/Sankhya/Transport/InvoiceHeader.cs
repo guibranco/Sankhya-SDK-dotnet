@@ -27,9 +27,15 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     public bool Equals(InvoiceHeader other)
     {
         if (ReferenceEquals(null, other))
+        {
             return false;
+        }
+
         if (ReferenceEquals(this, other))
+        {
             return true;
+        }
+
         return _codeCompany == other._codeCompany
             && _codeCompanySet == other._codeCompanySet
             && _codeContact == other._codeContact
@@ -63,7 +69,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
             && string.Equals(
                 _fiscalInvoiceKey,
                 other._fiscalInvoiceKey,
-                StringComparison.InvariantCultureIgnoreCase
+                StringComparison.OrdinalIgnoreCase
             )
             && _fiscalInvoiceKeySet == other._fiscalInvoiceKeySet
             && _fiscalInvoiceStatus == other._fiscalInvoiceStatus
@@ -84,7 +90,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
             && _movementTimeSet == other._movementTimeSet
             && _movementType == other._movementType
             && _movementTypeSet == other._movementTypeSet
-            && string.Equals(_note, other._note, StringComparison.InvariantCultureIgnoreCase)
+            && string.Equals(_note, other._note, StringComparison.OrdinalIgnoreCase)
             && _noteSet == other._noteSet
             && _operationType == other._operationType
             && _operationTypeSet == other._operationTypeSet
@@ -112,11 +118,20 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
+        {
             return false;
+        }
+
         if (ReferenceEquals(this, obj))
+        {
             return true;
+        }
+
         if (obj.GetType() != GetType())
+        {
             return false;
+        }
+
         return Equals((InvoiceHeader)obj);
     }
 

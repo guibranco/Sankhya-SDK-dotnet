@@ -49,12 +49,12 @@ public class City : IEntity, IEquatable<City>
                 && _codeRegionSet == other._codeRegionSet
                 && _codeFiscal == other._codeFiscal
                 && _codeFiscalSet == other._codeFiscalSet
-                && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_name, other._name, StringComparison.OrdinalIgnoreCase)
                 && _nameSet == other._nameSet
                 && string.Equals(
                     _descriptionCorreios,
                     other._descriptionCorreios,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _descriptionCorreiosSet == other._descriptionCorreiosSet
                 && Equals(_state, other._state)
@@ -63,17 +63,9 @@ public class City : IEntity, IEquatable<City>
                 && _regionSet == other._regionSet
                 && _areaCode == other._areaCode
                 && _areaCodeSet == other._areaCodeSet
-                && string.Equals(
-                    _latitude,
-                    other._latitude,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_latitude, other._latitude, StringComparison.OrdinalIgnoreCase)
                 && _latitudeSet == other._latitudeSet
-                && string.Equals(
-                    _longitude,
-                    other._longitude,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_longitude, other._longitude, StringComparison.OrdinalIgnoreCase)
                 && _longitudeSet == other._longitudeSet;
     }
 

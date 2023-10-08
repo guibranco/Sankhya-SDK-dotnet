@@ -37,11 +37,7 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
                 && _codeLocalSet == other._codeLocalSet
                 && _codePartner == other._codePartner
                 && _codePartnerSet == other._codePartnerSet
-                && string.Equals(
-                    _control,
-                    other._control,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_control, other._control, StringComparison.OrdinalIgnoreCase)
                 && _controlSet == other._controlSet
                 && _quantity == other._quantity
                 && _quantitySet == other._quantitySet

@@ -139,7 +139,7 @@
     <value>all</value>
   </data>
   <data name="UsersOrGroups" xml:space="preserve">
-    <value> users/groups</value>
+    <value>users/groups</value>
   </data>
   <data name="KnowServicesRequestWrapper_SendMessage_SendingMessage" xml:space="preserve">
     <value>Sending message to {0} users/groups</value>
@@ -277,7 +277,7 @@
     <value>Page {0}{1} for paged request of {2} loaded with {3} entit{4}</value>
   </data>
   <data name="OfTotal" xml:space="preserve">
-    <value> of {0}</value>
+    <value>of {0}</value>
   </data>
   <data name="ResponseStreamIsNull" xml:space="preserve">
     <value>Response stream is null</value>

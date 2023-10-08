@@ -100,7 +100,7 @@ public sealed class ServiceRequest
     public bool ShouldSerializeRequestBody() => _requestBodySet;
 
     /// <summary>
-    /// Default constructor.
+    /// Initializes a new instance of the <see cref="ServiceRequest"/> class.
     /// </summary>
     public ServiceRequest()
     {
@@ -109,7 +109,7 @@ public sealed class ServiceRequest
     }
 
     /// <summary>
-    /// Constructor.
+    /// Initializes a new instance of the <see cref="ServiceRequest"/> class.
     /// </summary>
     /// <param name="service">The service.</param>
     public ServiceRequest(ServiceName service)

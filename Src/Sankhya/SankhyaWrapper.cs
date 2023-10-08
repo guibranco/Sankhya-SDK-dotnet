@@ -327,7 +327,7 @@ internal class SankhyaWrapper
             return (HttpWebResponse)connection.GetResponse();
         }
 
-        if (body.IndexOf("<?xml version=", StringComparison.InvariantCultureIgnoreCase) == -1)
+        if (body.IndexOf("<?xml version=", StringComparison.OrdinalIgnoreCase) == -1)
         {
             body = string.Concat("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n", body);
         }
@@ -371,7 +371,7 @@ internal class SankhyaWrapper
     /// <param name="lockKey">The lock key.</param>
     /// <param name="attemptCount">The attempt count.</param>
     /// <returns>ServiceResponse.</returns>
-    /// <exception cref="Sankhya.GoodPractices.ServiceRequestInvalidAuthorizationException">Invalid authorization exception.</exception>
+    /// <exception cref="ServiceRequestInvalidAuthorizationException">Invalid authorization exception.</exception>
     private ServiceResponse ServiceInvokerInternal(
         ServiceRequest request,
         ServiceName serviceName,
@@ -543,10 +543,7 @@ internal class SankhyaWrapper
 
                 var xmlRequest = (string)request.GetSerializer();
 
-                if (
-                    xmlRequest.IndexOf(ex.PropertyName, StringComparison.InvariantCultureIgnoreCase)
-                    != -1
-                )
+                if (xmlRequest.IndexOf(ex.PropertyName, StringComparison.OrdinalIgnoreCase) != -1)
                 {
                     return false;
                 }
@@ -723,7 +720,7 @@ internal class SankhyaWrapper
                     .ReadToEnd()
                     .IndexOf(
                         SankhyaConstants.SessionManagerNotStarted,
-                        StringComparison.InvariantCultureIgnoreCase
+                        StringComparison.OrdinalIgnoreCase
                     ) != -1
             )
             {
@@ -881,7 +878,7 @@ internal class SankhyaWrapper
         if (
             message.IndexOf(
                 SankhyaConstants.FileNotFoundOnServer,
-                StringComparison.InvariantCultureIgnoreCase
+                StringComparison.OrdinalIgnoreCase
             ) != -1
         )
         {

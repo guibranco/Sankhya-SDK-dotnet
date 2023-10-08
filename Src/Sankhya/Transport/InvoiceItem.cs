@@ -42,11 +42,7 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
                 && _codeSourceLocalSet == other._codeSourceLocalSet
                 && _quantityTraded == other._quantityTraded
                 && _quantityTradedSet == other._quantityTradedSet
-                && string.Equals(
-                    _control,
-                    other._control,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_control, other._control, StringComparison.OrdinalIgnoreCase)
                 && _controlSet == other._controlSet
                 && _valueUnit == other._valueUnit
                 && _valueUnitSet == other._valueUnitSet
@@ -54,23 +50,15 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
                 && _valueTotalSet == other._valueTotalSet
                 && _productUse == other._productUse
                 && _productUseSet == other._productUseSet
-                && string.Equals(_gtin, other._gtin, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_gtin, other._gtin, StringComparison.OrdinalIgnoreCase)
                 && _gtinSet == other._gtinSet
-                && string.Equals(
-                    _gtinTax,
-                    other._gtinTax,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_gtinTax, other._gtinTax, StringComparison.OrdinalIgnoreCase)
                 && _gtinTaxSet == other._gtinTaxSet
                 && _discountPercentage == other._discountPercentage
                 && _discountPercentageSet == other._discountPercentageSet
                 && _discountValue == other._discountValue
                 && _discountValueSet == other._discountValueSet
-                && string.Equals(
-                    _codeVolume,
-                    other._codeVolume,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_codeVolume, other._codeVolume, StringComparison.OrdinalIgnoreCase)
                 && _codeVolumeSet == other._codeVolumeSet
                 && Equals(_product, other._product)
                 && _productSet == other._productSet;

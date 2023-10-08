@@ -41,9 +41,9 @@ public sealed class FieldValue : IEquatable<FieldValue>
             return true;
         }
 
-        return string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+        return string.Equals(_name, other._name, StringComparison.OrdinalIgnoreCase)
             && _nameSet == other._nameSet
-            && string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase)
+            && string.Equals(_value, other._value, StringComparison.OrdinalIgnoreCase)
             && _valueSet == other._valueSet;
     }
 
@@ -112,7 +112,7 @@ public sealed class FieldValue : IEquatable<FieldValue>
     public static bool operator !=(FieldValue left, FieldValue right) => !Equals(left, right);
 
     /// <summary>
-    /// The name
+    /// The name.
     /// </summary>
     private string _name;
 

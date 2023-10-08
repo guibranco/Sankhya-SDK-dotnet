@@ -55,7 +55,7 @@ public sealed class LiteralCriteria : ILiteralCriteria
     /// Initializes a new instance of the <see cref="LiteralCriteria" /> class.
     /// </summary>
     /// <param name="expressionBuilder">The expression builder.</param>
-    /// <exception cref="System.ArgumentNullException">expressionBuilder</exception>
+    /// <exception cref="ArgumentNullException">expressionBuilder</exception>
     public LiteralCriteria(StringBuilder expressionBuilder)
     {
         if (expressionBuilder == null)

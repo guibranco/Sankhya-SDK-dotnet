@@ -24,10 +24,10 @@ namespace Sankhya.Transport;
 
 /// <summary>
 /// Class Product.
-/// Implements the <see cref="Sankhya.Transport.IEntity" />
+/// Implements the <see cref="IEntity" />
 /// Implements the <see cref="Product" />
 /// </summary>
-/// <seealso cref="Sankhya.Transport.IEntity" />
+/// <seealso cref="IEntity" />
 /// <seealso cref="Product" />
 [Entity("Produto")]
 public class Product : IEntity, IEquatable<Product>

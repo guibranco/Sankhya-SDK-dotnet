@@ -44,7 +44,7 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
                 && string.Equals(
                     _zipCodeDelivery,
                     other._zipCodeDelivery,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _zipCodeDeliverySet == other._zipCodeDeliverySet
                 && _codeAddressDelivery == other._codeAddressDelivery
@@ -52,13 +52,13 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
                 && string.Equals(
                     _addressNumberDelivery,
                     other._addressNumberDelivery,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _addressNumberDeliverySet == other._addressNumberDeliverySet
                 && string.Equals(
                     _addressComplementDelivery,
                     other._addressComplementDelivery,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _addressComplementDeliverySet == other._addressComplementDeliverySet
                 && _codeNeighborhoodDelivery == other._codeNeighborhoodDelivery
@@ -68,13 +68,13 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
                 && string.Equals(
                     _latitudeDelivery,
                     other._latitudeDelivery,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _latitudeDeliverySet == other._latitudeDeliverySet
                 && string.Equals(
                     _longitudeDelivery,
                     other._longitudeDelivery,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _longitudeDeliverySet == other._longitudeDeliverySet
                 && Equals(_addressDelivery, other._addressDelivery)

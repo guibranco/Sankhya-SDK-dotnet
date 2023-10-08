@@ -20,86 +20,86 @@ namespace Sankhya.Service;
 /// <seealso cref="IXmlSerializable" />
 [Serializer]
 [XmlRoot(ElementName = "serviceResponse")]
-//TODO convert XML fields names to constants
+//TODO: convert XML fields names to constants
 public sealed class ServiceResponse : IXmlSerializable
 {
     /// <summary>
-    /// The service
+    /// The service.
     /// </summary>
     private ServiceName _service;
 
     /// <summary>
-    /// The service set
+    /// The service set.
     /// </summary>
     private bool _serviceSet;
 
     /// <summary>
-    /// The pending printing
+    /// The pending printing.
     /// </summary>
     private bool _pendingPrinting;
 
     /// <summary>
-    /// The pending printing set
+    /// The pending printing set.
     /// </summary>
     private bool _pendingPrintingSet;
 
     /// <summary>
-    /// The transaction identifier
+    /// The transaction identifier.
     /// </summary>
     private Guid _transactionId;
 
     /// <summary>
-    /// The transaction identifier set
+    /// The transaction identifier set.
     /// </summary>
     private bool _transactionIdSet;
 
     /// <summary>
-    /// The status
+    /// The status.
     /// </summary>
     private ServiceResponseStatus _status;
 
     /// <summary>
-    /// The status set
+    /// The status set.
     /// </summary>
     private bool _statusSet;
 
     /// <summary>
-    /// The error code
+    /// The error code.
     /// </summary>
     private int _errorCode;
 
     /// <summary>
-    /// The error code set
+    /// The error code set.
     /// </summary>
     private bool _errorCodeSet;
 
     /// <summary>
-    /// The error level
+    /// The error level.
     /// </summary>
     private int _errorLevel;
 
     /// <summary>
-    /// The error level set
+    /// The error level set.
     /// </summary>
     private bool _errorLevelSet;
 
     /// <summary>
-    /// The status message
+    /// The status message.
     /// </summary>
     private StatusMessage _statusMessage;
 
     /// <summary>
-    /// The status message set
+    /// The status message set.
     /// </summary>
     private bool _statusMessageSet;
 
     /// <summary>
-    /// The response body
+    /// The response body.
     /// </summary>
     private ResponseBody _responseBody;
 
     /// <summary>
-    /// The response body set
+    /// The response body set.
     /// </summary>
     private bool _responseBodySet;
 
@@ -136,9 +136,9 @@ public sealed class ServiceResponse : IXmlSerializable
     }
 
     /// <summary>
-    /// Gets or sets the pending printing.
+    /// Gets or sets a value indicating whether [pending printing].
     /// </summary>
-    /// <value>The pending printing.</value>
+    /// <value><c>true</c> if [pending printing]; otherwise, <c>false</c>.</value>
     [XmlIgnore]
     public bool PendingPrinting
     {
@@ -159,7 +159,7 @@ public sealed class ServiceResponse : IXmlSerializable
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string PendingPrintingInternal
     {
-        get => _pendingPrinting.ToString().ToLower();
+        get => _pendingPrinting.ToString().ToLowerInvariant();
         set
         {
             _pendingPrinting = value.ToBoolean(@"true|false");
@@ -342,42 +342,45 @@ public sealed class ServiceResponse : IXmlSerializable
         node.Read();
         while (true)
         {
-            var elementName = node.LocalName;
-            if (elementName == @"_rmd")
+            if (!ParseDynamic(node, ds))
             {
-                node.ReadOuterXml();
-                continue;
-            }
-
-            if (
-                node.NodeType.Equals(XmlNodeType.EndElement)
-                && (elementName == @"entidade" || elementName == @"entity" || elementName == @"pk")
-            )
-            {
-                node.Read();
                 break;
-            }
-
-            if (node.NodeType.Equals(XmlNodeType.Element) && node.IsEmptyElement)
-            {
-                ds.SetMember(node.Name, null);
-                node.Read();
-                continue;
-            }
-
-            if (node.NodeType.Equals(XmlNodeType.Element))
-            {
-                ds.SetMember(elementName, node.ReadElementContentAsString());
             }
         }
 
         return ds;
     }
 
+    private static bool ParseDynamic(XmlReader node, EntityDynamicSerialization ds)
+    {
+        var elementName = node.LocalName;
+        if (elementName == @"_rmd")
+        {
+            node.ReadOuterXml();
+            return true;
+        }
+
+        switch (node.NodeType)
+        {
+            case XmlNodeType.EndElement when elementName is @"entidade" or @"entity" or @"pk":
+                node.Read();
+                return false;
+            case XmlNodeType.Element when node.IsEmptyElement:
+                ds.SetMember(node.Name, null);
+                node.Read();
+                return true;
+            case XmlNodeType.Element:
+                ds.SetMember(elementName, node.ReadElementContentAsString());
+                break;
+        }
+
+        return false;
+    }
+
     /// <summary>
     /// Writes a dynamic.
     /// </summary>
-    /// <param name="writer">The <see cref="System.Xml.XmlWriter" /> stream to which the object is serialized.</param>
+    /// <param name="writer">The <see cref="XmlWriter" /> stream to which the object is serialized.</param>
     /// <param name="dynamic">The dynamic.</param>
     private static void WriteDynamic(XmlWriter writer, EntityDynamicSerialization dynamic)
     {
@@ -420,7 +423,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// <summary>
     /// Generates an object from its XML representation.
     /// </summary>
-    /// <param name="reader">The <see cref="System.Xml.XmlReader" /> stream from which the object is deserialized.</param>
+    /// <param name="reader">The <see cref="XmlReader" /> stream from which the object is deserialized.</param>
     public void ReadXml(XmlReader reader)
     {
         reader.DuplicateReaders(out var clonedReader, out var log);
@@ -756,7 +759,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// <summary>
     /// Converts an object into its XML representation.
     /// </summary>
-    /// <param name="writer">The <see cref="System.Xml.XmlWriter" /> stream to which the object is serialized.</param>
+    /// <param name="writer">The <see cref="XmlWriter" /> stream to which the object is serialized.</param>
     public void WriteXml(XmlWriter writer)
     {
         if (writer == null)
@@ -1080,7 +1083,9 @@ public sealed class ServiceResponse : IXmlSerializable
             writer.WriteRaw(xml.DocumentElement.OuterXml);
         }
 
+#pragma warning disable S3217
         foreach (EntityDynamicSerialization ds in ResponseBody.CrudServiceProviderEntities.Entities)
+#pragma warning restore S3217
         {
             writer.WriteStartElement(SankhyaConstants.EntityEn);
 

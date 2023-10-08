@@ -31,7 +31,7 @@ public class TradingType : IEntity, IEquatable<TradingType>
                 && string.Equals(
                     _description,
                     other._description,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _descriptionSet == other._descriptionSet
                 && _active == other._active
