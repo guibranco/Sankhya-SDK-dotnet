@@ -177,4 +177,3 @@ foreach (var session in sessions) {
     KnowServicesRequestWrapper.KillSession(session.Id);
 }
 ```
-
