@@ -253,342 +253,342 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     public static bool operator !=(InvoiceHeader left, InvoiceHeader right) => !Equals(left, right);
 
     /// <summary>
-    /// The single number
+    /// The single number.
     /// </summary>
     private int? _singleNumber;
 
     /// <summary>
-    /// The single number set
+    /// The single number set.
     /// </summary>
     private bool _singleNumberSet;
 
     /// <summary>
-    /// The code company
+    /// The code company.
     /// </summary>
     private int _codeCompany;
 
     /// <summary>
-    /// The code company set
+    /// The code company set.
     /// </summary>
     private bool _codeCompanySet;
 
     /// <summary>
-    /// The code partner
+    /// The code partner.
     /// </summary>
     private int _codePartner;
 
     /// <summary>
-    /// The code partner set
+    /// The code partner set.
     /// </summary>
     private bool _codePartnerSet;
 
     /// <summary>
-    /// The code partner destination
+    /// The code partner destination.
     /// </summary>
     private int _codePartnerDestination;
 
     /// <summary>
-    /// The code partner destination set
+    /// The code partner destination set.
     /// </summary>
     private bool _codePartnerDestinationSet;
 
     /// <summary>
-    /// The code contact
+    /// The code contact.
     /// </summary>
     private int _codeContact;
 
     /// <summary>
-    /// The code contact set
+    /// The code contact set.
     /// </summary>
     private bool _codeContactSet;
 
     /// <summary>
-    /// The operation type
+    /// The operation type.
     /// </summary>
     private int _operationType;
 
     /// <summary>
-    /// The operation type set
+    /// The operation type set.
     /// </summary>
     private bool _operationTypeSet;
 
     /// <summary>
-    /// The code trade type
+    /// The code trade type.
     /// </summary>
     private int _codeTradeType;
 
     /// <summary>
-    /// The code trade type set
+    /// The code trade type set.
     /// </summary>
     private bool _codeTradeTypeSet;
 
     /// <summary>
-    /// The invoice number
+    /// The invoice number.
     /// </summary>
     private int _invoiceNumber;
 
     /// <summary>
-    /// The invoice number set
+    /// The invoice number set.
     /// </summary>
     private bool _invoiceNumberSet;
 
     /// <summary>
-    /// The code seller
+    /// The code seller.
     /// </summary>
     private int _codeSeller;
 
     /// <summary>
-    /// The code seller set
+    /// The code seller set.
     /// </summary>
     private bool _codeSellerSet;
 
     /// <summary>
-    /// The date traded
+    /// The date traded.
     /// </summary>
     private DateTime _dateTraded;
 
     /// <summary>
-    /// The date traded set
+    /// The date traded set.
     /// </summary>
     private bool _dateTradedSet;
 
     /// <summary>
-    /// The date imported
+    /// The date imported.
     /// </summary>
     private DateTime _dateImported;
 
     /// <summary>
-    /// The date imported set
+    /// The date imported set.
     /// </summary>
     private bool _dateImportedSet;
 
     /// <summary>
-    /// The date billed
+    /// The date billed.
     /// </summary>
     private DateTime _dateBilled;
 
     /// <summary>
-    /// The date billed set
+    /// The date billed set.
     /// </summary>
     private bool _dateBilledSet;
 
     /// <summary>
-    /// The date expected delivery
+    /// The date expected delivery.
     /// </summary>
     private DateTime _dateExpectedDelivery;
 
     /// <summary>
-    /// The date expected delivery set
+    /// The date expected delivery set.
     /// </summary>
     private bool _dateExpectedDeliverySet;
 
     /// <summary>
-    /// The date changed
+    /// The date changed.
     /// </summary>
     private DateTime _dateChanged;
 
     /// <summary>
-    /// The date changed set
+    /// The date changed set.
     /// </summary>
     private bool _dateChangedSet;
 
     /// <summary>
-    /// The code result center
+    /// The code result center.
     /// </summary>
     private int _codeResultCenter;
 
     /// <summary>
-    /// The code result center set
+    /// The code result center set.
     /// </summary>
     private bool _codeResultCenterSet;
 
     /// <summary>
-    /// The code nature
+    /// The code nature.
     /// </summary>
     private int _codeNature;
 
     /// <summary>
-    /// The code nature set
+    /// The code nature set.
     /// </summary>
     private bool _codeNatureSet;
 
     /// <summary>
-    /// The movement type
+    /// The movement type.
     /// </summary>
     private MovementType _movementType;
 
     /// <summary>
-    /// The movement type set
+    /// The movement type set.
     /// </summary>
     private bool _movementTypeSet;
 
     /// <summary>
-    /// The freight value
+    /// The freight value.
     /// </summary>
     private decimal _freightValue;
 
     /// <summary>
-    /// The freight value set
+    /// The freight value set.
     /// </summary>
     private bool _freightValueSet;
 
     /// <summary>
-    /// The note
+    /// The note.
     /// </summary>
     private string _note;
 
     /// <summary>
-    /// The note set
+    /// The note set.
     /// </summary>
     private bool _noteSet;
 
     /// <summary>
-    /// The freight type
+    /// The freight type.
     /// </summary>
     private FreightType _freightType;
 
     /// <summary>
-    /// The freight type set
+    /// The freight type set.
     /// </summary>
     private bool _freightTypeSet;
 
     /// <summary>
-    /// The invoice status
+    /// The invoice status.
     /// </summary>
     private InvoiceStatus _invoiceStatus;
 
     /// <summary>
-    /// The invoice status set
+    /// The invoice status set.
     /// </summary>
     private bool _invoiceStatusSet;
 
     /// <summary>
-    /// The invoice freight type
+    /// The invoice freight type.
     /// </summary>
     private InvoiceFreightType _invoiceFreightType;
 
     /// <summary>
-    /// The invoice freight type set
+    /// The invoice freight type set.
     /// </summary>
     private bool _invoiceFreightTypeSet;
 
     /// <summary>
-    /// The code partner carrier
+    /// The code partner carrier.
     /// </summary>
     private int _codePartnerCarrier;
 
     /// <summary>
-    /// The code partner carrier set
+    /// The code partner carrier set.
     /// </summary>
     private bool _codePartnerCarrierSet;
 
     /// <summary>
-    /// The fiscal invoice status
+    /// The fiscal invoice status.
     /// </summary>
     private FiscalInvoiceStatus _fiscalInvoiceStatus;
 
     /// <summary>
-    /// The fiscal invoice status set
+    /// The fiscal invoice status set.
     /// </summary>
     private bool _fiscalInvoiceStatusSet;
 
     /// <summary>
-    /// The confirmed
+    /// The confirmed.
     /// </summary>
     private bool _confirmed;
 
     /// <summary>
-    /// The confirmed set
+    /// The confirmed set.
     /// </summary>
     private bool _confirmedSet;
 
     /// <summary>
-    /// The pending
+    /// The pending.
     /// </summary>
     private bool _pending;
 
     /// <summary>
-    /// The pending set
+    /// The pending set.
     /// </summary>
     private bool _pendingSet;
 
     /// <summary>
-    /// The fiscal invoice key
+    /// The fiscal invoice key.
     /// </summary>
     private string _fiscalInvoiceKey;
 
     /// <summary>
-    /// The fiscal invoice key set
+    /// The fiscal invoice key set.
     /// </summary>
     private bool _fiscalInvoiceKeySet;
 
     /// <summary>
-    /// The movement time
+    /// The movement time.
     /// </summary>
     private TimeSpan _movementTime;
 
     /// <summary>
-    /// The movement time set
+    /// The movement time set.
     /// </summary>
     private bool _movementTimeSet;
 
     /// <summary>
-    /// The invoice value
+    /// The invoice value.
     /// </summary>
     private decimal _invoiceValue;
 
     /// <summary>
-    /// The invoice value set
+    /// The invoice value set.
     /// </summary>
     private bool _invoiceValueSet;
 
     /// <summary>
-    /// The partner
+    /// The partner.
     /// </summary>
     private Partner _partner;
 
     /// <summary>
-    /// The partner set
+    /// The partner set.
     /// </summary>
     private bool _partnerSet;
 
     /// <summary>
-    /// The partner destination
+    /// The partner destination.
     /// </summary>
     private Partner _partnerDestination;
 
     /// <summary>
-    /// The partner destination set
+    /// The partner destination set.
     /// </summary>
     private bool _partnerDestinationSet;
 
     /// <summary>
-    /// The partner carrier
+    /// The partner carrier.
     /// </summary>
     private Partner _partnerCarrier;
 
     /// <summary>
-    /// The partner carrier set
+    /// The partner carrier set.
     /// </summary>
     private bool _partnerCarrierSet;
 
     /// <summary>
-    /// The partner royalties
+    /// The partner royalties.
     /// </summary>
     private Partner _partnerRoyalties;
 
     /// <summary>
-    /// The partner royalties set
+    /// The partner royalties set.
     /// </summary>
     private bool _partnerRoyaltiesSet;
 
     /// <summary>
-    /// The seller
+    /// The seller.
     /// </summary>
     private Seller _seller;
 
     /// <summary>
-    /// The seller set
+    /// The seller set.
     /// </summary>
     private bool _sellerSet;
 
@@ -1103,9 +1103,9 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     }
 
     /// <summary>
-    /// Gets or sets the confirmed.
+    /// Gets or sets a value indicating whether this <see cref="InvoiceHeader"/> is confirmed.
     /// </summary>
-    /// <value>The confirmed.</value>
+    /// <value><c>true</c> if confirmed; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool Confirmed
     {
@@ -1135,9 +1135,9 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     }
 
     /// <summary>
-    /// Gets or sets the pending.
+    /// Gets or sets a value indicating whether this <see cref="InvoiceHeader"/> is pending.
     /// </summary>
-    /// <value>The pending.</value>
+    /// <value><c>true</c> if pending; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool Pending
     {
@@ -1200,8 +1200,7 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// Gets or sets the movement time internal.
     /// </summary>
     /// <value>The movement time internal.</value>
-    /// <exception cref="ArgumentOutOfRangeException">value - MovementTime</exception>
-    /// <exception cref="ArgumentOutOfRangeException">The {nameof(MovementTime)}</exception>
+    /// <exception cref="ArgumentOutOfRangeException">value - MovementTime.</exception>
     [EntityElement("HRMOV")]
     public string MovementTimeInternal
     {
@@ -1386,10 +1385,10 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     public bool ShouldSerializeCodePartner() => _codePartnerSet;
 
     /// <summary>
-    /// The should serialize code partner destination serialization helper method
+    /// The should serialize code partner destination serialization helper method.
     /// </summary>
     /// <returns>
-    /// Returns <c>true</c> when the field should be serialized, false otherwise
+    /// Returns <c>true</c> when the field should be serialized, false otherwise.
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -1604,10 +1603,10 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     public bool ShouldSerializePartner() => _partnerSet;
 
     /// <summary>
-    /// The should serialize partner destination serialization helper method
+    /// The should serialize partner destination serialization helper method.
     /// </summary>
     /// <returns>
-    /// Returns <c>true</c> when the field should be serialized, false otherwise
+    /// Returns <c>true</c> when the field should be serialized, false otherwise.
     /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
