@@ -62,63 +62,16 @@ There are also some Request Wrappers that allow you to make some requests in an 
 
 ### Known Services
 
-- MobileLoginSP
-  - login
-  - logout
-- CRUD
-  - find
-  - remove
-  - save
-- CRUDServiceProvider
-  - loadRecords
-  - removeRecord
-  - saveRecord
-- ServicosNfeSP
-  - buscaProcessamentoLote
-  - gerarLote
-  - getAcompanhamentosNota
-- CACSP
-  - incluirNota
-  - incluirAlterarCabecalhoNota
-  - incluirAlterarItemNota
-  - confirmarNota
-  - cancelarNota
-  - duplicarNota
-  - excluirNotas
-  - excluirItemNota
-  - ligarPedidoNota
-  - marcarPedidosComoNaoPendentes
-- SelecaoDocumentoSP
-  - faturar
-- BaixaAutomaticaSP
-  - baixar
-- BaixaFinanceiroSP
-  - estornarTitulo
-- AvisoSistemaSP
-  - getNovosAvisos
-  - enviarAviso
-  - enviarMensagem
-- RepositorioArquivoSP
-  - abreArquivo
-- ImportacaoImagemSP
-  - deletaArquivos
-- SessionManagerSP
-  - getCoreSessions
-  - killSession
-- MovimentacaoFinanceiraSP
-  - desvincularRemessa
+[Wiki page about KSRW](https://github.com/guibranco/Sankhya-SDK-dotnet/wiki/Know-Services-Request-Wrapper-(KSRW))
 
 ### Request Wrappers
 
-- Know Services Request Wrapper - This implements all known services described below, with predefined parameters, if the existing parameter set doesn't suit your need, you can execute the request without the wrapper.
-- On Demand Request Wrapper - This manage the request reusing the authentication flow, so it holds the same session over multiple requests.
-- Paged Request Wrapper - Retrieve data using paged CRUD.
+[Wiki page about RWs](https://github.com/guibranco/Sankhya-SDK-dotnet/wiki/Request-Wrappers)
 
-### Main Wrappers
+### Context & main wrapper
 
-- Low Level Sankhya Wrapper - **NOT IMPLEMENTED YET**.
-- Sankhya Wrapper -  The main wrapper.
-  
+[Wiki page about Sankhya Context & Sankhya Wrapper](https://github.com/guibranco/Sankhya-SDK-dotnet/wiki/Context-&-main-wrapper)
+
 ### Sankhya Wrapper
 
 The *last mile operations* are done on this wrappers.
