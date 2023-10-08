@@ -56,10 +56,9 @@ Download the latest zip file from the [Release](https://github.com/GuiBranco/San
 
 ## Features
 
-This SDK implements many Sankhya's web service. Some of then are called `Know Services`.
-If the service that you looking for is not set in the SDK you can implement the service request/response by your own (and use it on your code or submit a pull request to this repository).
+This SDK implements many of Sankhya's web services. Some of them are called Know Services. If the service you are looking for is not set in the SDK, you can implement the service request/response on your own (and use it on your code or submit a pull request to this repository).
 
-There are also some `Request Wrappers` that allows you to make some requests in an easy way.
+There are also some Request Wrappers that allow you to make some requests in an easy way.
 
 ### Known Services
 
