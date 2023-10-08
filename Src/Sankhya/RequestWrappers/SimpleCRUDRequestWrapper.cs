@@ -61,7 +61,7 @@ public static class SimpleCrudRequestWrapper
     /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <param name="options">The options.</param>
-    /// <returns>The searched entity or null</returns>
+    /// <returns>The searched entity or null.</returns>
     /// <exception cref="ServiceRequestTooManyResultsException">Too many results founds when only one was expected.</exception>
     private static T CanFindInternal<T>(T entity, EntityQueryOptions options)
         where T : class, IEntity, new()
@@ -112,7 +112,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity);
-        return ProcessCanFindInternalAsync<T>(request);
+        return ProcessRequestCanFindInternalAsync<T>(request);
     }
 
     /// <summary>
@@ -157,38 +157,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
-        return ProcessCanFindInternalAsync<T>(request);
-    }
-
-    /// <summary>
-    /// Processes the can find internal asynchronous.
-    /// </summary>
-    /// <typeparam name="T">The entity type.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <returns>Task&lt;T&gt;.</returns>
-    private static Task<T> ProcessCanFindInternalAsync<T>(ServiceRequest request)
-        where T : class, IEntity, new()
-    {
-        return Context
-            .ServiceInvokerAsync(request, SessionToken)
-            .ContinueWith(t =>
-            {
-                if (t.Result.Entities == null || t.Result.Entities.Length == 0)
-                {
-                    return null;
-                }
-
-                if (t.Result.Entities.Length > 1)
-                {
-                    throw new ServiceRequestTooManyResultsException(
-                        request,
-                        t.Result,
-                        t.Result.Entities.Length
-                    );
-                }
-
-                return t.Result.Entities.Single().ConvertToType<T>();
-            });
+        return ProcessRequestCanFindInternalAsync<T>(request);
     }
 
     /// <summary>
@@ -244,26 +213,11 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity);
-        return Context
-            .ServiceInvokerAsync(request, SessionToken)
-            .ContinueWith(t =>
-            {
-                if (t.Result.Entities == null || t.Result.Entities.Length == 0)
-                {
-                    throw new ServiceRequestUnexpectedResultException(request, t.Result);
-                }
-
-                if (t.Result.Entities.Length > 1)
-                {
-                    throw new ServiceRequestTooManyResultsException(
-                        request,
-                        t.Result,
-                        t.Result.Entities.Length
-                    );
-                }
-
-                return t.Result.Entities.Single().ConvertToType<T>();
-            });
+        return ProcessRequestFindInternalAsync<T>(
+            request,
+            (serviceResponse) =>
+                throw new ServiceRequestUnexpectedResultException(request, serviceResponse)
+        );
     }
 
     /// <summary>
@@ -310,26 +264,11 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
-        return Context
-            .ServiceInvokerAsync(request, SessionToken)
-            .ContinueWith(t =>
-            {
-                if (t.Result.Entities == null || t.Result.Entities.Length == 0)
-                {
-                    throw new ServiceRequestUnexpectedResultException(request, t.Result);
-                }
-
-                if (t.Result.Entities.Length > 1)
-                {
-                    throw new ServiceRequestTooManyResultsException(
-                        request,
-                        t.Result,
-                        t.Result.Entities.Length
-                    );
-                }
-
-                return t.Result.Entities.Single().ConvertToType<T>();
-            });
+        return ProcessRequestFindInternalAsync<T>(
+            request,
+            (serviceResponse) =>
+                throw new ServiceRequestUnexpectedResultException(request, serviceResponse)
+        );
     }
 
     /// <summary>
@@ -548,5 +487,40 @@ public static class SimpleCrudRequestWrapper
         var request = new ServiceRequest(ServiceName.CrudServiceRemove);
         request.Resolve(entity);
         await Context.ServiceInvokerAsync(request, SessionToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Processes the request find internal asynchronous.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="request">The request.</param>
+    /// <param name="callbackNullOrZero">The callback null or zero.</param>
+    /// <returns>Task&lt;T&gt;.</returns>
+    private static Task<T> ProcessRequestFindInternalAsync<T>(
+        ServiceRequest request,
+        Func<ServiceResponse, T> callbackNullOrZero
+    )
+        where T : class, IEntity, new()
+    {
+        return Context
+            .ServiceInvokerAsync(request, SessionToken)
+            .ContinueWith(response =>
+            {
+                if (response.Result.Entities == null || response.Result.Entities.Length == 0)
+                {
+                    return callbackNullOrZero(response.Result);
+                }
+
+                if (response.Result.Entities.Length > 1)
+                {
+                    throw new ServiceRequestTooManyResultsException(
+                        request,
+                        response.Result,
+                        response.Result.Entities.Length
+                    );
+                }
+
+                return response.Result.Entities.Single().ConvertToType<T>();
+            });
     }
 }
