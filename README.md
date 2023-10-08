@@ -67,7 +67,7 @@ There are also some Request Wrappers that allow you to make some requests in an 
 ### Sankhya Wrapper
 
 The *last mile operations* are done on this wrappers.
-ALl HTTP request/responses, login/logout, serialization, download/upload operations are defined on this class.
+All HTTP request/responses, login/logout, serialization, download/upload operations are defined on this class.
 
 **Avoid** usage of this class directly from you implementation. Only call methods of this class if you are extending the usage of the SDK or even implementing a new feature for the SDK, otherwise, prefer using one of the request wrappers, or the Sankhya Context class.
 
