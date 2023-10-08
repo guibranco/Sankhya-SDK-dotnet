@@ -1,4 +1,18 @@
-﻿using CrispyWaffle.Attributes;
+﻿// ***********************************************************************
+// Assembly         : Sankhya
+// Author           : GuilhermeStracini
+// Created          : 10-07-2023
+//
+// Last Modified By : GuilhermeStracini
+// Last Modified On : 10-07-2023
+// ***********************************************************************
+// <copyright file="ServiceEnvironment.cs" company="Guilherme Branco Stracini">
+//     © 2023 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+using CrispyWaffle.Attributes;
 
 namespace Sankhya.Enums;
 
