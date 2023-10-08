@@ -56,74 +56,18 @@ Download the latest zip file from the [Release](https://github.com/GuiBranco/San
 
 ## Features
 
-This SDK implements many Sankhya's web service. Some of then are called `Know Services`.
-If the service that you looking for is not set in the SDK you can implement the service request/response by your own (and use it on your code or submit a pull request to this repository).
+This SDK implements many of Sankhya's web services. Some of them are called Know Services. If the service you are looking for is not set in the SDK, you can implement the service request/response on your own (and use it on your code or submit a pull request to this repository).
 
-There are also some `Request Wrappers` that allows you to make some requests in an easy way.
+There are also some Request Wrappers that allow you to make some requests in an easy way.
 
 ### Known Services
 
-- MobileLoginSP
-  - login
-  - logout
-- CRUD
-  - find
-  - remove
-  - save
-- CRUDServiceProvider
-  - loadRecords
-  - removeRecord
-  - saveRecord
-- ServicosNfeSP
-  - buscaProcessamentoLote
-  - gerarLote
-  - getAcompanhamentosNota
-- CACSP
-  - incluirNota
-  - incluirAlterarCabecalhoNota
-  - incluirAlterarItemNota
-  - confirmarNota
-  - cancelarNota
-  - duplicarNota
-  - excluirNotas
-  - excluirItemNota
-  - ligarPedidoNota
-  - marcarPedidosComoNaoPendentes
-- SelecaoDocumentoSP
-  - faturar
-- BaixaAutomaticaSP
-  - baixar
-- BaixaFinanceiroSP
-  - estornarTitulo
-- AvisoSistemaSP
-  - getNovosAvisos
-  - enviarAviso
-  - enviarMensagem
-- RepositorioArquivoSP
-  - abreArquivo
-- ImportacaoImagemSP
-  - deletaArquivos
-- SessionManagerSP
-  - getCoreSessions
-  - killSession
-- MovimentacaoFinanceiraSP
-  - desvincularRemessa
+[Wiki page about KSRW](https://github.com/guibranco/Sankhya-SDK-dotnet/wiki/1.1.1-%E2%80%90-Know-Services-Request-Wrapper-(KSRW))
 
-### Request Wrappers
-
-- Know Services Request Wrapper - This implements all known services described below, with predefined parameters, if the existing parameter set doesn't suit your need, you can execute the request without the wrapper.
-- On Demand Request Wrapper - This manage the request reusing the authentication flow, so it holds the same session over multiple requests.
-- Paged Request Wrapper - Retrieve data using paged CRUD.
-
-### Main Wrappers
-
-- Low Level Sankhya Wrapper - **NOT IMPLEMENTED YET**.
-- Sankhya Wrapper -  The main wrapper.
-  
 ### Sankhya Wrapper
 
 The *last mile operations* are done on this wrappers.
-ALl HTTP request/responses, login/logout, serialization, download/upload operations are defined on this class.
+All HTTP request/responses, login/logout, serialization, download/upload operations are defined on this class.
 
 **Avoid** usage of this class directly from you implementation. Only call methods of this class if you are extending the usage of the SDK or even implementing a new feature for the SDK, otherwise, prefer using one of the request wrappers, or the Sankhya Context class.
 
