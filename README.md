@@ -62,15 +62,7 @@ There are also some Request Wrappers that allow you to make some requests in an 
 
 ### Known Services
 
-[Wiki page about KSRW](https://github.com/guibranco/Sankhya-SDK-dotnet/wiki/Know-Services-Request-Wrapper-(KSRW))
-
-### Request Wrappers
-
-[Wiki page about RWs](https://github.com/guibranco/Sankhya-SDK-dotnet/wiki/Request-Wrappers)
-
-### Context & main wrapper
-
-[Wiki page about Sankhya Context & Sankhya Wrapper](https://github.com/guibranco/Sankhya-SDK-dotnet/wiki/Context-&-main-wrapper)
+[Wiki page about KSRW](https://github.com/guibranco/Sankhya-SDK-dotnet/wiki/1.1.1-%E2%80%90-Know-Services-Request-Wrapper-(KSRW))
 
 ### Sankhya Wrapper
 
