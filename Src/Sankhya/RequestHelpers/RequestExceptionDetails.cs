@@ -2,7 +2,7 @@
 using Sankhya.Enums;
 using Sankhya.Service;
 
-namespace Sankhya;
+namespace Sankhya.RequestHelpers;
 
 public class RequestExceptionDetails
 {

@@ -1,4 +1,4 @@
-﻿namespace Sankhya;
+﻿namespace Sankhya.RequestHelpers;
 
 public class RequestRetryData
 {

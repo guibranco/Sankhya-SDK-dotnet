@@ -1,7 +1,7 @@
 ﻿using Sankhya.Enums;
 using Sankhya.GoodPractices;
 
-namespace Sankhya;
+namespace Sankhya.RequestHelpers;
 
 public class RequestExceptionHandler : IRequestExceptionHandler
 {

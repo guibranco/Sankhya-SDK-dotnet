@@ -30,6 +30,7 @@ using Sankhya.Enums;
 using Sankhya.GoodPractices;
 using Sankhya.Helpers;
 using Sankhya.Properties;
+using Sankhya.RequestHelpers;
 using Sankhya.Service;
 using Sankhya.ValueObjects;
 
@@ -96,7 +97,7 @@ internal class SankhyaWrapper
     private static readonly List<string> InvalidSessionIds = new();
 
     /// <summary>
-    /// The exception handler
+    /// The exception handler.
     /// </summary>
     private static readonly IRequestExceptionHandler _exceptionHandler =
         new RequestExceptionHandler(new RequestBehaviorOptions());
