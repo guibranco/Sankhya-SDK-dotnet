@@ -13,8 +13,6 @@ namespace Sankhya.Transport;
 [Entity("Financeiro")]
 public class Financial : IEntity, IEquatable<Financial>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -141,10 +139,6 @@ public class Financial : IEntity, IEquatable<Financial>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(Financial left, Financial right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The single number
     /// </summary>
@@ -234,10 +228,6 @@ public class Financial : IEntity, IEquatable<Financial>
     /// The code result center set
     /// </summary>
     private bool _codeResultCenterSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -422,10 +412,6 @@ public class Financial : IEntity, IEquatable<Financial>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single number.
     /// </summary>
@@ -497,6 +483,4 @@ public class Financial : IEntity, IEquatable<Financial>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeResultCenter() => _codeResultCenterSet;
-
-    #endregion
 }

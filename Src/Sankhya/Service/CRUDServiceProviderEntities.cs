@@ -8,8 +8,6 @@ namespace Sankhya.Service;
 /// </summary>
 public sealed class CrudServiceProviderEntities
 {
-    #region Private Members
-
     /// <summary>
     /// The pager identifier
     /// </summary>
@@ -59,10 +57,6 @@ public sealed class CrudServiceProviderEntities
     /// The entities set
     /// </summary>
     private bool _entitiesSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the pager identifier.
@@ -139,10 +133,6 @@ public sealed class CrudServiceProviderEntities
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize pager identifier.
     /// </summary>
@@ -182,6 +172,4 @@ public sealed class CrudServiceProviderEntities
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeEntities() => _entitiesSet;
-
-    #endregion
 }

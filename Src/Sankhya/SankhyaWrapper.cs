@@ -25,6 +25,7 @@ using CrispyWaffle.Infrastructure;
 using CrispyWaffle.Log;
 using CrispyWaffle.Serialization;
 using CrispyWaffle.Utilities;
+using Sankhya.Attributes;
 using Sankhya.Enums;
 using Sankhya.GoodPractices;
 using Sankhya.Helpers;
@@ -39,8 +40,6 @@ namespace Sankhya;
 /// </summary>
 internal class SankhyaWrapper
 {
-    #region Private fields
-
     /// <summary>
     /// The locks.
     /// </summary>
@@ -97,7 +96,7 @@ internal class SankhyaWrapper
     private static readonly List<string> InvalidSessionIds = new();
 
     /// <summary>
-    /// Sets the internal user agent.
+    /// Gets the internal user agent.
     /// </summary>
     /// <value>The internal user agent.</value>
     private static string InternalUserAgent
@@ -116,7 +115,7 @@ internal class SankhyaWrapper
     }
 
     /// <summary>
-    /// The MIME types2 extensions
+    /// The MIME types to extensions.
     /// </summary>
     private static readonly Dictionary<string, string> MimeTypes2Extensions =
         new()
@@ -125,10 +124,6 @@ internal class SankhyaWrapper
             { @"image/png", @"png" },
             { @"image/gif", @"gif" }
         };
-
-    #endregion
-
-    #region ~Ctor
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SankhyaWrapper"/> class.
@@ -210,13 +205,9 @@ internal class SankhyaWrapper
     }
 
     /// <summary>
-    /// Finalizes this instance.
+    /// Finalizes an instance of the <see cref="SankhyaWrapper"/> class.
     /// </summary>
     ~SankhyaWrapper() => Dispose(false);
-
-    #endregion
-
-    #region Implementation of IDisposable
 
     /// <summary>
     /// Disposes this instance.
@@ -246,10 +237,6 @@ internal class SankhyaWrapper
         _disposed = true;
     }
 
-    #endregion
-
-    #region Public properties
-
     /// <summary>
     /// Gets the environment.
     /// </summary>
@@ -267,10 +254,6 @@ internal class SankhyaWrapper
     /// </summary>
     /// <value>The user code.</value>
     public int UserCode { get; private set; }
-
-    #endregion
-
-    #region Service connector
 
     /// <summary>
     /// Generics the web request factory.
@@ -365,21 +348,12 @@ internal class SankhyaWrapper
     /// <returns>Sankhya.Service.ServiceResponse.</returns>
     private ServiceResponse ServiceInvoker(ServiceName serviceName, ServiceRequest request = null)
     {
-        var service = serviceName.GetService();
         var lockKey = string.IsNullOrWhiteSpace(_sessionId) ? nameof(ServiceInvoker) : _sessionId;
         var attemptCount = 0;
         ServiceResponse result;
         while (true)
         {
-            result = ServiceInvokerInternal(
-                request,
-                service.Module,
-                serviceName,
-                service.Category,
-                service.Type,
-                lockKey,
-                ref attemptCount
-            );
+            result = ServiceInvokerInternal(request, serviceName, lockKey, ref attemptCount);
             if (result != null)
             {
                 break;
@@ -393,25 +367,21 @@ internal class SankhyaWrapper
     /// Services the invoker internal.
     /// </summary>
     /// <param name="request">The request.</param>
-    /// <param name="module">The module.</param>
-    /// <param name="name">The name.</param>
-    /// <param name="category">The category.</param>
-    /// <param name="type">The type.</param>
+    /// <param name="serviceName">Name of the service.</param>
     /// <param name="lockKey">The lock key.</param>
     /// <param name="attemptCount">The attempt count.</param>
-    /// <returns>Sankhya.Service.ServiceResponse.</returns>
-    /// <exception cref="ServiceRequestInvalidAuthorizationException"></exception>
+    /// <returns>ServiceResponse.</returns>
+    /// <exception cref="Sankhya.GoodPractices.ServiceRequestInvalidAuthorizationException">Invalid authorization exception.</exception>
     private ServiceResponse ServiceInvokerInternal(
         ServiceRequest request,
-        ServiceModule module,
-        ServiceName name,
-        ServiceCategory category,
-        ServiceType type,
+        ServiceName serviceName,
         string lockKey,
         ref int attemptCount
     )
     {
-        var serviceNameReadable = name.GetHumanReadableValue()
+        var service = serviceName.GetService();
+        var serviceNameLogs = serviceName.GetHumanReadableValue();
+        var serviceNameReadable = serviceNameLogs
             .RemoveSpaces()
             .ReplaceNonAlphanumeric(string.Empty);
 
@@ -423,14 +393,16 @@ internal class SankhyaWrapper
 
         Monitor.Enter(currentLock);
 
-        if (category == ServiceCategory.Crud && request != null)
+        if (service.Category == ServiceCategory.Crud && request != null)
         {
+            var requestName =
+                request.RequestBody.Entity?.Name
+                ?? request.RequestBody.Entity?.RootEntity
+                ?? request.RequestBody.DataSet.RootEntity;
             LogConsumer.Trace(
                 Resources.SankhyaWrapper_ServiceInvokerInternal_Service,
-                name.GetHumanReadableValue(),
-                request.RequestBody.Entity?.Name
-                    ?? request.RequestBody.Entity?.RootEntity
-                    ?? request.RequestBody.DataSet.RootEntity,
+                serviceNameLogs,
+                requestName,
                 ++attemptCount
             );
         }
@@ -438,24 +410,30 @@ internal class SankhyaWrapper
         {
             LogConsumer.Trace(
                 Resources.SankhyaWrapper_ServiceInvokerInternal_Module,
-                module.GetHumanReadableValue(),
-                name.GetHumanReadableValue(),
+                service.Module.GetHumanReadableValue(),
+                serviceNameLogs,
                 ++attemptCount
             );
         }
 
         try
         {
-            if (string.IsNullOrWhiteSpace(_sessionId) && name != ServiceName.Login)
+            if (string.IsNullOrWhiteSpace(_sessionId) && serviceName != ServiceName.Login)
             {
                 throw new ServiceRequestInvalidAuthorizationException();
             }
 
-            return ProcessRequest(name, request, module, _requestCount, serviceNameReadable);
+            return ProcessRequest(
+                serviceName,
+                request,
+                service.Module,
+                _requestCount,
+                serviceNameReadable
+            );
         }
-        catch (Exception e)
+        catch (Exception exception)
         {
-            if (!HandleException(e, name, category, type, request, attemptCount, ref wait))
+            if (!HandleException(exception, serviceName, service, request, attemptCount, ref wait))
             {
                 throw;
             }
@@ -476,19 +454,17 @@ internal class SankhyaWrapper
     /// <summary>
     /// Handles the exception.
     /// </summary>
-    /// <param name="e">The e.</param>
+    /// <param name="exception">The exception.</param>
     /// <param name="name">The name.</param>
-    /// <param name="category">The category.</param>
-    /// <param name="type">The type.</param>
+    /// <param name="service">The service.</param>
     /// <param name="request">The request.</param>
     /// <param name="attemptCount">The attempt count.</param>
     /// <param name="wait">The wait.</param>
-    /// <returns>bool.</returns>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     private bool HandleException(
-        Exception e,
+        Exception exception,
         ServiceName name,
-        ServiceCategory category,
-        ServiceType type,
+        ServiceAttribute service,
         ServiceRequest request,
         int attemptCount,
         ref int wait
@@ -500,28 +476,54 @@ internal class SankhyaWrapper
         }
 
         if (
-            type == ServiceType.Transactional
+            service.Type == ServiceType.Transactional
             && (
-                e is ServiceRequestCompetitionException
-                || e is ServiceRequestDeadlockException
-                || e is ServiceRequestTimeoutException
+                exception is ServiceRequestCompetitionException
+                || exception is ServiceRequestDeadlockException
+                || exception is ServiceRequestTimeoutException
             )
         )
         {
             return false;
         }
 
-        switch (e)
+        return HandleExceptionInternal(
+            exception,
+            name,
+            service.Category,
+            request,
+            attemptCount,
+            ref wait
+        );
+    }
+
+    /// <summary>
+    /// Handles the exception internal.
+    /// </summary>
+    /// <param name="exception">The exception.</param>
+    /// <param name="name">The name.</param>
+    /// <param name="category">The category.</param>
+    /// <param name="request">The request.</param>
+    /// <param name="attemptCount">The attempt count.</param>
+    /// <param name="wait">The wait.</param>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    private bool HandleExceptionInternal(
+        Exception exception,
+        ServiceName name,
+        ServiceCategory category,
+        ServiceRequest request,
+        int attemptCount,
+        ref int wait
+    )
+    {
+        switch (exception)
         {
             case ServiceRequestInvalidAuthorizationException _:
 
                 if (
                     InvalidSessionIds.Exists(
                         sessionId =>
-                            sessionId.Equals(
-                                _sessionId,
-                                StringComparison.InvariantCultureIgnoreCase
-                            )
+                            sessionId.Equals(_sessionId, StringComparison.OrdinalIgnoreCase)
                     )
                 )
                 {
@@ -549,7 +551,7 @@ internal class SankhyaWrapper
                     return false;
                 }
 
-                LogConsumer.Trace(e);
+                LogConsumer.Trace(exception);
 
                 wait = attemptCount * 15;
 
@@ -565,7 +567,7 @@ internal class SankhyaWrapper
 
             case ServiceRequestDeadlockException _:
 
-                LogConsumer.Trace(e);
+                LogConsumer.Trace(exception);
 
                 wait = attemptCount * 15;
 
@@ -579,7 +581,7 @@ internal class SankhyaWrapper
 
             case ServiceRequestTimeoutException _:
 
-                LogConsumer.Trace(e);
+                LogConsumer.Trace(exception);
 
                 wait = attemptCount * 10;
 
@@ -602,7 +604,7 @@ internal class SankhyaWrapper
                     return true;
                 }
 
-                LogConsumer.Trace(e);
+                LogConsumer.Trace(exception);
 
                 wait = attemptCount * 90;
 
@@ -616,7 +618,7 @@ internal class SankhyaWrapper
 
             case ServiceRequestUnavailableException _:
 
-                LogConsumer.Trace(e);
+                LogConsumer.Trace(exception);
 
                 wait = attemptCount * 30;
 
@@ -630,7 +632,7 @@ internal class SankhyaWrapper
 
             case ServiceRequestCanceledQueryException _:
 
-                LogConsumer.Trace(e);
+                LogConsumer.Trace(exception);
 
                 wait = attemptCount * 15;
 
@@ -741,7 +743,7 @@ internal class SankhyaWrapper
     /// <param name="currentRequestCount">The current request count.</param>
     /// <param name="serviceName">Name of the service.</param>
     /// <returns>Sankhya.Service.ServiceResponse.</returns>
-    /// <exception cref="InvalidOperationException">Resources.ResponseStreamIsNull</exception>
+    /// <exception cref="InvalidOperationException">Resources.ResponseStreamIsNull.</exception>
     private static ServiceResponse ProcessResponse(
         ServiceName service,
         ServiceRequest request,
@@ -836,7 +838,7 @@ internal class SankhyaWrapper
     /// <param name="key">The key.</param>
     /// <param name="request">The request.</param>
     /// <returns>Sankhya.ValueObjects.ServiceFile.</returns>
-    /// <exception cref="InvalidKeyFileException">key</exception>
+    /// <exception cref="InvalidKeyFileException">key.</exception>
     private static ServiceFile ProcessFileResponse(string key, HttpWebRequest request)
     {
         var result = new ServiceFile();
@@ -895,8 +897,8 @@ internal class SankhyaWrapper
     /// <param name="key">The key.</param>
     /// <param name="response">The response.</param>
     /// <param name="result">The result.</param>
-    /// <exception cref="OpenFileException">key</exception>
-    /// <exception cref="InvalidOperationException">Resources.SankhyaWrapper_ReadStream_Exception</exception>
+    /// <exception cref="OpenFileException">key.</exception>
+    /// <exception cref="InvalidOperationException">Resources.SankhyaWrapper_ReadStream_Exception.</exception>
     private static void ReadStream(string key, HttpWebResponse response, ServiceFile result)
     {
         var stream = response.GetResponseStream();
@@ -933,10 +935,6 @@ internal class SankhyaWrapper
         result.Data = data;
     }
 
-    #endregion
-
-    #region Authentication
-
     /// <summary>
     /// Authenticates the specified user name.
     /// </summary>
@@ -954,16 +952,10 @@ internal class SankhyaWrapper
 
         LogConsumer.Info(Resources.SankhyaWrapper_Authenticate_Authentication, userName);
 
-        #region Service Request
-
         var request = new ServiceRequest(ServiceName.Login)
         {
             RequestBody = { Username = userName, Password = password }
         };
-
-        #endregion
-
-        #region Service Response
 
         var response = ServiceInvoker(request);
         if (response == null)
@@ -973,8 +965,6 @@ internal class SankhyaWrapper
 
         _sessionId = response.ResponseBody.JSessionId;
         UserCode = response.ResponseBody.CodeUser;
-
-        #endregion
     }
 
     /// <summary>
@@ -1028,8 +1018,8 @@ internal class SankhyaWrapper
     /// <param name="password">The password.</param>
     /// <param name="cookieContainer">The cookie container.</param>
     /// <param name="requestType">Type of the request.</param>
-    /// <exception cref="InvalidOperationException">Resources.ResponseStreamIsNull</exception>
-    /// <exception cref="ServiceRequestInaccessibleException">host, port, null, e</exception>
+    /// <exception cref="InvalidOperationException">Resources.ResponseStreamIsNull.</exception>
+    /// <exception cref="ServiceRequestInaccessibleException">host, port, null, e.</exception>
     private static void RegisterUserAgent(
         string host,
         int port,
@@ -1117,13 +1107,13 @@ internal class SankhyaWrapper
     /// </summary>
     /// <param name="responseReader">The response reader.</param>
     /// <param name="requestType">Type of the request.</param>
-    /// <exception cref="InvalidOperationException">Resources.SankhyaWrapper_ShowVersionInfo_SankhyaWVersionNotFound</exception>
+    /// <exception cref="InvalidOperationException">Resources.SankhyaWrapper_ShowVersionInfo_SankhyaWVersionNotFound.</exception>
     private static void ShowVersionInfo(TextReader responseReader, string requestType)
     {
         if (
             !requestType.Equals(
                 ServiceRequestType.Default.GetHumanReadableValue(),
-                StringComparison.InvariantCultureIgnoreCase
+                StringComparison.OrdinalIgnoreCase
             )
         )
         {
@@ -1156,10 +1146,6 @@ internal class SankhyaWrapper
 
         LogConsumer.Info(Resources.SankhyaWrapper_ShowVersionInfo_SankhyaWVersion, version);
     }
-
-    #endregion
-
-    #region File Manager
 
     /// <summary>
     /// Gets the file.
@@ -1215,14 +1201,12 @@ internal class SankhyaWrapper
         out string extension
     )
     {
-        extension = @"jpg";
+        if (!MimeTypes2Extensions.TryGetValue(response.ContentType, out extension))
+        {
+            extension = @"jpg";
+        }
 
         using var stream = response.GetResponseStream();
-
-        if (MimeTypes2Extensions.ContainsKey(response.ContentType))
-        {
-            extension = MimeTypes2Extensions[response.ContentType];
-        }
 
         var memory = new MemoryStream();
 
@@ -1246,12 +1230,8 @@ internal class SankhyaWrapper
     /// <param name="entity">The entity.</param>
     /// <param name="keys">The keys.</param>
     /// <returns>Sankhya.ValueObjects.ServiceFile.</returns>
-    /// <exception cref="WebException">string.Format(
-    ///                         CultureInfo.CurrentCulture,
-    ///                         Resources.SankhyaWrapper_GetImage_ImageNotFound,
-    ///                         url
-    ///                     ), WebExceptionStatus.PipelineFailure</exception>
-    /// <exception cref="InvalidOperationException">Resources.SankhyaWrapper_ReadStream_Exception</exception>
+    /// <exception cref="WebException">WebExceptionStatus.PipelineFailure.</exception>
+    /// <exception cref="InvalidOperationException">Resources.SankhyaWrapper_ReadStream_Exception.</exception>
     public ServiceFile GetImage(string entity, Dictionary<string, object> keys)
     {
         HttpWebResponse response = null;
@@ -1351,6 +1331,4 @@ internal class SankhyaWrapper
             throw e.Flatten();
         }
     }
-
-    #endregion
 }

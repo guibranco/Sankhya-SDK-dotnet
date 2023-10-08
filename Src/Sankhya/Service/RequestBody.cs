@@ -8,8 +8,6 @@ namespace Sankhya.Service;
 /// </summary>
 public sealed class RequestBody
 {
-    #region Private Members
-
     /// <summary>
     /// The invoice
     /// </summary>
@@ -189,10 +187,6 @@ public sealed class RequestBody
     /// The paths set
     /// </summary>
     private bool _pathsSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the invoice.
@@ -467,10 +461,6 @@ public sealed class RequestBody
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize invoice.
     /// </summary>
@@ -614,6 +604,4 @@ public sealed class RequestBody
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePaths() => _pathsSet;
-
-    #endregion
 }

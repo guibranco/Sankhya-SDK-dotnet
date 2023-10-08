@@ -26,8 +26,6 @@ namespace Sankhya.Transport;
 [Entity("Regiao")]
 public class Region : IEntity, IEquatable<Region>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -119,10 +117,6 @@ public class Region : IEntity, IEquatable<Region>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(Region left, Region right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -192,10 +186,6 @@ public class Region : IEntity, IEquatable<Region>
     /// The seller set
     /// </summary>
     private bool _sellerSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -319,10 +309,6 @@ public class Region : IEntity, IEquatable<Region>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -378,6 +364,4 @@ public class Region : IEntity, IEquatable<Region>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSeller() => _sellerSet;
-
-    #endregion
 }

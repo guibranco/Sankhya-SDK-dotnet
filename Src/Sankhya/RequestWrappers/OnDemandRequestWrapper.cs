@@ -22,8 +22,6 @@ namespace Sankhya.RequestWrappers;
 internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
     where T : class, IEntity, new()
 {
-    #region Variables
-
     /// <summary>
     /// The context
     /// </summary>
@@ -98,10 +96,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
     /// The flush event
     /// </summary>
     private readonly ManualResetEvent _flushEvent;
-
-    #endregion
-
-    #region Methods
 
     /// <summary>
     /// Initializes a new instance of the <see cref="OnDemandRequestWrapper{T}" /> class.
@@ -408,10 +402,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
         }
     }
 
-    #endregion
-
-    #region Implementation of IDisposable
-
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
     /// </summary>
@@ -437,6 +427,4 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
         _event.Dispose();
         _flushEvent.Dispose();
     }
-
-    #endregion
 }

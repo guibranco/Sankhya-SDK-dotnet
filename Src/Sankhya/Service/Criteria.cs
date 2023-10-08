@@ -22,8 +22,6 @@ namespace Sankhya.Service;
 /// </summary>
 public sealed class Criteria
 {
-    #region Private Members
-
     /// <summary>
     /// The name
     /// </summary>
@@ -43,10 +41,6 @@ public sealed class Criteria
     /// The value set
     /// </summary>
     private bool _valueSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the name.
@@ -78,10 +72,6 @@ public sealed class Criteria
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the name of the serialize.
     /// </summary>
@@ -97,6 +87,4 @@ public sealed class Criteria
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeValue() => _valueSet;
-
-    #endregion
 }

@@ -11,8 +11,6 @@ namespace Sankhya.Service;
 [XmlRoot("clientEvents")]
 public sealed class ClientEvents
 {
-    #region Private Members
-
     /// <summary>
     /// The client event
     /// </summary>
@@ -22,10 +20,6 @@ public sealed class ClientEvents
     /// The client event set
     /// </summary>
     private bool _clientEventSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the client event.
@@ -42,10 +36,6 @@ public sealed class ClientEvents
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize client event.
     /// </summary>
@@ -53,6 +43,4 @@ public sealed class ClientEvents
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeClientEvent() => _clientEventSet;
-
-    #endregion
 }

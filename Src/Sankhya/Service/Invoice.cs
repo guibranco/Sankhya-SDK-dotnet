@@ -12,8 +12,6 @@ namespace Sankhya.Service;
 [XmlType("nota")]
 public sealed class Invoice
 {
-    #region Private Members
-
     /// <summary>
     /// The value
     /// </summary>
@@ -213,10 +211,6 @@ public sealed class Invoice
     /// The items set
     /// </summary>
     private bool _itemsSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the value.
@@ -629,10 +623,6 @@ public sealed class Invoice
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize value internal.
     /// </summary>
@@ -795,6 +785,4 @@ public sealed class Invoice
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeItems() => _itemsSet;
-
-    #endregion
 }

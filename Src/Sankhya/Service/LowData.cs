@@ -9,8 +9,6 @@ namespace Sankhya.Service;
 /// </summary>
 public sealed class LowData
 {
-    #region Private Members
-
     /// <summary>
     /// The financial numbers list
     /// </summary>
@@ -20,10 +18,6 @@ public sealed class LowData
     /// The financial numbers list set
     /// </summary>
     private bool _financialNumbersListSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the financial numbers list.
@@ -40,10 +34,6 @@ public sealed class LowData
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize financial numbers list.
     /// </summary>
@@ -51,8 +41,6 @@ public sealed class LowData
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeFinancialNumbersList() => _financialNumbersListSet;
-
-    #endregion
 
     /// <summary>
     /// Gets or sets the dt baixa.

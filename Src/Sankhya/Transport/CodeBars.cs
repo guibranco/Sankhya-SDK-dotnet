@@ -25,8 +25,6 @@ namespace Sankhya.Transport;
 [Entity("CodigoBarras")]
 public class CodeBars : IEntity, IEquatable<CodeBars>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -117,10 +115,6 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(CodeBars left, CodeBars right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -170,10 +164,6 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     /// The date changed set
     /// </summary>
     private bool _dateChangedSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -251,10 +241,6 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -294,6 +280,4 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateChanged() => _dateChangedSet;
-
-    #endregion
 }

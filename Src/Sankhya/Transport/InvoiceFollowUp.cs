@@ -15,8 +15,6 @@ namespace Sankhya.Transport;
 [Entity("AcompanhamentoNota")]
 public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -135,10 +133,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     public static bool operator !=(InvoiceFollowUp left, InvoiceFollowUp right) =>
         !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The single number
     /// </summary>
@@ -248,10 +242,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// The invoice item set
     /// </summary>
     private bool _invoiceItemSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -533,10 +523,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single number.
     /// </summary>
@@ -624,6 +610,4 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoiceItem() => _invoiceItemSet;
-
-    #endregion
 }

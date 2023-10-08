@@ -13,8 +13,6 @@ namespace Sankhya.RequestWrappers;
 /// </summary>
 public static class SimpleCrudRequestWrapper
 {
-    #region Private Members
-
     /// <summary>
     /// The Sankhya context.
     /// </summary>
@@ -26,10 +24,6 @@ public static class SimpleCrudRequestWrapper
     private static readonly Guid SessionToken = Context.AcquireNewSession(
         ServiceRequestType.SimpleCrud
     );
-
-    #endregion
-
-    #region Retrieve Methods
 
     /// <summary>
     /// Determines whether this instance [can find internal] the specified entity.
@@ -473,10 +467,6 @@ public static class SimpleCrudRequestWrapper
         where T : class, IEntity, new() =>
         await MustFindInternalAsync<T>(criteria).ConfigureAwait(false);
 
-    #endregion
-
-    #region Create / Update Methods
-
     /// <summary>
     /// Updates the specified context.
     /// </summary>
@@ -547,10 +537,6 @@ public static class SimpleCrudRequestWrapper
         return t.Result.Entities.Single().ConvertToType<T>();
     }
 
-    #endregion
-
-    #region Delete Methods
-
     /// <summary>
     /// Removes the specified entity.
     /// </summary>
@@ -577,6 +563,4 @@ public static class SimpleCrudRequestWrapper
         request.Resolve(entity);
         await Context.ServiceInvokerAsync(request, SessionToken).ConfigureAwait(false);
     }
-
-    #endregion
 }

@@ -26,8 +26,6 @@ namespace Sankhya.Transport;
 [Entity("Bairro")]
 public class Neighborhood : IEntity, IEquatable<Neighborhood>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -104,10 +102,6 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(Neighborhood left, Neighborhood right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -147,10 +141,6 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     /// The date changed set
     /// </summary>
     private bool _dateChangedSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -213,10 +203,6 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -240,6 +226,4 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeDateChanged() => _dateChangedSet;
-
-    #endregion
 }

@@ -22,8 +22,6 @@ namespace Sankhya.Service;
 /// </summary>
 public sealed class Param
 {
-    #region Private Members
-
     /// <summary>
     /// The financial number
     /// </summary>
@@ -73,10 +71,6 @@ public sealed class Param
     /// The revert all anticipation set
     /// </summary>
     private bool _revertAllAnticipationSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the financial number.
@@ -153,10 +147,6 @@ public sealed class Param
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize financial number.
     /// </summary>
@@ -196,6 +186,4 @@ public sealed class Param
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRevertAllAnticipation() => _revertAllAnticipationSet;
-
-    #endregion
 }

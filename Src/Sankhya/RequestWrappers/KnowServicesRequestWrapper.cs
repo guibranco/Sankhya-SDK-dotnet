@@ -18,8 +18,6 @@ namespace Sankhya.RequestWrappers;
 /// </summary>
 public static class KnowServicesRequestWrapper
 {
-    #region Private Members
-
     /// <summary>
     /// The Sankhya context.
     /// </summary>
@@ -36,10 +34,6 @@ public static class KnowServicesRequestWrapper
     /// The last time message received
     /// </summary>
     private static DateTime _lastTimeMessageReceived;
-
-    #endregion
-
-    #region Session Methods
 
     /// <summary>
     /// Gets the sessions.
@@ -64,10 +58,6 @@ public static class KnowServicesRequestWrapper
         };
         Context.ServiceInvoker(request, SessionToken);
     }
-
-    #endregion
-
-    #region Communications Methods
 
     /// <summary>
     /// Sends a warning message to specific users or users groups. Can also be used to send a general warning (for all).
@@ -162,10 +152,6 @@ public static class KnowServicesRequestWrapper
         _lastTimeMessageReceived = DateTime.Now;
         return (string)response.GetSerializer();
     }
-
-    #endregion
-
-    #region Invoice
 
     /// <summary>
     /// Creates the invoice header.
@@ -315,10 +301,6 @@ public static class KnowServicesRequestWrapper
         );
         Context.ServiceInvoker(request, SessionToken);
     }
-
-    #endregion
-
-    #region Invoice Operations
 
     /// <summary>
     /// Bills the specified invoice by single number.
@@ -621,10 +603,6 @@ public static class KnowServicesRequestWrapper
         return response.ResponseBody.Invoices.Invoice.SingleNumberDuplicationDestiny;
     }
 
-    #endregion
-
-    #region Fiscal Invoice Operations
-
     /// <summary>
     /// Gets the fiscal invoice authorization.
     /// </summary>
@@ -671,10 +649,6 @@ public static class KnowServicesRequestWrapper
         );
         Context.ServiceInvoker(request, SessionToken);
     }
-
-    #endregion
-
-    #region Financial
 
     /// <summary>
     /// Flag as payment paid
@@ -785,10 +759,6 @@ public static class KnowServicesRequestWrapper
         }
     }
 
-    #endregion
-
-    #region Files
-
     /// <summary>
     /// Get a file on file repository based on it's path.
     /// </summary>
@@ -841,10 +811,6 @@ public static class KnowServicesRequestWrapper
     public static async Task<ServiceFile> GetFileAsync(string key) =>
         await Context.GetFileAsync(key, SessionToken).ConfigureAwait(false);
 
-    #endregion
-
-    #region Image
-
     /// <summary>
     /// Gets the image of an item (entity) based on item keys.
     /// </summary>
@@ -885,6 +851,4 @@ public static class KnowServicesRequestWrapper
             .GetImageAsync(result.Name, result.Keys.ToDictionary(k => k.Name, k => (object)k.Value))
             .ConfigureAwait(false);
     }
-
-    #endregion
 }

@@ -13,8 +13,6 @@ namespace Sankhya.Transport;
 [Entity("ParametroSistema")]
 public class SystemParameter : IEntity, IEquatable<SystemParameter>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -162,10 +160,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     public static bool operator !=(SystemParameter left, SystemParameter right) =>
         !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The key
     /// </summary>
@@ -295,10 +289,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     /// The user set
     /// </summary>
     private bool _userSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the key.
@@ -530,10 +520,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize key.
     /// </summary>
@@ -637,6 +623,4 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeUser() => _userSet;
-
-    #endregion
 }

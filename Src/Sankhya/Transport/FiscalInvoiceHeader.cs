@@ -13,8 +13,6 @@ namespace Sankhya.Transport;
 [Entity("CabecalhoNota")]
 public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -109,10 +107,6 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     public static bool operator !=(FiscalInvoiceHeader left, FiscalInvoiceHeader right) =>
         !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The single number
     /// </summary>
@@ -162,10 +156,6 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     /// The invoice key set
     /// </summary>
     private bool _invoiceKeySet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -261,10 +251,6 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single number.
     /// </summary>
@@ -304,6 +290,4 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoiceKey() => _invoiceKeySet;
-
-    #endregion
 }

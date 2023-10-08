@@ -9,8 +9,6 @@ namespace Sankhya.Service;
 /// </summary>
 public sealed class ResponseBody
 {
-    #region Private Members
-
     /// <summary>
     /// The code user logged in
     /// </summary>
@@ -190,10 +188,6 @@ public sealed class ResponseBody
     /// The message unlink shipping set
     /// </summary>
     private bool _messageUnlinkShippingSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code user logged in.
@@ -484,10 +478,6 @@ public sealed class ResponseBody
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code user logged in.
     /// </summary>
@@ -631,6 +621,4 @@ public sealed class ResponseBody
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMessageUnlinkShipping() => _messageUnlinkShippingSet;
-
-    #endregion
 }

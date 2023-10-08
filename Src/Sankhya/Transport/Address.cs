@@ -24,8 +24,6 @@ namespace Sankhya.Transport;
 [Entity("Endereco")]
 public class Address : IEntity, IEquatable<Address>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -134,10 +132,6 @@ public class Address : IEntity, IEquatable<Address>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(Address left, Address right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -187,10 +181,6 @@ public class Address : IEntity, IEquatable<Address>
     /// The date changed set
     /// </summary>
     private bool _dateChangedSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -269,10 +259,6 @@ public class Address : IEntity, IEquatable<Address>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -302,6 +288,4 @@ public class Address : IEntity, IEquatable<Address>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeDateChanged() => _dateChangedSet;
-
-    #endregion
 }

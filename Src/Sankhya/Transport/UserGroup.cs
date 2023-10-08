@@ -13,8 +13,6 @@ namespace Sankhya.Transport;
 [Entity("GrupoUsuario")]
 public class UserGroup : IEntity, IEquatable<UserGroup>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -124,10 +122,6 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// <returns>true if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise, false.</returns>
     public static bool operator !=(UserGroup left, UserGroup right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -177,10 +171,6 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     /// The email address set
     /// </summary>
     private bool _emailAddressSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -274,10 +264,6 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -317,6 +303,4 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeEmailAddress() => _emailAddressSet;
-
-    #endregion
 }

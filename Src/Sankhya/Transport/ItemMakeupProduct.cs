@@ -10,8 +10,6 @@ namespace Sankhya.Transport;
 [Entity("ItemComposicaoProduto")]
 public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -108,10 +106,6 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     public static bool operator !=(ItemMakeupProduct left, ItemMakeupProduct right) =>
         !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code product
     /// </summary>
@@ -181,10 +175,6 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     /// The product set
     /// </summary>
     private bool _productSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code product.
@@ -291,10 +281,6 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code product.
     /// </summary>
@@ -336,6 +322,4 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeProduct() => _productSet;
-
-    #endregion
 }

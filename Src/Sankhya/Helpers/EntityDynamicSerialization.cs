@@ -11,13 +11,11 @@ using Sankhya.Service;
 namespace Sankhya.Helpers;
 
 /// <summary>
-/// The entity dynamic serialization class
+/// The entity dynamic serialization class.
 /// </summary>
 /// <seealso cref="DynamicSerialization" />
 public class EntityDynamicSerialization : DynamicSerialization
 {
-    #region ~Ctor
-
     /// <summary>
     /// Initializes a new instance of the <see cref="EntityDynamicSerialization" /> class.
     /// </summary>
@@ -38,10 +36,6 @@ public class EntityDynamicSerialization : DynamicSerialization
     // ReSharper disable once UnusedMember.Global
     protected EntityDynamicSerialization(SerializationInfo info, StreamingContext context)
         : base(info, context) { }
-
-    #endregion
-
-    #region Private methods
 
     /// <summary>
     /// Parse entity.
@@ -97,8 +91,6 @@ public class EntityDynamicSerialization : DynamicSerialization
         var propertyName = propertyInfo.Name;
         var customRelationName = string.Empty;
 
-        #region Custom Attributes
-
         foreach (var customAttribute in propertyInfo.GetCustomAttributes(true))
         {
             switch (customAttribute)
@@ -121,14 +113,10 @@ public class EntityDynamicSerialization : DynamicSerialization
             propertyName = attribute.ElementName;
         }
 
-        #endregion
-
         if (!string.IsNullOrWhiteSpace(prefix))
         {
             propertyName = $@"{prefix}_{propertyName}";
         }
-
-        #region Entity reference
 
         if (isEntityReference)
         {
@@ -167,8 +155,6 @@ public class EntityDynamicSerialization : DynamicSerialization
                 propertyInfo.SetValue(instance, referenceValue, null);
             }
         }
-
-        #endregion
 
         if (
             !Dictionary.ContainsKey(propertyName) && !Dictionary.ContainsKey(propertyName.ToUpper())
@@ -258,10 +244,6 @@ public class EntityDynamicSerialization : DynamicSerialization
         }
     }
 
-    #endregion
-
-    #region Public methods
-
     /// <summary>
     /// Converts this object to a type.
     /// </summary>
@@ -308,6 +290,4 @@ public class EntityDynamicSerialization : DynamicSerialization
             index++;
         }
     }
-
-    #endregion
 }

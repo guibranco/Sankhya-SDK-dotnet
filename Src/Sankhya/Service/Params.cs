@@ -24,8 +24,6 @@ namespace Sankhya.Service;
 /// </summary>
 public sealed class Params
 {
-    #region Private Members
-
     /// <summary>
     /// The single number
     /// </summary>
@@ -55,10 +53,6 @@ public sealed class Params
     /// The movement type set
     /// </summary>
     private bool _movementTypeSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -122,10 +116,6 @@ public sealed class Params
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single number.
     /// </summary>
@@ -149,6 +139,4 @@ public sealed class Params
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMovementTypeInternal() => _movementTypeSet;
-
-    #endregion
 }

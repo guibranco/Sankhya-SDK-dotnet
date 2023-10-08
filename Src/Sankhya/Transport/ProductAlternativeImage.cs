@@ -12,8 +12,6 @@ namespace Sankhya.Transport;
 [Entity("ImagemAlternativaProduto")]
 public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeImage>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -105,10 +103,6 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     public static bool operator !=(ProductAlternativeImage left, ProductAlternativeImage right) =>
         !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -158,10 +152,6 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// The date changed set
     /// </summary>
     private bool _dateChangedSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -241,10 +231,6 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -274,6 +260,4 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeDateChanged() => _dateChangedSet;
-
-    #endregion
 }

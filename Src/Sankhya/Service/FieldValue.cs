@@ -24,8 +24,6 @@ namespace Sankhya.Service;
 /// <seealso cref="IEquatable{FieldValue}" />
 public sealed class FieldValue : IEquatable<FieldValue>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -109,10 +107,6 @@ public sealed class FieldValue : IEquatable<FieldValue>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(FieldValue left, FieldValue right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The name
     /// </summary>
@@ -132,10 +126,6 @@ public sealed class FieldValue : IEquatable<FieldValue>
     /// The value set
     /// </summary>
     private bool _valueSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the name.
@@ -167,10 +157,6 @@ public sealed class FieldValue : IEquatable<FieldValue>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the name of the serialize.
     /// </summary>
@@ -182,6 +168,4 @@ public sealed class FieldValue : IEquatable<FieldValue>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeValue() => _valueSet;
-
-    #endregion
 }

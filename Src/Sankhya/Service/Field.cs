@@ -23,8 +23,6 @@ namespace Sankhya.Service;
 /// </summary>
 public sealed class Field
 {
-    #region Private Members
-
     /// <summary>
     /// The name
     /// </summary>
@@ -64,10 +62,6 @@ public sealed class Field
     /// The value set
     /// </summary>
     private bool _valueSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the name.
@@ -146,10 +140,6 @@ public sealed class Field
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Shoulds the name of the serialize.
     /// </summary>
@@ -181,6 +171,4 @@ public sealed class Field
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeValue() => _valueSet;
-
-    #endregion
 }

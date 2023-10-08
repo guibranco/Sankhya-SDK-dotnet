@@ -22,8 +22,6 @@ namespace Sankhya.Service;
 /// </summary>
 public sealed class Message
 {
-    #region Private Members
-
     /// <summary>
     /// The text
     /// </summary>
@@ -33,10 +31,6 @@ public sealed class Message
     /// The text set
     /// </summary>
     private bool _textSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the text.
@@ -53,10 +47,6 @@ public sealed class Message
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize text.
     /// </summary>
@@ -64,6 +54,4 @@ public sealed class Message
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeText() => _textSet;
-
-    #endregion
 }

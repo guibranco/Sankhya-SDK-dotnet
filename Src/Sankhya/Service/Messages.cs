@@ -25,8 +25,6 @@ namespace Sankhya.Service;
 [XmlRoot("mensagens")]
 public sealed class Messages
 {
-    #region Private Members
-
     /// <summary>
     /// The message
     /// </summary>
@@ -36,10 +34,6 @@ public sealed class Messages
     /// The message set
     /// </summary>
     private bool _messageSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the message.
@@ -56,10 +50,6 @@ public sealed class Messages
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize message.
     /// </summary>
@@ -67,6 +57,4 @@ public sealed class Messages
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMessage() => _messageSet;
-
-    #endregion
 }

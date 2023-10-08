@@ -18,8 +18,6 @@ namespace Sankhya.Helpers;
 /// </summary>
 public static class EntityExtensions
 {
-    #region Helper methods
-
     /// <summary>
     /// A Type extension method that gets entity name for a IEntity implementation
     /// </summary>
@@ -178,8 +176,6 @@ public static class EntityExtensions
             return;
         }
 
-        #region Fields & Keys & Criterios
-
         result.Fields.Add(new() { Name = propertyName });
 
         var shouldSerializePropertyName = propertyInfo.Name.EndsWith(
@@ -228,8 +224,6 @@ public static class EntityExtensions
         }
 
         result.Keys.Add(new() { Name = propertyName, Value = value });
-
-        #endregion
     }
 
     /// <summary>
@@ -262,10 +256,6 @@ public static class EntityExtensions
 
         return isEntityKey;
     }
-
-    #endregion
-
-    #region IEntity Simple CRUD Service Invokers
 
     /// <summary>
     /// Queries the internal.
@@ -446,10 +436,6 @@ public static class EntityExtensions
         );
     }
 
-    #endregion
-
-    #region IEntity On Demand CUD Service Invokers
-
     /// <summary>
     /// Updates an <see cref="IEntity" /> instance on demand. This operations does not occurs instantly,
     /// but when a stipulated quantity of items are added to a queue or when the OnDemandRequestWrapper
@@ -477,6 +463,4 @@ public static class EntityExtensions
     {
         OnDemandRequestFactory.GetInstanceForService<T>(ServiceName.CrudServiceRemove).Add(entity);
     }
-
-    #endregion
 }

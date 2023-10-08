@@ -11,8 +11,6 @@ namespace Sankhya.Transport;
 [Entity("NotaCancelada")]
 public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -104,10 +102,6 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     public static bool operator !=(InvoiceCanceled left, InvoiceCanceled right) =>
         !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The single number
     /// </summary>
@@ -157,10 +151,6 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     /// The cancellation reason set
     /// </summary>
     private bool _cancellationReasonSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -237,10 +227,6 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single number.
     /// </summary>
@@ -280,6 +266,4 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCancellationReason() => _cancellationReasonSet;
-
-    #endregion
 }

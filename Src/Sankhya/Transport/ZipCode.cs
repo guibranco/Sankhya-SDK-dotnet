@@ -26,8 +26,6 @@ namespace Sankhya.Transport;
 [Entity("CEP")]
 public class ZipCode : IEntity, IEquatable<ZipCode>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -119,10 +117,6 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(ZipCode left, ZipCode right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The zip
     /// </summary>
@@ -202,10 +196,6 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     /// The address set
     /// </summary>
     private bool _addressSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the zip.
@@ -331,10 +321,6 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize zip.
     /// </summary>
@@ -382,6 +368,4 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeAddress() => _addressSet;
-
-    #endregion
 }

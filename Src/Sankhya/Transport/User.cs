@@ -15,8 +15,6 @@ namespace Sankhya.Transport;
 [Entity("Usuario")]
 public class User : IEntity, IEquatable<User>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -129,10 +127,6 @@ public class User : IEntity, IEquatable<User>
     /// <returns>The result of the operation.</returns>
     public static bool operator !=(User left, User right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -232,10 +226,6 @@ public class User : IEntity, IEquatable<User>
     /// The seller set
     /// </summary>
     private bool _sellerSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -397,10 +387,6 @@ public class User : IEntity, IEquatable<User>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -487,10 +473,6 @@ public class User : IEntity, IEquatable<User>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSeller() => _sellerSet;
 
-    #endregion
-
-    #region Overrides of Object
-
     /// <summary>
     /// Returns a string that represents the current object.
     /// </summary>
@@ -499,6 +481,4 @@ public class User : IEntity, IEquatable<User>
         Partner.Name.IndexOf(@"SEM PARCEIRO", StringComparison.InvariantCultureIgnoreCase) != -1
             ? Name
             : $@"{Name} - {Partner.Name.ToCamelCase()}";
-
-    #endregion
 }

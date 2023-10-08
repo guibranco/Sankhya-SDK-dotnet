@@ -12,8 +12,6 @@ namespace Sankhya.Transport;
 [Entity("Contato")]
 public class Contact : IEntity, IEquatable<Contact>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -251,10 +249,6 @@ public class Contact : IEntity, IEquatable<Contact>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(Contact left, Contact right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -474,10 +468,6 @@ public class Contact : IEntity, IEquatable<Contact>
     /// The region set
     /// </summary>
     private bool _regionSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -827,10 +817,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -1006,6 +992,4 @@ public class Contact : IEntity, IEquatable<Contact>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRegion() => _regionSet;
-
-    #endregion
 }

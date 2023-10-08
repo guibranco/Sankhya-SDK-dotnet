@@ -11,8 +11,6 @@ namespace Sankhya.Service;
 [XmlType("liberacao")]
 public sealed class Release
 {
-    #region Private Members
-
     /// <summary>
     /// The key
     /// </summary>
@@ -242,10 +240,6 @@ public sealed class Release
     /// The hash set
     /// </summary>
     private bool _releaseHashSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the key
@@ -736,10 +730,6 @@ public sealed class Release
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// The should serialize key serialization helper method
     /// </summary>
@@ -963,6 +953,4 @@ public sealed class Release
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeReleaseHash() => _releaseHashSet;
-
-    #endregion
 }

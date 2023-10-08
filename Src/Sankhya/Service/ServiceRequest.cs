@@ -13,8 +13,6 @@ namespace Sankhya.Service;
 [XmlRoot(ElementName = "serviceRequest")]
 public sealed class ServiceRequest
 {
-    #region Private Members
-
     /// <summary>
     /// The service
     /// </summary>
@@ -34,10 +32,6 @@ public sealed class ServiceRequest
     /// The request body set
     /// </summary>
     private bool _requestBodySet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// The Service Name as SankhyaService enum
@@ -89,10 +83,6 @@ public sealed class ServiceRequest
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize service internal.
     /// </summary>
@@ -108,10 +98,6 @@ public sealed class ServiceRequest
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRequestBody() => _requestBodySet;
-
-    #endregion
-
-    #region ~Ctor
 
     /// <summary>
     /// Default constructor.
@@ -131,6 +117,4 @@ public sealed class ServiceRequest
         Service = service;
         RequestBody = new();
     }
-
-    #endregion
 }

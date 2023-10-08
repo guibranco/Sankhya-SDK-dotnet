@@ -13,8 +13,6 @@ namespace Sankhya.Transport;
 [Entity("VendaCasada")]
 public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -102,10 +100,6 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     public static bool operator !=(ProductSuggestedSale left, ProductSuggestedSale right) =>
         !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code source
     /// </summary>
@@ -165,10 +159,6 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// The product suggestion set
     /// </summary>
     private bool _productSuggestionSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code source.
@@ -294,10 +284,6 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code source.
     /// </summary>
@@ -333,6 +319,4 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeProductSuggestion() => _productSuggestionSet;
-
-    #endregion
 }

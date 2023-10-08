@@ -28,8 +28,6 @@ namespace Sankhya.Transport;
 [Entity("Vendedor")]
 public class Seller : IEntity, IEquatable<Seller>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -143,10 +141,6 @@ public class Seller : IEntity, IEquatable<Seller>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(Seller left, Seller right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -236,10 +230,6 @@ public class Seller : IEntity, IEquatable<Seller>
     /// The partner set
     /// </summary>
     private bool _partnerSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -420,10 +410,6 @@ public class Seller : IEntity, IEquatable<Seller>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -495,6 +481,4 @@ public class Seller : IEntity, IEquatable<Seller>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePartner() => _partnerSet;
-
-    #endregion
 }

@@ -18,8 +18,6 @@ namespace Sankhya.Helpers;
 /// <seealso cref="IEntity" />
 public abstract class GenericServiceEntity : IXmlSerializable, IEntity
 {
-    #region Implementation of IXmlSerializable
-
     /// <summary>
     /// This method is reserved and should not be used.When implementing the IXmlSerializable
     /// interface, you should return null (Nothing in Visual Basic) from this method, and instead,
@@ -55,8 +53,6 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
             WriteXmlElement(writer, property, type, currentEntityName);
         }
     }
-
-    #endregion
 
     /// <summary>
     /// Writes the XML element.

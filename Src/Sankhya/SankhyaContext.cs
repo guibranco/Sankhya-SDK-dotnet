@@ -21,8 +21,6 @@ namespace Sankhya;
 [ConnectionName("Sankhya")]
 public sealed class SankhyaContext
 {
-    #region Private Members
-
     /// <summary>
     /// The wrappers
     /// </summary>
@@ -42,10 +40,6 @@ public sealed class SankhyaContext
     /// The disposed
     /// </summary>
     private bool _disposed;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// The current logged in username.
@@ -83,10 +77,6 @@ public sealed class SankhyaContext
     /// <value>The name of the database.</value>
     public string DatabaseName => GetWrapper(Token).DatabaseName;
 
-    #endregion
-
-    #region ~Ctor
-
     /// <summary>
     /// Initializes a new instance of SankhyaContext class.
     /// </summary>
@@ -120,10 +110,6 @@ public sealed class SankhyaContext
     /// </summary>
     ~SankhyaContext() => Dispose(false);
 
-    #endregion
-
-    #region Private Methods
-
     /// <summary>
     /// Gets the wrapper associated with <paramref name="token" />
     /// </summary>
@@ -144,10 +130,6 @@ public sealed class SankhyaContext
             }
         }
     }
-
-    #endregion
-
-    #region Public Methods
 
     /// <summary>
     /// Acquires a new session in Sankhya platform
@@ -310,10 +292,6 @@ public sealed class SankhyaContext
     public Task<ServiceFile> GetImageAsync(string entity, Dictionary<string, object> keys) =>
         GetWrapper(Token).GetImageAsync(entity, keys);
 
-    #endregion
-
-    #region Implementation of IDisposable
-
     /// <summary>
     /// Disposes this instance.
     /// </summary>
@@ -357,6 +335,4 @@ public sealed class SankhyaContext
             }
         }
     }
-
-    #endregion
 }

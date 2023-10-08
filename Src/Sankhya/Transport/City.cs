@@ -27,8 +27,6 @@ namespace Sankhya.Transport;
 [Entity("Cidade")]
 public class City : IEntity, IEquatable<City>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -169,10 +167,6 @@ public class City : IEntity, IEquatable<City>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(City left, City right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -282,10 +276,6 @@ public class City : IEntity, IEquatable<City>
     /// The longitude set
     /// </summary>
     private bool _longitudeSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -453,10 +443,6 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -544,6 +530,4 @@ public class City : IEntity, IEquatable<City>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRegion() => _regionSet;
-
-    #endregion
 }

@@ -13,8 +13,6 @@ namespace Sankhya.Transport;
 [Entity("TipoNegociacao")]
 public class TradingType : IEntity, IEquatable<TradingType>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -100,10 +98,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(TradingType left, TradingType right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -143,10 +137,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
     /// The sub type set
     /// </summary>
     private bool _subTypeSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -241,10 +231,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -276,6 +262,4 @@ public class TradingType : IEntity, IEquatable<TradingType>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSubType() => _subTypeSet;
-
-    #endregion
 }

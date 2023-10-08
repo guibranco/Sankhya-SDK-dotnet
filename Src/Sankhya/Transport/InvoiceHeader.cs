@@ -17,8 +17,6 @@ namespace Sankhya.Transport;
 [Entity("CabecalhoNota")]
 public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -235,10 +233,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// <param name="right">The right.</param>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(InvoiceHeader left, InvoiceHeader right) => !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The single number
@@ -579,10 +573,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     /// The seller set
     /// </summary>
     private bool _sellerSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -1353,10 +1343,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single number.
     /// </summary>
@@ -1632,6 +1618,4 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSeller() => _sellerSet;
-
-    #endregion
 }

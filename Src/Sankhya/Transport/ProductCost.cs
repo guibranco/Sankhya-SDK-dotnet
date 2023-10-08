@@ -10,8 +10,6 @@ namespace Sankhya.Transport;
 [Entity("Custo")]
 public class ProductCost : IEntity, IEquatable<ProductCost>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -113,10 +111,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(ProductCost left, ProductCost right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code product
     /// </summary>
@@ -196,10 +190,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// The cost replacement set
     /// </summary>
     private bool _costReplacementSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code product.
@@ -327,10 +317,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code product.
     /// </summary>
@@ -378,6 +364,4 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeCostReplacement() => _costReplacementSet;
-
-    #endregion
 }

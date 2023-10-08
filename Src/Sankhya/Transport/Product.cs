@@ -32,8 +32,6 @@ namespace Sankhya.Transport;
 [Entity("Produto")]
 public class Product : IEntity, IEquatable<Product>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -264,10 +262,6 @@ public class Product : IEntity, IEquatable<Product>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(Product left, Product right) => !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -497,10 +491,6 @@ public class Product : IEntity, IEquatable<Product>
     /// The cost set
     /// </summary>
     private bool _costSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -956,10 +946,6 @@ public class Product : IEntity, IEquatable<Product>
     /// </summary>
     public readonly Collection<CodeBars> CodesBars;
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -1144,10 +1130,6 @@ public class Product : IEntity, IEquatable<Product>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCost() => _costSet;
 
-    #endregion
-
-    #region Constructor
-
     /// <summary>
     /// Initializes a new instance of the <see cref="Product" /> class.
     /// </summary>
@@ -1158,6 +1140,4 @@ public class Product : IEntity, IEquatable<Product>
         Suggestions = new();
         CodesBars = new();
     }
-
-    #endregion
 }

@@ -20,8 +20,6 @@ namespace Sankhya.RequestWrappers;
 /// </summary>
 internal sealed class PagedRequestWrapper
 {
-    #region Private fields
-
     /// <summary>
     /// all pages loaded.
     /// </summary>
@@ -82,10 +80,6 @@ internal sealed class PagedRequestWrapper
     /// </summary>
     private readonly Type _type;
 
-    #endregion
-
-    #region Delegates & Events
-
     /// <summary>
     /// The page processed handler delegate.
     /// </summary>
@@ -122,10 +116,6 @@ internal sealed class PagedRequestWrapper
     /// </summary>
     public event PageNotLoadedHandler PageLoadedError;
 
-    #endregion
-
-    #region ~Ctors
-
     /// <summary>
     /// Constructor.
     /// </summary>
@@ -147,10 +137,6 @@ internal sealed class PagedRequestWrapper
         _cacheKey = $@"PagedRequestWrapper_{_entityName}_{_context.UserName}";
         _type = type;
     }
-
-    #endregion
-
-    #region Private methods
 
     /// <summary>
     /// Called when [load page successfully].
@@ -653,10 +639,6 @@ internal sealed class PagedRequestWrapper
             )
         );
 
-    #endregion
-
-    #region Public methods
-
     /// <summary>
     /// Gets the managed enumerator.
     /// </summary>
@@ -733,15 +715,9 @@ internal sealed class PagedRequestWrapper
         }
     }
 
-    #endregion
-
-    #region Implementation of IDisposable
-
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting
     /// unmanaged resources.
     /// </summary>
     private void Dispose() => Close();
-
-    #endregion
 }

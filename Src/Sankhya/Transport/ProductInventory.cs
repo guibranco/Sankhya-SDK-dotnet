@@ -15,8 +15,6 @@ namespace Sankhya.Transport;
 [Serializer]
 public class ProductInventory : IEntity, IEquatable<ProductInventory>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -143,10 +141,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     public static bool operator !=(ProductInventory left, ProductInventory right) =>
         !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code product
     /// </summary>
@@ -266,10 +260,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     /// The partner set
     /// </summary>
     private bool _partnerSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code product.
@@ -472,10 +462,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code product.
     /// </summary>
@@ -571,6 +557,4 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePartner() => _partnerSet;
-
-    #endregion
 }

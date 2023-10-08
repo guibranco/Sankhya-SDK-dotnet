@@ -25,8 +25,6 @@ namespace Sankhya.Transport;
 [Entity("ComplementoParc")]
 public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
 {
-    #region Equality members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -195,10 +193,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     public static bool operator !=(PartnerComplement left, PartnerComplement right) =>
         !Equals(left, right);
 
-    #endregion
-
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -318,10 +312,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// The city delivery set
     /// </summary>
     private bool _cityDeliverySet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -505,10 +495,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -584,6 +570,4 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeCityDelivery() => _cityDeliverySet;
-
-    #endregion
 }

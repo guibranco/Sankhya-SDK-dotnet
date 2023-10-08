@@ -8,8 +8,6 @@ namespace Sankhya.Service;
 /// </summary>
 public sealed class ClientEventInvoiceItem
 {
-    #region Private Members
-
     /// <summary>
     /// The single number
     /// </summary>
@@ -59,10 +57,6 @@ public sealed class ClientEventInvoiceItem
     /// The code seller set
     /// </summary>
     private bool _codeSellerSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -139,10 +133,6 @@ public sealed class ClientEventInvoiceItem
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single number.
     /// </summary>
@@ -182,6 +172,4 @@ public sealed class ClientEventInvoiceItem
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeSeller() => _codeSellerSet;
-
-    #endregion
 }

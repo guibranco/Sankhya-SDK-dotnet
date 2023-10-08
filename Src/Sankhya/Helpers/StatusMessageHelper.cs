@@ -13,8 +13,6 @@ namespace Sankhya.Helpers;
 /// </summary>
 internal static class StatusMessageHelper
 {
-    #region Private fields
-
     /// <summary>
     /// The common messages
     /// </summary>
@@ -22,10 +20,6 @@ internal static class StatusMessageHelper
         string,
         Func<string, ServiceName, ServiceRequest, ServiceResponse, Exception>
     > CommonMessages;
-
-    #endregion
-
-    #region ~Ctors
 
     static StatusMessageHelper() =>
         CommonMessages = new()
@@ -147,8 +141,6 @@ internal static class StatusMessageHelper
                 (_, _, request, _) => new ServiceRequestInvalidSubQueryException(request)
             }
         };
-
-    #endregion
 
     /// <summary>
     /// Processes the status message.

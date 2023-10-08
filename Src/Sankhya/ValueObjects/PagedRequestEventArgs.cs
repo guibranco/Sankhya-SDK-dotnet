@@ -19,8 +19,6 @@ namespace Sankhya.ValueObjects;
 /// </summary>
 public sealed class PagedRequestEventArgs
 {
-    #region Public properties
-
     /// <summary>
     /// Gets the type.
     /// </summary>
@@ -56,10 +54,6 @@ public sealed class PagedRequestEventArgs
     /// </summary>
     /// <value>The exception.</value>
     public Exception Exception { get; }
-
-    #endregion
-
-    #region ~Ctors
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PagedRequestEventArgs" /> class.
@@ -98,6 +92,4 @@ public sealed class PagedRequestEventArgs
         TotalLoaded = totalLoaded;
         Exception = exception;
     }
-
-    #endregion
 }

@@ -23,8 +23,6 @@ namespace Sankhya.Service;
 [XmlType("aviso")]
 public sealed class Warning
 {
-    #region Private Members
-
     /// <summary>
     /// The single number
     /// </summary>
@@ -44,10 +42,6 @@ public sealed class Warning
     /// The message set
     /// </summary>
     private bool _messageSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -79,10 +73,6 @@ public sealed class Warning
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single number.
     /// </summary>
@@ -98,6 +88,4 @@ public sealed class Warning
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMessage() => _messageSet;
-
-    #endregion
 }

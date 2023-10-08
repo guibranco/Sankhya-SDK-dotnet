@@ -24,8 +24,6 @@ namespace Sankhya.Service;
 /// <seealso cref="ILiteralCriteria" />
 public sealed class LiteralCriteria : ILiteralCriteria
 {
-    #region Public properties
-
     /// <summary>
     /// Gets or sets the expression.
     /// </summary>
@@ -41,10 +39,6 @@ public sealed class LiteralCriteria : ILiteralCriteria
     /// <value>The parameters.</value>
     [XmlElement(ElementName = "parameter")]
     public Parameter[] Parameters { get; set; }
-
-    #endregion
-
-    #region ~Ctor
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LiteralCriteria" /> class.
@@ -71,6 +65,4 @@ public sealed class LiteralCriteria : ILiteralCriteria
 
         Expression = expressionBuilder.ToString();
     }
-
-    #endregion
 }

@@ -16,8 +16,6 @@ namespace Sankhya.Transport;
 [Entity("CabecalhoNotaExcluida")]
 public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion>
 {
-    #region Equality Members
-
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
@@ -186,10 +184,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// <returns>true if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise, false.</returns>
     public static bool operator !=(InvoiceHeaderExclusion left, InvoiceHeaderExclusion right) =>
         !Equals(left, right);
-
-    #endregion
-
-    #region Private Members
 
     /// <summary>
     /// The single number
@@ -400,10 +394,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     /// The seller set
     /// </summary>
     private bool _sellerSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single number.
@@ -817,10 +807,6 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single number.
     /// </summary>
@@ -994,6 +980,4 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSeller() => _sellerSet;
-
-    #endregion
 }

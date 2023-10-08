@@ -134,8 +134,6 @@ public class State : IEntity, IEquatable<State>
     /// <returns>The result of the operator.</returns>
     public static bool operator !=(State left, State right) => !Equals(left, right);
 
-    #region Private Members
-
     /// <summary>
     /// The code
     /// </summary>
@@ -235,10 +233,6 @@ public class State : IEntity, IEquatable<State>
     /// The agreement protocol set
     /// </summary>
     private bool _agreementProtocolSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code.
@@ -391,10 +385,6 @@ public class State : IEntity, IEquatable<State>
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize code.
     /// </summary>
@@ -455,6 +445,4 @@ public class State : IEntity, IEquatable<State>
     /// </summary>
     /// <returns>Boolean.</returns>
     public bool ShouldSerializeAgreementProtocol() => _agreementProtocolSet;
-
-    #endregion
 }

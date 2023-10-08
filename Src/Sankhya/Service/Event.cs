@@ -24,8 +24,6 @@ namespace Sankhya.Service;
 [XmlRoot("Event")]
 public sealed class Event
 {
-    #region Private Members
-
     /// <summary>
     /// The code product
     /// </summary>
@@ -35,10 +33,6 @@ public sealed class Event
     /// The code product set
     /// </summary>
     private bool _codeProductSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the code product.
@@ -55,15 +49,9 @@ public sealed class Event
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Shoulds the serialize code product.
     /// </summary>
     /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     public bool ShouldSerializeCodeProduct() => _codeProductSet;
-
-    #endregion
 }

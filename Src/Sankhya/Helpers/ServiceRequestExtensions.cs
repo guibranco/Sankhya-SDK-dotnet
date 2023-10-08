@@ -21,8 +21,6 @@ namespace Sankhya.Helpers;
 /// </summary>
 public static class ServiceRequestExtensions
 {
-    #region Private methods
-
     /// <summary>
     /// Parse properties.
     /// </summary>
@@ -481,10 +479,6 @@ public static class ServiceRequestExtensions
         }
     }
 
-    #endregion
-
-    #region IEntity CRUD Resolvers
-
     /// <summary>
     /// Request with type.
     /// </summary>
@@ -512,8 +506,6 @@ public static class ServiceRequestExtensions
 
         switch (request.Service)
         {
-            #region CRUD Find
-
             case ServiceName.CrudFind:
                 request.RequestBody.Entity = new()
                 {
@@ -537,10 +529,6 @@ public static class ServiceRequestExtensions
                     )
                     .ToArray();
                 break;
-
-            #endregion
-
-            #region CRUD Service Find
 
             case ServiceName.CrudServiceFind:
                 request.RequestBody.DataSet = new()
@@ -582,8 +570,6 @@ public static class ServiceRequestExtensions
                 );
                 request.RequestBody.DataSet.Entities = entities.ToArray();
                 break;
-
-            #endregion
         }
     }
 
@@ -642,8 +628,6 @@ public static class ServiceRequestExtensions
     {
         switch (request.Service)
         {
-            #region CRUD Find
-
             case ServiceName.CrudFind:
 
                 request.RequestBody.Entity.Criteria = result.Criteria.ToArray();
@@ -667,20 +651,12 @@ public static class ServiceRequestExtensions
 
                 break;
 
-            #endregion
-
-            #region CRUD Save | CRUD Remove
-
             case ServiceName.CrudSave:
             case ServiceName.CrudRemove:
 
                 request.RequestBody.Entity.Campos = result.FieldValues.ToArray();
 
                 break;
-
-            #endregion
-
-            #region CRUD Service Find
 
             case ServiceName.CrudServiceFind:
 
@@ -726,10 +702,6 @@ public static class ServiceRequestExtensions
 
                 break;
 
-            #endregion
-
-            #region CRUD Service Save
-
             case ServiceName.CrudServiceSave:
 
                 request.RequestBody.DataSet = new()
@@ -769,10 +741,6 @@ public static class ServiceRequestExtensions
 
                 break;
 
-            #endregion
-
-            #region CRUD Service Remove
-
             case ServiceName.CrudServiceRemove:
 
                 request.RequestBody.Entity = new()
@@ -789,8 +757,6 @@ public static class ServiceRequestExtensions
                 );
 
                 break;
-
-            #endregion
 
             default:
                 throw new InvalidServiceRequestOperationException(request.Service);
@@ -820,8 +786,6 @@ public static class ServiceRequestExtensions
 
         switch (request.Service)
         {
-            #region CRUD Service Save
-
             case ServiceName.CrudServiceSave:
                 request.RequestBody.DataSet = new()
                 {
@@ -859,10 +823,6 @@ public static class ServiceRequestExtensions
                 request.RequestBody.DataSet.DataRows = dataRows.ToArray();
                 break;
 
-            #endregion
-
-            #region CRUD Service Remove
-
             case ServiceName.CrudServiceRemove:
                 var ids = new List<EntityDynamicSerialization>();
                 foreach (var result in results)
@@ -879,8 +839,6 @@ public static class ServiceRequestExtensions
                     Ids = ids.ToArray()
                 };
                 break;
-
-            #endregion
 
             default:
                 throw new InvalidServiceRequestOperationException(request.Service);
@@ -1061,8 +1019,6 @@ public static class ServiceRequestExtensions
                 break;
         }
     }
-
-    #endregion
 
     /// <summary>
     /// Resolves the crud service find internal.

@@ -14,8 +14,6 @@ namespace Sankhya.Service;
 [Serializer]
 public sealed class Invoices
 {
-    #region Private Members
-
     /// <summary>
     /// The single numbers
     /// </summary>
@@ -175,10 +173,6 @@ public sealed class Invoices
     /// The invoice set
     /// </summary>
     private bool _invoiceSet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the single numbers.
@@ -622,10 +616,6 @@ public sealed class Invoices
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize single numbers.
     /// </summary>
@@ -754,6 +744,4 @@ public sealed class Invoices
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoice() => _invoiceSet;
-
-    #endregion
 }

@@ -23,8 +23,6 @@ namespace Sankhya.Service;
 //TODO convert XML fields names to constants
 public sealed class ServiceResponse : IXmlSerializable
 {
-    #region Private Members
-
     /// <summary>
     /// The service
     /// </summary>
@@ -104,10 +102,6 @@ public sealed class ServiceResponse : IXmlSerializable
     /// The response body set
     /// </summary>
     private bool _responseBodySet;
-
-    #endregion
-
-    #region Public Properties
 
     /// <summary>
     /// Gets or sets the service.
@@ -263,10 +257,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    #endregion
-
-    #region Serializer Helpers
-
     /// <summary>
     /// Should the serialize service internal.
     /// </summary>
@@ -331,10 +321,6 @@ public sealed class ServiceResponse : IXmlSerializable
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeResponseBody() => _responseBodySet;
 
-    #endregion
-
-    #region CRUD Service & CRUD Service Provider entities single getter
-
     /// <summary>
     /// Gets the entities.
     /// </summary>
@@ -343,10 +329,6 @@ public sealed class ServiceResponse : IXmlSerializable
         ResponseBody.CrudServiceEntities != null
             ? ResponseBody.CrudServiceEntities.Entities as EntityDynamicSerialization[]
             : ResponseBody.CrudServiceProviderEntities?.Entities as EntityDynamicSerialization[];
-
-    #endregion
-
-    #region Dynamic Serialization
 
     /// <summary>
     /// Parse entity.
@@ -421,10 +403,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    #endregion
-
-    #region Implementation of IXmlSerializable
-
     /// <summary>
     /// This method is reserved and should not be used.When implementing the IXmlSerializable
     /// interface, you should return null (Nothing in Visual Basic) from this method, and instead,
@@ -470,14 +448,10 @@ public sealed class ServiceResponse : IXmlSerializable
                 return;
             }
 
-            #region Status Message
-
             if (reader.LocalName == SankhyaConstants.StatusMessage)
             {
                 StatusMessage = new() { ValueInternal = reader.ReadElementContentAsString() };
             }
-
-            #endregion
 
             ParseResponseBody(reader);
         }
@@ -538,154 +512,80 @@ public sealed class ServiceResponse : IXmlSerializable
 
         switch (reader.LocalName)
         {
-            #region CRUD Service Entity
-
             case SankhyaConstants.EntitiesPtBr:
                 return ProcessCrudServiceEntities(reader, entities);
 
-            #endregion
-
-            #region CRDU Service Provider Entity
-
             case SankhyaConstants.EntitiesEn:
                 return ProcessCrudServiceProviderEntities(reader, entities);
-
-            #endregion
-
-            #region Invoice Accompaniments
 
             case SankhyaConstants.InvoiceAccompaniments:
                 ResponseBody.InvoiceAccompaniments =
                     (SerializerConverter<InvoiceAccompaniments>)ParseComplexType(reader);
                 return false;
 
-            #endregion
-
-            #region Users
-
             case SankhyaConstants.Users:
                 ResponseBody.Users = (SerializerConverter<Users>)ParseComplexType(reader);
                 return false;
-
-            #endregion
-
-            #region Warnings
 
             case SankhyaConstants.Warnings:
                 ResponseBody.Warnings = (SerializerConverter<Warnings>)ParseComplexType(reader);
                 return false;
 
-            #endregion
-
-            #region Messages
-
             case SankhyaConstants.Messages:
                 ResponseBody.Messages = (SerializerConverter<Messages>)ParseComplexType(reader);
                 return false;
 
-            #endregion
-
-            #region Releases
-
             case SankhyaConstants.Releases:
                 ResponseBody.Releases = (SerializerConverter<Releases>)ParseComplexType(reader);
                 return false;
-
-            #endregion
-
-            #region Sessions
 
             case SankhyaConstants.Sessions:
                 ResponseBody.Sessions =
                     (SerializerConverter<SessionsResponse>)ParseComplexType(reader);
                 return false;
 
-            #endregion
-
-            #region Invoices
-
             case SankhyaConstants.Invoices:
                 ResponseBody.Invoices = (SerializerConverter<Invoices>)ParseComplexType(reader);
                 return false;
-
-            #endregion
-
-            #region Client Event List
 
             case SankhyaConstants.ClientEvents:
                 ResponseBody.ClientEvents =
                     (SerializerConverter<ClientEvents>)ParseComplexType(reader);
                 return false;
 
-            #endregion
-
-            #region Cancellation Result
-
             case SankhyaConstants.CancellationResult:
                 ResponseBody.CancellationResult =
                     (SerializerConverter<CancellationResult>)ParseComplexType(reader);
                 return false;
 
-            #endregion
-
-            #region Key
-
             case SankhyaConstants.Key:
                 ResponseBody.Key = (SerializerConverter<Key>)ParseSimpleType(reader);
                 return false;
-
-            #endregion
-
-            #region Primary Key
 
             case SankhyaConstants.PrimaryKey:
                 ResponseBody.PrimaryKey = ReadDynamic(reader);
                 return false;
 
-            #endregion
-
-            #region jSessionId
-
             case SankhyaConstants.JSessionId:
                 ResponseBody.JSessionId = reader.ReadElementContentAsString();
                 return false;
-
-            #endregion
-
-            #region CallId
 
             case SankhyaConstants.CallId:
                 ResponseBody.CallId = reader.ReadElementContentAsString();
                 return false;
 
-            #endregion
-
-            #region Code User
-
             case SankhyaConstants.CodeUser:
                 ResponseBody.CodeUserInternal = reader.ReadElementContentAsString().Trim();
                 return false;
-
-            #endregion
-
-            #region Code User Logged In
 
             case SankhyaConstants.CodeUserLoggedId:
                 ResponseBody.CodeUserLoggedIn = reader.ReadElementContentAsInt();
                 return false;
 
-            #endregion
-
-            #region Message Unlick Shipping
-
             case SankhyaConstants.MessageUnlinkShipping:
                 ResponseBody.MessageUnlinkShipping =
                     (SerializerConverter<MessageUnlinkShipping>)ParseSimpleType(reader);
                 return false;
-
-            #endregion
-
-            #region Default - New elements
 
             default:
                 LogConsumer.Handle(
@@ -697,8 +597,6 @@ public sealed class ServiceResponse : IXmlSerializable
                 );
                 new XmlDocument().Load(reader);
                 return false;
-
-            #endregion
         }
     }
 
@@ -871,18 +769,12 @@ public sealed class ServiceResponse : IXmlSerializable
         {
             WriteAttributes(writer);
 
-            #region Status Message
-
             if (StatusMessage != null)
             {
                 writer.WriteStartElement(SankhyaConstants.StatusMessage);
                 writer.WriteString(StatusMessage.Value.RemoveExcessSpaces());
                 writer.WriteEndElement();
             }
-
-            #endregion
-
-            #region Response Body
 
             if (ResponseBody == null)
             {
@@ -892,8 +784,6 @@ public sealed class ServiceResponse : IXmlSerializable
             writer.WriteStartElement(SankhyaConstants.ResponseBody);
             WriteResponseBodyElements(writer);
             writer.WriteEndElement();
-
-            #endregion
         }
         finally
         {
@@ -1251,6 +1141,4 @@ public sealed class ServiceResponse : IXmlSerializable
             writer.WriteAttributeString("errorLevel", ErrorLevel.ToString());
         }
     }
-
-    #endregion
 }
