@@ -13,7 +13,6 @@ namespace Sankhya.Transport;
 /// Class InvoiceHeader. This class cannot be inherited.
 /// </summary>
 /// <seealso cref="GenericServiceEntity" />
-/// <seealso cref="GenericServiceEntity" />
 [Entity("CabecalhoNota")]
 public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
 {
