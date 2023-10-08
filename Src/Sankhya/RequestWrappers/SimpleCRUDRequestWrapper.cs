@@ -101,21 +101,6 @@ public static class SimpleCrudRequestWrapper
     }
 
     /// <summary>
-    /// Determines whether this instance [can find internal] the specified entity.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="entity">The entity.</param>
-    /// <returns>T.</returns>
-    /// <exception cref="ServiceRequestTooManyResultsException">Too many results founds when only one was expected.</exception>
-    private static Task<T> CanFindInternalAsync<T>(T entity)
-        where T : class, IEntity, new()
-    {
-        var request = new ServiceRequest(ServiceName.CrudServiceFind);
-        request.Resolve(entity);
-        return ProcessRequestCanFindInternalAsync<T>(request);
-    }
-
-    /// <summary>
     /// Determines whether this instance [can find internal] the specified criteria.
     /// </summary>
     /// <typeparam name="T">The type parameter.</typeparam>
@@ -146,6 +131,21 @@ public static class SimpleCrudRequestWrapper
     }
 
     /// <summary>
+    /// Determines whether this instance [can find internal] the specified entity.
+    /// </summary>
+    /// <typeparam name="T">The type parameter.</typeparam>
+    /// <param name="entity">The entity.</param>
+    /// <returns>T.</returns>
+    /// <exception cref="ServiceRequestTooManyResultsException">Too many results founds when only one was expected.</exception>
+    private static Task<T> CanFindInternalAsync<T>(T entity)
+        where T : class, IEntity, new()
+    {
+        var request = new ServiceRequest(ServiceName.CrudServiceFind);
+        request.Resolve(entity);
+        return ProcessRequestFindInternalAsync<T>(request, (_) => null);
+    }
+
+    /// <summary>
     /// Determines whether this instance [can find internal] the specified criteria.
     /// </summary>
     /// <typeparam name="T">The type parameter.</typeparam>
@@ -157,7 +157,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
-        return ProcessRequestCanFindInternalAsync<T>(request);
+        return ProcessRequestFindInternalAsync<T>(request, (_) => null);
     }
 
     /// <summary>
@@ -165,7 +165,7 @@ public static class SimpleCrudRequestWrapper
     /// </summary>
     /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
-    /// <param name="options">The entity query options</param>
+    /// <param name="options">The entity query options.</param>
     /// <returns>T.</returns>
     /// <exception cref="ServiceRequestUnexpectedResultException">No results founds when one, and only one should be found.</exception>
     /// <exception cref="ServiceRequestTooManyResultsException">Too many results founds when only one was expected.</exception>
@@ -182,6 +182,37 @@ public static class SimpleCrudRequestWrapper
             request.Resolve(entity);
         }
 
+        var response = Context.ServiceInvoker(request, SessionToken);
+        if (response.Entities == null || response.Entities.Length == 0)
+        {
+            throw new ServiceRequestUnexpectedResultException(request, response);
+        }
+
+        if (response.Entities.Length > 1)
+        {
+            throw new ServiceRequestTooManyResultsException(
+                request,
+                response,
+                response.Entities.Length
+            );
+        }
+
+        return response.Entities?.Single().ConvertToType<T>();
+    }
+
+    /// <summary>
+    /// Musts the find internal.
+    /// </summary>
+    /// <typeparam name="T">The type parameter.</typeparam>
+    /// <param name="criteria">The criteria.</param>
+    /// <returns>T.</returns>
+    /// <exception cref="ServiceRequestUnexpectedResultException">No results founds when one, and only one should be found.</exception>
+    /// <exception cref="ServiceRequestTooManyResultsException">Too many results founds when only one was expected.</exception>
+    private static T MustFindInternal<T>(ILiteralCriteria criteria)
+        where T : class, IEntity, new()
+    {
+        var request = new ServiceRequest(ServiceName.CrudServiceFind);
+        request.Resolve<T>(criteria);
         var response = Context.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
@@ -221,37 +252,6 @@ public static class SimpleCrudRequestWrapper
     }
 
     /// <summary>
-    /// Musts the find internal.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="criteria">The criteria.</param>
-    /// <returns>T.</returns>
-    /// <exception cref="ServiceRequestUnexpectedResultException">No results founds when one, and only one should be found.</exception>
-    /// <exception cref="ServiceRequestTooManyResultsException">Too many results founds when only one was expected.</exception>
-    private static T MustFindInternal<T>(ILiteralCriteria criteria)
-        where T : class, IEntity, new()
-    {
-        var request = new ServiceRequest(ServiceName.CrudServiceFind);
-        request.Resolve<T>(criteria);
-        var response = Context.ServiceInvoker(request, SessionToken);
-        if (response.Entities == null || response.Entities.Length == 0)
-        {
-            throw new ServiceRequestUnexpectedResultException(request, response);
-        }
-
-        if (response.Entities.Length > 1)
-        {
-            throw new ServiceRequestTooManyResultsException(
-                request,
-                response,
-                response.Entities.Length
-            );
-        }
-
-        return response.Entities?.Single().ConvertToType<T>();
-    }
-
-    /// <summary>
     /// Musts find entity internal as asynchronous operation.
     /// </summary>
     /// <typeparam name="T">The type parameter.</typeparam>
@@ -281,17 +281,6 @@ public static class SimpleCrudRequestWrapper
     /// <returns>Returns the instance with it's values or null if not found.</returns>
     public static T TryFind<T>(this T entity)
         where T : class, IEntity, new() => CanFindInternal(entity);
-
-    /// <summary>
-    /// A extension method of a IEntity class that try to find a entity in Sankhya.
-    /// If found, returns it else returns null.
-    /// If more than one entity is found, it's throws a exception.
-    /// </summary>
-    /// <typeparam name="T">The <paramref name="entity" /> type, that must be a <see cref="IEntity" /> derived class.</typeparam>
-    /// <param name="entity">The entity to find (populate it's properties to act as filters).</param>
-    /// <returns>Returns the instance with it's values or null if not found.</returns>
-    public static Task<T> TryFindAsync<T>(this T entity)
-        where T : class, IEntity, new() => CanFindInternalAsync(entity);
 
     /// <summary>
     /// This method try to find a single entity by a criteria (<seealso cref="ILiteralCriteria" />)
@@ -324,23 +313,34 @@ public static class SimpleCrudRequestWrapper
     }
 
     /// <summary>
+    /// A extension method of a IEntity class that try to find a entity in Sankhya.
+    /// If found, returns it else returns null.
+    /// If more than one entity is found, it's throws a exception.
+    /// </summary>
+    /// <typeparam name="T">The <paramref name="entity" /> type, that must be a <see cref="IEntity" /> derived class.</typeparam>
+    /// <param name="entity">The entity to find (populate it's properties to act as filters).</param>
+    /// <returns>Returns the instance with it's values or null if not found.</returns>
+    public static Task<T> TryFindAsync<T>(this T entity)
+        where T : class, IEntity, new() => CanFindInternalAsync(entity);
+
+    /// <summary>
     /// This method try to find a single entity by a criteria (<seealso cref="ILiteralCriteria" />)
-    /// If none entity matches the criteria, null is returned, if more than one is found, throws a exception of type <seealso cref="ServiceRequestTooManyResultsException" />
+    /// If none entity matches the criteria, null is returned, if more than one is found, throws a exception of type <seealso cref="ServiceRequestTooManyResultsException" />.
     /// </summary>
     /// <typeparam name="T">A instance of any implementation of <seealso cref="IEntity" /> as the entity to retrieve/find.</typeparam>
     /// <param name="entity">The entity.</param>
-    /// <param name="criteria">A instance of any implementation of <seealso cref="ILiteralCriteria" /></param>
-    /// <returns>The <seealso cref="IEntity" /> if any results found or null</returns>
+    /// <param name="criteria">A instance of any implementation of <seealso cref="ILiteralCriteria" />.</param>
+    /// <returns>The <seealso cref="IEntity" /> if any results found or null.</returns>
     public static Task<T> TryFindAsync<T>(this T entity, ILiteralCriteria criteria)
         where T : class, IEntity, new() => CanFindInternalAsync<T>(criteria);
 
     /// <summary>
     /// A extension method of a IEntity class that find a entity in Sankhya.
     /// The criteria must be valid, and result in only one item in database/Sankhya.
-    /// If none or more than one result is returned by Sankhya, a exception is thrown
+    /// If none or more than one result is returned by Sankhya, a exception is thrown.
     /// </summary>
-    /// <typeparam name="T">The <paramref name="entity" /> type, that must be a <see cref="IEntity" /> derived class</typeparam>
-    /// <param name="entity">The entity to find (populate it's properties to act as filters)</param>
+    /// <typeparam name="T">The <paramref name="entity" /> type, that must be a <see cref="IEntity" /> derived class.</typeparam>
+    /// <param name="entity">The entity to find (populate it's properties to act as filters).</param>
     /// <returns>Returns a instance of <paramref name="entity" /> populated with it's values.</returns>
     public static T Find<T>(this T entity)
         where T : class, IEntity, new() => MustFindInternal(entity, null);
@@ -348,7 +348,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// A extension method of a IEntity class that find a entity in Sankhya.
     /// The criteria must be valid, and result in only one item in database/Sankhya.
-    /// If none or more than one result is returned by Sankhya, a exception is thrown
+    /// If none or more than one result is returned by Sankhya, a exception is thrown.
     /// </summary>
     /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
@@ -358,20 +358,9 @@ public static class SimpleCrudRequestWrapper
         where T : class, IEntity, new() => MustFindInternal(entity, options);
 
     /// <summary>
-    /// A extension method of a IEntity class that find a entity in Sankhya as asynchronous operation.
-    /// The criteria must be valid, and result in only one item in database/Sankhya.
-    /// If none or more than one result is returned by Sankhya, a exception is thrown
-    /// </summary>
-    /// <typeparam name="T">The <paramref name="entity" /> type, that must be a <see cref="IEntity" /> derived class</typeparam>
-    /// <param name="entity">The entity to find (populate it's properties to act as filters)</param>
-    /// <returns>Returns a instance of <paramref name="entity" /> populated with it's values.</returns>
-    public static Task<T> FindAsync<T>(this T entity)
-        where T : class, IEntity, new() => MustFindInternalAsync(entity);
-
-    /// <summary>
     /// This method lookup a single entity by a criteria (<seealso cref="ILiteralCriteria" />)
     /// If none entity matches the criteria, throws a exception of type <seealso cref="ServiceRequestUnexpectedResultException" />,
-    /// if more than one is found, throws a exception of type <seealso cref="ServiceRequestTooManyResultsException" />
+    /// if more than one is found, throws a exception of type <seealso cref="ServiceRequestTooManyResultsException" />.
     /// </summary>
     /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="_">The entity.</param>
@@ -381,9 +370,20 @@ public static class SimpleCrudRequestWrapper
         where T : class, IEntity, new() => MustFindInternal<T>(criteria);
 
     /// <summary>
+    /// A extension method of a IEntity class that find a entity in Sankhya as asynchronous operation.
+    /// The criteria must be valid, and result in only one item in database/Sankhya.
+    /// If none or more than one result is returned by Sankhya, a exception is thrown.
+    /// </summary>
+    /// <typeparam name="T">The <paramref name="entity" /> type, that must be a <see cref="IEntity" /> derived class.</typeparam>
+    /// <param name="entity">The entity to find (populate it's properties to act as filters).</param>
+    /// <returns>Returns a instance of <paramref name="entity" /> populated with it's values.</returns>
+    public static Task<T> FindAsync<T>(this T entity)
+        where T : class, IEntity, new() => MustFindInternalAsync(entity);
+
+    /// <summary>
     /// This method lookup a single entity by a criteria (<seealso cref="ILiteralCriteria" />) asynchronous
     /// If none entity matches the criteria, throws a exception of type <seealso cref="ServiceRequestUnexpectedResultException" />,
-    /// if more than one is found, throws a exception of type <seealso cref="ServiceRequestTooManyResultsException" />
+    /// if more than one is found, throws a exception of type <seealso cref="ServiceRequestTooManyResultsException" />.
     /// </summary>
     /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="_">The entity.</param>
@@ -416,10 +416,10 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Updates the entity asynchronous.
     /// </summary>
-    /// <typeparam name="T">The IEntity to be updated</typeparam>
+    /// <typeparam name="T">The IEntity to be updated.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <param name="token">The token.</param>
-    /// <returns>A task with the entity result</returns>
+    /// <returns>A task with the entity result.</returns>
     public static async Task UpdateAsync<T>(this T entity, CancellationToken token)
         where T : class, IEntity, new()
     {
@@ -492,7 +492,7 @@ public static class SimpleCrudRequestWrapper
     /// <summary>
     /// Processes the request find internal asynchronous.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The entity type.</typeparam>
     /// <param name="request">The request.</param>
     /// <param name="callbackNullOrZero">The callback null or zero.</param>
     /// <returns>Task&lt;T&gt;.</returns>

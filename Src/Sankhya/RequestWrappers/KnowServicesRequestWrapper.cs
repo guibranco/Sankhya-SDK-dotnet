@@ -805,8 +805,8 @@ public static class KnowServicesRequestWrapper
     /// </summary>
     /// <param name="key">The key.</param>
     /// <returns>Task&lt;ServiceFile&gt;.</returns>
-    public static async Task<ServiceFile> GetFileAsync(string key) =>
-        await Context.GetFileAsync(key, SessionToken).ConfigureAwait(false);
+    public static Task<ServiceFile> GetFileAsync(string key) =>
+        Context.GetFileAsync(key, SessionToken);
 
     /// <summary>
     /// Gets the image of an item (entity) based on item keys.
@@ -835,7 +835,7 @@ public static class KnowServicesRequestWrapper
     /// <typeparam name="T">The type parameter.</typeparam>
     /// <param name="entity">The entity.</param>
     /// <returns>ServiceImage.</returns>
-    public static async Task<ServiceFile> GetImageAsync<T>(this T entity)
+    public static Task<ServiceFile> GetImageAsync<T>(this T entity)
         where T : class, IEntity, new()
     {
         if (entity == null)
@@ -844,8 +844,9 @@ public static class KnowServicesRequestWrapper
         }
 
         var result = entity.ExtractKeys();
-        return await Context
-            .GetImageAsync(result.Name, result.Keys.ToDictionary(k => k.Name, k => (object)k.Value))
-            .ConfigureAwait(false);
+        return Context.GetImageAsync(
+            result.Name,
+            result.Keys.ToDictionary(k => k.Name, k => (object)k.Value)
+        );
     }
 }
