@@ -29,11 +29,7 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
                 && _codeSet == other._codeSet
                 && _codeProduct == other._codeProduct
                 && _codeProductSet == other._codeProductSet
-                && string.Equals(
-                    _fileName,
-                    other._fileName,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_fileName, other._fileName, StringComparison.OrdinalIgnoreCase)
                 && _fileNameSet == other._fileNameSet
                 && _codeUser == other._codeUser
                 && _codeUserSet == other._codeUserSet

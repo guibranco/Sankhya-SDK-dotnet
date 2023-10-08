@@ -38,17 +38,13 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
         }
 
         return ReferenceEquals(this, other)
-            || string.Equals(_code, other._code, StringComparison.InvariantCultureIgnoreCase)
+            || string.Equals(_code, other._code, StringComparison.OrdinalIgnoreCase)
                 && _codeSet == other._codeSet
                 && _codeProduct == other._codeProduct
                 && _codeProductSet == other._codeProductSet
                 && _codeUser == other._codeUser
                 && _codeUserSet == other._codeUserSet
-                && string.Equals(
-                    _codeVolume,
-                    other._codeVolume,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_codeVolume, other._codeVolume, StringComparison.OrdinalIgnoreCase)
                 && _codeVolumeSet == other._codeVolumeSet
                 && _dateChanged.Equals(other._dateChanged)
                 && _dateChangedSet == other._dateChangedSet;

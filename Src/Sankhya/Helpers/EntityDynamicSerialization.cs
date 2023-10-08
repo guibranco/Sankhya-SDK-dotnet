@@ -157,7 +157,8 @@ public class EntityDynamicSerialization : DynamicSerialization
         }
 
         if (
-            !Dictionary.ContainsKey(propertyName) && !Dictionary.ContainsKey(propertyName.ToUpper())
+            !Dictionary.ContainsKey(propertyName)
+            && !Dictionary.ContainsKey(propertyName.ToUpperInvariant())
         )
         {
             return;
@@ -165,7 +166,7 @@ public class EntityDynamicSerialization : DynamicSerialization
 
         var valueInDictionary = Dictionary.TryGetValue(propertyName, out var valueLowerCase)
             ? valueLowerCase
-            : Dictionary[propertyName.ToUpper()];
+            : Dictionary[propertyName.ToUpperInvariant()];
         var propertyType = propertyInfo.PropertyType;
         if (Nullable.GetUnderlyingType(propertyType) != null)
         {
@@ -262,7 +263,7 @@ public class EntityDynamicSerialization : DynamicSerialization
     /// Changes the keys.
     /// </summary>
     /// <param name="newKeys">The new keys.</param>
-    /// <exception cref="System.InvalidOperationException">The key count in metadata is different than the key count in the dictionary</exception>
+    /// <exception cref="InvalidOperationException">The key count in metadata is different than the key count in the dictionary</exception>
     public void ChangeKeys(Metadata newKeys)
     {
         if (newKeys == null)

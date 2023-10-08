@@ -585,7 +585,7 @@ internal sealed class PagedRequestWrapper
     /// <param name="stronglyTypedCollection">The strongly typed collection.</param>
     /// <param name="wrapper">The wrapper.</param>
     /// <param name="exception">The exception.</param>
-    /// <returns></returns>
+    /// <returns>Service request general exception.</returns>
     private static ServiceRequestGeneralException HandlePageLoadedError<T>(
         string entityName,
         CancellationTokenSource cts,
@@ -700,7 +700,7 @@ internal sealed class PagedRequestWrapper
             }
         }
 
-        Task.WaitAll(task);
+        task.Wait(cts.Token);
 
         timer.Stop();
 

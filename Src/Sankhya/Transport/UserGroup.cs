@@ -28,20 +28,16 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
         return ReferenceEquals(this, other)
             || _code == other._code
                 && _codeSet == other._codeSet
-                && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_name, other._name, StringComparison.OrdinalIgnoreCase)
                 && _nameSet == other._nameSet
                 && _isActive == other._isActive
                 && _isActiveSet == other._isActiveSet
-                && string.Equals(
-                    _userName,
-                    other._userName,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_userName, other._userName, StringComparison.OrdinalIgnoreCase)
                 && _userNameSet == other._userNameSet
                 && string.Equals(
                     _emailAddress,
                     other._emailAddress,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _emailAddressSet == other._emailAddressSet;
     }

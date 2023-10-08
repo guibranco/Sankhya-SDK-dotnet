@@ -24,6 +24,19 @@ namespace Sankhya.Events;
 public class OnDemandRequestFailureEvent : IEvent
 {
     /// <summary>
+    /// Initializes a new instance of the <see cref="OnDemandRequestFailureEvent" /> class.
+    /// </summary>
+    /// <param name="entity">The entity.</param>
+    /// <param name="isUpdate">if set to <c>true</c> [is update].</param>
+    /// <param name="exception">The exception.</param>
+    public OnDemandRequestFailureEvent(IEntity entity, bool isUpdate, Exception exception)
+    {
+        Entity = entity;
+        Exception = exception;
+        IsUpdate = isUpdate;
+    }
+
+    /// <summary>
     /// Gets the entity.
     /// </summary>
     /// <value>The entity.</value>
@@ -40,17 +53,4 @@ public class OnDemandRequestFailureEvent : IEvent
     /// </summary>
     /// <value><c>true</c> if this instance is update; otherwise, <c>false</c>.</value>
     public bool IsUpdate { get; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="OnDemandRequestFailureEvent" /> class.
-    /// </summary>
-    /// <param name="entity">The entity.</param>
-    /// <param name="isUpdate">if set to <c>true</c> [is update].</param>
-    /// <param name="exception">The exception.</param>
-    public OnDemandRequestFailureEvent(IEntity entity, bool isUpdate, Exception exception)
-    {
-        Entity = entity;
-        Exception = exception;
-        IsUpdate = isUpdate;
-    }
 }

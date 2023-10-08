@@ -50,28 +50,20 @@ public class Partner : IEntity, IEquatable<Partner>
 
         return _code == other._code
             && _codeSet == other._codeSet
-            && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+            && string.Equals(_name, other._name, StringComparison.OrdinalIgnoreCase)
             && _nameSet == other._nameSet
-            && string.Equals(
-                _companyName,
-                other._companyName,
-                StringComparison.InvariantCultureIgnoreCase
-            )
+            && string.Equals(_companyName, other._companyName, StringComparison.OrdinalIgnoreCase)
             && _companyNameSet == other._companyNameSet
             && _fiscalType == other._fiscalType
             && _fiscalTypeSet == other._fiscalTypeSet
             && _fiscalClassification == other._fiscalClassification
             && _fiscalClassificationSet == other._fiscalClassificationSet
-            && string.Equals(
-                _emailAddress,
-                other._emailAddress,
-                StringComparison.InvariantCultureIgnoreCase
-            )
+            && string.Equals(_emailAddress, other._emailAddress, StringComparison.OrdinalIgnoreCase)
             && _emailAddressSet == other._emailAddressSet
             && string.Equals(
                 _emailAddressFiscalInvoice,
                 other._emailAddressFiscalInvoice,
-                StringComparison.InvariantCultureIgnoreCase
+                StringComparison.OrdinalIgnoreCase
             )
             && _emailAddressFiscalInvoiceSet == other._emailAddressFiscalInvoiceSet
             && _isActive == other._isActive
@@ -84,38 +76,30 @@ public class Partner : IEntity, IEquatable<Partner>
             && _isUserSet == other._isUserSet
             && _isSupplier == other._isSupplier
             && _isSupplierSet == other._isSupplierSet
-            && string.Equals(
-                _document,
-                other._document,
-                StringComparison.InvariantCultureIgnoreCase
-            )
+            && string.Equals(_document, other._document, StringComparison.OrdinalIgnoreCase)
             && _documentSet == other._documentSet
-            && string.Equals(
-                _identity,
-                other._identity,
-                StringComparison.InvariantCultureIgnoreCase
-            )
+            && string.Equals(_identity, other._identity, StringComparison.OrdinalIgnoreCase)
             && _identitySet == other._identitySet
             && string.Equals(
                 _stateInscription,
                 other._stateInscription,
-                StringComparison.InvariantCultureIgnoreCase
+                StringComparison.OrdinalIgnoreCase
             )
             && _stateInscriptionSet == other._stateInscriptionSet
-            && string.Equals(_zipCode, other._zipCode, StringComparison.InvariantCultureIgnoreCase)
+            && string.Equals(_zipCode, other._zipCode, StringComparison.OrdinalIgnoreCase)
             && _zipCodeSet == other._zipCodeSet
             && _codeAddress == other._codeAddress
             && _codeAddressSet == other._codeAddressSet
             && string.Equals(
                 _addressNumber,
                 other._addressNumber,
-                StringComparison.InvariantCultureIgnoreCase
+                StringComparison.OrdinalIgnoreCase
             )
             && _addressNumberSet == other._addressNumberSet
             && string.Equals(
                 _addressComplement,
                 other._addressComplement,
-                StringComparison.InvariantCultureIgnoreCase
+                StringComparison.OrdinalIgnoreCase
             )
             && _addressComplementSet == other._addressComplementSet
             && _codeNeighborhood == other._codeNeighborhood
@@ -124,23 +108,15 @@ public class Partner : IEntity, IEquatable<Partner>
             && _codeCitySet == other._codeCitySet
             && _codeRegion == other._codeRegion
             && _codeRegionSet == other._codeRegionSet
-            && string.Equals(
-                _telephone,
-                other._telephone,
-                StringComparison.InvariantCultureIgnoreCase
-            )
+            && string.Equals(_telephone, other._telephone, StringComparison.OrdinalIgnoreCase)
             && _telephoneSet == other._telephoneSet
             && string.Equals(
                 _telephoneExtensionLine,
                 other._telephoneExtensionLine,
-                StringComparison.InvariantCultureIgnoreCase
+                StringComparison.OrdinalIgnoreCase
             )
             && _telephoneExtensionLineSet == other._telephoneExtensionLineSet
-            && string.Equals(
-                _mobilePhone,
-                other._mobilePhone,
-                StringComparison.InvariantCultureIgnoreCase
-            )
+            && string.Equals(_mobilePhone, other._mobilePhone, StringComparison.OrdinalIgnoreCase)
             && _mobilePhoneSet == other._mobilePhoneSet
             && _dateCreated.Equals(other._dateCreated)
             && _dateCreatedSet == other._dateCreatedSet
@@ -151,22 +127,14 @@ public class Partner : IEntity, IEquatable<Partner>
             && string.Equals(
                 _authorizationGroup,
                 other._authorizationGroup,
-                StringComparison.InvariantCultureIgnoreCase
+                StringComparison.OrdinalIgnoreCase
             )
             && _authorizationGroupSet == other._authorizationGroupSet
-            && string.Equals(
-                _latitude,
-                other._latitude,
-                StringComparison.InvariantCultureIgnoreCase
-            )
+            && string.Equals(_latitude, other._latitude, StringComparison.OrdinalIgnoreCase)
             && _latitudeSet == other._latitudeSet
-            && string.Equals(
-                _longitude,
-                other._longitude,
-                StringComparison.InvariantCultureIgnoreCase
-            )
+            && string.Equals(_longitude, other._longitude, StringComparison.OrdinalIgnoreCase)
             && _longitudeSet == other._longitudeSet
-            && string.Equals(_notes, other._notes, StringComparison.InvariantCultureIgnoreCase)
+            && string.Equals(_notes, other._notes, StringComparison.OrdinalIgnoreCase)
             && _notesSet == other._notesSet
             && Equals(_address, other._address)
             && _addressSet == other._addressSet
@@ -475,312 +443,312 @@ public class Partner : IEntity, IEquatable<Partner>
     private bool _emailAddressSet;
 
     /// <summary>
-    /// The email address fiscal invoice
+    /// The email address fiscal invoice.
     /// </summary>
     private string _emailAddressFiscalInvoice;
 
     /// <summary>
-    /// The email address fiscal invoice set
+    /// The email address fiscal invoice set.
     /// </summary>
     private bool _emailAddressFiscalInvoiceSet;
 
     /// <summary>
-    /// The is active
+    /// The is active.
     /// </summary>
     private bool _isActive;
 
     /// <summary>
-    /// The is active set
+    /// The is active set.
     /// </summary>
     private bool _isActiveSet;
 
     /// <summary>
-    /// The is client
+    /// The is client.
     /// </summary>
     private bool _isClient;
 
     /// <summary>
-    /// The is client set
+    /// The is client set.
     /// </summary>
     private bool _isClientSet;
 
     /// <summary>
-    /// The is seller
+    /// The is seller.
     /// </summary>
     private bool _isSeller;
 
     /// <summary>
-    /// The is seller set
+    /// The is seller set.
     /// </summary>
     private bool _isSellerSet;
 
     /// <summary>
-    /// The is user
+    /// The is user.
     /// </summary>
     private bool _isUser;
 
     /// <summary>
-    /// The is user set
+    /// The is user set.
     /// </summary>
     private bool _isUserSet;
 
     /// <summary>
-    /// The is supplier
+    /// The is supplier.
     /// </summary>
     private bool _isSupplier;
 
     /// <summary>
-    /// The is supplier set
+    /// The is supplier set.
     /// </summary>
     private bool _isSupplierSet;
 
     /// <summary>
-    /// The document
+    /// The document.
     /// </summary>
     private string _document;
 
     /// <summary>
-    /// The document set
+    /// The document set.
     /// </summary>
     private bool _documentSet;
 
     /// <summary>
-    /// The identity
+    /// The identity.
     /// </summary>
     private string _identity;
 
     /// <summary>
-    /// The identity set
+    /// The identity set.
     /// </summary>
     private bool _identitySet;
 
     /// <summary>
-    /// The state inscription
+    /// The state inscription.
     /// </summary>
     private string _stateInscription;
 
     /// <summary>
-    /// The state inscription set
+    /// The state inscription set.
     /// </summary>
     private bool _stateInscriptionSet;
 
     /// <summary>
-    /// The zip code
+    /// The zip code.
     /// </summary>
     private string _zipCode;
 
     /// <summary>
-    /// The zip code set
+    /// The zip code set.
     /// </summary>
     private bool _zipCodeSet;
 
     /// <summary>
-    /// The code address
+    /// The code address.
     /// </summary>
     private int _codeAddress;
 
     /// <summary>
-    /// The code address set
+    /// The code address set.
     /// </summary>
     private bool _codeAddressSet;
 
     /// <summary>
-    /// The address number
+    /// The address number.
     /// </summary>
     private string _addressNumber;
 
     /// <summary>
-    /// The address number set
+    /// The address number set.
     /// </summary>
     private bool _addressNumberSet;
 
     /// <summary>
-    /// The address complement
+    /// The address complement.
     /// </summary>
     private string _addressComplement;
 
     /// <summary>
-    /// The address complement set
+    /// The address complement set.
     /// </summary>
     private bool _addressComplementSet;
 
     /// <summary>
-    /// The code neighborhood
+    /// The code neighborhood.
     /// </summary>
     private int _codeNeighborhood;
 
     /// <summary>
-    /// The code neighborhood set
+    /// The code neighborhood set.
     /// </summary>
     private bool _codeNeighborhoodSet;
 
     /// <summary>
-    /// The code city
+    /// The code city.
     /// </summary>
     private int _codeCity;
 
     /// <summary>
-    /// The code city set
+    /// The code city set.
     /// </summary>
     private bool _codeCitySet;
 
     /// <summary>
-    /// The code region
+    /// The code region.
     /// </summary>
     private int _codeRegion;
 
     /// <summary>
-    /// The code region set
+    /// The code region set.
     /// </summary>
     private bool _codeRegionSet;
 
     /// <summary>
-    /// The telephone
+    /// The telephone.
     /// </summary>
     private string _telephone;
 
     /// <summary>
-    /// The telephone set
+    /// The telephone set.
     /// </summary>
     private bool _telephoneSet;
 
     /// <summary>
-    /// The telephone extension line
+    /// The telephone extension line.
     /// </summary>
     private string _telephoneExtensionLine;
 
     /// <summary>
-    /// The telephone extension line set
+    /// The telephone extension line set.
     /// </summary>
     private bool _telephoneExtensionLineSet;
 
     /// <summary>
-    /// The mobile phone
+    /// The mobile phone.
     /// </summary>
     private string _mobilePhone;
 
     /// <summary>
-    /// The mobile phone set
+    /// The mobile phone set.
     /// </summary>
     private bool _mobilePhoneSet;
 
     /// <summary>
-    /// The date created
+    /// The date created.
     /// </summary>
     private DateTime _dateCreated;
 
     /// <summary>
-    /// The date created set
+    /// The date created set.
     /// </summary>
     private bool _dateCreatedSet;
 
     /// <summary>
-    /// The date changed
+    /// The date changed.
     /// </summary>
     private DateTime _dateChanged;
 
     /// <summary>
-    /// The date changed set
+    /// The date changed set.
     /// </summary>
     private bool _dateChangedSet;
 
     /// <summary>
-    /// The send fiscal invoice by email
+    /// The send fiscal invoice by email.
     /// </summary>
     private bool _sendFiscalInvoiceByEmail;
 
     /// <summary>
-    /// The send fiscal invoice by email set
+    /// The send fiscal invoice by email set.
     /// </summary>
     private bool _sendFiscalInvoiceByEmailSet;
 
     /// <summary>
-    /// The authorization group
+    /// The authorization group.
     /// </summary>
     private string _authorizationGroup;
 
     /// <summary>
-    /// The authorization group set
+    /// The authorization group set.
     /// </summary>
     private bool _authorizationGroupSet;
 
     /// <summary>
-    /// The latitude
+    /// The latitude.
     /// </summary>
     private string _latitude;
 
     /// <summary>
-    /// The latitude set
+    /// The latitude set.
     /// </summary>
     private bool _latitudeSet;
 
     /// <summary>
-    /// The longitude
+    /// The longitude.
     /// </summary>
     private string _longitude;
 
     /// <summary>
-    /// The longitude set
+    /// The longitude set.
     /// </summary>
     private bool _longitudeSet;
 
     /// <summary>
-    /// The notes
+    /// The notes.
     /// </summary>
     private string _notes;
 
     /// <summary>
-    /// The notes set
+    /// The notes set.
     /// </summary>
     private bool _notesSet;
 
     /// <summary>
-    /// The address
+    /// The address.
     /// </summary>
     private Address _address;
 
     /// <summary>
-    /// The address set
+    /// The address set.
     /// </summary>
     private bool _addressSet;
 
     /// <summary>
-    /// The neighborhood
+    /// The neighborhood.
     /// </summary>
     private Neighborhood _neighborhood;
 
     /// <summary>
-    /// The neighborhood set
+    /// The neighborhood set.
     /// </summary>
     private bool _neighborhoodSet;
 
     /// <summary>
-    /// The city
+    /// The city.
     /// </summary>
     private City _city;
 
     /// <summary>
-    /// The city set
+    /// The city set.
     /// </summary>
     private bool _citySet;
 
     /// <summary>
-    /// The region
+    /// The region.
     /// </summary>
     private Region _region;
 
     /// <summary>
-    /// The region set
+    /// The region set.
     /// </summary>
     private bool _regionSet;
 
     /// <summary>
-    /// The complement
+    /// The complement.
     /// </summary>
     private PartnerComplement _complement;
 
     /// <summary>
-    /// The complement set
+    /// The complement set.
     /// </summary>
     private bool _complementSet;
 
@@ -937,9 +905,9 @@ public class Partner : IEntity, IEquatable<Partner>
     }
 
     /// <summary>
-    /// Gets or sets the is active.
+    /// Gets or sets a value indicating whether this instance is active.
     /// </summary>
-    /// <value>The is active.</value>
+    /// <value><c>true</c> if this instance is active; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool IsActive
     {
@@ -973,9 +941,9 @@ public class Partner : IEntity, IEquatable<Partner>
     }
 
     /// <summary>
-    /// Gets or sets the is client.
+    /// Gets or sets a value indicating whether this instance is client.
     /// </summary>
-    /// <value>The is client.</value>
+    /// <value><c>true</c> if this instance is client; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool IsClient
     {
@@ -1004,9 +972,9 @@ public class Partner : IEntity, IEquatable<Partner>
     }
 
     /// <summary>
-    /// Gets or sets the is seller.
+    /// Gets or sets a value indicating whether this instance is seller.
     /// </summary>
-    /// <value>The is seller.</value>
+    /// <value><c>true</c> if this instance is seller; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool IsSeller
     {
@@ -1035,9 +1003,9 @@ public class Partner : IEntity, IEquatable<Partner>
     }
 
     /// <summary>
-    /// Gets or sets the is user.
+    /// Gets or sets a value indicating whether this instance is user.
     /// </summary>
-    /// <value>The is user.</value>
+    /// <value><c>true</c> if this instance is user; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool IsUser
     {
@@ -1066,9 +1034,9 @@ public class Partner : IEntity, IEquatable<Partner>
     }
 
     /// <summary>
-    /// Gets or sets the is supplier.
+    /// Gets or sets a value indicating whether this instance is supplier.
     /// </summary>
-    /// <value>The is supplier.</value>
+    /// <value><c>true</c> if this instance is supplier; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool IsSupplier
     {
@@ -1370,7 +1338,7 @@ public class Partner : IEntity, IEquatable<Partner>
     }
 
     /// <summary>
-    /// Gets or sets the latitude
+    /// Gets or sets the latitude.
     /// </summary>
     /// <value>The latitude.</value>
     [EntityElement("LATITUDE")]
@@ -1385,7 +1353,7 @@ public class Partner : IEntity, IEquatable<Partner>
     }
 
     /// <summary>
-    /// Gets or sets the longitude
+    /// Gets or sets the longitude.
     /// </summary>
     /// <value>The longitude.</value>
     [EntityElement("LONGITUDE")]
@@ -1722,25 +1690,25 @@ public class Partner : IEntity, IEquatable<Partner>
     public bool ShouldSerializeAuthorizationGroup() => _authorizationGroupSet;
 
     /// <summary>
-    /// The should serialize latitude serialization helper method
+    /// The should serialize latitude serialization helper method.
     /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
+    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeLatitude() => _latitudeSet;
 
     /// <summary>
-    /// The should serialize longitude serialization helper method
+    /// The should serialize longitude serialization helper method.
     /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
+    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeLongitude() => _longitudeSet;
 
     /// <summary>
-    /// The should serialize notes serialization helper method
+    /// The should serialize notes serialization helper method.
     /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
+    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeNotes() => _notesSet;

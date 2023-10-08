@@ -15,162 +15,162 @@ namespace Sankhya.Service;
 public sealed class Invoices
 {
     /// <summary>
-    /// The single numbers
+    /// The single numbers.
     /// </summary>
     private int[] _singleNumbers;
 
     /// <summary>
-    /// The single numbers set
+    /// The single numbers set.
     /// </summary>
     private bool _singleNumbersSet;
 
     /// <summary>
-    /// The code operation type
+    /// The code operation type.
     /// </summary>
     private int _codeOperationType;
 
     /// <summary>
-    /// The code operation type set
+    /// The code operation type set.
     /// </summary>
     private bool _codeOperationTypeSet;
 
     /// <summary>
-    /// The code operation type duplication
+    /// The code operation type duplication.
     /// </summary>
     private int _codeOperationTypeDuplication;
 
     /// <summary>
-    /// The code operation type duplication set
+    /// The code operation type duplication set.
     /// </summary>
     private bool _codeOperationTypeDuplicationSet;
 
     /// <summary>
-    /// The series
+    /// The series.
     /// </summary>
     private int _series;
 
     /// <summary>
-    /// The series set
+    /// The series set.
     /// </summary>
     private bool _seriesSet;
 
     /// <summary>
-    /// The return disapproved invoices
+    /// The return disapproved invoices.
     /// </summary>
     private bool _returnDisapprovedInvoices;
 
     /// <summary>
-    /// The return disapproved invoices set
+    /// The return disapproved invoices set.
     /// </summary>
     private bool _returnDisapprovedInvoicesSet;
 
     /// <summary>
-    /// The should update price
+    /// The should update price.
     /// </summary>
     private bool _shouldUpdatePrice;
 
     /// <summary>
-    /// The should update price set
+    /// The should update price set.
     /// </summary>
     private bool _shouldUpdatePriceSet;
 
     /// <summary>
-    /// The should duplicate all items
+    /// The should duplicate all items.
     /// </summary>
     private bool _shouldDuplicateAllItems;
 
     /// <summary>
-    /// The should duplicate all items set
+    /// The should duplicate all items set.
     /// </summary>
     private bool _shouldDuplicateAllItemsSet;
 
     /// <summary>
-    /// The is date validated
+    /// The is date validated.
     /// </summary>
     private bool _isDateValidated;
 
     /// <summary>
-    /// The is date validated set
+    /// The is date validated set.
     /// </summary>
     private bool _isDateValidatedSet;
 
     /// <summary>
-    /// The one invoice for each
+    /// The one invoice for each.
     /// </summary>
     private bool _oneInvoiceForEach;
 
     /// <summary>
-    /// The one invoice for each set
+    /// The one invoice for each set.
     /// </summary>
     private bool _oneInvoiceForEachSet;
 
     /// <summary>
-    /// The date exit duplication nullable
+    /// The date exit duplication nullable.
     /// </summary>
     private DateTime? _dateExitDuplicationNullable;
 
     /// <summary>
-    /// The date exit duplication nullable set
+    /// The date exit duplication nullable set.
     /// </summary>
     private bool _dateExitDuplicationNullableSet;
 
     /// <summary>
-    /// The date billing nullable
+    /// The date billing nullable.
     /// </summary>
     private DateTime? _dateBillingNullable;
 
     /// <summary>
-    /// The date billing nullable set
+    /// The date billing nullable set.
     /// </summary>
     private bool _dateBillingNullableSet;
 
     /// <summary>
-    /// The date exit nullable
+    /// The date exit nullable.
     /// </summary>
     private DateTime? _dateExitNullable;
 
     /// <summary>
-    /// The date exit nullable set
+    /// The date exit nullable set.
     /// </summary>
     private bool _dateExitNullableSet;
 
     /// <summary>
-    /// The time exit nullable
+    /// The time exit nullable.
     /// </summary>
     private TimeSpan? _timeExitNullable;
 
     /// <summary>
-    /// The time exit nullable set
+    /// The time exit nullable set.
     /// </summary>
     private bool _timeExitNullableSet;
 
     /// <summary>
-    /// The billing type
+    /// The billing type.
     /// </summary>
     private BillingType _billingType;
 
     /// <summary>
-    /// The billing type set
+    /// The billing type set.
     /// </summary>
     private bool _billingTypeSet;
 
     /// <summary>
-    /// The invoices with currency
+    /// The invoices with currency.
     /// </summary>
     private InvoicesWithCurrency _invoicesWithCurrency;
 
     /// <summary>
-    /// The invoices with currency set
+    /// The invoices with currency set.
     /// </summary>
     private bool _invoicesWithCurrencySet;
 
     /// <summary>
-    /// The invoice
+    /// The invoice.
     /// </summary>
     private Invoice _invoice;
 
     /// <summary>
-    /// The invoice set
+    /// The invoice set.
     /// </summary>
     private bool _invoiceSet;
 
@@ -235,9 +235,9 @@ public sealed class Invoices
     }
 
     /// <summary>
-    /// Gets or sets the return disapproved invoices.
+    /// Gets or sets a value indicating whether [return disapproved invoices].
     /// </summary>
-    /// <value>The return disapproved invoices.</value>
+    /// <value><c>true</c> if [return disapproved invoices]; otherwise, <c>false</c>.</value>
     [XmlIgnore]
     public bool ReturnDisapprovedInvoices
     {
@@ -267,9 +267,9 @@ public sealed class Invoices
     }
 
     /// <summary>
-    /// Gets or sets the should update price.
+    /// Gets or sets a value indicating whether [should update price].
     /// </summary>
-    /// <value>The should update price.</value>
+    /// <value><c>true</c> if [should update price]; otherwise, <c>false</c>.</value>
     [XmlIgnore]
     public bool ShouldUpdatePrice
     {
@@ -299,9 +299,9 @@ public sealed class Invoices
     }
 
     /// <summary>
-    /// Gets or sets the should duplicate all items.
+    /// Gets or sets a value indicating whether [should duplicate all items].
     /// </summary>
-    /// <value>The should duplicate all items.</value>
+    /// <value><c>true</c> if [should duplicate all items]; otherwise, <c>false</c>.</value>
     [XmlIgnore]
     public bool ShouldDuplicateAllItems
     {
@@ -331,9 +331,9 @@ public sealed class Invoices
     }
 
     /// <summary>
-    /// Gets or sets the is date validated.
+    /// Gets or sets a value indicating whether this instance is date validated.
     /// </summary>
-    /// <value>The is date validated.</value>
+    /// <value><c>true</c> if this instance is date validated; otherwise, <c>false</c>.</value>
     [XmlIgnore]
     public bool IsDateValidated
     {
@@ -363,9 +363,9 @@ public sealed class Invoices
     }
 
     /// <summary>
-    /// Gets or sets the one invoice for each.
+    /// Gets or sets a value indicating whether [one invoice for each].
     /// </summary>
-    /// <value>The one invoice for each.</value>
+    /// <value><c>true</c> if [one invoice for each]; otherwise, <c>false</c>.</value>
     [XmlIgnore]
     public bool OneInvoiceForEach
     {

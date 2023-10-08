@@ -180,7 +180,7 @@ public static class EntityExtensions
 
         var shouldSerializePropertyName = propertyInfo.Name.EndsWith(
             @"Internal",
-            StringComparison.InvariantCultureIgnoreCase
+            StringComparison.OrdinalIgnoreCase
         )
             ? propertyInfo.Name.Substring(0, propertyInfo.Name.Length - 8)
             : propertyInfo.Name;

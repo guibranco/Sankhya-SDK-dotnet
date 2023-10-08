@@ -27,27 +27,23 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
 
         return ReferenceEquals(this, other)
-            || string.Equals(_key, other._key, StringComparison.InvariantCultureIgnoreCase)
+            || string.Equals(_key, other._key, StringComparison.OrdinalIgnoreCase)
                 && _keySet == other._keySet
                 && string.Equals(
                     _description,
                     other._description,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _descriptionSet == other._descriptionSet
                 && _codeUser == other._codeUser
                 && _codeUserSet == other._codeUserSet
                 && _type == other._type
                 && _typeSet == other._typeSet
-                && string.Equals(
-                    _module,
-                    other._module,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_module, other._module, StringComparison.OrdinalIgnoreCase)
                 && _moduleSet == other._moduleSet
-                && string.Equals(_class, other._class, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_class, other._class, StringComparison.OrdinalIgnoreCase)
                 && _classSet == other._classSet
-                && string.Equals(_tab, other._tab, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_tab, other._tab, StringComparison.OrdinalIgnoreCase)
                 && _tabSet == other._tabSet
                 && _logical == other._logical
                 && _logicalSet == other._logicalSet
@@ -57,7 +53,7 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
                 && _decimalSet == other._decimalSet
                 && _date.Equals(other._date)
                 && _dateSet == other._dateSet
-                && string.Equals(_text, other._text, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_text, other._text, StringComparison.OrdinalIgnoreCase)
                 && _textSet == other._textSet
                 && Equals(_user, other._user)
                 && _userSet == other._userSet;

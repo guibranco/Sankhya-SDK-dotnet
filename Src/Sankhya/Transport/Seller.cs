@@ -51,13 +51,9 @@ public class Seller : IEntity, IEquatable<Seller>
                 && _codePartnerSet == other._codePartnerSet
                 && _isActive == other._isActive
                 && _isActiveSet == other._isActiveSet
-                && string.Equals(
-                    _nickname,
-                    other._nickname,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_nickname, other._nickname, StringComparison.OrdinalIgnoreCase)
                 && _nicknameSet == other._nicknameSet
-                && string.Equals(_email, other._email, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_email, other._email, StringComparison.OrdinalIgnoreCase)
                 && _emailSet == other._emailSet
                 && _type == other._type
                 && _typeSet == other._typeSet

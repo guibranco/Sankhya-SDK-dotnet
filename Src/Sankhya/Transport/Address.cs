@@ -43,14 +43,14 @@ public class Address : IEntity, IEquatable<Address>
 
         return _code == other._code
             && _codeSet == other._codeSet
-            && string.Equals(_type, other._type, StringComparison.InvariantCultureIgnoreCase)
+            && string.Equals(_type, other._type, StringComparison.OrdinalIgnoreCase)
             && _typeSet == other._typeSet
-            && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+            && string.Equals(_name, other._name, StringComparison.OrdinalIgnoreCase)
             && _nameSet == other._nameSet
             && string.Equals(
                 _descriptionCorreios,
                 other._descriptionCorreios,
-                StringComparison.InvariantCultureIgnoreCase
+                StringComparison.OrdinalIgnoreCase
             )
             && _descriptionCorreiosSet == other._descriptionCorreiosSet
             && _dateChanged.Equals(other._dateChanged)

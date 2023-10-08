@@ -31,11 +31,7 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
                 && _dateSet == other._dateSet
                 && _codeLocal == other._codeLocal
                 && _codeLocalSet == other._codeLocalSet
-                && string.Equals(
-                    _control,
-                    other._control,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_control, other._control, StringComparison.OrdinalIgnoreCase)
                 && _controlSet == other._controlSet
                 && _singleNumber == other._singleNumber
                 && _singleNumberSet == other._singleNumberSet

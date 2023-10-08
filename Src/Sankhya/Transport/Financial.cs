@@ -37,23 +37,15 @@ public class Financial : IEntity, IEquatable<Financial>
                 && _dateLowSet == other._dateLowSet
                 && _dateChanged.Equals(other._dateChanged)
                 && _dateChangedSet == other._dateChangedSet
-                && string.Equals(
-                    _barCode,
-                    other._barCode,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_barCode, other._barCode, StringComparison.OrdinalIgnoreCase)
                 && _barCodeSet == other._barCodeSet
                 && string.Equals(
                     _typefulLine,
                     other._typefulLine,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _typefulLineSet == other._typefulLineSet
-                && string.Equals(
-                    _ourNumber,
-                    other._ourNumber,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_ourNumber, other._ourNumber, StringComparison.OrdinalIgnoreCase)
                 && _ourNumberSet == other._ourNumberSet
                 && _codeResultCenter == other._codeResultCenter
                 && _codeResultCenterSet == other._codeResultCenterSet;

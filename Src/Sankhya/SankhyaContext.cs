@@ -78,9 +78,9 @@ public sealed class SankhyaContext
     public string DatabaseName => GetWrapper(Token).DatabaseName;
 
     /// <summary>
-    /// Initializes a new instance of SankhyaContext class.
+    /// Initializes a new instance of the <see cref="SankhyaContext"/> class.
     /// </summary>
-    /// <param name="connection"><see cref="IConnection"/></param>
+    /// <param name="connection">The connection.</param>
     public SankhyaContext(IConnection connection)
     {
         _connection = connection;
@@ -89,12 +89,12 @@ public sealed class SankhyaContext
     }
 
     /// <summary>
-    /// Initializes a new instance of SankhyaContext class.
+    /// Initializes a new instance of the <see cref="SankhyaContext"/> class.
     /// </summary>
-    /// <param name="host">The Sankhya WebService's host (AKA JBOSS server hostname/ip address)</param>
-    /// <param name="port">THe Sankhya JBOSS port (AKA Sankhya Environment - Production/Homologation/Training)</param>
-    /// <param name="userName">The username to act on behalf's on Sankhya WS</param>
-    /// <param name="password">The <paramref name="userName"></paramref> password's</param>
+    /// <param name="host">The host.</param>
+    /// <param name="port">The port.</param>
+    /// <param name="userName">Name of the user.</param>
+    /// <param name="password">The password.</param>
     public SankhyaContext(string host, int port, string userName, string password)
         : this(
             new Connection

@@ -66,14 +66,10 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
                 && string.Equals(
                     _invoiceSeries,
                     other._invoiceSeries,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _invoiceSeriesSet == other._invoiceSeriesSet
-                && string.Equals(
-                    _hostName,
-                    other._hostName,
-                    StringComparison.InvariantCultureIgnoreCase
-                )
+                && string.Equals(_hostName, other._hostName, StringComparison.OrdinalIgnoreCase)
                 && _hostNameSet == other._hostNameSet
                 && Equals(_tradingType, other._tradingType)
                 && _tradingTypeSet == other._tradingTypeSet

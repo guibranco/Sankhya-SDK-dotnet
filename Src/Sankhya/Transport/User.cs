@@ -38,9 +38,9 @@ public class User : IEntity, IEquatable<User>
                 && _codeSellerSet == other._codeSellerSet
                 && _codeGroup == other._codeGroup
                 && _codeGroupSet == other._codeGroupSet
-                && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_name, other._name, StringComparison.OrdinalIgnoreCase)
                 && _nameSet == other._nameSet
-                && string.Equals(_email, other._email, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_email, other._email, StringComparison.OrdinalIgnoreCase)
                 && _emailSet == other._emailSet
                 && _accessLimitDate.Equals(other._accessLimitDate)
                 && _accessLimitDateSet == other._accessLimitDateSet
@@ -482,7 +482,7 @@ public class User : IEntity, IEquatable<User>
     /// </summary>
     /// <returns>A string that represents the current object.</returns>
     public override string ToString() =>
-        Partner.Name.IndexOf(@"SEM PARCEIRO", StringComparison.InvariantCultureIgnoreCase) != -1
+        Partner.Name.IndexOf(@"SEM PARCEIRO", StringComparison.OrdinalIgnoreCase) != -1
             ? Name
             : $@"{Name} - {Partner.Name.ToCamelCase()}";
 }

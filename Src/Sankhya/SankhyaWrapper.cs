@@ -7,7 +7,7 @@
 // Last Modified On : 10-08-2023
 // ***********************************************************************
 // <copyright file="SankhyaWrapper.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini ME. All rights reserved.
+//     © 2023 Guilherme Branco Stracini. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -138,7 +138,8 @@ internal class SankhyaWrapper
             host,
             "^https?://",
             string.Empty,
-            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase
+            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
+            TimeSpan.FromMinutes(1)
         );
         _port = port;
         switch (port)
@@ -184,7 +185,8 @@ internal class SankhyaWrapper
             host,
             "^https?://",
             string.Empty,
-            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase
+            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
+            TimeSpan.FromMinutes(1)
         );
         _port = port;
         _requestType = requestType.GetHumanReadableValue();
@@ -327,7 +329,7 @@ internal class SankhyaWrapper
             return (HttpWebResponse)connection.GetResponse();
         }
 
-        if (body.IndexOf("<?xml version=", StringComparison.InvariantCultureIgnoreCase) == -1)
+        if (body.IndexOf("<?xml version=", StringComparison.OrdinalIgnoreCase) == -1)
         {
             body = string.Concat("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n", body);
         }
@@ -371,7 +373,7 @@ internal class SankhyaWrapper
     /// <param name="lockKey">The lock key.</param>
     /// <param name="attemptCount">The attempt count.</param>
     /// <returns>ServiceResponse.</returns>
-    /// <exception cref="Sankhya.GoodPractices.ServiceRequestInvalidAuthorizationException">Invalid authorization exception.</exception>
+    /// <exception cref="ServiceRequestInvalidAuthorizationException">Invalid authorization exception.</exception>
     private ServiceResponse ServiceInvokerInternal(
         ServiceRequest request,
         ServiceName serviceName,
@@ -543,10 +545,7 @@ internal class SankhyaWrapper
 
                 var xmlRequest = (string)request.GetSerializer();
 
-                if (
-                    xmlRequest.IndexOf(ex.PropertyName, StringComparison.InvariantCultureIgnoreCase)
-                    != -1
-                )
+                if (xmlRequest.IndexOf(ex.PropertyName, StringComparison.OrdinalIgnoreCase) != -1)
                 {
                     return false;
                 }
@@ -723,7 +722,7 @@ internal class SankhyaWrapper
                     .ReadToEnd()
                     .IndexOf(
                         SankhyaConstants.SessionManagerNotStarted,
-                        StringComparison.InvariantCultureIgnoreCase
+                        StringComparison.OrdinalIgnoreCase
                     ) != -1
             )
             {
@@ -881,7 +880,7 @@ internal class SankhyaWrapper
         if (
             message.IndexOf(
                 SankhyaConstants.FileNotFoundOnServer,
-                StringComparison.InvariantCultureIgnoreCase
+                StringComparison.OrdinalIgnoreCase
             ) != -1
         )
         {
@@ -1123,11 +1122,13 @@ internal class SankhyaWrapper
         var html = responseReader.ReadToEnd();
         var stableVersionPattern = new Regex(
             "SYSVERSION = \\\"(?<version>([0-9b].?)+)\\\"",
-            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Multiline
+            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Multiline,
+            TimeSpan.FromMinutes(1)
         );
         var betaVersionPattern = new Regex(
             "SYSVERSION = \\\"desenvolvimentob(?<version>([0-9])+)\\\"",
-            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Multiline
+            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Multiline,
+            TimeSpan.FromMinutes(1)
         );
         if (!stableVersionPattern.IsMatch(html) && !betaVersionPattern.IsMatch(html))
         {

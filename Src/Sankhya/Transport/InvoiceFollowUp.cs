@@ -43,7 +43,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
                 && string.Equals(
                     _occurrences,
                     other._occurrences,
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 )
                 && _occurrencesSet == other._occurrencesSet
                 && _typed == other._typed

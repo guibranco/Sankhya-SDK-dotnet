@@ -35,14 +35,14 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
     /// <summary>
     /// Generates an object from its XML representation.
     /// </summary>
-    /// <param name="reader">The <see cref="System.Xml.XmlReader" /> stream from which the object is deserialized.</param>
+    /// <param name="reader">The <see cref="XmlReader" /> stream from which the object is deserialized.</param>
     /// <exception cref="NotImplementedException">Not implemented.</exception>
     public void ReadXml(XmlReader reader) => throw new NotImplementedException();
 
     /// <summary>
     /// Converts an object into its XML representation.
     /// </summary>
-    /// <param name="writer">The <see cref="System.Xml.XmlWriter" /> stream to which the object is serialized.</param>
+    /// <param name="writer">The <see cref="XmlWriter" /> stream to which the object is serialized.</param>
     public void WriteXml(XmlWriter writer)
     {
         var type = GetType();

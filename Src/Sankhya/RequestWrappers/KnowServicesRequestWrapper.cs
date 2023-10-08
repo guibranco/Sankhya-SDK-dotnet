@@ -24,14 +24,14 @@ public static class KnowServicesRequestWrapper
     private static readonly SankhyaContext Context = ServiceLocator.Resolve<SankhyaContext>();
 
     /// <summary>
-    /// The session token
+    /// The session token.
     /// </summary>
     private static readonly Guid SessionToken = Context.AcquireNewSession(
         ServiceRequestType.KnowServices
     );
 
     /// <summary>
-    /// The last time message received
+    /// The last time message received.
     /// </summary>
     private static DateTime _lastTimeMessageReceived;
 
@@ -413,17 +413,14 @@ public static class KnowServicesRequestWrapper
             if (
                 e.Message.IndexOf(
                     @"confirmar sem produtos/serviços/mat.prima",
-                    StringComparison.InvariantCultureIgnoreCase
+                    StringComparison.OrdinalIgnoreCase
                 ) != -1
             )
             {
                 throw new NoItemsConfirmInvoiceException(singleNumber, null, e);
             }
 
-            if (
-                e.Message.IndexOf(@"já foi confirmada", StringComparison.InvariantCultureIgnoreCase)
-                == -1
-            )
+            if (e.Message.IndexOf(@"já foi confirmada", StringComparison.OrdinalIgnoreCase) == -1)
             {
                 throw new ConfirmInvoiceException(singleNumber, null, e);
             }

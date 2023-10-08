@@ -49,7 +49,7 @@ public class Region : IEntity, IEquatable<Region>
                 && _codeSellerSet == other._codeSellerSet
                 && _active == other._active
                 && _activeSet == other._activeSet
-                && string.Equals(_name, other._name, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(_name, other._name, StringComparison.OrdinalIgnoreCase)
                 && _nameSet == other._nameSet
                 && Equals(_seller, other._seller)
                 && _sellerSet == other._sellerSet;
