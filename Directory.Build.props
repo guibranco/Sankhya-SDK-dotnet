@@ -1,16 +1,5 @@
 <Project>
-  <Import Project="dependencies.props" />
-
   <PropertyGroup>
-    <Authors>Billing and Finance squad</Authors>
-    <Company>OUTsurance Ireland</Company>
-    <Copyright>Copyright © $([System.DateTime]::Now.Year)</Copyright>
-    <RepositoryUrl>https://dev.azure.com/outsurance-ie/Billing%20and%20Finance/_git/stratos-shamrock-billing-collections</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes></PackageReleaseNotes>
-    <PackageTags>OUTsurance;Ireland;Finance;Schedule;Collections;</PackageTags>
-    <Description>The Collections (Finance and Billing) REST API Client package</Description>
-
     <UpdateVersionProperties>true</UpdateVersionProperties>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
@@ -38,6 +27,6 @@
 
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all" Condition="$(MSBuildProjectExtension) == '.csproj' And $(IsTestProject) != 'true'" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.10.0.77988" PrivateAssets="all" Condition="$(MSBuildProjectExtension) == '.csproj' And $(IsTestProject) != 'true'" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.11.0.78383" PrivateAssets="all" Condition="$(MSBuildProjectExtension) == '.csproj' And $(IsTestProject) != 'true'" />
   </ItemGroup>
-</Project>
+</Project>d
