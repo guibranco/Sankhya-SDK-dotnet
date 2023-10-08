@@ -7,7 +7,7 @@
 // Last Modified On : 10-08-2023
 // ***********************************************************************
 // <copyright file="SankhyaWrapper.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini ME. All rights reserved.
+//     © 2023 Guilherme Branco Stracini. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -138,7 +138,8 @@ internal class SankhyaWrapper
             host,
             "^https?://",
             string.Empty,
-            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase
+            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
+            TimeSpan.FromMinutes(1)
         );
         _port = port;
         switch (port)
@@ -184,7 +185,8 @@ internal class SankhyaWrapper
             host,
             "^https?://",
             string.Empty,
-            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase
+            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
+            TimeSpan.FromMinutes(1)
         );
         _port = port;
         _requestType = requestType.GetHumanReadableValue();
@@ -1120,11 +1122,13 @@ internal class SankhyaWrapper
         var html = responseReader.ReadToEnd();
         var stableVersionPattern = new Regex(
             "SYSVERSION = \\\"(?<version>([0-9b].?)+)\\\"",
-            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Multiline
+            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Multiline,
+            TimeSpan.FromMinutes(1)
         );
         var betaVersionPattern = new Regex(
             "SYSVERSION = \\\"desenvolvimentob(?<version>([0-9])+)\\\"",
-            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Multiline
+            RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Multiline,
+            TimeSpan.FromMinutes(1)
         );
         if (!stableVersionPattern.IsMatch(html) && !betaVersionPattern.IsMatch(html))
         {
