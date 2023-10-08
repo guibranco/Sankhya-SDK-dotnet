@@ -1024,7 +1024,7 @@ public static class ServiceRequestExtensions
     /// </summary>
     /// <param name="request">The request.</param>
     /// <param name="options">The options.</param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="NotImplementedException">Not implemented.</exception>
     private static void ResolveCrudServiceFindInternal(
         ServiceRequest request,
         EntityQueryOptions options
@@ -1064,7 +1064,7 @@ public static class ServiceRequestExtensions
     /// </summary>
     /// <param name="request">The request.</param>
     /// <param name="options">The options.</param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="NotImplementedException">Not implemented.</exception>
     private static void ResolveCrudFindInternal(ServiceRequest request, EntityQueryOptions options)
     {
         if (options.IncludePresentationFields.HasValue)

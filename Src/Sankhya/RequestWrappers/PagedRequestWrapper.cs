@@ -26,7 +26,7 @@ internal sealed class PagedRequestWrapper
     private readonly AutoResetEvent _allPagesLoaded = new(false);
 
     /// <summary>
-    /// The on demand tasks
+    /// The on demand tasks.
     /// </summary>
     private readonly List<Task> _onDemandTasks = new();
 
@@ -51,12 +51,12 @@ internal sealed class PagedRequestWrapper
     private bool _set;
 
     /// <summary>
-    /// The entity name
+    /// The entity name.
     /// </summary>
     private readonly string _entityName;
 
     /// <summary>
-    /// The maximum results
+    /// The maximum results.
     /// </summary>
     private readonly int _maxResults;
 
@@ -71,12 +71,12 @@ internal sealed class PagedRequestWrapper
     private readonly ServiceRequest _request;
 
     /// <summary>
-    /// The cache key/
+    /// The cache key.
     /// </summary>
     private readonly string _cacheKey;
 
     /// <summary>
-    /// The type
+    /// The type.
     /// </summary>
     private readonly Type _type;
 
@@ -102,14 +102,14 @@ internal sealed class PagedRequestWrapper
     public delegate void PageNotLoadedHandler(object sender, PagedRequestEventArgs e);
 
     /// <summary>
-    /// Occurs when [page loaded successfully].
+    /// Occurs when page loaded successfully.
     /// </summary>
-    public event PageLoadedSuccessfullyHandler PageLoadedSuccessfully;
+    public event PageLoadedSuccessfullyHandler PageLoadedSuccessfullyEventHandler;
 
     /// <summary>
-    /// Occurs when [page processed].
+    /// Occurs when page processed.
     /// </summary>
-    public static event PageProcessedHandler PageProcessed;
+    public static event PageProcessedHandler PageProcessedEventHandler;
 
     /// <summary>
     /// Occurs when [page not loaded].
@@ -117,11 +117,11 @@ internal sealed class PagedRequestWrapper
     public event PageNotLoadedHandler PageLoadedError;
 
     /// <summary>
-    /// Constructor.
+    /// Initializes a new instance of the <see cref="PagedRequestWrapper"/> class.
     /// </summary>
     /// <param name="type">The type.</param>
     /// <param name="request">The request.</param>
-    /// <param name="maxResults">The maximum number of results that the wrapper should return, -1 for all</param>
+    /// <param name="maxResults">The maximum results.</param>
     private PagedRequestWrapper(Type type, ServiceRequest request, int maxResults)
     {
         _context = ServiceLocator.Resolve<SankhyaContext>();
@@ -146,7 +146,7 @@ internal sealed class PagedRequestWrapper
     /// <param name="totalPages">The total pages.</param>
     private void OnLoadPageSuccessfully(int quantityLoaded, int currentPageNumber, int totalPages)
     {
-        if (PageLoadedSuccessfully == null && PageProcessed == null)
+        if (PageLoadedSuccessfullyEventHandler == null && PageProcessedEventHandler == null)
         {
             return;
         }
@@ -163,8 +163,8 @@ internal sealed class PagedRequestWrapper
             currentPageNumber,
             totalPages
         );
-        PageLoadedSuccessfully?.Invoke(this, eventArgs);
-        PageProcessed?.Invoke(this, eventArgs);
+        PageLoadedSuccessfullyEventHandler?.Invoke(this, eventArgs);
+        PageProcessedEventHandler?.Invoke(this, eventArgs);
     }
 
     /// <summary>
@@ -176,7 +176,7 @@ internal sealed class PagedRequestWrapper
     {
         var ex = new PagedRequestException(_request, exception);
 
-        if (PageLoadedError == null && PageProcessed == null)
+        if (PageLoadedError == null && PageProcessedEventHandler == null)
         {
             LogConsumer.Handle(ex);
             return;
@@ -193,7 +193,7 @@ internal sealed class PagedRequestWrapper
 
         PageLoadedError?.Invoke(this, eventArgs);
 
-        PageProcessed?.Invoke(this, eventArgs);
+        PageProcessedEventHandler?.Invoke(this, eventArgs);
     }
 
     /// <summary>
@@ -255,7 +255,7 @@ internal sealed class PagedRequestWrapper
     /// Loads the response.
     /// </summary>
     /// <param name="token">The token.</param>
-    /// <exception cref="ServiceRequestRepeatedException"></exception>
+    /// <exception cref="ServiceRequestRepeatedException">Repeated request detected.</exception>
     private void LoadResponse(CancellationToken token)
     {
         if (_set)
@@ -294,7 +294,7 @@ internal sealed class PagedRequestWrapper
             !firstPage
             || quantityLoaded != 150
             || token.IsCancellationRequested
-            || _maxResults != -1 && _maxResults <= quantityLoaded
+            || (_maxResults != -1 && _maxResults <= quantityLoaded)
         )
         {
             Close();
@@ -410,7 +410,7 @@ internal sealed class PagedRequestWrapper
     /// <param name="entityName">Name of the entity.</param>
     /// <param name="cts">The CTS.</param>
     /// <param name="stronglyTypedCollection">The strongly typed collection.</param>
-    /// <returns>The exception.<returns>
+    /// <returns>The exception.</returns>
     private static ServiceRequestGeneralException GetManagedEnumeratorInternal<T>(
         ServiceRequest request,
         Action<List<T>> processOnDemandData,
@@ -440,7 +440,7 @@ internal sealed class PagedRequestWrapper
                 wrapper,
                 e.Exception
             );
-        wrapper.PageLoadedSuccessfully += (_, e) =>
+        wrapper.PageLoadedSuccessfullyEventHandler += (_, e) =>
             HandlePageLoaded(
                 processOnDemandData,
                 entityName,
@@ -506,12 +506,14 @@ internal sealed class PagedRequestWrapper
     )
         where T : class, IEntity, new()
     {
+        var ofTotal =
+            totalPages > 0
+                ? string.Format(CultureInfo.CurrentCulture, Resources.OfTotal, totalPages)
+                : string.Empty;
         LogConsumer.Info(
             Resources.PagedRequestWrapper_GetManagedEnumerator_PageLoaded,
             currentPageNumber,
-            totalPages > 0
-                ? string.Format(CultureInfo.CurrentCulture, Resources.OfTotal, totalPages)
-                : string.Empty,
+            ofTotal,
             entityName,
             quantityLoaded,
             quantityLoaded == 1 ? Resources.YSingularSuffix : Resources.YPluralSuffix

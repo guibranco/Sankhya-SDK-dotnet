@@ -32,7 +32,7 @@ public sealed class PagedRequestEventArgs
     public int QuantityLoaded { get; }
 
     /// <summary>
-    /// Converts to total loaded.
+    /// Gets the total loaded.
     /// </summary>
     /// <value>The total loaded.</value>
     public int TotalLoaded { get; }

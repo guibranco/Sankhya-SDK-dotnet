@@ -36,7 +36,7 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
     /// Generates an object from its XML representation.
     /// </summary>
     /// <param name="reader">The <see cref="System.Xml.XmlReader" /> stream from which the object is deserialized.</param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="NotImplementedException">Not implemented.</exception>
     public void ReadXml(XmlReader reader) => throw new NotImplementedException();
 
     /// <summary>
