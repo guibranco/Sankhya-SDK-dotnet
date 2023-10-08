@@ -12,8 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
@@ -27,10 +25,10 @@ namespace Sankhya.Transport;
 /// <summary>
 /// Class Product.
 /// Implements the <see cref="Sankhya.Transport.IEntity" />
-/// Implements the <see cref="System.IEquatable{Sankhya.Transport.Product}" />
+/// Implements the <see cref="Product" />
 /// </summary>
 /// <seealso cref="Sankhya.Transport.IEntity" />
-/// <seealso cref="System.IEquatable{Sankhya.Transport.Product}" />
+/// <seealso cref="Product" />
 [Entity("Produto")]
 public class Product : IEntity, IEquatable<Product>
 {

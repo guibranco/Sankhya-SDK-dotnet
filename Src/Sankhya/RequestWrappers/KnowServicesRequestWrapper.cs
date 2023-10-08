@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
-using CrispyWaffle.Composition;
+﻿using CrispyWaffle.Composition;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Log;
 using CrispyWaffle.Serialization;
@@ -14,6 +9,7 @@ using Sankhya.Properties;
 using Sankhya.Service;
 using Sankhya.Transport;
 using Sankhya.ValueObjects;
+using System.ComponentModel;
 
 namespace Sankhya.RequestWrappers;
 
@@ -27,30 +23,19 @@ public static class KnowServicesRequestWrapper
     /// <summary>
     /// The Sankhya context.
     /// </summary>
-    private static readonly SankhyaContext Context;
+    private static readonly SankhyaContext Context = ServiceLocator.Resolve<SankhyaContext>();
 
     /// <summary>
     /// The session token
     /// </summary>
-    private static readonly Guid SessionToken;
+    private static readonly Guid SessionToken = Context.AcquireNewSession(
+        ServiceRequestType.KnowServices
+    );
 
     /// <summary>
     /// The last time message received
     /// </summary>
     private static DateTime _lastTimeMessageReceived;
-
-    #endregion
-
-    #region  ~Ctor
-
-    /// <summary>
-    /// Initializes static members of the <see cref="KnowServicesRequestWrapper" /> class.
-    /// </summary>
-    static KnowServicesRequestWrapper()
-    {
-        Context = ServiceLocator.Resolve<SankhyaContext>();
-        SessionToken = Context.AcquireNewSession(ServiceRequestType.KnowServices);
-    }
 
     #endregion
 
@@ -300,7 +285,7 @@ public static class KnowServicesRequestWrapper
     public static void RemoveInvoiceItems(IEnumerable<InvoiceItem> invoiceItems)
     {
         var items = invoiceItems as InvoiceItem[] ?? invoiceItems.ToArray();
-        var first = items.First();
+        var first = items[0];
         if (
             !items.All(
                 item => item.SingleNumber.HasValue && item.SingleNumber == first.SingleNumber
@@ -336,13 +321,13 @@ public static class KnowServicesRequestWrapper
     #region Invoice Operations
 
     /// <summary>
-    /// Bills the specified single number.
+    /// Bills the specified invoice by single number.
     /// </summary>
     /// <param name="singleNumber">The single number.</param>
     /// <param name="codeOperationType">Type of the code operation.</param>
     /// <param name="type">The type.</param>
     /// <param name="responseEvents">The response events.</param>
-    /// <param name="series">The serie.</param>
+    /// <param name="series">The series.</param>
     /// <param name="requestEvents">The request events.</param>
     /// <returns>Int32.</returns>
     public static int Bill(

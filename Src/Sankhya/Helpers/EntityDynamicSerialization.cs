@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
 using CrispyWaffle.Extensions;
@@ -178,8 +177,8 @@ public class EntityDynamicSerialization : DynamicSerialization
             return;
         }
 
-        var valueInDictionary = Dictionary.ContainsKey(propertyName)
-            ? Dictionary[propertyName]
+        var valueInDictionary = Dictionary.TryGetValue(propertyName, out var valueLowerCase)
+            ? valueLowerCase
             : Dictionary[propertyName.ToUpper()];
         var propertyType = propertyInfo.PropertyType;
         if (Nullable.GetUnderlyingType(propertyType) != null)
