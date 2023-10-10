@@ -30,6 +30,7 @@ using Sankhya.Enums;
 using Sankhya.GoodPractices;
 using Sankhya.Helpers;
 using Sankhya.Properties;
+using Sankhya.RequestHelpers;
 using Sankhya.Service;
 using Sankhya.ValueObjects;
 
@@ -94,6 +95,12 @@ internal class SankhyaWrapper
     /// The invalid session ids.
     /// </summary>
     private static readonly List<string> InvalidSessionIds = new();
+
+    /// <summary>
+    /// The exception handler.
+    /// </summary>
+    private static readonly IRequestExceptionHandler _exceptionHandler =
+        new RequestExceptionHandler(new RequestBehaviorOptions());
 
     /// <summary>
     /// Gets the internal user agent.
@@ -300,18 +307,6 @@ internal class SankhyaWrapper
         );
         request.Method = "POST";
         request.ContentType = "text/xml;charset=UTF-8";
-        if (service == ServiceName.Login)
-        {
-            RegisterUserAgent(
-                _host,
-                _port,
-                _username,
-                _password,
-                request.CookieContainer,
-                _requestType
-            );
-        }
-
         return request;
     }
 
@@ -351,11 +346,11 @@ internal class SankhyaWrapper
     private ServiceResponse ServiceInvoker(ServiceName serviceName, ServiceRequest request = null)
     {
         var lockKey = string.IsNullOrWhiteSpace(_sessionId) ? nameof(ServiceInvoker) : _sessionId;
-        var attemptCount = 0;
+        var retryData = new RequestRetryData { LockKey = lockKey };
         ServiceResponse result;
         while (true)
         {
-            result = ServiceInvokerInternal(request, serviceName, lockKey, ref attemptCount);
+            result = ServiceInvokerInternal(request, serviceName, retryData);
             if (result != null)
             {
                 break;
@@ -370,15 +365,13 @@ internal class SankhyaWrapper
     /// </summary>
     /// <param name="request">The request.</param>
     /// <param name="serviceName">Name of the service.</param>
-    /// <param name="lockKey">The lock key.</param>
-    /// <param name="attemptCount">The attempt count.</param>
+    /// <param name="retryData">The retry data.</param>
     /// <returns>ServiceResponse.</returns>
-    /// <exception cref="ServiceRequestInvalidAuthorizationException">Invalid authorization exception.</exception>
+    /// <exception cref="ServiceRequestInvalidAuthorizationException">Throws when invalid authrorization is returned by Sankhya.</exception>
     private ServiceResponse ServiceInvokerInternal(
         ServiceRequest request,
         ServiceName serviceName,
-        string lockKey,
-        ref int attemptCount
+        RequestRetryData retryData
     )
     {
         var service = serviceName.GetService();
@@ -389,12 +382,13 @@ internal class SankhyaWrapper
 
         Interlocked.Increment(ref _requestCount);
 
-        var wait = 0;
+        retryData.RetryDelay = 0;
 
-        var currentLock = Locks.GetOrAdd(lockKey, _ => new());
+        var currentLock = Locks.GetOrAdd(retryData.LockKey, _ => new());
 
         Monitor.Enter(currentLock);
 
+        retryData.RetryCount++;
         if (service.Category == ServiceCategory.Crud && request != null)
         {
             var requestName =
@@ -405,7 +399,7 @@ internal class SankhyaWrapper
                 Resources.SankhyaWrapper_ServiceInvokerInternal_Service,
                 serviceNameLogs,
                 requestName,
-                ++attemptCount
+                retryData.RetryCount
             );
         }
         else
@@ -414,7 +408,7 @@ internal class SankhyaWrapper
                 Resources.SankhyaWrapper_ServiceInvokerInternal_Module,
                 service.Module.GetHumanReadableValue(),
                 serviceNameLogs,
-                ++attemptCount
+                retryData.RetryCount
             );
         }
 
@@ -435,16 +429,16 @@ internal class SankhyaWrapper
         }
         catch (Exception exception)
         {
-            if (!HandleException(exception, serviceName, service, request, attemptCount, ref wait))
+            if (!HandleException(exception, serviceName, service, request, retryData))
             {
                 throw;
             }
         }
         finally
         {
-            if (wait > 0)
+            if (retryData.RetryDelay > 0)
             {
-                Thread.Sleep(new TimeSpan(0, 0, wait));
+                Thread.Sleep(new TimeSpan(0, 0, retryData.RetryDelay));
             }
 
             Monitor.Exit(currentLock);
@@ -460,43 +454,33 @@ internal class SankhyaWrapper
     /// <param name="name">The name.</param>
     /// <param name="service">The service.</param>
     /// <param name="request">The request.</param>
-    /// <param name="attemptCount">The attempt count.</param>
-    /// <param name="wait">The wait.</param>
-    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    /// <param name="retryData">The retry data.</param>
+    /// <returns>bool.</returns>
     private bool HandleException(
         Exception exception,
         ServiceName name,
         ServiceAttribute service,
         ServiceRequest request,
-        int attemptCount,
-        ref int wait
+        RequestRetryData retryData
     )
     {
-        if (attemptCount > 3)
+        if (retryData.RetryCount > 3)
         {
             return false;
         }
 
         if (
             service.Type == ServiceType.Transactional
-            && (
-                exception is ServiceRequestCompetitionException
-                || exception is ServiceRequestDeadlockException
-                || exception is ServiceRequestTimeoutException
-            )
+            && exception
+                is ServiceRequestCompetitionException
+                    or ServiceRequestDeadlockException
+                    or ServiceRequestTimeoutException
         )
         {
             return false;
         }
 
-        return HandleExceptionInternal(
-            exception,
-            name,
-            service.Category,
-            request,
-            attemptCount,
-            ref wait
-        );
+        return HandleExceptionInternal(exception, name, service.Category, request, retryData);
     }
 
     /// <summary>
@@ -506,16 +490,14 @@ internal class SankhyaWrapper
     /// <param name="name">The name.</param>
     /// <param name="category">The category.</param>
     /// <param name="request">The request.</param>
-    /// <param name="attemptCount">The attempt count.</param>
-    /// <param name="wait">The wait.</param>
-    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    /// <param name="retryData">The retry data.</param>
+    /// <returns>bool.</returns>
     private bool HandleExceptionInternal(
         Exception exception,
         ServiceName name,
         ServiceCategory category,
         ServiceRequest request,
-        int attemptCount,
-        ref int wait
+        RequestRetryData retryData
     )
     {
         switch (exception)
@@ -552,7 +534,7 @@ internal class SankhyaWrapper
 
                 LogConsumer.Trace(exception);
 
-                wait = attemptCount * 15;
+                retryData.RetryDelay = retryData.RetryCount * RequestRetryDelay.Stable;
 
                 return true;
 
@@ -568,11 +550,11 @@ internal class SankhyaWrapper
 
                 LogConsumer.Trace(exception);
 
-                wait = attemptCount * 15;
+                retryData.RetryDelay = retryData.RetryCount * RequestRetryDelay.Stable;
 
                 LogConsumer.Warning(
                     Resources.SankhyaWrapper_ServiceInvokerInternal_ReasonIdentifiedTakingSecondsRetry,
-                    wait,
+                    retryData.RetryDelay,
                     @"Deadlock"
                 );
 
@@ -582,11 +564,11 @@ internal class SankhyaWrapper
 
                 LogConsumer.Trace(exception);
 
-                wait = attemptCount * 10;
+                retryData.RetryDelay = retryData.RetryCount * RequestRetryDelay.Free;
 
                 LogConsumer.Warning(
                     Resources.SankhyaWrapper_ServiceInvokerInternal_ReasonIdentifiedTakingSecondsRetry,
-                    wait,
+                    retryData.RetryDelay,
                     @"Timeout"
                 );
 
@@ -605,11 +587,11 @@ internal class SankhyaWrapper
 
                 LogConsumer.Trace(exception);
 
-                wait = attemptCount * 90;
+                retryData.RetryDelay = retryData.RetryCount * RequestRetryDelay.Breakdown;
 
                 LogConsumer.Warning(
                     Resources.SankhyaWrapper_ServiceInvokerInternal_ReasonIdentifiedTakingSecondsRetry,
-                    wait,
+                    retryData.RetryDelay,
                     @"Sankhya unavailable"
                 );
 
@@ -619,11 +601,11 @@ internal class SankhyaWrapper
 
                 LogConsumer.Trace(exception);
 
-                wait = attemptCount * 30;
+                retryData.RetryDelay = retryData.RetryCount * RequestRetryDelay.Unstable;
 
                 LogConsumer.Warning(
                     Resources.SankhyaWrapper_ServiceInvokerInternal_ReasonIdentifiedTakingSecondsRetry,
-                    wait,
+                    retryData.RetryDelay,
                     @"Database unavailable"
                 );
 
@@ -633,11 +615,11 @@ internal class SankhyaWrapper
 
                 LogConsumer.Trace(exception);
 
-                wait = attemptCount * 15;
+                retryData.RetryDelay = retryData.RetryCount * RequestRetryDelay.Stable;
 
                 LogConsumer.Warning(
                     Resources.SankhyaWrapper_ServiceInvokerInternal_CanceledQuery,
-                    wait
+                    retryData.RetryDelay
                 );
 
                 return true;
@@ -671,6 +653,17 @@ internal class SankhyaWrapper
         }
 
         var webRequest = WebRequestFactory(service, module);
+        if (service == ServiceName.Login)
+        {
+            RegisterUserAgent(
+                _host,
+                _port,
+                _username,
+                _password,
+                webRequest.CookieContainer,
+                _requestType
+            );
+        }
 
         HttpWebResponse webResponse = null;
 

@@ -244,12 +244,10 @@ public static class EntityExtensions
                 continue;
             }
 
-            if (!(customAttribute is EntityElementAttribute))
+            if (!(customAttribute is EntityElementAttribute attribute))
             {
                 continue;
             }
-
-            var attribute = customAttribute as EntityElementAttribute;
 
             propertyName = attribute.ElementName;
         }

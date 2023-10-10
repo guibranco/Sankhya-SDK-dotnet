@@ -23,77 +23,77 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
     where T : class, IEntity, new()
 {
     /// <summary>
-    /// The context
+    /// The context.
     /// </summary>
     private readonly SankhyaContext _context;
 
     /// <summary>
-    /// The throughput
+    /// The throughput.
     /// </summary>
     private readonly int _throughput;
 
     /// <summary>
-    /// The allow above throughput
+    /// The allow above throughput.
     /// </summary>
     private readonly bool _allowAboveThroughput;
 
     /// <summary>
-    /// The queue
+    /// The queue.
     /// </summary>
     private readonly ConcurrentQueue<T> _queue;
 
     /// <summary>
-    /// The worker
+    /// The worker.
     /// </summary>
     private readonly Thread _worker;
 
     /// <summary>
-    /// The service
+    /// The service.
     /// </summary>
     private readonly ServiceName _service;
 
     /// <summary>
-    /// The token
+    /// The token.
     /// </summary>
     private CancellationToken _token;
 
     /// <summary>
-    /// The request count
+    /// The request count.
     /// </summary>
     private int _requestCount;
 
     /// <summary>
-    /// The entities sent
+    /// The entities sent.
     /// </summary>
     private int _entitiesSent;
 
     /// <summary>
-    /// The entities sent successfully
+    /// The entities sent successfully.
     /// </summary>
     private int _entitiesSentSuccessfully;
 
     /// <summary>
-    /// The dispose requested
+    /// The dispose requested.
     /// </summary>
     private bool _disposeRequested;
 
     /// <summary>
-    /// The flush requested
+    /// The flush requested.
     /// </summary>
     private bool _flushRequested;
 
     /// <summary>
-    /// The entity name
+    /// The entity name.
     /// </summary>
     private readonly string _entityName;
 
     /// <summary>
-    /// The event
+    /// The event.
     /// </summary>
     private readonly ManualResetEvent _event;
 
     /// <summary>
-    /// The flush event
+    /// The flush event.
     /// </summary>
     private readonly ManualResetEvent _flushEvent;
 
@@ -103,7 +103,7 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
     /// <param name="service">The service.</param>
     /// <param name="token">The token.</param>
     /// <param name="throughput">The throughput.</param>
-    /// <param name="allowAboveThroughput">The allow above throughput</param>
+    /// <param name="allowAboveThroughput">The allow above throughput.</param>
     /// <exception cref="InvalidServiceRequestOperationException"></exception>
     public OnDemandRequestWrapper(
         ServiceName service,
@@ -147,8 +147,8 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
     /// Adds the specified entity.
     /// </summary>
     /// <param name="entity">The entity.</param>
-    /// <exception cref="ObjectDisposedException"></exception>
-    /// <exception cref="CanceledOnDemandRequestWrapperException"></exception>
+    /// <exception cref="ObjectDisposedException">Object disposed.</exception>
+    /// <exception cref="CanceledOnDemandRequestWrapperException">On demand request wrapper canceled.</exception>
     public void Add(IEntity entity)
     {
         if (_disposeRequested)
@@ -163,7 +163,7 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
                 _entityName
             )
         );
-        if (_token.IsCancellationRequested || _disposeRequested)
+        if (_token.IsCancellationRequested)
         {
             throw new CanceledOnDemandRequestWrapperException();
         }
@@ -175,7 +175,7 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
     /// <summary>
     /// Flushes this instance.
     /// </summary>
-    /// <exception cref="ObjectDisposedException"></exception>
+    /// <exception cref="ObjectDisposedException">Object disposed.</exception>
     public void Flush()
     {
         if (_disposeRequested)
@@ -281,11 +281,13 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
             return false;
         }
 
-        LogConsumer.Info(
-            Resources.OnDemandRequestWrapper_Process,
+        var argument =
             _service == ServiceName.CrudServiceRemove
                 ? Resources.Deleting
-                : Resources.CreatingOrUpdating,
+                : Resources.CreatingOrUpdating;
+        LogConsumer.Info(
+            Resources.OnDemandRequestWrapper_Process,
+            argument,
             items.Count,
             items.Count == 1 ? @"m" : Resources.ItemPluralSufix,
             _entityName

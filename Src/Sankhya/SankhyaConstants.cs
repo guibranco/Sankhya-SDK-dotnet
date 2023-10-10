@@ -5,19 +5,10 @@
 /// </summary>
 internal static class SankhyaConstants
 {
-    /// <summary>
-    /// The session identifier cookie name
-    /// </summary>
     public const string SessionIdCookieName = "JSESSIONID";
 
-    /// <summary>
-    /// The session manager not started
-    /// </summary>
     public const string SessionManagerNotStarted = "Gerenciador de sessão não foi iniciado";
 
-    /// <summary>
-    /// The file not found on server
-    /// </summary>
     public const string FileNotFoundOnServer = "O arquivo solicitado não existe no servidor";
 
     public const string ServiceResponse = "serviceResponse";

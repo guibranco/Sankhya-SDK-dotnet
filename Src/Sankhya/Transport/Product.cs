@@ -25,7 +25,7 @@ namespace Sankhya.Transport;
 /// <summary>
 /// Class Product.
 /// Implements the <see cref="IEntity" />
-/// Implements the <see cref="Product" />
+/// Implements the <see cref="Product" />.
 /// </summary>
 /// <seealso cref="IEntity" />
 /// <seealso cref="Product" />
@@ -402,87 +402,87 @@ public class Product : IEntity, IEquatable<Product>
     private decimal _height;
 
     /// <summary>
-    /// The height set
+    /// The height set.
     /// </summary>
     private bool _heightSet;
 
     /// <summary>
-    /// The length
+    /// The length.
     /// </summary>
     private decimal _length;
 
     /// <summary>
-    /// The length set
+    /// The length set..
     /// </summary>
     private bool _lengthSet;
 
     /// <summary>
-    /// The source
+    /// The source.
     /// </summary>
     private ProductSource _source;
 
     /// <summary>
-    /// The source set
+    /// The source set.
     /// </summary>
     private bool _sourceSet;
 
     /// <summary>
-    /// The is sale allowed outside kit
+    /// The is sale allowed outside kit.
     /// </summary>
     private bool _isSaleAllowedOutsideKit;
 
     /// <summary>
-    /// The is sale allowed outside kit set
+    /// The is sale allowed outside kit set.
     /// </summary>
     private bool _isSaleAllowedOutsideKitSet;
 
     /// <summary>
-    /// The NCM
+    /// The NCM.
     /// </summary>
     private string _ncm;
 
     /// <summary>
-    /// The NCM set
+    /// The NCM set.
     /// </summary>
     private bool _ncmSet;
 
     /// <summary>
-    /// The use
+    /// The use.
     /// </summary>
     private ProductUse _use;
 
     /// <summary>
-    /// The use set
+    /// The use set.
     /// </summary>
     private bool _useSet;
 
     /// <summary>
-    /// The product father
+    /// The product father.
     /// </summary>
     private Product _productFather;
 
     /// <summary>
-    /// The product father set
+    /// The product father set.
     /// </summary>
     private bool _productFatherSet;
 
     /// <summary>
-    /// The product replacement
+    /// The product replacement.
     /// </summary>
     private Product _productReplacement;
 
     /// <summary>
-    /// The product replacement set
+    /// The product replacement set.
     /// </summary>
     private bool _productReplacementSet;
 
     /// <summary>
-    /// The cost
+    /// The cost.
     /// </summary>
     private ProductCost _cost;
 
     /// <summary>
-    /// The cost set
+    /// The cost set.
     /// </summary>
     private bool _costSet;
 
@@ -503,9 +503,9 @@ public class Product : IEntity, IEquatable<Product>
     }
 
     /// <summary>
-    /// Gets or sets the is active.
+    /// Gets or sets a value indicating whether this instance is active.
     /// </summary>
-    /// <value>The is active.</value>
+    /// <value><c>true</c> if this instance is active; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool IsActive
     {
@@ -741,9 +741,9 @@ public class Product : IEntity, IEquatable<Product>
     }
 
     /// <summary>
-    /// Gets or sets the is sale allowed outside kit.
+    /// Gets or sets a value indicating whether this instance is sale allowed outside kit.
     /// </summary>
-    /// <value>The is sale allowed outside kit.</value>
+    /// <value><c>true</c> if this instance is sale allowed outside kit; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool IsSaleAllowedOutsideKit
     {
@@ -921,22 +921,22 @@ public class Product : IEntity, IEquatable<Product>
     public Lazy<ServiceFile> Image { get; set; }
 
     /// <summary>
-    /// The components
+    /// The components.
     /// </summary>
     public readonly List<Product> Components;
 
     /// <summary>
-    /// The alternative images
+    /// The alternative images.
     /// </summary>
     public readonly Collection<Lazy<ServiceFile>> AlternativeImages;
 
     /// <summary>
-    /// The suggestions
+    /// The suggestions.
     /// </summary>
     public readonly List<ProductSuggestedSale> Suggestions;
 
     /// <summary>
-    /// The codes bars
+    /// The codes bars.
     /// </summary>
     public readonly Collection<CodeBars> CodesBars;
 
@@ -1093,9 +1093,9 @@ public class Product : IEntity, IEquatable<Product>
     public bool ShouldSerializeNCM() => _ncmSet;
 
     /// <summary>
-    /// The should serialize use serialization helper method
+    /// The should serialize use serialization helper method.
     /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
+    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeUse() => _useSet;
@@ -1109,9 +1109,9 @@ public class Product : IEntity, IEquatable<Product>
     public bool ShouldSerializeProductFather() => _productFatherSet;
 
     /// <summary>
-    /// The should serialize product replacement serialization helper method
+    /// The should serialize product replacement serialization helper method.
     /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
+    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeProductReplacement() => _productReplacementSet;

@@ -22,22 +22,22 @@ namespace Sankhya;
 public sealed class SankhyaContext
 {
     /// <summary>
-    /// The wrappers
+    /// The wrappers.
     /// </summary>
     private static readonly ConcurrentDictionary<Guid, SankhyaWrapper> Wrappers = new();
 
     /// <summary>
-    /// The connection
+    /// The connection.
     /// </summary>
     private readonly IConnection _connection;
 
     /// <summary>
-    /// The on demand request wrappers attached tokens
+    /// The on demand request wrappers attached tokens.
     /// </summary>
     private readonly ConcurrentBag<Guid> _onDemandRequestWrappersAttachedTokens;
 
     /// <summary>
-    /// The disposed
+    /// The disposed.
     /// </summary>
     private bool _disposed;
 
@@ -45,24 +45,21 @@ public sealed class SankhyaContext
     /// The current logged in username.
     /// </summary>
     /// <value>The name of the user.</value>
-
     public string UserName => _connection.Credentials.UserName;
 
     /// <summary>
     /// The current context token.
     /// </summary>
     /// <value>The token.</value>
-
     public Guid Token { get; }
 
     /// <summary>
-    /// The current internal wrapper's authenticated user code
+    /// The current internal wrapper's authenticated user code.
     /// </summary>
     /// <value>The user code.</value>
     /// <remarks>This will always return a value,
     /// but the value is valid only if wrapper is authenticated
     /// in the Sankhya WebService.</remarks>
-
     public int UserCode => GetWrapper(Token).UserCode;
 
     /// <summary>
@@ -111,10 +108,10 @@ public sealed class SankhyaContext
     ~SankhyaContext() => Dispose(false);
 
     /// <summary>
-    /// Gets the wrapper associated with <paramref name="token" />
+    /// Gets the wrapper associated with <paramref name="token" />.
     /// </summary>
-    /// <param name="token">The token identifying the wrapper</param>
-    /// <returns>A instance of <seealso cref="SankhyaWrapper" /></returns>
+    /// <param name="token">The token identifying the wrapper.</param>
+    /// <returns>A instance of <seealso cref="SankhyaWrapper" />.</returns>
     private static SankhyaWrapper GetWrapper(Guid token)
     {
         if (!Wrappers.ContainsKey(token))
@@ -132,10 +129,10 @@ public sealed class SankhyaContext
     }
 
     /// <summary>
-    /// Acquires a new session in Sankhya platform
+    /// Acquires a new session in Sankhya platform.
     /// </summary>
     /// <param name="requestType">Type of the request.</param>
-    /// <returns>A token identifying the new session</returns>
+    /// <returns>A token identifying the new session.</returns>
     public Guid AcquireNewSession(ServiceRequestType requestType)
     {
         LogConsumer.Info(
@@ -162,7 +159,7 @@ public sealed class SankhyaContext
     /// <summary>
     /// Finalizes a session acquired by <seealso cref="AcquireNewSession" /> method.
     /// </summary>
-    /// <param name="token">The token identifying the session to finalize</param>
+    /// <param name="token">The token identifying the session to finalize.</param>
     public void FinalizeSession(Guid token)
     {
         if (token == Token || !Wrappers.ContainsKey(token))
@@ -186,14 +183,14 @@ public sealed class SankhyaContext
     public void DetachOnDemandRequestWrapper(Guid token)
     {
         FinalizeSession(token);
-        _onDemandRequestWrappersAttachedTokens.TryTake(out var _);
+        _onDemandRequestWrappersAttachedTokens.TryTake(out _);
     }
 
     /// <summary>
     /// Invoke a service request in Sankhya WS.
     /// </summary>
-    /// <param name="request">The request</param>
-    /// <returns>The service response instance</returns>
+    /// <param name="request">The request.</param>
+    /// <returns>The service response instance.</returns>
     public ServiceResponse ServiceInvoker(ServiceRequest request)
     {
         if (request == null)
@@ -207,9 +204,9 @@ public sealed class SankhyaContext
     /// <summary>
     /// Invoke a service request in Sankhya WS.
     /// </summary>
-    /// <param name="request">The request</param>
-    /// <param name="token">The token identifying the connection</param>
-    /// <returns>The service response instance</returns>
+    /// <param name="request">The request.</param>
+    /// <param name="token">The token identifying the connection.</param>
+    /// <returns>The service response instance.</returns>
     public ServiceResponse ServiceInvoker(ServiceRequest request, Guid token)
     {
         if (request == null)
@@ -223,17 +220,17 @@ public sealed class SankhyaContext
     /// <summary>
     /// Invoice a service request in Sankhya WS asynchronous.
     /// </summary>
-    /// <param name="request">The request</param>
-    /// <returns>The service response instance</returns>
+    /// <param name="request">The request.</param>
+    /// <returns>The service response instance.</returns>
     public Task<ServiceResponse> ServiceInvokerAsync(ServiceRequest request) =>
         GetWrapper(Token).ServiceInvokerAsync(request);
 
     /// <summary>
     /// Invoice a service request in Sankhya WS asynchronous.
     /// </summary>
-    /// <param name="request">The request</param>
-    /// <param name="token">The token identifying the connection</param>
-    /// <returns>The service response instance</returns>
+    /// <param name="request">The request.</param>
+    /// <param name="token">The token identifying the connection.</param>
+    /// <returns>The service response instance.</returns>
     public Task<ServiceResponse> ServiceInvokerAsync(ServiceRequest request, Guid token) =>
         GetWrapper(token).ServiceInvokerAsync(request);
 
@@ -245,9 +242,9 @@ public sealed class SankhyaContext
     public ServiceFile GetFile(string key) => GetWrapper(Token).GetFile(key);
 
     /// <summary>
-    /// Gets a file in the Sankhya File Repository based on file key
+    /// Gets a file in the Sankhya File Repository based on file key.
     /// </summary>
-    /// <param name="key">The key of the file</param>
+    /// <param name="key">The key of the file.</param>
     /// <param name="token">The token.</param>
     /// <returns>A instance of ServiceFile with ContentType header and the file as a byte array.</returns>
     /// <remarks>This method returns a instance of ServiceFile with Data property with null if file is not found or any error occurs in the request.
@@ -274,9 +271,9 @@ public sealed class SankhyaContext
     /// <summary>
     /// Gets the image from a entity (database table) based on entity keys (row's primaries keys).
     /// </summary>
-    /// <param name="entity">The entity name</param>
-    /// <param name="keys">The key's names and it's values</param>
-    /// <returns>The image and it's file extension based on content-type header as a <seealso cref="ServiceFile" /> instance</returns>
+    /// <param name="entity">The entity name.</param>
+    /// <param name="keys">The key's names and it's values.</param>
+    /// <returns>The image and it's file extension based on content-type header as a <seealso cref="ServiceFile" /> instance.</returns>
     /// <remarks>This method returns nulls if the image is not found or any error occurs in the request.
     /// Errors are directly logged in LogConsumer
     /// No exception is throw by this method.</remarks>
