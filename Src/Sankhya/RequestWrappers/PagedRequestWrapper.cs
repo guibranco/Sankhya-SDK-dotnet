@@ -81,21 +81,21 @@ internal sealed class PagedRequestWrapper
     private readonly Type _type;
 
     /// <summary>
-    /// Delegate PageProcessedEventHandler
+    /// Delegate PageProcessedEventHandler.
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="PagedRequestEventArgs"/> instance containing the event data.</param>
     public delegate void PageProcessedEventHandler(object sender, PagedRequestEventArgs e);
 
     /// <summary>
-    /// Delegate PageLoadedSuccessfullyEventHandler
+    /// Delegate PageLoadedSuccessfullyEventHandler.
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="PagedRequestEventArgs"/> instance containing the event data.</param>
     public delegate void PageLoadedSuccessfullyEventHandler(object sender, PagedRequestEventArgs e);
 
     /// <summary>
-    /// Delegate PageNotLoadedEventHandler
+    /// Delegate PageNotLoadedEventHandler.
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="PagedRequestEventArgs"/> instance containing the event data.</param>
@@ -216,7 +216,7 @@ internal sealed class PagedRequestWrapper
                 _request.RequestBody.DataSet.PageNumber = page;
             }
 
-            var response = _context.ServiceInvoker(_request, _token);
+            var response = SankhyaContext.ServiceInvoker(_request, _token);
 
             _request.RequestBody.DataSet.PagerId = response
                 .ResponseBody

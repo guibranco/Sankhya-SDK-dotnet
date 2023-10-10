@@ -42,28 +42,25 @@ public sealed class SankhyaContext
     private bool _disposed;
 
     /// <summary>
-    /// The current logged in username.
+    /// Gets the name of the user.
     /// </summary>
     /// <value>The name of the user.</value>
     public string UserName => _connection.Credentials.UserName;
 
     /// <summary>
-    /// The current context token.
+    /// Gets the token.
     /// </summary>
     /// <value>The token.</value>
     public Guid Token { get; }
 
     /// <summary>
-    /// The current internal wrapper's authenticated user code.
+    /// Gets the user code.
     /// </summary>
     /// <value>The user code.</value>
-    /// <remarks>This will always return a value,
-    /// but the value is valid only if wrapper is authenticated
-    /// in the Sankhya WebService.</remarks>
     public int UserCode => GetWrapper(Token).UserCode;
 
     /// <summary>
-    /// The current internal wrapper's connected environment.
+    /// Gets the environment.
     /// </summary>
     /// <value>The environment.</value>
     public ServiceEnvironment Environment => GetWrapper(Token).Environment;
@@ -207,7 +204,7 @@ public sealed class SankhyaContext
     /// <param name="request">The request.</param>
     /// <param name="token">The token identifying the connection.</param>
     /// <returns>The service response instance.</returns>
-    public ServiceResponse ServiceInvoker(ServiceRequest request, Guid token)
+    public static ServiceResponse ServiceInvoker(ServiceRequest request, Guid token)
     {
         if (request == null)
         {
@@ -231,7 +228,7 @@ public sealed class SankhyaContext
     /// <param name="request">The request.</param>
     /// <param name="token">The token identifying the connection.</param>
     /// <returns>The service response instance.</returns>
-    public Task<ServiceResponse> ServiceInvokerAsync(ServiceRequest request, Guid token) =>
+    public static Task<ServiceResponse> ServiceInvokerAsync(ServiceRequest request, Guid token) =>
         GetWrapper(token).ServiceInvokerAsync(request);
 
     /// <summary>
@@ -250,7 +247,7 @@ public sealed class SankhyaContext
     /// <remarks>This method returns a instance of ServiceFile with Data property with null if file is not found or any error occurs in the request.
     /// Errors are directly logged in LogConsumer
     /// No exception is throw by this method.</remarks>
-    public ServiceFile GetFile(string key, Guid token) => GetWrapper(token).GetFile(key);
+    public static ServiceFile GetFile(string key, Guid token) => GetWrapper(token).GetFile(key);
 
     /// <summary>
     /// Gets a file in the Sankhya File Repository as an asynchronous operation based on it's key.
@@ -265,7 +262,7 @@ public sealed class SankhyaContext
     /// <param name="key">The key.</param>
     /// <param name="token">The token.</param>
     /// <returns>Task&lt;ServiceFile&gt;.</returns>
-    public Task<ServiceFile> GetFileAsync(string key, Guid token) =>
+    public static Task<ServiceFile> GetFileAsync(string key, Guid token) =>
         GetWrapper(token).GetFileAsync(key);
 
     /// <summary>

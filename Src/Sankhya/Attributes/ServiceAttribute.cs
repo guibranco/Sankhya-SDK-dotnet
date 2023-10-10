@@ -18,7 +18,6 @@ namespace Sankhya.Attributes;
 
 /// <summary>
 /// Class ServiceAttribute. This class cannot be inherited.
-/// Implements the <see cref="Attribute" />
 /// </summary>
 /// <seealso cref="Attribute" />
 [AttributeUsage(AttributeTargets.Field)]

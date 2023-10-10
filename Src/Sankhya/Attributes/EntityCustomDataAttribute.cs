@@ -16,9 +16,7 @@ namespace Sankhya.Attributes;
 
 /// <summary>
 /// Class EntityCustomDataAttribute. This class cannot be inherited.
-/// Implements the <see cref="Attribute" />
 /// </summary>
-/// <seealso cref="Attribute" />
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property, AllowMultiple = true)]
 public sealed class EntityCustomDataAttribute : Attribute
 {

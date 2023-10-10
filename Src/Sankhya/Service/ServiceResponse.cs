@@ -20,7 +20,7 @@ namespace Sankhya.Service;
 /// <seealso cref="IXmlSerializable" />
 [Serializer]
 [XmlRoot(ElementName = "serviceResponse")]
-//TODO: convert XML fields names to constants
+// TODO: convert XML fields names to constants
 public sealed class ServiceResponse : IXmlSerializable
 {
     /// <summary>
@@ -371,7 +371,7 @@ public sealed class ServiceResponse : IXmlSerializable
                 return true;
             case XmlNodeType.Element:
                 ds.SetMember(elementName, node.ReadElementContentAsString());
-                break;
+                return true;
         }
 
         return false;
