@@ -44,7 +44,7 @@ public sealed class PagedRequestEventArgs
     public int CurrentPage { get; }
 
     /// <summary>
-    /// Converts to total pages.
+    /// Gets the total pages.
     /// </summary>
     /// <value>The total pages.</value>
     public int TotalPages { get; }

@@ -24,7 +24,7 @@ public class EntityDynamicSerialization : DynamicSerialization
     /// <summary>
     /// Initializes a new instance of the <see cref="EntityDynamicSerialization" /> class.
     /// </summary>
-    /// <param name="keyFilter">The filter to serialize keys</param>
+    /// <param name="keyFilter">The filter to serialize keys.</param>
     public EntityDynamicSerialization(DynamicSerializationOption keyFilter)
         : base(keyFilter) { }
 
@@ -43,7 +43,7 @@ public class EntityDynamicSerialization : DynamicSerialization
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <param name="instance">The instance.</param>
     /// <param name="type">The type.</param>
-    /// <param name="maxInnerLevel">The max inner level of references</param>
+    /// <param name="maxInnerLevel">The max inner level of references.</param>
     /// <param name="prefix">(Optional) the prefix.</param>
     /// <param name="currentLevel">(Optional) the current level.</param>
     /// <returns>A T.</returns>
@@ -103,12 +103,10 @@ public class EntityDynamicSerialization : DynamicSerialization
                     continue;
             }
 
-            if (customAttribute is not EntityElementAttribute)
+            if (customAttribute is not EntityElementAttribute attribute)
             {
                 continue;
             }
-
-            var attribute = customAttribute as EntityElementAttribute;
 
             propertyName = attribute.ElementName;
         }
@@ -249,7 +247,7 @@ public class EntityDynamicSerialization : DynamicSerialization
     /// Converts this object to a type.
     /// </summary>
     /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <returns>object converted to a type&lt; t&gt;</returns>
+    /// <returns>object converted to a type&lt; t&gt;.</returns>
     public T ConvertToType<T>()
         where T : class, new()
     {
@@ -263,7 +261,7 @@ public class EntityDynamicSerialization : DynamicSerialization
     /// Changes the keys.
     /// </summary>
     /// <param name="newKeys">The new keys.</param>
-    /// <exception cref="InvalidOperationException">The key count in metadata is different than the key count in the dictionary</exception>
+    /// <exception cref="InvalidOperationException">The key count in metadata is different than the key count in the dictionary.</exception>
     public void ChangeKeys(Metadata newKeys)
     {
         if (newKeys == null)

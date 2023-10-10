@@ -9,7 +9,7 @@ namespace Sankhya;
 internal sealed class LowLevelSankhyaWrapper : SankhyaWrapper
 {
     /// <summary>
-    /// Initializes a new instance of the LowLevelSankhyaWrapper class.
+    /// Initializes a new instance of the <see cref="LowLevelSankhyaWrapper"/> class.
     /// </summary>
     /// <param name="host">The host.</param>
     /// <param name="port">The port.</param>
@@ -18,7 +18,7 @@ internal sealed class LowLevelSankhyaWrapper : SankhyaWrapper
         : base(host, port, requestType) { }
 
     /// <summary>
-    /// Initializes a new instance of the LowLevelSankhyaWrapper class.
+    /// Initializes a new instance of the <see cref="LowLevelSankhyaWrapper"/> class.
     /// </summary>
     /// <param name="host">The host.</param>
     /// <param name="port">The port.</param>

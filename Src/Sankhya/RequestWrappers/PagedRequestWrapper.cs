@@ -81,40 +81,40 @@ internal sealed class PagedRequestWrapper
     private readonly Type _type;
 
     /// <summary>
-    /// The page processed handler delegate.
+    /// Delegate PageProcessedEventHandler
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="PagedRequestEventArgs"/> instance containing the event data.</param>
-    public delegate void PageProcessedHandler(object sender, PagedRequestEventArgs e);
+    public delegate void PageProcessedEventHandler(object sender, PagedRequestEventArgs e);
 
     /// <summary>
-    /// The page loaded successfully handler delegate.
+    /// Delegate PageLoadedSuccessfullyEventHandler
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="PagedRequestEventArgs"/> instance containing the event data.</param>
-    public delegate void PageLoadedSuccessfullyHandler(object sender, PagedRequestEventArgs e);
+    public delegate void PageLoadedSuccessfullyEventHandler(object sender, PagedRequestEventArgs e);
 
     /// <summary>
-    /// The page not loaded handler delegate.
+    /// Delegate PageNotLoadedEventHandler
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="PagedRequestEventArgs"/> instance containing the event data.</param>
-    public delegate void PageNotLoadedHandler(object sender, PagedRequestEventArgs e);
+    public delegate void PageNotLoadedEventHandler(object sender, PagedRequestEventArgs e);
 
     /// <summary>
-    /// Occurs when page loaded successfully.
+    /// Occurs when [page loaded successfully].
     /// </summary>
-    public event PageLoadedSuccessfullyHandler PageLoadedSuccessfullyEventHandler;
+    public event PageLoadedSuccessfullyEventHandler PageLoadedSuccessfully;
 
     /// <summary>
-    /// Occurs when page processed.
+    /// Occurs when [page processed].
     /// </summary>
-    public static event PageProcessedHandler PageProcessedEventHandler;
+    public static event PageProcessedEventHandler PageProcessed;
 
     /// <summary>
-    /// Occurs when [page not loaded].
+    /// Occurs when [page loaded error].
     /// </summary>
-    public event PageNotLoadedHandler PageLoadedError;
+    public event PageNotLoadedEventHandler PageLoadedError;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PagedRequestWrapper"/> class.
@@ -146,7 +146,7 @@ internal sealed class PagedRequestWrapper
     /// <param name="totalPages">The total pages.</param>
     private void OnLoadPageSuccessfully(int quantityLoaded, int currentPageNumber, int totalPages)
     {
-        if (PageLoadedSuccessfullyEventHandler == null && PageProcessedEventHandler == null)
+        if (PageLoadedSuccessfully == null && PageProcessed == null)
         {
             return;
         }
@@ -163,8 +163,8 @@ internal sealed class PagedRequestWrapper
             currentPageNumber,
             totalPages
         );
-        PageLoadedSuccessfullyEventHandler?.Invoke(this, eventArgs);
-        PageProcessedEventHandler?.Invoke(this, eventArgs);
+        PageLoadedSuccessfully?.Invoke(this, eventArgs);
+        PageProcessed?.Invoke(this, eventArgs);
     }
 
     /// <summary>
@@ -176,7 +176,7 @@ internal sealed class PagedRequestWrapper
     {
         var ex = new PagedRequestException(_request, exception);
 
-        if (PageLoadedError == null && PageProcessedEventHandler == null)
+        if (PageLoadedError == null && PageProcessed == null)
         {
             LogConsumer.Handle(ex);
             return;
@@ -193,7 +193,7 @@ internal sealed class PagedRequestWrapper
 
         PageLoadedError?.Invoke(this, eventArgs);
 
-        PageProcessedEventHandler?.Invoke(this, eventArgs);
+        PageProcessed?.Invoke(this, eventArgs);
     }
 
     /// <summary>
@@ -290,11 +290,13 @@ internal sealed class PagedRequestWrapper
 
         var firstPage = LoadPage(pageNumber++, out var quantityLoaded, out var totalPages);
 
+        var maxResultsReached = _maxResults != -1 && _maxResults <= quantityLoaded;
+
         if (
             !firstPage
             || quantityLoaded != 150
             || token.IsCancellationRequested
-            || (_maxResults != -1 && _maxResults <= quantityLoaded)
+            || maxResultsReached
         )
         {
             Close();
@@ -316,11 +318,13 @@ internal sealed class PagedRequestWrapper
 
             var success = LoadPage(pageNumber++, out quantityLoaded, out totalPages);
 
+            var shouldRequestNextPage = _maxResults != -1 && _maxResults > _resultsLoaded;
+
             if (
                 success
                 && quantityLoaded == 300
                 && !token.IsCancellationRequested
-                && (_maxResults == -1 || _maxResults > _resultsLoaded)
+                && shouldRequestNextPage
             )
             {
                 continue;
@@ -440,7 +444,7 @@ internal sealed class PagedRequestWrapper
                 wrapper,
                 e.Exception
             );
-        wrapper.PageLoadedSuccessfullyEventHandler += (_, e) =>
+        wrapper.PageLoadedSuccessfully += (_, e) =>
             HandlePageLoaded(
                 processOnDemandData,
                 entityName,
@@ -674,7 +678,6 @@ internal sealed class PagedRequestWrapper
 
         var task = Task.Run(
             () =>
-                // ReSharper disable AccessToDisposedClosure
                 ex = GetManagedEnumeratorInternal(
                     request,
                     processOnDemandData,

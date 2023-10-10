@@ -19,13 +19,8 @@ internal static class StatusMessageHelper
     private static readonly Dictionary<
         string,
         Func<string, ServiceName, ServiceRequest, ServiceResponse, Exception>
-    > CommonMessages;
-
-    /// <summary>
-    /// Initializes static members of the <see cref="StatusMessageHelper"/> class.
-    /// </summary>
-    static StatusMessageHelper() =>
-        CommonMessages = new()
+    > CommonMessages =
+        new()
         {
             {
                 @"Delimitador ''' desbalanceado",
