@@ -16,9 +16,7 @@ namespace Sankhya.Attributes;
 
 /// <summary>
 /// Class EntityElementAttribute. This class cannot be inherited.
-/// Implements the <see cref="Attribute" />
 /// </summary>
-/// <seealso cref="Attribute" />
 [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
 public sealed class EntityElementAttribute : Attribute
 {

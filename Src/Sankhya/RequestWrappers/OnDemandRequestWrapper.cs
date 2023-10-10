@@ -334,7 +334,7 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
         {
             _requestCount++;
 
-            _context.ServiceInvoker(request, token);
+            SankhyaContext.ServiceInvoker(request, token);
 
             return true;
         }

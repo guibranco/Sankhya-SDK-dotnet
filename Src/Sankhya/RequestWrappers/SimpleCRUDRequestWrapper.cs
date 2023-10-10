@@ -37,7 +37,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity);
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             return null;
@@ -82,7 +82,7 @@ public static class SimpleCrudRequestWrapper
                 .ToArray();
         }
 
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             return null;
@@ -112,7 +112,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             return null;
@@ -182,7 +182,7 @@ public static class SimpleCrudRequestWrapper
             request.Resolve(entity);
         }
 
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             throw new ServiceRequestUnexpectedResultException(request, response);
@@ -213,7 +213,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         if (response.Entities == null || response.Entities.Length == 0)
         {
             throw new ServiceRequestUnexpectedResultException(request, response);
@@ -404,7 +404,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceSave);
         request.Resolve(entity);
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         if (response.Entities == null)
         {
             throw new ServiceRequestUnexpectedResultException(request, response);
@@ -425,7 +425,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceSave);
         request.Resolve(entity);
-        await Context
+        await SankhyaContext
             .ServiceInvokerAsync(request, SessionToken)
             .ContinueWith(t => ConvertToType<T>(t, request), token)
             .ConfigureAwait(false);
@@ -472,7 +472,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceRemove);
         request.Resolve(entity);
-        Context.ServiceInvoker(request, SessionToken);
+        SankhyaContext.ServiceInvoker(request, SessionToken);
     }
 
     /// <summary>
@@ -486,7 +486,7 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceRemove);
         request.Resolve(entity);
-        await Context.ServiceInvokerAsync(request, SessionToken).ConfigureAwait(false);
+        await SankhyaContext.ServiceInvokerAsync(request, SessionToken).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -502,7 +502,7 @@ public static class SimpleCrudRequestWrapper
     )
         where T : class, IEntity, new()
     {
-        return Context
+        return SankhyaContext
             .ServiceInvokerAsync(request, SessionToken)
             .ContinueWith(response =>
             {

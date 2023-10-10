@@ -1,4 +1,5 @@
-﻿namespace Sankhya;
+﻿#pragma warning disable SA1600
+namespace Sankhya;
 
 /// <summary>
 /// Class SankhyaConstants.
@@ -51,7 +52,7 @@ internal static class SankhyaConstants
 
     public const string PrimaryKey = "pk";
 
-    public const string JSessionId = "jssessionid";
+    public const string JSessionId = "jsessionid";
 
     public const string CallId = "callID";
 

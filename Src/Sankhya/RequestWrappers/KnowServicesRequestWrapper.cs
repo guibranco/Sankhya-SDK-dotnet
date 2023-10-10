@@ -42,7 +42,7 @@ public static class KnowServicesRequestWrapper
     public static IEnumerable<Session> GetSessions()
     {
         var request = new ServiceRequest(ServiceName.SessionGetAll);
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         return response.ResponseBody.Sessions.Sessions;
     }
 
@@ -56,7 +56,7 @@ public static class KnowServicesRequestWrapper
         {
             RequestBody = new() { Session = new() { Id = sessionId } }
         };
-        Context.ServiceInvoker(request, SessionToken);
+        SankhyaContext.ServiceInvoker(request, SessionToken);
     }
 
     /// <summary>
@@ -105,7 +105,7 @@ public static class KnowServicesRequestWrapper
                 ? Resources.All
                 : string.Concat(recipients.Count, Resources.UsersOrGroups)
         );
-        Context.ServiceInvoker(request, SessionToken);
+        SankhyaContext.ServiceInvoker(request, SessionToken);
     }
 
     /// <summary>
@@ -131,7 +131,7 @@ public static class KnowServicesRequestWrapper
             Resources.KnowServicesRequestWrapper_SendMessage_SendingMessage,
             recipients?.Count.ToString() ?? Resources.All
         );
-        Context.ServiceInvoker(request, SessionToken);
+        SankhyaContext.ServiceInvoker(request, SessionToken);
     }
 
     /// <summary>
@@ -148,7 +148,7 @@ public static class KnowServicesRequestWrapper
             }
         };
         LogConsumer.Info(Resources.KnowServicesRequestWrapper_ReceiveMessages_ReceivingMessages);
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         _lastTimeMessageReceived = DateTime.Now;
         return (string)response.GetSerializer();
     }
@@ -190,7 +190,7 @@ public static class KnowServicesRequestWrapper
             itemsCount,
             itemsCount == 1 ? @"m" : Resources.ItemPluralSufix
         );
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         string singleNumber = response.ResponseBody.PrimaryKey.NUNOTA.ToString();
         return singleNumber.ToInt32();
     }
@@ -210,7 +210,7 @@ public static class KnowServicesRequestWrapper
         };
 
         LogConsumer.Info(Resources.KnowServicesRequestWrapper_RemoveInvoice, singleNumber);
-        Context.ServiceInvoker(request, SessionToken);
+        SankhyaContext.ServiceInvoker(request, SessionToken);
     }
 
     /// <summary>
@@ -246,7 +246,7 @@ public static class KnowServicesRequestWrapper
             items.Length == 1 ? @"m" : Resources.ItemPluralSufix
         );
 
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
 
         try
         {
@@ -299,7 +299,7 @@ public static class KnowServicesRequestWrapper
             first.SingleNumber ?? 0,
             items.Length == 1 ? @"m" : Resources.ItemPluralSufix
         );
-        Context.ServiceInvoker(request, SessionToken);
+        SankhyaContext.ServiceInvoker(request, SessionToken);
     }
 
     /// <summary>
@@ -357,7 +357,7 @@ public static class KnowServicesRequestWrapper
             request.RequestBody.Invoices.BillingType.GetHumanReadableValue(),
             series?.ToString() ?? Resources.Uninformed
         );
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         responseEvents = null;
         if (response?.ResponseBody == null)
         {
@@ -406,7 +406,7 @@ public static class KnowServicesRequestWrapper
                 Resources.KnowServicesRequestWrapper_ConfirmInvoice_Confirming,
                 singleNumber
             );
-            Context.ServiceInvoker(request, SessionToken);
+            SankhyaContext.ServiceInvoker(request, SessionToken);
         }
         catch (Exception e)
         {
@@ -444,7 +444,7 @@ public static class KnowServicesRequestWrapper
             singleNumbersArray.Length == 1 ? string.Empty : @"s",
             string.Join(@",", singleNumbersArray)
         );
-        Context.ServiceInvoker(request, SessionToken);
+        SankhyaContext.ServiceInvoker(request, SessionToken);
     }
 
     /// <summary>
@@ -465,7 +465,7 @@ public static class KnowServicesRequestWrapper
             singleNumbersList.Length == 1 ? string.Empty : @"s",
             string.Join(@",", singleNumbersList)
         );
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         return response.ResponseBody.InvoiceAccompaniments.Invoices;
     }
 
@@ -501,7 +501,7 @@ public static class KnowServicesRequestWrapper
             singleNumbersList.Length == 1 ? string.Empty : @"s",
             string.Join(@",", singleNumbersList)
         );
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         var cancelled = response.ResponseBody.CancellationResult.TotalCancelledInvoices;
         singleNumbersNotCancelled =
             response.ResponseBody.CancellationResult.SingleNumbers ?? Array.Empty<int>();
@@ -543,7 +543,7 @@ public static class KnowServicesRequestWrapper
             codePartner,
             movementType.GetHumanReadableValue()
         );
-        Context.ServiceInvoker(request, SessionToken);
+        SankhyaContext.ServiceInvoker(request, SessionToken);
     }
 
     /// <summary>
@@ -591,7 +591,7 @@ public static class KnowServicesRequestWrapper
             dateExit?.ToString(@"dd/MM/yyyy") ?? Resources.Uninformed,
             shouldUpdatePrice.ToString(Resources.Yes, Resources.No)
         );
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         LogConsumer.Info(
             Resources.KnowServicesRequestWrapper_DuplicateInvoice_Duplicated,
             response.ResponseBody.Invoices.Invoice.SingleNumberDuplicationSource,
@@ -617,7 +617,7 @@ public static class KnowServicesRequestWrapper
             singleNumbersLists.Length == 1 ? string.Empty : @"s",
             string.Join(@",", singleNumbersLists)
         );
-        Context.ServiceInvoker(request, SessionToken);
+        SankhyaContext.ServiceInvoker(request, SessionToken);
     }
 
     /// <summary>
@@ -644,7 +644,7 @@ public static class KnowServicesRequestWrapper
             singleNumbersLists.Length == 1 ? string.Empty : @"s",
             string.Join(@",", singleNumbersLists)
         );
-        Context.ServiceInvoker(request, SessionToken);
+        SankhyaContext.ServiceInvoker(request, SessionToken);
     }
 
     /// <summary>
@@ -692,7 +692,7 @@ public static class KnowServicesRequestWrapper
                 financialNumbersList.Count == 1 ? string.Empty : @"s",
                 string.Join(@",", financialNumbersList)
             );
-            Context.ServiceInvoker(request, SessionToken);
+            SankhyaContext.ServiceInvoker(request, SessionToken);
         }
         catch (Exception e)
         {
@@ -729,7 +729,7 @@ public static class KnowServicesRequestWrapper
                 Resources.KnowServicesRequestWrapper_ReversePayments,
                 request.RequestBody.Param.FinancialNumber
             );
-            Context.ServiceInvoker(request, SessionToken);
+            SankhyaContext.ServiceInvoker(request, SessionToken);
         }
     }
 
@@ -748,7 +748,7 @@ public static class KnowServicesRequestWrapper
         try
         {
             LogConsumer.Info(Resources.KnowServicesRequestWrapper_UnlinkShipping, financialNumber);
-            Context.ServiceInvoker(request, SessionToken);
+            SankhyaContext.ServiceInvoker(request, SessionToken);
         }
         catch (Exception e)
         {
@@ -767,7 +767,7 @@ public static class KnowServicesRequestWrapper
         {
             RequestBody = { Config = new() { Path = path } }
         };
-        var response = Context.ServiceInvoker(request, SessionToken);
+        var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         return response.ResponseBody.Key.Value;
     }
 
@@ -790,7 +790,7 @@ public static class KnowServicesRequestWrapper
             }
         };
         LogConsumer.Info(Resources.KnowServicesRequestWrapper_DeleteFiles, pathsArray.Length);
-        Context.ServiceInvoker(request, SessionToken);
+        SankhyaContext.ServiceInvoker(request, SessionToken);
     }
 
     /// <summary>
@@ -798,7 +798,7 @@ public static class KnowServicesRequestWrapper
     /// </summary>
     /// <param name="key">The key.</param>
     /// <returns>ServiceFile.</returns>
-    public static ServiceFile GetFile(string key) => Context.GetFile(key, SessionToken);
+    public static ServiceFile GetFile(string key) => SankhyaContext.GetFile(key, SessionToken);
 
     /// <summary>
     /// Gets the f ile.
@@ -806,7 +806,7 @@ public static class KnowServicesRequestWrapper
     /// <param name="key">The key.</param>
     /// <returns>Task&lt;ServiceFile&gt;.</returns>
     public static Task<ServiceFile> GetFileAsync(string key) =>
-        Context.GetFileAsync(key, SessionToken);
+        SankhyaContext.GetFileAsync(key, SessionToken);
 
     /// <summary>
     /// Gets the image of an item (entity) based on item keys.

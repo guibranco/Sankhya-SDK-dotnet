@@ -1292,9 +1292,9 @@ public class Partner : IEntity, IEquatable<Partner>
     }
 
     /// <summary>
-    /// Gets or sets the send fiscal invoice by email.
+    /// Gets or sets a value indicating whether [send fiscal invoice by email].
     /// </summary>
-    /// <value>The send fiscal invoice by email.</value>
+    /// <value><c>true</c> if [send fiscal invoice by email]; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool SendFiscalInvoiceByEmail
     {

@@ -97,12 +97,6 @@ internal class SankhyaWrapper
     private static readonly List<string> InvalidSessionIds = new();
 
     /// <summary>
-    /// The exception handler.
-    /// </summary>
-    private static readonly IRequestExceptionHandler _exceptionHandler =
-        new RequestExceptionHandler(new RequestBehaviorOptions());
-
-    /// <summary>
     /// Gets the internal user agent.
     /// </summary>
     /// <value>The internal user agent.</value>
@@ -324,7 +318,13 @@ internal class SankhyaWrapper
             return (HttpWebResponse)connection.GetResponse();
         }
 
-        if (body.IndexOf("<?xml version=", StringComparison.OrdinalIgnoreCase) == -1)
+#if NETSTANDARD2_0
+        var xmlStarted = body.IndexOf("<?xml version=", StringComparison.OrdinalIgnoreCase) >= 0;
+#elif NETSTANDARD2_1_OR_GREATER
+        var xmlStarted = body.Contains("<?xml version=", StringComparison.OrdinalIgnoreCase);
+#endif
+
+        if (!xmlStarted)
         {
             body = string.Concat("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n", body);
         }

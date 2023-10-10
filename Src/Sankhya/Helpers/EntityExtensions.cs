@@ -14,17 +14,17 @@ using Sankhya.ValueObjects;
 namespace Sankhya.Helpers;
 
 /// <summary>
-/// Entity extensions
+/// Entity extensions.
 /// </summary>
 public static class EntityExtensions
 {
     /// <summary>
-    /// A Type extension method that gets entity name for a IEntity implementation
+    /// A Type extension method that gets entity name for a IEntity implementation.
     /// </summary>
     /// <param name="type">The type to act on.</param>
     /// <returns>The entity name.</returns>
-    /// <exception cref="ArgumentNullException">type</exception>
-    /// <exception cref="InvalidOperationException"></exception>
+    /// <exception cref="ArgumentNullException">type.</exception>
+    /// <exception cref="InvalidOperationException">invalid type.</exception>
     public static string GetEntityName(this Type type)
     {
         if (type == null)
@@ -45,22 +45,25 @@ public static class EntityExtensions
             );
         }
 
-        return
-            !(
-                type.GetCustomAttributes(typeof(EntityAttribute), false)
-                is EntityAttribute[] entities
-            ) || !entities.Any()
-            ? type.Name.ToUpperInvariant()
-            : entities.Single().Name;
+        var finalType = type.BaseType ?? type.DeclaringType ?? type;
+
+        var attributeElement = finalType.GetCustomAttributes(typeof(EntityAttribute), true);
+
+        if (attributeElement is EntityAttribute[] elements && elements.Any())
+        {
+            return elements.Single().Name;
+        }
+
+        return type.Name.ToUpperInvariant();
     }
 
     /// <summary>
-    /// Get the application client of entity custom data attribute
+    /// Get the application client of entity custom data attribute.
     /// </summary>
     /// <param name="type">The type.</param>
     /// <returns>ApplicationClient.</returns>
-    /// <exception cref="ArgumentNullException">type</exception>
-    /// <exception cref="InvalidOperationException"></exception>
+    /// <exception cref="ArgumentNullException">Type is null.</exception>
+    /// <exception cref="InvalidOperationException">Type is not an IEntity.</exception>
     public static EntityCustomDataAttribute GetEntityCustomData(this Type type)
     {
         if (type == null)
@@ -93,7 +96,7 @@ public static class EntityExtensions
 
         if (entities.Length == 1 || entities.Distinct().Count() == 1)
         {
-            return entities.First();
+            return entities[0];
         }
 
         throw new InvalidOperationException(
@@ -109,8 +112,8 @@ public static class EntityExtensions
     /// <summary>
     /// An ServiceName extension method that gets the ServiceCategoryAttribute.Category of a field.
     /// </summary>
-    /// <param name="service">The service to get category</param>
-    /// <returns>The service category</returns>
+    /// <param name="service">The service to get category.</param>
+    /// <returns>The service category.</returns>
     public static ServiceAttribute GetService(this ServiceName service)
     {
         var info = typeof(ServiceName).GetField(service.ToString());
@@ -303,7 +306,6 @@ public static class EntityExtensions
     /// <param name="processDataOnDemand">The process data on demand.</param>
     /// <returns>IEnumerable&lt;T&gt;.</returns>
     public static IEnumerable<T> Query<T>(
-        // ReSharper disable once UnusedParameter.Global
         this T _,
         ILiteralCriteria criteria,
         TimeSpan timeout,
@@ -324,7 +326,7 @@ public static class EntityExtensions
     /// <param name="options">The options.</param>
     /// <param name="processDataOnDemand">The process data on demand.</param>
     /// <returns>IEnumerable&lt;T&gt;.</returns>
-    /// <exception cref="ArgumentNullException">options</exception>
+    /// <exception cref="ArgumentNullException">options.</exception>
     public static IEnumerable<T> Query<T>(
         this T entity,
         EntityQueryOptions options,
@@ -356,9 +358,8 @@ public static class EntityExtensions
     /// <param name="literalCriteria">The literal criteria.</param>
     /// <param name="processDataOnDemand">The process data on demand.</param>
     /// <returns>IEnumerable&lt;T&gt;.</returns>
-    /// <exception cref="ArgumentNullException">options</exception>
+    /// <exception cref="ArgumentNullException">options.</exception>
     public static IEnumerable<T> Query<T>(
-        // ReSharper disable once UnusedParameter.Global
         this T _,
         EntityQueryOptions options,
         ILiteralCriteria literalCriteria,
@@ -373,6 +374,39 @@ public static class EntityExtensions
 
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(literalCriteria, options);
+        return QueryInternal(
+            request,
+            options.Timeout,
+            processDataOnDemand,
+            options.MaxResults ?? -1
+        );
+    }
+
+    /// <summary>
+    /// Queries the specified criteria.
+    /// </summary>
+    /// <typeparam name="T">The type parameter.</typeparam>
+    /// <param name="_">The entity.</param>
+    /// <param name="criteria">The criteria.</param>
+    /// <param name="options">The options.</param>
+    /// <param name="processDataOnDemand">The process data on demand.</param>
+    /// <returns>IEnumerable&lt;T&gt;.</returns>
+    /// <exception cref="ArgumentNullException">options.</exception>
+    public static IEnumerable<T> Query<T>(
+        this T _,
+        ILiteralCriteria criteria,
+        EntityQueryOptions options,
+        Action<List<T>> processDataOnDemand = null
+    )
+        where T : class, IEntity, new()
+    {
+        if (options == null)
+        {
+            throw new ArgumentNullException(nameof(options));
+        }
+
+        var request = new ServiceRequest(ServiceName.CrudServiceFind);
+        request.Resolve<T>(criteria, options);
         return QueryInternal(
             request,
             options.Timeout,
@@ -401,40 +435,6 @@ public static class EntityExtensions
     }
 
     /// <summary>
-    /// Queries the specified criteria.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="_">The entity.</param>
-    /// <param name="criteria">The criteria.</param>
-    /// <param name="options">The options.</param>
-    /// <param name="processDataOnDemand">The process data on demand.</param>
-    /// <returns>IEnumerable&lt;T&gt;.</returns>
-    /// <exception cref="ArgumentNullException">options</exception>
-    public static IEnumerable<T> Query<T>(
-        // ReSharper disable once UnusedParameter.Global
-        this T _,
-        ILiteralCriteria criteria,
-        EntityQueryOptions options,
-        Action<List<T>> processDataOnDemand = null
-    )
-        where T : class, IEntity, new()
-    {
-        if (options == null)
-        {
-            throw new ArgumentNullException(nameof(options));
-        }
-
-        var request = new ServiceRequest(ServiceName.CrudServiceFind);
-        request.Resolve<T>(criteria, options);
-        return QueryInternal(
-            request,
-            options.Timeout,
-            processDataOnDemand,
-            options.MaxResults ?? -1
-        );
-    }
-
-    /// <summary>
     /// Updates an <see cref="IEntity" /> instance on demand. This operations does not occurs instantly,
     /// but when a stipulated quantity of items are added to a queue or when the OnDemandRequestWrapper
     /// of this type is finalized.
@@ -444,7 +444,7 @@ public static class EntityExtensions
     /// <remarks>This operation runs in a separated thread and may fail if one or more items in the queue fail to update (consistency validation, network error, business validation). If this occurs, the entire set state will be lost. The set size vary depending in the queue/throughput size or the items remaining in the queue when the instance is finalized.
     /// For example, if the queue has the length of 10 items, and are sent 1000 items, if one of this items are with error, 10 items will not persist the state but the other 990 will be persisted in a normal lifecycle.
     /// Remember that if a instance is finalized, the entire remaining items in the queue are sent at one time, this mean that in this example,
-    /// you can loose the 1000 items (if no requests has been done yet)</remarks>
+    /// you can loose the 1000 items (if no requests has been done yet).</remarks>
     public static void UpdateOnDemand<T>(this T entity)
         where T : class, IEntity, new() =>
         OnDemandRequestFactory.GetInstanceForService<T>(ServiceName.CrudServiceSave).Add(entity);
