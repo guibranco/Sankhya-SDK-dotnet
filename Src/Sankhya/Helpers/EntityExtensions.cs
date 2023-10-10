@@ -19,6 +19,22 @@ namespace Sankhya.Helpers;
 public static class EntityExtensions
 {
     /// <summary>
+    /// The interface entity type
+    /// </summary>
+    private static readonly Type InterfaceEntityType = typeof(IEntity);
+
+    /// <summary>
+    /// The entity attribute type
+    /// </summary>
+    private static readonly Type EntityAttributeType = typeof(EntityAttribute);
+
+    /// <summary>
+    /// The entity dynamic serialization type
+    /// </summary>
+    private static readonly Type EntityDynamicSerializationType =
+        typeof(EntityDynamicSerialization);
+
+    /// <summary>
     /// A Type extension method that gets entity name for a IEntity implementation.
     /// </summary>
     /// <param name="type">The type to act on.</param>
@@ -32,26 +48,46 @@ public static class EntityExtensions
             throw new ArgumentNullException(nameof(type));
         }
 
-        if (!typeof(IEntity).IsAssignableFrom(type) && typeof(EntityDynamicSerialization) != type)
+        if (!InterfaceEntityType.IsAssignableFrom(type) && type != EntityDynamicSerializationType)
         {
             throw new InvalidOperationException(
                 string.Format(
                     CultureInfo.CurrentCulture,
                     Resources.EntityExtensions_TypeMustInherits,
                     type.FullName,
-                    typeof(IEntity).FullName,
-                    typeof(EntityDynamicSerialization).FullName
+                    InterfaceEntityType.FullName,
+                    EntityDynamicSerializationType.FullName
                 )
             );
         }
 
-        var finalType = type.BaseType ?? type.DeclaringType ?? type;
-
-        var attributeElement = finalType.GetCustomAttributes(typeof(EntityAttribute), true);
-
-        if (attributeElement is EntityAttribute[] elements && elements.Any())
+        if (
+            type.GetCustomAttributes(EntityAttributeType, false)
+                is EntityAttribute[] attributeElement
+            && attributeElement.Any()
+        )
         {
-            return elements.Single().Name;
+            return attributeElement[0].Name;
+        }
+
+        if (
+            InterfaceEntityType.IsAssignableFrom(type.BaseType)
+            && type.BaseType?.GetCustomAttributes(EntityAttributeType, false)
+                is EntityAttribute[] attributeElementBase
+            && attributeElementBase.Any()
+        )
+        {
+            return attributeElementBase[0].Name;
+        }
+
+        if (
+            InterfaceEntityType.IsAssignableFrom(type.DeclaringType)
+            && type.DeclaringType?.GetCustomAttributes(EntityAttributeType, false)
+                is EntityAttribute[] attributeElementDeclaring
+            && attributeElementDeclaring.Any()
+        )
+        {
+            return attributeElementDeclaring[0].Name;
         }
 
         return type.Name.ToUpperInvariant();
@@ -71,15 +107,15 @@ public static class EntityExtensions
             throw new ArgumentNullException(nameof(type));
         }
 
-        if (!typeof(IEntity).IsAssignableFrom(type) && typeof(EntityDynamicSerialization) != type)
+        if (!typeof(IEntity).IsAssignableFrom(type) && EntityDynamicSerializationType != type)
         {
             throw new InvalidOperationException(
                 string.Format(
                     CultureInfo.CurrentCulture,
                     Resources.EntityExtensions_TypeMustInherits,
                     type.FullName,
-                    typeof(IEntity).FullName,
-                    typeof(EntityDynamicSerialization).FullName
+                    EntityAttributeType.FullName,
+                    EntityDynamicSerializationType.FullName
                 )
             );
         }

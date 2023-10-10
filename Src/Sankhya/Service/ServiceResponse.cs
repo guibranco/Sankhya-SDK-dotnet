@@ -371,7 +371,7 @@ public sealed class ServiceResponse : IXmlSerializable
                 return true;
             case XmlNodeType.Element:
                 ds.SetMember(elementName, node.ReadElementContentAsString());
-                break;
+                return true;
         }
 
         return false;
