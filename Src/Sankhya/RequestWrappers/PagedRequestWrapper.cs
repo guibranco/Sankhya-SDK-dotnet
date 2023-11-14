@@ -539,14 +539,16 @@ internal sealed class PagedRequestWrapper
             return;
         }
 
-        wrapper._onDemandTasks.Add(
-            Task.Factory.StartNew(
-                () => LoadOnDemandData(processOnDemandData, temp, stronglyTypedCollection, cts),
-                cts.Token,
-                TaskCreationOptions.AttachedToParent,
-                TaskScheduler.Current
-            )
-        );
+        wrapper
+            ._onDemandTasks
+            .Add(
+                Task.Factory.StartNew(
+                    () => LoadOnDemandData(processOnDemandData, temp, stronglyTypedCollection, cts),
+                    cts.Token,
+                    TaskCreationOptions.AttachedToParent,
+                    TaskScheduler.Current
+                )
+            );
     }
 
     /// <summary>

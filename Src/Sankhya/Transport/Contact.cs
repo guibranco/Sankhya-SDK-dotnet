@@ -187,9 +187,9 @@ public class Contact : IEntity, IEquatable<Contact>
                 (hashCode * 397)
                 ^ (
                     _documentCorporation != null
-                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
-                            _documentCorporation
-                        )
+                        ? StringComparer
+                            .InvariantCultureIgnoreCase
+                            .GetHashCode(_documentCorporation)
                         : 0
                 );
             hashCode = (hashCode * 397) ^ _documentCorporationSet.GetHashCode();

@@ -1,4 +1,5 @@
-﻿using CrispyWaffle.Composition;
+﻿using System.ComponentModel;
+using CrispyWaffle.Composition;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Log;
 using CrispyWaffle.Serialization;
@@ -9,7 +10,6 @@ using Sankhya.Properties;
 using Sankhya.Service;
 using Sankhya.Transport;
 using Sankhya.ValueObjects;
-using System.ComponentModel;
 
 namespace Sankhya.RequestWrappers;
 

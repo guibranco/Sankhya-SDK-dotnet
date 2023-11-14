@@ -216,9 +216,9 @@ public class Partner : IEntity, IEquatable<Partner>
                 (hashCode * 397)
                 ^ (
                     _emailAddressFiscalInvoice != null
-                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
-                            _emailAddressFiscalInvoice
-                        )
+                        ? StringComparer
+                            .InvariantCultureIgnoreCase
+                            .GetHashCode(_emailAddressFiscalInvoice)
                         : 0
                 );
             hashCode = (hashCode * 397) ^ _emailAddressFiscalInvoiceSet.GetHashCode();
@@ -300,9 +300,9 @@ public class Partner : IEntity, IEquatable<Partner>
                 (hashCode * 397)
                 ^ (
                     _telephoneExtensionLine != null
-                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
-                            _telephoneExtensionLine
-                        )
+                        ? StringComparer
+                            .InvariantCultureIgnoreCase
+                            .GetHashCode(_telephoneExtensionLine)
                         : 0
                 );
             hashCode = (hashCode * 397) ^ _telephoneExtensionLineSet.GetHashCode();

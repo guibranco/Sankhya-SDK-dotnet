@@ -174,9 +174,9 @@ public class Product : IEntity, IEquatable<Product>
                 (hashCode * 397)
                 ^ (
                     _codeVolumeComponent != null
-                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
-                            _codeVolumeComponent
-                        )
+                        ? StringComparer
+                            .InvariantCultureIgnoreCase
+                            .GetHashCode(_codeVolumeComponent)
                         : 0
                 );
             hashCode = (hashCode * 397) ^ _codeVolumeComponentSet.GetHashCode();

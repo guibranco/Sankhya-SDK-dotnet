@@ -224,10 +224,9 @@ public static class ServiceRequestExtensions
     {
         result.Fields.Add(new() { Name = model.PropertyName });
 
-        var shouldSerializePropertyName = propertyInfo.Name.EndsWith(
-            @"Internal",
-            StringComparison.OrdinalIgnoreCase
-        )
+        var shouldSerializePropertyName = propertyInfo
+            .Name
+            .EndsWith(@"Internal", StringComparison.OrdinalIgnoreCase)
             ? propertyInfo.Name.Substring(0, propertyInfo.Name.Length - 8)
             : propertyInfo.Name;
 
@@ -314,9 +313,9 @@ public static class ServiceRequestExtensions
         ParsePropertyModel model
     )
     {
-        var secondLevel = EntityValidation.ReferenceFieldsSecondLevelPattern.IsMatch(
-            model.PropertyName
-        );
+        var secondLevel = EntityValidation
+            .ReferenceFieldsSecondLevelPattern
+            .IsMatch(model.PropertyName);
         var match = secondLevel
             ? EntityValidation.ReferenceFieldsSecondLevelPattern.Match(model.PropertyName)
             : EntityValidation.ReferenceFieldsFirstLevelPattern.Match(model.PropertyName);
@@ -417,9 +416,9 @@ public static class ServiceRequestExtensions
 
         foreach (var criteria in innerResult.Criteria)
         {
-            result.Criteria.Add(
-                new() { Name = $@"{innerName}->{criteria.Name}", Value = criteria.Value }
-            );
+            result
+                .Criteria
+                .Add(new() { Name = $@"{innerName}->{criteria.Name}", Value = criteria.Value });
         }
     }
 
@@ -529,7 +528,8 @@ public static class ServiceRequestExtensions
                     return;
                 }
 
-                request.RequestBody.Entity.ReferencesFetch = result.References
+                request.RequestBody.Entity.ReferencesFetch = result
+                    .References
                     .Select(
                         reference =>
                             new ReferenceFetch
@@ -567,17 +567,22 @@ public static class ServiceRequestExtensions
                 }
 
                 entities.AddRange(
-                    result.References.Select(
-                        reference =>
-                            new Entity
-                            {
-                                Path = reference.Key,
-                                Fieldset = new()
+                    result
+                        .References
+                        .Select(
+                            reference =>
+                                new Entity
                                 {
-                                    List = string.Join(@",", reference.Value.Select(v => v.Name))
+                                    Path = reference.Key,
+                                    Fieldset = new()
+                                    {
+                                        List = string.Join(
+                                            @",",
+                                            reference.Value.Select(v => v.Name)
+                                        )
+                                    }
                                 }
-                            }
-                    )
+                        )
                 );
                 request.RequestBody.DataSet.Entities = entities.ToArray();
                 break;
@@ -651,7 +656,8 @@ public static class ServiceRequestExtensions
                     return;
                 }
 
-                request.RequestBody.Entity.ReferencesFetch = result.References
+                request.RequestBody.Entity.ReferencesFetch = result
+                    .References
                     .Select(
                         reference =>
                             new ReferenceFetch
@@ -699,17 +705,22 @@ public static class ServiceRequestExtensions
                 }
 
                 entities.AddRange(
-                    result.References.Select(
-                        reference =>
-                            new Entity
-                            {
-                                Path = reference.Key,
-                                Fieldset = new()
+                    result
+                        .References
+                        .Select(
+                            reference =>
+                                new Entity
                                 {
-                                    List = string.Join(@",", reference.Value.Select(v => v.Name))
+                                    Path = reference.Key,
+                                    Fieldset = new()
+                                    {
+                                        List = string.Join(
+                                            @",",
+                                            reference.Value.Select(v => v.Name)
+                                        )
+                                    }
                                 }
-                            }
-                    )
+                        )
                 );
                 request.RequestBody.DataSet.Entities = entities.ToArray();
 
@@ -736,20 +747,31 @@ public static class ServiceRequestExtensions
                         new DataRow { Keys = new(), LocalFields = new() }
                     }
                 };
-                result.Keys.ForEach(
-                    k =>
-                        request.RequestBody.DataSet.DataRows
-                            .Single()
-                            .Keys.SetMember(k.Name, k.Value)
-                );
-                result.FieldValues
+                result
+                    .Keys
+                    .ForEach(
+                        k =>
+                            request
+                                .RequestBody
+                                .DataSet
+                                .DataRows
+                                .Single()
+                                .Keys
+                                .SetMember(k.Name, k.Value)
+                    );
+                result
+                    .FieldValues
                     .Except(result.Keys)
                     .ToList()
                     .ForEach(
                         f =>
-                            request.RequestBody.DataSet.DataRows
+                            request
+                                .RequestBody
+                                .DataSet
+                                .DataRows
                                 .Single()
-                                .LocalFields.SetMember(f.Name, f.Value)
+                                .LocalFields
+                                .SetMember(f.Name, f.Value)
                     );
 
                 break;
@@ -765,9 +787,9 @@ public static class ServiceRequestExtensions
                         new EntityDynamicSerialization(DynamicSerializationOption.Uppercase)
                     }
                 };
-                result.Keys.ForEach(
-                    k => request.RequestBody.Entity.Ids[0].SetMember(k.Name, k.Value)
-                );
+                result
+                    .Keys
+                    .ForEach(k => request.RequestBody.Entity.Ids[0].SetMember(k.Name, k.Value));
 
                 break;
 
@@ -828,7 +850,8 @@ public static class ServiceRequestExtensions
                     }
 
                     dataRow.LocalFields = new();
-                    result.FieldValues
+                    result
+                        .FieldValues
                         .Except(result.Keys)
                         .ToList()
                         .ForEach(v => dataRow.LocalFields.SetMember(v.Name, v.Value));
@@ -977,7 +1000,10 @@ public static class ServiceRequestExtensions
 
                 if (options.IncludeReferences.HasValue && !options.IncludeReferences.Value)
                 {
-                    request.RequestBody.DataSet.Entities = request.RequestBody.DataSet.Entities
+                    request.RequestBody.DataSet.Entities = request
+                        .RequestBody
+                        .DataSet
+                        .Entities
                         .Where(e => string.IsNullOrWhiteSpace(e.Path))
                         .ToArray();
                 }
@@ -1057,7 +1083,10 @@ public static class ServiceRequestExtensions
 
         if (options.IncludeReferences.HasValue && !options.IncludeReferences.Value)
         {
-            request.RequestBody.DataSet.Entities = request.RequestBody.DataSet.Entities
+            request.RequestBody.DataSet.Entities = request
+                .RequestBody
+                .DataSet
+                .Entities
                 .Where(e => string.IsNullOrWhiteSpace(e.Path))
                 .ToArray();
         }
