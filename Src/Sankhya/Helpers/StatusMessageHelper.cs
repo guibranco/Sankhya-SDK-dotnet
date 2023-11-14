@@ -1,9 +1,9 @@
-﻿using CrispyWaffle.Extensions;
+﻿using System.Text.RegularExpressions;
+using CrispyWaffle.Extensions;
 using Sankhya.Enums;
 using Sankhya.GoodPractices;
 using Sankhya.Service;
 using Sankhya.Validations;
-using System.Text.RegularExpressions;
 
 namespace Sankhya.Helpers;
 
@@ -177,9 +177,11 @@ internal static class StatusMessageHelper
         if (EntityValidation.PropertyValueErrorPattern.IsMatch(statusMessage))
         {
             throw new ServiceRequestPropertyValueException(
-                EntityValidation.PropertyValueErrorPattern.Match(statusMessage).Groups[
-                    @"propertyName"
-                ].Value,
+                EntityValidation
+                    .PropertyValueErrorPattern
+                    .Match(statusMessage)
+                    .Groups[@"propertyName"]
+                    .Value,
                 request
             );
         }
@@ -187,9 +189,11 @@ internal static class StatusMessageHelper
         if (EntityValidation.PropertyNameErrorPattern.IsMatch(statusMessage))
         {
             throw new ServiceRequestPropertyNameException(
-                EntityValidation.PropertyNameErrorPattern.Match(statusMessage).Groups[
-                    @"propertyName"
-                ].Value,
+                EntityValidation
+                    .PropertyNameErrorPattern
+                    .Match(statusMessage)
+                    .Groups[@"propertyName"]
+                    .Value,
                 request
             );
         }
@@ -197,9 +201,11 @@ internal static class StatusMessageHelper
         if (EntityValidation.PropertyNameInvalidErrorPattern.IsMatch(statusMessage))
         {
             throw new ServiceRequestPropertyNameException(
-                EntityValidation.PropertyNameInvalidErrorPattern.Match(statusMessage).Groups[
-                    @"propertyName"
-                ].Value,
+                EntityValidation
+                    .PropertyNameInvalidErrorPattern
+                    .Match(statusMessage)
+                    .Groups[@"propertyName"]
+                    .Value,
                 request
             );
         }
