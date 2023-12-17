@@ -1,15 +1,12 @@
-﻿// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : GuilhermeStracini
-// Created          : 10-07-2023
+﻿// *********************************************************************** Assembly : Sankhya Author
+// : GuilhermeStracini Created : 10-07-2023
 //
-// Last Modified By : GuilhermeStracini
-// Last Modified On : 10-08-2023
-// ***********************************************************************
+// Last Modified By : GuilhermeStracini Last Modified On : 10-08-2023 ***********************************************************************
 // <copyright file="SankhyaWrapper.cs" company="Guilherme Branco Stracini">
 //     © 2023 Guilherme Branco Stracini. All rights reserved.
 // </copyright>
-// <summary></summary>
+// <summary>
+// </summary>
 // ***********************************************************************
 
 using System.Collections.Concurrent;
@@ -149,14 +146,17 @@ internal class SankhyaWrapper
                 Environment = ServiceEnvironment.Production;
                 DatabaseName = @"SANKHYA_PRODUCAO";
                 break;
+
             case 8280:
                 Environment = ServiceEnvironment.Sandbox;
                 DatabaseName = @"SANKHYA_HOMOLOGACAO";
                 break;
+
             case 8380:
                 Environment = ServiceEnvironment.Training;
                 DatabaseName = @"SANKHYA_SANDBOX";
                 break;
+
             default:
                 Environment = ServiceEnvironment.None;
                 break;
@@ -320,7 +320,7 @@ internal class SankhyaWrapper
 
 #if NETSTANDARD2_0
         var xmlStarted = body.IndexOf("<?xml version=", StringComparison.OrdinalIgnoreCase) >= 0;
-#elif NETSTANDARD2_1_OR_GREATER
+#elif NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
         var xmlStarted = body.Contains("<?xml version=", StringComparison.OrdinalIgnoreCase);
 #endif
 
@@ -367,7 +367,9 @@ internal class SankhyaWrapper
     /// <param name="serviceName">Name of the service.</param>
     /// <param name="retryData">The retry data.</param>
     /// <returns>ServiceResponse.</returns>
-    /// <exception cref="ServiceRequestInvalidAuthorizationException">Throws when invalid authrorization is returned by Sankhya.</exception>
+    /// <exception cref="ServiceRequestInvalidAuthorizationException">
+    /// Throws when invalid authrorization is returned by Sankhya.
+    /// </exception>
     private ServiceResponse ServiceInvokerInternal(
         ServiceRequest request,
         ServiceName serviceName,
@@ -785,7 +787,9 @@ internal class SankhyaWrapper
     /// Service invoker as an asynchronous operation.
     /// </summary>
     /// <param name="request">The request.</param>
-    /// <returns>A Task&lt;Sankhya.Service.ServiceResponse&gt; representing the asynchronous operation.</returns>
+    /// <returns>
+    /// A Task&lt;Sankhya.Service.ServiceResponse&gt; representing the asynchronous operation.
+    /// </returns>
     public async Task<ServiceResponse> ServiceInvokerAsync(ServiceRequest request)
     {
         try
@@ -1156,7 +1160,9 @@ internal class SankhyaWrapper
     /// Get file as an asynchronous operation.
     /// </summary>
     /// <param name="key">The key.</param>
-    /// <returns>A Task&lt;Sankhya.ValueObjects.ServiceFile&gt; representing the asynchronous operation.</returns>
+    /// <returns>
+    /// A Task&lt;Sankhya.ValueObjects.ServiceFile&gt; representing the asynchronous operation.
+    /// </returns>
     public async Task<ServiceFile> GetFileAsync(string key)
     {
         try
@@ -1313,7 +1319,9 @@ internal class SankhyaWrapper
     /// </summary>
     /// <param name="entity">The entity.</param>
     /// <param name="keys">The keys.</param>
-    /// <returns>A Task&lt;Sankhya.ValueObjects.ServiceFile&gt; representing the asynchronous operation.</returns>
+    /// <returns>
+    /// A Task&lt;Sankhya.ValueObjects.ServiceFile&gt; representing the asynchronous operation.
+    /// </returns>
     public async Task<ServiceFile> GetImageAsync(string entity, Dictionary<string, object> keys)
     {
         try
