@@ -108,9 +108,9 @@ public class Address : IEntity, IEquatable<Address>
                 (hashCode * 397)
                 ^ (
                     _descriptionCorreios != null
-                        ? StringComparer
-                            .InvariantCultureIgnoreCase
-                            .GetHashCode(_descriptionCorreios)
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
+                            _descriptionCorreios
+                        )
                         : 0
                 );
             hashCode = (hashCode * 397) ^ _descriptionCorreiosSet.GetHashCode();
