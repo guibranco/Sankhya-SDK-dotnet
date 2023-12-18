@@ -178,8 +178,7 @@ internal static class StatusMessageHelper
         {
             throw new ServiceRequestPropertyValueException(
                 EntityValidation
-                    .PropertyValueErrorPattern
-                    .Match(statusMessage)
+                    .PropertyValueErrorPattern.Match(statusMessage)
                     .Groups[@"propertyName"]
                     .Value,
                 request
@@ -190,8 +189,7 @@ internal static class StatusMessageHelper
         {
             throw new ServiceRequestPropertyNameException(
                 EntityValidation
-                    .PropertyNameErrorPattern
-                    .Match(statusMessage)
+                    .PropertyNameErrorPattern.Match(statusMessage)
                     .Groups[@"propertyName"]
                     .Value,
                 request
@@ -202,8 +200,7 @@ internal static class StatusMessageHelper
         {
             throw new ServiceRequestPropertyNameException(
                 EntityValidation
-                    .PropertyNameInvalidErrorPattern
-                    .Match(statusMessage)
+                    .PropertyNameInvalidErrorPattern.Match(statusMessage)
                     .Groups[@"propertyName"]
                     .Value,
                 request

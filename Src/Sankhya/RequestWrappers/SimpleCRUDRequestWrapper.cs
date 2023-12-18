@@ -78,10 +78,7 @@ public static class SimpleCrudRequestWrapper
         if (options.IncludeReferences.HasValue && !options.IncludeReferences.Value)
         {
             request.RequestBody.DataSet.Entities = request
-                .RequestBody
-                .DataSet
-                .Entities
-                .Where(e => string.IsNullOrWhiteSpace(e.Path))
+                .RequestBody.DataSet.Entities.Where(e => string.IsNullOrWhiteSpace(e.Path))
                 .ToArray();
         }
 

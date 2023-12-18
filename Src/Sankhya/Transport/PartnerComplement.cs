@@ -130,9 +130,9 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
                 (hashCode * 397)
                 ^ (
                     _addressNumberDelivery != null
-                        ? StringComparer
-                            .InvariantCultureIgnoreCase
-                            .GetHashCode(_addressNumberDelivery)
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
+                            _addressNumberDelivery
+                        )
                         : 0
                 );
             hashCode = (hashCode * 397) ^ _addressNumberDeliverySet.GetHashCode();
@@ -140,9 +140,9 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
                 (hashCode * 397)
                 ^ (
                     _addressComplementDelivery != null
-                        ? StringComparer
-                            .InvariantCultureIgnoreCase
-                            .GetHashCode(_addressComplementDelivery)
+                        ? StringComparer.InvariantCultureIgnoreCase.GetHashCode(
+                            _addressComplementDelivery
+                        )
                         : 0
                 );
             hashCode = (hashCode * 397) ^ _addressComplementDeliverySet.GetHashCode();

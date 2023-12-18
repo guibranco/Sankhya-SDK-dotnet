@@ -1066,10 +1066,9 @@ public sealed class ServiceResponse : IXmlSerializable
         {
             writer.WriteAttributeString(
                 SankhyaConstants.TotalPages,
-                ResponseBody
-                    .CrudServiceProviderEntities
-                    .TotalPages
-                    .ToString(CultureInfo.InvariantCulture)
+                ResponseBody.CrudServiceProviderEntities.TotalPages.ToString(
+                    CultureInfo.InvariantCulture
+                )
             );
         }
 
