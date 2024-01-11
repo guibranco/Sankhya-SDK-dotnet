@@ -32,7 +32,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [guibranco/Sankhya-SDK-dotnet](https://github.com/guibranco/Sankhya-SDK-dotnet)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|12<br/>Tools used|12/14/23 <br/>Report generated|
+|12<br/>Tools used|01/11/24 <br/>Report generated|
 |------|------|
 </div>
 
@@ -122,8 +122,8 @@ Full tech stack [here](/techstack.md)
 |[Microsoft.AspNet.WebApi.Client](https://www.nuget.org/Microsoft.AspNet.WebApi.Client)|v6.0.0|10/26/23|Guilherme Branco Stracini |Apache-2.0|N/A|
 |[Microsoft.CSharp](https://www.nuget.org/Microsoft.CSharp)|v4.7.0|10/26/23|Guilherme Branco Stracini |MIT|N/A|
 |[Newtonsoft.Json](https://www.nuget.org/Newtonsoft.Json)|v13.0.3|10/26/23|Guilherme Branco Stracini |MIT|N/A|
-|[System.Text.RegularExpressions](https://www.nuget.org/System.Text.RegularExpressions)|v4.3.1|12/11/23|dependabot[bot] |N/A|N/A|
-|[System.Threading.Tasks.Extensions](https://www.nuget.org/System.Threading.Tasks.Extensions)|v4.5.4|12/11/23|dependabot[bot] |N/A|N/A|
+|[System.Text.RegularExpressions](https://www.nuget.org/System.Text.RegularExpressions)|v4.3.1|01/01/24|dependabot[bot] |N/A|N/A|
+|[System.Threading.Tasks.Extensions](https://www.nuget.org/System.Threading.Tasks.Extensions)|v4.5.4|01/01/24|dependabot[bot] |N/A|N/A|
 
 <br/>
 <div align='center'>
