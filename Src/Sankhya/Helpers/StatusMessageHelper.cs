@@ -165,8 +165,8 @@ internal static class StatusMessageHelper
         Match match;
         var statusMessage = response.StatusMessage.Value;
 
-        var kvp = CommonMessages.FirstOrDefault(
-            item => statusMessage.IndexOf(item.Key, StringComparison.OrdinalIgnoreCase) != -1
+        var kvp = CommonMessages.FirstOrDefault(item =>
+            statusMessage.IndexOf(item.Key, StringComparison.OrdinalIgnoreCase) != -1
         );
 
         if (kvp.Value != null)

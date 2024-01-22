@@ -507,9 +507,8 @@ internal class SankhyaWrapper
             case ServiceRequestInvalidAuthorizationException _:
 
                 if (
-                    InvalidSessionIds.Exists(
-                        sessionId =>
-                            sessionId.Equals(_sessionId, StringComparison.OrdinalIgnoreCase)
+                    InvalidSessionIds.Exists(sessionId =>
+                        sessionId.Equals(_sessionId, StringComparison.OrdinalIgnoreCase)
                     )
                 )
                 {
