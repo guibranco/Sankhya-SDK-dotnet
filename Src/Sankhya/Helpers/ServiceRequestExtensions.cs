@@ -439,8 +439,8 @@ public static class ServiceRequestExtensions
         if (
             !model.IsIgnored
             && (
-                !ignoredFields.Any(
-                    f => f.Equals(model.PropertyName, StringComparison.OrdinalIgnoreCase)
+                !ignoredFields.Any(f =>
+                    f.Equals(model.PropertyName, StringComparison.OrdinalIgnoreCase)
                 ) || propertyInfo.Name.EndsWith(@"Internal", StringComparison.OrdinalIgnoreCase)
             )
         )
@@ -530,14 +530,11 @@ public static class ServiceRequestExtensions
                 }
 
                 request.RequestBody.Entity.ReferencesFetch = result
-                    .References.Select(
-                        reference =>
-                            new ReferenceFetch
-                            {
-                                Field = reference.Value.ToArray(),
-                                Name = reference.Key
-                            }
-                    )
+                    .References.Select(reference => new ReferenceFetch
+                    {
+                        Field = reference.Value.ToArray(),
+                        Name = reference.Key
+                    })
                     .ToArray();
                 break;
 
@@ -567,17 +564,14 @@ public static class ServiceRequestExtensions
                 }
 
                 entities.AddRange(
-                    result.References.Select(
-                        reference =>
-                            new Entity
-                            {
-                                Path = reference.Key,
-                                Fieldset = new()
-                                {
-                                    List = string.Join(@",", reference.Value.Select(v => v.Name))
-                                }
-                            }
-                    )
+                    result.References.Select(reference => new Entity
+                    {
+                        Path = reference.Key,
+                        Fieldset = new()
+                        {
+                            List = string.Join(@",", reference.Value.Select(v => v.Name))
+                        }
+                    })
                 );
                 request.RequestBody.DataSet.Entities = entities.ToArray();
                 break;
@@ -652,14 +646,11 @@ public static class ServiceRequestExtensions
                 }
 
                 request.RequestBody.Entity.ReferencesFetch = result
-                    .References.Select(
-                        reference =>
-                            new ReferenceFetch
-                            {
-                                Field = reference.Value.ToArray(),
-                                Name = reference.Key
-                            }
-                    )
+                    .References.Select(reference => new ReferenceFetch
+                    {
+                        Field = reference.Value.ToArray(),
+                        Name = reference.Key
+                    })
                     .ToArray();
 
                 break;
@@ -699,17 +690,14 @@ public static class ServiceRequestExtensions
                 }
 
                 entities.AddRange(
-                    result.References.Select(
-                        reference =>
-                            new Entity
-                            {
-                                Path = reference.Key,
-                                Fieldset = new()
-                                {
-                                    List = string.Join(@",", reference.Value.Select(v => v.Name))
-                                }
-                            }
-                    )
+                    result.References.Select(reference => new Entity
+                    {
+                        Path = reference.Key,
+                        Fieldset = new()
+                        {
+                            List = string.Join(@",", reference.Value.Select(v => v.Name))
+                        }
+                    })
                 );
                 request.RequestBody.DataSet.Entities = entities.ToArray();
 
@@ -736,20 +724,16 @@ public static class ServiceRequestExtensions
                         new DataRow { Keys = new(), LocalFields = new() }
                     }
                 };
-                result.Keys.ForEach(
-                    k =>
-                        request
-                            .RequestBody.DataSet.DataRows.Single()
-                            .Keys.SetMember(k.Name, k.Value)
+                result.Keys.ForEach(k =>
+                    request.RequestBody.DataSet.DataRows.Single().Keys.SetMember(k.Name, k.Value)
                 );
                 result
                     .FieldValues.Except(result.Keys)
                     .ToList()
-                    .ForEach(
-                        f =>
-                            request
-                                .RequestBody.DataSet.DataRows.Single()
-                                .LocalFields.SetMember(f.Name, f.Value)
+                    .ForEach(f =>
+                        request
+                            .RequestBody.DataSet.DataRows.Single()
+                            .LocalFields.SetMember(f.Name, f.Value)
                     );
 
                 break;
@@ -765,8 +749,8 @@ public static class ServiceRequestExtensions
                         new EntityDynamicSerialization(DynamicSerializationOption.Uppercase)
                     }
                 };
-                result.Keys.ForEach(
-                    k => request.RequestBody.Entity.Ids[0].SetMember(k.Name, k.Value)
+                result.Keys.ForEach(k =>
+                    request.RequestBody.Entity.Ids[0].SetMember(k.Name, k.Value)
                 );
 
                 break;

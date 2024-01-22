@@ -273,8 +273,8 @@ public static class KnowServicesRequestWrapper
         var items = invoiceItems as InvoiceItem[] ?? invoiceItems.ToArray();
         var first = items[0];
         if (
-            !items.All(
-                item => item.SingleNumber.HasValue && item.SingleNumber == first.SingleNumber
+            !items.All(item =>
+                item.SingleNumber.HasValue && item.SingleNumber == first.SingleNumber
             )
         )
         {
@@ -708,21 +708,20 @@ public static class KnowServicesRequestWrapper
     {
         var financialNumbersList = financialNumbers as List<int> ?? financialNumbers.ToList();
         foreach (
-            var request in financialNumbersList.Select(
-                financialNumber =>
-                    new ServiceRequest(ServiceName.FinancialReversal)
-                    {
-                        RequestBody =
-                        {
-                            Param = new()
-                            {
-                                FinancialNumber = financialNumber,
-                                Recompose = @"undefined",
-                                RevertAllAnticipation = @"undefined"
-                            }
-                        }
-                    }
+            var request in financialNumbersList.Select(financialNumber => new ServiceRequest(
+                ServiceName.FinancialReversal
             )
+            {
+                RequestBody =
+                {
+                    Param = new()
+                    {
+                        FinancialNumber = financialNumber,
+                        Recompose = @"undefined",
+                        RevertAllAnticipation = @"undefined"
+                    }
+                }
+            })
         )
         {
             LogConsumer.Info(
