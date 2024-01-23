@@ -2,5 +2,5 @@
 
 internal interface IRequestExceptionHandler
 {
-    bool Handle(RequestExceptionDetails details, RequestRetryData retryOptions);
+    bool Handle(RequestExceptionDetails details, RequestRetryData retryData);
 }
