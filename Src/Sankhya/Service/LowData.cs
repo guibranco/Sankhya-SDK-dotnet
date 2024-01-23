@@ -3,7 +3,6 @@ using System.Xml.Serialization;
 
 namespace Sankhya.Service;
 
-//TODO: issue #60
 /// <summary>
 /// Class LowData. This class cannot be inherited.
 /// </summary>
