@@ -20,7 +20,6 @@ namespace Sankhya.Service;
 /// <seealso cref="IXmlSerializable" />
 [Serializer]
 [XmlRoot(ElementName = "serviceResponse")]
-// TODO: convert XML fields names to constants
 public sealed class ServiceResponse : IXmlSerializable
 {
     /// <summary>
