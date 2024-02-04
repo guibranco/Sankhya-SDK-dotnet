@@ -71,4 +71,16 @@ internal static class SankhyaConstants
     public const string Name = "nome";
 
     public const string Status = "status";
+
+    public const string Rmd = "_rmd";
+
+    public const string PendingPrinting = "pendingPrinting";
+
+    public const string ErrorCode = "errorCode";
+
+    public const string ErrorLevel = "errorLevel";
+
+    public const string TransactionId = "transactionId";
+
+    public const string TrueOrFalse = "true|false";
 }
