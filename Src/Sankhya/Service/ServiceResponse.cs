@@ -361,10 +361,11 @@ public sealed class ServiceResponse : IXmlSerializable
 
         switch (node.NodeType)
         {
-            case XmlNodeType.EndElement when elementName
-                is SankhyaConstants.EntityPtBr
-                or SankhyaConstants.EntityEn
-                or SankhyaConstants.PrimaryKey:
+            case XmlNodeType.EndElement
+                when elementName
+                    is SankhyaConstants.EntityPtBr
+                        or SankhyaConstants.EntityEn
+                        or SankhyaConstants.PrimaryKey:
                 node.Read();
                 return false;
             case XmlNodeType.Element when node.IsEmptyElement:
@@ -490,7 +491,10 @@ public sealed class ServiceResponse : IXmlSerializable
 
         while (!reader.EOF)
         {
-            if (reader.LocalName == SankhyaConstants.ResponseBody || reader.LocalName == SankhyaConstants.ServiceResponse)
+            if (
+                reader.LocalName == SankhyaConstants.ResponseBody
+                || reader.LocalName == SankhyaConstants.ServiceResponse
+            )
             {
                 reader.Read();
             }
