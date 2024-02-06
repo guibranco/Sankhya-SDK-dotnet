@@ -19,7 +19,7 @@ namespace Sankhya.Service;
 /// </summary>
 /// <seealso cref="IXmlSerializable" />
 [Serializer]
-[XmlRoot(ElementName = "serviceResponse")]
+[XmlRoot(ElementName = SankhyaConstants.ServiceResponse)]
 public sealed class ServiceResponse : IXmlSerializable
 {
     /// <summary>
@@ -121,7 +121,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// Gets or sets the service internal.
     /// </summary>
     /// <value>The service internal.</value>
-    [XmlAttribute("serviceName")]
+    [XmlAttribute(SankhyaConstants.ServiceName)]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ServiceInternal
@@ -153,7 +153,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// Gets or sets the pending printing internal.
     /// </summary>
     /// <value>The pending printing internal.</value>
-    [XmlAttribute("pendingPrinting")]
+    [XmlAttribute(SankhyaConstants.PendingPrinting)]
     [Browsable(true)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string PendingPrintingInternal
@@ -161,7 +161,7 @@ public sealed class ServiceResponse : IXmlSerializable
         get => _pendingPrinting.ToString().ToLowerInvariant();
         set
         {
-            _pendingPrinting = value.ToBoolean(@"true|false");
+            _pendingPrinting = value.ToBoolean(SankhyaConstants.TrueOrFalse);
             _pendingPrintingSet = true;
         }
     }
@@ -170,7 +170,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// Gets or sets the transaction identifier.
     /// </summary>
     /// <value>The transaction identifier.</value>
-    [XmlAttribute("transactionId")]
+    [XmlAttribute(SankhyaConstants.TransactionId)]
     public Guid TransactionId
     {
         get => _transactionId;
@@ -185,7 +185,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// Gets or sets the status.
     /// </summary>
     /// <value>The status.</value>
-    [XmlAttribute("status")]
+    [XmlAttribute(SankhyaConstants.Status)]
     public ServiceResponseStatus Status
     {
         get => _status;
@@ -200,7 +200,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// Gets or sets the error code.
     /// </summary>
     /// <value>The error code.</value>
-    [XmlAttribute("errorCode")]
+    [XmlAttribute(SankhyaConstants.ErrorCode)]
     public int ErrorCode
     {
         get => _errorCode;
@@ -215,7 +215,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// Gets or sets the error level.
     /// </summary>
     /// <value>The error level.</value>
-    [XmlAttribute("errorLevel")]
+    [XmlAttribute(SankhyaConstants.ErrorLevel)]
     public int ErrorLevel
     {
         get => _errorLevel;
@@ -230,7 +230,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// Gets or sets the status message.
     /// </summary>
     /// <value>The status message.</value>
-    [XmlElement("statusMessage")]
+    [XmlElement(SankhyaConstants.StatusMessage)]
     public StatusMessage StatusMessage
     {
         get => _statusMessage;
@@ -245,7 +245,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// Gets or sets the response body.
     /// </summary>
     /// <value>The response body.</value>
-    [XmlElement(ElementName = "responseBody")]
+    [XmlElement(ElementName = SankhyaConstants.ResponseBody)]
     public ResponseBody ResponseBody
     {
         get => _responseBody;
@@ -353,7 +353,7 @@ public sealed class ServiceResponse : IXmlSerializable
     private static bool ParseDynamic(XmlReader node, EntityDynamicSerialization ds)
     {
         var elementName = node.LocalName;
-        if (elementName == @"_rmd")
+        if (elementName == SankhyaConstants.Rmd)
         {
             node.ReadOuterXml();
             return true;
@@ -361,7 +361,10 @@ public sealed class ServiceResponse : IXmlSerializable
 
         switch (node.NodeType)
         {
-            case XmlNodeType.EndElement when elementName is @"entidade" or @"entity" or @"pk":
+            case XmlNodeType.EndElement when elementName
+                is SankhyaConstants.EntityPtBr
+                or SankhyaConstants.EntityEn
+                or SankhyaConstants.PrimaryKey:
                 node.Read();
                 return false;
             case XmlNodeType.Element when node.IsEmptyElement:
@@ -487,7 +490,7 @@ public sealed class ServiceResponse : IXmlSerializable
 
         while (!reader.EOF)
         {
-            if (reader.LocalName == "responseBody" || reader.LocalName == "serviceResponse")
+            if (reader.LocalName == SankhyaConstants.ResponseBody || reader.LocalName == SankhyaConstants.ServiceResponse)
             {
                 reader.Read();
             }
@@ -692,24 +695,24 @@ public sealed class ServiceResponse : IXmlSerializable
     /// <param name="reader">The reader.</param>
     private void ParseAttributes(XmlReader reader)
     {
-        ServiceInternal = reader.GetAttribute("serviceName");
-        Status = (ServiceResponseStatus)reader.GetAttribute("status").ToInt32();
-        if (reader.GetAttribute("pendingPrinting") != null)
+        ServiceInternal = reader.GetAttribute(SankhyaConstants.ServiceName);
+        Status = (ServiceResponseStatus)reader.GetAttribute(SankhyaConstants.Status).ToInt32();
+        if (reader.GetAttribute(SankhyaConstants.PendingPrinting) != null)
         {
-            PendingPrintingInternal = reader.GetAttribute("pendingPrinting");
+            PendingPrintingInternal = reader.GetAttribute(SankhyaConstants.PendingPrinting);
         }
 
-        if (reader.GetAttribute("errorCode") != null)
+        if (reader.GetAttribute(SankhyaConstants.ErrorCode) != null)
         {
-            ErrorCode = reader.GetAttribute("errorCode").ToInt32();
+            ErrorCode = reader.GetAttribute(SankhyaConstants.ErrorCode).ToInt32();
         }
 
-        if (reader.GetAttribute("errorLevel") != null)
+        if (reader.GetAttribute(SankhyaConstants.ErrorLevel) != null)
         {
-            ErrorLevel = reader.GetAttribute("errorLevel").ToInt32();
+            ErrorLevel = reader.GetAttribute(SankhyaConstants.ErrorLevel).ToInt32();
         }
 
-        var transactionId = reader.GetAttribute("transactionId");
+        var transactionId = reader.GetAttribute(SankhyaConstants.TransactionId);
         if (
             !string.IsNullOrWhiteSpace(transactionId)
             && Guid.TryParse(transactionId, out var transactionIdGuid)
@@ -834,7 +837,7 @@ public sealed class ServiceResponse : IXmlSerializable
             return;
         }
 
-        writer.WriteStartElement("codUsuLogado");
+        writer.WriteStartElement(SankhyaConstants.CodeUserLoggedId);
         writer.WriteValue(ResponseBody.CodeUserLoggedIn);
         writer.WriteEndElement();
     }
@@ -850,7 +853,7 @@ public sealed class ServiceResponse : IXmlSerializable
             return;
         }
 
-        writer.WriteStartElement("idusu");
+        writer.WriteStartElement(SankhyaConstants.CodeUser);
         writer.WriteValue(ResponseBody.CodeUserInternal);
         writer.WriteEndElement();
     }
@@ -866,7 +869,7 @@ public sealed class ServiceResponse : IXmlSerializable
             return;
         }
 
-        writer.WriteStartElement("callID");
+        writer.WriteStartElement(SankhyaConstants.CallId);
         writer.WriteValue(ResponseBody.CallId);
         writer.WriteEndElement();
     }
@@ -882,7 +885,7 @@ public sealed class ServiceResponse : IXmlSerializable
             return;
         }
 
-        writer.WriteStartElement("jsessionId");
+        writer.WriteStartElement(SankhyaConstants.JSessionId);
         writer.WriteValue(ResponseBody.JSessionId);
         writer.WriteEndElement();
     }
@@ -898,7 +901,7 @@ public sealed class ServiceResponse : IXmlSerializable
             return;
         }
 
-        writer.WriteStartElement("pk");
+        writer.WriteStartElement(SankhyaConstants.PrimaryKey);
         WriteDynamic(writer, ResponseBody.PrimaryKey);
         writer.WriteEndElement();
     }
@@ -940,7 +943,7 @@ public sealed class ServiceResponse : IXmlSerializable
             return;
         }
 
-        writer.WriteStartElement("clientEvents");
+        writer.WriteStartElement(SankhyaConstants.ClientEvents);
         XmlDocument xml = ResponseBody.ClientEvents.GetSerializer();
         if (xml.DocumentElement != null)
         {
@@ -1129,18 +1132,18 @@ public sealed class ServiceResponse : IXmlSerializable
         writer.WriteAttributeString(SankhyaConstants.Status, Status.ToString());
         if (_pendingPrintingSet)
         {
-            writer.WriteAttributeString("pendingPrinting", PendingPrintingInternal);
+            writer.WriteAttributeString(SankhyaConstants.PendingPrinting, PendingPrintingInternal);
         }
 
         if (_transactionIdSet)
         {
-            writer.WriteAttributeString("transactionId", TransactionId.ToString());
+            writer.WriteAttributeString(SankhyaConstants.TransactionId, TransactionId.ToString());
         }
 
         if (_errorCodeSet)
         {
             writer.WriteAttributeString(
-                "errorCode",
+                SankhyaConstants.ErrorCode,
                 ErrorCode.ToString(CultureInfo.InvariantCulture)
             );
         }
@@ -1148,7 +1151,7 @@ public sealed class ServiceResponse : IXmlSerializable
         if (_errorLevelSet)
         {
             writer.WriteAttributeString(
-                "errorLevel",
+                SankhyaConstants.ErrorLevel,
                 ErrorLevel.ToString(CultureInfo.InvariantCulture)
             );
         }
