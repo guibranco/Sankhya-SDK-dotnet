@@ -705,11 +705,6 @@ internal class SankhyaWrapper
 
         using (var responseStream = webResponse.GetResponseStream())
         {
-            if (responseStream == null)
-            {
-                return new InvalidOperationException(Resources.ResponseStreamIsNull, e);
-            }
-
             using var streamReader = new StreamReader(responseStream);
             if (
                 streamReader
