@@ -45,7 +45,7 @@ public sealed class SankhyaContext
     /// Gets the name of the user.
     /// </summary>
     /// <value>The name of the user.</value>
-    public string UserName => _connection.Credentials.UserName;
+    public string UserName => _connection.Credentials.Username;
 
     /// <summary>
     /// Gets the token.
@@ -87,13 +87,13 @@ public sealed class SankhyaContext
     /// </summary>
     /// <param name="host">The host.</param>
     /// <param name="port">The port.</param>
-    /// <param name="userName">Name of the user.</param>
+    /// <param name="username">The username.</param>
     /// <param name="password">The password.</param>
-    public SankhyaContext(string host, int port, string userName, string password)
+    public SankhyaContext(string host, int port, string username, string password)
         : this(
             new Connection
             {
-                Credentials = new Credentials { Password = password, UserName = userName },
+                Credentials = new Credentials { Password = password, Username = username },
                 Host = host,
                 Port = port
             }
@@ -137,7 +137,7 @@ public sealed class SankhyaContext
             requestType.GetHumanReadableValue()
         );
         var wrapper = new SankhyaWrapper(_connection.Host, _connection.Port, requestType);
-        wrapper.Authenticate(_connection.Credentials.UserName, _connection.Credentials.Password);
+        wrapper.Authenticate(_connection.Credentials.Username, _connection.Credentials.Password);
         var token = Guid.NewGuid();
         Wrappers.TryAdd(token, wrapper);
         if (requestType == ServiceRequestType.OnDemandCrud)
