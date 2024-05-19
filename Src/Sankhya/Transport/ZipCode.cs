@@ -39,7 +39,8 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
         }
 
         return ReferenceEquals(this, other)
-            || (string.Equals(_zip, other._zip)
+            || (
+                string.Equals(_zip, other._zip)
                 && _zipSet.Equals(other._zipSet)
                 && string.Equals(_interval, other._interval)
                 && _intervalSet.Equals(other._intervalSet)
@@ -54,7 +55,8 @@ public class ZipCode : IEntity, IEquatable<ZipCode>
                 && Equals(_neighborhood, other._neighborhood)
                 && _neighborhoodSet.Equals(other._neighborhoodSet)
                 && Equals(_address, other._address)
-                && _addressSet.Equals(other._addressSet));
+                && _addressSet.Equals(other._addressSet)
+            );
     }
 
     /// <summary>

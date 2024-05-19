@@ -30,7 +30,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
         }
 
         return ReferenceEquals(this, other)
-            || (_singleNumber == other._singleNumber
+            || (
+                _singleNumber == other._singleNumber
                 && _singleNumberSet == other._singleNumberSet
                 && _sequence == other._sequence
                 && _sequenceSet == other._sequenceSet
@@ -61,7 +62,8 @@ public class InvoiceItem : GenericServiceEntity, IEquatable<InvoiceItem>
                 && string.Equals(_codeVolume, other._codeVolume, StringComparison.OrdinalIgnoreCase)
                 && _codeVolumeSet == other._codeVolumeSet
                 && Equals(_product, other._product)
-                && _productSet == other._productSet);
+                && _productSet == other._productSet
+            );
     }
 
     /// <summary>

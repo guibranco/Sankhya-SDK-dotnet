@@ -39,14 +39,16 @@ public class Neighborhood : IEntity, IEquatable<Neighborhood>
         }
 
         return ReferenceEquals(this, other)
-            || (_code == other._code
+            || (
+                _code == other._code
                 && _codeSet.Equals(other._codeSet)
                 && string.Equals(_name, other._name)
                 && _nameSet.Equals(other._nameSet)
                 && string.Equals(_descriptionCorreios, other._descriptionCorreios)
                 && _descriptionCorreiosSet.Equals(other._descriptionCorreiosSet)
                 && _dateChanged.Equals(other._dateChanged)
-                && _dateChangedSet.Equals(other._dateChangedSet));
+                && _dateChangedSet.Equals(other._dateChangedSet)
+            );
     }
 
     /// <summary>

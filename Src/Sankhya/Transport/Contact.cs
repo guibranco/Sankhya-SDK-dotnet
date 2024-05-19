@@ -27,7 +27,8 @@ public class Contact : IEntity, IEquatable<Contact>
         }
 
         return ReferenceEquals(this, other)
-            || (_code == other._code
+            || (
+                _code == other._code
                 && _codeSet == other._codeSet
                 && _codePartner == other._codePartner
                 && _codePartnerSet == other._codePartnerSet
@@ -98,7 +99,8 @@ public class Contact : IEntity, IEquatable<Contact>
                 && Equals(_city, other._city)
                 && _citySet == other._citySet
                 && Equals(_region, other._region)
-                && _regionSet == other._regionSet);
+                && _regionSet == other._regionSet
+            );
     }
 
     /// <summary>

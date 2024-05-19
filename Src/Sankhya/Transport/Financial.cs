@@ -27,7 +27,8 @@ public class Financial : IEntity, IEquatable<Financial>
         }
 
         return ReferenceEquals(this, other)
-            || (_singleNumber == other._singleNumber
+            || (
+                _singleNumber == other._singleNumber
                 && _singleNumberSet == other._singleNumberSet
                 && _singleNumberInvoice == other._singleNumberInvoice
                 && _singleNumberInvoiceSet == other._singleNumberInvoiceSet
@@ -48,7 +49,8 @@ public class Financial : IEntity, IEquatable<Financial>
                 && string.Equals(_ourNumber, other._ourNumber, StringComparison.OrdinalIgnoreCase)
                 && _ourNumberSet == other._ourNumberSet
                 && _codeResultCenter == other._codeResultCenter
-                && _codeResultCenterSet == other._codeResultCenterSet);
+                && _codeResultCenterSet == other._codeResultCenterSet
+            );
     }
 
     /// <summary>

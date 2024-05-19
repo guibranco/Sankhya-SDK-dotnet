@@ -39,7 +39,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
 
         return ReferenceEquals(this, other)
-            || (_code == other._code
+            || (
+                _code == other._code
                 && _codeSet == other._codeSet
                 && string.Equals(
                     _zipCodeDelivery,
@@ -82,7 +83,8 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
                 && Equals(_neighborhoodDelivery, other._neighborhoodDelivery)
                 && _neighborhoodDeliverySet == other._neighborhoodDeliverySet
                 && Equals(_cityDelivery, other._cityDelivery)
-                && _cityDeliverySet == other._cityDeliverySet);
+                && _cityDeliverySet == other._cityDeliverySet
+            );
     }
 
     /// <summary>

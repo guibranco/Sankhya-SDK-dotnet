@@ -31,7 +31,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
         }
 
         return ReferenceEquals(this, other)
-            || (_singleNumber == other._singleNumber
+            || (
+                _singleNumber == other._singleNumber
                 && _singleNumberSet == other._singleNumberSet
                 && _invoiceNumber == other._invoiceNumber
                 && _invoiceNumberSet == other._invoiceNumberSet
@@ -76,7 +77,8 @@ public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion
                 && Equals(_user, other._user)
                 && _userSet == other._userSet
                 && Equals(_seller, other._seller)
-                && _sellerSet == other._sellerSet);
+                && _sellerSet == other._sellerSet
+            );
     }
 
     /// <summary>

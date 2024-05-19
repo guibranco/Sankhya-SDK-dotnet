@@ -24,7 +24,8 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
         }
 
         return ReferenceEquals(this, other)
-            || (_singleNumber == other._singleNumber
+            || (
+                _singleNumber == other._singleNumber
                 && _singleNumberSet == other._singleNumberSet
                 && _codePartner == other._codePartner
                 && _codePartnerSet == other._codePartnerSet
@@ -37,7 +38,8 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
                     other._cancellationReason,
                     StringComparison.OrdinalIgnoreCase
                 )
-                && _cancellationReasonSet == other._cancellationReasonSet);
+                && _cancellationReasonSet == other._cancellationReasonSet
+            );
     }
 
     /// <summary>

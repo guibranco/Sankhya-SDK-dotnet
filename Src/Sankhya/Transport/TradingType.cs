@@ -26,7 +26,8 @@ public class TradingType : IEntity, IEquatable<TradingType>
         }
 
         return ReferenceEquals(this, other)
-            || (_code == other._code
+            || (
+                _code == other._code
                 && _codeSet == other._codeSet
                 && string.Equals(
                     _description,
@@ -37,7 +38,8 @@ public class TradingType : IEntity, IEquatable<TradingType>
                 && _active == other._active
                 && _activeSet == other._activeSet
                 && _subType == other._subType
-                && _subTypeSet == other._subTypeSet);
+                && _subTypeSet == other._subTypeSet
+            );
     }
 
     /// <summary>

@@ -42,7 +42,8 @@ public class Seller : IEntity, IEquatable<Seller>
         }
 
         return ReferenceEquals(this, other)
-            || (_code == other._code
+            || (
+                _code == other._code
                 && _codeSet == other._codeSet
                 && _codeUser == other._codeUser
                 && _codeUserSet == other._codeUserSet
@@ -59,7 +60,8 @@ public class Seller : IEntity, IEquatable<Seller>
                 && _dateChanged.Equals(other._dateChanged)
                 && _dateChangedSet == other._dateChangedSet
                 && Equals(_partner, other._partner)
-                && _partnerSet == other._partnerSet);
+                && _partnerSet == other._partnerSet
+            );
     }
 
     /// <summary>

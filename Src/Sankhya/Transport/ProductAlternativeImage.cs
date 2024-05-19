@@ -25,7 +25,8 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
         }
 
         return ReferenceEquals(this, other)
-            || (_code == other._code
+            || (
+                _code == other._code
                 && _codeSet == other._codeSet
                 && _codeProduct == other._codeProduct
                 && _codeProductSet == other._codeProductSet
@@ -34,7 +35,8 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
                 && _codeUser == other._codeUser
                 && _codeUserSet == other._codeUserSet
                 && _dateChanged.Equals(other._dateChanged)
-                && _dateChangedSet == other._dateChangedSet);
+                && _dateChangedSet == other._dateChangedSet
+            );
     }
 
     /// <summary>
@@ -49,7 +51,8 @@ public class ProductAlternativeImage : IEntity, IEquatable<ProductAlternativeIma
             return false;
         }
 
-        return ReferenceEquals(this, obj) || (obj is ProductAlternativeImage image && Equals(image));
+        return ReferenceEquals(this, obj)
+            || (obj is ProductAlternativeImage image && Equals(image));
     }
 
     /// <summary>

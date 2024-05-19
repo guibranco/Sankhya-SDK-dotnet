@@ -26,7 +26,8 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
         }
 
         return ReferenceEquals(this, other)
-            || (_codeSource == other._codeSource
+            || (
+                _codeSource == other._codeSource
                 && _codeSourceSet == other._codeSourceSet
                 && _codeSuggestion == other._codeSuggestion
                 && _codeSuggestionSet == other._codeSuggestionSet
@@ -37,7 +38,8 @@ public class ProductSuggestedSale : IEntity, IEquatable<ProductSuggestedSale>
                 && _isQuantityMultiplier == other._isQuantityMultiplier
                 && _isQuantityMultiplierSet == other._isQuantityMultiplierSet
                 && Equals(_productSuggestion, other._productSuggestion)
-                && _productSuggestionSet == other._productSuggestionSet);
+                && _productSuggestionSet == other._productSuggestionSet
+            );
     }
 
     /// <summary>

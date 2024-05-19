@@ -29,7 +29,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
 
         return ReferenceEquals(this, other)
-            || (_singleNumber == other._singleNumber
+            || (
+                _singleNumber == other._singleNumber
                 && _singleNumberSet == other._singleNumberSet
                 && _sequence == other._sequence
                 && _sequenceSet == other._sequenceSet
@@ -54,7 +55,8 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
                 && Equals(_invoiceHeader, other._invoiceHeader)
                 && _invoiceHeaderSet == other._invoiceHeaderSet
                 && Equals(_invoiceItem, other._invoiceItem)
-                && _invoiceItemSet == other._invoiceItemSet);
+                && _invoiceItemSet == other._invoiceItemSet
+            );
     }
 
     /// <summary>

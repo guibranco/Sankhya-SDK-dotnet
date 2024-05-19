@@ -26,7 +26,8 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
         }
 
         return ReferenceEquals(this, other)
-            || (_code == other._code
+            || (
+                _code == other._code
                 && _codeSet == other._codeSet
                 && string.Equals(_name, other._name, StringComparison.OrdinalIgnoreCase)
                 && _nameSet == other._nameSet
@@ -39,7 +40,8 @@ public class UserGroup : IEntity, IEquatable<UserGroup>
                     other._emailAddress,
                     StringComparison.OrdinalIgnoreCase
                 )
-                && _emailAddressSet == other._emailAddressSet);
+                && _emailAddressSet == other._emailAddressSet
+            );
     }
 
     /// <summary>

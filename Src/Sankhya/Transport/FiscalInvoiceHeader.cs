@@ -26,7 +26,8 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
         }
 
         return ReferenceEquals(this, other)
-            || (string.Equals(_invoiceKey, other._invoiceKey, StringComparison.OrdinalIgnoreCase)
+            || (
+                string.Equals(_invoiceKey, other._invoiceKey, StringComparison.OrdinalIgnoreCase)
                 && _invoiceKeySet == other._invoiceKeySet
                 && _invoiceNumber == other._invoiceNumber
                 && _invoiceNumberSet == other._invoiceNumberSet
@@ -35,7 +36,8 @@ public class FiscalInvoiceHeader : IEntity, IEquatable<FiscalInvoiceHeader>
                 && _singleNumber == other._singleNumber
                 && _singleNumberSet == other._singleNumberSet
                 && _status == other._status
-                && _statusSet == other._statusSet);
+                && _statusSet == other._statusSet
+            );
     }
 
     /// <summary>

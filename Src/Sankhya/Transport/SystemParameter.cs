@@ -27,7 +27,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
 
         return ReferenceEquals(this, other)
-            || (string.Equals(_key, other._key, StringComparison.OrdinalIgnoreCase)
+            || (
+                string.Equals(_key, other._key, StringComparison.OrdinalIgnoreCase)
                 && _keySet == other._keySet
                 && string.Equals(
                     _description,
@@ -56,7 +57,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
                 && string.Equals(_text, other._text, StringComparison.OrdinalIgnoreCase)
                 && _textSet == other._textSet
                 && Equals(_user, other._user)
-                && _userSet == other._userSet);
+                && _userSet == other._userSet
+            );
     }
 
     /// <summary>
@@ -71,7 +73,8 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || (obj is SystemParameter parameter && Equals(parameter));
+        return ReferenceEquals(this, obj)
+            || (obj is SystemParameter parameter && Equals(parameter));
     }
 
     /// <summary>
