@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : Sankhya
 // Author           : Guilherme Branco Stracini
 // Created          : 01-16-2023
@@ -41,7 +41,8 @@ public class City : IEntity, IEquatable<City>
         }
 
         return ReferenceEquals(this, other)
-            || _code == other._code
+            || (
+                _code == other._code
                 && _codeSet == other._codeSet
                 && _codeState == other._codeState
                 && _codeStateSet == other._codeStateSet
@@ -66,7 +67,8 @@ public class City : IEntity, IEquatable<City>
                 && string.Equals(_latitude, other._latitude, StringComparison.OrdinalIgnoreCase)
                 && _latitudeSet == other._latitudeSet
                 && string.Equals(_longitude, other._longitude, StringComparison.OrdinalIgnoreCase)
-                && _longitudeSet == other._longitudeSet;
+                && _longitudeSet == other._longitudeSet
+            );
     }
 
     /// <summary>
@@ -81,7 +83,7 @@ public class City : IEntity, IEquatable<City>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj.GetType() == GetType() && Equals((City)obj);
+        return ReferenceEquals(this, obj) || (obj.GetType() == GetType() && Equals((City)obj));
     }
 
     /// <summary>

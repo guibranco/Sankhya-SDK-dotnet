@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : Sankhya
 // Author           : Guilherme Branco Stracini
 // Created          : 01-16-2023
@@ -39,7 +39,8 @@ public class Region : IEntity, IEquatable<Region>
         }
 
         return ReferenceEquals(this, other)
-            || _code == other._code
+            || (
+                _code == other._code
                 && _codeSet == other._codeSet
                 && _codeRegionFather == other._codeRegionFather
                 && _codeRegionFatherSet == other._codeRegionFatherSet
@@ -52,7 +53,8 @@ public class Region : IEntity, IEquatable<Region>
                 && string.Equals(_name, other._name, StringComparison.OrdinalIgnoreCase)
                 && _nameSet == other._nameSet
                 && Equals(_seller, other._seller)
-                && _sellerSet == other._sellerSet;
+                && _sellerSet == other._sellerSet
+            );
     }
 
     /// <summary>
@@ -67,7 +69,7 @@ public class Region : IEntity, IEquatable<Region>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj is Region region && Equals(region);
+        return ReferenceEquals(this, obj) || (obj is Region region && Equals(region));
     }
 
     /// <summary>

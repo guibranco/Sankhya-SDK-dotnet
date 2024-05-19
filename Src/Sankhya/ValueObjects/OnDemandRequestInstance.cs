@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : Sankhya
 // Author           : Guilherme Branco Stracini
 // Created          : 01-16-2023
@@ -27,27 +27,23 @@ public sealed class OnDemandRequestInstance
     /// Gets or sets the key.
     /// </summary>
     /// <value>The key.</value>
-
     public Guid Key { get; set; }
 
     /// <summary>
     /// Gets or sets the service.
     /// </summary>
     /// <value>The service.</value>
-
     public ServiceName Service { get; set; }
 
     /// <summary>
     /// Gets or sets the type.
     /// </summary>
     /// <value>The type.</value>
-
     public Type Type { get; set; }
 
     /// <summary>
     /// Gets or sets the instance.
     /// </summary>
     /// <value>The instance.</value>
-
     public IOnDemandRequestWrapper Instance { get; set; }
 }

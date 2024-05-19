@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using Sankhya.Attributes;
 
 namespace Sankhya.Transport;
@@ -23,7 +23,8 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
         }
 
         return ReferenceEquals(this, other)
-            || _codeProduct == other._codeProduct
+            || (
+                _codeProduct == other._codeProduct
                 && _codeProductSet == other._codeProductSet
                 && _codeCompany == other._codeCompany
                 && _codeCompanySet == other._codeCompanySet
@@ -38,7 +39,8 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
                 && _sequence == other._sequence
                 && _sequenceSet == other._sequenceSet
                 && _costReplacement == other._costReplacement
-                && _costReplacementSet == other._costReplacementSet;
+                && _costReplacementSet == other._costReplacementSet
+            );
     }
 
     /// <summary>
@@ -53,7 +55,7 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj is ProductCost cost && Equals(cost);
+        return ReferenceEquals(this, obj) || (obj is ProductCost cost && Equals(cost));
     }
 
     /// <summary>

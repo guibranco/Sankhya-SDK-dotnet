@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using Sankhya.Attributes;
 
 namespace Sankhya.Transport;
@@ -24,7 +24,8 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
         }
 
         return ReferenceEquals(this, other)
-            || _codeFeedStock == other._codeFeedStock
+            || (
+                _codeFeedStock == other._codeFeedStock
                 && _codeFeedStockSet == other._codeFeedStockSet
                 && _feedStockQuantity == other._feedStockQuantity
                 && _feedStockQuantitySet == other._feedStockQuantitySet
@@ -37,7 +38,8 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
                 && _sequence == other._sequence
                 && _sequenceSet == other._sequenceSet
                 && string.Equals(_volume, other._volume)
-                && _volumeSet == other._volumeSet;
+                && _volumeSet == other._volumeSet
+            );
     }
 
     /// <summary>

@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using CrispyWaffle.Extensions;
@@ -27,7 +27,8 @@ public class Financial : IEntity, IEquatable<Financial>
         }
 
         return ReferenceEquals(this, other)
-            || _singleNumber == other._singleNumber
+            || (
+                _singleNumber == other._singleNumber
                 && _singleNumberSet == other._singleNumberSet
                 && _singleNumberInvoice == other._singleNumberInvoice
                 && _singleNumberInvoiceSet == other._singleNumberInvoiceSet
@@ -48,7 +49,8 @@ public class Financial : IEntity, IEquatable<Financial>
                 && string.Equals(_ourNumber, other._ourNumber, StringComparison.OrdinalIgnoreCase)
                 && _ourNumberSet == other._ourNumberSet
                 && _codeResultCenter == other._codeResultCenter
-                && _codeResultCenterSet == other._codeResultCenterSet;
+                && _codeResultCenterSet == other._codeResultCenterSet
+            );
     }
 
     /// <summary>
@@ -63,7 +65,7 @@ public class Financial : IEntity, IEquatable<Financial>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj is Financial financial && Equals(financial);
+        return ReferenceEquals(this, obj) || (obj is Financial financial && Equals(financial));
     }
 
     /// <summary>

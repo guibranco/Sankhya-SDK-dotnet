@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : Sankhya
 // Author           : Guilherme Branco Stracini
 // Created          : 01-16-2023
@@ -38,7 +38,8 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
         }
 
         return ReferenceEquals(this, other)
-            || string.Equals(_code, other._code, StringComparison.OrdinalIgnoreCase)
+            || (
+                string.Equals(_code, other._code, StringComparison.OrdinalIgnoreCase)
                 && _codeSet == other._codeSet
                 && _codeProduct == other._codeProduct
                 && _codeProductSet == other._codeProductSet
@@ -47,7 +48,8 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
                 && string.Equals(_codeVolume, other._codeVolume, StringComparison.OrdinalIgnoreCase)
                 && _codeVolumeSet == other._codeVolumeSet
                 && _dateChanged.Equals(other._dateChanged)
-                && _dateChangedSet == other._dateChangedSet;
+                && _dateChangedSet == other._dateChangedSet
+            );
     }
 
     /// <summary>
@@ -62,7 +64,7 @@ public class CodeBars : IEntity, IEquatable<CodeBars>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj is CodeBars bars && Equals(bars);
+        return ReferenceEquals(this, obj) || (obj is CodeBars bars && Equals(bars));
     }
 
     /// <summary>

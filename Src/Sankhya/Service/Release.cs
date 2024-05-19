@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Globalization;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
@@ -247,7 +247,6 @@ public sealed class Release
     /// <value>
     /// The key.
     /// </value>
-
     [XmlAttribute("chave")]
     public int Key
     {
@@ -265,7 +264,6 @@ public sealed class Release
     /// <value>
     /// The event.
     /// </value>
-
     [XmlAttribute("evento")]
     public int Event
     {
@@ -283,7 +281,6 @@ public sealed class Release
     /// <value>
     /// The event description.
     /// </value>
-
     [XmlAttribute("descricaoEvento")]
     public string EventDescription
     {
@@ -301,7 +298,6 @@ public sealed class Release
     /// <value>
     /// The table.
     /// </value>
-
     [XmlAttribute("tabela")]
     public string Table
     {

@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Xml.Serialization;
 using Sankhya.Helpers;
 
@@ -371,7 +371,6 @@ public sealed class Entity
     /// Gets or sets the ids.
     /// </summary>
     /// <value>The ids.</value>
-
     [XmlElement("id")]
     public EntityDynamicSerialization[] Ids
     {

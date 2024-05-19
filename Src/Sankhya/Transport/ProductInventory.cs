@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
@@ -29,7 +29,8 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
 
         return ReferenceEquals(this, other)
-            || _codeProduct == other._codeProduct
+            || (
+                _codeProduct == other._codeProduct
                 && _codeProductSet == other._codeProductSet
                 && _codeCompany == other._codeCompany
                 && _codeCompanySet == other._codeCompanySet
@@ -52,7 +53,8 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
                 && Equals(_product, other._product)
                 && _productSet == other._productSet
                 && Equals(_partner, other._partner)
-                && _partnerSet == other._partnerSet;
+                && _partnerSet == other._partnerSet
+            );
     }
 
     /// <summary>
