@@ -15,7 +15,6 @@ public sealed class InvoicesWithCurrency
     /// <value>
     ///     The valor moeda.
     /// </value>
-
     [XmlAttribute(AttributeName = "valorMoeda")]
     public string CurrencyValue { get; set; }
 }

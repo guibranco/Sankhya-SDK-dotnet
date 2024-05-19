@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
@@ -27,7 +27,7 @@ public class Contact : IEntity, IEquatable<Contact>
         }
 
         return ReferenceEquals(this, other)
-            || _code == other._code
+            || (_code == other._code
                 && _codeSet == other._codeSet
                 && _codePartner == other._codePartner
                 && _codePartnerSet == other._codePartnerSet
@@ -98,7 +98,7 @@ public class Contact : IEntity, IEquatable<Contact>
                 && Equals(_city, other._city)
                 && _citySet == other._citySet
                 && Equals(_region, other._region)
-                && _regionSet == other._regionSet;
+                && _regionSet == other._regionSet);
     }
 
     /// <summary>
@@ -113,7 +113,7 @@ public class Contact : IEntity, IEquatable<Contact>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj is Contact contact && Equals(contact);
+        return ReferenceEquals(this, obj) || (obj is Contact contact && Equals(contact));
     }
 
     /// <summary>

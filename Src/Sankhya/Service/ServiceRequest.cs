@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Xml.Serialization;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
@@ -37,7 +37,6 @@ public sealed class ServiceRequest
     /// The Service Name as SankhyaService enum
     /// </summary>
     /// <value>The service.</value>
-
     [XmlIgnore]
     public ServiceName Service
     {
@@ -53,7 +52,6 @@ public sealed class ServiceRequest
     /// The Service Name as String (SankhyaService - InternalValueAttribute)
     /// </summary>
     /// <value>The service internal.</value>
-
     [XmlAttribute("serviceName")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -71,7 +69,6 @@ public sealed class ServiceRequest
     /// The Request Body element
     /// </summary>
     /// <value>The request body.</value>
-
     [XmlElement("requestBody")]
     public RequestBody RequestBody
     {

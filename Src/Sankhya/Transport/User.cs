@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Serialization;
@@ -30,7 +30,7 @@ public class User : IEntity, IEquatable<User>
         }
 
         return ReferenceEquals(this, other)
-            || _code == other._code
+            || (_code == other._code
                 && _codeSet == other._codeSet
                 && _codePartner == other._codePartner
                 && _codePartnerSet == other._codePartnerSet
@@ -49,7 +49,7 @@ public class User : IEntity, IEquatable<User>
                 && Equals(_group, other._group)
                 && _groupSet == other._groupSet
                 && Equals(_seller, other._seller)
-                && _sellerSet == other._sellerSet;
+                && _sellerSet == other._sellerSet);
     }
 
     /// <summary>
@@ -65,7 +65,7 @@ public class User : IEntity, IEquatable<User>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj is User user && Equals(user);
+        return ReferenceEquals(this, obj) || (obj is User user && Equals(user));
     }
 
     /// <summary>

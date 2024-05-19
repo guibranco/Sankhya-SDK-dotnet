@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : Sankhya
 // Author           : Guilherme Branco Stracini
 // Created          : 01-16-2023
@@ -33,7 +33,6 @@ public class Seller : IEntity, IEquatable<Seller>
     /// </summary>
     /// <param name="other">An object to compare with this object.</param>
     /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-
     // ReSharper disable once CyclomaticComplexity
     public bool Equals(Seller other)
     {
@@ -43,7 +42,7 @@ public class Seller : IEntity, IEquatable<Seller>
         }
 
         return ReferenceEquals(this, other)
-            || _code == other._code
+            || (_code == other._code
                 && _codeSet == other._codeSet
                 && _codeUser == other._codeUser
                 && _codeUserSet == other._codeUserSet
@@ -60,7 +59,7 @@ public class Seller : IEntity, IEquatable<Seller>
                 && _dateChanged.Equals(other._dateChanged)
                 && _dateChangedSet == other._dateChangedSet
                 && Equals(_partner, other._partner)
-                && _partnerSet == other._partnerSet;
+                && _partnerSet == other._partnerSet);
     }
 
     /// <summary>
@@ -75,7 +74,7 @@ public class Seller : IEntity, IEquatable<Seller>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj is Seller seller && Equals(seller);
+        return ReferenceEquals(this, obj) || (obj is Seller seller && Equals(seller));
     }
 
     /// <summary>

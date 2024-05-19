@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : Sankhya
 // Author           : Guilherme Branco Stracini
 // Created          : 01-16-2023
@@ -28,7 +28,6 @@ public sealed class LiteralCriteria : ILiteralCriteria
     /// Gets or sets the expression.
     /// </summary>
     /// <value>The expression.</value>
-
     [XmlElement(ElementName = "expression")]
     [Localizable(false)]
     public string Expression { get; set; }

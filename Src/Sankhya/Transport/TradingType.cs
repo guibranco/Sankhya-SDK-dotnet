@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
 using Sankhya.Attributes;
@@ -26,7 +26,7 @@ public class TradingType : IEntity, IEquatable<TradingType>
         }
 
         return ReferenceEquals(this, other)
-            || _code == other._code
+            || (_code == other._code
                 && _codeSet == other._codeSet
                 && string.Equals(
                     _description,
@@ -37,7 +37,7 @@ public class TradingType : IEntity, IEquatable<TradingType>
                 && _active == other._active
                 && _activeSet == other._activeSet
                 && _subType == other._subType
-                && _subTypeSet == other._subTypeSet;
+                && _subTypeSet == other._subTypeSet);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class TradingType : IEntity, IEquatable<TradingType>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj is TradingType type && Equals(type);
+        return ReferenceEquals(this, obj) || (obj is TradingType type && Equals(type));
     }
 
     /// <summary>

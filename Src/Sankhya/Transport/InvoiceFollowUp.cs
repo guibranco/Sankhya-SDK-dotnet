@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using CrispyWaffle.Extensions;
@@ -20,7 +20,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
     /// </summary>
     /// <param name="other">An object to compare with this object.</param>
     /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-
     // ReSharper disable once CyclomaticComplexity
     public bool Equals(InvoiceFollowUp other)
     {
@@ -30,7 +29,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
 
         return ReferenceEquals(this, other)
-            || _singleNumber == other._singleNumber
+            || (_singleNumber == other._singleNumber
                 && _singleNumberSet == other._singleNumberSet
                 && _sequence == other._sequence
                 && _sequenceSet == other._sequenceSet
@@ -55,7 +54,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
                 && Equals(_invoiceHeader, other._invoiceHeader)
                 && _invoiceHeaderSet == other._invoiceHeaderSet
                 && Equals(_invoiceItem, other._invoiceItem)
-                && _invoiceItemSet == other._invoiceItemSet;
+                && _invoiceItemSet == other._invoiceItemSet);
     }
 
     /// <summary>
@@ -70,7 +69,7 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj is InvoiceFollowUp up && Equals(up);
+        return ReferenceEquals(this, obj) || (obj is InvoiceFollowUp up && Equals(up));
     }
 
     /// <summary>

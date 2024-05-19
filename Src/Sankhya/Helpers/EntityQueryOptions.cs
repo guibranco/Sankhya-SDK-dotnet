@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : Sankhya
 // Author           : Guilherme Branco Stracini
 // Created          : 01-16-2023
@@ -30,35 +30,30 @@ public sealed class EntityQueryOptions
     /// Gets or sets the maximum results.
     /// </summary>
     /// <value>The maximum results.</value>
-
     public int? MaxResults { get; set; }
 
     /// <summary>
     /// Gets or sets the include references.
     /// </summary>
     /// <value>The include references.</value>
-
     public bool? IncludeReferences { get; set; }
 
     /// <summary>
     /// Gets or sets the maximum reference depth.
     /// </summary>
     /// <value>The maximum reference depth.</value>
-
     public ReferenceLevel? MaxReferenceDepth { get; set; }
 
     /// <summary>
     /// Gets or sets the include presentation fields.
     /// </summary>
     /// <value>The include presentation fields.</value>
-
     public bool? IncludePresentationFields { get; set; }
 
     /// <summary>
     /// Gets or sets the use wildcard fields.
     /// </summary>
     /// <value>The use wildcard fields.</value>
-
     public bool? UseWildcardFields { get; set; }
 
     /// <summary>

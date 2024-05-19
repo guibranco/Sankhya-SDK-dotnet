@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : Sankhya
 // Author           : Guilherme Branco Stracini
 // Created          : 01-16-2023
@@ -40,7 +40,7 @@ public class State : IEntity, IEquatable<State>
         }
 
         return ReferenceEquals(this, other)
-            || _code == other._code
+            || (_code == other._code
                 && _codeSet.Equals(other._codeSet)
                 && string.Equals(_initials, other._initials)
                 && _initialsSet.Equals(other._initialsSet)
@@ -61,7 +61,7 @@ public class State : IEntity, IEquatable<State>
                 && _codeProduct == other._codeProduct
                 && _codeProductSet.Equals(other._codeProductSet)
                 && string.Equals(_agreementProtocol, other._agreementProtocol)
-                && _agreementProtocolSet.Equals(other._agreementProtocolSet);
+                && _agreementProtocolSet.Equals(other._agreementProtocolSet));
     }
 
     /// <summary>

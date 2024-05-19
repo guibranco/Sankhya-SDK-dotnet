@@ -1,4 +1,4 @@
-﻿using System.Xml.Serialization;
+using System.Xml.Serialization;
 using CrispyWaffle.Serialization;
 
 namespace Sankhya.Service;
@@ -17,7 +17,6 @@ public sealed class InvoiceAccompaniments
     /// <value>
     /// 	The nota.
     /// </value>
-
     [XmlElement(ElementName = "nota")]
     public Invoice[] Invoices { get; set; }
 }

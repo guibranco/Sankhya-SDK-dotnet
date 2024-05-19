@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using Sankhya.Attributes;
 
@@ -24,7 +24,7 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
         }
 
         return ReferenceEquals(this, other)
-            || _singleNumber == other._singleNumber
+            || (_singleNumber == other._singleNumber
                 && _singleNumberSet == other._singleNumberSet
                 && _codePartner == other._codePartner
                 && _codePartnerSet == other._codePartnerSet
@@ -37,7 +37,7 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
                     other._cancellationReason,
                     StringComparison.OrdinalIgnoreCase
                 )
-                && _cancellationReasonSet == other._cancellationReasonSet;
+                && _cancellationReasonSet == other._cancellationReasonSet);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
             return false;
         }
 
-        return ReferenceEquals(this, obj) || obj is InvoiceCanceled canceled && Equals(canceled);
+        return ReferenceEquals(this, obj) || (obj is InvoiceCanceled canceled && Equals(canceled));
     }
 
     /// <summary>
