@@ -21,8 +21,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CrispyWaffle" Version="6.1.59" />
-    <PackageReference Include="CrispyWaffle.Configuration" Version="6.1.59" />
+    <PackageReference Include="CrispyWaffle" Version="6.1.83" />
+    <PackageReference Include="CrispyWaffle.Configuration" Version="6.1.83" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
