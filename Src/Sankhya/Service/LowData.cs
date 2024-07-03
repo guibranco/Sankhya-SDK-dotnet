@@ -6,6 +6,8 @@ namespace Sankhya.Service;
 /// <summary>
 /// Class LowData. This class cannot be inherited.
 /// </summary>
+[Serializable]
+[XmlRoot("dadosBaixa")]
 public sealed class LowData
 {
     /// <summary>
@@ -269,12 +271,12 @@ public sealed class LowData
     private bool _antBxTopSet;
 
     /// <summary>
-    /// The ant bx tiptit
+    /// The ant bx tip tit
     /// </summary>
     private string _antBxTipTit;
 
     /// <summary>
-    /// The ant bx tiptit set
+    /// The ant bx tip tit set
     /// </summary>
     private bool _antBxTipTitSet;
 
@@ -289,12 +291,12 @@ public sealed class LowData
     private bool _antBxNaturezaSet;
 
     /// <summary>
-    /// The ant bx cencus
+    /// The ant bx cen cus
     /// </summary>
     private string _antBxCenCus;
 
     /// <summary>
-    /// The ant bx cencus set
+    /// The ant bx cen cus set
     /// </summary>
     private bool _antBxCenCusSet;
 
@@ -376,7 +378,7 @@ public sealed class LowData
     /// <summary>
     /// Gets or sets the dt baixa.
     /// </summary>
-    /// <value>The dt baixa/// .</value>
+    /// <value>The dt baixa .</value>
     [XmlAttribute("dtBaixa")]
     public string DtBaixa
     {
@@ -391,7 +393,7 @@ public sealed class LowData
     /// <summary>
     /// Gets or sets the empresa.
     /// </summary>
-    /// <value>The /// empresa.</value>
+    /// <value>The empresa.</value>
     [XmlAttribute("empresa")]
     public string Empresa
     {
@@ -406,7 +408,7 @@ public sealed class LowData
     /// <summary>
     /// Gets or sets the conta bco.
     /// </summary>
-    /// <value>The /// conta bco.</value>
+    /// <value>The conta bco.</value>
     [XmlAttribute("contaBco")]
     public string ContaBco 
     {
