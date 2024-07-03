@@ -436,9 +436,9 @@ public sealed class LowData
     }
 
     /// <summary>
-    /// Gets or sets the CHK receita.
+    /// Gets or sets the chk receita.
     /// </summary>
-    /// <value>The CHK receita.</value>
+    /// <value>The chk receita.</value>
     [XmlAttribute("chkReceita")]
     public string ChkReceita
     {
@@ -451,9 +451,9 @@ public sealed class LowData
     }
 
     /// <summary>
-    /// Gets or sets the CHK despesa.
+    /// Gets or sets the chk despesa.
     /// </summary>
-    /// <value>The CHK despesa.</value>
+    /// <value>The chk despesa.</value>
     [XmlAttribute("chkDespesa")]
     public string ChkDespesa
     {
@@ -466,9 +466,9 @@ public sealed class LowData
     }
 
     /// <summary>
-    /// Gets or sets the CHK baixa separada.
+    /// Gets or sets the chk baixa separada.
     /// </summary>
-    /// <value>The CHK baixa separada.</value>
+    /// <value>The chk baixa separada.</value>
     [XmlAttribute("chkBaixaseparada")]
     public string ChkBaixaSeparada
     {
@@ -511,9 +511,9 @@ public sealed class LowData
     }
 
     /// <summary>
-    /// Gets or sets the CHK VLR liq zero.
+    /// Gets or sets the chk VLR liq zero.
     /// </summary>
-    /// <value>The CHK VLR liq zero.</value>
+    /// <value>The chk VLR liq zero.</value>
     [XmlAttribute("chkvlrLiqZero")]
     public string ChkVlrLiqZero
     {
@@ -526,9 +526,9 @@ public sealed class LowData
     }
 
     /// <summary>
-    /// Gets or sets the RBD concat sobrepor hist fin.
+    /// Gets or sets the rbd concat sobrepor hist fin.
     /// </summary>
-    /// <value>The RBD concat sobrepor hist fin.</value>
+    /// <value>The rbd concat sobrepor hist fin.</value>
     [XmlAttribute("rbdConcatSobreporHistFin")]
     public string RbdConcatSobreporHistFin
     {
@@ -571,9 +571,9 @@ public sealed class LowData
     }
 
     /// <summary>
-    /// Gets or sets the CHK usa venc.
+    /// Gets or sets the chk usa venc.
     /// </summary>
-    /// <value>The CHK usa venc.</value>
+    /// <value>The chk usa venc.</value>
     [XmlAttribute("chkUsaVenc")]
     public string ChkUsaVenc
     {
@@ -601,9 +601,9 @@ public sealed class LowData
     }
 
     /// <summary>
-    /// Gets or sets the CHK sub inf.
+    /// Gets or sets the chk sub inf.
     /// </summary>
-    /// <value>The CHK sub inf.</value>
+    /// <value>The chk sub inf.</value>
     [XmlAttribute("chkSubInf")]
     public string ChkSubInf
     {
@@ -646,9 +646,9 @@ public sealed class LowData
     }
 
     /// <summary>
-    /// Gets or sets the top baixa record.
+    /// Gets or sets the top baixa rec.
     /// </summary>
-    /// <value>The top baixa record.</value>
+    /// <value>The top baixa rec.</value>
     [XmlAttribute("topBaixaRec")]
     public string TopBaixaRec
     {
