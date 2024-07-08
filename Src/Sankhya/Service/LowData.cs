@@ -410,7 +410,7 @@ public sealed class LowData
     /// </summary>
     /// <value>The conta bco.</value>
     [XmlAttribute("contaBco")]
-    public string ContaBco 
+    public string ContaBco
     {
         get => _contaBco;
         set
@@ -425,7 +425,7 @@ public sealed class LowData
     /// </summary>
     /// <value>The ordem carga.</value>
     [XmlAttribute("ordemCarga")]
-    public string OrdemCarga 
+    public string OrdemCarga
     {
         get => _ordemCarga;
         set
@@ -710,7 +710,7 @@ public sealed class LowData
     /// </summary>
     /// <value>The nu antecipa.</value>
     [XmlAttribute("nuAntecipa")]
-    public string NuAntecipa 
+    public string NuAntecipa
     {
         get => _nuAntecipa;
         set
