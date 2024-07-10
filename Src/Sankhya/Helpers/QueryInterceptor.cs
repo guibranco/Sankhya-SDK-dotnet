@@ -1,11 +1,11 @@
 using System.Linq;
 
-namespace Sankhya.Helpers
+namespace Sankhya.Helpers;
+
+public class QueryInterceptor<T>
 {
-    public class QueryInterceptor<T>
+    public IQueryable<T> Intercept(IQueryable<T> query)
     {
-        public IQueryable<T> Intercept(IQueryable<T> query)
-        {
-            return query;
-        }
+        return query;
     }
+}
