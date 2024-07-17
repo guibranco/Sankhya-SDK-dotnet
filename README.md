@@ -136,9 +136,77 @@ Refer to [CONTRIBUTING.md](CONTRIBUTING.md) to learn how to contribute to this p
 ### Contributors
 
 <!-- readme: collaborators,contributors,snyk-bot/- -start -->
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/guibranco">
+                    <img src="https://avatars.githubusercontent.com/u/3362854?v=4" width="100;" alt="guibranco"/>
+                    <br />
+                    <sub><b>Guilherme Branco Stracini</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/fandriyaninkov">
+                    <img src="https://avatars.githubusercontent.com/u/18394528?v=4" width="100;" alt="fandriyaninkov"/>
+                    <br />
+                    <sub><b>Fedor Andriyaninkov</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/pedrowindisch">
+                    <img src="https://avatars.githubusercontent.com/u/30203228?v=4" width="100;" alt="pedrowindisch"/>
+                    <br />
+                    <sub><b>Pedro Henrique</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/viktoriussuwandi">
+                    <img src="https://avatars.githubusercontent.com/u/68414300?v=4" width="100;" alt="viktoriussuwandi"/>
+                    <br />
+                    <sub><b>Viktorius Suwandi</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
 <!-- readme: collaborators,contributors,snyk-bot/- -end -->
 
 ### Bots
 
 <!-- readme: bots,snyk-bot -start -->
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/dependabot[bot]">
+                    <img src="https://avatars.githubusercontent.com/in/29110?v=4" width="100;" alt="dependabot[bot]"/>
+                    <br />
+                    <sub><b>dependabot[bot]</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/stack-file[bot]">
+                    <img src="https://avatars.githubusercontent.com/in/408123?v=4" width="100;" alt="stack-file[bot]"/>
+                    <br />
+                    <sub><b>stack-file[bot]</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/codefactor-io[bot]">
+                    <img src="https://avatars.githubusercontent.com/in/25603?v=4" width="100;" alt="codefactor-io[bot]"/>
+                    <br />
+                    <sub><b>codefactor-io[bot]</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/snyk-bot">
+                    <img src="https://avatars.githubusercontent.com/u/19733683?v=4" width="100;" alt="snyk-bot"/>
+                    <br />
+                    <sub><b>Snyk bot</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
 <!-- readme: bots,snyk-bot -end -->
