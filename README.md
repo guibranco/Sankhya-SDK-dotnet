@@ -56,9 +56,9 @@ Download the latest zip file from the [Release](https://github.com/GuiBranco/San
 
 ## Features
 
-This SDK implements many of Sankhya's web services. Some of them are called Know Services. If the service you are looking for is not set in the SDK, you can implement the service request/response on your own (and use it on your code or submit a pull request to this repository).
+This SDK implements many of Sankhya's web services. Some of them are called Know Services. If the service you seek is not set in the SDK, you can implement the service request/response independently (and use it on your code or submit a pull request to this repository).
 
-There are also some Request Wrappers that allow you to make some requests in an easy way.
+Some Request Wrappers allow you to make some requests easily.
 
 ### Known Services
 
@@ -66,10 +66,10 @@ There are also some Request Wrappers that allow you to make some requests in an 
 
 ### Sankhya Wrapper
 
-The *last mile operations* are done on this wrappers.
-All HTTP request/responses, login/logout, serialization, download/upload operations are defined on this class.
+The *last-mile operations* are done on these wrappers.
+This class defines all HTTP request/response, login/logout, serialization, and download/upload operations.
 
-**Avoid** usage of this class directly from you implementation. Only call methods of this class if you are extending the usage of the SDK or even implementing a new feature for the SDK, otherwise, prefer using one of the request wrappers, or the Sankhya Context class.
+**Avoid** using this class directly from your implementation. Only call its methods if you are extending the SDK's functionality or even implementing a new feature. Otherwise, prefer using one of the request wrappers or the Sankhya Context class.
 
 ---
 
@@ -77,16 +77,16 @@ All HTTP request/responses, login/logout, serialization, download/upload operati
 
 ### Service registration (IoC / DI)
 
-This SDK is based on [CrispyWaffle toolkit](https://github.com/guibranco/CrispyWaffle), so you can use it's [Service Locator](https://guibranco.github.io/CrispyWaffle/user-guide/serviceLocator/) feature to register it.
+This SDK is based on [CrispyWaffle toolkit](https://github.com/guibranco/CrispyWaffle), so you can use its [Service Locator](https://guibranco.github.io/CrispyWaffle/user-guide/serviceLocator/) feature to register it.
 
-Assuming you are using Crispy Waffle, you can register the Sankhya wrapper in the Bootstrapper.cs file this way:
+Assuming you are using Crispy Waffle, you can register the Sankhya wrapper in the `Bootstrapper.cs` file this way:
 
 ```cs
 var connectionSankhya = new Connection(); //Fill in your details
 ServiceLocator.Register(() => new SankhyaContext(connectionSankhya), LifeStyle.Singleton);
 ```
 
-Later, when you need to access the [Sankhya Context]() in you code, you can just pass it as constructor's argument or retrieve it from **Service Locator**
+Later, when you need to access the [Sankhya Context]() in your code, you can just pass it as the constructor's argument or retrieve it from **Service Locator**
 
 #### Constructor argument
 
@@ -109,11 +109,11 @@ var sankhyaContext = ServiceLocator.Resolve<SankhyaContext>();
 
 ### Know Services Wrapper
 
-The `KnowServicesRequestWrapper` is a static class that can be used anywhere, since SankhyaContext is registered through ServiceLocator.
+The `KnowServicesRequestWrapper` is a static class that can be used anywhere since SankhyaContext is registered through ServiceLocator.
 
 ### Session management
 
-You can use this to get all active sessions in Sankhya and kill one by one:
+You can use this to get all active sessions in Sankhya and kill them one by one:
 
 ```cs
 var sessions = KnowServicesRequestWrapper.GetSessions();
@@ -121,3 +121,92 @@ foreach (var session in sessions) {
     KnowServicesRequestWrapper.KillSession(session.Id);
 }
 ```
+---
+
+## Support
+
+Please [open an issue](https://github.com/guibranco/Sankhya-SDK-dotnet/issues/new) for support.
+
+---
+
+## Contributing
+
+Refer to [CONTRIBUTING.md](CONTRIBUTING.md) to learn how to contribute to this project!
+
+### Contributors
+
+<!-- readme: collaborators,contributors,snyk-bot/- -start -->
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/guibranco">
+                    <img src="https://avatars.githubusercontent.com/u/3362854?v=4" width="100;" alt="guibranco"/>
+                    <br />
+                    <sub><b>Guilherme Branco Stracini</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/fandriyaninkov">
+                    <img src="https://avatars.githubusercontent.com/u/18394528?v=4" width="100;" alt="fandriyaninkov"/>
+                    <br />
+                    <sub><b>Fedor Andriyaninkov</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/pedrowindisch">
+                    <img src="https://avatars.githubusercontent.com/u/30203228?v=4" width="100;" alt="pedrowindisch"/>
+                    <br />
+                    <sub><b>Pedro Henrique</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/viktoriussuwandi">
+                    <img src="https://avatars.githubusercontent.com/u/68414300?v=4" width="100;" alt="viktoriussuwandi"/>
+                    <br />
+                    <sub><b>Viktorius Suwandi</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
+<!-- readme: collaborators,contributors,snyk-bot/- -end -->
+
+### Bots
+
+<!-- readme: bots,snyk-bot -start -->
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/dependabot[bot]">
+                    <img src="https://avatars.githubusercontent.com/in/29110?v=4" width="100;" alt="dependabot[bot]"/>
+                    <br />
+                    <sub><b>dependabot[bot]</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/stack-file[bot]">
+                    <img src="https://avatars.githubusercontent.com/in/408123?v=4" width="100;" alt="stack-file[bot]"/>
+                    <br />
+                    <sub><b>stack-file[bot]</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/codefactor-io[bot]">
+                    <img src="https://avatars.githubusercontent.com/in/25603?v=4" width="100;" alt="codefactor-io[bot]"/>
+                    <br />
+                    <sub><b>codefactor-io[bot]</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/snyk-bot">
+                    <img src="https://avatars.githubusercontent.com/u/19733683?v=4" width="100;" alt="snyk-bot"/>
+                    <br />
+                    <sub><b>Snyk bot</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
+<!-- readme: bots,snyk-bot -end -->
