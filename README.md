@@ -69,7 +69,7 @@ Some Request Wrappers allow you to make some requests easily.
 The *last-mile operations* are done on these wrappers.
 This class defines all HTTP request/response, login/logout, serialization, and download/upload operations.
 
-**Avoid** using this class directly from your implementation. Only call its methods if you are extending the SDK's functionality or even implementing a new feature. Otherwise, prefer using one of the request wrappers or the Sankhya Context class.
+**Avoid** using this class directly from your implementation. Only call its methods if you are extending the SDK's functionality or implementing a new feature. Otherwise, prefer using one of the request wrappers or the Sankhya Context class.
 
 ---
 
@@ -193,17 +193,17 @@ Refer to [CONTRIBUTING.md](CONTRIBUTING.md) to learn how to contribute to this p
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/codefactor-io[bot]">
-                    <img src="https://avatars.githubusercontent.com/in/25603?v=4" width="100;" alt="codefactor-io[bot]"/>
-                    <br />
-                    <sub><b>codefactor-io[bot]</b></sub>
-                </a>
-            </td>
-            <td align="center">
                 <a href="https://github.com/github-actions[bot]">
                     <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="100;" alt="github-actions[bot]"/>
                     <br />
                     <sub><b>github-actions[bot]</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/codefactor-io[bot]">
+                    <img src="https://avatars.githubusercontent.com/in/25603?v=4" width="100;" alt="codefactor-io[bot]"/>
+                    <br />
+                    <sub><b>codefactor-io[bot]</b></sub>
                 </a>
             </td>
             <td align="center">
