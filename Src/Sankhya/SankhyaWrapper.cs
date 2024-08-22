@@ -1,3 +1,13 @@
+using Polly;
+using Sankhya;
+
+public class SankhyaWrapper
+{
+    private readonly Policy _policy;
+
+    public SankhyaWrapper()
+    {
+        _policy = Policy.Wrap(PollyPolicies.GetRetryPolicy(), PollyPolicies.GetTimeoutPolicy(), PollyPolicies.GetCircuitBreakerPolicy());
 ﻿// *********************************************************************** Assembly : Sankhya Author
 // : GuilhermeStracini Created : 10-07-2023
 //
