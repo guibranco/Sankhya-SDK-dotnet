@@ -6,61 +6,40 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  pull_request_target:
+    types: [opened, synchronize, reopened]
 
 jobs:
-  build:
-    name: Build
-    runs-on: windows-latest
-
+  DeepSource:
+    name: Deep Source Coverage report
+    runs-on: ubuntu-latest
     steps:
-
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '7'
-
-      - name: Build and test
-        env:
-          DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
-        run: |
-          dotnet build -c Release --verbosity minimal
-          dotnet test -c Release --verbosity minimal --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
-
-      - name: Upload artifact test coverage
-        uses: actions/upload-artifact@v4.3.4
-        with:
-          name: coverage
-          path: Tests\Sankhya.Tests\coverage.cobertura.xml
-
-  deep-source:
-    name: Deep Source Coverage report
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-
-      - name: Download artifact test coverage
-        uses: actions/download-artifact@v4
-        with:
-          name: coverage
-
       - name: Install DeepSource scanner
         run: curl https://deepsource.io/cli | sh
 
-      - name: Analyze
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build and analyze
+        if: >-
+          (
+            github.event_name == 'pull_request' &&
+            github.event.pull_request.head.repo.full_name == github.repository
+          ) || (
+            github.event_name == 'pull_request_target' &&
+            github.event.pull_request.head.repo.full_name != github.repository
+          ) || (
+            github.event_name == 'workflow_dispatch'
+          )
         env:
           DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
-        run: ./bin/deepsource report --analyzer test-coverage --key csharp --value-file coverage.cobertura.xml
+        run: |
+          dotnet build -c Debug --verbosity minimal
+          dotnet test -c Debug --verbosity minimal --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura" /p:CoverletOutput='../Results/'
+          ./bin/deepsource report --analyzer test-coverage --key csharp --value-file Tests/Results/coverage.cobertura.xml
