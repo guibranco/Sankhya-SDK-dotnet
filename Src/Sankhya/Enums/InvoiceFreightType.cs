@@ -33,5 +33,5 @@ public enum InvoiceFreightType
     /// </summary>
     [InternalValue("S")]
     [HumanReadable("Incluso")]
-    Included
+    Included,
 }

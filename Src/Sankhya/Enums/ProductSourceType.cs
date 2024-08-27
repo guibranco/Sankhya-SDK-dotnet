@@ -39,5 +39,5 @@ public enum ProductSourceType
     /// </summary>
     [HumanReadable("Product")]
     [InternalValue("P")]
-    Product
+    Product,
 }
