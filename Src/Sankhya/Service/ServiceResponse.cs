@@ -612,11 +612,20 @@ public sealed class ServiceResponse : IXmlSerializable
     }
 
     /// <summary>
-    /// Processes the crud service provider entities.
+    /// Processes CRUD service provider entities from an XML reader and populates the response body.
     /// </summary>
-    /// <param name="reader">The reader.</param>
-    /// <param name="entities">The entities.</param>
-    /// <returns>Trie of processed.</returns>
+    /// <param name="reader">The XML reader containing the data to be processed.</param>
+    /// <param name="entities">A list to store the dynamically read entities.</param>
+    /// <remarks>
+    /// This method reads attributes related to pagination such as PagerId, Total, and TotalPages from the XML reader
+    /// and initializes the <see cref="ResponseBody.CrudServiceProviderEntities"/> object with these values.
+    /// It then checks for the presence of metadata in the XML and, if found, loads it into the response body.
+    /// The method continues to read through the XML, looking for elements that represent individual entities,
+    /// which are then read and added to the provided list of entities. If metadata is present, it is used to change
+    /// the keys of the entities being read. Finally, the list of entities is converted to an array and assigned
+    /// to the response body.
+    /// </remarks>
+    /// <returns>Returns false indicating that processing is complete but does not signify any errors.</returns>
     private bool ProcessCrudServiceProviderEntities(
         XmlReader reader,
         List<EntityDynamicSerialization> entities
@@ -661,11 +670,19 @@ public sealed class ServiceResponse : IXmlSerializable
     }
 
     /// <summary>
-    /// Processes the crud service entities.
+    /// Processes CRUD service entities from an XML reader and populates a list of dynamic entities.
     /// </summary>
-    /// <param name="reader">The reader.</param>
-    /// <param name="entities">The entities.</param>
-    /// <returns>True if processed.</returns>
+    /// <param name="reader">The XML reader used to read the CRUD service entities.</param>
+    /// <param name="entities">A list that will be populated with dynamic entities read from the XML.</param>
+    /// <returns>Returns <c>true</c> if no entities were found, otherwise returns <c>false</c>.</returns>
+    /// <remarks>
+    /// This method initializes the <see cref="ResponseBody.CrudServiceEntities"/> with the name attribute from the XML reader.
+    /// It then checks for the presence of the entity element defined by <see cref="SankhyaConstants.EntityPtBr"/>.
+    /// If found, it reads each entity and adds it to the provided list of entities.
+    /// The method continues to read until there are no more elements of the specified type.
+    /// Finally, it converts the list of entities to an array and assigns it to <see cref="ResponseBody.CrudServiceEntities.Entities"/>.
+    /// This method is primarily used for deserializing dynamic entities from an XML structure into a manageable format.
+    /// </remarks>
     private bool ProcessCrudServiceEntities(
         XmlReader reader,
         List<EntityDynamicSerialization> entities
