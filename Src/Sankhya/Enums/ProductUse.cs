@@ -124,5 +124,5 @@ public enum ProductUse
     /// </summary>
     [InternalValue("V")]
     [HumanReadable("Venda (fabricação própria)")]
-    SaleOwnManufacturing
+    SaleOwnManufacturing,
 }

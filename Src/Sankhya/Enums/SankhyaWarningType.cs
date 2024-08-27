@@ -40,5 +40,5 @@ public enum SankhyaWarningType
     /// </summary>
     [InternalValue("grupo")]
     [HumanReadable("Grupo")]
-    Group = 2
+    Group = 2,
 }

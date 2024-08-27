@@ -522,7 +522,7 @@ public static class ServiceRequestExtensions
                 {
                     Fields = result.Fields.ToArray(),
                     Name = result.Name,
-                    IncludePresentationFields = false
+                    IncludePresentationFields = false,
                 };
                 if (!result.References.Any())
                 {
@@ -533,7 +533,7 @@ public static class ServiceRequestExtensions
                     .References.Select(reference => new ReferenceFetch
                     {
                         Field = reference.Value.ToArray(),
-                        Name = reference.Key
+                        Name = reference.Key,
                     })
                     .ToArray();
                 break;
@@ -544,7 +544,7 @@ public static class ServiceRequestExtensions
                     RootEntity = result.Name,
                     IncludePresentationFields = false,
                     ParallelLoader = true,
-                    DataSetId = string.Concat(DateTime.Now.ToUnixTimeStamp(), @"_1")
+                    DataSetId = string.Concat(DateTime.Now.ToUnixTimeStamp(), @"_1"),
                 };
                 var entities = new List<Entity>
                 {
@@ -553,9 +553,9 @@ public static class ServiceRequestExtensions
                         Path = string.Empty,
                         Fieldset = new()
                         {
-                            List = string.Join(@",", result.Fields.Select(f => f.Name))
-                        }
-                    }
+                            List = string.Join(@",", result.Fields.Select(f => f.Name)),
+                        },
+                    },
                 };
                 if (!result.References.Any())
                 {
@@ -569,8 +569,8 @@ public static class ServiceRequestExtensions
                         Path = reference.Key,
                         Fieldset = new()
                         {
-                            List = string.Join(@",", reference.Value.Select(v => v.Name))
-                        }
+                            List = string.Join(@",", reference.Value.Select(v => v.Name)),
+                        },
                     })
                 );
                 request.RequestBody.DataSet.Entities = entities.ToArray();
@@ -649,7 +649,7 @@ public static class ServiceRequestExtensions
                     .References.Select(reference => new ReferenceFetch
                     {
                         Field = reference.Value.ToArray(),
-                        Name = reference.Key
+                        Name = reference.Key,
                     })
                     .ToArray();
 
@@ -669,7 +669,7 @@ public static class ServiceRequestExtensions
                     RootEntity = result.Name,
                     IncludePresentationFields = false,
                     ParallelLoader = true,
-                    DataSetId = string.Concat(DateTime.Now.ToUnixTimeStamp(), @"_1")
+                    DataSetId = string.Concat(DateTime.Now.ToUnixTimeStamp(), @"_1"),
                 };
                 var entities = new List<Entity>
                 {
@@ -678,9 +678,9 @@ public static class ServiceRequestExtensions
                         Path = string.Empty,
                         Fieldset = new()
                         {
-                            List = string.Join(@",", result.Fields.Select(f => f.Name))
-                        }
-                    }
+                            List = string.Join(@",", result.Fields.Select(f => f.Name)),
+                        },
+                    },
                 };
                 request.RequestBody.DataSet.LiteralCriteria = result.LiteralCriteria;
                 if (!result.References.Any())
@@ -695,8 +695,8 @@ public static class ServiceRequestExtensions
                         Path = reference.Key,
                         Fieldset = new()
                         {
-                            List = string.Join(@",", reference.Value.Select(v => v.Name))
-                        }
+                            List = string.Join(@",", reference.Value.Select(v => v.Name)),
+                        },
                     })
                 );
                 request.RequestBody.DataSet.Entities = entities.ToArray();
@@ -716,13 +716,13 @@ public static class ServiceRequestExtensions
                         new Entity
                         {
                             Path = string.Empty,
-                            Fieldset = new() { List = @"*" }
-                        }
+                            Fieldset = new() { List = @"*" },
+                        },
                     },
                     DataRows = new[]
                     {
-                        new DataRow { Keys = new(), LocalFields = new() }
-                    }
+                        new DataRow { Keys = new(), LocalFields = new() },
+                    },
                 };
                 result.Keys.ForEach(k =>
                     request.RequestBody.DataSet.DataRows.Single().Keys.SetMember(k.Name, k.Value)
@@ -746,8 +746,8 @@ public static class ServiceRequestExtensions
                     DataSetId = string.Concat(DateTime.Now.ToUnixTimeStamp(), @"_2"),
                     Ids = new[]
                     {
-                        new EntityDynamicSerialization(DynamicSerializationOption.Uppercase)
-                    }
+                        new EntityDynamicSerialization(DynamicSerializationOption.Uppercase),
+                    },
                 };
                 result.Keys.ForEach(k =>
                     request.RequestBody.Entity.Ids[0].SetMember(k.Name, k.Value)
@@ -796,9 +796,9 @@ public static class ServiceRequestExtensions
                         new Entity
                         {
                             Path = string.Empty,
-                            Fieldset = new() { List = @"*" }
-                        }
-                    }
+                            Fieldset = new() { List = @"*" },
+                        },
+                    },
                 };
                 var dataRows = new List<DataRow>();
                 foreach (var result in results)
@@ -834,7 +834,7 @@ public static class ServiceRequestExtensions
                 {
                     RootEntity = sample.Name,
                     DataSetId = string.Concat(DateTime.Now.ToUnixTimeStamp(), @"_2"),
-                    Ids = ids.ToArray()
+                    Ids = ids.ToArray(),
                 };
                 break;
 

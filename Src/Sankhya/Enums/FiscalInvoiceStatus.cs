@@ -96,5 +96,5 @@ public enum FiscalInvoiceStatus
     /// </summary>
     [InternalValue("T")]
     [HumanReadable("NF-e terceiro")]
-    NfeThird
+    NfeThird,
 }
