@@ -55,5 +55,5 @@ public enum ServiceRequestType
     /// The know services
     /// </summary>
     [HumanReadable("Know services")]
-    KnowServices
+    KnowServices,
 }

@@ -49,7 +49,7 @@ public static class OnDemandRequestFactory
             ),
             Key = guid,
             Service = service,
-            Type = typeof(T)
+            Type = typeof(T),
         };
         Instances.Add(instance);
         return instance;

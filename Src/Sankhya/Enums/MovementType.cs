@@ -194,5 +194,5 @@ public enum MovementType
     /// </summary>
     [InternalValue("Z")]
     [HumanReadable("Modelo")]
-    Model
+    Model,
 }

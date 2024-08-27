@@ -92,5 +92,5 @@ public enum ProductSource
     /// </summary>
     [InternalValue("8")]
     [HumanReadable("8 - Nacional, mercadoria ou bem com Conteúdo de Importação superior a 70%")]
-    NationalForeignOver70
+    NationalForeignOver70,
 }

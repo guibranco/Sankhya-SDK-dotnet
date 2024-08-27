@@ -33,5 +33,5 @@ public enum InventoryType
     /// </summary>
     [HumanReadable("Terceiro")]
     [InternalValue("T")]
-    Third
+    Third,
 }
