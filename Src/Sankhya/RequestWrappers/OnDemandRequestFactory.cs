@@ -21,15 +21,21 @@ public static class OnDemandRequestFactory
     private static readonly ConcurrentBag<OnDemandRequestInstance> Instances = new();
 
     /// <summary>
-    /// Creates the instance internal.
+    /// Creates an internal instance of an OnDemandRequestInstance for a specified entity type.
     /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="guid">The unique identifier.</param>
-    /// <param name="service">The service.</param>
-    /// <param name="throughput">The throughput.</param>
-    /// <param name="allowAboveThroughput">if set to <c>true</c> [allow above throughput].</param>
-    /// <param name="token">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>OnDemandRequestInstance.</returns>
+    /// <typeparam name="T">The type of the entity, which must implement IEntity and have a parameterless constructor.</typeparam>
+    /// <param name="guid">A unique identifier for the instance being created.</param>
+    /// <param name="service">The service name associated with the instance.</param>
+    /// <param name="throughput">The throughput value for the instance.</param>
+    /// <param name="allowAboveThroughput">A flag indicating whether to allow throughput above the specified limit.</param>
+    /// <param name="token">A cancellation token to monitor for cancellation requests.</param>
+    /// <returns>A newly created instance of <see cref="OnDemandRequestInstance"/>.</returns>
+    /// <remarks>
+    /// This method initializes a new instance of <see cref="OnDemandRequestInstance"/> by creating a wrapper for the specified entity type <typeparamref name="T"/>.
+    /// The created instance is configured with the provided service name, throughput, and cancellation token.
+    /// It also adds the newly created instance to a collection of instances for management and tracking purposes.
+    /// The method ensures that the entity type meets the requirements of implementing the IEntity interface and having a default constructor.
+    /// </remarks>
     private static OnDemandRequestInstance CreateInstanceInternal<T>(
         Guid guid,
         ServiceName service,
