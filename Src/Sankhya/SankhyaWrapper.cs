@@ -120,7 +120,7 @@ internal class SankhyaWrapper
         {
             { @"image/jpeg", @"jpg" },
             { @"image/png", @"png" },
-            { @"image/gif", @"gif" }
+            { @"image/gif", @"gif" },
         };
 
     /// <summary>
@@ -203,7 +203,7 @@ internal class SankhyaWrapper
             ServiceEnvironment.Production => @"SANKHYA_PRODUCAO",
             ServiceEnvironment.Sandbox => @"SANKHYA_HOMOLOGACAO",
             ServiceEnvironment.Training => @"SANKHYA_TREINAMENTO",
-            _ => throw new ArgumentOutOfRangeException(nameof(environment), environment, null)
+            _ => throw new ArgumentOutOfRangeException(nameof(environment), environment, null),
         };
     }
 
@@ -944,7 +944,7 @@ internal class SankhyaWrapper
 
         var request = new ServiceRequest(ServiceName.Login)
         {
-            RequestBody = { Username = userName, Password = password }
+            RequestBody = { Username = userName, Password = password },
         };
 
         var response = ServiceInvoker(request);
@@ -1284,7 +1284,7 @@ internal class SankhyaWrapper
             {
                 ContentType = response.ContentType,
                 Data = data,
-                FileExtension = extension
+                FileExtension = extension,
             };
         }
         catch (WebException e)

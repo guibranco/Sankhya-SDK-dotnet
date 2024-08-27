@@ -54,7 +54,7 @@ public static class KnowServicesRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.SessionKill)
         {
-            RequestBody = new() { Session = new() { Id = sessionId } }
+            RequestBody = new() { Session = new() { Id = sessionId } },
         };
         SankhyaContext.ServiceInvoker(request, SessionToken);
     }
@@ -83,9 +83,9 @@ public static class KnowServicesRequestWrapper
                 {
                     Description = description,
                     Importance = level,
-                    Title = title
-                }
-            }
+                    Title = title,
+                },
+            },
         };
         if (!string.IsNullOrWhiteSpace(tip))
         {
@@ -120,7 +120,7 @@ public static class KnowServicesRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.MessageSend)
         {
-            RequestBody = { SystemMessage = new() { Content = content } }
+            RequestBody = { SystemMessage = new() { Content = content } },
         };
         if (recipients != null && recipients.Any())
         {
@@ -144,8 +144,8 @@ public static class KnowServicesRequestWrapper
         {
             RequestBody =
             {
-                NotificationElem = new() { LastNotification = _lastTimeMessageReceived }
-            }
+                NotificationElem = new() { LastNotification = _lastTimeMessageReceived },
+            },
         };
         LogConsumer.Info(Resources.KnowServicesRequestWrapper_ReceiveMessages_ReceivingMessages);
         var response = SankhyaContext.ServiceInvoker(request, SessionToken);
@@ -171,7 +171,7 @@ public static class KnowServicesRequestWrapper
 
         var request = new ServiceRequest(ServiceName.InvoiceInclude)
         {
-            RequestBody = { Invoice = new() { Header = invoiceHeader } }
+            RequestBody = { Invoice = new() { Header = invoiceHeader } },
         };
         var itemsCount = 0;
         if (invoiceItems != null)
@@ -205,8 +205,8 @@ public static class KnowServicesRequestWrapper
         {
             RequestBody =
             {
-                Invoices = new() { Invoice = new() { SingleNumberDuplication = singleNumber } }
-            }
+                Invoices = new() { Invoice = new() { SingleNumberDuplication = singleNumber } },
+            },
         };
 
         LogConsumer.Info(Resources.KnowServicesRequestWrapper_RemoveInvoice, singleNumber);
@@ -233,10 +233,10 @@ public static class KnowServicesRequestWrapper
                     {
                         Items = items,
                         InformPrice = true,
-                        OnlineUpdate = true
-                    }
-                }
-            }
+                        OnlineUpdate = true,
+                    },
+                },
+            },
         };
 
         LogConsumer.Info(
@@ -289,9 +289,9 @@ public static class KnowServicesRequestWrapper
             {
                 Invoice = new()
                 {
-                    Items = new() { Items = items, OnlineUpdate = true }
-                }
-            }
+                    Items = new() { Items = items, OnlineUpdate = true },
+                },
+            },
         };
         LogConsumer.Info(
             Resources.KnowServicesRequestWrapper_RemoveInvoiceItems_DeletingItemsFromInvoice,
@@ -335,9 +335,9 @@ public static class KnowServicesRequestWrapper
                     IsDateValidated = true,
                     InvoicesWithCurrency = new() { CurrencyValue = @"undefined" },
                     Invoice = new() { Value = singleNumber },
-                    OneInvoiceForEach = true
-                }
-            }
+                    OneInvoiceForEach = true,
+                },
+            },
         };
         if (requestEvents != null)
         {
@@ -394,10 +394,10 @@ public static class KnowServicesRequestWrapper
                     SingleNumberConfirmation = singleNumber,
                     Props = new[]
                     {
-                        new Prop { Name = @"br.com.utiliza.dtneg.servidor", Value = @"false" }
-                    }
-                }
-            }
+                        new Prop { Name = @"br.com.utiliza.dtneg.servidor", Value = @"false" },
+                    },
+                },
+            },
         };
 
         try
@@ -436,7 +436,7 @@ public static class KnowServicesRequestWrapper
         var singleNumbersArray = singleNumbers as int[] ?? singleNumbers.ToArray();
         var request = new ServiceRequest(ServiceName.InvoiceFlagAsNotPending)
         {
-            RequestBody = { SingleNumbers = singleNumbersArray }
+            RequestBody = { SingleNumbers = singleNumbersArray },
         };
         LogConsumer.Info(
             Resources.KnowServicesRequestWrapper_FlagInvoicesAsNotPending,
@@ -457,7 +457,7 @@ public static class KnowServicesRequestWrapper
         var singleNumbersList = singleNumbers as int[] ?? singleNumbers.ToArray();
         var request = new ServiceRequest(ServiceName.InvoiceAccompaniments)
         {
-            RequestBody = { Invoices = new() { SingleNumbers = singleNumbersList } }
+            RequestBody = { Invoices = new() { SingleNumbers = singleNumbersList } },
         };
         LogConsumer.Info(
             Resources.KnowServicesRequestWrapper_GetInvoiceAccompaniments,
@@ -490,9 +490,9 @@ public static class KnowServicesRequestWrapper
                 CancelledInvoices = new()
                 {
                     Justification = justification,
-                    SingleNumbers = singleNumbersList
-                }
-            }
+                    SingleNumbers = singleNumbersList,
+                },
+            },
         };
 
         LogConsumer.Info(
@@ -533,9 +533,9 @@ public static class KnowServicesRequestWrapper
                 {
                     SingleNumber = singleNumber,
                     CodePartner = codePartner,
-                    MovementType = movementType
-                }
-            }
+                    MovementType = movementType,
+                },
+            },
         };
         LogConsumer.Info(
             Resources.KnowServicesRequestWrapper_BindInvoiceWithOrder,
@@ -573,9 +573,9 @@ public static class KnowServicesRequestWrapper
                     DateExitDuplicationNullable = dateExit,
                     ShouldUpdatePrice = shouldUpdatePrice,
                     ShouldDuplicateAllItems = true,
-                    Invoice = new() { SingleNumberDuplication = singleNumber }
-                }
-            }
+                    Invoice = new() { SingleNumberDuplication = singleNumber },
+                },
+            },
         };
 
         if (series.HasValue)
@@ -609,7 +609,7 @@ public static class KnowServicesRequestWrapper
         var singleNumbersLists = singleNumbers as int[] ?? singleNumbers.ToArray();
         var request = new ServiceRequest(ServiceName.NfeGetAuthorization)
         {
-            RequestBody = { Invoices = new() { SingleNumbers = singleNumbersLists } }
+            RequestBody = { Invoices = new() { SingleNumbers = singleNumbersLists } },
         };
         LogConsumer.Info(
             Resources.KnowServicesRequestWrapper_GetFiscalInvoiceAuthorization,
@@ -634,9 +634,9 @@ public static class KnowServicesRequestWrapper
                 Invoices = new()
                 {
                     ReturnDisapprovedInvoices = false,
-                    SingleNumbers = singleNumbersLists
-                }
-            }
+                    SingleNumbers = singleNumbersLists,
+                },
+            },
         };
         LogConsumer.Info(
             Resources.KnowServicesRequestWrapper_GenerateLot,
@@ -681,9 +681,9 @@ public static class KnowServicesRequestWrapper
                     TipLancDesp = @"1",
                     TopBaixaDesp = @"800",
                     TemFiltroAntecipacaoBx = @"N",
-                    ParamImprimeBoleto = @"false"
-                }
-            }
+                    ParamImprimeBoleto = @"false",
+                },
+            },
         };
         try
         {
@@ -718,9 +718,9 @@ public static class KnowServicesRequestWrapper
                     {
                         FinancialNumber = financialNumber,
                         Recompose = @"undefined",
-                        RevertAllAnticipation = @"undefined"
-                    }
-                }
+                        RevertAllAnticipation = @"undefined",
+                    },
+                },
             })
         )
         {
@@ -741,7 +741,7 @@ public static class KnowServicesRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.UnlinkShipping)
         {
-            RequestBody = { Param = new() { FinancialNumberUpperCase = financialNumber } }
+            RequestBody = { Param = new() { FinancialNumberUpperCase = financialNumber } },
         };
 
         try
@@ -764,7 +764,7 @@ public static class KnowServicesRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.FileOpen)
         {
-            RequestBody = { Config = new() { Path = path } }
+            RequestBody = { Config = new() { Path = path } },
         };
         var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         return response.ResponseBody.Key.Value;
@@ -784,9 +784,9 @@ public static class KnowServicesRequestWrapper
                 Paths = pathsArray.Select(path => new Service.Path { Value = path }).ToArray(),
                 ClientEvents = new[]
                 {
-                    new ClientEvent { Text = @"br.com.sankhya.actionbutton.clientconfirm" }
-                }
-            }
+                    new ClientEvent { Text = @"br.com.sankhya.actionbutton.clientconfirm" },
+                },
+            },
         };
         LogConsumer.Info(Resources.KnowServicesRequestWrapper_DeleteFiles, pathsArray.Length);
         SankhyaContext.ServiceInvoker(request, SessionToken);

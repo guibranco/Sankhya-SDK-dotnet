@@ -40,5 +40,5 @@ public enum InvoiceStatus
     /// </summary>
     [InternalValue("P")]
     [HumanReadable("Pendente")]
-    Pending
+    Pending,
 }

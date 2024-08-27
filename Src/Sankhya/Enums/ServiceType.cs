@@ -37,5 +37,5 @@ public enum ServiceType
     /// <summary>
     /// The transactional
     /// </summary>
-    Transactional = 3
+    Transactional = 3,
 }
