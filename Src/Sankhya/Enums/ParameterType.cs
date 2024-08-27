@@ -40,5 +40,5 @@ public enum ParameterType
     /// </summary>
     [InternalValue("D")]
     [HumanReadable("Datetime")]
-    Datetime
+    Datetime,
 }

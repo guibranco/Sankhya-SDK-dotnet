@@ -47,5 +47,5 @@ public enum FreightType
     /// </summary>
     [InternalValue("T")]
     [HumanReadable("Terceiros")]
-    Third
+    Third,
 }

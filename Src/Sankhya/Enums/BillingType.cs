@@ -40,5 +40,5 @@ public enum BillingType
     /// </summary>
     [HumanReadable("Faturamento direto")]
     [InternalValue("FaturamentoDireto")]
-    Direct
+    Direct,
 }

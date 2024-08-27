@@ -136,7 +136,7 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
         _worker = new(Process)
         {
             Name = $@"OnDemandRequest<{_entityName}_{throughput}_{_service}>",
-            Priority = ThreadPriority.Lowest
+            Priority = ThreadPriority.Lowest,
         };
         _event = new(false);
         _flushEvent = new(false);

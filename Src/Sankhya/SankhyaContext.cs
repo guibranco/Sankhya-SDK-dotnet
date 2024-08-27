@@ -95,7 +95,7 @@ public sealed class SankhyaContext
             {
                 Credentials = new Credentials { Password = password, Username = username },
                 Host = host,
-                Port = port
+                Port = port,
             }
         ) { }
 

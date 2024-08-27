@@ -46,5 +46,5 @@ public enum ProductSuggestionType
     /// </summary>
     [HumanReadable("Compre Junto")]
     [InternalValue("C")]
-    BuyTogether
+    BuyTogether,
 }

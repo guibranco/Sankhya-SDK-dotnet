@@ -47,5 +47,5 @@ public enum ServiceModule
     /// </summary>
     [InternalValue("mgefin")]
     [HumanReadable("MGEFIN")]
-    Mgefin = 3
+    Mgefin = 3,
 }
