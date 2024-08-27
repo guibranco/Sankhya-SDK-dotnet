@@ -490,12 +490,20 @@ public static class ServiceRequestExtensions
     }
 
     /// <summary>
-    /// Request with type.
+    /// Resolves a service request based on the provided criteria and options.
     /// </summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <exception cref="ArgumentNullException">request.</exception>
-    /// <exception cref="InvalidServiceRequestOperationException">Invalid service request operation.</exception>
+    /// <typeparam name="T">The type of the entity to resolve, which must be a class implementing <see cref="IEntity"/> and have a parameterless constructor.</typeparam>
+    /// <param name="request">The service request to be resolved.</param>
+    /// <param name="criteria">The criteria used to filter the entities.</param>
+    /// <param name="options">The options that dictate how the query should be executed.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="request"/> or <paramref name="options"/> is null.</exception>
+    /// <remarks>
+    /// This method extends the functionality of a service request by resolving it with specific criteria and options.
+    /// It first checks if the provided request and options are not null, throwing an <see cref="ArgumentNullException"/> if either is null.
+    /// Then, it calls the internal resolve method for the specified entity type <typeparamref name="T"/> using the provided criteria.
+    /// Depending on the service type of the request, it further resolves the request using either the CRUD find or CRUD service find methods.
+    /// This allows for flexible handling of different types of service requests while ensuring that the necessary parameters are provided.
+    /// </remarks>
     public static void Resolve<T>(this ServiceRequest request)
         where T : class, IEntity, new()
     {
@@ -626,11 +634,26 @@ public static class ServiceRequestExtensions
     }
 
     /// <summary>
-    /// Handles the service.
+    /// Handles a service request by processing the provided <paramref name="request"/>
+    /// based on the specified service operation and populating the <paramref name="result"/> accordingly.
     /// </summary>
-    /// <param name="request">The request.</param>
-    /// <param name="result">The result.</param>
-    /// <exception cref="InvalidServiceRequestOperationException">Invalid Service Request Operation.</exception>
+    /// <param name="request">The service request containing the operation details and request body.</param>
+    /// <param name="result">The result of the entity resolution containing criteria, fields, and references.</param>
+    /// <remarks>
+    /// This method processes different types of CRUD operations based on the service name specified in the
+    /// <paramref name="request"/>. It modifies the request body to include necessary data from the
+    /// <paramref name="result"/>. The supported operations include:
+    ///
+    /// - **CrudFind**: Populates the entity's criteria, fields, and references if available.
+    /// - **CrudSave** and **CrudRemove**: Sets the field values for the entity based on the result.
+    /// - **CrudServiceFind**: Constructs a data set with entities and criteria for finding services.
+    /// - **CrudServiceSave**: Prepares a data set for saving entities with specified keys and field values.
+    /// - **CrudServiceRemove**: Prepares an entity for removal based on provided keys.
+    ///
+    /// If an unsupported service operation is requested, an
+    /// <see cref="InvalidServiceRequestOperationException"/> is thrown.
+    /// </remarks>
+    /// <exception cref="InvalidServiceRequestOperationException">Thrown when the service operation is not supported.</exception>
     private static void HandleService(ServiceRequest request, EntityResolverResult result)
     {
         switch (request.Service)
