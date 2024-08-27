@@ -137,7 +137,7 @@ internal static class StatusMessageHelper
             {
                 @"A subconsulta retornou mais de 1 valor",
                 (_, _, request, _) => new ServiceRequestInvalidSubQueryException(request)
-            }
+            },
         };
 
     /// <summary>

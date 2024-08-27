@@ -33,5 +33,5 @@ public enum FiscalPersonType
     /// </summary>
     [HumanReadable("Pessoa jurídica")]
     [InternalValue("J")]
-    Corporation
+    Corporation,
 }

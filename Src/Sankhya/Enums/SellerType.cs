@@ -75,5 +75,5 @@ public enum SellerType
     /// </summary>
     [HumanReadable("Técnico")]
     [InternalValue("T")]
-    Technician
+    Technician,
 }
