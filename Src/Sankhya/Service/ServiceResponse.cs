@@ -626,7 +626,7 @@ public sealed class ServiceResponse : IXmlSerializable
         {
             PagerId = reader.GetAttribute(SankhyaConstants.PagerId),
             Total = reader.GetAttribute(SankhyaConstants.Total).ToInt32(),
-            TotalPages = reader.GetAttribute(SankhyaConstants.TotalPages).ToInt32()
+            TotalPages = reader.GetAttribute(SankhyaConstants.TotalPages).ToInt32(),
         };
         reader.Read();
         if (
@@ -673,7 +673,7 @@ public sealed class ServiceResponse : IXmlSerializable
     {
         ResponseBody.CrudServiceEntities = new()
         {
-            Name = reader.GetAttribute(SankhyaConstants.Name)
+            Name = reader.GetAttribute(SankhyaConstants.Name),
         };
         if (!reader.ReadToDescendant(SankhyaConstants.EntityPtBr))
         {

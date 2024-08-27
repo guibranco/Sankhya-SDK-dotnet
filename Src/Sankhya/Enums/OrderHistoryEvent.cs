@@ -54,5 +54,5 @@ public enum OrderHistoryEvent
     /// </summary>
     [InternalValue("I")]
     [HumanReadable("Inclusão")]
-    Inclusion
+    Inclusion,
 }

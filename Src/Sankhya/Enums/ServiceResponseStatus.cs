@@ -42,5 +42,5 @@ public enum ServiceResponseStatus
     /// <summary>
     /// The service canceled
     /// </summary>
-    ServiceCanceled = 4
+    ServiceCanceled = 4,
 }

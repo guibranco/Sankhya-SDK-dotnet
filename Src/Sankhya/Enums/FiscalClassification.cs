@@ -61,5 +61,5 @@ public enum FiscalClassification
     /// </summary>
     [HumanReadable("Consumidor Contribuinte")]
     [InternalValue("X")]
-    TaxpayerCustomer
+    TaxpayerCustomer,
 }
