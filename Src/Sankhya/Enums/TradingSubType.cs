@@ -82,5 +82,5 @@ public enum TradingSubType
     /// </summary>
     [HumanReadable("Cartão de débito")]
     [InternalValue("8")]
-    DebitCard
+    DebitCard,
 }

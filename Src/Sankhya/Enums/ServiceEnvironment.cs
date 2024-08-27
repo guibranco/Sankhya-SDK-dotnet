@@ -47,5 +47,5 @@ public enum ServiceEnvironment
     /// </summary>
     [InternalValue("8380")]
     [HumanReadable("Treinamento")]
-    Training
+    Training,
 }

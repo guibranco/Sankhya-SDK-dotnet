@@ -82,5 +82,5 @@ public enum InvoiceFollowUpReference
     /// </summary>
     [HumanReadable("Vendedor")]
     [InternalValue("V")]
-    Seller
+    Seller,
 }

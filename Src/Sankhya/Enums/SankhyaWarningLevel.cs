@@ -47,5 +47,5 @@ public enum SankhyaWarningLevel
     /// </summary>
     [InternalValue("3")]
     [HumanReadable("Informação")]
-    Information = 3
+    Information = 3,
 }

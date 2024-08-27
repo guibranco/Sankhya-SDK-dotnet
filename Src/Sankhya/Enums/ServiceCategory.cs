@@ -52,5 +52,5 @@ public enum ServiceCategory
     /// <summary>
     /// The invoice
     /// </summary>
-    Invoice
+    Invoice,
 }
