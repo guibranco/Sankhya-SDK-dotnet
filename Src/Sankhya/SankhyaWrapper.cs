@@ -926,10 +926,18 @@ internal class SankhyaWrapper
     }
 
     /// <summary>
-    /// Authenticates the specified user name.
+    /// Authenticates a user by validating their username and password.
     /// </summary>
-    /// <param name="userName">Name of the user.</param>
-    /// <param name="password">The password.</param>
+    /// <param name="userName">The username of the user attempting to authenticate.</param>
+    /// <param name="password">The password of the user attempting to authenticate.</param>
+    /// <remarks>
+    /// This method sets the instance variables <c>_username</c> and <c>_password</c> with the provided credentials.
+    /// It checks if a session ID already exists; if it does, the method returns early without performing authentication.
+    /// If no session ID is present, it logs the authentication attempt and creates a service request to log in the user.
+    /// The request includes the username and password in its body.
+    /// After sending the request, it checks the response; if the response is null, it exits without further action.
+    /// If a valid response is received, it extracts the session ID and user code from the response body and assigns them to the instance variables <c>_sessionId</c> and <c>UserCode</c>, respectively.
+    /// </remarks>
     public void Authenticate(string userName, string password)
     {
         _username = userName;
@@ -1219,13 +1227,23 @@ internal class SankhyaWrapper
     }
 
     /// <summary>
-    /// Gets the image.
+    /// Retrieves an image from a specified entity using the provided keys.
     /// </summary>
-    /// <param name="entity">The entity.</param>
-    /// <param name="keys">The keys.</param>
-    /// <returns>Sankhya.ValueObjects.ServiceFile.</returns>
-    /// <exception cref="WebException">WebExceptionStatus.PipelineFailure.</exception>
-    /// <exception cref="InvalidOperationException">Resources.SankhyaWrapper_ReadStream_Exception.</exception>
+    /// <param name="entity">The entity from which to retrieve the image.</param>
+    /// <param name="keys">A dictionary of keys used to identify the specific image.</param>
+    /// <returns>A <see cref="ServiceFile"/> object containing the image data, content type, and file extension, or null if the image is not found.</returns>
+    /// <remarks>
+    /// This method constructs a URL to access an image based on the provided entity and keys. It logs the request details and attempts to make an HTTP request to retrieve the image.
+    /// If the response indicates that the image was not found (HTTP 404), it returns null.
+    /// If any other web exception occurs, it logs the error and also returns null.
+    /// The method ensures that resources are properly disposed of by closing the response in a finally block.
+    /// </remarks>
+    /// <exception cref="WebException">
+    /// Thrown when there is an issue with the web request, such as a protocol error.
+    /// </exception>
+    /// <exception cref="InvalidOperationException">
+    /// Thrown when there is an issue reading from the response stream.
+    /// </exception>
     public ServiceFile GetImage(string entity, Dictionary<string, object> keys)
     {
         HttpWebResponse response = null;
