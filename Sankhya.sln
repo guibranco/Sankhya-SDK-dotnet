@@ -2,6 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sankhya.IntegrationTests", "Tests\Sankhya.IntegrationTests\Sankhya.IntegrationTests.csproj", "{B1A2F4CE-DCAB-4F78-8A20-A33CD7F74CFB}"
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sankhya", "Src\Sankhya\Sankhya.csproj", "{D1E5B509-0934-4E15-B78D-D3A88ADDCB16}"
 EndProject
