@@ -2,22 +2,10 @@
 
   <PropertyGroup>
     <ProjectGuid>{D1E5B509-0934-4E15-B78D-D3A88ADDCB16}</ProjectGuid>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0;net8.0</TargetFrameworks>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <LangVersion>latest</LangVersion>
-    <Company>Guilherme Branco Stracini</Company>
-    <Authors>Guilherme Branco Stracini</Authors>
-    <Copyright>© 2023 Guilherme Branco Stracini. All rights reserved.</Copyright>
-    <Description>The Sankhya (ERP) SDK. A .NET client to consume Sankhya web service</Description>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageProjectUrl>https://guibranco.github.io/Sankhya-SDK-dotnet/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/guibranco/Sankhya-SDK-dotnet</RepositoryUrl>
-    <RepositoryType>GIT</RepositoryType>
+    <TargetFrameworks>$(DotNetVersions)</TargetFrameworks>    
+    <Description>The Sankhya (ERP) SDK. A .NET client to consume Sankhya web service</Description>    
     <PackageTags>sankhya erp client sdk web service webservice apis</PackageTags>
-    <PackageIcon>packageLogo.png</PackageIcon>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>1.0.0</Version>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <PackageReleaseNotes>Chore</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,21 +20,6 @@
 
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="..\..\packageLogo.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="..\..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
