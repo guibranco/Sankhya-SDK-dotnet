@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
 using System.Runtime.Serialization;
 using Sankhya.Properties;
 using Sankhya.Service;
