@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System.Collections.Generic;
 using Sankhya.Service;
 
 namespace Sankhya.ValueObjects;

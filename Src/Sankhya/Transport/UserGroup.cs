@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
@@ -9,7 +10,7 @@ namespace Sankhya.Transport;
 /// Class UserGroup. This class cannot be inherited.
 /// </summary>
 /// <seealso cref="IEntity" />
-/// <seealso cref="IEquatable{UserGroup}" />
+/// <seealso cref="IEquatable{T}" />
 [Entity("GrupoUsuario")]
 public class UserGroup : IEntity, IEquatable<UserGroup>
 {

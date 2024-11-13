@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
 using Sankhya.Transport;
 
 namespace Sankhya.RequestWrappers;

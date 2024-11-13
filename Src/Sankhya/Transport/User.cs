@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
@@ -10,7 +11,7 @@ namespace Sankhya.Transport;
 /// Class User. This class cannot be inherited.
 /// </summary>
 /// <seealso cref="IEntity" />
-/// <seealso cref="IEquatable{User}" />
+/// <seealso cref="IEquatable{T}" />
 [Serializer]
 [Entity("Usuario")]
 public class User : IEntity, IEquatable<User>

@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;

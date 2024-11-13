@@ -1,17 +1,4 @@
-// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="Seller.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
+using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
@@ -21,10 +8,9 @@ using Sankhya.Enums;
 namespace Sankhya.Transport;
 
 /// <summary>
-/// Class Seller. This class cannot be inherited.
+/// Represents a seller entity in the system, including details such as codes, nickname, email, active status, type, and related partner information.
 /// </summary>
-/// <seealso cref="IEquatable{T}" />
-/// <seealso cref="IEntity" />
+// ReSharper disable once ClassNeverInstantiated.Global
 [Entity("Vendedor")]
 public class Seller : IEntity, IEquatable<Seller>
 {
@@ -32,7 +18,7 @@ public class Seller : IEntity, IEquatable<Seller>
     /// Indicates whether the current object is equal to another object of the same type.
     /// </summary>
     /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
+    /// <returns>true if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.</returns>
     // ReSharper disable once CyclomaticComplexity
     public bool Equals(Seller other)
     {
@@ -65,10 +51,10 @@ public class Seller : IEntity, IEquatable<Seller>
     }
 
     /// <summary>
-    /// Determines whether the specified object is equal to the current object.
+    /// Determines whether the specified <see cref="object" /> is equal to this instance.
     /// </summary>
     /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
+    /// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -80,9 +66,9 @@ public class Seller : IEntity, IEquatable<Seller>
     }
 
     /// <summary>
-    /// Serves as the default hash function.
+    /// Returns a hash code for this instance.
     /// </summary>
-    /// <returns>A hash code for the current object.</returns>
+    /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -127,7 +113,7 @@ public class Seller : IEntity, IEquatable<Seller>
     }
 
     /// <summary>
-    /// Implements the ==.
+    /// Implements the == operator.
     /// </summary>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
@@ -135,7 +121,7 @@ public class Seller : IEntity, IEquatable<Seller>
     public static bool operator ==(Seller left, Seller right) => Equals(left, right);
 
     /// <summary>
-    /// Implements the !=.
+    /// Implements the != operator.
     /// </summary>
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
@@ -143,92 +129,92 @@ public class Seller : IEntity, IEquatable<Seller>
     public static bool operator !=(Seller left, Seller right) => !Equals(left, right);
 
     /// <summary>
-    /// The code
+    /// The seller's code.
     /// </summary>
     private int _code;
 
     /// <summary>
-    /// The code set
+    /// Indicates whether the seller's code is set.
     /// </summary>
     private bool _codeSet;
 
     /// <summary>
-    /// The code user
+    /// The user's code associated with the seller.
     /// </summary>
     private int _codeUser;
 
     /// <summary>
-    /// The code user set
+    /// Indicates whether the user's code is set.
     /// </summary>
     private bool _codeUserSet;
 
     /// <summary>
-    /// The code partner
+    /// The partner's code associated with the seller.
     /// </summary>
     private int _codePartner;
 
     /// <summary>
-    /// The code partner set
+    /// Indicates whether the partner's code is set.
     /// </summary>
     private bool _codePartnerSet;
 
     /// <summary>
-    /// The active
+    /// Indicates whether the seller is active.
     /// </summary>
     private bool _isActive;
 
     /// <summary>
-    /// The active set
+    /// Indicates whether the active status is set.
     /// </summary>
     private bool _isActiveSet;
 
     /// <summary>
-    /// The nickname
+    /// The seller's nickname.
     /// </summary>
     private string _nickname;
 
     /// <summary>
-    /// The nickname set
+    /// Indicates whether the nickname is set.
     /// </summary>
     private bool _nicknameSet;
 
     /// <summary>
-    /// The email
+    /// The seller's email address.
     /// </summary>
     private string _email;
 
     /// <summary>
-    /// The email set
+    /// Indicates whether the email is set.
     /// </summary>
     private bool _emailSet;
 
     /// <summary>
-    /// The type
+    /// The type of the seller.
     /// </summary>
     private SellerType _type;
 
     /// <summary>
-    /// The type set
+    /// Indicates whether the seller type is set.
     /// </summary>
     private bool _typeSet;
 
     /// <summary>
-    /// The date changed
+    /// The date the seller was last changed.
     /// </summary>
     private DateTime _dateChanged;
 
     /// <summary>
-    /// The date changed set
+    /// Indicates whether the date changed is set.
     /// </summary>
     private bool _dateChangedSet;
 
     /// <summary>
-    /// The partner
+    /// The partner associated with the seller.
     /// </summary>
     private Partner _partner;
 
     /// <summary>
-    /// The partner set
+    /// Indicates whether the partner is set.
     /// </summary>
     private bool _partnerSet;
 
@@ -412,31 +398,31 @@ public class Seller : IEntity, IEquatable<Seller>
     }
 
     /// <summary>
-    /// Should the serialize code.
+    /// Shoulds the serialize code.
     /// </summary>
-    /// <returns>Boolean.</returns>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCode() => _codeSet;
 
     /// <summary>
-    /// Should the serialize code user.
+    /// Shoulds the serialize code user.
     /// </summary>
-    /// <returns>Boolean.</returns>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeUser() => _codeUserSet;
 
     /// <summary>
-    /// Should the serialize code partner.
+    /// Shoulds the serialize code partner.
     /// </summary>
-    /// <returns>Boolean.</returns>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodePartner() => _codePartnerSet;
 
     /// <summary>
-    /// Should the serialize is active.
+    /// Shoulds the serialize is active.
     /// </summary>
     /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     [Browsable(false)]
@@ -444,41 +430,41 @@ public class Seller : IEntity, IEquatable<Seller>
     public bool ShouldSerializeIsActive() => _isActiveSet;
 
     /// <summary>
-    /// Should the serialize nickname.
+    /// Shoulds the serialize nickname.
     /// </summary>
-    /// <returns>Boolean.</returns>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeNickname() => _nicknameSet;
 
     /// <summary>
-    /// Should the serialize email.
+    /// Shoulds the serialize email.
     /// </summary>
-    /// <returns>Boolean.</returns>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeEmail() => _emailSet;
 
     /// <summary>
-    /// Should the type of the serialize.
+    /// Shoulds the type of the serialize.
     /// </summary>
-    /// <returns>Boolean.</returns>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeType() => _typeSet;
 
     /// <summary>
-    /// Should the serialize date changed.
+    /// Shoulds the serialize date changed.
     /// </summary>
-    /// <returns>Boolean.</returns>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateChanged() => _dateChangedSet;
 
     /// <summary>
-    /// Should the serialize partner.
+    /// Shoulds the serialize partner.
     /// </summary>
-    /// <returns>Boolean.</returns>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePartner() => _partnerSet;

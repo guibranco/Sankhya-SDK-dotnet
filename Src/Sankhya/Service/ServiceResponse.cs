@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Text;
@@ -680,7 +682,7 @@ public sealed class ServiceResponse : IXmlSerializable
     /// It then checks for the presence of the entity element defined by <see cref="SankhyaConstants.EntityPtBr"/>.
     /// If found, it reads each entity and adds it to the provided list of entities.
     /// The method continues to read until there are no more elements of the specified type.
-    /// Finally, it converts the list of entities to an array and assigns it to <see cref="ResponseBody.CrudServiceEntities.Entities"/>.
+    /// Finally, it converts the list of entities to an array and assigns it to <see cref="CrudServiceEntities.Entities"/>.
     /// This method is primarily used for deserializing dynamic entities from an XML structure into a manageable format.
     /// </remarks>
     private bool ProcessCrudServiceEntities(

@@ -15,8 +15,8 @@
 
 ## Code Quality
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f6d787f9a2fe4116a7a8a0043489ba67)](https://www.codacy.com/gh/guibranco/Sankhya-SDK-dotnet/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/Sankhya-SDK-dotnet&amp;utm_campaign=Badge_Grade)
-[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/f6d787f9a2fe4116a7a8a0043489ba67)](https://www.codacy.com/gh/guibranco/Sankhya-SDK-dotnet/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/Sankhya-SDK-dotnet&amp;utm_campaign=Badge_Coverage)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f6d787f9a2fe4116a7a8a0043489ba67)](https://app.codacy.com/gh/guibranco/Sankhya-SDK-dotnet/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/f6d787f9a2fe4116a7a8a0043489ba67)](https://app.codacy.com/gh/guibranco/Sankhya-SDK-dotnet/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 
 [![codecov](https://codecov.io/gh/guibranco/Sankhya-SDK-dotnet/branch/main/graph/badge.svg)](https://codecov.io/gh/guibranco/Sankhya-SDK-dotnet)
 [![CodeFactor](https://www.codefactor.io/repository/github/guibranco/Sankhya-SDK-dotnet/badge)](https://www.codefactor.io/repository/github/guibranco/Sankhya-SDK-dotnet)

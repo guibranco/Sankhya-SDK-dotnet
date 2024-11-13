@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Serialization;
 using Sankhya.Attributes;
