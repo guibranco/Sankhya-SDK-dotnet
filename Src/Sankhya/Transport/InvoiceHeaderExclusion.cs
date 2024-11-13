@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -12,7 +13,7 @@ namespace Sankhya.Transport;
 /// Class InvoiceHeaderExclusion. This class cannot be inherited.
 /// </summary>
 /// <seealso cref="IEntity" />
-/// <seealso cref="IEquatable{InvoiceHeaderExclusion}" />
+/// <seealso cref="IEquatable{T}" />
 [Entity("CabecalhoNotaExcluida")]
 public class InvoiceHeaderExclusion : IEntity, IEquatable<InvoiceHeaderExclusion>
 {

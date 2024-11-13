@@ -12,6 +12,8 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
+
 namespace Sankhya.ValueObjects;
 
 /// <summary>

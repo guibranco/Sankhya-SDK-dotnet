@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 
@@ -19,7 +20,7 @@ namespace Sankhya.Service;
 
 /// <summary>
 /// Class FieldValue. This class cannot be inherited.
-/// Implements the <see cref="IEquatable{IFieldValue}" />
+/// Implements the <see cref="IEquatable{T}" />
 /// </summary>
 /// <seealso cref="IEquatable{FieldValue}" />
 public sealed class FieldValue : IEquatable<FieldValue>
