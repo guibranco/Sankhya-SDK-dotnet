@@ -22,126 +22,113 @@ internal static class StatusMessageHelper
     private static readonly Dictionary<
         string,
         Func<string, ServiceName, ServiceRequest, ServiceResponse, Exception>
-    > CommonMessages =
-        new()
+    > CommonMessages = new()
+    {
         {
-            {
-                @"Delimitador ''' desbalanceado",
-                (_, _, request, _) => new ServiceRequestUnbalancedDelimiterException(request)
-            },
-            {
-                @"situação de concorrência",
-                (_, _, request, response) =>
-                    new ServiceRequestCompetitionException(request, response)
-            },
-            {
-                @"log de acessos",
-                (_, _, request, response) =>
-                    new ServiceRequestCompetitionException(request, response)
-            },
-            {
-                @"violação da restrição primary key 'PK_TSIRLG'",
-                (_, _, request, response) =>
-                    new ServiceRequestCompetitionException(request, response)
-            },
-            {
-                @"deadlock",
-                (message, _, request, response) =>
-                    new ServiceRequestDeadlockException(message, request, response)
-            },
-            {
-                @"não autorizado",
-                (_, _, _, _) => new ServiceRequestInvalidAuthorizationException()
-            },
-            {
-                @"tempo limite da consulta",
-                (_, service, request, _) => new ServiceRequestTimeoutException(service, request)
-            },
-            {
-                @"resultset object is closed",
-                (_, service, request, response) =>
-                    new ServiceRequestUnavailableException(service, request, response)
-            },
-            {
-                @"objeto de acesso a dados",
-                (_, service, request, response) =>
-                    new ServiceRequestUnavailableException(service, request, response)
-            },
-            {
-                @"the connection object is closed",
-                (_, service, request, response) =>
-                    new ServiceRequestUnavailableException(service, request, response)
-            },
-            {
-                @"I/O error",
-                (_, service, request, response) =>
-                    new ServiceRequestUnavailableException(service, request, response)
-            },
-            {
-                @"TDS protocol error",
-                (_, service, request, response) =>
-                    new ServiceRequestUnavailableException(service, request, response)
-            },
-            {
-                @"STP_SET_SESSION",
-                (_, service, request, response) =>
-                    new ServiceRequestUnavailableException(service, request, response)
-            },
-            {
-                @"java.lang.NullPointerException",
-                (_, service, request, response) =>
-                    new ServiceRequestUnavailableException(service, request, response)
-            },
-            {
-                @"erro interno (NPE)",
-                (_, service, request, response) =>
-                    new ServiceRequestExternalException(service, request, response)
-            },
-            {
-                @"Expressão inválida",
-                (_, _, request, response) =>
-                    new ServiceRequestInvalidExpressionException(request, response)
-            },
-            {
-                @"Usuário/Senha inválido",
-                (_, _, _, _) => new ServiceRequestInvalidCredentialsException()
-            },
-            {
-                @"Usuário expirou",
-                (_, _, _, _) => new ServiceRequestExpiredAuthenticationException()
-            },
-            {
-                @"A consulta foi cancelada",
-                (message, _, request, _) =>
-                    new ServiceRequestCanceledQueryException(message, request)
-            },
-            {
-                @"Arquivo/Diretório não foi encontrado no repositório",
-                (_, _, request, _) => new ServiceRequestFileNotFoundException(request)
-            },
-            {
-                @"O sistema não pode encontrar o arquivo especificado",
-                (_, _, request, _) => new ServiceRequestPaginationException(request)
-            },
-            {
-                @"Na ausência da Inscrição Estadual, apenas a Classificação ICMS",
-                (_, _, request, _) =>
-                    new ServiceRequestPartnerFiscalClassificationException(request)
-            },
-            {
-                @"Insira a palavra ISENTO para este tipo de inscrição estadual",
-                (_, _, request, _) => new ServiceRequestPartnerStateInscriptionException(request)
-            },
-            {
-                @"Tamanho do CNPJ/CPF inválido para pessoa Física!",
-                (_, _, request, _) =>
-                    new ServiceRequestPartnerInvalidDocumentLengthException(request)
-            },
-            {
-                @"A subconsulta retornou mais de 1 valor",
-                (_, _, request, _) => new ServiceRequestInvalidSubQueryException(request)
-            },
-        };
+            @"Delimitador ''' desbalanceado",
+            (_, _, request, _) => new ServiceRequestUnbalancedDelimiterException(request)
+        },
+        {
+            @"situação de concorrência",
+            (_, _, request, response) => new ServiceRequestCompetitionException(request, response)
+        },
+        {
+            @"log de acessos",
+            (_, _, request, response) => new ServiceRequestCompetitionException(request, response)
+        },
+        {
+            @"violação da restrição primary key 'PK_TSIRLG'",
+            (_, _, request, response) => new ServiceRequestCompetitionException(request, response)
+        },
+        {
+            @"deadlock",
+            (message, _, request, response) =>
+                new ServiceRequestDeadlockException(message, request, response)
+        },
+        { @"não autorizado", (_, _, _, _) => new ServiceRequestInvalidAuthorizationException() },
+        {
+            @"tempo limite da consulta",
+            (_, service, request, _) => new ServiceRequestTimeoutException(service, request)
+        },
+        {
+            @"resultset object is closed",
+            (_, service, request, response) =>
+                new ServiceRequestUnavailableException(service, request, response)
+        },
+        {
+            @"objeto de acesso a dados",
+            (_, service, request, response) =>
+                new ServiceRequestUnavailableException(service, request, response)
+        },
+        {
+            @"the connection object is closed",
+            (_, service, request, response) =>
+                new ServiceRequestUnavailableException(service, request, response)
+        },
+        {
+            @"I/O error",
+            (_, service, request, response) =>
+                new ServiceRequestUnavailableException(service, request, response)
+        },
+        {
+            @"TDS protocol error",
+            (_, service, request, response) =>
+                new ServiceRequestUnavailableException(service, request, response)
+        },
+        {
+            @"STP_SET_SESSION",
+            (_, service, request, response) =>
+                new ServiceRequestUnavailableException(service, request, response)
+        },
+        {
+            @"java.lang.NullPointerException",
+            (_, service, request, response) =>
+                new ServiceRequestUnavailableException(service, request, response)
+        },
+        {
+            @"erro interno (NPE)",
+            (_, service, request, response) =>
+                new ServiceRequestExternalException(service, request, response)
+        },
+        {
+            @"Expressão inválida",
+            (_, _, request, response) =>
+                new ServiceRequestInvalidExpressionException(request, response)
+        },
+        {
+            @"Usuário/Senha inválido",
+            (_, _, _, _) => new ServiceRequestInvalidCredentialsException()
+        },
+        { @"Usuário expirou", (_, _, _, _) => new ServiceRequestExpiredAuthenticationException() },
+        {
+            @"A consulta foi cancelada",
+            (message, _, request, _) => new ServiceRequestCanceledQueryException(message, request)
+        },
+        {
+            @"Arquivo/Diretório não foi encontrado no repositório",
+            (_, _, request, _) => new ServiceRequestFileNotFoundException(request)
+        },
+        {
+            @"O sistema não pode encontrar o arquivo especificado",
+            (_, _, request, _) => new ServiceRequestPaginationException(request)
+        },
+        {
+            @"Na ausência da Inscrição Estadual, apenas a Classificação ICMS",
+            (_, _, request, _) => new ServiceRequestPartnerFiscalClassificationException(request)
+        },
+        {
+            @"Insira a palavra ISENTO para este tipo de inscrição estadual",
+            (_, _, request, _) => new ServiceRequestPartnerStateInscriptionException(request)
+        },
+        {
+            @"Tamanho do CNPJ/CPF inválido para pessoa Física!",
+            (_, _, request, _) => new ServiceRequestPartnerInvalidDocumentLengthException(request)
+        },
+        {
+            @"A subconsulta retornou mais de 1 valor",
+            (_, _, request, _) => new ServiceRequestInvalidSubQueryException(request)
+        },
+    };
 
     /// <summary>
     /// Processes the status message.
