@@ -121,13 +121,12 @@ internal class SankhyaWrapper
     /// <summary>
     /// The MIME types to extensions.
     /// </summary>
-    private static readonly Dictionary<string, string> MimeTypes2Extensions =
-        new()
-        {
-            { @"image/jpeg", @"jpg" },
-            { @"image/png", @"png" },
-            { @"image/gif", @"gif" },
-        };
+    private static readonly Dictionary<string, string> MimeTypes2Extensions = new()
+    {
+        { @"image/jpeg", @"jpg" },
+        { @"image/png", @"png" },
+        { @"image/gif", @"gif" },
+    };
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SankhyaWrapper"/> class.
