@@ -9,7 +9,8 @@ public static class EntityValidator
 {
     public static void ValidateEntities(Assembly assembly)
     {
-        var entityTypes = assembly.GetTypes()
+        var entityTypes = assembly
+            .GetTypes()
             .Where(t => t.IsClass && t.IsPublic && t.GetCustomAttribute<EntityAttribute>() != null);
 
         foreach (var type in entityTypes)
