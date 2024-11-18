@@ -19,7 +19,7 @@ public class EntityValidatorTests
     {
         var assembly = Assembly.GetExecutingAssembly();
         
-        Assert.Throws<InvalidOperationException>(() =>
+        Assert.Throws<InvalidOperationException>(() => {
         {
             // Simulate invalid entity setup
             // EntityValidator.ValidateEntities(assembly);
