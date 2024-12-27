@@ -60,11 +60,11 @@ The SDK provides a comprehensive implementation of Sankhya's web services. If th
 
 ### Key Highlights
 
-- **Known Services:** Predefined service wrappers for common operations.
+- **Know Services:** Predefined service wrappers for common operations.
 - **Sankhya Wrapper:** Handles low-level HTTP requests, serialization, and authentication.
 - **Extensibility:** Add custom functionality by extending the SDK.
 
-For details, check the [Known Services Wiki](https://github.com/guibranco/Sankhya-SDK-dotnet/wiki/1.1.1-%E2%80%90-Know-Services-Request-Wrapper-(KSRW)).
+For details, check the [Know Services Wiki](https://github.com/guibranco/Sankhya-SDK-dotnet/wiki/1.1.1-%E2%80%90-Know-Services-Request-Wrapper-(KSRW)).
 
 ---
 
