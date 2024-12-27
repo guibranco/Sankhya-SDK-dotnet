@@ -488,7 +488,10 @@ public sealed class ServiceResponse : IXmlSerializable
             entities.Add(entity);
         }
 
+#pragma warning disable IDE0305 // Simplify collection initialization
+        // ReSharper disable once CoVariantArrayConversion
         ResponseBody.CrudServiceProviderEntities.Entities = entities.ToArray();
+#pragma warning restore IDE0305 // Simplify collection initialization
         return false;
     }
 
@@ -514,7 +517,10 @@ public sealed class ServiceResponse : IXmlSerializable
             entities.Add(ReadDynamic(reader));
         }
 
+#pragma warning disable IDE0305 // Simplify collection initialization
+        // ReSharper disable once CoVariantArrayConversion
         ResponseBody.CrudServiceEntities.Entities = entities.ToArray();
+#pragma warning restore IDE0305 // Simplify collection initialization
         return false;
     }
 

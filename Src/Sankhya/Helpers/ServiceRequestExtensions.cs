@@ -175,7 +175,7 @@ public static class ServiceRequestExtensions
 
         if (shouldSerializeMethod != null && shouldSerializeMethod.ReturnType == typeof(bool))
         {
-            model.IsCriteria = (bool)shouldSerializeMethod.Invoke(criteriaEntity, null);
+            model.IsCriteria = (bool)(shouldSerializeMethod.Invoke(criteriaEntity, null) ?? false);
         }
         else
         {
@@ -208,7 +208,11 @@ public static class ServiceRequestExtensions
         }
 
         var value = possibleValue.ToString();
-        if (model.CustomData.MaxLength > 0 && value.Length > model.CustomData.MaxLength)
+        if (
+            model.CustomData.MaxLength > 0
+            && value != null
+            && value.Length > model.CustomData.MaxLength
+        )
         {
             value = value.Abbreviate(model.CustomData.MaxLength, false);
         }

@@ -61,8 +61,9 @@ internal class SankhyaWrapper
                 return _internalUserAgent;
             }
 
-            var assembly = Assembly.GetAssembly(typeof(SankhyaWrapper)).GetName();
-            _internalUserAgent = $@"{assembly.Name}/{assembly.Version}";
+            var assembly = Assembly.GetAssembly(typeof(SankhyaWrapper))?.GetName();
+            _internalUserAgent =
+                $@"{assembly?.Name ?? "Sankhya.SDK.dotNET"}/{assembly?.Version ?? new Version(1, 0)}";
             return _internalUserAgent;
         }
     }
@@ -553,6 +554,13 @@ internal class SankhyaWrapper
 
         using (var responseStream = webResponse.GetResponseStream())
         {
+#if NETSTANDARD2_0 || NETSTANDARD2_1
+            if (responseStream == null)
+            {
+                return new ServiceRequestInaccessibleException(_host, _port, request, e);
+            }
+#endif
+
             using var streamReader = new StreamReader(responseStream);
             if (
                 streamReader
@@ -705,12 +713,21 @@ internal class SankhyaWrapper
 
         int bytesRead;
 
+#if NETSTANDARD2_0 || NETSTANDARD2_1
         while (stream != null && (bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
         {
             memory.Write(buffer, 0, bytesRead);
         }
 
         stream?.Close();
+#else
+        while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
+        {
+            memory.Write(buffer, 0, bytesRead);
+        }
+
+        stream.Close();
+#endif
 
         if (memory.Length == 0)
         {
@@ -951,12 +968,21 @@ internal class SankhyaWrapper
 
         int bytesRead;
 
+#if NETSTANDARD2_0 || NETSTANDARD2_1
         while (stream != null && (bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
         {
             memory.Write(buffer, 0, bytesRead);
         }
 
         stream?.Close();
+#else
+        while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
+        {
+            memory.Write(buffer, 0, bytesRead);
+        }
+
+        stream.Close();
+#endif
 
         return memory;
     }

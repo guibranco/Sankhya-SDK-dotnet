@@ -126,9 +126,10 @@ public static class EntityExtensions
     {
         var info = typeof(ServiceName).GetField(service.ToString());
         return
-            info.GetCustomAttributes(typeof(ServiceAttribute), false)
+            info != null
+            && info.GetCustomAttributes(typeof(ServiceAttribute), false)
                 is ServiceAttribute[] attributes
-            && attributes.Any()
+            && attributes.Length != 0
             ? attributes.Single()
             : null;
     }
@@ -187,7 +188,7 @@ public static class EntityExtensions
 
         if (shouldSerializeMethod != null && shouldSerializeMethod.ReturnType == typeof(bool))
         {
-            isCriteria = (bool)shouldSerializeMethod.Invoke(entity, null);
+            isCriteria = (bool)(shouldSerializeMethod.Invoke(entity, null) ?? false);
         }
         else
         {
@@ -214,7 +215,11 @@ public static class EntityExtensions
 
         var value = possibleValue.ToString();
 
-        if (customDataProperty.MaxLength > 0 && value.Length > customDataProperty.MaxLength)
+        if (
+            customDataProperty.MaxLength > 0
+            && value != null
+            && value.Length > customDataProperty.MaxLength
+        )
         {
             value = value.Abbreviate(customDataProperty.MaxLength, false);
         }
