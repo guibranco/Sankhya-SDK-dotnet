@@ -44,7 +44,7 @@
 
 [![GitHub last release](https://img.shields.io/github/release-date/guibranco/Sankhya-SDK-dotnet.svg?style=flat)](https://github.com/guibranco/Sankhya-SDK-dotnet) [![Github All Releases](https://img.shields.io/github/downloads/guibranco/Sankhya-SDK-dotnet/total.svg?style=flat)](https://github.com/guibranco/Sankhya-SDK-dotnet)
 
-Download the latest zip file from the [Release](https://github.com/GuiBranco/Sankhya-SDK-dotnet/releases) page.
+Download the latest `.zip` file from the [Releases](https://github.com/GuiBranco/Sankhya-SDK-dotnet/releases) page.
 
 ### Nuget package manager
 
@@ -56,84 +56,80 @@ Download the latest zip file from the [Release](https://github.com/GuiBranco/San
 
 ## Features
 
-This SDK implements many of Sankhya's web services. Some of them are called Know Services. If the service you seek is not set in the SDK, you can implement the service request/response independently (and use it on your code or submit a pull request to this repository).
+The SDK provides a comprehensive implementation of Sankhya's web services. If the service you need is not included, you can independently implement the request/response and contribute via pull requests.
 
-Some Request Wrappers allow you to make some requests easily.
+### Key Highlights
 
-### Known Services
+- **Known Services:** Predefined service wrappers for common operations.
+- **Sankhya Wrapper:** Handles low-level HTTP requests, serialization, and authentication.
+- **Extensibility:** Add custom functionality by extending the SDK.
 
-[Wiki page about KSRW](https://github.com/guibranco/Sankhya-SDK-dotnet/wiki/1.1.1-%E2%80%90-Know-Services-Request-Wrapper-(KSRW))
-
-### Sankhya Wrapper
-
-The *last-mile operations* are done on these wrappers.
-This class defines all HTTP request/response, login/logout, serialization, and download/upload operations.
-
-**Avoid** using this class directly from your implementation. Only call its methods if you are extending the SDK's functionality or implementing a new feature. Otherwise, I prefer using one of the request wrappers or the Sankhya Context class.
+For details, check the [Known Services Wiki](https://github.com/guibranco/Sankhya-SDK-dotnet/wiki/1.1.1-%E2%80%90-Know-Services-Request-Wrapper-(KSRW)).
 
 ---
 
 ## Usage
 
-### Service registration (IoC / DI)
+### Dependency Injection (IoC)
 
-This SDK is based on [CrispyWaffle toolkit](https://github.com/guibranco/CrispyWaffle), so you can use its [Service Locator](https://guibranco.github.io/CrispyWaffle/user-guide/serviceLocator/) feature to register it.
+Register the Sankhya wrapper using the `CrispyWaffle` toolkit's [Service Locator](https://guibranco.github.io/CrispyWaffle/user-guide/serviceLocator/):
 
-Assuming you are using Crispy Waffle, you can register the Sankhya wrapper in the `Bootstrapper.cs` file this way:
-
-```cs
-var connectionSankhya = new Connection(); //Fill in your details
+```csharp
+var connectionSankhya = new Connection(); // Fill in your details
 ServiceLocator.Register(() => new SankhyaContext(connectionSankhya), LifeStyle.Singleton);
 ```
 
-Later, when you need to access the [Sankhya Context]() in your code, you can just pass it as the constructor's argument or retrieve it from **Service Locator**
+#### Constructor Injection
 
-#### Constructor argument
-
-```cs
-public class MyClass {
-
+```csharp
+public class MyClass
+{
     private readonly SankhyaContext _sankhyaContext;
 
-    public MyClass(SankhyaContext sankyaContext) {
+    public MyClass(SankhyaContext sankhyaContext)
+    {
         _sankhyaContext = sankhyaContext ?? throw new ArgumentNullException(nameof(sankhyaContext));
     }
 }
 ```
 
-#### Retrieving manually
+#### Manual Resolution
 
-```cs
+```csharp
 var sankhyaContext = ServiceLocator.Resolve<SankhyaContext>();
 ```
 
-### Know Services Wrapper
+---
 
-The `KnowServicesRequestWrapper` is a static class that can be used anywhere since SankhyaContext is registered through ServiceLocator.
+### Session Management
 
-### Session management
+Retrieve and manage active sessions:
 
-You can use this to get all active sessions in Sankhya and kill them one by one:
-
-```cs
+```csharp
 var sessions = KnowServicesRequestWrapper.GetSessions();
-foreach (var session in sessions) {
+foreach (var session in sessions)
+{
     KnowServicesRequestWrapper.KillSession(session.Id);
 }
 ```
+
 ---
 
 ## Support
 
-Please [open an issue](https://github.com/guibranco/Sankhya-SDK-dotnet/issues/new) for support.
+If you need help, feel free to [open an issue](https://github.com/guibranco/Sankhya-SDK-dotnet/issues/new).
 
 ---
 
 ## Contributing
 
-Refer to [CONTRIBUTING.md](CONTRIBUTING.md) to learn how to contribute to this project!
+Contributions are welcome! Check out the [CONTRIBUTING.md](CONTRIBUTING.md) guide for details.
 
-### Contributors
+---
+
+## Contributors
+
+Thanks to all contributors! 💙
 
 <!-- readme: collaborators,contributors,snyk-bot/- -start -->
 <table>
