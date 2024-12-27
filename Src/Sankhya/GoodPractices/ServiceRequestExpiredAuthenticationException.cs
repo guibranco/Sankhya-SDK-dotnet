@@ -3,8 +3,5 @@ using Sankhya.Properties;
 
 namespace Sankhya.GoodPractices;
 
-public class ServiceRequestExpiredAuthenticationException : Exception
-{
-    public ServiceRequestExpiredAuthenticationException()
-        : base(Resources.ServiceRequestExpiredAuthenticationException) { }
-}
+public class ServiceRequestExpiredAuthenticationException()
+    : Exception(Resources.ServiceRequestExpiredAuthenticationException);

@@ -3,8 +3,8 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-public class ServiceRequestPartnerFiscalClassificationException : ServiceRequestGeneralException
-{
-    public ServiceRequestPartnerFiscalClassificationException(ServiceRequest request)
-        : base(Resources.ServiceRequestPartnerFiscalClassificationException, request) { }
-}
+public class ServiceRequestPartnerFiscalClassificationException(ServiceRequest request)
+    : ServiceRequestGeneralException(
+        Resources.ServiceRequestPartnerFiscalClassificationException,
+        request
+    );

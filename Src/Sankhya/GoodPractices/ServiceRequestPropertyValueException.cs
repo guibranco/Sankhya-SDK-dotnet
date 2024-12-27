@@ -5,21 +5,19 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-public class ServiceRequestPropertyValueException : ServiceRequestGeneralException
+public class ServiceRequestPropertyValueException(string propertyName, ServiceRequest request)
+    : ServiceRequestGeneralException(
+        string.Format(
+            CultureInfo.CurrentCulture,
+            Resources.ServiceRequestPropertyValueException,
+            request?.Service.GetHumanReadableValue(),
+            propertyName,
+            request?.RequestBody.Entity?.Name
+                ?? request?.RequestBody.Entity?.RootEntity
+                ?? request?.RequestBody.DataSet.RootEntity
+        ),
+        request
+    )
 {
-    public ServiceRequestPropertyValueException(string propertyName, ServiceRequest request)
-        : base(
-            string.Format(
-                CultureInfo.CurrentCulture,
-                Resources.ServiceRequestPropertyValueException,
-                request?.Service.GetHumanReadableValue(),
-                propertyName,
-                request?.RequestBody.Entity?.Name
-                    ?? request?.RequestBody.Entity?.RootEntity
-                    ?? request?.RequestBody.DataSet.RootEntity
-            ),
-            request
-        ) => PropertyName = propertyName;
-
-    public string PropertyName { get; private set; }
+    public string PropertyName { get; private set; } = propertyName;
 }

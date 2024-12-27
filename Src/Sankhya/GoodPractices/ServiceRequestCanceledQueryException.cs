@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-[Serializable]
 public class ServiceRequestCanceledQueryException : ServiceRequestGeneralException
 {
     public ServiceRequestCanceledQueryException(string message, ServiceRequest request)
@@ -31,7 +29,4 @@ public class ServiceRequestCanceledQueryException : ServiceRequestGeneralExcepti
         Exception innerException
     )
         : base(message, request, response, innerException) { }
-
-    protected ServiceRequestCanceledQueryException(SerializationInfo info, StreamingContext context)
-    { }
 }

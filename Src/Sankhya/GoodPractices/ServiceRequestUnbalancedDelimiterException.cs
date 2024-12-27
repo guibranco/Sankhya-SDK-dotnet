@@ -3,8 +3,5 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-public class ServiceRequestUnbalancedDelimiterException : ServiceRequestGeneralException
-{
-    public ServiceRequestUnbalancedDelimiterException(ServiceRequest request)
-        : base(Resources.ServiceRequestUnbalancedDelimiterException, request) { }
-}
+public class ServiceRequestUnbalancedDelimiterException(ServiceRequest request)
+    : ServiceRequestGeneralException(Resources.ServiceRequestUnbalancedDelimiterException, request);

@@ -5,21 +5,18 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-public class ServiceRequestInvalidExpressionException : ServiceRequestGeneralException
-{
-    public ServiceRequestInvalidExpressionException(
-        ServiceRequest request,
-        ServiceResponse response
-    )
-        : base(
-            string.Format(
-                CultureInfo.CurrentCulture,
-                Resources.ServiceRequestInvalidExpressionException,
-                request?.Service == ServiceName.CrudServiceFind
-                    ? request.RequestBody.DataSet.LiteralCriteria.Expression
-                    : request?.RequestBody.Entity.LiteralCriteria.Expression
-            ),
-            request,
-            response
-        ) { }
-}
+public class ServiceRequestInvalidExpressionException(
+    ServiceRequest request,
+    ServiceResponse response
+)
+    : ServiceRequestGeneralException(
+        string.Format(
+            CultureInfo.CurrentCulture,
+            Resources.ServiceRequestInvalidExpressionException,
+            request?.Service == ServiceName.CrudServiceFind
+                ? request.RequestBody.DataSet.LiteralCriteria.Expression
+                : request?.RequestBody.Entity.LiteralCriteria.Expression
+        ),
+        request,
+        response
+    );

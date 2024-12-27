@@ -4,20 +4,17 @@ using Sankhya.Properties;
 
 namespace Sankhya.GoodPractices;
 
-public class MissingSerializerHelperEntityException : Exception
-{
-    public MissingSerializerHelperEntityException(
-        string propertyName,
-        string entityName,
-        string fullyQualifiedClassName
-    )
-        : base(
-            string.Format(
-                CultureInfo.CurrentCulture,
-                Resources.MissingSerializerHelperEntityException,
-                propertyName,
-                entityName,
-                fullyQualifiedClassName
-            )
-        ) { }
-}
+public class MissingSerializerHelperEntityException(
+    string propertyName,
+    string entityName,
+    string fullyQualifiedClassName
+)
+    : Exception(
+        string.Format(
+            CultureInfo.CurrentCulture,
+            Resources.MissingSerializerHelperEntityException,
+            propertyName,
+            entityName,
+            fullyQualifiedClassName
+        )
+    );

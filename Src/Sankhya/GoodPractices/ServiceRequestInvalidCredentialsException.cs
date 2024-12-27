@@ -3,8 +3,5 @@ using Sankhya.Properties;
 
 namespace Sankhya.GoodPractices;
 
-public class ServiceRequestInvalidCredentialsException : Exception
-{
-    public ServiceRequestInvalidCredentialsException()
-        : base(Resources.ServiceRequestInvalidCredentialsException) { }
-}
+public class ServiceRequestInvalidCredentialsException()
+    : Exception(Resources.ServiceRequestInvalidCredentialsException);

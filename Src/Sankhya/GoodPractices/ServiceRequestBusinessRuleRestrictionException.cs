@@ -1,41 +1,27 @@
-﻿using System;
-using System.Globalization;
-using System.Runtime.Serialization;
+﻿using System.Globalization;
 using Sankhya.Properties;
 using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-[Serializable]
-public class ServiceRequestBusinessRuleRestrictionException : ServiceRequestGeneralException
-{
-    public ServiceRequestBusinessRuleRestrictionException(
-        string businessRuleName,
-        string errorMessage,
-        ServiceRequest request,
-        ServiceResponse response
+public class ServiceRequestBusinessRuleRestrictionException(
+    string businessRuleName,
+    string errorMessage,
+    ServiceRequest request,
+    ServiceResponse response
+)
+    : ServiceRequestGeneralException(
+        string.Format(
+            CultureInfo.CurrentCulture,
+            Resources.ServiceRequestBusinessRuleRestrictionException,
+            businessRuleName,
+            errorMessage
+        ),
+        request,
+        response
     )
-        : base(
-            string.Format(
-                CultureInfo.CurrentCulture,
-                Resources.ServiceRequestBusinessRuleRestrictionException,
-                businessRuleName,
-                errorMessage
-            ),
-            request,
-            response
-        )
-    {
-        BusinessRuleName = businessRuleName;
-        ErrorMessage = errorMessage;
-    }
+{
+    public string BusinessRuleName { get; } = businessRuleName;
 
-    protected ServiceRequestBusinessRuleRestrictionException(
-        SerializationInfo info,
-        StreamingContext context
-    ) { }
-
-    public string BusinessRuleName { get; }
-
-    public string ErrorMessage { get; }
+    public string ErrorMessage { get; } = errorMessage;
 }

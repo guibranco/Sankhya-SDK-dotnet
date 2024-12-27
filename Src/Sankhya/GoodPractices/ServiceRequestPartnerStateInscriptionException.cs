@@ -3,8 +3,8 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-public class ServiceRequestPartnerStateInscriptionException : ServiceRequestGeneralException
-{
-    public ServiceRequestPartnerStateInscriptionException(ServiceRequest request)
-        : base(Resources.ServiceRequestPartnerStateInscriptionException, request) { }
-}
+public class ServiceRequestPartnerStateInscriptionException(ServiceRequest request)
+    : ServiceRequestGeneralException(
+        Resources.ServiceRequestPartnerStateInscriptionException,
+        request
+    );

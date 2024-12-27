@@ -6,14 +6,11 @@ using Sankhya.Properties;
 
 namespace Sankhya.GoodPractices;
 
-public class InvalidServiceRequestOperationException : Exception
-{
-    public InvalidServiceRequestOperationException(ServiceName service)
-        : base(
-            string.Format(
-                CultureInfo.CurrentCulture,
-                Resources.InvalidServiceRequestOperationException,
-                service.GetHumanReadableValue()
-            )
-        ) { }
-}
+public class InvalidServiceRequestOperationException(ServiceName service)
+    : Exception(
+        string.Format(
+            CultureInfo.CurrentCulture,
+            Resources.InvalidServiceRequestOperationException,
+            service.GetHumanReadableValue()
+        )
+    );

@@ -3,8 +3,8 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-public class ServiceRequestPartnerInvalidDocumentLengthException : ServiceRequestGeneralException
-{
-    public ServiceRequestPartnerInvalidDocumentLengthException(ServiceRequest request)
-        : base(Resources.ServiceRequestPartnerInvalidDocumentLengthException, request) { }
-}
+public class ServiceRequestPartnerInvalidDocumentLengthException(ServiceRequest request)
+    : ServiceRequestGeneralException(
+        Resources.ServiceRequestPartnerInvalidDocumentLengthException,
+        request
+    );
