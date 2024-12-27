@@ -56,7 +56,7 @@ public class EntityValidationTests
     }
 
     [Theory]
-    [InlineData("Descritor do campo 'PROPERTY' inv·lido", "PROPERTY")]
+    [InlineData("Descritor do campo 'PROPERTY' inv√°lido", "PROPERTY")]
     public void PropertyNameErrorPattern_ShouldMatch(string input, string expectedPropertyName)
     {
         // Act
@@ -69,7 +69,7 @@ public class EntityValidationTests
 
     [Theory]
     [InlineData(
-        "O identificador de v·rias partes \"ENTITY.PROPERTY\" n„o pÙde ser associado",
+        "O identificador de v√°rias partes \"ENTITY.PROPERTY\" n√£o p√µde ser associado",
         "ENTITY",
         "PROPERTY"
     )]
@@ -89,7 +89,7 @@ public class EntityValidationTests
     }
 
     [Theory]
-    [InlineData("Campo n„o existe: ENTITY->PROPERTY", "ENTITY", "PROPERTY")]
+    [InlineData("Campo n√£o existe: ENTITY->PROPERTY", "ENTITY", "PROPERTY")]
     public void PropertyNotFoundPattern_ShouldMatch(
         string input,
         string expectedEntity,
@@ -106,7 +106,7 @@ public class EntityValidationTests
     }
 
     [Theory]
-    [InlineData("Nome de coluna 'COLUMN-NAME' inv·lido", "COLUMN-NAME")]
+    [InlineData("Nome de coluna 'COLUMN-NAME' inv√°lido", "COLUMN-NAME")]
     public void PropertyNameInvalidErrorPattern_ShouldMatch(
         string input,
         string expectedPropertyName
@@ -146,7 +146,7 @@ public class EntityValidationTests
 
     [Theory]
     [InlineData(
-        "conflitou com a restriÁ„o do FOREIGN KEY \"FK_NAME\". O conflito ocorreu no bando de dados \"DB_NAME\", tabela \"TABLE_NAME\", column 'COLUMN_NAME'",
+        "conflitou com a restri√ß√£o do FOREIGN KEY \"FK_NAME\". O conflito ocorreu no bando de dados \"DB_NAME\", tabela \"TABLE_NAME\", column 'COLUMN_NAME'",
         "FK_NAME",
         "DB_NAME",
         "TABLE_NAME",
@@ -172,7 +172,7 @@ public class EntityValidationTests
     }
 
     [Theory]
-    [InlineData("CNPJ/CPF j· existente para o parceiro: 'PARTNER->NAME'", "PARTNER->NAME")]
+    [InlineData("CNPJ/CPF j√° existente para o parceiro: 'PARTNER->NAME'", "PARTNER->NAME")]
     public void DuplicatedDocumentPattern_ShouldMatch(string input, string expectedName)
     {
         // Act
@@ -185,7 +185,7 @@ public class EntityValidationTests
 
     [Theory]
     [InlineData(
-        "A regra \"RULE-NAME\" n„o permitiu a operaÁ„o.\nError message",
+        "A regra \"RULE-NAME\" n√£o permitiu a opera√ß√£o.\nError message",
         "RULE-NAME",
         "Error message"
     )]
@@ -205,7 +205,7 @@ public class EntityValidationTests
     }
 
     [Theory]
-    [InlineData(" Log de transaÁıes do banco de dados 'DB_NAME' cheio", "DB_NAME")]
+    [InlineData(" Log de transa√ß√µes do banco de dados 'DB_NAME' cheio", "DB_NAME")]
     public void FullTransactionLogsPattern_ShouldMatch(string input, string expectedDatabase)
     {
         // Act
@@ -217,7 +217,7 @@ public class EntityValidationTests
     }
 
     [Theory]
-    [InlineData("Relacionamento: 'RELATION' n„o encontrado em: 'ENTITY'", "RELATION", "ENTITY")]
+    [InlineData("Relacionamento: 'RELATION' n√£o encontrado em: 'ENTITY'", "RELATION", "ENTITY")]
     public void MissingRelationPattern_ShouldMatch(
         string input,
         string expectedMissingRelation,
@@ -234,7 +234,7 @@ public class EntityValidationTests
     }
 
     [Theory]
-    [InlineData("… necess·rio informar o atributo 'ATTRIBUTE-NAME'", "ATTRIBUTE-NAME")]
+    [InlineData("√â necess√°rio informar o atributo 'ATTRIBUTE-NAME'", "ATTRIBUTE-NAME")]
     public void MissingAttributePattern_ShouldMatch(string input, string expectedAttributeName)
     {
         // Act
