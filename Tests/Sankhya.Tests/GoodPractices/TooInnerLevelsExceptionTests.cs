@@ -1,25 +1,23 @@
-using System;
 using Sankhya.GoodPractices;
 using Xunit;
 
-namespace Sankhya.Tests.GoodPractices
+namespace Sankhya.Tests.GoodPractices;
+
+public class TooInnerLevelsExceptionTests
 {
-    public class TooInnerLevelsExceptionTests
+    [Fact]
+    public void Constructor_ShouldInitializeProperties()
     {
-        [Fact]
-        public void Constructor_ShouldInitializeProperties()
-        {
-            // Arrange
-            var entityName = "TestEntity";
+        // Arrange
+        var entityName = "TestEntity";
 
-            // Act
-            var exception = new TooInnerLevelsException(entityName);
+        // Act
+        var exception = new TooInnerLevelsException(entityName);
 
-            // Assert
-            Assert.Equal(
-                $"Service Request with too inner entity references on entity {entityName}",
-                exception.Message
-            );
-        }
+        // Assert
+        Assert.Equal(
+            $"Service Request with too inner entity references on entity {entityName}",
+            exception.Message
+        );
     }
 }

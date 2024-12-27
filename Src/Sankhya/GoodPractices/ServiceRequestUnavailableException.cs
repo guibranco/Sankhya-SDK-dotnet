@@ -6,6 +6,12 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
+/// <summary>
+/// Exception thrown when a service request is unavailable.
+/// </summary>
+/// <param name="service">The service that is unavailable.</param>
+/// <param name="request">The service request that was made.</param>
+/// <param name="response">The response received from the service.</param>
 public class ServiceRequestUnavailableException(
     ServiceName service,
     ServiceRequest request,

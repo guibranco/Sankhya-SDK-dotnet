@@ -6,6 +6,10 @@ using Sankhya.Properties;
 
 namespace Sankhya.GoodPractices;
 
+/// <summary>
+/// Exception that is thrown when an invalid service request operation is encountered.
+/// </summary>
+/// <param name="service">The service name that caused the exception.</param>
 public class InvalidServiceRequestOperationException(ServiceName service)
     : Exception(
         string.Format(

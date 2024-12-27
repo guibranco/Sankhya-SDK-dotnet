@@ -7,25 +7,24 @@ using Sankhya.Properties;
 using Sankhya.Service;
 using Xunit;
 
-namespace Sankhya.Tests.GoodPractices
+namespace Sankhya.Tests.GoodPractices;
+
+public class PagedRequestExceptionTests
 {
-    public class PagedRequestExceptionTests
+    [Fact]
+    public void Constructor_ShouldInitializeProperties()
     {
-        [Fact]
-        public void Constructor_ShouldInitializeProperties()
-        {
-            // Arrange
-            var request = new ServiceRequest(ServiceName.InvoiceInclude);
-            XmlDocument xmlDocument = request.GetSerializer();
-            var innerException = new Exception("Inner exception message");
+        // Arrange
+        var request = new ServiceRequest(ServiceName.InvoiceInclude);
+        XmlDocument xmlDocument = request.GetSerializer();
+        var innerException = new Exception("Inner exception message");
 
-            // Act
-            var exception = new PagedRequestException(request, innerException);
+        // Act
+        var exception = new PagedRequestException(request, innerException);
 
-            // Assert
-            Assert.Equal(Resources.PagedRequestException, exception.Message);
-            Assert.Equal(xmlDocument, exception.Request);
-            Assert.Equal(innerException, exception.InnerException);
-        }
+        // Assert
+        Assert.Equal(Resources.PagedRequestException, exception.Message);
+        Assert.Equal(xmlDocument, exception.Request);
+        Assert.Equal(innerException, exception.InnerException);
     }
 }

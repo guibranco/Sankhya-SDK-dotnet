@@ -4,6 +4,12 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
+/// <summary>
+/// Exception thrown when an invoice confirmation fails.
+/// </summary>
+/// <param name="singleNumber">The single number of the invoice that failed to confirm.</param>
+/// <param name="request">The service request associated with the invoice confirmation.</param>
+/// <param name="innerException">The exception that caused the invoice confirmation to fail.</param>
 public class ConfirmInvoiceException(
     int singleNumber,
     ServiceRequest request,

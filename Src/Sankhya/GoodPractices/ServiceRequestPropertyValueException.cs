@@ -5,6 +5,11 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
+/// <summary>
+/// Exception thrown when there is an issue with a property value in a service request.
+/// </summary>
+/// <param name="propertyName">The name of the property that caused the exception.</param>
+/// <param name="request">The service request that caused the exception.</param>
 public class ServiceRequestPropertyValueException(string propertyName, ServiceRequest request)
     : ServiceRequestGeneralException(
         string.Format(
@@ -19,5 +24,8 @@ public class ServiceRequestPropertyValueException(string propertyName, ServiceRe
         request
     )
 {
+    /// <summary>
+    /// The name of the property that caused the exception.
+    /// </summary>
     public string PropertyName { get; private set; } = propertyName;
 }

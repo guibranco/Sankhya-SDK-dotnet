@@ -6,39 +6,38 @@ using Sankhya.GoodPractices;
 using Sankhya.Properties;
 using Xunit;
 
-namespace Sankhya.Tests.GoodPractices
+namespace Sankhya.Tests.GoodPractices;
+
+public class InvalidServiceQueryOptionsExceptionTests
 {
-    public class InvalidServiceQueryOptionsExceptionTests
+    [Fact]
+    public void Constructor_ShouldSetMessage()
     {
-        [Fact]
-        public void Constructor_ShouldSetMessage()
-        {
-            // Arrange
-            var service = ServiceName.CrudFind;
-            var expectedMessage = string.Format(
-                CultureInfo.CurrentCulture,
-                Resources.InvalidServiceQueryOptionsException,
-                service.GetHumanReadableValue()
-            );
+        // Arrange
+        var service = ServiceName.CrudFind;
+        var expectedMessage = string.Format(
+            CultureInfo.CurrentCulture,
+            Resources.InvalidServiceQueryOptionsException,
+            service.GetHumanReadableValue()
+        );
 
-            // Act
-            var exception = new InvalidServiceQueryOptionsException(service);
+        // Act
+        var exception = new InvalidServiceQueryOptionsException(service);
 
-            // Assert
-            Assert.Equal(expectedMessage, exception.Message);
-        }
+        // Assert
+        Assert.Equal(expectedMessage, exception.Message);
+    }
 
-        [Fact]
-        public void Constructor_ShouldBeOfTypeException()
-        {
-            // Arrange
-            var service = ServiceName.CrudFind;
+    [Fact]
+    public void Constructor_ShouldBeOfTypeException()
+    {
+        // Arrange
+        var service = ServiceName.CrudFind;
 
-            // Act
-            var exception = new InvalidServiceQueryOptionsException(service);
+        // Act
+        var exception = new InvalidServiceQueryOptionsException(service);
 
-            // Assert
-            Assert.IsAssignableFrom<Exception>(exception);
-        }
+        // Assert
+        Assert.IsAssignableFrom<Exception>(exception);
     }
 }

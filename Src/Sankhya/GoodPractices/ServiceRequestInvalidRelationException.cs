@@ -4,6 +4,12 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
+/// <summary>
+/// Exception thrown when a service request contains an invalid relation.
+/// </summary>
+/// <param name="missingRelation">The missing relation that caused the exception.</param>
+/// <param name="entity">The entity associated with the missing relation.</param>
+/// <param name="request">The service request that caused the exception.</param>
 public class ServiceRequestInvalidRelationException(
     string missingRelation,
     string entity,

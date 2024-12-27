@@ -5,6 +5,12 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
+/// <summary>
+/// Exception thrown when a service request returns too many results.
+/// </summary>
+/// <param name="request">The service request that caused the exception.</param>
+/// <param name="response">The service response associated with the request.</param>
+/// <param name="resultLength">The number of results returned by the service request.</param>
 public class ServiceRequestTooManyResultsException(
     ServiceRequest request,
     ServiceResponse response,

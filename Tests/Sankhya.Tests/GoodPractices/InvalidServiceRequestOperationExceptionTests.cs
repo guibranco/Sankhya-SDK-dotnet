@@ -6,39 +6,38 @@ using Sankhya.GoodPractices;
 using Sankhya.Properties;
 using Xunit;
 
-namespace Sankhya.Tests.GoodPractices
+namespace Sankhya.Tests.GoodPractices;
+
+public class InvalidServiceRequestOperationExceptionTests
 {
-    public class InvalidServiceRequestOperationExceptionTests
+    [Fact]
+    public void Constructor_ShouldSetMessage()
     {
-        [Fact]
-        public void Constructor_ShouldSetMessage()
-        {
-            // Arrange
-            var service = ServiceName.CrudFind;
-            var expectedMessage = string.Format(
-                CultureInfo.CurrentCulture,
-                Resources.InvalidServiceRequestOperationException,
-                service.GetHumanReadableValue()
-            );
+        // Arrange
+        var service = ServiceName.CrudFind;
+        var expectedMessage = string.Format(
+            CultureInfo.CurrentCulture,
+            Resources.InvalidServiceRequestOperationException,
+            service.GetHumanReadableValue()
+        );
 
-            // Act
-            var exception = new InvalidServiceRequestOperationException(service);
+        // Act
+        var exception = new InvalidServiceRequestOperationException(service);
 
-            // Assert
-            Assert.Equal(expectedMessage, exception.Message);
-        }
+        // Assert
+        Assert.Equal(expectedMessage, exception.Message);
+    }
 
-        [Fact]
-        public void Constructor_ShouldBeAssignableFromException()
-        {
-            // Arrange
-            var service = ServiceName.CrudFind;
+    [Fact]
+    public void Constructor_ShouldBeAssignableFromException()
+    {
+        // Arrange
+        var service = ServiceName.CrudFind;
 
-            // Act
-            var exception = new InvalidServiceRequestOperationException(service);
+        // Act
+        var exception = new InvalidServiceRequestOperationException(service);
 
-            // Assert
-            Assert.IsAssignableFrom<Exception>(exception);
-        }
+        // Assert
+        Assert.IsAssignableFrom<Exception>(exception);
     }
 }
