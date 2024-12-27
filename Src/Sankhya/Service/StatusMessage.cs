@@ -4,25 +4,12 @@ using CrispyWaffle.Extensions;
 
 namespace Sankhya.Service;
 
-/// <summary>
-/// Class StatusMessage. This class cannot be inherited.
-/// </summary>
 public sealed class StatusMessage
 {
-    /// <summary>
-    /// The value
-    /// </summary>
     private string _value;
 
-    /// <summary>
-    /// The value set
-    /// </summary>
     private bool _valueSet;
 
-    /// <summary>
-    /// Gets or sets the value.
-    /// </summary>
-    /// <value>The value.</value>
     [XmlIgnore]
     public string Value
     {
@@ -34,10 +21,6 @@ public sealed class StatusMessage
         }
     }
 
-    /// <summary>
-    /// Gets or sets the value internal.
-    /// </summary>
-    /// <value>The value internal.</value>
     [XmlText]
     public string ValueInternal
     {
@@ -49,10 +32,6 @@ public sealed class StatusMessage
         }
     }
 
-    /// <summary>
-    /// Should the serialize value internal.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeValueInternal() => _valueSet;

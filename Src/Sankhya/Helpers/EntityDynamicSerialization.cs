@@ -11,43 +11,16 @@ using Sankhya.Service;
 
 namespace Sankhya.Helpers;
 
-/// <summary>
-/// The entity dynamic serialization class.
-/// </summary>
-/// <seealso cref="DynamicSerialization" />
 public class EntityDynamicSerialization : DynamicSerialization
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="EntityDynamicSerialization" /> class.
-    /// </summary>
     public EntityDynamicSerialization() { }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="EntityDynamicSerialization" /> class.
-    /// </summary>
-    /// <param name="keyFilter">The filter to serialize keys.</param>
     public EntityDynamicSerialization(DynamicSerializationOption keyFilter)
         : base(keyFilter) { }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="EntityDynamicSerialization" /> class.
-    /// </summary>
-    /// <param name="info">The information.</param>
-    /// <param name="context">The context.</param>
-    // ReSharper disable once UnusedMember.Global
     protected EntityDynamicSerialization(SerializationInfo info, StreamingContext context)
         : base(info, context) { }
 
-    /// <summary>
-    /// Parse entity.
-    /// </summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="instance">The instance.</param>
-    /// <param name="type">The type.</param>
-    /// <param name="maxInnerLevel">The max inner level of references.</param>
-    /// <param name="prefix">(Optional) the prefix.</param>
-    /// <param name="currentLevel">(Optional) the current level.</param>
-    /// <returns>A T.</returns>
     private T ParseEntity<T>(
         T instance,
         Type type,
@@ -70,15 +43,6 @@ public class EntityDynamicSerialization : DynamicSerialization
         return instance;
     }
 
-    /// <summary>
-    /// Processes the property.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="instance">The instance.</param>
-    /// <param name="maxInnerLevel">The maximum inner level.</param>
-    /// <param name="prefix">The prefix.</param>
-    /// <param name="currentLevel">The current level.</param>
-    /// <param name="propertyInfo">The property information.</param>
     private void ParseProperty<T>(
         T instance,
         ReferenceLevel maxInnerLevel,
@@ -244,11 +208,6 @@ public class EntityDynamicSerialization : DynamicSerialization
         }
     }
 
-    /// <summary>
-    /// Converts this object to a type.
-    /// </summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <returns>object converted to a type&lt; t&gt;.</returns>
     public T ConvertToType<T>()
         where T : class, new()
     {
@@ -258,11 +217,6 @@ public class EntityDynamicSerialization : DynamicSerialization
         return instance;
     }
 
-    /// <summary>
-    /// Changes the keys.
-    /// </summary>
-    /// <param name="newKeys">The new keys.</param>
-    /// <exception cref="InvalidOperationException">The key count in metadata is different than the key count in the dictionary.</exception>
     public void ChangeKeys(Metadata newKeys)
     {
         if (newKeys == null)

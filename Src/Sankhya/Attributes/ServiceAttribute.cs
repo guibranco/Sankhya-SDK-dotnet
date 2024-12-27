@@ -1,35 +1,20 @@
-﻿// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="ServiceAttribute.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 using Sankhya.Enums;
 
 namespace Sankhya.Attributes;
 
 /// <summary>
-/// Class ServiceAttribute. This class cannot be inherited.
+/// Specifies the service attribute for a field, including the module, category, and type of the service.
 /// </summary>
-/// <seealso cref="Attribute" />
 [AttributeUsage(AttributeTargets.Field)]
 public sealed class ServiceAttribute : Attribute
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ServiceAttribute" /> class.
+    /// Initializes a new instance of the <see cref="ServiceAttribute"/> class with the specified module, category, and type.
     /// </summary>
-    /// <param name="module">The module.</param>
-    /// <param name="category">The category.</param>
-    /// <param name="type">The type.</param>
+    /// <param name="module">The module of the service.</param>
+    /// <param name="category">The category of the service.</param>
+    /// <param name="type">The type of the service.</param>
     public ServiceAttribute(ServiceModule module, ServiceCategory category, ServiceType type)
     {
         Type = type;
@@ -38,20 +23,17 @@ public sealed class ServiceAttribute : Attribute
     }
 
     /// <summary>
-    /// Gets the category.
+    /// Gets the category of the service.
     /// </summary>
-    /// <value>The category.</value>
     public ServiceCategory Category { get; }
 
     /// <summary>
-    /// Gets the module.
+    /// Gets the module of the service.
     /// </summary>
-    /// <value>The module.</value>
     public ServiceModule Module { get; }
 
     /// <summary>
-    /// Gets the type.
+    /// Gets the type of the service.
     /// </summary>
-    /// <value>The type.</value>
     public ServiceType Type { get; }
 }

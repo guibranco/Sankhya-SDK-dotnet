@@ -1,31 +1,17 @@
-﻿// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="EntityResolverResult.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Sankhya.Service;
 
 namespace Sankhya.ValueObjects;
 
 /// <summary>
-/// Class EntityResolverResult. This class cannot be inherited.
+/// Represents the result of resolving an entity.
 /// </summary>
 public sealed class EntityResolverResult
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="EntityResolverResult" /> class.
+    /// Initializes a new instance of the <see cref="EntityResolverResult"/> class with the specified name.
     /// </summary>
-    /// <param name="name">The name.</param>
+    /// <param name="name">The name of the entity.</param>
     public EntityResolverResult(string name)
     {
         Name = name;
@@ -38,37 +24,37 @@ public sealed class EntityResolverResult
     }
 
     /// <summary>
-    /// The name
+    /// Gets the name of the entity.
     /// </summary>
     public string Name { get; }
 
     /// <summary>
-    /// The field values
+    /// Gets the list of field values for the entity.
     /// </summary>
     public List<FieldValue> FieldValues { get; }
 
     /// <summary>
-    /// The keys
+    /// Gets the list of key field values for the entity.
     /// </summary>
     public List<FieldValue> Keys { get; }
 
     /// <summary>
-    /// The criteria
+    /// Gets the list of criteria for the entity.
     /// </summary>
     public List<Criteria> Criteria { get; }
 
     /// <summary>
-    /// The fields
+    /// Gets the list of fields for the entity.
     /// </summary>
     public List<Field> Fields { get; }
 
     /// <summary>
-    /// The references
+    /// Gets the dictionary of references for the entity.
     /// </summary>
     public Dictionary<string, List<Field>> References { get; }
 
     /// <summary>
-    /// The literal criteria
+    /// Gets the literal criteria for the entity.
     /// </summary>
     public LiteralCriteria LiteralCriteria { get; }
 }

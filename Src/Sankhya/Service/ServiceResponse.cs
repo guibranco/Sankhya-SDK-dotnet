@@ -16,98 +16,42 @@ using Sankhya.Helpers;
 
 namespace Sankhya.Service;
 
-/// <summary>
-/// A service response.
-/// </summary>
-/// <seealso cref="IXmlSerializable" />
 [Serializer]
 [XmlRoot(ElementName = SankhyaConstants.ServiceResponse)]
 public sealed class ServiceResponse : IXmlSerializable
 {
-    /// <summary>
-    /// The service.
-    /// </summary>
     private ServiceName _service;
 
-    /// <summary>
-    /// The service set.
-    /// </summary>
     private bool _serviceSet;
 
-    /// <summary>
-    /// The pending printing.
-    /// </summary>
     private bool _pendingPrinting;
 
-    /// <summary>
-    /// The pending printing set.
-    /// </summary>
     private bool _pendingPrintingSet;
 
-    /// <summary>
-    /// The transaction identifier.
-    /// </summary>
     private Guid _transactionId;
 
-    /// <summary>
-    /// The transaction identifier set.
-    /// </summary>
     private bool _transactionIdSet;
 
-    /// <summary>
-    /// The status.
-    /// </summary>
     private ServiceResponseStatus _status;
 
-    /// <summary>
-    /// The status set.
-    /// </summary>
     private bool _statusSet;
 
-    /// <summary>
-    /// The error code.
-    /// </summary>
     private int _errorCode;
 
-    /// <summary>
-    /// The error code set.
-    /// </summary>
     private bool _errorCodeSet;
 
-    /// <summary>
-    /// The error level.
-    /// </summary>
     private int _errorLevel;
 
-    /// <summary>
-    /// The error level set.
-    /// </summary>
     private bool _errorLevelSet;
 
-    /// <summary>
-    /// The status message.
-    /// </summary>
     private StatusMessage _statusMessage;
 
-    /// <summary>
-    /// The status message set.
-    /// </summary>
     private bool _statusMessageSet;
 
-    /// <summary>
-    /// The response body.
-    /// </summary>
     private ResponseBody _responseBody;
 
-    /// <summary>
-    /// The response body set.
-    /// </summary>
     private bool _responseBodySet;
 
-    /// <summary>
-    /// Gets or sets the service.
-    /// </summary>
-    /// <value>The service.</value>
     [XmlIgnore]
     public ServiceName Service
     {
@@ -119,10 +63,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Gets or sets the service internal.
-    /// </summary>
-    /// <value>The service internal.</value>
     [XmlAttribute(SankhyaConstants.ServiceName)]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -136,10 +76,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Gets or sets a value indicating whether [pending printing].
-    /// </summary>
-    /// <value><c>true</c> if [pending printing]; otherwise, <c>false</c>.</value>
     [XmlIgnore]
     public bool PendingPrinting
     {
@@ -151,10 +87,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Gets or sets the pending printing internal.
-    /// </summary>
-    /// <value>The pending printing internal.</value>
     [XmlAttribute(SankhyaConstants.PendingPrinting)]
     [Browsable(true)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -168,10 +100,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Gets or sets the transaction identifier.
-    /// </summary>
-    /// <value>The transaction identifier.</value>
     [XmlAttribute(SankhyaConstants.TransactionId)]
     public Guid TransactionId
     {
@@ -183,10 +111,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Gets or sets the status.
-    /// </summary>
-    /// <value>The status.</value>
     [XmlAttribute(SankhyaConstants.Status)]
     public ServiceResponseStatus Status
     {
@@ -198,10 +122,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Gets or sets the error code.
-    /// </summary>
-    /// <value>The error code.</value>
     [XmlAttribute(SankhyaConstants.ErrorCode)]
     public int ErrorCode
     {
@@ -213,10 +133,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Gets or sets the error level.
-    /// </summary>
-    /// <value>The error level.</value>
     [XmlAttribute(SankhyaConstants.ErrorLevel)]
     public int ErrorLevel
     {
@@ -228,10 +144,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Gets or sets the status message.
-    /// </summary>
-    /// <value>The status message.</value>
     [XmlElement(SankhyaConstants.StatusMessage)]
     public StatusMessage StatusMessage
     {
@@ -243,10 +155,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Gets or sets the response body.
-    /// </summary>
-    /// <value>The response body.</value>
     [XmlElement(ElementName = SankhyaConstants.ResponseBody)]
     public ResponseBody ResponseBody
     {
@@ -258,84 +166,43 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Should the serialize service internal.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeServiceInternal() => _serviceSet;
 
-    /// <summary>
-    /// Should the serialize pending printing internal.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePendingPrintingInternal() => _pendingPrintingSet;
 
-    /// <summary>
-    /// Should the serialize transaction identifier.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeTransactionId() => _transactionIdSet;
 
-    /// <summary>
-    /// Should the serialize status.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeStatus() => _statusSet;
 
-    /// <summary>
-    /// Should the serialize error code.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeErrorCode() => _errorCodeSet;
 
-    /// <summary>
-    /// Should the serialize error level.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeErrorLevel() => _errorLevelSet;
 
-    /// <summary>
-    /// Should the serialize status message.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeStatusMessage() => _statusMessageSet;
 
-    /// <summary>
-    /// Should the serialize response body.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeResponseBody() => _responseBodySet;
 
-    /// <summary>
-    /// Gets the entities.
-    /// </summary>
-    /// <value>The entities.</value>
     public EntityDynamicSerialization[] Entities =>
         ResponseBody.CrudServiceEntities != null
             ? ResponseBody.CrudServiceEntities.Entities as EntityDynamicSerialization[]
             : ResponseBody.CrudServiceProviderEntities?.Entities as EntityDynamicSerialization[];
 
-    /// <summary>
-    /// Parse entity.
-    /// </summary>
-    /// <param name="node">The node.</param>
-    /// <returns>A DynamicSerialization.</returns>
     private static EntityDynamicSerialization ReadDynamic(XmlReader node)
     {
         var ds = new EntityDynamicSerialization();
@@ -382,11 +249,6 @@ public sealed class ServiceResponse : IXmlSerializable
         return false;
     }
 
-    /// <summary>
-    /// Writes a dynamic.
-    /// </summary>
-    /// <param name="writer">The <see cref="XmlWriter" /> stream to which the object is serialized.</param>
-    /// <param name="dynamic">The dynamic.</param>
     private static void WriteDynamic(XmlWriter writer, EntityDynamicSerialization dynamic)
     {
         foreach (var kvp in dynamic.GetDictionary())
@@ -411,24 +273,8 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// This method is reserved and should not be used.When implementing the IXmlSerializable
-    /// interface, you should return null (Nothing in Visual Basic) from this method, and instead,
-    /// if specifying a custom schema is required, apply the
-    /// <see cref="XmlSchemaProviderAttribute" /> to the class.
-    /// </summary>
-    /// <returns>An <see cref="XmlSchema" /> that describes the XML representation of
-    /// the object that is produced by the
-    /// <see cref="WriteXml(XmlWriter)" />
-    /// method and consumed by the
-    /// <see cref="ReadXml(XmlReader)" />
-    /// method.</returns>
     public XmlSchema GetSchema() => null;
 
-    /// <summary>
-    /// Generates an object from its XML representation.
-    /// </summary>
-    /// <param name="reader">The <see cref="XmlReader" /> stream from which the object is deserialized.</param>
     public void ReadXml(XmlReader reader)
     {
         reader.DuplicateReaders(out var clonedReader, out var log);
@@ -483,10 +329,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Parses the response body.
-    /// </summary>
-    /// <param name="reader">The reader.</param>
     private void ParseResponseBody(XmlReader reader)
     {
         ResponseBody = new();
@@ -514,11 +356,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Parses the response body elements.
-    /// </summary>
-    /// <param name="reader">The reader.</param>
-    /// <returns>Boolean.</returns>
     private bool ParseResponseBodyElements(XmlReader reader)
     {
         var entities = new List<EntityDynamicSerialization>();
@@ -613,21 +450,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Processes CRUD service provider entities from an XML reader and populates the response body.
-    /// </summary>
-    /// <param name="reader">The XML reader containing the data to be processed.</param>
-    /// <param name="entities">A list to store the dynamically read entities.</param>
-    /// <remarks>
-    /// This method reads attributes related to pagination such as PagerId, Total, and TotalPages from the XML reader
-    /// and initializes the <see cref="ResponseBody.CrudServiceProviderEntities"/> object with these values.
-    /// It then checks for the presence of metadata in the XML and, if found, loads it into the response body.
-    /// The method continues to read through the XML, looking for elements that represent individual entities,
-    /// which are then read and added to the provided list of entities. If metadata is present, it is used to change
-    /// the keys of the entities being read. Finally, the list of entities is converted to an array and assigned
-    /// to the response body.
-    /// </remarks>
-    /// <returns>Returns false indicating that processing is complete but does not signify any errors.</returns>
     private bool ProcessCrudServiceProviderEntities(
         XmlReader reader,
         List<EntityDynamicSerialization> entities
@@ -666,25 +488,10 @@ public sealed class ServiceResponse : IXmlSerializable
             entities.Add(entity);
         }
 
-        // ReSharper disable once CoVariantArrayConversion
         ResponseBody.CrudServiceProviderEntities.Entities = entities.ToArray();
         return false;
     }
 
-    /// <summary>
-    /// Processes CRUD service entities from an XML reader and populates a list of dynamic entities.
-    /// </summary>
-    /// <param name="reader">The XML reader used to read the CRUD service entities.</param>
-    /// <param name="entities">A list that will be populated with dynamic entities read from the XML.</param>
-    /// <returns>Returns <c>true</c> if no entities were found, otherwise returns <c>false</c>.</returns>
-    /// <remarks>
-    /// This method initializes the <see cref="ResponseBody.CrudServiceEntities"/> with the name attribute from the XML reader.
-    /// It then checks for the presence of the entity element defined by <see cref="SankhyaConstants.EntityPtBr"/>.
-    /// If found, it reads each entity and adds it to the provided list of entities.
-    /// The method continues to read until there are no more elements of the specified type.
-    /// Finally, it converts the list of entities to an array and assigns it to <see cref="CrudServiceEntities.Entities"/>.
-    /// This method is primarily used for deserializing dynamic entities from an XML structure into a manageable format.
-    /// </remarks>
     private bool ProcessCrudServiceEntities(
         XmlReader reader,
         List<EntityDynamicSerialization> entities
@@ -707,15 +514,10 @@ public sealed class ServiceResponse : IXmlSerializable
             entities.Add(ReadDynamic(reader));
         }
 
-        // ReSharper disable once CoVariantArrayConversion
         ResponseBody.CrudServiceEntities.Entities = entities.ToArray();
         return false;
     }
 
-    /// <summary>
-    /// Parses the attributes.
-    /// </summary>
-    /// <param name="reader">The reader.</param>
     private void ParseAttributes(XmlReader reader)
     {
         ServiceInternal = reader.GetAttribute(SankhyaConstants.ServiceName);
@@ -745,11 +547,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Parses the type of the complex.
-    /// </summary>
-    /// <param name="reader">The reader.</param>
-    /// <returns>XmlDocument.</returns>
     private static XmlDocument ParseComplexType(XmlReader reader)
     {
         var document = new XmlDocument();
@@ -769,11 +566,6 @@ public sealed class ServiceResponse : IXmlSerializable
         return document;
     }
 
-    /// <summary>
-    /// Parses the type of the simple.
-    /// </summary>
-    /// <param name="reader">The reader.</param>
-    /// <returns>XmlDocument.</returns>
     private static XmlDocument ParseSimpleType(XmlReader reader)
     {
         var document = new XmlDocument();
@@ -781,10 +573,6 @@ public sealed class ServiceResponse : IXmlSerializable
         return document;
     }
 
-    /// <summary>
-    /// Converts an object into its XML representation.
-    /// </summary>
-    /// <param name="writer">The <see cref="XmlWriter" /> stream to which the object is serialized.</param>
     public void WriteXml(XmlWriter writer)
     {
         if (writer == null)
@@ -824,10 +612,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Writes the response body elements to the writer.
-    /// </summary>
-    /// <param name="writer"><see cref="XmlWriter" />The XML writer.</param>
     private void WriteResponseBodyElements(XmlWriter writer)
     {
         ProcessCrudServiceEntity(writer);
@@ -849,10 +633,6 @@ public sealed class ServiceResponse : IXmlSerializable
         ProcessCodeUserLoggedIn(writer);
     }
 
-    /// <summary>
-    /// Processes the code user logged in.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessCodeUserLoggedIn(XmlWriter writer)
     {
         if (!ResponseBody.ShouldSerializeCodeUserLoggedIn())
@@ -865,10 +645,6 @@ public sealed class ServiceResponse : IXmlSerializable
         writer.WriteEndElement();
     }
 
-    /// <summary>
-    /// Processes the code user.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessCodeUser(XmlWriter writer)
     {
         if (!ResponseBody.ShouldSerializeCodeUserInternal())
@@ -881,10 +657,6 @@ public sealed class ServiceResponse : IXmlSerializable
         writer.WriteEndElement();
     }
 
-    /// <summary>
-    /// Processes the call identifier.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessCallId(XmlWriter writer)
     {
         if (!ResponseBody.ShouldSerializeCallId())
@@ -897,10 +669,6 @@ public sealed class ServiceResponse : IXmlSerializable
         writer.WriteEndElement();
     }
 
-    /// <summary>
-    /// Processes the session identifier.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessSessionId(XmlWriter writer)
     {
         if (!ResponseBody.ShouldSerializeJSessionId())
@@ -913,10 +681,6 @@ public sealed class ServiceResponse : IXmlSerializable
         writer.WriteEndElement();
     }
 
-    /// <summary>
-    /// Processes the primary key.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessPrimaryKey(XmlWriter writer)
     {
         if (ResponseBody.PrimaryKey == null)
@@ -929,10 +693,6 @@ public sealed class ServiceResponse : IXmlSerializable
         writer.WriteEndElement();
     }
 
-    /// <summary>
-    /// Processes the key.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessKey(XmlWriter writer)
     {
         XmlDocument xml = ResponseBody.Key?.GetSerializer();
@@ -942,10 +702,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Processes the cancellation result.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessCancellationResult(XmlWriter writer)
     {
         XmlDocument xml = ResponseBody.CancellationResult?.GetSerializer();
@@ -955,10 +711,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Processes the client events.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessClientEvents(XmlWriter writer)
     {
         if (ResponseBody.ClientEvents == null)
@@ -976,10 +728,6 @@ public sealed class ServiceResponse : IXmlSerializable
         writer.WriteEndElement();
     }
 
-    /// <summary>
-    /// Processes the invoices.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessInvoices(XmlWriter writer)
     {
         XmlDocument xml = ResponseBody.Invoices?.GetSerializer();
@@ -989,10 +737,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Processes the sessions.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessSessions(XmlWriter writer)
     {
         XmlDocument xml = ResponseBody.Sessions?.GetSerializer();
@@ -1002,10 +746,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Processes the releases.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessReleases(XmlWriter writer)
     {
         XmlDocument xml = ResponseBody.Releases?.GetSerializer();
@@ -1015,10 +755,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Processes the messages.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessMessages(XmlWriter writer)
     {
         XmlDocument xml = ResponseBody.Messages?.GetSerializer();
@@ -1028,10 +764,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Processes the warnings.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessWarnings(XmlWriter writer)
     {
         XmlDocument xml = ResponseBody.Warnings?.GetSerializer();
@@ -1041,10 +773,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Processes the users.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessUsers(XmlWriter writer)
     {
         XmlDocument xml = ResponseBody.Users?.GetSerializer();
@@ -1054,10 +782,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Processes the invoice accompaniments.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessInvoiceAccompaniments(XmlWriter writer)
     {
         XmlDocument xml = ResponseBody.InvoiceAccompaniments?.GetSerializer();
@@ -1067,10 +791,6 @@ public sealed class ServiceResponse : IXmlSerializable
         }
     }
 
-    /// <summary>
-    /// Processes the crud service provider entity.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessCrudServiceProviderEntity(XmlWriter writer)
     {
         if (ResponseBody.CrudServiceProviderEntities == null)
@@ -1122,10 +842,6 @@ public sealed class ServiceResponse : IXmlSerializable
         writer.WriteEndElement();
     }
 
-    /// <summary>
-    /// Processes the crud service entity.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void ProcessCrudServiceEntity(XmlWriter writer)
     {
         if (ResponseBody.CrudServiceEntities?.Entities == null)
@@ -1145,10 +861,6 @@ public sealed class ServiceResponse : IXmlSerializable
         writer.WriteEndElement();
     }
 
-    /// <summary>
-    /// Writes the attributes.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
     private void WriteAttributes(XmlWriter writer)
     {
         writer.WriteAttributeString(SankhyaConstants.ServiceName, ServiceInternal);

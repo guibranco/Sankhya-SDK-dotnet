@@ -3,35 +3,16 @@ using System.Xml.Serialization;
 
 namespace Sankhya.Service;
 
-/// <summary>
-/// Class SystemMessage. This class cannot be inherited.
-/// </summary>
 public sealed class SystemMessage
 {
-    /// <summary>
-    /// The content
-    /// </summary>
     private string _content;
 
-    /// <summary>
-    /// The content set
-    /// </summary>
     private bool _contentSet;
 
-    /// <summary>
-    /// The recipients
-    /// </summary>
     private SystemWarningRecipient[] _recipients;
 
-    /// <summary>
-    /// The recipients set
-    /// </summary>
     private bool _recipientsSet;
 
-    /// <summary>
-    /// Gets or sets the content.
-    /// </summary>
-    /// <value>The content.</value>
     [XmlElement("conteudo")]
     public string Content
     {
@@ -43,10 +24,6 @@ public sealed class SystemMessage
         }
     }
 
-    /// <summary>
-    /// Gets or sets the recipients.
-    /// </summary>
-    /// <value>The recipients.</value>
     [XmlElement("destinatario")]
     public SystemWarningRecipient[] Recipients
     {
@@ -58,18 +35,10 @@ public sealed class SystemMessage
         }
     }
 
-    /// <summary>
-    /// Should the content of the serialize.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeContent() => _contentSet;
 
-    /// <summary>
-    /// Should the serialize recipients.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRecipients() => _recipientsSet;

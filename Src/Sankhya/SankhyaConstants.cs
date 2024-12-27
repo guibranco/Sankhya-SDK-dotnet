@@ -1,9 +1,5 @@
-﻿#pragma warning disable SA1600
-namespace Sankhya;
+﻿namespace Sankhya;
 
-/// <summary>
-/// Class SankhyaConstants.
-/// </summary>
 internal static class SankhyaConstants
 {
     public const string SessionIdCookieName = "JSESSIONID";

@@ -6,20 +6,9 @@ using Sankhya.Attributes;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// Class Contact. This class cannot be inherited.
-/// </summary>
-/// <seealso cref="IEntity" />
 [Entity("Contato")]
 public class Contact : IEntity, IEquatable<Contact>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-    // ReSharper disable once FunctionComplexityOverflow
-    // ReSharper disable once CyclomaticComplexity
     public bool Equals(Contact other)
     {
         if (ReferenceEquals(null, other))
@@ -104,11 +93,6 @@ public class Contact : IEntity, IEquatable<Contact>
             );
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current object.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -119,12 +103,6 @@ public class Contact : IEntity, IEquatable<Contact>
         return ReferenceEquals(this, obj) || (obj is Contact contact && Equals(contact));
     }
 
-    /// <summary>
-    /// Serves as the default hash function.
-    /// </summary>
-    /// <returns>A hash code for the current object.</returns>
-    // ReSharper disable once FunctionComplexityOverflow
-    // ReSharper disable once MethodTooLong
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -236,246 +214,98 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(Contact left, Contact right) => Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(Contact left, Contact right) => !Equals(left, right);
 
-    /// <summary>
-    /// The code
-    /// </summary>
     private int _code;
 
-    /// <summary>
-    /// The code set
-    /// </summary>
     private bool _codeSet;
 
-    /// <summary>
-    /// The code partner
-    /// </summary>
     private int _codePartner;
 
-    /// <summary>
-    /// The code partner set
-    /// </summary>
     private bool _codePartnerSet;
 
-    /// <summary>
-    /// The zip code
-    /// </summary>
     private string _zipCode;
 
-    /// <summary>
-    /// The zip code set
-    /// </summary>
     private bool _zipCodeSet;
 
-    /// <summary>
-    /// The code address
-    /// </summary>
     private int _codeAddress;
 
-    /// <summary>
-    /// The code address set
-    /// </summary>
     private bool _codeAddressSet;
 
-    /// <summary>
-    /// The address complement
-    /// </summary>
     private string _addressComplement;
 
-    /// <summary>
-    /// The address complement set
-    /// </summary>
     private bool _addressComplementSet;
 
-    /// <summary>
-    /// The address number
-    /// </summary>
     private string _addressNumber;
 
-    /// <summary>
-    /// The address number set
-    /// </summary>
     private bool _addressNumberSet;
 
-    /// <summary>
-    /// The code neighborhood
-    /// </summary>
     private int _codeNeighborhood;
 
-    /// <summary>
-    /// The code neighborhood set
-    /// </summary>
     private bool _codeNeighborhoodSet;
 
-    /// <summary>
-    /// The code city
-    /// </summary>
     private int _codeCity;
 
-    /// <summary>
-    /// The code city set
-    /// </summary>
     private bool _codeCitySet;
 
-    /// <summary>
-    /// The code region
-    /// </summary>
     private int _codeRegion;
 
-    /// <summary>
-    /// The code region set
-    /// </summary>
     private bool _codeRegionSet;
 
-    /// <summary>
-    /// The name
-    /// </summary>
     private string _name;
 
-    /// <summary>
-    /// The name set
-    /// </summary>
     private bool _nameSet;
 
-    /// <summary>
-    /// The active
-    /// </summary>
     private bool _active;
 
-    /// <summary>
-    /// The active set
-    /// </summary>
     private bool _activeSet;
 
-    /// <summary>
-    /// The document individual
-    /// </summary>
     private string _documentIndividual;
 
-    /// <summary>
-    /// The document individual set
-    /// </summary>
     private bool _documentIndividualSet;
 
-    /// <summary>
-    /// The document corporation
-    /// </summary>
     private string _documentCorporation;
 
-    /// <summary>
-    /// The document corporation set
-    /// </summary>
     private bool _documentCorporationSet;
 
-    /// <summary>
-    /// The register date
-    /// </summary>
     private DateTime _registerDate;
 
-    /// <summary>
-    /// The register date set
-    /// </summary>
     private bool _registerDateSet;
 
-    /// <summary>
-    /// The email address
-    /// </summary>
     private string _emailAddress;
 
-    /// <summary>
-    /// The email address set
-    /// </summary>
     private bool _emailAddressSet;
 
-    /// <summary>
-    /// The fixed telephone
-    /// </summary>
     private string _fixedTelephone;
 
-    /// <summary>
-    /// The fixed telephone set
-    /// </summary>
     private bool _fixedTelephoneSet;
 
-    /// <summary>
-    /// The mobile telephone
-    /// </summary>
     private string _mobileTelephone;
 
-    /// <summary>
-    /// The mobile telephone set
-    /// </summary>
     private bool _mobileTelephoneSet;
 
-    /// <summary>
-    /// The partner
-    /// </summary>
     private Partner _partner;
 
-    /// <summary>
-    /// The partner set
-    /// </summary>
     private bool _partnerSet;
 
-    /// <summary>
-    /// The address
-    /// </summary>
     private Address _address;
 
-    /// <summary>
-    /// The address set
-    /// </summary>
     private bool _addressSet;
 
-    /// <summary>
-    /// The neighborhood
-    /// </summary>
     private Neighborhood _neighborhood;
 
-    /// <summary>
-    /// The neighborhood set
-    /// </summary>
     private bool _neighborhoodSet;
 
-    /// <summary>
-    /// The city
-    /// </summary>
     private City _city;
 
-    /// <summary>
-    /// The city set
-    /// </summary>
     private bool _citySet;
 
-    /// <summary>
-    /// The region
-    /// </summary>
     private Region _region;
 
-    /// <summary>
-    /// The region set
-    /// </summary>
     private bool _regionSet;
 
-    /// <summary>
-    /// Gets or sets the code.
-    /// </summary>
-    /// <value>The code.</value>
     [EntityElement("CODCONTATO")]
     public int Code
     {
@@ -487,10 +317,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code partner.
-    /// </summary>
-    /// <value>The code partner.</value>
     [EntityElement("CODPARC")]
     public int CodePartner
     {
@@ -502,10 +328,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the zip code.
-    /// </summary>
-    /// <value>The zip code.</value>
     [EntityElement("CEP")]
     public string ZipCode
     {
@@ -517,10 +339,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code address.
-    /// </summary>
-    /// <value>The code address.</value>
     [EntityElement("CODEND")]
     public int CodeAddress
     {
@@ -532,10 +350,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the address complement.
-    /// </summary>
-    /// <value>The address complement.</value>
     [EntityElement("COMPLEMENTO")]
     [EntityCustomData(MaxLength = 30)]
     public string AddressComplement
@@ -548,10 +362,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the address number.
-    /// </summary>
-    /// <value>The address number.</value>
     [EntityElement("NUMEND")]
     public string AddressNumber
     {
@@ -563,10 +373,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code neighborhood.
-    /// </summary>
-    /// <value>The code neighborhood.</value>
     [EntityElement("CODBAI")]
     public int CodeNeighborhood
     {
@@ -578,10 +384,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code city.
-    /// </summary>
-    /// <value>The code city.</value>
     [EntityElement("CODCID")]
     public int CodeCity
     {
@@ -593,10 +395,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code region.
-    /// </summary>
-    /// <value>The code region.</value>
     [EntityElement("CODREG")]
     public int CodeRegion
     {
@@ -608,10 +406,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the name.
-    /// </summary>
-    /// <value>The name.</value>
     [EntityElement("NOMECONTATO")]
     public string Name
     {
@@ -623,10 +417,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the active.
-    /// </summary>
-    /// <value>The active.</value>
     [EntityIgnore]
     public bool Active
     {
@@ -638,10 +428,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the active internal.
-    /// </summary>
-    /// <value>The active internal.</value>
     [EntityElement("ATIVO")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -655,10 +441,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the document individual.
-    /// </summary>
-    /// <value>The document individual.</value>
     [EntityElement("CPF")]
     public string DocumentIndividual
     {
@@ -670,10 +452,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the document corporation.
-    /// </summary>
-    /// <value>The document corporation.</value>
     [EntityElement("CNPJ")]
     public string DocumentCorporation
     {
@@ -685,10 +463,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the register date.
-    /// </summary>
-    /// <value>The register date.</value>
     [EntityElement("DTCAD")]
     public DateTime RegisterDate
     {
@@ -700,10 +474,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the email address.
-    /// </summary>
-    /// <value>The email address.</value>
     [EntityElement("EMAIL")]
     public string EmailAddress
     {
@@ -715,10 +485,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the fixed telephone.
-    /// </summary>
-    /// <value>The fixed telephone.</value>
     [EntityElement("TELEFONE")]
     public string FixedTelephone
     {
@@ -730,10 +496,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the mobile telephone.
-    /// </summary>
-    /// <value>The mobile telephone.</value>
     [EntityElement("CELULAR")]
     public string MobileTelephone
     {
@@ -745,10 +507,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the partner.
-    /// </summary>
-    /// <value>The partner.</value>
     [EntityReference]
     public Partner Partner
     {
@@ -760,10 +518,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the address.
-    /// </summary>
-    /// <value>The address.</value>
     [EntityReference]
     public Address Address
     {
@@ -775,10 +529,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the neighborhood.
-    /// </summary>
-    /// <value>The neighborhood.</value>
     [EntityReference]
     public Neighborhood Neighborhood
     {
@@ -790,10 +540,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the city.
-    /// </summary>
-    /// <value>The city.</value>
     [EntityReference]
     public City City
     {
@@ -805,10 +551,6 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the region.
-    /// </summary>
-    /// <value>The region.</value>
     [EntityReference]
     public Region Region
     {
@@ -820,178 +562,90 @@ public class Contact : IEntity, IEquatable<Contact>
         }
     }
 
-    /// <summary>
-    /// Should the serialize code.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCode() => _codeSet;
 
-    /// <summary>
-    /// Should the serialize code partner.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodePartner() => _codePartnerSet;
 
-    /// <summary>
-    /// Should the serialize zip code.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeZipCode() => _zipCodeSet;
 
-    /// <summary>
-    /// Should the serialize code address.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeAddress() => _codeAddressSet;
 
-    /// <summary>
-    /// Should the serialize address complement.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeAddressComplement() => _addressComplementSet;
 
-    /// <summary>
-    /// Should the serialize address number.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeAddressNumber() => _addressNumberSet;
 
-    /// <summary>
-    /// Should the serialize code neighborhood.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeNeighborhood() => _codeNeighborhoodSet;
 
-    /// <summary>
-    /// Should the serialize code city.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeCity() => _codeCitySet;
 
-    /// <summary>
-    /// Should the serialize code region.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeRegion() => _codeRegionSet;
 
-    /// <summary>
-    /// Should the name of the serialize.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeName() => _nameSet;
 
-    /// <summary>
-    /// Should the serialize active.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeActive() => _activeSet;
 
-    /// <summary>
-    /// Should the serialize document individual.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDocumentIndividual() => _documentIndividualSet;
 
-    /// <summary>
-    /// Should the serialize document corporation.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDocumentCorporation() => _documentCorporationSet;
 
-    /// <summary>
-    /// Should the serialize register date.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRegisterDate() => _registerDateSet;
 
-    /// <summary>
-    /// Should the serialize email address.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeEmailAddress() => _emailAddressSet;
 
-    /// <summary>
-    /// Should the serialize fixed telephone.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeFixedTelephone() => _fixedTelephoneSet;
 
-    /// <summary>
-    /// Should the serialize mobile telephone.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMobileTelephone() => _mobileTelephoneSet;
 
-    /// <summary>
-    /// Should the serialize partner.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePartner() => _partnerSet;
 
-    /// <summary>
-    /// Should the serialize address.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeAddress() => _addressSet;
 
-    /// <summary>
-    /// Should the serialize neighborhood.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeNeighborhood() => _neighborhoodSet;
 
-    /// <summary>
-    /// Should the serialize city.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCity() => _citySet;
 
-    /// <summary>
-    /// Should the serialize region.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRegion() => _regionSet;

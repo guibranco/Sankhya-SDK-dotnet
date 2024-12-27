@@ -6,37 +6,18 @@ using Sankhya.Enums;
 
 namespace Sankhya.Service;
 
-/// <summary>
-/// A service request.
-/// </summary>
 [Serializer]
 [XmlRoot(ElementName = "serviceRequest")]
 public sealed class ServiceRequest
 {
-    /// <summary>
-    /// The service
-    /// </summary>
     private ServiceName _service;
 
-    /// <summary>
-    /// The service set
-    /// </summary>
     private bool _serviceSet;
 
-    /// <summary>
-    /// The request body
-    /// </summary>
     private RequestBody _requestBody;
 
-    /// <summary>
-    /// The request body set
-    /// </summary>
     private bool _requestBodySet;
 
-    /// <summary>
-    /// The Service Name as SankhyaService enum
-    /// </summary>
-    /// <value>The service.</value>
     [XmlIgnore]
     public ServiceName Service
     {
@@ -48,10 +29,6 @@ public sealed class ServiceRequest
         }
     }
 
-    /// <summary>
-    /// The Service Name as String (SankhyaService - InternalValueAttribute)
-    /// </summary>
-    /// <value>The service internal.</value>
     [XmlAttribute("serviceName")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -65,10 +42,6 @@ public sealed class ServiceRequest
         }
     }
 
-    /// <summary>
-    /// The Request Body element
-    /// </summary>
-    /// <value>The request body.</value>
     [XmlElement("requestBody")]
     public RequestBody RequestBody
     {
@@ -80,35 +53,20 @@ public sealed class ServiceRequest
         }
     }
 
-    /// <summary>
-    /// Should the serialize service internal.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeServiceInternal() => _serviceSet;
 
-    /// <summary>
-    /// Should the serialize request body.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRequestBody() => _requestBodySet;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ServiceRequest"/> class.
-    /// </summary>
     public ServiceRequest()
     {
         Service = ServiceName.Test;
         RequestBody = new();
     }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ServiceRequest"/> class.
-    /// </summary>
-    /// <param name="service">The service.</param>
     public ServiceRequest(ServiceName service)
     {
         Service = service;

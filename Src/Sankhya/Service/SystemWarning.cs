@@ -5,65 +5,28 @@ using Sankhya.Enums;
 
 namespace Sankhya.Service;
 
-/// <summary>
-/// Class SystemWarning. This class cannot be inherited.
-/// </summary>
 public sealed class SystemWarning
 {
-    /// <summary>
-    /// The importance
-    /// </summary>
     private SankhyaWarningLevel _importance;
 
-    /// <summary>
-    /// The importance set
-    /// </summary>
     private bool _importanceSet;
 
-    /// <summary>
-    /// The title
-    /// </summary>
     private string _title;
 
-    /// <summary>
-    /// The title set
-    /// </summary>
     private bool _titleSet;
 
-    /// <summary>
-    /// The description
-    /// </summary>
     private string _description;
 
-    /// <summary>
-    /// The description set
-    /// </summary>
     private bool _descriptionSet;
 
-    /// <summary>
-    /// The tip
-    /// </summary>
     private string _tip;
 
-    /// <summary>
-    /// The tip set
-    /// </summary>
     private bool _tipSet;
 
-    /// <summary>
-    /// The recipients
-    /// </summary>
     private SystemWarningRecipient[] _recipients;
 
-    /// <summary>
-    /// The recipients set
-    /// </summary>
     private bool _recipientsSet;
 
-    /// <summary>
-    /// Gets or sets the importance.
-    /// </summary>
-    /// <value>The importance.</value>
     [XmlIgnore]
     public SankhyaWarningLevel Importance
     {
@@ -75,10 +38,6 @@ public sealed class SystemWarning
         }
     }
 
-    /// <summary>
-    /// Gets or sets the importance internal.
-    /// </summary>
-    /// <value>The importance internal.</value>
     [XmlAttribute("importancia")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -91,10 +50,6 @@ public sealed class SystemWarning
             );
     }
 
-    /// <summary>
-    /// Gets or sets the title.
-    /// </summary>
-    /// <value>The title.</value>
     [XmlElement(ElementName = "titulo")]
     public string Title
     {
@@ -106,10 +61,6 @@ public sealed class SystemWarning
         }
     }
 
-    /// <summary>
-    /// Gets or sets the description.
-    /// </summary>
-    /// <value>The description.</value>
     [XmlElement(ElementName = "descricao")]
     public string Description
     {
@@ -121,10 +72,6 @@ public sealed class SystemWarning
         }
     }
 
-    /// <summary>
-    /// Gets or sets the tip.
-    /// </summary>
-    /// <value>The tip.</value>
     [XmlElement(ElementName = "Dica")]
     public string Tip
     {
@@ -136,10 +83,6 @@ public sealed class SystemWarning
         }
     }
 
-    /// <summary>
-    /// Gets or sets the recipients.
-    /// </summary>
-    /// <value>The recipients.</value>
     [XmlElement("destinatario")]
     public SystemWarningRecipient[] Recipients
     {
@@ -151,42 +94,22 @@ public sealed class SystemWarning
         }
     }
 
-    /// <summary>
-    /// Should the serialize importance internal.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeImportanceInternal() => _importanceSet;
 
-    /// <summary>
-    /// Should the serialize title.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeTitle() => _titleSet;
 
-    /// <summary>
-    /// Should the serialize description.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDescription() => _descriptionSet;
 
-    /// <summary>
-    /// Should the serialize tip.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeTip() => _tipSet;
 
-    /// <summary>
-    /// Should the serialize recipients.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRecipients() => _recipientsSet;

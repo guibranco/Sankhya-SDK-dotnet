@@ -1,17 +1,3 @@
-// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="State.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
 using System;
 using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Serialization;
@@ -19,20 +5,10 @@ using Sankhya.Attributes;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// Class State. This class cannot be inherited.
-/// </summary>
-/// <seealso cref="IEntity" />
 [Serializer]
 [Entity("UnidadeFederativa")]
 public class State : IEntity, IEquatable<State>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-    // ReSharper disable once CyclomaticComplexity
     public bool Equals(State other)
     {
         if (ReferenceEquals(null, other))
@@ -67,11 +43,6 @@ public class State : IEntity, IEquatable<State>
             );
     }
 
-    /// <summary>
-    /// Determines whether the specified <see cref="Object" /> is equal to the current <see cref="Object" />.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -88,10 +59,6 @@ public class State : IEntity, IEquatable<State>
         return a != null && Equals(a);
     }
 
-    /// <summary>
-    /// Serves as a hash function for a particular type.
-    /// </summary>
-    /// <returns>A hash code for the current <see cref="Object" />.</returns>
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -125,126 +92,50 @@ public class State : IEntity, IEquatable<State>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(State left, State right) => Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(State left, State right) => !Equals(left, right);
 
-    /// <summary>
-    /// The code
-    /// </summary>
     private int _code;
 
-    /// <summary>
-    /// The code set
-    /// </summary>
     private bool _codeSet;
 
-    /// <summary>
-    /// The initials
-    /// </summary>
     private string _initials;
 
-    /// <summary>
-    /// The initials set
-    /// </summary>
     private bool _initialsSet;
 
-    /// <summary>
-    /// The name
-    /// </summary>
     private string _name;
 
-    /// <summary>
-    /// The name set
-    /// </summary>
     private bool _nameSet;
 
-    /// <summary>
-    /// The code country
-    /// </summary>
     private int _codeCountry;
 
-    /// <summary>
-    /// The code country set
-    /// </summary>
     private bool _codeCountrySet;
 
-    /// <summary>
-    /// The code partner secretary of state revenue
-    /// </summary>
     private int _codePartnerSecretaryOfStateRevenue;
 
-    /// <summary>
-    /// The code partner secretary of state revenue set
-    /// </summary>
     private bool _codePartnerSecretaryOfStateRevenueSet;
 
-    /// <summary>
-    /// The code ibge
-    /// </summary>
     private int _codeIbge;
 
-    /// <summary>
-    /// The code ibge set
-    /// </summary>
     private bool _codeIbgeSet;
 
-    /// <summary>
-    /// The code revenue
-    /// </summary>
     private int _codeRevenue;
 
-    /// <summary>
-    /// The code revenue set
-    /// </summary>
     private bool _codeRevenueSet;
 
-    /// <summary>
-    /// The code revenue detailing
-    /// </summary>
     private int _codeRevenueDetailing;
 
-    /// <summary>
-    /// The code revenue detailing set
-    /// </summary>
     private bool _codeRevenueDetailingSet;
 
-    /// <summary>
-    /// The code product
-    /// </summary>
     private int _codeProduct;
 
-    /// <summary>
-    /// The code product set
-    /// </summary>
     private bool _codeProductSet;
 
-    /// <summary>
-    /// The agreement protocol
-    /// </summary>
     private string _agreementProtocol;
 
-    /// <summary>
-    /// The agreement protocol set
-    /// </summary>
     private bool _agreementProtocolSet;
 
-    /// <summary>
-    /// Gets or sets the code.
-    /// </summary>
-    /// <value>The code.</value>
     [EntityKey]
     [EntityElement("CODUF")]
     public int Code
@@ -257,10 +148,6 @@ public class State : IEntity, IEquatable<State>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the initials.
-    /// </summary>
-    /// <value>The initials.</value>
     [EntityElement("UF")]
     public string Initials
     {
@@ -272,10 +159,6 @@ public class State : IEntity, IEquatable<State>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the name.
-    /// </summary>
-    /// <value>The name.</value>
     [EntityElement("DESCRICAO")]
     public string Name
     {
@@ -287,10 +170,6 @@ public class State : IEntity, IEquatable<State>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code country.
-    /// </summary>
-    /// <value>The code country.</value>
     [EntityElement("CODPAIS")]
     public int CodeCountry
     {
@@ -302,10 +181,6 @@ public class State : IEntity, IEquatable<State>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code partner secretary of state revenue.
-    /// </summary>
-    /// <value>The code partner secretary of state revenue.</value>
     [EntityElement("CODPARCSECRECEST")]
     public int CodePartnerSecretaryOfStateRevenue
     {
@@ -317,10 +192,6 @@ public class State : IEntity, IEquatable<State>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code ibge.
-    /// </summary>
-    /// <value>The code ibge.</value>
     [EntityElement("CODIBGE")]
     public int CodeIbge
     {
@@ -332,10 +203,6 @@ public class State : IEntity, IEquatable<State>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code revenue.
-    /// </summary>
-    /// <value>The code revenue.</value>
     [EntityElement("CODSTGNRE")]
     public int CodeRevenue
     {
@@ -347,10 +214,6 @@ public class State : IEntity, IEquatable<State>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code revenue detailing.
-    /// </summary>
-    /// <value>The code revenue detailing.</value>
     [EntityElement("CODDETGNRE")]
     public int CodeRevenueDetailing
     {
@@ -362,10 +225,6 @@ public class State : IEntity, IEquatable<State>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code product.
-    /// </summary>
-    /// <value>The code product.</value>
     [EntityElement("CODPRODGNRE")]
     public int CodeProduct
     {
@@ -377,10 +236,6 @@ public class State : IEntity, IEquatable<State>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the agreement protocol.
-    /// </summary>
-    /// <value>The agreement protocol.</value>
     [EntityElement("PROTOCOLOCONVENIO")]
     public string AgreementProtocol
     {
@@ -392,64 +247,24 @@ public class State : IEntity, IEquatable<State>
         }
     }
 
-    /// <summary>
-    /// Should the serialize code.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCode() => _codeSet;
 
-    /// <summary>
-    /// Should the serialize initials.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeInitials() => _initialsSet;
 
-    /// <summary>
-    /// Should the name of the serialize.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeName() => _nameSet;
 
-    /// <summary>
-    /// Should the serialize code country.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCodeCountry() => _codeCountrySet;
 
-    /// <summary>
-    /// Should the serialize code partner secretary of state revenue.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCodePartnerSecretaryOfStateRevenue() =>
         _codePartnerSecretaryOfStateRevenueSet;
 
-    /// <summary>
-    /// Should the serialize code IBGE.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCodeIbge() => _codeIbgeSet;
 
-    /// <summary>
-    /// Should the serialize code revenue.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCodeRevenue() => _codeRevenueSet;
 
-    /// <summary>
-    /// Should the serialize code revenue detailing.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCodeRevenueDetailing() => _codeRevenueDetailingSet;
 
-    /// <summary>
-    /// Should the serialize code product.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCodeProduct() => _codeProductSet;
 
-    /// <summary>
-    /// Should the serialize agreement protocol.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeAgreementProtocol() => _agreementProtocolSet;
 }

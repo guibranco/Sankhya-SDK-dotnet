@@ -1,25 +1,12 @@
-﻿// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="EntityKeyAttribute.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 
 namespace Sankhya.Attributes;
 
 /// <summary>
-/// Class EntityKeyAttribute. This class cannot be inherited.
-/// Implements the <see cref="Attribute" />
+/// Specifies that a property is an entity key.
 /// </summary>
-/// <seealso cref="Attribute" />
+/// <remarks>
+/// This attribute is used to mark properties that represent the key of an entity.
+/// </remarks>
 [AttributeUsage(AttributeTargets.Property)]
 public sealed class EntityKeyAttribute : Attribute { }

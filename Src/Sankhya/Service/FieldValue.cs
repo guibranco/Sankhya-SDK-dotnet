@@ -1,35 +1,11 @@
-﻿// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="FieldValue.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 
 namespace Sankhya.Service;
 
-/// <summary>
-/// Class FieldValue. This class cannot be inherited.
-/// Implements the <see cref="IEquatable{T}" />
-/// </summary>
-/// <seealso cref="IEquatable{FieldValue}" />
 public sealed class FieldValue : IEquatable<FieldValue>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
     public bool Equals(FieldValue other)
     {
         if (ReferenceEquals(null, other))
@@ -48,11 +24,6 @@ public sealed class FieldValue : IEquatable<FieldValue>
             && _valueSet == other._valueSet;
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current object.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -68,10 +39,6 @@ public sealed class FieldValue : IEquatable<FieldValue>
         return obj is FieldValue other && Equals(other);
     }
 
-    /// <summary>
-    /// Serves as the default hash function.
-    /// </summary>
-    /// <returns>A hash code for the current object.</returns>
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -96,46 +63,18 @@ public sealed class FieldValue : IEquatable<FieldValue>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(FieldValue left, FieldValue right) => Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(FieldValue left, FieldValue right) => !Equals(left, right);
 
-    /// <summary>
-    /// The name.
-    /// </summary>
     private string _name;
 
-    /// <summary>
-    /// The name set
-    /// </summary>
     private bool _nameSet;
 
-    /// <summary>
-    /// The value
-    /// </summary>
     private string _value;
 
-    /// <summary>
-    /// The value set
-    /// </summary>
     private bool _valueSet;
 
-    /// <summary>
-    /// Gets or sets the name.
-    /// </summary>
-    /// <value>The name.</value>
     [XmlAttribute(AttributeName = "nome")]
     public string Name
     {
@@ -147,10 +86,6 @@ public sealed class FieldValue : IEquatable<FieldValue>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the value.
-    /// </summary>
-    /// <value>The value.</value>
     [XmlText]
     public string Value
     {
@@ -162,15 +97,7 @@ public sealed class FieldValue : IEquatable<FieldValue>
         }
     }
 
-    /// <summary>
-    /// Should the name of the serialize.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeName() => _nameSet;
 
-    /// <summary>
-    /// Should the serialize value.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeValue() => _valueSet;
 }

@@ -1,15 +1,4 @@
-﻿// *********************************************************************** Assembly : Sankhya Author
-// : GuilhermeStracini Created : 10-07-2023
-//
-// Last Modified By : GuilhermeStracini Last Modified On : 10-08-2023 ***********************************************************************
-// <copyright file="SankhyaWrapper.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary>
-// </summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,70 +28,30 @@ using Sankhya.ValueObjects;
 
 namespace Sankhya;
 
-/// <summary>
-/// Class SankhyaWrapper.
-/// </summary>
 internal class SankhyaWrapper
 {
-    /// <summary>
-    /// The locks.
-    /// </summary>
     private static readonly ConcurrentDictionary<string, object> Locks = new();
 
-    /// <summary>
-    /// The disposed.
-    /// </summary>
     private bool _disposed;
 
-    /// <summary>
-    /// The session identifier.
-    /// </summary>
     private string _sessionId;
 
-    /// <summary>
-    /// The username.
-    /// </summary>
     private string _username;
 
-    /// <summary>
-    /// The password.
-    /// </summary>
     private string _password;
 
-    /// <summary>
-    /// The host.
-    /// </summary>
     private readonly string _host;
 
-    /// <summary>
-    /// The port.
-    /// </summary>
     private readonly int _port;
 
-    /// <summary>
-    /// The request type.
-    /// </summary>
     private readonly string _requestType;
 
-    /// <summary>
-    /// The request count.
-    /// </summary>
     private static int _requestCount;
 
-    /// <summary>
-    /// The internal user agent.
-    /// </summary>
     private static string _internalUserAgent;
 
-    /// <summary>
-    /// The invalid session ids.
-    /// </summary>
     private static readonly List<string> InvalidSessionIds = new();
 
-    /// <summary>
-    /// Gets the internal user agent.
-    /// </summary>
-    /// <value>The internal user agent.</value>
     private static string InternalUserAgent
     {
         get
@@ -118,9 +67,6 @@ internal class SankhyaWrapper
         }
     }
 
-    /// <summary>
-    /// The MIME types to extensions.
-    /// </summary>
     private static readonly Dictionary<string, string> MimeTypes2Extensions = new()
     {
         { @"image/jpeg", @"jpg" },
@@ -128,12 +74,6 @@ internal class SankhyaWrapper
         { @"image/gif", @"gif" },
     };
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SankhyaWrapper"/> class.
-    /// </summary>
-    /// <param name="host">The host.</param>
-    /// <param name="port">The port.</param>
-    /// <param name="requestType">Type of the request.</param>
     public SankhyaWrapper(string host, int port, ServiceRequestType requestType)
     {
         UserCode = -1;
@@ -170,14 +110,6 @@ internal class SankhyaWrapper
         _requestType = requestType.GetHumanReadableValue();
     }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SankhyaWrapper"/> class.
-    /// </summary>
-    /// <param name="host">The host.</param>
-    /// <param name="port">The port.</param>
-    /// <param name="requestType">Type of the request.</param>
-    /// <param name="environment">The environment.</param>
-    /// <param name="databaseName">Name of the database.</param>
     public SankhyaWrapper(
         string host,
         int port,
@@ -212,24 +144,14 @@ internal class SankhyaWrapper
         };
     }
 
-    /// <summary>
-    /// Finalizes an instance of the <see cref="SankhyaWrapper"/> class.
-    /// </summary>
     ~SankhyaWrapper() => Dispose(false);
 
-    /// <summary>
-    /// Disposes this instance.
-    /// </summary>
     public void Dispose()
     {
         Dispose(true);
         GC.SuppressFinalize(this);
     }
 
-    /// <summary>
-    /// Disposes the specified disposing.
-    /// </summary>
-    /// <param name="disposing">The disposing.</param>
     private void Dispose(bool disposing)
     {
         if (_disposed)
@@ -245,30 +167,12 @@ internal class SankhyaWrapper
         _disposed = true;
     }
 
-    /// <summary>
-    /// Gets the environment.
-    /// </summary>
-    /// <value>The environment.</value>
     public ServiceEnvironment Environment { get; }
 
-    /// <summary>
-    /// Gets the name of the database.
-    /// </summary>
-    /// <value>The name of the database.</value>
     public string DatabaseName { get; }
 
-    /// <summary>
-    /// Gets the user code.
-    /// </summary>
-    /// <value>The user code.</value>
     public int UserCode { get; private set; }
 
-    /// <summary>
-    /// Generics the web request factory.
-    /// </summary>
-    /// <param name="path">The path.</param>
-    /// <param name="query">The query.</param>
-    /// <returns>System.Net.HttpWebRequest.</returns>
     [Localizable(false)]
     private HttpWebRequest GenericWebRequestFactory(string path, QueryStringBuilder query)
     {
@@ -291,12 +195,6 @@ internal class SankhyaWrapper
         return request;
     }
 
-    /// <summary>
-    /// Webs the request factory.
-    /// </summary>
-    /// <param name="service">The service.</param>
-    /// <param name="module">The module.</param>
-    /// <returns>System.Net.HttpWebRequest.</returns>
     [Localizable(false)]
     private HttpWebRequest WebRequestFactory(ServiceName service, ServiceModule module)
     {
@@ -309,12 +207,6 @@ internal class SankhyaWrapper
         return request;
     }
 
-    /// <summary>
-    /// Services the invoker internal.
-    /// </summary>
-    /// <param name="connection">The connection.</param>
-    /// <param name="body">The body.</param>
-    /// <returns>System.Net.HttpWebResponse.</returns>
     [Localizable(false)]
     private static HttpWebResponse ServiceInvokerInternal(WebRequest connection, string body = null)
     {
@@ -342,12 +234,6 @@ internal class SankhyaWrapper
         return (HttpWebResponse)connection.GetResponse();
     }
 
-    /// <summary>
-    /// Services the invoker.
-    /// </summary>
-    /// <param name="serviceName">Name of the service.</param>
-    /// <param name="request">The request.</param>
-    /// <returns>Sankhya.Service.ServiceResponse.</returns>
     private ServiceResponse ServiceInvoker(ServiceName serviceName, ServiceRequest request = null)
     {
         var lockKey = string.IsNullOrWhiteSpace(_sessionId) ? nameof(ServiceInvoker) : _sessionId;
@@ -365,16 +251,6 @@ internal class SankhyaWrapper
         return result;
     }
 
-    /// <summary>
-    /// Services the invoker internal.
-    /// </summary>
-    /// <param name="request">The request.</param>
-    /// <param name="serviceName">Name of the service.</param>
-    /// <param name="retryData">The retry data.</param>
-    /// <returns>ServiceResponse.</returns>
-    /// <exception cref="ServiceRequestInvalidAuthorizationException">
-    /// Throws when invalid authrorization is returned by Sankhya.
-    /// </exception>
     private ServiceResponse ServiceInvokerInternal(
         ServiceRequest request,
         ServiceName serviceName,
@@ -454,15 +330,6 @@ internal class SankhyaWrapper
         return null;
     }
 
-    /// <summary>
-    /// Handles the exception.
-    /// </summary>
-    /// <param name="exception">The exception.</param>
-    /// <param name="name">The name.</param>
-    /// <param name="service">The service.</param>
-    /// <param name="request">The request.</param>
-    /// <param name="retryData">The retry data.</param>
-    /// <returns>bool.</returns>
     private bool HandleException(
         Exception exception,
         ServiceName name,
@@ -490,15 +357,6 @@ internal class SankhyaWrapper
         return HandleExceptionInternal(exception, name, service.Category, request, retryData);
     }
 
-    /// <summary>
-    /// Handles the exception internal.
-    /// </summary>
-    /// <param name="exception">The exception.</param>
-    /// <param name="name">The name.</param>
-    /// <param name="category">The category.</param>
-    /// <param name="request">The request.</param>
-    /// <param name="retryData">The retry data.</param>
-    /// <returns>bool.</returns>
     private bool HandleExceptionInternal(
         Exception exception,
         ServiceName name,
@@ -636,15 +494,6 @@ internal class SankhyaWrapper
         }
     }
 
-    /// <summary>
-    /// Processes the request.
-    /// </summary>
-    /// <param name="service">The service.</param>
-    /// <param name="request">The request.</param>
-    /// <param name="module">The module.</param>
-    /// <param name="currentRequestCount">The current request count.</param>
-    /// <param name="serviceName">Name of the service.</param>
-    /// <returns>Sankhya.Service.ServiceResponse.</returns>
     private ServiceResponse ProcessRequest(
         ServiceName service,
         ServiceRequest request,
@@ -692,12 +541,6 @@ internal class SankhyaWrapper
         }
     }
 
-    /// <summary>
-    /// Handles the web exception.
-    /// </summary>
-    /// <param name="request">The request.</param>
-    /// <param name="e">The e.</param>
-    /// <returns>System.Exception.</returns>
     private Exception HandleWebException(ServiceRequest request, WebException e)
     {
         if (
@@ -727,16 +570,6 @@ internal class SankhyaWrapper
         return new ServiceRequestInaccessibleException(_host, _port, request, e);
     }
 
-    /// <summary>
-    /// Processes the response.
-    /// </summary>
-    /// <param name="service">The service.</param>
-    /// <param name="request">The request.</param>
-    /// <param name="webResponse">The web response.</param>
-    /// <param name="currentRequestCount">The current request count.</param>
-    /// <param name="serviceName">Name of the service.</param>
-    /// <returns>Sankhya.Service.ServiceResponse.</returns>
-    /// <exception cref="InvalidOperationException">Resources.ResponseStreamIsNull.</exception>
     private static ServiceResponse ProcessResponse(
         ServiceName service,
         ServiceRequest request,
@@ -774,21 +607,9 @@ internal class SankhyaWrapper
         return null;
     }
 
-    /// <summary>
-    /// Services the invoker.
-    /// </summary>
-    /// <param name="request">The request.</param>
-    /// <returns>Sankhya.Service.ServiceResponse.</returns>
     public ServiceResponse ServiceInvoker(ServiceRequest request) =>
         ServiceInvoker(request.Service, request);
 
-    /// <summary>
-    /// Service invoker as an asynchronous operation.
-    /// </summary>
-    /// <param name="request">The request.</param>
-    /// <returns>
-    /// A Task&lt;Sankhya.Service.ServiceResponse&gt; representing the asynchronous operation.
-    /// </returns>
     public async Task<ServiceResponse> ServiceInvokerAsync(ServiceRequest request)
     {
         try
@@ -802,11 +623,6 @@ internal class SankhyaWrapper
         }
     }
 
-    /// <summary>
-    /// Gets the file internal.
-    /// </summary>
-    /// <param name="key">The key.</param>
-    /// <returns>Sankhya.ValueObjects.ServiceFile.</returns>
     private ServiceFile GetFileInternal(string key)
     {
         try
@@ -827,13 +643,6 @@ internal class SankhyaWrapper
         return new();
     }
 
-    /// <summary>
-    /// Processes the file response.
-    /// </summary>
-    /// <param name="key">The key.</param>
-    /// <param name="request">The request.</param>
-    /// <returns>Sankhya.ValueObjects.ServiceFile.</returns>
-    /// <exception cref="InvalidKeyFileException">key.</exception>
     private static ServiceFile ProcessFileResponse(string key, HttpWebRequest request)
     {
         var result = new ServiceFile();
@@ -886,14 +695,6 @@ internal class SankhyaWrapper
         return result;
     }
 
-    /// <summary>
-    /// Reads the stream.
-    /// </summary>
-    /// <param name="key">The key.</param>
-    /// <param name="response">The response.</param>
-    /// <param name="result">The result.</param>
-    /// <exception cref="OpenFileException">key.</exception>
-    /// <exception cref="InvalidOperationException">Resources.SankhyaWrapper_ReadStream_Exception.</exception>
     private static void ReadStream(string key, HttpWebResponse response, ServiceFile result)
     {
         var stream = response.GetResponseStream();
@@ -930,19 +731,6 @@ internal class SankhyaWrapper
         result.Data = data;
     }
 
-    /// <summary>
-    /// Authenticates a user by validating their username and password.
-    /// </summary>
-    /// <param name="userName">The username of the user attempting to authenticate.</param>
-    /// <param name="password">The password of the user attempting to authenticate.</param>
-    /// <remarks>
-    /// This method sets the instance variables <c>_username</c> and <c>_password</c> with the provided credentials.
-    /// It checks if a session ID already exists; if it does, the method returns early without performing authentication.
-    /// If no session ID is present, it logs the authentication attempt and creates a service request to log in the user.
-    /// The request includes the username and password in its body.
-    /// After sending the request, it checks the response; if the response is null, it exits without further action.
-    /// If a valid response is received, it extracts the session ID and user code from the response body and assigns them to the instance variables <c>_sessionId</c> and <c>UserCode</c>, respectively.
-    /// </remarks>
     public void Authenticate(string userName, string password)
     {
         _username = userName;
@@ -970,9 +758,6 @@ internal class SankhyaWrapper
         UserCode = response.ResponseBody.CodeUser;
     }
 
-    /// <summary>
-    /// Invalidates this instance.
-    /// </summary>
     private void Invalidate()
     {
         if (string.IsNullOrWhiteSpace(_sessionId))
@@ -985,14 +770,6 @@ internal class SankhyaWrapper
         _sessionId = string.Empty;
     }
 
-    /// <summary>
-    /// Creates the request.
-    /// </summary>
-    /// <param name="uri">The URI.</param>
-    /// <param name="cookieContainer">The cookie container.</param>
-    /// <param name="requestType">Type of the request.</param>
-    /// <param name="method">The method.</param>
-    /// <returns>System.Net.HttpWebRequest.</returns>
     private static HttpWebRequest CreateRequest(
         Uri uri,
         CookieContainer cookieContainer,
@@ -1012,17 +789,6 @@ internal class SankhyaWrapper
         return request;
     }
 
-    /// <summary>
-    /// Registers the user agent.
-    /// </summary>
-    /// <param name="host">The host.</param>
-    /// <param name="port">The port.</param>
-    /// <param name="username">The username.</param>
-    /// <param name="password">The password.</param>
-    /// <param name="cookieContainer">The cookie container.</param>
-    /// <param name="requestType">Type of the request.</param>
-    /// <exception cref="InvalidOperationException">Resources.ResponseStreamIsNull.</exception>
-    /// <exception cref="ServiceRequestInaccessibleException">host, port, null, e.</exception>
     private static void RegisterUserAgent(
         string host,
         int port,
@@ -1076,12 +842,6 @@ internal class SankhyaWrapper
         }
     }
 
-    /// <summary>
-    /// Gets the register user agent request bytes.
-    /// </summary>
-    /// <param name="username">The username.</param>
-    /// <param name="password">The password.</param>
-    /// <returns>byte[].</returns>
     private static byte[] GetRegisterUserAgentRequestBytes(string username, string password)
     {
         var sb = new StringBuilder();
@@ -1105,12 +865,6 @@ internal class SankhyaWrapper
         return bytes;
     }
 
-    /// <summary>
-    /// Shows the version information.
-    /// </summary>
-    /// <param name="responseReader">The response reader.</param>
-    /// <param name="requestType">Type of the request.</param>
-    /// <exception cref="InvalidOperationException">Resources.SankhyaWrapper_ShowVersionInfo_SankhyaWVersionNotFound.</exception>
     private static void ShowVersionInfo(TextReader responseReader, string requestType)
     {
         if (
@@ -1152,24 +906,12 @@ internal class SankhyaWrapper
         LogConsumer.Info(Resources.SankhyaWrapper_ShowVersionInfo_SankhyaWVersion, version);
     }
 
-    /// <summary>
-    /// Gets the file.
-    /// </summary>
-    /// <param name="key">The key.</param>
-    /// <returns>Sankhya.ValueObjects.ServiceFile.</returns>
     public ServiceFile GetFile(string key)
     {
         LogConsumer.Info(Resources.SankhyaWrapper_GetFile_Getting, key);
         return GetFileInternal(key);
     }
 
-    /// <summary>
-    /// Get file as an asynchronous operation.
-    /// </summary>
-    /// <param name="key">The key.</param>
-    /// <returns>
-    /// A Task&lt;Sankhya.ValueObjects.ServiceFile&gt; representing the asynchronous operation.
-    /// </returns>
     public async Task<ServiceFile> GetFileAsync(string key)
     {
         try
@@ -1182,12 +924,6 @@ internal class SankhyaWrapper
         }
     }
 
-    /// <summary>
-    /// Creates the web request.
-    /// </summary>
-    /// <param name="uri">The URI.</param>
-    /// <param name="cookieContainer">The cookie container.</param>
-    /// <returns>System.Net.HttpWebRequest.</returns>
     private static HttpWebRequest CreateWebRequest(Uri uri, CookieContainer cookieContainer)
     {
         var request = (HttpWebRequest)WebRequest.Create(uri);
@@ -1197,12 +933,6 @@ internal class SankhyaWrapper
         return request;
     }
 
-    /// <summary>
-    /// Reads the stream and get extension.
-    /// </summary>
-    /// <param name="response">The response.</param>
-    /// <param name="extension">The extension.</param>
-    /// <returns>System.IO.MemoryStream.</returns>
     private static MemoryStream ReadStreamAndGetExtension(
         HttpWebResponse response,
         out string extension
@@ -1231,24 +961,6 @@ internal class SankhyaWrapper
         return memory;
     }
 
-    /// <summary>
-    /// Retrieves an image from a specified entity using the provided keys.
-    /// </summary>
-    /// <param name="entity">The entity from which to retrieve the image.</param>
-    /// <param name="keys">A dictionary of keys used to identify the specific image.</param>
-    /// <returns>A <see cref="ServiceFile"/> object containing the image data, content type, and file extension, or null if the image is not found.</returns>
-    /// <remarks>
-    /// This method constructs a URL to access an image based on the provided entity and keys. It logs the request details and attempts to make an HTTP request to retrieve the image.
-    /// If the response indicates that the image was not found (HTTP 404), it returns null.
-    /// If any other web exception occurs, it logs the error and also returns null.
-    /// The method ensures that resources are properly disposed of by closing the response in a finally block.
-    /// </remarks>
-    /// <exception cref="WebException">
-    /// Thrown when there is an issue with the web request, such as a protocol error.
-    /// </exception>
-    /// <exception cref="InvalidOperationException">
-    /// Thrown when there is an issue reading from the response stream.
-    /// </exception>
     public ServiceFile GetImage(string entity, Dictionary<string, object> keys)
     {
         HttpWebResponse response = null;
@@ -1331,14 +1043,6 @@ internal class SankhyaWrapper
         }
     }
 
-    /// <summary>
-    /// Get image as an asynchronous operation.
-    /// </summary>
-    /// <param name="entity">The entity.</param>
-    /// <param name="keys">The keys.</param>
-    /// <returns>
-    /// A Task&lt;Sankhya.ValueObjects.ServiceFile&gt; representing the asynchronous operation.
-    /// </returns>
     public async Task<ServiceFile> GetImageAsync(string entity, Dictionary<string, object> keys)
     {
         try

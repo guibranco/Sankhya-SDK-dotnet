@@ -4,18 +4,9 @@ using Sankhya.Attributes;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// Class ProductCost. This class cannot be inherited.
-/// </summary>
-/// <seealso cref="IEntity" />
 [Entity("Custo")]
 public class ProductCost : IEntity, IEquatable<ProductCost>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
     public bool Equals(ProductCost other)
     {
         if (ReferenceEquals(null, other))
@@ -44,11 +35,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
             );
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current object.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -59,10 +45,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
         return ReferenceEquals(this, obj) || (obj is ProductCost cost && Equals(cost));
     }
 
-    /// <summary>
-    /// Serves as the default hash function.
-    /// </summary>
-    /// <returns>A hash code for the current object.</returns>
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -98,106 +80,42 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(ProductCost left, ProductCost right) => Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(ProductCost left, ProductCost right) => !Equals(left, right);
 
-    /// <summary>
-    /// The code product
-    /// </summary>
     private int _codeProduct;
 
-    /// <summary>
-    /// The code product set
-    /// </summary>
     private bool _codeProductSet;
 
-    /// <summary>
-    /// The code company
-    /// </summary>
     private int _codeCompany;
 
-    /// <summary>
-    /// The code company set
-    /// </summary>
     private bool _codeCompanySet;
 
-    /// <summary>
-    /// The date
-    /// </summary>
     private DateTime _date;
 
-    /// <summary>
-    /// The date set
-    /// </summary>
     private bool _dateSet;
 
-    /// <summary>
-    /// The code local
-    /// </summary>
     private int _codeLocal;
 
-    /// <summary>
-    /// The code local set
-    /// </summary>
     private bool _codeLocalSet;
 
-    /// <summary>
-    /// The control
-    /// </summary>
     private string _control;
 
-    /// <summary>
-    /// The control set
-    /// </summary>
     private bool _controlSet;
 
-    /// <summary>
-    /// The single number
-    /// </summary>
     private int _singleNumber;
 
-    /// <summary>
-    /// The single number set
-    /// </summary>
     private bool _singleNumberSet;
 
-    /// <summary>
-    /// The sequence
-    /// </summary>
     private int _sequence;
 
-    /// <summary>
-    /// The sequence set
-    /// </summary>
     private bool _sequenceSet;
 
-    /// <summary>
-    /// The cost replacement
-    /// </summary>
     private decimal _costReplacement;
 
-    /// <summary>
-    /// The cost replacement set
-    /// </summary>
     private bool _costReplacementSet;
 
-    /// <summary>
-    /// Gets or sets the code product.
-    /// </summary>
-    /// <value>The code product.</value>
     [EntityElement("CODPROD")]
     [EntityKey]
     public int CodeProduct
@@ -210,10 +128,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code company.
-    /// </summary>
-    /// <value>The code company.</value>
     [EntityElement("CODEMP")]
     public int CodeCompany
     {
@@ -225,10 +139,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date.
-    /// </summary>
-    /// <value>The date.</value>
     [EntityElement("DTATUAL")]
     [EntityKey]
     public DateTime Date
@@ -241,10 +151,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code local.
-    /// </summary>
-    /// <value>The code local.</value>
     [EntityElement("CODLOCAL")]
     [EntityKey]
     public int CodeLocal
@@ -257,10 +163,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the control.
-    /// </summary>
-    /// <value>The control.</value>
     [EntityElement("CONTROLE")]
     [EntityKey]
     public string Control
@@ -273,10 +175,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the single number.
-    /// </summary>
-    /// <value>The single number.</value>
     [EntityElement("NUNOTA")]
     [EntityKey]
     public int SingleNumber
@@ -289,10 +187,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the sequence.
-    /// </summary>
-    /// <value>The sequence.</value>
     [EntityElement("SEQUENCIA")]
     [EntityKey]
     public int Sequence
@@ -305,10 +199,6 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the cost replacement.
-    /// </summary>
-    /// <value>The cost replacement.</value>
     [EntityElement("CUSREP")]
     public decimal CostReplacement
     {
@@ -320,51 +210,19 @@ public class ProductCost : IEntity, IEquatable<ProductCost>
         }
     }
 
-    /// <summary>
-    /// Should the serialize code product.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCodeProduct() => _codeProductSet;
 
-    /// <summary>
-    /// Should the serialize code company.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCodeCompany() => _codeCompanySet;
 
-    /// <summary>
-    /// Should the serialize date.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeDate() => _dateSet;
 
-    /// <summary>
-    /// Should the serialize code local.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCodeLocal() => _codeLocalSet;
 
-    /// <summary>
-    /// Should the serialize control.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeControl() => _controlSet;
 
-    /// <summary>
-    /// Should the serialize single number.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeSingleNumber() => _singleNumberSet;
 
-    /// <summary>
-    /// Should the serialize sequence.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeSequence() => _sequenceSet;
 
-    /// <summary>
-    /// Should the serialize cost replacement.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCostReplacement() => _costReplacementSet;
 }
