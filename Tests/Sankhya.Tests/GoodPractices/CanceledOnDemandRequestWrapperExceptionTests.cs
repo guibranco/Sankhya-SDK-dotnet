@@ -11,7 +11,7 @@ public class CanceledOnDemandRequestWrapperExceptionTests
     {
         // Arrange
         var expectedMessage =
-            "Cannot add new items to a cancelled on demand request wrapper instance";
+            "Cannot add new items to a cancelled on demand request wrapper instance.";
 
         // Act
         var exception = new CanceledOnDemandRequestWrapperException();

@@ -67,10 +67,9 @@ public class UnlinkShippingExceptionTests
         int financialNumber = 123;
         var request = new ServiceRequest(ServiceName.InvoiceInclude);
         XmlDocument xmlDocument = request.GetSerializer();
-        Exception innerException = null;
 
         // Act
-        var exception = new UnlinkShippingException(financialNumber, request, innerException);
+        var exception = new UnlinkShippingException(financialNumber, request, null);
 
         // Assert
         Assert.Equal(

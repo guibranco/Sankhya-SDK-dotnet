@@ -87,14 +87,13 @@ public class ServiceRequestBusinessRuleRestrictionExceptionTests
         const string errorMessage = "Test error message";
         var request = new ServiceRequest(ServiceName.InvoiceInclude);
         XmlDocument xmlDocument = request.GetSerializer();
-        ServiceResponse response = null;
 
         // Act
         var exception = new ServiceRequestBusinessRuleRestrictionException(
             businessRuleName,
             errorMessage,
             request,
-            response
+            null
         );
 
         // Assert
