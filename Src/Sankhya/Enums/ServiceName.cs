@@ -1,4 +1,5 @@
 ﻿using CrispyWaffle.Attributes;
+using Sankhya.Attributes;
 
 namespace Sankhya.Enums;
 
