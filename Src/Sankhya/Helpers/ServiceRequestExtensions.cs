@@ -1,18 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : GuilhermeStracini
-// Created          : 10-07-2023
-//
-// Last Modified By : GuilhermeStracini
-// Last Modified On : 10-08-2023
-// ***********************************************************************
-// <copyright file="ServiceRequestExtensions.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -33,21 +19,8 @@ using Sankhya.ValueObjects;
 
 namespace Sankhya.Helpers;
 
-/// <summary>
-/// Implements service request extensions methods.
-/// </summary>
 public static class ServiceRequestExtensions
 {
-    /// <summary>
-    /// Parse properties.
-    /// </summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The Service Request.</param>
-    /// <param name="criteria">The criteria.</param>
-    /// <param name="maxLevel">(Optional) the maximum level.</param>
-    /// <param name="currentLevel">(Optional) the current level.</param>
-    /// <returns>A ParseResult.</returns>
-    /// <exception cref="TooInnerLevelsException">Thrown when a Too Inner Levels error condition occurs.</exception>
     private static EntityResolverResult ParseProperties<T>(
         this ServiceRequest request,
         T criteria,
@@ -87,19 +60,6 @@ public static class ServiceRequestExtensions
         return result;
     }
 
-    /// <summary>
-    /// Parses the property.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <param name="criteriaEntity">The entity used as criteria.</param>
-    /// <param name="maxLevel">The maximum level.</param>
-    /// <param name="currentLevel">The current level.</param>
-    /// <param name="propertyInfo">The property information.</param>
-    /// <param name="ignoredFields">The ignored fields.</param>
-    /// <param name="result">The result.</param>
-    /// <param name="type">The type.</param>
-    /// <param name="currentEntityName">Name of the current entity.</param>
     private static void ParseProperty<T>(
         ServiceRequest request,
         T criteriaEntity,
@@ -146,19 +106,6 @@ public static class ServiceRequestExtensions
         );
     }
 
-    /// <summary>
-    /// Processes the parse.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <param name="criteriaEntity">The criteria entity.</param>
-    /// <param name="maxLevel">The maximum level.</param>
-    /// <param name="currentLevel">The current level.</param>
-    /// <param name="propertyInfo">The property information.</param>
-    /// <param name="result">The result.</param>
-    /// <param name="type">The type.</param>
-    /// <param name="currentEntityName">Name of the current entity.</param>
-    /// <param name="model">The model.</param>
     private static void ProcessParse<T>(
         ServiceRequest request,
         T criteriaEntity,
@@ -202,18 +149,6 @@ public static class ServiceRequestExtensions
         }
     }
 
-    /// <summary>
-    /// Processes the fields and criteria.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <param name="criteriaEntity">The criteria entity.</param>
-    /// <param name="currentLevel">The current level.</param>
-    /// <param name="propertyInfo">The property information.</param>
-    /// <param name="result">The result.</param>
-    /// <param name="type">The type.</param>
-    /// <param name="currentEntityName">Name of the current entity.</param>
-    /// <param name="model">The model.</param>
     private static void ProcessFieldsAndCriteria<T>(
         ServiceRequest request,
         T criteriaEntity,
@@ -303,13 +238,6 @@ public static class ServiceRequestExtensions
         result.FieldValues.Add(new() { Name = model.PropertyName, Value = value });
     }
 
-    /// <summary>
-    /// Processes the entity reference inline.
-    /// </summary>
-    /// <param name="result">The result.</param>
-    /// <param name="type">The type.</param>
-    /// <param name="currentEntityName">Name of the current entity.</param>
-    /// <param name="model">The model.</param>
     private static void ProcessEntityReferenceInline(
         EntityResolverResult result,
         Type type,
@@ -347,17 +275,6 @@ public static class ServiceRequestExtensions
         );
     }
 
-    /// <summary>
-    /// Processes the entity reference.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <param name="criteriaEntity">The criteria entity.</param>
-    /// <param name="maxLevel">The maximum level.</param>
-    /// <param name="currentLevel">The current level.</param>
-    /// <param name="propertyInfo">The property information.</param>
-    /// <param name="result">The result.</param>
-    /// <param name="model">The model.</param>
     private static void ProcessEntityReference<T>(
         ServiceRequest request,
         T criteriaEntity,
@@ -426,13 +343,6 @@ public static class ServiceRequestExtensions
         }
     }
 
-    /// <summary>
-    /// Checks if element is ignored.
-    /// </summary>
-    /// <param name="propertyInfo">The property information.</param>
-    /// <param name="ignoredFields">The ignored fields.</param>
-    /// <param name="model">The model.</param>
-    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     private static bool CheckIfElementIsIgnored(
         PropertyInfo propertyInfo,
         ICollection<string> ignoredFields,
@@ -455,11 +365,6 @@ public static class ServiceRequestExtensions
         return true;
     }
 
-    /// <summary>
-    /// Parses the custom attributes.
-    /// </summary>
-    /// <param name="propertyInfo">The property information.</param>
-    /// <param name="model">The model.</param>
     private static void ParseCustomAttributes(PropertyInfo propertyInfo, ParsePropertyModel model)
     {
         foreach (var customAttribute in propertyInfo.GetCustomAttributes(true))
@@ -492,21 +397,6 @@ public static class ServiceRequestExtensions
         }
     }
 
-    /// <summary>
-    /// Resolves a service request based on the provided criteria and options.
-    /// </summary>
-    /// <typeparam name="T">The type of the entity to resolve, which must be a class implementing <see cref="IEntity"/> and have a parameterless constructor.</typeparam>
-    /// <param name="request">The service request to be resolved.</param>
-    /// <param name="criteria">The criteria used to filter the entities.</param>
-    /// <param name="options">The options that dictate how the query should be executed.</param>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="request"/> or <paramref name="options"/> is null.</exception>
-    /// <remarks>
-    /// This method extends the functionality of a service request by resolving it with specific criteria and options.
-    /// It first checks if the provided request and options are not null, throwing an <see cref="ArgumentNullException"/> if either is null.
-    /// Then, it calls the internal resolve method for the specified entity type <typeparamref name="T"/> using the provided criteria.
-    /// Depending on the service type of the request, it further resolves the request using either the CRUD find or CRUD service find methods.
-    /// This allows for flexible handling of different types of service requests while ensuring that the necessary parameters are provided.
-    /// </remarks>
     public static void Resolve<T>(this ServiceRequest request)
         where T : class, IEntity, new()
     {
@@ -589,16 +479,6 @@ public static class ServiceRequestExtensions
         }
     }
 
-    /// <summary>
-    /// Request with type.
-    /// </summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <param name="criteria">The criteria.</param>
-    /// <param name="maxReferenceLevel">The maximum reference level.</param>
-    /// <exception cref="ArgumentNullException">request.</exception>
-    /// <exception cref="ArgumentNullException">criteria.</exception>
-    /// <exception cref="InvalidServiceRequestOperationException">Invalid service request operation.</exception>
     public static void Resolve<T>(
         this ServiceRequest request,
         T criteria,
@@ -636,27 +516,6 @@ public static class ServiceRequestExtensions
         HandleService(request, result);
     }
 
-    /// <summary>
-    /// Handles a service request by processing the provided <paramref name="request"/>
-    /// based on the specified service operation and populating the <paramref name="result"/> accordingly.
-    /// </summary>
-    /// <param name="request">The service request containing the operation details and request body.</param>
-    /// <param name="result">The result of the entity resolution containing criteria, fields, and references.</param>
-    /// <remarks>
-    /// This method processes different types of CRUD operations based on the service name specified in the
-    /// <paramref name="request"/>. It modifies the request body to include necessary data from the
-    /// <paramref name="result"/>. The supported operations include:
-    ///
-    /// - **CrudFind**: Populates the entity's criteria, fields, and references if available.
-    /// - **CrudSave** and **CrudRemove**: Sets the field values for the entity based on the result.
-    /// - **CrudServiceFind**: Constructs a data set with entities and criteria for finding services.
-    /// - **CrudServiceSave**: Prepares a data set for saving entities with specified keys and field values.
-    /// - **CrudServiceRemove**: Prepares an entity for removal based on provided keys.
-    ///
-    /// If an unsupported service operation is requested, an
-    /// <see cref="InvalidServiceRequestOperationException"/> is thrown.
-    /// </remarks>
-    /// <exception cref="InvalidServiceRequestOperationException">Thrown when the service operation is not supported.</exception>
     private static void HandleService(ServiceRequest request, EntityResolverResult result)
     {
         switch (request.Service)
@@ -786,14 +645,6 @@ public static class ServiceRequestExtensions
         }
     }
 
-    /// <summary>
-    /// Request with type.
-    /// </summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <param name="criteriaList">The criteria list to create/update/save or exclude/remove.</param>
-    /// <exception cref="ArgumentNullException">request.</exception>
-    /// <exception cref="InvalidServiceRequestOperationException">Invalid service request operation.</exception>
     public static void Resolve<T>(this ServiceRequest request, ICollection<T> criteriaList)
         where T : class, IEntity, new()
     {
@@ -869,16 +720,6 @@ public static class ServiceRequestExtensions
         }
     }
 
-    /// <summary>
-    /// Resolve <seealso cref="IEntity" /> to a <seealso cref="ServiceRequest" /> using a <seealso cref="ILiteralCriteria" /> as filter.
-    /// This method is only used for retrieve (in CRUD, the R part) data requests, so, only ServiceName.CRUD_FIND or ServiceName.CRUD_SERVICE_FIND can be used.
-    /// Any other service request will throw a exception of type <seealso cref="InvalidServiceRequestOperationException" />.
-    /// If <paramref name="literalCriteria" /> is of type <seealso cref="LiteralCriteriaSql" />, then service must be ServiceName.CRUD_FIND or it will also throw a exception.
-    /// </summary>
-    /// <typeparam name="T">Generic type parameter. Must be a <seealso cref="IEntity" /> entity.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <param name="literalCriteria">The literal criteria.</param>
-    /// <exception cref="InvalidServiceRequestOperationException">Invalid operation.</exception>
     public static void Resolve<T>(this ServiceRequest request, ILiteralCriteria literalCriteria)
         where T : class, IEntity, new()
     {
@@ -903,13 +744,6 @@ public static class ServiceRequestExtensions
         }
     }
 
-    /// <summary>
-    /// Request with type.
-    /// </summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <param name="literalCriteriaBuilder">The literal criteria builder.</param>
-    /// <exception cref="ArgumentNullException">literalCriteriaBuilder.</exception>
     public static void Resolve<T>(this ServiceRequest request, StringBuilder literalCriteriaBuilder)
         where T : class, IEntity, new()
     {
@@ -921,27 +755,9 @@ public static class ServiceRequestExtensions
         request.Resolve<T>(new LiteralCriteria(literalCriteriaBuilder.ToString()));
     }
 
-    /// <summary>
-    /// Request with type using predicate.
-    /// </summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <param name="predicate">The predicate to use as literal criteria.</param>
-    /// <exception cref="NotImplementedException">Method not implemented.</exception>
-    // TODO: issue #29
     public static void Resolve<T>(this ServiceRequest request, Expression<Func<T, bool>> predicate)
         where T : class, IEntity, new() => throw new NotImplementedException();
 
-    /// <summary>
-    /// Resolves the specified entity.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <param name="entity">The entity.</param>
-    /// <param name="options">The options.</param>
-    /// <exception cref="ArgumentNullException">request.</exception>
-    /// <exception cref="ArgumentNullException">options.</exception>
-    /// <exception cref="InvalidServiceRequestOperationException">Invalid Service Request Operation Exception.</exception>
     public static void Resolve<T>(this ServiceRequest request, T entity, EntityQueryOptions options)
         where T : class, IEntity, new()
     {
@@ -1005,15 +821,6 @@ public static class ServiceRequestExtensions
         }
     }
 
-    /// <summary>
-    /// Resolves the specified criteria.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <param name="criteria">The criteria.</param>
-    /// <param name="options">The options.</param>
-    /// <exception cref="ArgumentNullException">Argument is null when it was requested.</exception>
-    /// <exception cref="InvalidServiceRequestOperationException">Invalid service request operation exception.</exception>
     public static void Resolve<T>(
         this ServiceRequest request,
         ILiteralCriteria criteria,
@@ -1047,12 +854,6 @@ public static class ServiceRequestExtensions
         }
     }
 
-    /// <summary>
-    /// Resolves the crud service find internal.
-    /// </summary>
-    /// <param name="request">The request.</param>
-    /// <param name="options">The options.</param>
-    /// <exception cref="NotImplementedException">Method not implemented.</exception>
     private static void ResolveCrudServiceFindInternal(
         ServiceRequest request,
         EntityQueryOptions options
@@ -1087,12 +888,6 @@ public static class ServiceRequestExtensions
         }
     }
 
-    /// <summary>
-    /// Resolves the crud find internal.
-    /// </summary>
-    /// <param name="request">The request.</param>
-    /// <param name="options">The options.</param>
-    /// <exception cref="NotImplementedException">Method not implemented.</exception>
     private static void ResolveCrudFindInternal(ServiceRequest request, EntityQueryOptions options)
     {
         if (options.IncludePresentationFields.HasValue)

@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Globalization;
-using System.Runtime.Serialization;
 using Sankhya.Properties;
 
 namespace Sankhya.GoodPractices;
 
-[Serializable]
 public class MissingSerializerHelperEntityException : Exception
 {
     public MissingSerializerHelperEntityException(
@@ -22,10 +20,4 @@ public class MissingSerializerHelperEntityException : Exception
                 fullyQualifiedClassName
             )
         ) { }
-
-    protected MissingSerializerHelperEntityException(
-        SerializationInfo info,
-        StreamingContext context
-    )
-        : base(info, context) { }
 }

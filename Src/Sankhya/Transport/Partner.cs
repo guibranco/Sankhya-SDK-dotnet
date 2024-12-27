@@ -1,18 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="Partner.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using CrispyWaffle.Extensions;
@@ -22,21 +8,10 @@ using Sankhya.Enums;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// Class Partner.
-/// </summary>
-/// <seealso cref="IEntity" />
 [Serializer]
 [Entity("Parceiro")]
 public class Partner : IEntity, IEquatable<Partner>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-    // ReSharper disable once FunctionComplexityOverflow
-    // ReSharper disable once CyclomaticComplexity
     public bool Equals(Partner other)
     {
         if (ReferenceEquals(null, other))
@@ -149,11 +124,6 @@ public class Partner : IEntity, IEquatable<Partner>
             && _complementSet == other._complementSet;
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current object.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -169,13 +139,6 @@ public class Partner : IEntity, IEquatable<Partner>
         return obj.GetType() == GetType() && Equals((Partner)obj);
     }
 
-    /// <summary>
-    /// Serves as the default hash function.
-    /// </summary>
-    /// <returns>A hash code for the current object.</returns>
-    // ReSharper disable once FunctionComplexityOverflow
-    // ReSharper disable once CyclomaticComplexity
-    // ReSharper disable once MethodTooLong
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -367,396 +330,158 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(Partner left, Partner right) => Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(Partner left, Partner right) => !Equals(left, right);
 
-    /// <summary>
-    /// The code.
-    /// </summary>
     private int _code;
 
-    /// <summary>
-    /// The code set.
-    /// </summary>
     private bool _codeSet;
 
-    /// <summary>
-    /// The name.
-    /// </summary>
     private string _name;
 
-    /// <summary>
-    /// The name set.
-    /// </summary>
     private bool _nameSet;
 
-    /// <summary>
-    /// The company name.
-    /// </summary>
     private string _companyName;
 
-    /// <summary>
-    /// The company name set.
-    /// </summary>
     private bool _companyNameSet;
 
-    /// <summary>
-    /// The fiscal type.
-    /// </summary>
     private FiscalPersonType _fiscalType;
 
-    /// <summary>
-    /// The fiscal type set.
-    /// </summary>
     private bool _fiscalTypeSet;
 
-    /// <summary>
-    /// The fiscal classification.
-    /// </summary>
     private FiscalClassification _fiscalClassification;
 
-    /// <summary>
-    /// The fiscal classification set.
-    /// </summary>
     private bool _fiscalClassificationSet;
 
-    /// <summary>
-    /// The email address.
-    /// </summary>
     private string _emailAddress;
 
-    /// <summary>
-    /// The email address set.
-    /// </summary>
     private bool _emailAddressSet;
 
-    /// <summary>
-    /// The email address fiscal invoice.
-    /// </summary>
     private string _emailAddressFiscalInvoice;
 
-    /// <summary>
-    /// The email address fiscal invoice set.
-    /// </summary>
     private bool _emailAddressFiscalInvoiceSet;
 
-    /// <summary>
-    /// The is active.
-    /// </summary>
     private bool _isActive;
 
-    /// <summary>
-    /// The is active set.
-    /// </summary>
     private bool _isActiveSet;
 
-    /// <summary>
-    /// The is client.
-    /// </summary>
     private bool _isClient;
 
-    /// <summary>
-    /// The is client set.
-    /// </summary>
     private bool _isClientSet;
 
-    /// <summary>
-    /// The is seller.
-    /// </summary>
     private bool _isSeller;
 
-    /// <summary>
-    /// The is seller set.
-    /// </summary>
     private bool _isSellerSet;
 
-    /// <summary>
-    /// The is user.
-    /// </summary>
     private bool _isUser;
 
-    /// <summary>
-    /// The is user set.
-    /// </summary>
     private bool _isUserSet;
 
-    /// <summary>
-    /// The is supplier.
-    /// </summary>
     private bool _isSupplier;
 
-    /// <summary>
-    /// The is supplier set.
-    /// </summary>
     private bool _isSupplierSet;
 
-    /// <summary>
-    /// The document.
-    /// </summary>
     private string _document;
 
-    /// <summary>
-    /// The document set.
-    /// </summary>
     private bool _documentSet;
 
-    /// <summary>
-    /// The identity.
-    /// </summary>
     private string _identity;
 
-    /// <summary>
-    /// The identity set.
-    /// </summary>
     private bool _identitySet;
 
-    /// <summary>
-    /// The state inscription.
-    /// </summary>
     private string _stateInscription;
 
-    /// <summary>
-    /// The state inscription set.
-    /// </summary>
     private bool _stateInscriptionSet;
 
-    /// <summary>
-    /// The zip code.
-    /// </summary>
     private string _zipCode;
 
-    /// <summary>
-    /// The zip code set.
-    /// </summary>
     private bool _zipCodeSet;
 
-    /// <summary>
-    /// The code address.
-    /// </summary>
     private int _codeAddress;
 
-    /// <summary>
-    /// The code address set.
-    /// </summary>
     private bool _codeAddressSet;
 
-    /// <summary>
-    /// The address number.
-    /// </summary>
     private string _addressNumber;
 
-    /// <summary>
-    /// The address number set.
-    /// </summary>
     private bool _addressNumberSet;
 
-    /// <summary>
-    /// The address complement.
-    /// </summary>
     private string _addressComplement;
 
-    /// <summary>
-    /// The address complement set.
-    /// </summary>
     private bool _addressComplementSet;
 
-    /// <summary>
-    /// The code neighborhood.
-    /// </summary>
     private int _codeNeighborhood;
 
-    /// <summary>
-    /// The code neighborhood set.
-    /// </summary>
     private bool _codeNeighborhoodSet;
 
-    /// <summary>
-    /// The code city.
-    /// </summary>
     private int _codeCity;
 
-    /// <summary>
-    /// The code city set.
-    /// </summary>
     private bool _codeCitySet;
 
-    /// <summary>
-    /// The code region.
-    /// </summary>
     private int _codeRegion;
 
-    /// <summary>
-    /// The code region set.
-    /// </summary>
     private bool _codeRegionSet;
 
-    /// <summary>
-    /// The telephone.
-    /// </summary>
     private string _telephone;
 
-    /// <summary>
-    /// The telephone set.
-    /// </summary>
     private bool _telephoneSet;
 
-    /// <summary>
-    /// The telephone extension line.
-    /// </summary>
     private string _telephoneExtensionLine;
 
-    /// <summary>
-    /// The telephone extension line set.
-    /// </summary>
     private bool _telephoneExtensionLineSet;
 
-    /// <summary>
-    /// The mobile phone.
-    /// </summary>
     private string _mobilePhone;
 
-    /// <summary>
-    /// The mobile phone set.
-    /// </summary>
     private bool _mobilePhoneSet;
 
-    /// <summary>
-    /// The date created.
-    /// </summary>
     private DateTime _dateCreated;
 
-    /// <summary>
-    /// The date created set.
-    /// </summary>
     private bool _dateCreatedSet;
 
-    /// <summary>
-    /// The date changed.
-    /// </summary>
     private DateTime _dateChanged;
 
-    /// <summary>
-    /// The date changed set.
-    /// </summary>
     private bool _dateChangedSet;
 
-    /// <summary>
-    /// The send fiscal invoice by email.
-    /// </summary>
     private bool _sendFiscalInvoiceByEmail;
 
-    /// <summary>
-    /// The send fiscal invoice by email set.
-    /// </summary>
     private bool _sendFiscalInvoiceByEmailSet;
 
-    /// <summary>
-    /// The authorization group.
-    /// </summary>
     private string _authorizationGroup;
 
-    /// <summary>
-    /// The authorization group set.
-    /// </summary>
     private bool _authorizationGroupSet;
 
-    /// <summary>
-    /// The latitude.
-    /// </summary>
     private string _latitude;
 
-    /// <summary>
-    /// The latitude set.
-    /// </summary>
     private bool _latitudeSet;
 
-    /// <summary>
-    /// The longitude.
-    /// </summary>
     private string _longitude;
 
-    /// <summary>
-    /// The longitude set.
-    /// </summary>
     private bool _longitudeSet;
 
-    /// <summary>
-    /// The notes.
-    /// </summary>
     private string _notes;
 
-    /// <summary>
-    /// The notes set.
-    /// </summary>
     private bool _notesSet;
 
-    /// <summary>
-    /// The address.
-    /// </summary>
     private Address _address;
 
-    /// <summary>
-    /// The address set.
-    /// </summary>
     private bool _addressSet;
 
-    /// <summary>
-    /// The neighborhood.
-    /// </summary>
     private Neighborhood _neighborhood;
 
-    /// <summary>
-    /// The neighborhood set.
-    /// </summary>
     private bool _neighborhoodSet;
 
-    /// <summary>
-    /// The city.
-    /// </summary>
     private City _city;
 
-    /// <summary>
-    /// The city set.
-    /// </summary>
     private bool _citySet;
 
-    /// <summary>
-    /// The region.
-    /// </summary>
     private Region _region;
 
-    /// <summary>
-    /// The region set.
-    /// </summary>
     private bool _regionSet;
 
-    /// <summary>
-    /// The complement.
-    /// </summary>
     private PartnerComplement _complement;
 
-    /// <summary>
-    /// The complement set.
-    /// </summary>
     private bool _complementSet;
 
-    /// <summary>
-    /// Gets or sets the code.
-    /// </summary>
-    /// <value>The code.</value>
     [EntityElement("CODPARC")]
     [EntityKey]
     public int Code
@@ -769,10 +494,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the name.
-    /// </summary>
-    /// <value>The name.</value>
     [EntityElement("NOMEPARC")]
     [Localizable(false)]
     public string Name
@@ -785,10 +506,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the name of the company.
-    /// </summary>
-    /// <value>The name of the company.</value>
     [EntityElement("RAZAOSOCIAL")]
     public string CompanyName
     {
@@ -800,10 +517,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the type of the fiscal.
-    /// </summary>
-    /// <value>The type of the fiscal.</value>
     [EntityIgnore]
     public FiscalPersonType FiscalType
     {
@@ -815,10 +528,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the fiscal type internal.
-    /// </summary>
-    /// <value>The fiscal type internal.</value>
     [EntityElement("TIPPESSOA")]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string FiscalTypeInternal
@@ -836,10 +545,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the fiscal classification.
-    /// </summary>
-    /// <value>The fiscal classification.</value>
     [EntityIgnore]
     public FiscalClassification FiscalClassification
     {
@@ -851,10 +556,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the fiscal classification internal.
-    /// </summary>
-    /// <value>The fiscal classification internal.</value>
     [EntityElement("CLASSIFICMS")]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string FiscalClassificationInternal
@@ -873,10 +574,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the email address.
-    /// </summary>
-    /// <value>The email address.</value>
     [EntityElement("EMAIL")]
     [Localizable(false)]
     public string EmailAddress
@@ -889,10 +586,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the email address fiscal invoice.
-    /// </summary>
-    /// <value>The email address fiscal invoice.</value>
     [EntityElement("EMAILNFE")]
     [Localizable(false)]
     public string EmailAddressFiscalInvoice
@@ -905,10 +598,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets a value indicating whether this instance is active.
-    /// </summary>
-    /// <value><c>true</c> if this instance is active; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool IsActive
     {
@@ -920,10 +609,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the is active internal.
-    /// </summary>
-    /// <value>The is active internal.</value>
     [EntityElement("ATIVO")]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string IsActiveInternal
@@ -941,10 +626,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets a value indicating whether this instance is client.
-    /// </summary>
-    /// <value><c>true</c> if this instance is client; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool IsClient
     {
@@ -956,10 +637,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the is client internal.
-    /// </summary>
-    /// <value>The is client internal.</value>
     [EntityElement("CLIENTE")]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string IsClientInternal
@@ -972,10 +649,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets a value indicating whether this instance is seller.
-    /// </summary>
-    /// <value><c>true</c> if this instance is seller; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool IsSeller
     {
@@ -987,10 +660,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the is seller internal.
-    /// </summary>
-    /// <value>The is seller internal.</value>
     [EntityElement("VENDEDOR")]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string IsSellerInternal
@@ -1003,10 +672,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets a value indicating whether this instance is user.
-    /// </summary>
-    /// <value><c>true</c> if this instance is user; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool IsUser
     {
@@ -1018,10 +683,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the is user internal.
-    /// </summary>
-    /// <value>The is user internal.</value>
     [EntityElement("USUARIO")]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string IsUserInternal
@@ -1034,10 +695,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets a value indicating whether this instance is supplier.
-    /// </summary>
-    /// <value><c>true</c> if this instance is supplier; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool IsSupplier
     {
@@ -1049,10 +706,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the is supplier internal.
-    /// </summary>
-    /// <value>The is supplier internal.</value>
     [EntityElement("FORNECEDOR")]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string IsSupplierInternal
@@ -1065,10 +718,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the document.
-    /// </summary>
-    /// <value>The document.</value>
     [EntityElement("CGC_CPF", true)]
     public string Document
     {
@@ -1080,10 +729,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the identity.
-    /// </summary>
-    /// <value>The identity.</value>
     [EntityElement("IDENTINSCESTAD")]
     public string Identity
     {
@@ -1095,10 +740,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the state inscription.
-    /// </summary>
-    /// <value>The state inscription.</value>
     [EntityElement("INSCESTADNAUF")]
     public string StateInscription
     {
@@ -1110,10 +751,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the zip code.
-    /// </summary>
-    /// <value>The zip code.</value>
     [EntityElement("CEP")]
     public string ZipCode
     {
@@ -1125,10 +762,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code address.
-    /// </summary>
-    /// <value>The code address.</value>
     [EntityElement("CODEND")]
     public int CodeAddress
     {
@@ -1140,10 +773,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the address number.
-    /// </summary>
-    /// <value>The address number.</value>
     [EntityElement("NUMEND")]
     [Localizable(false)]
     public string AddressNumber
@@ -1156,10 +785,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the address complement.
-    /// </summary>
-    /// <value>The address complement.</value>
     [EntityElement("COMPLEMENTO")]
     [EntityCustomData(MaxLength = 30)]
     public string AddressComplement
@@ -1172,10 +797,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code neighborhood.
-    /// </summary>
-    /// <value>The code neighborhood.</value>
     [EntityElement("CODBAI")]
     public int CodeNeighborhood
     {
@@ -1187,10 +808,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code city.
-    /// </summary>
-    /// <value>The code city.</value>
     [EntityElement("CODCID")]
     public int CodeCity
     {
@@ -1202,10 +819,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code region.
-    /// </summary>
-    /// <value>The code region.</value>
     [EntityElement("CODREG")]
     public int CodeRegion
     {
@@ -1217,10 +830,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the telephone.
-    /// </summary>
-    /// <value>The telephone.</value>
     [EntityElement("TELEFONE")]
     public string Telephone
     {
@@ -1232,10 +841,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the telephone extension line.
-    /// </summary>
-    /// <value>The telephone extension line.</value>
     [EntityElement("RAMAL")]
     public string TelephoneExtensionLine
     {
@@ -1247,10 +852,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the mobile phone.
-    /// </summary>
-    /// <value>The mobile phone.</value>
     [EntityElement("FAX")]
     public string MobilePhone
     {
@@ -1262,10 +863,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date created.
-    /// </summary>
-    /// <value>The date created.</value>
     [EntityElement("DTCAD")]
     public DateTime DateCreated
     {
@@ -1277,10 +874,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date changed.
-    /// </summary>
-    /// <value>The date changed.</value>
     [EntityElement("DTALTER")]
     public DateTime DateChanged
     {
@@ -1292,10 +885,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets a value indicating whether [send fiscal invoice by email].
-    /// </summary>
-    /// <value><c>true</c> if [send fiscal invoice by email]; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool SendFiscalInvoiceByEmail
     {
@@ -1307,10 +896,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the send fiscal invoice by email internal.
-    /// </summary>
-    /// <value>The send fiscal invoice by email internal.</value>
     [EntityElement("EMAILDANFE")]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string SendFiscalInvoiceByEmailInternal
@@ -1323,10 +908,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the authorization group.
-    /// </summary>
-    /// <value>The authorization group.</value>
     [EntityElement("GRUPOAUTOR")]
     public string AuthorizationGroup
     {
@@ -1338,10 +919,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the latitude.
-    /// </summary>
-    /// <value>The latitude.</value>
     [EntityElement("LATITUDE")]
     public string Latitude
     {
@@ -1353,10 +930,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the longitude.
-    /// </summary>
-    /// <value>The longitude.</value>
     [EntityElement("LONGITUDE")]
     public string Longitude
     {
@@ -1368,10 +941,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the notes.
-    /// </summary>
-    /// <value>The notes.</value>
     [EntityElement("OBSERVACOES")]
     public string Notes
     {
@@ -1383,10 +952,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the address.
-    /// </summary>
-    /// <value>The address.</value>
     [EntityReference]
     public Address Address
     {
@@ -1398,10 +963,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the neighborhood.
-    /// </summary>
-    /// <value>The neighborhood.</value>
     [EntityReference]
     public Neighborhood Neighborhood
     {
@@ -1413,10 +974,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the city.
-    /// </summary>
-    /// <value>The city.</value>
     [EntityReference]
     public City City
     {
@@ -1428,10 +985,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the region.
-    /// </summary>
-    /// <value>The region.</value>
     [EntityReference]
     public Region Region
     {
@@ -1443,10 +996,6 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the complement.
-    /// </summary>
-    /// <value>The complement.</value>
     [EntityReference]
     public PartnerComplement Complement
     {
@@ -1458,298 +1007,150 @@ public class Partner : IEntity, IEquatable<Partner>
         }
     }
 
-    /// <summary>
-    /// Should the serialize code.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCode() => _codeSet;
 
-    /// <summary>
-    /// Should the name of the serialize.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeName() => _nameSet;
 
-    /// <summary>
-    /// Should the name of the serialize company.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCompanyName() => _companyNameSet;
 
-    /// <summary>
-    /// Should the type of the serialize fiscal.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeFiscalType() => _fiscalTypeSet;
 
-    /// <summary>
-    /// Should the serialize fiscal classification.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeFiscalClassification() => _fiscalClassificationSet;
 
-    /// <summary>
-    /// Should the serialize email address.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeEmailAddress() => _emailAddressSet;
 
-    /// <summary>
-    /// Should the serialize email address fiscal invoice.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeEmailAddressFiscalInvoice() => _emailAddressFiscalInvoiceSet;
 
-    /// <summary>
-    /// Should the serialize is active.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeIsActive() => _isActiveSet;
 
-    /// <summary>
-    /// Should the serialize is client.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeIsClient() => _isClientSet;
 
-    /// <summary>
-    /// Should the serialize is seller.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeIsSeller() => _isSellerSet;
 
-    /// <summary>
-    /// Should the serialize is user.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeIsUser() => _isUserSet;
 
-    /// <summary>
-    /// Should the serialize is supplier.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeIsSupplier() => _isSupplierSet;
 
-    /// <summary>
-    /// Should the serialize document.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDocument() => _documentSet;
 
-    /// <summary>
-    /// Should the serialize identity.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeIdentity() => _identitySet;
 
-    /// <summary>
-    /// Should the serialize state inscription.
-    /// </summary>
-    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeStateInscription() => _stateInscriptionSet;
 
-    /// <summary>
-    /// Should the serialize zip code.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeZipCode() => _zipCodeSet;
 
-    /// <summary>
-    /// Should the serialize code address.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeAddress() => _codeAddressSet;
 
-    /// <summary>
-    /// Should the serialize address number.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeAddressNumber() => _addressNumberSet;
 
-    /// <summary>
-    /// Should the serialize address complement.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeAddressComplement() => _addressComplementSet;
 
-    /// <summary>
-    /// Should the serialize code neighborhood.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeNeighborhood() => _codeNeighborhoodSet;
 
-    /// <summary>
-    /// Should the serialize code city.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeCity() => _codeCitySet;
 
-    /// <summary>
-    /// Should the serialize code region.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeRegion() => _codeRegionSet;
 
-    /// <summary>
-    /// Should the serialize telephone.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeTelephone() => _telephoneSet;
 
-    /// <summary>
-    /// Should the serialize telephone extension line.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeTelephoneExtensionLine() => _telephoneExtensionLineSet;
 
-    /// <summary>
-    /// Should the serialize mobile phone.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMobilePhone() => _mobilePhoneSet;
 
-    /// <summary>
-    /// Should the serialize date created.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateCreated() => _dateCreatedSet;
 
-    /// <summary>
-    /// Should the serialize date changed.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateChanged() => _dateChangedSet;
 
-    /// <summary>
-    /// Should the serialize send fiscal invoice by email.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSendFiscalInvoiceByEmail() => _sendFiscalInvoiceByEmailSet;
 
-    /// <summary>
-    /// Should the serialize authorization group.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeAuthorizationGroup() => _authorizationGroupSet;
 
-    /// <summary>
-    /// The should serialize latitude serialization helper method.
-    /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeLatitude() => _latitudeSet;
 
-    /// <summary>
-    /// The should serialize longitude serialization helper method.
-    /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeLongitude() => _longitudeSet;
 
-    /// <summary>
-    /// The should serialize notes serialization helper method.
-    /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeNotes() => _notesSet;
 
-    /// <summary>
-    /// Should the serialize address.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeAddress() => _addressSet;
 
-    /// <summary>
-    /// Should the serialize neighborhood.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeNeighborhood() => _neighborhoodSet;
 
-    /// <summary>
-    /// Should the serialize city.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCity() => _citySet;
 
-    /// <summary>
-    /// Should the serialize region.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRegion() => _regionSet;
 
-    /// <summary>
-    /// Should the serialize complement.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeComplement() => _complementSet;

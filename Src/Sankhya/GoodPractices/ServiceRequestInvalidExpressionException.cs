@@ -1,13 +1,10 @@
-﻿using System;
-using System.Globalization;
-using System.Runtime.Serialization;
+﻿using System.Globalization;
 using Sankhya.Enums;
 using Sankhya.Properties;
 using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-[Serializable]
 public class ServiceRequestInvalidExpressionException : ServiceRequestGeneralException
 {
     public ServiceRequestInvalidExpressionException(
@@ -25,10 +22,4 @@ public class ServiceRequestInvalidExpressionException : ServiceRequestGeneralExc
             request,
             response
         ) { }
-
-    protected ServiceRequestInvalidExpressionException(
-        SerializationInfo info,
-        StreamingContext context
-    )
-        : base(info, context) { }
 }

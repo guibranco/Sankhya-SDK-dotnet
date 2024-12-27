@@ -20,113 +20,44 @@ using Sankhya.ValueObjects;
 
 namespace Sankhya.RequestWrappers;
 
-/// <summary>
-/// An erp managed service request.
-/// </summary>
 internal sealed class PagedRequestWrapper
 {
-    /// <summary>
-    /// all pages loaded.
-    /// </summary>
     private readonly AutoResetEvent _allPagesLoaded = new(false);
 
-    /// <summary>
-    /// The on demand tasks.
-    /// </summary>
     private readonly List<Task> _onDemandTasks = new();
 
-    /// <summary>
-    /// The Sankhya context.
-    /// </summary>
     private readonly SankhyaContext _context;
 
-    /// <summary>
-    /// The token identifying the session on SankhyaContext.
-    /// </summary>
     private readonly Guid _token;
 
-    /// <summary>
-    /// The results loaded.
-    /// </summary>
     private int _resultsLoaded;
 
-    /// <summary>
-    /// true if set.
-    /// </summary>
     private bool _set;
 
-    /// <summary>
-    /// The entity name.
-    /// </summary>
     private readonly string _entityName;
 
-    /// <summary>
-    /// The maximum results.
-    /// </summary>
     private readonly int _maxResults;
 
-    /// <summary>
-    /// Collection of responses.
-    /// </summary>
     private readonly Queue<EntityDynamicSerialization> _items;
 
-    /// <summary>
-    /// The request.
-    /// </summary>
     private readonly ServiceRequest _request;
 
-    /// <summary>
-    /// The cache key.
-    /// </summary>
     private readonly string _cacheKey;
 
-    /// <summary>
-    /// The type.
-    /// </summary>
     private readonly Type _type;
 
-    /// <summary>
-    /// Delegate PageProcessedEventHandler.
-    /// </summary>
-    /// <param name="sender">The sender.</param>
-    /// <param name="e">The <see cref="PagedRequestEventArgs"/> instance containing the event data.</param>
     public delegate void PageProcessedEventHandler(object sender, PagedRequestEventArgs e);
 
-    /// <summary>
-    /// Delegate PageLoadedSuccessfullyEventHandler.
-    /// </summary>
-    /// <param name="sender">The sender.</param>
-    /// <param name="e">The <see cref="PagedRequestEventArgs"/> instance containing the event data.</param>
     public delegate void PageLoadedSuccessfullyEventHandler(object sender, PagedRequestEventArgs e);
 
-    /// <summary>
-    /// Delegate PageNotLoadedEventHandler.
-    /// </summary>
-    /// <param name="sender">The sender.</param>
-    /// <param name="e">The <see cref="PagedRequestEventArgs"/> instance containing the event data.</param>
     public delegate void PageNotLoadedEventHandler(object sender, PagedRequestEventArgs e);
 
-    /// <summary>
-    /// Occurs when [page loaded successfully].
-    /// </summary>
     public event PageLoadedSuccessfullyEventHandler PageLoadedSuccessfully;
 
-    /// <summary>
-    /// Occurs when [page processed].
-    /// </summary>
     public static event PageProcessedEventHandler PageProcessed;
 
-    /// <summary>
-    /// Occurs when [page loaded error].
-    /// </summary>
     public event PageNotLoadedEventHandler PageLoadedError;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="PagedRequestWrapper"/> class.
-    /// </summary>
-    /// <param name="type">The type.</param>
-    /// <param name="request">The request.</param>
-    /// <param name="maxResults">The maximum results.</param>
     private PagedRequestWrapper(Type type, ServiceRequest request, int maxResults)
     {
         _context = ServiceLocator.Resolve<SankhyaContext>();
@@ -143,12 +74,6 @@ internal sealed class PagedRequestWrapper
         _type = type;
     }
 
-    /// <summary>
-    /// Called when [load page successfully].
-    /// </summary>
-    /// <param name="quantityLoaded">The quantity loaded.</param>
-    /// <param name="currentPageNumber">The current page number.</param>
-    /// <param name="totalPages">The total pages.</param>
     private void OnLoadPageSuccessfully(int quantityLoaded, int currentPageNumber, int totalPages)
     {
         if (PageLoadedSuccessfully == null && PageProcessed == null)
@@ -172,11 +97,6 @@ internal sealed class PagedRequestWrapper
         PageProcessed?.Invoke(this, eventArgs);
     }
 
-    /// <summary>
-    /// Called when [load page error].
-    /// </summary>
-    /// <param name="currentPageNumber">The current page number.</param>
-    /// <param name="exception">The exception.</param>
     private void OnLoadPageError(int currentPageNumber, ServiceRequestGeneralException exception)
     {
         var ex = new PagedRequestException(_request, exception);
@@ -201,13 +121,6 @@ internal sealed class PagedRequestWrapper
         PageProcessed?.Invoke(this, eventArgs);
     }
 
-    /// <summary>
-    /// Loads the page.
-    /// </summary>
-    /// <param name="page">The page.</param>
-    /// <param name="quantityLoaded">The quantity loaded.</param>
-    /// <param name="totalPages">The total pages.</param>
-    /// <returns>Boolean.</returns>
     private bool LoadPage(int page, out int quantityLoaded, out int totalPages)
     {
         quantityLoaded = -1;
@@ -256,11 +169,6 @@ internal sealed class PagedRequestWrapper
         return false;
     }
 
-    /// <summary>
-    /// Loads the response.
-    /// </summary>
-    /// <param name="token">The token.</param>
-    /// <exception cref="ServiceRequestRepeatedException">Repeated request detected.</exception>
     private void LoadResponse(CancellationToken token)
     {
         if (_set)
@@ -280,11 +188,6 @@ internal sealed class PagedRequestWrapper
         }
     }
 
-    /// <summary>
-    /// Loads the response internal.
-    /// </summary>
-    /// <param name="token">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <param name="pageNumber">The page number.</param>
     private void LoadResponseInternal(CancellationToken token, ref int pageNumber)
     {
         const int lockMinutes = 3;
@@ -341,9 +244,6 @@ internal sealed class PagedRequestWrapper
         }
     }
 
-    /// <summary>
-    /// Waits another load.
-    /// </summary>
     private void WaitAnotherLoad()
     {
         while (true)
@@ -374,9 +274,6 @@ internal sealed class PagedRequestWrapper
         }
     }
 
-    /// <summary>
-    /// Closes this instance.
-    /// </summary>
     private void Close()
     {
         if (_set)
@@ -409,17 +306,6 @@ internal sealed class PagedRequestWrapper
         _set = true;
     }
 
-    /// <summary>
-    /// Gets the managed enumerator internal.
-    /// </summary>
-    /// <typeparam name="T">The type param.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <param name="processOnDemandData">The process on demand data.</param>
-    /// <param name="maxResults">The maximum results.</param>
-    /// <param name="entityName">Name of the entity.</param>
-    /// <param name="cts">The CTS.</param>
-    /// <param name="stronglyTypedCollection">The strongly typed collection.</param>
-    /// <returns>The exception.</returns>
     private static ServiceRequestGeneralException GetManagedEnumeratorInternal<T>(
         ServiceRequest request,
         Action<List<T>> processOnDemandData,
@@ -491,18 +377,6 @@ internal sealed class PagedRequestWrapper
         return ex;
     }
 
-    /// <summary>
-    /// Handles the page loaded.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="processOnDemandData">The process on demand data.</param>
-    /// <param name="entityName">Name of the entity.</param>
-    /// <param name="cts">The CTS.</param>
-    /// <param name="stronglyTypedCollection">The strongly typed collection.</param>
-    /// <param name="currentPageNumber">The current page number.</param>
-    /// <param name="totalPages">The total pages.</param>
-    /// <param name="quantityLoaded">The quantity loaded.</param>
-    /// <param name="wrapper">The wrapper.</param>
     private static void HandlePageLoaded<T>(
         Action<List<T>> processOnDemandData,
         string entityName,
@@ -554,14 +428,6 @@ internal sealed class PagedRequestWrapper
         );
     }
 
-    /// <summary>
-    /// Loads the on demand data.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="processOnDemandData">The process on demand data.</param>
-    /// <param name="temp">The temporary.</param>
-    /// <param name="stronglyTypedCollection">The strongly typed collection.</param>
-    /// <param name="cts">The CTS.</param>
     private static void LoadOnDemandData<T>(
         Action<List<T>> processOnDemandData,
         List<T> temp,
@@ -585,16 +451,6 @@ internal sealed class PagedRequestWrapper
         }
     }
 
-    /// <summary>
-    /// Handles the page loaded error.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="entityName">Name of the entity.</param>
-    /// <param name="cts">The CTS.</param>
-    /// <param name="stronglyTypedCollection">The strongly typed collection.</param>
-    /// <param name="wrapper">The wrapper.</param>
-    /// <param name="exception">The exception.</param>
-    /// <returns>Service request general exception.</returns>
     private static ServiceRequestGeneralException HandlePageLoadedError<T>(
         string entityName,
         CancellationTokenSource cts,
@@ -629,12 +485,6 @@ internal sealed class PagedRequestWrapper
         return (ServiceRequestGeneralException)ex;
     }
 
-    /// <summary>
-    /// Handles the cancellation token cancelled.
-    /// </summary>
-    /// <param name="request">The request.</param>
-    /// <param name="entityName">Name of the entity.</param>
-    /// <param name="timeout">The timeout.</param>
     private static void HandleCancellationTokenCancelled(
         ServiceRequest request,
         string entityName,
@@ -650,15 +500,6 @@ internal sealed class PagedRequestWrapper
             )
         );
 
-    /// <summary>
-    /// Gets the managed enumerator.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <param name="timeout">The timeout.</param>
-    /// <param name="processOnDemandData">The process on demand data.</param>
-    /// <param name="maxResults">The maximum results.</param>
-    /// <returns>IEnumerable&lt;T&gt;.</returns>
     public static IEnumerable<T> GetManagedEnumerator<T>(
         ServiceRequest request,
         TimeSpan timeout,
@@ -725,9 +566,5 @@ internal sealed class PagedRequestWrapper
         }
     }
 
-    /// <summary>
-    /// Performs application-defined tasks associated with freeing, releasing, or resetting
-    /// unmanaged resources.
-    /// </summary>
     private void Dispose() => Close();
 }

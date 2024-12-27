@@ -7,18 +7,9 @@ using Sankhya.Enums;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// Class TradingType. This class cannot be inherited.
-/// </summary>
-/// <seealso cref="IEntity" />
 [Entity("TipoNegociacao")]
 public class TradingType : IEntity, IEquatable<TradingType>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
     public bool Equals(TradingType other)
     {
         if (ReferenceEquals(null, other))
@@ -43,11 +34,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
             );
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current object.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -58,10 +44,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
         return ReferenceEquals(this, obj) || (obj is TradingType type && Equals(type));
     }
 
-    /// <summary>
-    /// Serves as the default hash function.
-    /// </summary>
-    /// <returns>A hash code for the current object.</returns>
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -89,66 +71,26 @@ public class TradingType : IEntity, IEquatable<TradingType>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(TradingType left, TradingType right) => Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(TradingType left, TradingType right) => !Equals(left, right);
 
-    /// <summary>
-    /// The code
-    /// </summary>
     private int _code;
 
-    /// <summary>
-    /// The code set
-    /// </summary>
     private bool _codeSet;
 
-    /// <summary>
-    /// The description
-    /// </summary>
     private string _description;
 
-    /// <summary>
-    /// The description set
-    /// </summary>
     private bool _descriptionSet;
 
-    /// <summary>
-    /// The active
-    /// </summary>
     private bool _active;
 
-    /// <summary>
-    /// The active set
-    /// </summary>
     private bool _activeSet;
 
-    /// <summary>
-    /// The sub type
-    /// </summary>
     private TradingSubType _subType;
 
-    /// <summary>
-    /// The sub type set
-    /// </summary>
     private bool _subTypeSet;
 
-    /// <summary>
-    /// Gets or sets the code.
-    /// </summary>
-    /// <value>The code.</value>
     [EntityElement("CODTIPVENDA")]
     public int Code
     {
@@ -160,10 +102,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the description.
-    /// </summary>
-    /// <value>The description.</value>
     [EntityElement("DESCRTIPVENDA")]
     public string Description
     {
@@ -175,10 +113,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the active.
-    /// </summary>
-    /// <value>The active.</value>
     [EntityIgnore]
     public bool Active
     {
@@ -190,10 +124,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the active internal.
-    /// </summary>
-    /// <value>The active internal.</value>
     [EntityElement("ATIVO")]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public string ActiveInternal
@@ -206,10 +136,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the type of the sub.
-    /// </summary>
-    /// <value>The type of the sub.</value>
     [EntityIgnore]
     public TradingSubType SubType
     {
@@ -221,10 +147,6 @@ public class TradingType : IEntity, IEquatable<TradingType>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the sub type internal.
-    /// </summary>
-    /// <value>The sub type internal.</value>
     [EntityElement("SUBTIPOVENDA")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -238,34 +160,18 @@ public class TradingType : IEntity, IEquatable<TradingType>
         }
     }
 
-    /// <summary>
-    /// Should the serialize code.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCode() => _codeSet;
 
-    /// <summary>
-    /// Should the serialize description.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDescription() => _descriptionSet;
 
-    /// <summary>
-    /// Should the serialize active.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeActive() => _activeSet;
 
-    /// <summary>
-    /// Should the type of the serialize sub.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSubType() => _subTypeSet;

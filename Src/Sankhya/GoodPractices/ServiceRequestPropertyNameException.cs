@@ -1,13 +1,10 @@
-﻿using System;
-using System.Globalization;
-using System.Runtime.Serialization;
+﻿using System.Globalization;
 using CrispyWaffle.Extensions;
 using Sankhya.Properties;
 using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-[Serializable]
 public class ServiceRequestPropertyNameException : ServiceRequestGeneralException
 {
     public ServiceRequestPropertyNameException(string propertyName, ServiceRequest request)
@@ -43,7 +40,4 @@ public class ServiceRequestPropertyNameException : ServiceRequestGeneralExceptio
             ),
             request
         ) { }
-
-    protected ServiceRequestPropertyNameException(SerializationInfo info, StreamingContext context)
-        : base(info, context) { }
 }

@@ -1,44 +1,30 @@
-﻿// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="EntityReferenceAttribute.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 
 namespace Sankhya.Attributes;
 
 /// <summary>
-/// Class EntityReferenceAttribute. This class cannot be inherited.
-/// Implements the <see cref="Attribute" />
+/// Specifies that a property is an entity reference.
 /// </summary>
-/// <seealso cref="Attribute" />
+/// <remarks>
+/// This attribute can be applied to properties to indicate that they reference another entity.
+/// </remarks>
 [AttributeUsage(AttributeTargets.Property)]
 public sealed class EntityReferenceAttribute : Attribute
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="EntityReferenceAttribute" /> class.
+    /// Initializes a new instance of the <see cref="EntityReferenceAttribute"/> class with an empty custom relation name.
     /// </summary>
     public EntityReferenceAttribute() => CustomRelationName = string.Empty;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EntityReferenceAttribute" /> class.
+    /// Initializes a new instance of the <see cref="EntityReferenceAttribute"/> class with a specified custom relation name.
     /// </summary>
-    /// <param name="customRelationName">Name of the custom relation.</param>
+    /// <param name="customRelationName">The custom relation name for the entity reference.</param>
     public EntityReferenceAttribute(string customRelationName) =>
         CustomRelationName = customRelationName;
 
     /// <summary>
-    /// Gets the name of the custom relation.
+    /// Gets the custom relation name for the entity reference.
     /// </summary>
-    /// <value>The name of the custom relation.</value>
     public string CustomRelationName { get; }
 }

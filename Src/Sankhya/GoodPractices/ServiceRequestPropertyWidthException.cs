@@ -1,13 +1,10 @@
-﻿using System;
-using System.Globalization;
-using System.Runtime.Serialization;
+﻿using System.Globalization;
 using CrispyWaffle.Extensions;
 using Sankhya.Properties;
 using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-[Serializable]
 public class ServiceRequestPropertyWidthException : ServiceRequestGeneralException
 {
     public ServiceRequestPropertyWidthException(
@@ -34,9 +31,6 @@ public class ServiceRequestPropertyWidthException : ServiceRequestGeneralExcepti
         PropertyName = propertyName;
         AllowedWidth = widthAllowed;
     }
-
-    protected ServiceRequestPropertyWidthException(SerializationInfo info, StreamingContext context)
-        : base(info, context) { }
 
     public string PropertyName { get; }
 

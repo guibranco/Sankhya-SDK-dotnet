@@ -1,70 +1,50 @@
-﻿// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="PagedRequestEventArgs.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 
 namespace Sankhya.ValueObjects;
 
 /// <summary>
-/// Class PagedRequestEventArgs. This class cannot be inherited.
+/// Represents the event arguments for a paged request.
 /// </summary>
 public sealed class PagedRequestEventArgs
 {
     /// <summary>
-    /// Gets the type.
+    /// Gets the type of the request.
     /// </summary>
-    /// <value>The type.</value>
     public Type Type { get; }
 
     /// <summary>
-    /// Gets the quantity loaded.
+    /// Gets the quantity of items loaded in the current request.
     /// </summary>
-    /// <value>The quantity loaded.</value>
     public int QuantityLoaded { get; }
 
     /// <summary>
-    /// Gets the total loaded.
+    /// Gets the total quantity of items loaded so far.
     /// </summary>
-    /// <value>The total loaded.</value>
     public int TotalLoaded { get; }
 
     /// <summary>
-    /// Gets the current page.
+    /// Gets the current page number.
     /// </summary>
-    /// <value>The current page.</value>
     public int CurrentPage { get; }
 
     /// <summary>
-    /// Gets the total pages.
+    /// Gets the total number of pages.
     /// </summary>
-    /// <value>The total pages.</value>
     public int TotalPages { get; }
 
     /// <summary>
-    /// Gets the exception.
+    /// Gets the exception that occurred during the request, if any.
     /// </summary>
-    /// <value>The exception.</value>
     public Exception Exception { get; }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="PagedRequestEventArgs" /> class.
+    /// Initializes a new instance of the <see cref="PagedRequestEventArgs"/> class with the specified parameters.
     /// </summary>
-    /// <param name="type">The type.</param>
-    /// <param name="quantityLoaded">The quantity loaded.</param>
-    /// <param name="totalLoaded">The total loaded.</param>
-    /// <param name="currentPage">The current page.</param>
-    /// <param name="totalPages">The total pages.</param>
+    /// <param name="type">The type of the request.</param>
+    /// <param name="quantityLoaded">The quantity of items loaded in the current request.</param>
+    /// <param name="totalLoaded">The total quantity of items loaded so far.</param>
+    /// <param name="currentPage">The current page number.</param>
+    /// <param name="totalPages">The total number of pages.</param>
     public PagedRequestEventArgs(
         Type type,
         int quantityLoaded,
@@ -81,12 +61,12 @@ public sealed class PagedRequestEventArgs
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="PagedRequestEventArgs" /> class.
+    /// Initializes a new instance of the <see cref="PagedRequestEventArgs"/> class with the specified parameters.
     /// </summary>
-    /// <param name="type">The type.</param>
-    /// <param name="currentPage">The current page.</param>
-    /// <param name="totalLoaded">The total loaded.</param>
-    /// <param name="exception">The exception.</param>
+    /// <param name="type">The type of the request.</param>
+    /// <param name="currentPage">The current page number.</param>
+    /// <param name="totalLoaded">The total quantity of items loaded so far.</param>
+    /// <param name="exception">The exception that occurred during the request.</param>
     public PagedRequestEventArgs(Type type, int currentPage, int totalLoaded, Exception exception)
     {
         Type = type;

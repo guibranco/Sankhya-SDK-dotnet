@@ -7,19 +7,9 @@ using Sankhya.Attributes;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// Class Financial. This class cannot be inherited.
-/// </summary>
-/// <seealso cref="IEntity" />
 [Entity("Financeiro")]
 public class Financial : IEntity, IEquatable<Financial>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-    // ReSharper disable once CyclomaticComplexity
     public bool Equals(Financial other)
     {
         if (ReferenceEquals(null, other))
@@ -54,11 +44,6 @@ public class Financial : IEntity, IEquatable<Financial>
             );
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current object.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -69,10 +54,6 @@ public class Financial : IEntity, IEquatable<Financial>
         return ReferenceEquals(this, obj) || (obj is Financial financial && Equals(financial));
     }
 
-    /// <summary>
-    /// Serves as the default hash function.
-    /// </summary>
-    /// <returns>A hash code for the current object.</returns>
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -122,116 +103,46 @@ public class Financial : IEntity, IEquatable<Financial>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(Financial left, Financial right) => Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(Financial left, Financial right) => !Equals(left, right);
 
-    /// <summary>
-    /// The single number
-    /// </summary>
     private int _singleNumber;
 
-    /// <summary>
-    /// The single number set
-    /// </summary>
     private bool _singleNumberSet;
 
-    /// <summary>
-    /// The single number invoice
-    /// </summary>
     private int _singleNumberInvoice;
 
-    /// <summary>
-    /// The single number invoice set
-    /// </summary>
     private bool _singleNumberInvoiceSet;
 
-    /// <summary>
-    /// The invoice number
-    /// </summary>
     private int _invoiceNumber;
 
-    /// <summary>
-    /// The invoice number set
-    /// </summary>
     private bool _invoiceNumberSet;
 
-    /// <summary>
-    /// The date low
-    /// </summary>
     private DateTime? _dateLow;
 
-    /// <summary>
-    /// The date low set
-    /// </summary>
     private bool _dateLowSet;
 
-    /// <summary>
-    /// The date changed
-    /// </summary>
     private DateTime _dateChanged;
 
-    /// <summary>
-    /// The date changed set
-    /// </summary>
     private bool _dateChangedSet;
 
-    /// <summary>
-    /// The bar code
-    /// </summary>
     private string _barCode;
 
-    /// <summary>
-    /// The bar code set
-    /// </summary>
     private bool _barCodeSet;
 
-    /// <summary>
-    /// The typeful line
-    /// </summary>
     private string _typefulLine;
 
-    /// <summary>
-    /// The typeful line set
-    /// </summary>
     private bool _typefulLineSet;
 
-    /// <summary>
-    /// Our number
-    /// </summary>
     private string _ourNumber;
 
-    /// <summary>
-    /// Our number set
-    /// </summary>
     private bool _ourNumberSet;
 
-    /// <summary>
-    /// The code result center
-    /// </summary>
     private int _codeResultCenter;
 
-    /// <summary>
-    /// The code result center set
-    /// </summary>
     private bool _codeResultCenterSet;
 
-    /// <summary>
-    /// Gets or sets the single number.
-    /// </summary>
-    /// <value>The single number.</value>
     [EntityElement("NUFIN")]
     [EntityKey]
     public int SingleNumber
@@ -244,10 +155,6 @@ public class Financial : IEntity, IEquatable<Financial>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the single number invoice.
-    /// </summary>
-    /// <value>The single number invoice.</value>
     [EntityElement("NUNOTA")]
     public int SingleNumberInvoice
     {
@@ -259,10 +166,6 @@ public class Financial : IEntity, IEquatable<Financial>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the invoice number.
-    /// </summary>
-    /// <value>The invoice number.</value>
     [EntityElement("NUMNOTA")]
     public int InvoiceNumber
     {
@@ -274,10 +177,6 @@ public class Financial : IEntity, IEquatable<Financial>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date low.
-    /// </summary>
-    /// <value>The date low.</value>
     [EntityIgnore]
     public DateTime? DateLow
     {
@@ -289,10 +188,6 @@ public class Financial : IEntity, IEquatable<Financial>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date low internal.
-    /// </summary>
-    /// <value>The date low internal.</value>
     [EntityElement("DHBAIXA")]
     public string DateLowInternal
     {
@@ -336,10 +231,6 @@ public class Financial : IEntity, IEquatable<Financial>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date changed.
-    /// </summary>
-    /// <value>The date changed.</value>
     [EntityElement("DTALTER")]
     public DateTime DateChanged
     {
@@ -351,10 +242,6 @@ public class Financial : IEntity, IEquatable<Financial>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the bar code.
-    /// </summary>
-    /// <value>The bar code.</value>
     [EntityElement("CODIGOBARRA")]
     public string BarCode
     {
@@ -366,10 +253,6 @@ public class Financial : IEntity, IEquatable<Financial>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the typeful line.
-    /// </summary>
-    /// <value>The typeful line.</value>
     [EntityElement("LINHADIGITAVEL")]
     public string TypefulLine
     {
@@ -381,10 +264,6 @@ public class Financial : IEntity, IEquatable<Financial>
         }
     }
 
-    /// <summary>
-    /// Gets or sets our number.
-    /// </summary>
-    /// <value>Our number.</value>
     [EntityElement("NOSSONUM")]
     public string OurNumber
     {
@@ -396,10 +275,6 @@ public class Financial : IEntity, IEquatable<Financial>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code result center.
-    /// </summary>
-    /// <value>The code result center.</value>
     [EntityElement("CODCENCUS")]
     public int CodeResultCenter
     {
@@ -411,74 +286,38 @@ public class Financial : IEntity, IEquatable<Financial>
         }
     }
 
-    /// <summary>
-    /// Should the serialize single number.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSingleNumber() => _singleNumberSet;
 
-    /// <summary>
-    /// Should the serialize single number invoice.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSingleNumberInvoice() => _singleNumberInvoiceSet;
 
-    /// <summary>
-    /// Should the serialize invoice number.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoiceNumber() => _invoiceNumberSet;
 
-    /// <summary>
-    /// Should the serialize date low.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateLow() => _dateLowSet;
 
-    /// <summary>
-    /// Should the serialize date changed.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateChanged() => _dateChangedSet;
 
-    /// <summary>
-    /// Should the serialize bar code.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeBarCode() => _barCodeSet;
 
-    /// <summary>
-    /// Should the serialize typeful line.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeTypefulLine() => _typefulLineSet;
 
-    /// <summary>
-    /// Should the serialize our number.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeOurNumber() => _ourNumberSet;
 
-    /// <summary>
-    /// Should the serialize code result center.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeResultCenter() => _codeResultCenterSet;

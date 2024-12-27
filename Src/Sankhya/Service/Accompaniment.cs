@@ -5,55 +5,24 @@ using System.Xml.Serialization;
 
 namespace Sankhya.Service;
 
-/// <summary>
-/// An invoice accompaniment.
-/// </summary>
 public sealed class Accompaniment
 {
-    /// <summary>
-    /// The date
-    /// </summary>
     private DateTime _date;
 
-    /// <summary>
-    /// The date set
-    /// </summary>
     private bool _dateSet;
 
-    /// <summary>
-    /// The time
-    /// </summary>
     private TimeSpan _time;
 
-    /// <summary>
-    /// The time set
-    /// </summary>
     private bool _timeSet;
 
-    /// <summary>
-    /// The occurrence
-    /// </summary>
     private string _occurrence;
 
-    /// <summary>
-    /// The occurrence set
-    /// </summary>
     private bool _occurrenceSet;
 
-    /// <summary>
-    /// The user
-    /// </summary>
     private string _user;
 
-    /// <summary>
-    /// The user set
-    /// </summary>
     private bool _userSet;
 
-    /// <summary>
-    /// Gets or sets the date.
-    /// </summary>
-    /// <value>The date.</value>
     [XmlIgnore]
     public DateTime Date
     {
@@ -65,10 +34,6 @@ public sealed class Accompaniment
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date internal.
-    /// </summary>
-    /// <value>The date internal.</value>
     [XmlAttribute("dhocorrencia")]
     public string DateInternal
     {
@@ -80,10 +45,6 @@ public sealed class Accompaniment
         }
     }
 
-    /// <summary>
-    /// Gets or sets the time.
-    /// </summary>
-    /// <value>The time.</value>
     [XmlIgnore]
     public TimeSpan Time
     {
@@ -95,10 +56,6 @@ public sealed class Accompaniment
         }
     }
 
-    /// <summary>
-    /// Gets or sets the time internal.
-    /// </summary>
-    /// <value>The time internal.</value>
     [XmlAttribute("horaocorrencia")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -116,17 +73,9 @@ public sealed class Accompaniment
         }
     }
 
-    /// <summary>
-    /// Gets the full date.
-    /// </summary>
-    /// <value>The full date.</value>
     [XmlIgnore]
     public DateTime FullDate => _date.Add(_time);
 
-    /// <summary>
-    /// Gets or sets the occurrence.
-    /// </summary>
-    /// <value>The occurrence.</value>
     [XmlAttribute("ocorrencias")]
     public string Occurrence
     {
@@ -138,10 +87,6 @@ public sealed class Accompaniment
         }
     }
 
-    /// <summary>
-    /// Gets or sets the user.
-    /// </summary>
-    /// <value>The user.</value>
     [XmlAttribute("usuario")]
     public string User
     {
@@ -153,34 +98,18 @@ public sealed class Accompaniment
         }
     }
 
-    /// <summary>
-    /// Should the serialize date internal.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateInternal() => _dateSet;
 
-    /// <summary>
-    /// Should the serialize time internal.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeTimeInternal() => _timeSet;
 
-    /// <summary>
-    /// Should the serialize occurrence.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeOccurrence() => _occurrenceSet;
 
-    /// <summary>
-    /// Should the serialize user.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeUser() => _userSet;

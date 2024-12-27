@@ -16,34 +16,15 @@ using Sankhya.ValueObjects;
 
 namespace Sankhya.Helpers;
 
-/// <summary>
-/// Entity extensions.
-/// </summary>
 public static class EntityExtensions
 {
-    /// <summary>
-    /// The interface entity type
-    /// </summary>
     private static readonly Type InterfaceEntityType = typeof(IEntity);
 
-    /// <summary>
-    /// The entity attribute type
-    /// </summary>
     private static readonly Type EntityAttributeType = typeof(EntityAttribute);
 
-    /// <summary>
-    /// The entity dynamic serialization type
-    /// </summary>
     private static readonly Type EntityDynamicSerializationType =
         typeof(EntityDynamicSerialization);
 
-    /// <summary>
-    /// A Type extension method that gets entity name for a IEntity implementation.
-    /// </summary>
-    /// <param name="type">The type to act on.</param>
-    /// <returns>The entity name.</returns>
-    /// <exception cref="ArgumentNullException">type.</exception>
-    /// <exception cref="InvalidOperationException">invalid type.</exception>
     public static string GetEntityName(this Type type)
     {
         if (type == null)
@@ -96,13 +77,6 @@ public static class EntityExtensions
         return type.Name.ToUpperInvariant();
     }
 
-    /// <summary>
-    /// Get the application client of entity custom data attribute.
-    /// </summary>
-    /// <param name="type">The type.</param>
-    /// <returns>ApplicationClient.</returns>
-    /// <exception cref="ArgumentNullException">Type is null.</exception>
-    /// <exception cref="InvalidOperationException">Type is not an IEntity.</exception>
     public static EntityCustomDataAttribute GetEntityCustomData(this Type type)
     {
         if (type == null)
@@ -148,11 +122,6 @@ public static class EntityExtensions
         );
     }
 
-    /// <summary>
-    /// An ServiceName extension method that gets the ServiceCategoryAttribute.Category of a field.
-    /// </summary>
-    /// <param name="service">The service to get category.</param>
-    /// <returns>The service category.</returns>
     public static ServiceAttribute GetService(this ServiceName service)
     {
         var info = typeof(ServiceName).GetField(service.ToString());
@@ -164,12 +133,6 @@ public static class EntityExtensions
             : null;
     }
 
-    /// <summary>
-    /// Extracts the keys.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="entity">The entity.</param>
-    /// <returns>EntityResolverResult.</returns>
     internal static EntityResolverResult ExtractKeys<T>(this T entity)
         where T : class, IEntity, new()
     {
@@ -189,15 +152,6 @@ public static class EntityExtensions
         return result;
     }
 
-    /// <summary>
-    /// Parses the property.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="entity">The entity.</param>
-    /// <param name="propertyInfo">The property information.</param>
-    /// <param name="result">The result.</param>
-    /// <param name="type">The type.</param>
-    /// <param name="currentEntityName">Name of the current entity.</param>
     private static void ParseProperty<T>(
         T entity,
         PropertyInfo propertyInfo,
@@ -268,12 +222,6 @@ public static class EntityExtensions
         result.Keys.Add(new() { Name = propertyName, Value = value });
     }
 
-    /// <summary>
-    /// Gets the properties.
-    /// </summary>
-    /// <param name="propertyInfo">The property information.</param>
-    /// <param name="propertyName">Name of the property.</param>
-    /// <returns><c>true</c> if is entity key, <c>false</c> otherwise.</returns>
     private static bool GetProperties(PropertyInfo propertyInfo, ref string propertyName)
     {
         var isEntityKey = false;
@@ -297,15 +245,6 @@ public static class EntityExtensions
         return isEntityKey;
     }
 
-    /// <summary>
-    /// Queries the internal.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="request">The request.</param>
-    /// <param name="timeout">The timeout.</param>
-    /// <param name="processDataOnDemand">The process data on demand.</param>
-    /// <param name="maxResults">The maximum results.</param>
-    /// <returns>IEnumerable&lt;T&gt;.</returns>
     private static IEnumerable<T> QueryInternal<T>(
         this ServiceRequest request,
         TimeSpan timeout,
@@ -315,14 +254,6 @@ public static class EntityExtensions
         where T : class, IEntity, new() =>
         PagedRequestWrapper.GetManagedEnumerator(request, timeout, processDataOnDemand, maxResults);
 
-    /// <summary>
-    /// Queries the specified timeout.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="entity">The entity.</param>
-    /// <param name="timeout">The timeout.</param>
-    /// <param name="processDataOnDemand">The process data on demand.</param>
-    /// <returns>IEnumerable&lt;T&gt;.</returns>
     public static IEnumerable<T> Query<T>(
         this T entity,
         TimeSpan timeout,
@@ -335,15 +266,6 @@ public static class EntityExtensions
         return QueryInternal(request, timeout, processDataOnDemand);
     }
 
-    /// <summary>
-    /// Queries the specified criteria.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="_">The entity.</param>
-    /// <param name="criteria">The criteria.</param>
-    /// <param name="timeout">The timeout.</param>
-    /// <param name="processDataOnDemand">The process data on demand.</param>
-    /// <returns>IEnumerable&lt;T&gt;.</returns>
     public static IEnumerable<T> Query<T>(
         this T _,
         ILiteralCriteria criteria,
@@ -357,15 +279,6 @@ public static class EntityExtensions
         return QueryInternal(request, timeout, processDataOnDemand);
     }
 
-    /// <summary>
-    /// Queries the specified options.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="entity">The entity.</param>
-    /// <param name="options">The options.</param>
-    /// <param name="processDataOnDemand">The process data on demand.</param>
-    /// <returns>IEnumerable&lt;T&gt;.</returns>
-    /// <exception cref="ArgumentNullException">options.</exception>
     public static IEnumerable<T> Query<T>(
         this T entity,
         EntityQueryOptions options,
@@ -388,16 +301,6 @@ public static class EntityExtensions
         );
     }
 
-    /// <summary>
-    /// Queries the specified options.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="_">The entity.</param>
-    /// <param name="options">The options.</param>
-    /// <param name="literalCriteria">The literal criteria.</param>
-    /// <param name="processDataOnDemand">The process data on demand.</param>
-    /// <returns>IEnumerable&lt;T&gt;.</returns>
-    /// <exception cref="ArgumentNullException">options.</exception>
     public static IEnumerable<T> Query<T>(
         this T _,
         EntityQueryOptions options,
@@ -421,16 +324,6 @@ public static class EntityExtensions
         );
     }
 
-    /// <summary>
-    /// Queries the specified criteria.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="_">The entity.</param>
-    /// <param name="criteria">The criteria.</param>
-    /// <param name="options">The options.</param>
-    /// <param name="processDataOnDemand">The process data on demand.</param>
-    /// <returns>IEnumerable&lt;T&gt;.</returns>
-    /// <exception cref="ArgumentNullException">options.</exception>
     public static IEnumerable<T> Query<T>(
         this T _,
         ILiteralCriteria criteria,
@@ -454,14 +347,6 @@ public static class EntityExtensions
         );
     }
 
-    /// <summary>
-    /// Queries the light.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="entity">The entity.</param>
-    /// <param name="timeout">The timeout.</param>
-    /// <param name="maxResults">The maximum results.</param>
-    /// <returns>IEnumerable&lt;T&gt;.</returns>
     public static IEnumerable<T> QueryLight<T>(this T entity, TimeSpan timeout, int maxResults = -1)
         where T : class, IEntity, new()
     {
@@ -473,30 +358,14 @@ public static class EntityExtensions
         return QueryInternal<T>(request, timeout, null, maxResults);
     }
 
-    /// <summary>
-    /// Updates an <see cref="IEntity" /> instance on demand. This operations does not occurs instantly,
-    /// but when a stipulated quantity of items are added to a queue or when the OnDemandRequestWrapper
-    /// of this type is finalized.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="entity">The entity.</param>
-    /// <remarks>This operation runs in a separated thread and may fail if one or more items in the queue fail to update (consistency validation, network error, business validation). If this occurs, the entire set state will be lost. The set size vary depending in the queue/throughput size or the items remaining in the queue when the instance is finalized.
-    /// For example, if the queue has the length of 10 items, and are sent 1000 items, if one of this items are with error, 10 items will not persist the state but the other 990 will be persisted in a normal lifecycle.
-    /// Remember that if a instance is finalized, the entire remaining items in the queue are sent at one time, this mean that in this example,
-    /// you can loose the 1000 items (if no requests has been done yet).</remarks>
     public static void UpdateOnDemand<T>(this T entity)
         where T : class, IEntity, new() =>
         OnDemandRequestFactory.GetInstanceForService<T>(ServiceName.CrudServiceSave).Add(entity);
 
-    /// <summary>
-    /// Removes the on demand.
-    /// </summary>
-    /// <typeparam name="T">The type parameter.</typeparam>
-    /// <param name="entity">The entity.</param>
-#pragma warning disable CA1030 // Use events where appropriate
+#pragma warning disable CA1030
     public static void RemoveOnDemand<T>(this T entity)
         where T : class, IEntity, new()
-#pragma warning restore CA1030 // Use events where appropriate
+#pragma warning restore CA1030
     {
         OnDemandRequestFactory.GetInstanceForService<T>(ServiceName.CrudServiceRemove).Add(entity);
     }

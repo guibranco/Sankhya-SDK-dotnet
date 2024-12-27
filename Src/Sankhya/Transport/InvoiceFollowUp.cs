@@ -9,19 +9,9 @@ using Sankhya.Properties;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// Class InvoiceFollowUp. This class cannot be inherited.
-/// </summary>
-/// <seealso cref="IEntity" />
 [Entity("AcompanhamentoNota")]
 public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-    // ReSharper disable once CyclomaticComplexity
     public bool Equals(InvoiceFollowUp other)
     {
         if (ReferenceEquals(null, other))
@@ -60,11 +50,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
             );
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current object.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -75,10 +60,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         return ReferenceEquals(this, obj) || (obj is InvoiceFollowUp up && Equals(up));
     }
 
-    /// <summary>
-    /// Serves as the default hash function.
-    /// </summary>
-    /// <returns>A hash code for the current object.</returns>
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -121,138 +102,56 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(InvoiceFollowUp left, InvoiceFollowUp right) =>
         Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(InvoiceFollowUp left, InvoiceFollowUp right) =>
         !Equals(left, right);
 
-    /// <summary>
-    /// The single number
-    /// </summary>
     private int _singleNumber;
 
-    /// <summary>
-    /// The single number set
-    /// </summary>
     private bool _singleNumberSet;
 
-    /// <summary>
-    /// The sequence
-    /// </summary>
     private int _sequence;
 
-    /// <summary>
-    /// The sequence set
-    /// </summary>
     private bool _sequenceSet;
 
-    /// <summary>
-    /// The code user
-    /// </summary>
     private int _codeUser;
 
-    /// <summary>
-    /// The code user set
-    /// </summary>
     private bool _codeUserSet;
 
-    /// <summary>
-    /// The date occurrence
-    /// </summary>
     private DateTime _dateOccurrence;
 
-    /// <summary>
-    /// The date occurrence set
-    /// </summary>
     private bool _dateOccurrenceSet;
 
-    /// <summary>
-    /// The time occurrence
-    /// </summary>
     private TimeSpan _timeOccurrence;
 
-    /// <summary>
-    /// The time occurrence set
-    /// </summary>
     private bool _timeOccurrenceSet;
 
-    /// <summary>
-    /// The occurrences
-    /// </summary>
     private string _occurrences;
 
-    /// <summary>
-    /// The occurrences set
-    /// </summary>
     private bool _occurrencesSet;
 
-    /// <summary>
-    /// The typed
-    /// </summary>
     private bool _typed;
 
-    /// <summary>
-    /// The typed set
-    /// </summary>
     private bool _typedSet;
 
-    /// <summary>
-    /// The reference
-    /// </summary>
     private InvoiceFollowUpReference _reference;
 
-    /// <summary>
-    /// The reference set
-    /// </summary>
     private bool _referenceSet;
 
-    /// <summary>
-    /// The user
-    /// </summary>
     private User _user;
 
-    /// <summary>
-    /// The user set
-    /// </summary>
     private bool _userSet;
 
-    /// <summary>
-    /// The invoice header
-    /// </summary>
     private InvoiceHeader _invoiceHeader;
 
-    /// <summary>
-    /// The invoice header set
-    /// </summary>
     private bool _invoiceHeaderSet;
 
-    /// <summary>
-    /// The invoice item
-    /// </summary>
     private InvoiceItem _invoiceItem;
 
-    /// <summary>
-    /// The invoice item set
-    /// </summary>
     private bool _invoiceItemSet;
 
-    /// <summary>
-    /// Gets or sets the single number.
-    /// </summary>
-    /// <value>The single number.</value>
     [EntityElement("NUNOTA")]
     [EntityKey]
     public int SingleNumber
@@ -265,10 +164,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the sequence.
-    /// </summary>
-    /// <value>The sequence.</value>
     [EntityElement("SEQUENCIA")]
     [EntityKey]
     public int Sequence
@@ -281,10 +176,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code user.
-    /// </summary>
-    /// <value>The code user.</value>
     [EntityElement("CODUSU")]
     public int CodeUser
     {
@@ -296,10 +187,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date occurrence.
-    /// </summary>
-    /// <value>The date occurrence.</value>
     [EntityElement("DHOCOR")]
     [EntityKey]
     public DateTime DateOccurrence
@@ -312,10 +199,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the time occurrence.
-    /// </summary>
-    /// <value>The time occurrence.</value>
     [EntityIgnore]
     public TimeSpan TimeOccurrence
     {
@@ -327,11 +210,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the time occurrence internal.
-    /// </summary>
-    /// <value>The time occurrence internal.</value>
-    /// <exception cref="ArgumentOutOfRangeException">The {nameof(TimeOccurrence)}</exception>
     [EntityElement("HRACT")]
     [EntityKey]
     [Browsable(true)]
@@ -403,10 +281,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the occurrences.
-    /// </summary>
-    /// <value>The occurrences.</value>
     [EntityElement("OCORRENCIAS")]
     public string Occurrences
     {
@@ -418,10 +292,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the typed.
-    /// </summary>
-    /// <value>The typed.</value>
     [EntityIgnore]
     public bool Typed
     {
@@ -433,10 +303,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the typed internal.
-    /// </summary>
-    /// <value>The typed internal.</value>
     [EntityElement("DIGITADO")]
     [Browsable(true)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -450,10 +316,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the reference.
-    /// </summary>
-    /// <value>The reference.</value>
     [EntityIgnore]
     public InvoiceFollowUpReference Reference
     {
@@ -465,10 +327,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the reference internal.
-    /// </summary>
-    /// <value>The reference internal.</value>
     [EntityElement("REFERENCIA")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -484,10 +342,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the user.
-    /// </summary>
-    /// <value>The user.</value>
     [EntityReference]
     public User User
     {
@@ -499,10 +353,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the invoice header.
-    /// </summary>
-    /// <value>The invoice header.</value>
     [EntityReference]
     public InvoiceHeader InvoiceHeader
     {
@@ -514,10 +364,6 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the invoice item.
-    /// </summary>
-    /// <value>The invoice item.</value>
     [EntityReference]
     public InvoiceItem InvoiceItem
     {
@@ -529,90 +375,46 @@ public class InvoiceFollowUp : IEntity, IEquatable<InvoiceFollowUp>
         }
     }
 
-    /// <summary>
-    /// Should the serialize single number.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSingleNumber() => _singleNumberSet;
 
-    /// <summary>
-    /// Should the serialize sequence.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSequence() => _sequenceSet;
 
-    /// <summary>
-    /// Should the serialize code user.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeUser() => _codeUserSet;
 
-    /// <summary>
-    /// Should the serialize date occurrence.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateOccurrence() => _dateOccurrenceSet;
 
-    /// <summary>
-    /// Should the serialize time occurrence.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeTimeOccurrence() => _timeOccurrenceSet;
 
-    /// <summary>
-    /// Should the serialize occurrences.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeOccurrences() => _occurrencesSet;
 
-    /// <summary>
-    /// Should the serialize typed.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeTyped() => _typedSet;
 
-    /// <summary>
-    /// Should the serialize reference.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeReference() => _referenceSet;
 
-    /// <summary>
-    /// Should the serialize user.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeUser() => _userSet;
 
-    /// <summary>
-    /// Should the serialize invoice header.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoiceHeader() => _invoiceHeaderSet;
 
-    /// <summary>
-    /// Should the serialize invoice item.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoiceItem() => _invoiceItemSet;

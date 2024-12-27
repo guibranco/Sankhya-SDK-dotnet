@@ -8,20 +8,10 @@ using Sankhya.Enums;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// Class ProductInventory. This class cannot be inherited.
-/// </summary>
-/// <seealso cref="IEntity" />
 [Entity("Estoque")]
 [Serializer]
 public class ProductInventory : IEntity, IEquatable<ProductInventory>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-    // ReSharper disable once CyclomaticComplexity
     public bool Equals(ProductInventory other)
     {
         if (ReferenceEquals(null, other))
@@ -58,11 +48,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
             );
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current object.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -79,10 +64,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         return a != null && Equals(a);
     }
 
-    /// <summary>
-    /// Serves as the default hash function.
-    /// </summary>
-    /// <returns>A hash code for the current object.</returns>
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -126,148 +107,60 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(ProductInventory left, ProductInventory right) =>
         Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(ProductInventory left, ProductInventory right) =>
         !Equals(left, right);
 
-    /// <summary>
-    /// The code product
-    /// </summary>
     private int _codeProduct;
 
-    /// <summary>
-    /// The code product set
-    /// </summary>
     private bool _codeProductSet;
 
-    /// <summary>
-    /// The code company
-    /// </summary>
     private int _codeCompany;
 
-    /// <summary>
-    /// The code company set
-    /// </summary>
     private bool _codeCompanySet;
 
-    /// <summary>
-    /// The code local
-    /// </summary>
     private int _codeLocal;
 
-    /// <summary>
-    /// The code local set
-    /// </summary>
     private bool _codeLocalSet;
 
-    /// <summary>
-    /// The code partner
-    /// </summary>
     private int _codePartner;
 
-    /// <summary>
-    /// The code partner set
-    /// </summary>
     private bool _codePartnerSet;
 
-    /// <summary>
-    /// The control
-    /// </summary>
     private string _control;
 
-    /// <summary>
-    /// The control set
-    /// </summary>
     private bool _controlSet;
 
-    /// <summary>
-    /// The quantity
-    /// </summary>
     private decimal _quantity;
 
-    /// <summary>
-    /// The quantity set
-    /// </summary>
     private bool _quantitySet;
 
-    /// <summary>
-    /// The reserved
-    /// </summary>
     private decimal _reserved;
 
-    /// <summary>
-    /// The reserved set
-    /// </summary>
     private bool _reservedSet;
 
-    /// <summary>
-    /// The minimum allowed quantity
-    /// </summary>
     private decimal _minAllowedQuantity;
 
-    /// <summary>
-    /// The minimum allowed quantity set
-    /// </summary>
     private bool _minAllowedQuantitySet;
 
-    /// <summary>
-    /// The maximum allowed quantity
-    /// </summary>
     private decimal _maxAllowedQuantity;
 
-    /// <summary>
-    /// The maximum allowed quantity set
-    /// </summary>
     private bool _maxAllowedQuantitySet;
 
-    /// <summary>
-    /// The type
-    /// </summary>
     private InventoryType _type;
 
-    /// <summary>
-    /// The type set
-    /// </summary>
     private bool _typeSet;
 
-    /// <summary>
-    /// The product
-    /// </summary>
     private Product _product;
 
-    /// <summary>
-    /// The product set
-    /// </summary>
     private bool _productSet;
 
-    /// <summary>
-    /// The partner
-    /// </summary>
     private Partner _partner;
 
-    /// <summary>
-    /// The partner set
-    /// </summary>
     private bool _partnerSet;
 
-    /// <summary>
-    /// Gets or sets the code product.
-    /// </summary>
-    /// <value>The code product.</value>
     [EntityElement("CODPROD")]
     [EntityKey]
     public int CodeProduct
@@ -280,10 +173,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code company.
-    /// </summary>
-    /// <value>The code company.</value>
     [EntityElement("CODEMP")]
     [EntityKey]
     public int CodeCompany
@@ -296,10 +185,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code local.
-    /// </summary>
-    /// <value>The code local.</value>
     [EntityElement("CODLOCAL")]
     [EntityKey]
     public int CodeLocal
@@ -312,10 +197,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code partner.
-    /// </summary>
-    /// <value>The code partner.</value>
     [EntityElement("CODPARC")]
     public int CodePartner
     {
@@ -327,10 +208,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the control.
-    /// </summary>
-    /// <value>The control.</value>
     [EntityElement("CONTROLE")]
     [EntityKey]
     public string Control
@@ -343,10 +220,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the quantity.
-    /// </summary>
-    /// <value>The quantity.</value>
     [EntityElement("ESTOQUE")]
     public decimal Quantity
     {
@@ -358,10 +231,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the reserved.
-    /// </summary>
-    /// <value>The reserved.</value>
     [EntityElement("RESERVADO")]
     public decimal Reserved
     {
@@ -373,10 +242,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the minimum allowed quantity.
-    /// </summary>
-    /// <value>The minimum allowed quantity.</value>
     [EntityElement("ESTMIN")]
     public decimal MinAllowedQuantity
     {
@@ -388,10 +253,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the maximum allowed quantity.
-    /// </summary>
-    /// <value>The maximum allowed quantity.</value>
     [EntityElement("ESTMAX")]
     public decimal MaxAllowedQuantity
     {
@@ -403,10 +264,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the type.
-    /// </summary>
-    /// <value>The type.</value>
     [EntityIgnore]
     public InventoryType Type
     {
@@ -418,10 +275,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the type internal.
-    /// </summary>
-    /// <value>The type internal.</value>
     [EntityElement("TIPO")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -435,10 +288,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the product.
-    /// </summary>
-    /// <value>The product.</value>
     [EntityReference]
     public Product Product
     {
@@ -450,10 +299,6 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the partner.
-    /// </summary>
-    /// <value>The partner.</value>
     [EntityReference]
     public Partner Partner
     {
@@ -465,98 +310,50 @@ public class ProductInventory : IEntity, IEquatable<ProductInventory>
         }
     }
 
-    /// <summary>
-    /// Should the serialize code product.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeProduct() => _codeProductSet;
 
-    /// <summary>
-    /// Should the serialize code company.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeCompany() => _codeCompanySet;
 
-    /// <summary>
-    /// Should the serialize code local.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeLocal() => _codeLocalSet;
 
-    /// <summary>
-    /// Should the serialize code partner.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodePartner() => _codePartnerSet;
 
-    /// <summary>
-    /// Should the serialize control.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeControl() => _controlSet;
 
-    /// <summary>
-    /// Should the serialize quantity.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeQuantity() => _quantitySet;
 
-    /// <summary>
-    /// Should the serialize reserved.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeReserved() => _reservedSet;
 
-    /// <summary>
-    /// Should the serialize minimum allowed quantity.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMinAllowedQuantity() => _minAllowedQuantitySet;
 
-    /// <summary>
-    /// Should the serialize maximum allowed quantity.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMaxAllowedQuantity() => _maxAllowedQuantitySet;
 
-    /// <summary>
-    /// Should the type of the serialize.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeType() => _typeSet;
 
-    /// <summary>
-    /// Should the serialize product.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeProduct() => _productSet;
 
-    /// <summary>
-    /// Should the serialize partner.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePartner() => _partnerSet;
