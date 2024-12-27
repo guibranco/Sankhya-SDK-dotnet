@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using Sankhya.Properties;
 using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-[Serializable]
-public class PagedRequestException : ServiceRequestGeneralException
-{
-    public PagedRequestException(ServiceRequest request, Exception innerException)
-        : base(Resources.PagedRequestException, request, innerException) { }
-
-    protected PagedRequestException(SerializationInfo info, StreamingContext context) { }
-}
+/// <summary>
+/// Represents an exception that occurs during a paged request.
+/// </summary>
+/// <param name="request">The service request that caused the exception.</param>
+/// <param name="innerException">The exception that is the cause of the current exception.</param>
+public class PagedRequestException(ServiceRequest request, Exception innerException)
+    : ServiceRequestGeneralException(Resources.PagedRequestException, request, innerException);

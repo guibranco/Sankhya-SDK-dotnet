@@ -2,8 +2,8 @@
 
 namespace Sankhya.GoodPractices;
 
-public class CanceledOnDemandRequestWrapperException : Exception
-{
-    public CanceledOnDemandRequestWrapperException()
-        : base("Cannot add new items to a cancelled on demand request wrapper instance") { }
-}
+/// <summary>
+/// Exception thrown when an attempt is made to add new items to a cancelled on demand request wrapper instance.
+/// </summary>
+public class CanceledOnDemandRequestWrapperException()
+    : Exception("Cannot add new items to a cancelled on demand request wrapper instance.");

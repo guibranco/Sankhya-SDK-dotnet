@@ -1,10 +1,8 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
 
 namespace Sankhya.Service;
 
-[Serializable]
 [XmlRoot("dadosBaixa")]
 public sealed class LowData
 {

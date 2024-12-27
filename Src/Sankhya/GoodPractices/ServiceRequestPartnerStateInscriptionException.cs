@@ -3,8 +3,12 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-public class ServiceRequestPartnerStateInscriptionException : ServiceRequestGeneralException
-{
-    public ServiceRequestPartnerStateInscriptionException(ServiceRequest request)
-        : base(Resources.ServiceRequestPartnerStateInscriptionException, request) { }
-}
+/// <summary>
+/// Exception thrown when there is an issue with the partner state inscription in a service request.
+/// </summary>
+/// <param name="request">The service request that caused the exception.</param>
+public class ServiceRequestPartnerStateInscriptionException(ServiceRequest request)
+    : ServiceRequestGeneralException(
+        Resources.ServiceRequestPartnerStateInscriptionException,
+        request
+    );

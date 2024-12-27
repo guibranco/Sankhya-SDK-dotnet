@@ -3,8 +3,9 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-public class ServiceRequestRepeatedException : ServiceRequestGeneralException
-{
-    public ServiceRequestRepeatedException(ServiceRequest request)
-        : base(Resources.ServiceRequestRepeatedException, request) { }
-}
+/// <summary>
+/// Exception thrown when a service request is repeated.
+/// </summary>
+/// <param name="request">The service request that caused the exception.</param>
+public class ServiceRequestRepeatedException(ServiceRequest request)
+    : ServiceRequestGeneralException(Resources.ServiceRequestRepeatedException, request);

@@ -5,16 +5,22 @@ using Sankhya.Properties;
 
 namespace Sankhya.GoodPractices;
 
-public class ServiceRequestInvalidOperationException : Exception, IXmlServiceException
+/// <summary>
+/// Exception thrown when a service request operation is invalid.
+/// </summary>
+/// <param name="response">The XML document containing the response.</param>
+/// <param name="innerException">The exception that caused the current exception.</param>
+public class ServiceRequestInvalidOperationException(XmlDocument response, Exception innerException)
+    : Exception(Resources.ServiceRequestInvalidOperationException, innerException),
+        IXmlServiceException
 {
-    public ServiceRequestInvalidOperationException(XmlDocument response, Exception innerException)
-        : base(Resources.ServiceRequestInvalidOperationException, innerException)
-    {
-        Request = new();
-        Response = response;
-    }
+    /// <summary>
+    /// The XML document containing the request.
+    /// </summary>
+    public XmlDocument Request { get; } = new();
 
-    public XmlDocument Request { get; }
-
-    public XmlDocument Response { get; }
+    /// <summary>
+    /// The XML document containing the response.
+    /// </summary>
+    public XmlDocument Response { get; } = response;
 }

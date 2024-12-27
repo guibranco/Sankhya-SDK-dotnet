@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.Reflection;
-using System.Runtime.Serialization;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Log;
 using CrispyWaffle.Utilities;
@@ -17,9 +16,6 @@ public class EntityDynamicSerialization : DynamicSerialization
 
     public EntityDynamicSerialization(DynamicSerializationOption keyFilter)
         : base(keyFilter) { }
-
-    protected EntityDynamicSerialization(SerializationInfo info, StreamingContext context)
-        : base(info, context) { }
 
     private T ParseEntity<T>(
         T instance,
@@ -151,7 +147,10 @@ public class EntityDynamicSerialization : DynamicSerialization
             }
             else if (typeof(decimal) == propertyType)
             {
-                value = decimal.Parse(valueInDictionary.ToString(), CultureInfo.InvariantCulture);
+                value = decimal.Parse(
+                    valueInDictionary.ToString() ?? string.Empty,
+                    CultureInfo.InvariantCulture
+                );
             }
             else if (typeof(bool) == propertyType)
             {
