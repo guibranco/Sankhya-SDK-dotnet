@@ -6,14 +6,15 @@ using Sankhya.Properties;
 
 namespace Sankhya.GoodPractices;
 
-public class InvalidServiceRequestOperationException : Exception
-{
-    public InvalidServiceRequestOperationException(ServiceName service)
-        : base(
-            string.Format(
-                CultureInfo.CurrentCulture,
-                Resources.InvalidServiceRequestOperationException,
-                service.GetHumanReadableValue()
-            )
-        ) { }
-}
+/// <summary>
+/// Exception that is thrown when an invalid service request operation is encountered.
+/// </summary>
+/// <param name="service">The service name that caused the exception.</param>
+public class InvalidServiceRequestOperationException(ServiceName service)
+    : Exception(
+        string.Format(
+            CultureInfo.CurrentCulture,
+            Resources.InvalidServiceRequestOperationException,
+            service.GetHumanReadableValue()
+        )
+    );

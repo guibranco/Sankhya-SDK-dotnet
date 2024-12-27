@@ -34,8 +34,10 @@ public class RequestExceptionHandler : IRequestExceptionHandler
         return HandleInternal(details, retryData);
     }
 
+    // ReSharper disable UnusedParameter.Local
     private bool HandleInternal(RequestExceptionDetails details, RequestRetryData retryData)
     {
         throw new NotImplementedException();
     }
+    // ReSharper restore UnusedParameter.Local
 }

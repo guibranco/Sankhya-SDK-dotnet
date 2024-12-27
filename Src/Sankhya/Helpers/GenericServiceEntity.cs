@@ -85,7 +85,7 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
                 if (
                     propertyType == typeof(string)
                     && customDataProperty.MaxLength > 0
-                    && value.ToString().Length > customDataProperty.MaxLength
+                    && value.ToString()!.Length > customDataProperty.MaxLength
                 )
                 {
                     value = value.ToString().Abbreviate(customDataProperty.MaxLength, false);
@@ -129,16 +129,9 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
             );
         }
 
-        if (
-            shouldSerializeMethod != null
+        return shouldSerializeMethod != null
             && shouldSerializeMethod.ReturnType == typeof(bool)
-            && !(bool)shouldSerializeMethod.Invoke(this, null)
-        )
-        {
-            return true;
-        }
-
-        return false;
+            && !(bool)(shouldSerializeMethod.Invoke(this, null) ?? false);
     }
 
     private static bool ValidateAttributes(PropertyInfo property, ref string propertyName)

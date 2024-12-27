@@ -4,9 +4,9 @@ using Sankhya.Properties;
 
 namespace Sankhya.GoodPractices;
 
-public class InvalidKeyFileException : Exception
-{
-    public InvalidKeyFileException(string key)
-        : base(string.Format(CultureInfo.CurrentCulture, Resources.InvalidKeyFileException, key))
-    { }
-}
+/// <summary>
+/// Exception thrown when an invalid key file is encountered.
+/// </summary>
+/// <param name="key">The key that caused the exception.</param>
+public class InvalidKeyFileException(string key)
+    : Exception(string.Format(CultureInfo.CurrentCulture, Resources.InvalidKeyFileException, key));

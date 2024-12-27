@@ -1,31 +1,26 @@
-﻿using System;
-using System.Globalization;
-using System.Runtime.Serialization;
+﻿using System.Globalization;
 using Sankhya.Properties;
 using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-[Serializable]
-public class ServiceRequestDuplicatedDocumentException : ServiceRequestGeneralException
-{
-    public ServiceRequestDuplicatedDocumentException(
-        string name,
-        ServiceRequest request,
-        ServiceResponse response
-    )
-        : base(
-            string.Format(
-                CultureInfo.CurrentCulture,
-                Resources.ServiceRequestDuplicatedDocumentException,
-                name
-            ),
-            request,
-            response
-        ) { }
-
-    protected ServiceRequestDuplicatedDocumentException(
-        SerializationInfo info,
-        StreamingContext context
-    ) { }
-}
+/// <summary>
+/// Exception thrown when a service request results in a duplicated document.
+/// </summary>
+/// <param name="name">The name associated with the duplicated document.</param>
+/// <param name="request">The service request that caused the exception.</param>
+/// <param name="response">The service response associated with the request.</param>
+public class ServiceRequestDuplicatedDocumentException(
+    string name,
+    ServiceRequest request,
+    ServiceResponse response
+)
+    : ServiceRequestGeneralException(
+        string.Format(
+            CultureInfo.CurrentCulture,
+            Resources.ServiceRequestDuplicatedDocumentException,
+            name
+        ),
+        request,
+        response
+    );

@@ -5,21 +5,27 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-public class ServiceRequestPropertyValueException : ServiceRequestGeneralException
+/// <summary>
+/// Exception thrown when there is an issue with a property value in a service request.
+/// </summary>
+/// <param name="propertyName">The name of the property that caused the exception.</param>
+/// <param name="request">The service request that caused the exception.</param>
+public class ServiceRequestPropertyValueException(string propertyName, ServiceRequest request)
+    : ServiceRequestGeneralException(
+        string.Format(
+            CultureInfo.CurrentCulture,
+            Resources.ServiceRequestPropertyValueException,
+            request?.Service.GetHumanReadableValue(),
+            propertyName,
+            request?.RequestBody.Entity?.Name
+                ?? request?.RequestBody.Entity?.RootEntity
+                ?? request?.RequestBody.DataSet.RootEntity
+        ),
+        request
+    )
 {
-    public ServiceRequestPropertyValueException(string propertyName, ServiceRequest request)
-        : base(
-            string.Format(
-                CultureInfo.CurrentCulture,
-                Resources.ServiceRequestPropertyValueException,
-                request?.Service.GetHumanReadableValue(),
-                propertyName,
-                request?.RequestBody.Entity?.Name
-                    ?? request?.RequestBody.Entity?.RootEntity
-                    ?? request?.RequestBody.DataSet.RootEntity
-            ),
-            request
-        ) => PropertyName = propertyName;
-
-    public string PropertyName { get; private set; }
+    /// <summary>
+    /// The name of the property that caused the exception.
+    /// </summary>
+    public string PropertyName { get; private set; } = propertyName;
 }

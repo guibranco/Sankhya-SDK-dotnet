@@ -1,19 +1,15 @@
-﻿using System;
-using System.Runtime.Serialization;
-using Sankhya.Service;
+﻿using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-[Serializable]
-public class ServiceRequestDeadlockException : ServiceRequestTemporarilyException
-{
-    public ServiceRequestDeadlockException(
-        string message,
-        ServiceRequest request,
-        ServiceResponse response
-    )
-        : base(message, request, response) { }
-
-    protected ServiceRequestDeadlockException(SerializationInfo info, StreamingContext context)
-        : base(info, context) { }
-}
+/// <summary>
+/// Represents an exception that is thrown when a service request encounters a deadlock.
+/// </summary>
+/// <param name="message">The message that describes the error.</param>
+/// <param name="request">The service request that caused the exception.</param>
+/// <param name="response">The service response associated with the exception.</param>
+public class ServiceRequestDeadlockException(
+    string message,
+    ServiceRequest request,
+    ServiceResponse response
+) : ServiceRequestTemporarilyException(message, request, response);
