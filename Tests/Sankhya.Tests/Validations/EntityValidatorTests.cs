@@ -165,7 +165,7 @@ public class EntityValidatorTests
     }
 
     [Entity("test")]
-    public class ValidEntity : IEntity, IEquatable<ValidEntity>
+    public sealed class ValidEntity : IEntity, IEquatable<ValidEntity>
     {
         [EntityElement("testElement")]
         public string ValidProperty { get; set; }
@@ -201,7 +201,7 @@ public class EntityValidatorTests
     }
 
     [Entity("test")]
-    public class InvalidEntityWithInvalidSerializeHelper
+    public sealed class InvalidEntityWithInvalidSerializeHelper
         : IEntity,
             IEquatable<InvalidEntityWithInvalidSerializeHelper>
     {

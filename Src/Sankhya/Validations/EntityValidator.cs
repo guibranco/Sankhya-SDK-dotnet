@@ -93,7 +93,7 @@ public static class EntityValidator
         {
             throw new InvalidOperationException(
                 $"The property {type.FullName}.{property.Name} must have one of the valid attributes: "
-                    + $"EntityElementAttribute, EntityIgnoreAttribute, or EntityReferenceAttribute."
+                    + "EntityElementAttribute, EntityIgnoreAttribute, or EntityReferenceAttribute."
             );
         }
 
