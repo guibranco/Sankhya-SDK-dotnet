@@ -163,53 +163,53 @@ public class EntityValidatorTests
         // Assert
         Assert.False(result);
     }
-}
 
-[Entity("test")]
-public class ValidEntity : IEntity, IEquatable<ValidEntity>
-{
-    [EntityElement("testElement")]
-    public string ValidProperty { get; set; }
+    [Entity("test")]
+    public class ValidEntity : IEntity, IEquatable<ValidEntity>
+    {
+        [EntityElement("testElement")]
+        public string ValidProperty { get; set; }
 
-    public bool ShouldSerializeValidProperty() => true;
+        public bool ShouldSerializeValidProperty() => true;
 
-    [EntityIgnore]
-    public string IgnoreProperty { get; set; }
+        [EntityIgnore]
+        public string IgnoreProperty { get; set; }
 
-    public bool Equals(ValidEntity other) => true;
-}
+        public bool Equals(ValidEntity other) => true;
+    }
 
-public class InvalidEntity : IEntity
-{
-    public string InvalidProperty { get; set; }
-}
+    public class InvalidEntity : IEntity
+    {
+        public string InvalidProperty { get; set; }
+    }
 
-public class InvalidEntityWithoutParameterlessConstructor(string value) : IEntity
-{
-    public string Value { get; init; } = value;
-}
+    public class InvalidEntityWithoutParameterlessConstructor(string value) : IEntity
+    {
+        public string Value { get; init; } = value;
+    }
 
-[Entity("test")]
-public class InvalidEntityWithNoInterface
-{
-    public string InvalidProperty { get; set; }
-}
+    [Entity("test")]
+    public class InvalidEntityWithNoInterface
+    {
+        public string InvalidProperty { get; set; }
+    }
 
-[Entity("test")]
-public class InvalidEntityWithNoEquatable : IEntity
-{
-    public string InvalidProperty { get; set; }
-}
+    [Entity("test")]
+    public class InvalidEntityWithNoEquatable : IEntity
+    {
+        public string InvalidProperty { get; set; }
+    }
 
-[Entity("test")]
-public class InvalidEntityWithInvalidSerializeHelper
-    : IEntity,
-        IEquatable<InvalidEntityWithInvalidSerializeHelper>
-{
-    [EntityElement("testElement")]
-    public string ValidProperty { get; set; }
+    [Entity("test")]
+    public class InvalidEntityWithInvalidSerializeHelper
+        : IEntity,
+            IEquatable<InvalidEntityWithInvalidSerializeHelper>
+    {
+        [EntityElement("testElement")]
+        public string ValidProperty { get; set; }
 
-    public decimal ShouldSerializeValidProperty() => -1;
+        public decimal ShouldSerializeValidProperty() => -1;
 
-    public bool Equals(InvalidEntityWithInvalidSerializeHelper other) => true;
+        public bool Equals(InvalidEntityWithInvalidSerializeHelper other) => true;
+    }
 }
