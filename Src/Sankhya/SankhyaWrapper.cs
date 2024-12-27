@@ -706,28 +706,8 @@ internal class SankhyaWrapper
     private static void ReadStream(string key, HttpWebResponse response, ServiceFile result)
     {
         var stream = response.GetResponseStream();
-
-        var buffer = new byte[32768];
-
         using var memory = new MemoryStream();
-
-        int bytesRead;
-
-#if NETSTANDARD2_0 || NETSTANDARD2_1
-        while (stream != null && (bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
-        {
-            memory.Write(buffer, 0, bytesRead);
-        }
-
-        stream?.Close();
-#else
-        while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
-        {
-            memory.Write(buffer, 0, bytesRead);
-        }
-
-        stream.Close();
-#endif
+        stream.CopyStreamToMemory(memory);
 
         if (memory.Length == 0)
         {
@@ -963,27 +943,7 @@ internal class SankhyaWrapper
         using var stream = response.GetResponseStream();
 
         var memory = new MemoryStream();
-
-        var buffer = new byte[32768];
-
-        int bytesRead;
-
-#if NETSTANDARD2_0 || NETSTANDARD2_1
-        while (stream != null && (bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
-        {
-            memory.Write(buffer, 0, bytesRead);
-        }
-
-        stream?.Close();
-#else
-        while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
-        {
-            memory.Write(buffer, 0, bytesRead);
-        }
-
-        stream.Close();
-#endif
-
+        stream.CopyStreamToMemory(memory);
         return memory;
     }
 
