@@ -69,7 +69,7 @@ public class EntityValidationTests
 
     [Theory]
     [InlineData(
-        "O identificador de várias partes \"ENTITY.PROPERTY\" não põde ser associado",
+        "O identificador de várias partes \"ENTITY.PROPERTY\" não pôde ser associado",
         "ENTITY",
         "PROPERTY"
     )]
