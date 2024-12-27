@@ -10,15 +10,8 @@ using Sankhya.Validations;
 
 namespace Sankhya.Helpers;
 
-/// <summary>
-/// The status message helper class.
-/// This class handle the status message and throw the appropriated exception.
-/// </summary>
 internal static class StatusMessageHelper
 {
-    /// <summary>
-    /// The common messages.
-    /// </summary>
     private static readonly Dictionary<
         string,
         Func<string, ServiceName, ServiceRequest, ServiceResponse, Exception>
@@ -130,22 +123,6 @@ internal static class StatusMessageHelper
         },
     };
 
-    /// <summary>
-    /// Processes the status message.
-    /// </summary>
-    /// <param name="service">The service.</param>
-    /// <param name="request">The request.</param>
-    /// <param name="response">The response.</param>
-    /// <exception cref="ServiceRequestPropertyValueException">Invalid property value.</exception>
-    /// <exception cref="ServiceRequestPropertyNameException">Invalid property name.</exception>
-    /// <exception cref="ServiceRequestInvalidRelationException">Invalid relation.</exception>
-    /// <exception cref="ServiceRequestForeignKeyException">Invalid foreign key.</exception>
-    /// <exception cref="ServiceRequestDuplicatedDocumentException">Duplicated document found.</exception>
-    /// <exception cref="ServiceRequestBusinessRuleRestrictionException">Business rule restriction.</exception>
-    /// <exception cref="ServiceRequestFullTransactionLogsException">Transaction log is full.</exception>
-    /// <exception cref="ServiceRequestAttributeException">Invalid request attribute.</exception>
-    /// <exception cref="ServiceRequestUnexpectedResultException">Unexpected result.</exception>
-    /// <exception cref="ServiceRequestPropertyWidthException">Invalid property width.</exception>
     public static void ProcessStatusMessage(
         ServiceName service,
         ServiceRequest request,

@@ -3,35 +3,16 @@ using System.Xml.Serialization;
 
 namespace Sankhya.Service;
 
-/// <summary>
-/// Class Prop. This class cannot be inherited.
-/// </summary>
 public sealed class Prop
 {
-    /// <summary>
-    /// The name
-    /// </summary>
     private string _name;
 
-    /// <summary>
-    /// The name set
-    /// </summary>
     private bool _nameSet;
 
-    /// <summary>
-    /// The value
-    /// </summary>
     private string _value;
 
-    /// <summary>
-    /// The value set
-    /// </summary>
     private bool _valueSet;
 
-    /// <summary>
-    /// Gets or sets the name.
-    /// </summary>
-    /// <value>The name.</value>
     [XmlAttribute("name")]
     public string Name
     {
@@ -43,10 +24,6 @@ public sealed class Prop
         }
     }
 
-    /// <summary>
-    /// Gets or sets the value.
-    /// </summary>
-    /// <value>The value.</value>
     [XmlAttribute("value")]
     public string Value
     {
@@ -58,18 +35,10 @@ public sealed class Prop
         }
     }
 
-    /// <summary>
-    /// Should the name of the serialize.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeName() => _nameSet;
 
-    /// <summary>
-    /// Should the serialize value.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeValue() => _valueSet;

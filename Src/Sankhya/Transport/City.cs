@@ -1,17 +1,3 @@
-// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="City.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
 using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
@@ -20,20 +6,10 @@ using Sankhya.Attributes;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// The city entity
-/// </summary>
-/// <seealso cref="IEntity" />
 [Serializer]
 [Entity("Cidade")]
 public class City : IEntity, IEquatable<City>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-    // ReSharper disable once CyclomaticComplexity
     public bool Equals(City other)
     {
         if (ReferenceEquals(null, other))
@@ -72,11 +48,6 @@ public class City : IEntity, IEquatable<City>
             );
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current object.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -87,10 +58,6 @@ public class City : IEntity, IEquatable<City>
         return ReferenceEquals(this, obj) || (obj.GetType() == GetType() && Equals((City)obj));
     }
 
-    /// <summary>
-    /// Serves as the default hash function.
-    /// </summary>
-    /// <returns>A hash code for the current object.</returns>
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -150,136 +117,54 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(City left, City right) => Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(City left, City right) => !Equals(left, right);
 
-    /// <summary>
-    /// The code
-    /// </summary>
     private int _code;
 
-    /// <summary>
-    /// The code set
-    /// </summary>
     private bool _codeSet;
 
-    /// <summary>
-    /// The code state
-    /// </summary>
     private int _codeState;
 
-    /// <summary>
-    /// The code state set
-    /// </summary>
     private bool _codeStateSet;
 
-    /// <summary>
-    /// The code region
-    /// </summary>
     private int _codeRegion;
 
-    /// <summary>
-    /// The code region set
-    /// </summary>
     private bool _codeRegionSet;
 
-    /// <summary>
-    /// The code fiscal
-    /// </summary>
     private int _codeFiscal;
 
-    /// <summary>
-    /// The code fiscal set
-    /// </summary>
     private bool _codeFiscalSet;
 
-    /// <summary>
-    /// The name
-    /// </summary>
     private string _name;
 
-    /// <summary>
-    /// The name set
-    /// </summary>
     private bool _nameSet;
 
-    /// <summary>
-    /// The description correios
-    /// </summary>
     private string _descriptionCorreios;
 
-    /// <summary>
-    /// The description correios set
-    /// </summary>
     private bool _descriptionCorreiosSet;
 
-    /// <summary>
-    /// The state
-    /// </summary>
     private State _state;
 
-    /// <summary>
-    /// The state set
-    /// </summary>
     private bool _stateSet;
 
-    /// <summary>
-    /// The region
-    /// </summary>
     private Region _region;
 
-    /// <summary>
-    /// The region set
-    /// </summary>
     private bool _regionSet;
 
-    /// <summary>
-    /// The area code
-    /// </summary>
     private int _areaCode;
 
-    /// <summary>
-    /// The area code set
-    /// </summary>
     private bool _areaCodeSet;
 
-    /// <summary>
-    /// The latitude
-    /// </summary>
     private string _latitude;
 
-    /// <summary>
-    /// The latitude set
-    /// </summary>
     private bool _latitudeSet;
 
-    /// <summary>
-    /// The longitude
-    /// </summary>
     private string _longitude;
 
-    /// <summary>
-    /// The longitude set
-    /// </summary>
     private bool _longitudeSet;
 
-    /// <summary>
-    /// Gets or sets the code.
-    /// </summary>
-    /// <value>The code.</value>
     [EntityKey]
     [EntityElement("CODCID")]
     public int Code
@@ -292,10 +177,6 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the state of the code.
-    /// </summary>
-    /// <value>The state of the code.</value>
     [EntityElement("UF")]
     public int CodeState
     {
@@ -307,10 +188,6 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code region.
-    /// </summary>
-    /// <value>The code region.</value>
     [EntityElement("CODREG")]
     public int CodeRegion
     {
@@ -322,10 +199,6 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code fiscal.
-    /// </summary>
-    /// <value>The code fiscal.</value>
     [EntityElement("CODMUNFIS")]
     public int CodeFiscal
     {
@@ -337,10 +210,6 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the name.
-    /// </summary>
-    /// <value>The name.</value>
     [EntityElement("NOMECID")]
     public string Name
     {
@@ -352,10 +221,6 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the description correios.
-    /// </summary>
-    /// <value>The description correios.</value>
     [EntityElement("DESCRICAOCORREIO")]
     public string DescriptionCorreios
     {
@@ -367,10 +232,6 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the area code
-    /// </summary>
-    /// <value>The area code.</value>
     [EntityElement("DDD")]
     public int AreaCode
     {
@@ -382,10 +243,6 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-    /// <summary>
-    /// Gets or sets latitude
-    /// </summary>
-    /// <value>The latitude.</value>
     [EntityElement("LATITUDE")]
     public string Latitude
     {
@@ -397,10 +254,6 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the longitude
-    /// </summary>
-    /// <value>The longitude.</value>
     [EntityElement("LONGITUDE")]
     public string Longitude
     {
@@ -412,10 +265,6 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the state.
-    /// </summary>
-    /// <value>The state.</value>
     [EntityReference]
     public State State
     {
@@ -427,10 +276,6 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the region.
-    /// </summary>
-    /// <value>The region.</value>
     [EntityReference]
     public Region Region
     {
@@ -442,90 +287,46 @@ public class City : IEntity, IEquatable<City>
         }
     }
 
-    /// <summary>
-    /// Should the serialize code.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCode() => _codeSet;
 
-    /// <summary>
-    /// Should the state of the serialize code.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeState() => _codeStateSet;
 
-    /// <summary>
-    /// Should the serialize code region.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeRegion() => _codeRegionSet;
 
-    /// <summary>
-    /// Should the serialize code fiscal.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeFiscal() => _codeFiscalSet;
 
-    /// <summary>
-    /// Should the name of the serialize.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeName() => _nameSet;
 
-    /// <summary>
-    /// Should the serialize description correios.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDescriptionCorreios() => _descriptionCorreiosSet;
 
-    /// <summary>
-    /// The should serialize area code serialization helper method
-    /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeAreaCode() => _areaCodeSet;
 
-    /// <summary>
-    /// The should serialize latitude serialization helper method
-    /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeLatitude() => _latitudeSet;
 
-    /// <summary>
-    /// The should serialize longitude serialization helper method
-    /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeLongitude() => _longitudeSet;
 
-    /// <summary>
-    /// Should the state of the serialize.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeState() => _stateSet;
 
-    /// <summary>
-    /// Should the serialize region.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeRegion() => _regionSet;

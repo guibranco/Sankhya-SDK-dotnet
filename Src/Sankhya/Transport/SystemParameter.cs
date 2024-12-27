@@ -7,19 +7,9 @@ using Sankhya.Enums;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// Class SystemParameter. This class cannot be inherited.
-/// </summary>
-/// <seealso cref="IEntity" />
 [Entity("ParametroSistema")]
 public class SystemParameter : IEntity, IEquatable<SystemParameter>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-    // ReSharper disable once CyclomaticComplexity
     public bool Equals(SystemParameter other)
     {
         if (ReferenceEquals(null, other))
@@ -62,11 +52,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
             );
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current object.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -78,10 +63,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
             || (obj is SystemParameter parameter && Equals(parameter));
     }
 
-    /// <summary>
-    /// Serves as the default hash function.
-    /// </summary>
-    /// <returns>A hash code for the current object.</returns>
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -146,158 +127,64 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(SystemParameter left, SystemParameter right) =>
         Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(SystemParameter left, SystemParameter right) =>
         !Equals(left, right);
 
-    /// <summary>
-    /// The key
-    /// </summary>
     private string _key;
 
-    /// <summary>
-    /// The key set
-    /// </summary>
     private bool _keySet;
 
-    /// <summary>
-    /// The description
-    /// </summary>
     private string _description;
 
-    /// <summary>
-    /// The description set
-    /// </summary>
     private bool _descriptionSet;
 
-    /// <summary>
-    /// The code user
-    /// </summary>
     private int _codeUser;
 
-    /// <summary>
-    /// The code user set
-    /// </summary>
     private bool _codeUserSet;
 
-    /// <summary>
-    /// The type
-    /// </summary>
     private SystemParameterType _type;
 
-    /// <summary>
-    /// The type set
-    /// </summary>
     private bool _typeSet;
 
-    /// <summary>
-    /// The module
-    /// </summary>
     private string _module;
 
-    /// <summary>
-    /// The module set
-    /// </summary>
     private bool _moduleSet;
 
-    /// <summary>
-    /// The class
-    /// </summary>
     private string _class;
 
-    /// <summary>
-    /// The class set
-    /// </summary>
     private bool _classSet;
 
-    /// <summary>
-    /// The tab
-    /// </summary>
     private string _tab;
 
-    /// <summary>
-    /// The tab set
-    /// </summary>
     private bool _tabSet;
 
-    /// <summary>
-    /// The logical
-    /// </summary>
     private bool _logical;
 
-    /// <summary>
-    /// The logical set
-    /// </summary>
     private bool _logicalSet;
 
-    /// <summary>
-    /// The integer
-    /// </summary>
     private int _integer;
 
-    /// <summary>
-    /// The integer set
-    /// </summary>
     private bool _integerSet;
 
-    /// <summary>
-    /// The decimal
-    /// </summary>
     private decimal _decimal;
 
-    /// <summary>
-    /// The decimal set
-    /// </summary>
     private bool _decimalSet;
 
-    /// <summary>
-    /// The date
-    /// </summary>
     private DateTime _date;
 
-    /// <summary>
-    /// The date set
-    /// </summary>
     private bool _dateSet;
 
-    /// <summary>
-    /// The text
-    /// </summary>
     private string _text;
 
-    /// <summary>
-    /// The text set
-    /// </summary>
     private bool _textSet;
 
-    /// <summary>
-    /// The user
-    /// </summary>
     private User _user;
 
-    /// <summary>
-    /// The user set
-    /// </summary>
     private bool _userSet;
 
-    /// <summary>
-    /// Gets or sets the key.
-    /// </summary>
-    /// <value>The key.</value>
     [EntityElement("CHAVE")]
     [EntityKey]
     public string Key
@@ -310,10 +197,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the description.
-    /// </summary>
-    /// <value>The description.</value>
     [EntityElement("DESCRICAO")]
     public string Description
     {
@@ -325,10 +208,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code user.
-    /// </summary>
-    /// <value>The code user.</value>
     [EntityElement("CODUSU")]
     public int CodeUser
     {
@@ -340,10 +219,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the type.
-    /// </summary>
-    /// <value>The type.</value>
     [EntityIgnore]
     public SystemParameterType Type
     {
@@ -355,10 +230,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the type internal.
-    /// </summary>
-    /// <value>The type internal.</value>
     [EntityElement("TIPO")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -372,10 +243,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the module.
-    /// </summary>
-    /// <value>The module.</value>
     [EntityElement("MODULO")]
     public string Module
     {
@@ -387,10 +254,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the class.
-    /// </summary>
-    /// <value>The class.</value>
     [EntityElement("CLASSE")]
     public string Class
     {
@@ -402,10 +265,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the tab.
-    /// </summary>
-    /// <value>The tab.</value>
     [EntityElement("ABA")]
     public string Tab
     {
@@ -417,10 +276,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the logical.
-    /// </summary>
-    /// <value>The logical.</value>
     [EntityIgnore]
     public bool Logical
     {
@@ -432,10 +287,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the logical internal.
-    /// </summary>
-    /// <value>The logical internal.</value>
     [EntityElement("LOGICO")]
     [Browsable(true)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -449,10 +300,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the integer.
-    /// </summary>
-    /// <value>The integer.</value>
     [EntityElement("INTEIRO")]
     public int Integer
     {
@@ -464,10 +311,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the decimal.
-    /// </summary>
-    /// <value>The decimal.</value>
     [EntityElement("NUMDEC")]
     public decimal Decimal
     {
@@ -479,10 +322,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date.
-    /// </summary>
-    /// <value>The date.</value>
     [EntityElement("DATA")]
     public DateTime Date
     {
@@ -494,10 +333,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the text.
-    /// </summary>
-    /// <value>The text.</value>
     [EntityElement("TEXTO")]
     public string Text
     {
@@ -509,10 +344,6 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the user.
-    /// </summary>
-    /// <value>The user.</value>
     [EntityReference]
     public User User
     {
@@ -524,106 +355,54 @@ public class SystemParameter : IEntity, IEquatable<SystemParameter>
         }
     }
 
-    /// <summary>
-    /// Should the serialize key.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeKey() => _keySet;
 
-    /// <summary>
-    /// Should the serialize description.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDescription() => _descriptionSet;
 
-    /// <summary>
-    /// Should the serialize code user.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeUser() => _codeUserSet;
 
-    /// <summary>
-    /// Should the type of the serialize.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeType() => _typeSet;
 
-    /// <summary>
-    /// Should the serialize module.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeModule() => _moduleSet;
 
-    /// <summary>
-    /// Should the serialize class.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeClass() => _classSet;
 
-    /// <summary>
-    /// Should the serialize tab.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeTab() => _tabSet;
 
-    /// <summary>
-    /// Should the serialize logical.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeLogical() => _logicalSet;
 
-    /// <summary>
-    /// Should the serialize integer.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInteger() => _integerSet;
 
-    /// <summary>
-    /// Should the serialize decimal.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDecimal() => _decimalSet;
 
-    /// <summary>
-    /// Should the serialize date.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDate() => _dateSet;
 
-    /// <summary>
-    /// Should the serialize text.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeText() => _textSet;
 
-    /// <summary>
-    /// Should the serialize user.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeUser() => _userSet;

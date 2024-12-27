@@ -17,98 +17,39 @@ using Sankhya.Transport;
 
 namespace Sankhya.RequestWrappers;
 
-/// <summary>
-/// Class OnDemandRequestWrapper. This class cannot be inherited.
-/// </summary>
-/// <typeparam name="T">The type parameter.</typeparam>
-/// <seealso cref="IOnDemandRequestWrapper" />
-/// <seealso cref="IDisposable" />
 internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
     where T : class, IEntity, new()
 {
-    /// <summary>
-    /// The context.
-    /// </summary>
     private readonly SankhyaContext _context;
 
-    /// <summary>
-    /// The throughput.
-    /// </summary>
     private readonly int _throughput;
 
-    /// <summary>
-    /// The allow above throughput.
-    /// </summary>
     private readonly bool _allowAboveThroughput;
 
-    /// <summary>
-    /// The queue.
-    /// </summary>
     private readonly ConcurrentQueue<T> _queue;
 
-    /// <summary>
-    /// The worker.
-    /// </summary>
     private readonly Thread _worker;
 
-    /// <summary>
-    /// The service.
-    /// </summary>
     private readonly ServiceName _service;
 
-    /// <summary>
-    /// The token.
-    /// </summary>
     private CancellationToken _token;
 
-    /// <summary>
-    /// The request count.
-    /// </summary>
     private int _requestCount;
 
-    /// <summary>
-    /// The entities sent.
-    /// </summary>
     private int _entitiesSent;
 
-    /// <summary>
-    /// The entities sent successfully.
-    /// </summary>
     private int _entitiesSentSuccessfully;
 
-    /// <summary>
-    /// The dispose requested.
-    /// </summary>
     private bool _disposeRequested;
 
-    /// <summary>
-    /// The flush requested.
-    /// </summary>
     private bool _flushRequested;
 
-    /// <summary>
-    /// The entity name.
-    /// </summary>
     private readonly string _entityName;
 
-    /// <summary>
-    /// The event.
-    /// </summary>
     private readonly ManualResetEvent _event;
 
-    /// <summary>
-    /// The flush event.
-    /// </summary>
     private readonly ManualResetEvent _flushEvent;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="OnDemandRequestWrapper{T}" /> class.
-    /// </summary>
-    /// <param name="service">The service.</param>
-    /// <param name="token">The token.</param>
-    /// <param name="throughput">The throughput.</param>
-    /// <param name="allowAboveThroughput">The allow above throughput.</param>
-    /// <exception cref="InvalidServiceRequestOperationException"></exception>
     public OnDemandRequestWrapper(
         ServiceName service,
         CancellationToken token,
@@ -147,12 +88,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
         _worker.Start();
     }
 
-    /// <summary>
-    /// Adds the specified entity.
-    /// </summary>
-    /// <param name="entity">The entity.</param>
-    /// <exception cref="ObjectDisposedException">Object disposed.</exception>
-    /// <exception cref="CanceledOnDemandRequestWrapperException">On demand request wrapper canceled.</exception>
     public void Add(IEntity entity)
     {
         if (_disposeRequested)
@@ -176,10 +111,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
         _event.Set();
     }
 
-    /// <summary>
-    /// Flushes this instance.
-    /// </summary>
-    /// <exception cref="ObjectDisposedException">Object disposed.</exception>
     public void Flush()
     {
         if (_disposeRequested)
@@ -210,9 +141,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
         }
     }
 
-    /// <summary>
-    /// Processes this instance.
-    /// </summary>
     private void Process()
     {
         var sessionToken = _context.AcquireNewSession(ServiceRequestType.OnDemandCrud);
@@ -237,11 +165,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
         _context.DetachOnDemandRequestWrapper(sessionToken);
     }
 
-    /// <summary>
-    /// Processes the internal.
-    /// </summary>
-    /// <param name="sessionToken">The session token.</param>
-    /// <returns><c>true</c> if processed, <c>false</c> otherwise.</returns>
     private bool ProcessInternal(Guid sessionToken)
     {
         WaitHandle.WaitAny(new[] { _event, _token.WaitHandle }, new TimeSpan(0, 1, 0));
@@ -317,14 +240,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
         return false;
     }
 
-    /// <summary>
-    /// Processes the request.
-    /// </summary>
-    /// <param name="request">The request.</param>
-    /// <param name="token">The token.</param>
-    /// <param name="exception">The exception.</param>
-    /// <param name="isSecondAttempt">if set to <c>true</c> [is second attempt].</param>
-    /// <returns><c>true</c> if processed, <c>false</c> otherwise.</returns>
     private bool ProcessRequest(
         ServiceRequest request,
         Guid token,
@@ -374,11 +289,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
         return false;
     }
 
-    /// <summary>
-    /// Processes the items separately.
-    /// </summary>
-    /// <param name="items">The items.</param>
-    /// <param name="sessionToken">The session token.</param>
     private void ProcessItemsSeparately(IEnumerable<T> items, Guid sessionToken)
     {
         foreach (var item in items)
@@ -408,10 +318,6 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
         }
     }
 
-    /// <summary>
-    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-    /// </summary>
-    //TODO remove TimeSpan from Thread.Join! (why ???)
     public void Dispose()
     {
         _disposeRequested = true;

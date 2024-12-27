@@ -10,20 +10,9 @@ using Sankhya.Properties;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// Class InvoiceHeader. This class cannot be inherited.
-/// </summary>
-/// <seealso cref="GenericServiceEntity" />
 [Entity("CabecalhoNota")]
 public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-    // ReSharper disable once FunctionComplexityOverflow
-    // ReSharper disable once CyclomaticComplexity
     public bool Equals(InvoiceHeader other)
     {
         if (ReferenceEquals(null, other))
@@ -110,11 +99,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
             && _singleNumberSet == other._singleNumberSet;
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current object.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -135,12 +119,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         return Equals((InvoiceHeader)obj);
     }
 
-    /// <summary>
-    /// Serves as the default hash function.
-    /// </summary>
-    /// <returns>A hash code for the current object.</returns>
-    // ReSharper disable once FunctionComplexityOverflow
-    // ReSharper disable once MethodTooLong
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -237,366 +215,146 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(InvoiceHeader left, InvoiceHeader right) => Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(InvoiceHeader left, InvoiceHeader right) => !Equals(left, right);
 
-    /// <summary>
-    /// The single number.
-    /// </summary>
     private int? _singleNumber;
 
-    /// <summary>
-    /// The single number set.
-    /// </summary>
     private bool _singleNumberSet;
 
-    /// <summary>
-    /// The code company.
-    /// </summary>
     private int _codeCompany;
 
-    /// <summary>
-    /// The code company set.
-    /// </summary>
     private bool _codeCompanySet;
 
-    /// <summary>
-    /// The code partner.
-    /// </summary>
     private int _codePartner;
 
-    /// <summary>
-    /// The code partner set.
-    /// </summary>
     private bool _codePartnerSet;
 
-    /// <summary>
-    /// The code partner destination.
-    /// </summary>
     private int _codePartnerDestination;
 
-    /// <summary>
-    /// The code partner destination set.
-    /// </summary>
     private bool _codePartnerDestinationSet;
 
-    /// <summary>
-    /// The code contact.
-    /// </summary>
     private int _codeContact;
 
-    /// <summary>
-    /// The code contact set.
-    /// </summary>
     private bool _codeContactSet;
 
-    /// <summary>
-    /// The operation type.
-    /// </summary>
     private int _operationType;
 
-    /// <summary>
-    /// The operation type set.
-    /// </summary>
     private bool _operationTypeSet;
 
-    /// <summary>
-    /// The code trade type.
-    /// </summary>
     private int _codeTradeType;
 
-    /// <summary>
-    /// The code trade type set.
-    /// </summary>
     private bool _codeTradeTypeSet;
 
-    /// <summary>
-    /// The invoice number.
-    /// </summary>
     private int _invoiceNumber;
 
-    /// <summary>
-    /// The invoice number set.
-    /// </summary>
     private bool _invoiceNumberSet;
 
-    /// <summary>
-    /// The code seller.
-    /// </summary>
     private int _codeSeller;
 
-    /// <summary>
-    /// The code seller set.
-    /// </summary>
     private bool _codeSellerSet;
 
-    /// <summary>
-    /// The date traded.
-    /// </summary>
     private DateTime _dateTraded;
 
-    /// <summary>
-    /// The date traded set.
-    /// </summary>
     private bool _dateTradedSet;
 
-    /// <summary>
-    /// The date imported.
-    /// </summary>
     private DateTime _dateImported;
 
-    /// <summary>
-    /// The date imported set.
-    /// </summary>
     private bool _dateImportedSet;
 
-    /// <summary>
-    /// The date billed.
-    /// </summary>
     private DateTime _dateBilled;
 
-    /// <summary>
-    /// The date billed set.
-    /// </summary>
     private bool _dateBilledSet;
 
-    /// <summary>
-    /// The date expected delivery.
-    /// </summary>
     private DateTime _dateExpectedDelivery;
 
-    /// <summary>
-    /// The date expected delivery set.
-    /// </summary>
     private bool _dateExpectedDeliverySet;
 
-    /// <summary>
-    /// The date changed.
-    /// </summary>
     private DateTime _dateChanged;
 
-    /// <summary>
-    /// The date changed set.
-    /// </summary>
     private bool _dateChangedSet;
 
-    /// <summary>
-    /// The code result center.
-    /// </summary>
     private int _codeResultCenter;
 
-    /// <summary>
-    /// The code result center set.
-    /// </summary>
     private bool _codeResultCenterSet;
 
-    /// <summary>
-    /// The code nature.
-    /// </summary>
     private int _codeNature;
 
-    /// <summary>
-    /// The code nature set.
-    /// </summary>
     private bool _codeNatureSet;
 
-    /// <summary>
-    /// The movement type.
-    /// </summary>
     private MovementType _movementType;
 
-    /// <summary>
-    /// The movement type set.
-    /// </summary>
     private bool _movementTypeSet;
 
-    /// <summary>
-    /// The freight value.
-    /// </summary>
     private decimal _freightValue;
 
-    /// <summary>
-    /// The freight value set.
-    /// </summary>
     private bool _freightValueSet;
 
-    /// <summary>
-    /// The note.
-    /// </summary>
     private string _note;
 
-    /// <summary>
-    /// The note set.
-    /// </summary>
     private bool _noteSet;
 
-    /// <summary>
-    /// The freight type.
-    /// </summary>
     private FreightType _freightType;
 
-    /// <summary>
-    /// The freight type set.
-    /// </summary>
     private bool _freightTypeSet;
 
-    /// <summary>
-    /// The invoice status.
-    /// </summary>
     private InvoiceStatus _invoiceStatus;
 
-    /// <summary>
-    /// The invoice status set.
-    /// </summary>
     private bool _invoiceStatusSet;
 
-    /// <summary>
-    /// The invoice freight type.
-    /// </summary>
     private InvoiceFreightType _invoiceFreightType;
 
-    /// <summary>
-    /// The invoice freight type set.
-    /// </summary>
     private bool _invoiceFreightTypeSet;
 
-    /// <summary>
-    /// The code partner carrier.
-    /// </summary>
     private int _codePartnerCarrier;
 
-    /// <summary>
-    /// The code partner carrier set.
-    /// </summary>
     private bool _codePartnerCarrierSet;
 
-    /// <summary>
-    /// The fiscal invoice status.
-    /// </summary>
     private FiscalInvoiceStatus _fiscalInvoiceStatus;
 
-    /// <summary>
-    /// The fiscal invoice status set.
-    /// </summary>
     private bool _fiscalInvoiceStatusSet;
 
-    /// <summary>
-    /// The confirmed.
-    /// </summary>
     private bool _confirmed;
 
-    /// <summary>
-    /// The confirmed set.
-    /// </summary>
     private bool _confirmedSet;
 
-    /// <summary>
-    /// The pending.
-    /// </summary>
     private bool _pending;
 
-    /// <summary>
-    /// The pending set.
-    /// </summary>
     private bool _pendingSet;
 
-    /// <summary>
-    /// The fiscal invoice key.
-    /// </summary>
     private string _fiscalInvoiceKey;
 
-    /// <summary>
-    /// The fiscal invoice key set.
-    /// </summary>
     private bool _fiscalInvoiceKeySet;
 
-    /// <summary>
-    /// The movement time.
-    /// </summary>
     private TimeSpan _movementTime;
 
-    /// <summary>
-    /// The movement time set.
-    /// </summary>
     private bool _movementTimeSet;
 
-    /// <summary>
-    /// The invoice value.
-    /// </summary>
     private decimal _invoiceValue;
 
-    /// <summary>
-    /// The invoice value set.
-    /// </summary>
     private bool _invoiceValueSet;
 
-    /// <summary>
-    /// The partner.
-    /// </summary>
     private Partner _partner;
 
-    /// <summary>
-    /// The partner set.
-    /// </summary>
     private bool _partnerSet;
 
-    /// <summary>
-    /// The partner destination.
-    /// </summary>
     private Partner _partnerDestination;
 
-    /// <summary>
-    /// The partner destination set.
-    /// </summary>
     private bool _partnerDestinationSet;
 
-    /// <summary>
-    /// The partner carrier.
-    /// </summary>
     private Partner _partnerCarrier;
 
-    /// <summary>
-    /// The partner carrier set.
-    /// </summary>
     private bool _partnerCarrierSet;
 
-    /// <summary>
-    /// The partner royalties.
-    /// </summary>
     private Partner _partnerRoyalties;
 
-    /// <summary>
-    /// The partner royalties set.
-    /// </summary>
     private bool _partnerRoyaltiesSet;
 
-    /// <summary>
-    /// The seller.
-    /// </summary>
     private Seller _seller;
 
-    /// <summary>
-    /// The seller set.
-    /// </summary>
     private bool _sellerSet;
 
-    /// <summary>
-    /// Gets or sets the single number.
-    /// </summary>
-    /// <value>The single number.</value>
     [EntityElement("NUNOTA")]
     [EntityKey]
     public int? SingleNumber
@@ -609,10 +367,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code company.
-    /// </summary>
-    /// <value>The code company.</value>
     [EntityElement("CODEMP")]
     public int CodeCompany
     {
@@ -624,10 +378,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code partner.
-    /// </summary>
-    /// <value>The code partner.</value>
     [EntityElement("CODPARC")]
     public int CodePartner
     {
@@ -639,12 +389,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code partner destination.
-    /// </summary>
-    /// <value>
-    /// The code partner destination.
-    /// </value>
     [EntityElement("CODPARCDEST")]
     public int CodePartnerDestination
     {
@@ -656,10 +400,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code contact.
-    /// </summary>
-    /// <value>The code contact.</value>
     [EntityElement("CODCONTATO")]
     public int CodeContact
     {
@@ -671,10 +411,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the type of the operation.
-    /// </summary>
-    /// <value>The type of the operation.</value>
     [EntityElement("CODTIPOPER")]
     public int OperationType
     {
@@ -686,10 +422,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the type of the code trade.
-    /// </summary>
-    /// <value>The type of the code trade.</value>
     [EntityElement("CODTIPVENDA")]
     public int CodeTradeType
     {
@@ -701,10 +433,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the invoice number.
-    /// </summary>
-    /// <value>The invoice number.</value>
     [EntityElement("NUMNOTA")]
     public int InvoiceNumber
     {
@@ -716,10 +444,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code seller.
-    /// </summary>
-    /// <value>The code seller.</value>
     [EntityElement("CODVEND")]
     public int CodeSeller
     {
@@ -731,10 +455,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date traded.
-    /// </summary>
-    /// <value>The date traded.</value>
     [EntityIgnore]
     public DateTime DateTraded
     {
@@ -746,10 +466,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date traded internal.
-    /// </summary>
-    /// <value>The date traded internal.</value>
     [EntityElement("DTNEG")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -763,10 +479,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date imported.
-    /// </summary>
-    /// <value>The date imported.</value>
     [EntityIgnore]
     public DateTime DateImported
     {
@@ -778,10 +490,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date imported internal.
-    /// </summary>
-    /// <value>The date imported internal.</value>
     [EntityElement("DTENTSAI")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -795,10 +503,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date billed.
-    /// </summary>
-    /// <value>The date billed.</value>
     [EntityElement("DTFATUR")]
     public DateTime DateBilled
     {
@@ -810,10 +514,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date expected delivery.
-    /// </summary>
-    /// <value>The date expected delivery.</value>
     [EntityIgnore]
     public DateTime DateExpectedDelivery
     {
@@ -825,10 +525,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date expected delivery internal.
-    /// </summary>
-    /// <value>The date expected delivery internal.</value>
     [EntityElement("DTPREVENT")]
     public string DateExpectedDeliveryInternal
     {
@@ -844,10 +540,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date changed.
-    /// </summary>
-    /// <value>The date changed.</value>
     [EntityElement("DTALTER")]
     public DateTime DateChanged
     {
@@ -859,10 +551,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code result center.
-    /// </summary>
-    /// <value>The code result center.</value>
     [EntityElement("CODCENCUS")]
     public int CodeResultCenter
     {
@@ -874,10 +562,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code nature.
-    /// </summary>
-    /// <value>The code nature.</value>
     [EntityElement("CODNAT")]
     public int CodeNature
     {
@@ -889,10 +573,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the type of the movement.
-    /// </summary>
-    /// <value>The type of the movement.</value>
     [EntityIgnore]
     public MovementType MovementType
     {
@@ -904,10 +584,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the movement type internal.
-    /// </summary>
-    /// <value>The movement type internal.</value>
     [EntityElement("TIPMOV")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -921,10 +597,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the freight value.
-    /// </summary>
-    /// <value>The freight value.</value>
     [EntityElement("VLRFRETE")]
     public decimal FreightValue
     {
@@ -936,10 +608,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the note.
-    /// </summary>
-    /// <value>The note.</value>
     [EntityElement("OBSERVACAO")]
     public string Note
     {
@@ -951,10 +619,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the type of the freight.
-    /// </summary>
-    /// <value>The type of the freight.</value>
     [EntityIgnore]
     public FreightType FreightType
     {
@@ -966,10 +630,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the freight type internal.
-    /// </summary>
-    /// <value>The freight type internal.</value>
     [EntityElement("CIF_FOB", true)]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -983,10 +643,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the invoice status.
-    /// </summary>
-    /// <value>The invoice status.</value>
     [EntityIgnore]
     public InvoiceStatus InvoiceStatus
     {
@@ -998,10 +654,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the invoice status internal.
-    /// </summary>
-    /// <value>The invoice status internal.</value>
     [EntityElement("STATUSNOTA")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -1015,10 +667,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the type of the invoice freight.
-    /// </summary>
-    /// <value>The type of the invoice freight.</value>
     [EntityIgnore]
     public InvoiceFreightType InvoiceFreightType
     {
@@ -1030,10 +678,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the invoice freight type internal.
-    /// </summary>
-    /// <value>The invoice freight type internal.</value>
     [EntityElement("TIPFRETE")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -1053,10 +697,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code partner carrier.
-    /// </summary>
-    /// <value>The code partner carrier.</value>
     [EntityElement("CODPARCTRANSP")]
     public int CodePartnerCarrier
     {
@@ -1068,10 +708,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the fiscal invoice status.
-    /// </summary>
-    /// <value>The fiscal invoice status.</value>
     [EntityIgnore]
     public FiscalInvoiceStatus FiscalInvoiceStatus
     {
@@ -1083,10 +719,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the fiscal invoice status internal.
-    /// </summary>
-    /// <value>The fiscal invoice status internal.</value>
     [EntityElement("STATUSNFE")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -1103,10 +735,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets a value indicating whether this <see cref="InvoiceHeader"/> is confirmed.
-    /// </summary>
-    /// <value><c>true</c> if confirmed; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool Confirmed
     {
@@ -1118,10 +746,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the confirmed internal.
-    /// </summary>
-    /// <value>The confirmed internal.</value>
     [EntityElement("CONFIRMADA")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -1135,10 +759,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets a value indicating whether this <see cref="InvoiceHeader"/> is pending.
-    /// </summary>
-    /// <value><c>true</c> if pending; otherwise, <c>false</c>.</value>
     [EntityIgnore]
     public bool Pending
     {
@@ -1150,10 +770,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the pending internal.
-    /// </summary>
-    /// <value>The pending internal.</value>
     [EntityElement("PENDENTE")]
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -1167,10 +783,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the fiscal invoice key.
-    /// </summary>
-    /// <value>The fiscal invoice key.</value>
     [EntityElement("CHAVENFE")]
     public string FiscalInvoiceKey
     {
@@ -1182,10 +794,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the movement time.
-    /// </summary>
-    /// <value>The movement time.</value>
     [EntityIgnore]
     public TimeSpan MovementTime
     {
@@ -1197,11 +805,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the movement time internal.
-    /// </summary>
-    /// <value>The movement time internal.</value>
-    /// <exception cref="ArgumentOutOfRangeException">value - MovementTime.</exception>
     [EntityElement("HRMOV")]
     public string MovementTimeInternal
     {
@@ -1269,10 +872,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the invoice value.
-    /// </summary>
-    /// <value>The invoice value.</value>
     [EntityElement("VLRNOTA")]
     public decimal InvoiceValue
     {
@@ -1284,10 +883,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the partner.
-    /// </summary>
-    /// <value>The partner.</value>
     [EntityReference]
     public Partner Partner
     {
@@ -1299,12 +894,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the partner destination.
-    /// </summary>
-    /// <value>
-    /// The partner destination.
-    /// </value>
     [EntityReference]
     public Partner PartnerDestination
     {
@@ -1316,10 +905,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the partner carrier.
-    /// </summary>
-    /// <value>The partner carrier.</value>
     [EntityReference("Transportadora")]
     public Partner PartnerCarrier
     {
@@ -1331,10 +916,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the partner royalties.
-    /// </summary>
-    /// <value>The partner royalties.</value>
     [EntityReference("Parceiro_AD001")]
     public Partner PartnerRoyalties
     {
@@ -1346,10 +927,6 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the seller.
-    /// </summary>
-    /// <value>The seller.</value>
     [EntityReference]
     public Seller Seller
     {
@@ -1361,278 +938,138 @@ public class InvoiceHeader : GenericServiceEntity, IEquatable<InvoiceHeader>
         }
     }
 
-    /// <summary>
-    /// Should the serialize single number.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSingleNumber() => _singleNumberSet;
 
-    /// <summary>
-    /// Should the serialize code company.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeCompany() => _codeCompanySet;
 
-    /// <summary>
-    /// Should the serialize code partner.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodePartner() => _codePartnerSet;
 
-    /// <summary>
-    /// The should serialize code partner destination serialization helper method.
-    /// </summary>
-    /// <returns>
-    /// Returns <c>true</c> when the field should be serialized, false otherwise.
-    /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodePartnerDestination() => _codePartnerDestinationSet;
 
-    /// <summary>
-    /// Should the serialize code contact.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeContact() => _codeContactSet;
 
-    /// <summary>
-    /// Should the type of the serialize operation.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeOperationType() => _operationTypeSet;
 
-    /// <summary>
-    /// Should the type of the serialize code trade.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeTradeType() => _codeTradeTypeSet;
 
-    /// <summary>
-    /// Should the serialize invoice number.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoiceNumber() => _invoiceNumberSet;
 
-    /// <summary>
-    /// Should the serialize code seller.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeSeller() => _codeSellerSet;
 
-    /// <summary>
-    /// Should the serialize date traded.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateTraded() => _dateTradedSet;
 
-    /// <summary>
-    /// Should the serialize date imported.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateImported() => _dateImportedSet;
 
-    /// <summary>
-    /// Should the serialize date billed.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateBilled() => _dateBilledSet;
 
-    /// <summary>
-    /// Should the serialize date expected delivery.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateExpectedDelivery() => _dateExpectedDeliverySet;
 
-    /// <summary>
-    /// Should the serialize date changed.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateChanged() => _dateChangedSet;
 
-    /// <summary>
-    /// Should the serialize code result center.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeResultCenter() => _codeResultCenterSet;
 
-    /// <summary>
-    /// Should the serialize code nature.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeNature() => _codeNatureSet;
 
-    /// <summary>
-    /// Should the type of the serialize movement.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMovementType() => _movementTypeSet;
 
-    /// <summary>
-    /// Should the serialize freight value.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeFreightValue() => _freightValueSet;
 
-    /// <summary>
-    /// Should the serialize note.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeNote() => _noteSet;
 
-    /// <summary>
-    /// Should the type of the serialize freight.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeFreightType() => _freightTypeSet;
 
-    /// <summary>
-    /// Should the serialize invoice status.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoiceStatus() => _invoiceStatusSet;
 
-    /// <summary>
-    /// Should the type of the serialize invoice freight.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoiceFreightType() => _invoiceFreightTypeSet;
 
-    /// <summary>
-    /// Should the serialize code partner carrier.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodePartnerCarrier() => _codePartnerCarrierSet;
 
-    /// <summary>
-    /// Should the serialize fiscal invoice status.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeFiscalInvoiceStatus() => _fiscalInvoiceStatusSet;
 
-    /// <summary>
-    /// Should the serialize confirmed.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeConfirmed() => _confirmedSet;
 
-    /// <summary>
-    /// Should the serialize pending.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePending() => _pendingSet;
 
-    /// <summary>
-    /// Should the serialize fiscal invoice key.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeFiscalInvoiceKey() => _fiscalInvoiceKeySet;
 
-    /// <summary>
-    /// Should the serialize movement time.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeMovementTime() => _movementTimeSet;
 
-    /// <summary>
-    /// Should the serialize invoice value.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoiceValue() => _invoiceValueSet;
 
-    /// <summary>
-    /// Should the serialize partner.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePartner() => _partnerSet;
 
-    /// <summary>
-    /// The should serialize partner destination serialization helper method.
-    /// </summary>
-    /// <returns>
-    /// Returns <c>true</c> when the field should be serialized, false otherwise.
-    /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePartnerDestination() => _partnerDestinationSet;
 
-    /// <summary>
-    /// Should the serialize partner carrier.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePartnerCarrier() => _partnerCarrierSet;
 
-    /// <summary>
-    /// Should the serialize partner royalties.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePartnerRoyalties() => _partnerRoyaltiesSet;
 
-    /// <summary>
-    /// Should the serialize seller.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSeller() => _sellerSet;

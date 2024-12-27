@@ -1,6 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Runtime.Serialization;
+﻿using System.Globalization;
 using CrispyWaffle.Extensions;
 using Sankhya.Enums;
 using Sankhya.Properties;
@@ -8,7 +6,6 @@ using Sankhya.Service;
 
 namespace Sankhya.GoodPractices;
 
-[Serializable]
 public class ServiceRequestAttributeException : ServiceRequestGeneralException
 {
     public ServiceRequestAttributeException(
@@ -25,7 +22,4 @@ public class ServiceRequestAttributeException : ServiceRequestGeneralException
             ),
             request
         ) { }
-
-    protected ServiceRequestAttributeException(SerializationInfo info, StreamingContext context)
-        : base(info, context) { }
 }

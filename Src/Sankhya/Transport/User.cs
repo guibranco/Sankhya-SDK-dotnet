@@ -7,22 +7,10 @@ using Sankhya.Attributes;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// Class User. This class cannot be inherited.
-/// </summary>
-/// <seealso cref="IEntity" />
-/// <seealso cref="IEquatable{T}" />
 [Serializer]
 [Entity("Usuario")]
 public class User : IEntity, IEquatable<User>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise,
-    /// false.</returns>
-    // ReSharper disable once CyclomaticComplexity
     public bool Equals(User other)
     {
         if (ReferenceEquals(null, other))
@@ -55,12 +43,6 @@ public class User : IEntity, IEquatable<User>
             );
     }
 
-    /// <summary>
-    /// Determines whether the specified <see cref="Object" /> is equal to the current
-    /// <see cref="Object" />.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -71,10 +53,6 @@ public class User : IEntity, IEquatable<User>
         return ReferenceEquals(this, obj) || (obj is User user && Equals(user));
     }
 
-    /// <summary>
-    /// Serves as a hash function for a particular type.
-    /// </summary>
-    /// <returns>A hash code for the current <see cref="Object" />.</returns>
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -118,126 +96,50 @@ public class User : IEntity, IEquatable<User>
         }
     }
 
-    /// <summary>
-    /// Equality operator.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operation.</returns>
     public static bool operator ==(User left, User right) => Equals(left, right);
 
-    /// <summary>
-    /// Inequality operator.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operation.</returns>
     public static bool operator !=(User left, User right) => !Equals(left, right);
 
-    /// <summary>
-    /// The code
-    /// </summary>
     private int _code;
 
-    /// <summary>
-    /// The code set
-    /// </summary>
     private bool _codeSet;
 
-    /// <summary>
-    /// The code partner
-    /// </summary>
     private int _codePartner;
 
-    /// <summary>
-    /// The code partner set
-    /// </summary>
     private bool _codePartnerSet;
 
-    /// <summary>
-    /// The code seller
-    /// </summary>
     private int _codeSeller;
 
-    /// <summary>
-    /// The code seller set
-    /// </summary>
     private bool _codeSellerSet;
 
-    /// <summary>
-    /// The code group
-    /// </summary>
     private int _codeGroup;
 
-    /// <summary>
-    /// The code group set
-    /// </summary>
     private bool _codeGroupSet;
 
-    /// <summary>
-    /// The name
-    /// </summary>
     private string _name;
 
-    /// <summary>
-    /// The name set
-    /// </summary>
     private bool _nameSet;
 
-    /// <summary>
-    /// The email
-    /// </summary>
     private string _email;
 
-    /// <summary>
-    /// The email set
-    /// </summary>
     private bool _emailSet;
 
-    /// <summary>
-    /// The access limit date
-    /// </summary>
     private DateTime? _accessLimitDate;
 
-    /// <summary>
-    /// The access limit date set
-    /// </summary>
     private bool _accessLimitDateSet;
 
-    /// <summary>
-    /// The partner
-    /// </summary>
     private Partner _partner;
 
-    /// <summary>
-    /// The partner set
-    /// </summary>
     private bool _partnerSet;
 
-    /// <summary>
-    /// The group
-    /// </summary>
     private UserGroup _group;
 
-    /// <summary>
-    /// The group set
-    /// </summary>
     private bool _groupSet;
 
-    /// <summary>
-    /// The seller
-    /// </summary>
     private Seller _seller;
 
-    /// <summary>
-    /// The seller set
-    /// </summary>
     private bool _sellerSet;
 
-    /// <summary>
-    /// Gets or sets the code.
-    /// </summary>
-    /// <value>The code.</value>
     [EntityKey]
     [EntityElement("CODUSU")]
     public int Code
@@ -250,10 +152,6 @@ public class User : IEntity, IEquatable<User>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code partner.
-    /// </summary>
-    /// <value>The code partner.</value>
     [EntityKey]
     [EntityElement("CODPARC")]
     public int CodePartner
@@ -266,12 +164,6 @@ public class User : IEntity, IEquatable<User>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code seller.
-    /// </summary>
-    /// <value>
-    /// The code seller.
-    /// </value>
     [EntityElement("CODVEND")]
     public int CodeSeller
     {
@@ -283,10 +175,6 @@ public class User : IEntity, IEquatable<User>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code group.
-    /// </summary>
-    /// <value>The code group.</value>
     [EntityElement("CODGRUPO")]
     public int CodeGroup
     {
@@ -298,10 +186,6 @@ public class User : IEntity, IEquatable<User>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the name.
-    /// </summary>
-    /// <value>The name.</value>
     [EntityKey]
     [EntityElement("NOMEUSU")]
     [Localizable(false)]
@@ -315,10 +199,6 @@ public class User : IEntity, IEquatable<User>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the email.
-    /// </summary>
-    /// <value>The email.</value>
     [EntityElement("EMAIL")]
     public string Email
     {
@@ -330,12 +210,6 @@ public class User : IEntity, IEquatable<User>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the access limit date.
-    /// </summary>
-    /// <value>
-    /// The access limit date.
-    /// </value>
     [EntityElement("DTLIMACESSO")]
     public DateTime? AccessLimitDate
     {
@@ -347,10 +221,6 @@ public class User : IEntity, IEquatable<User>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the partner.
-    /// </summary>
-    /// <value>The partner.</value>
     [EntityReference]
     public Partner Partner
     {
@@ -362,10 +232,6 @@ public class User : IEntity, IEquatable<User>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the group.
-    /// </summary>
-    /// <value>The group.</value>
     [EntityReference]
     public UserGroup Group
     {
@@ -377,12 +243,6 @@ public class User : IEntity, IEquatable<User>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the seller.
-    /// </summary>
-    /// <value>
-    /// The seller.
-    /// </value>
     [EntityReference]
     public Seller Seller
     {
@@ -394,96 +254,46 @@ public class User : IEntity, IEquatable<User>
         }
     }
 
-    /// <summary>
-    /// Should the serialize code.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCode() => _codeSet;
 
-    /// <summary>
-    /// Should the serialize code partner.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodePartner() => _codePartnerSet;
 
-    /// <summary>
-    /// The should serialize code seller serialization helper method
-    /// </summary>
-    /// <returns>
-    /// Returns <c>true</c> when the field should be serialized, false otherwise
-    /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeSeller() => _codeSellerSet;
 
-    /// <summary>
-    /// Should the serialize code group.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodeGroup() => _codeGroupSet;
 
-    /// <summary>
-    /// Should the name of the serialize.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeName() => _nameSet;
 
-    /// <summary>
-    /// Should the serialize email.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeEmail() => _emailSet;
 
-    /// <summary>
-    /// The should serialize access limit date serialization helper method
-    /// </summary>
-    /// <returns>
-    /// Returns <c>true</c> when the field should be serialized, false otherwise
-    /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeAccessLimitDate() => _accessLimitDateSet;
 
-    /// <summary>
-    /// Should the serialize partner.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializePartner() => _partnerSet;
 
-    /// <summary>
-    /// Should the serialize group.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeGroup() => _groupSet;
 
-    /// <summary>
-    /// The should serialize seller serialization helper method
-    /// </summary>
-    /// <returns>
-    /// Returns <c>true</c> when the field should be serialized, false otherwise
-    /// </returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSeller() => _sellerSet;
 
-    /// <summary>
-    /// Returns a string that represents the current object.
-    /// </summary>
-    /// <returns>A string that represents the current object.</returns>
     public override string ToString() =>
         Partner.Name.IndexOf(@"SEM PARCEIRO", StringComparison.OrdinalIgnoreCase) != -1
             ? Name

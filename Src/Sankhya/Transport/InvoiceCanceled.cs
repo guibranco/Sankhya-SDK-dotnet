@@ -5,18 +5,9 @@ using Sankhya.Attributes;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// Class InvoiceCanceled. This class cannot be inherited.
-/// </summary>
-/// <seealso cref="IEntity" />
 [Entity("NotaCancelada")]
 public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
     public bool Equals(InvoiceCanceled other)
     {
         if (ReferenceEquals(null, other))
@@ -43,11 +34,6 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
             );
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current object.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -58,10 +44,6 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
         return ReferenceEquals(this, obj) || (obj is InvoiceCanceled canceled && Equals(canceled));
     }
 
-    /// <summary>
-    /// Serves as the default hash function.
-    /// </summary>
-    /// <returns>A hash code for the current object.</returns>
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -91,78 +73,32 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(InvoiceCanceled left, InvoiceCanceled right) =>
         Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(InvoiceCanceled left, InvoiceCanceled right) =>
         !Equals(left, right);
 
-    /// <summary>
-    /// The single number
-    /// </summary>
     private int _singleNumber;
 
-    /// <summary>
-    /// The single number set
-    /// </summary>
     private bool _singleNumberSet;
 
-    /// <summary>
-    /// The code partner
-    /// </summary>
     private int _codePartner;
 
-    /// <summary>
-    /// The code partner set
-    /// </summary>
     private bool _codePartnerSet;
 
-    /// <summary>
-    /// The date canceled
-    /// </summary>
     private DateTime _dateCanceled;
 
-    /// <summary>
-    /// The date canceled set
-    /// </summary>
     private bool _dateCanceledSet;
 
-    /// <summary>
-    /// The invoice number
-    /// </summary>
     private int _invoiceNumber;
 
-    /// <summary>
-    /// The invoice number set
-    /// </summary>
     private bool _invoiceNumberSet;
 
-    /// <summary>
-    /// The cancellation reason
-    /// </summary>
     private string _cancellationReason;
 
-    /// <summary>
-    /// The cancellation reason set
-    /// </summary>
     private bool _cancellationReasonSet;
 
-    /// <summary>
-    /// Gets or sets the single number.
-    /// </summary>
-    /// <value>The single number.</value>
     [EntityElement("NUNOTA")]
     public int SingleNumber
     {
@@ -174,10 +110,6 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code partner.
-    /// </summary>
-    /// <value>The code partner.</value>
     [EntityElement("CODPARC")]
     public int CodePartner
     {
@@ -189,10 +121,6 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the date canceled.
-    /// </summary>
-    /// <value>The date canceled.</value>
     [EntityElement("DTCANC")]
     public DateTime DateCanceled
     {
@@ -204,10 +132,6 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the invoice number.
-    /// </summary>
-    /// <value>The invoice number.</value>
     [EntityElement("NUMNOTA")]
     public int InvoiceNumber
     {
@@ -219,10 +143,6 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the cancellation reason.
-    /// </summary>
-    /// <value>The cancellation reason.</value>
     [EntityElement("MOTCANCEL")]
     public string CancellationReason
     {
@@ -234,42 +154,22 @@ public class InvoiceCanceled : IEntity, IEquatable<InvoiceCanceled>
         }
     }
 
-    /// <summary>
-    /// Should the serialize single number.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeSingleNumber() => _singleNumberSet;
 
-    /// <summary>
-    /// Should the serialize code partner.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCodePartner() => _codePartnerSet;
 
-    /// <summary>
-    /// Should the serialize date canceled.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeDateCanceled() => _dateCanceledSet;
 
-    /// <summary>
-    /// Should the serialize invoice number.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeInvoiceNumber() => _invoiceNumberSet;
 
-    /// <summary>
-    /// Should the serialize cancellation reason.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeCancellationReason() => _cancellationReasonSet;

@@ -1,17 +1,3 @@
-// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="PartnerComplement.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
 using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
@@ -19,19 +5,9 @@ using Sankhya.Attributes;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// Class PartnerComplement. This class cannot be inherited.
-/// </summary>
-/// <seealso cref="IEntity" />
 [Entity("ComplementoParc")]
 public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-    // ReSharper disable once CyclomaticComplexity
     public bool Equals(PartnerComplement other)
     {
         if (ReferenceEquals(null, other))
@@ -88,11 +64,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
             );
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current object.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -104,10 +75,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
             || (obj is PartnerComplement complement && Equals(complement));
     }
 
-    /// <summary>
-    /// Serves as the default hash function.
-    /// </summary>
-    /// <returns>A hash code for the current object.</returns>
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -182,148 +149,60 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(PartnerComplement left, PartnerComplement right) =>
         Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(PartnerComplement left, PartnerComplement right) =>
         !Equals(left, right);
 
-    /// <summary>
-    /// The code
-    /// </summary>
     private int _code;
 
-    /// <summary>
-    /// The code set
-    /// </summary>
     private bool _codeSet;
 
-    /// <summary>
-    /// The zip code delivery
-    /// </summary>
     private string _zipCodeDelivery;
 
-    /// <summary>
-    /// The zip code delivery set
-    /// </summary>
     private bool _zipCodeDeliverySet;
 
-    /// <summary>
-    /// The code address delivery
-    /// </summary>
     private int _codeAddressDelivery;
 
-    /// <summary>
-    /// The code address delivery set
-    /// </summary>
     private bool _codeAddressDeliverySet;
 
-    /// <summary>
-    /// The address number delivery
-    /// </summary>
     private string _addressNumberDelivery;
 
-    /// <summary>
-    /// The address number delivery set
-    /// </summary>
     private bool _addressNumberDeliverySet;
 
-    /// <summary>
-    /// The address complement delivery
-    /// </summary>
     private string _addressComplementDelivery;
 
-    /// <summary>
-    /// The address complement delivery set
-    /// </summary>
     private bool _addressComplementDeliverySet;
 
-    /// <summary>
-    /// The code neighborhood delivery
-    /// </summary>
     private int _codeNeighborhoodDelivery;
 
-    /// <summary>
-    /// The code neighborhood delivery set
-    /// </summary>
     private bool _codeNeighborhoodDeliverySet;
 
-    /// <summary>
-    /// The code city delivery
-    /// </summary>
     private int _codeCityDelivery;
 
-    /// <summary>
-    /// The code city delivery set
-    /// </summary>
     private bool _codeCityDeliverySet;
 
-    /// <summary>
-    /// The latitude delivery
-    /// </summary>
     private string _latitudeDelivery;
 
-    /// <summary>
-    /// The latitude delivery set
-    /// </summary>
     private bool _latitudeDeliverySet;
 
-    /// <summary>
-    /// The longitude delivery
-    /// </summary>
     private string _longitudeDelivery;
 
-    /// <summary>
-    /// The longitude delivery set
-    /// </summary>
     private bool _longitudeDeliverySet;
 
-    /// <summary>
-    /// The address delivery
-    /// </summary>
     private Address _addressDelivery;
 
-    /// <summary>
-    /// The address delivery set
-    /// </summary>
     private bool _addressDeliverySet;
 
-    /// <summary>
-    /// The neighborhood delivery
-    /// </summary>
     private Neighborhood _neighborhoodDelivery;
 
-    /// <summary>
-    /// The neighborhood delivery set
-    /// </summary>
     private bool _neighborhoodDeliverySet;
 
-    /// <summary>
-    /// The city delivery
-    /// </summary>
     private City _cityDelivery;
 
-    /// <summary>
-    /// The city delivery set
-    /// </summary>
     private bool _cityDeliverySet;
 
-    /// <summary>
-    /// Gets or sets the code.
-    /// </summary>
-    /// <value>The code.</value>
     [EntityElement("CODPARC")]
     [EntityKey]
     public int Code
@@ -336,10 +215,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the zip code delivery.
-    /// </summary>
-    /// <value>The zip code delivery.</value>
     [EntityElement("CEPENTREGA")]
     public string ZipCodeDelivery
     {
@@ -351,10 +226,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code address delivery.
-    /// </summary>
-    /// <value>The code address delivery.</value>
     [EntityElement("CODENDENTREGA")]
     public int CodeAddressDelivery
     {
@@ -366,10 +237,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the address number delivery.
-    /// </summary>
-    /// <value>The address number delivery.</value>
     [EntityElement("NUMENTREGA")]
     public string AddressNumberDelivery
     {
@@ -381,10 +248,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the address complement delivery.
-    /// </summary>
-    /// <value>The address complement delivery.</value>
     [EntityElement("COMPLENTREGA")]
     [EntityCustomData(MaxLength = 30)]
     public string AddressComplementDelivery
@@ -397,10 +260,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code neighborhood delivery.
-    /// </summary>
-    /// <value>The code neighborhood delivery.</value>
     [EntityElement("CODBAIENTREGA")]
     public int CodeNeighborhoodDelivery
     {
@@ -412,10 +271,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code city delivery.
-    /// </summary>
-    /// <value>The code city delivery.</value>
     [EntityElement("CODCIDENTREGA")]
     public int CodeCityDelivery
     {
@@ -427,10 +282,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the latitude delivery.
-    /// </summary>
-    /// <value>The latitude delivery.</value>
     [EntityElement("LATITUDEENTREGA")]
     public string LatitudeDelivery
     {
@@ -442,10 +293,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the longitude delivery.
-    /// </summary>
-    /// <value>The longitude delivery.</value>
     [EntityElement("LONGITUDEENTREGA")]
     public string LongitudeDelivery
     {
@@ -457,10 +304,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the address delivery.
-    /// </summary>
-    /// <value>The address delivery.</value>
     [EntityReference]
     public Address AddressDelivery
     {
@@ -472,10 +315,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the neighborhood delivery.
-    /// </summary>
-    /// <value>The neighborhood delivery.</value>
     [EntityReference]
     public Neighborhood NeighborhoodDelivery
     {
@@ -487,10 +326,6 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the city delivery.
-    /// </summary>
-    /// <value>The city delivery.</value>
     [EntityReference]
     public City CityDelivery
     {
@@ -502,79 +337,31 @@ public class PartnerComplement : IEntity, IEquatable<PartnerComplement>
         }
     }
 
-    /// <summary>
-    /// Should the serialize code.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCode() => _codeSet;
 
-    /// <summary>
-    /// Should the serialize zip code delivery.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeZipCodeDelivery() => _zipCodeDeliverySet;
 
-    /// <summary>
-    /// Should the serialize code address delivery.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCodeAddressDelivery() => _codeAddressDeliverySet;
 
-    /// <summary>
-    /// Should the serialize address number delivery.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeAddressNumberDelivery() => _addressNumberDeliverySet;
 
-    /// <summary>
-    /// Should the serialize address complement delivery.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeAddressComplementDelivery() => _addressComplementDeliverySet;
 
-    /// <summary>
-    /// Should the serialize code neighborhood delivery.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCodeNeighborhoodDelivery() => _codeNeighborhoodDeliverySet;
 
-    /// <summary>
-    /// Should the serialize code city delivery.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCodeCityDelivery() => _codeCityDeliverySet;
 
-    /// <summary>
-    /// The should serialize latitude delivery serialization helper method
-    /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeLatitudeDelivery() => _latitudeDeliverySet;
 
-    /// <summary>
-    /// The should serialize longitude delivery serialization helper method
-    /// </summary>
-    /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool ShouldSerializeLongitudeDelivery() => _longitudeDeliverySet;
 
-    /// <summary>
-    /// Should the serialize address delivery.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeAddressDelivery() => _addressDeliverySet;
 
-    /// <summary>
-    /// Should the serialize neighborhood delivery.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeNeighborhoodDelivery() => _neighborhoodDeliverySet;
 
-    /// <summary>
-    /// Should the serialize city delivery.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCityDelivery() => _cityDeliverySet;
 }

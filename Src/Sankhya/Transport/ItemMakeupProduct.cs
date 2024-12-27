@@ -4,19 +4,9 @@ using Sankhya.Attributes;
 
 namespace Sankhya.Transport;
 
-/// <summary>
-/// Class ItemMakeupProduct. This class cannot be inherited.
-/// </summary>
-/// <seealso cref="IEntity" />
 [Entity("ItemComposicaoProduto")]
 public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
 {
-    /// <summary>
-    /// Indicates whether the current object is equal to another object of the same type.
-    /// </summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
-    // ReSharper disable once CyclomaticComplexity
     public bool Equals(ItemMakeupProduct other)
     {
         if (ReferenceEquals(null, other))
@@ -43,11 +33,6 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
             );
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current object.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current object.</param>
-    /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object obj)
     {
         if (ReferenceEquals(null, obj))
@@ -64,10 +49,6 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
         return a != null && Equals(a);
     }
 
-    /// <summary>
-    /// Serves as the default hash function.
-    /// </summary>
-    /// <returns>A hash code for the current object.</returns>
     [SuppressMessage(
         "ReSharper",
         "NonReadonlyMemberInGetHashCode",
@@ -95,98 +76,40 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
         }
     }
 
-    /// <summary>
-    /// Implements the ==.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator ==(ItemMakeupProduct left, ItemMakeupProduct right) =>
         Equals(left, right);
 
-    /// <summary>
-    /// Implements the !=.
-    /// </summary>
-    /// <param name="left">The left.</param>
-    /// <param name="right">The right.</param>
-    /// <returns>The result of the operator.</returns>
     public static bool operator !=(ItemMakeupProduct left, ItemMakeupProduct right) =>
         !Equals(left, right);
 
-    /// <summary>
-    /// The code product
-    /// </summary>
     private int _codeProduct;
 
-    /// <summary>
-    /// The code product set
-    /// </summary>
     private bool _codeProductSet;
 
-    /// <summary>
-    /// The code feed stock
-    /// </summary>
     private int _codeFeedStock;
 
-    /// <summary>
-    /// The code feed stock set
-    /// </summary>
     private bool _codeFeedStockSet;
 
-    /// <summary>
-    /// The feed stock quantity
-    /// </summary>
     private decimal _feedStockQuantity;
 
-    /// <summary>
-    /// The feed stock quantity set
-    /// </summary>
     private bool _feedStockQuantitySet;
 
-    /// <summary>
-    /// The volume
-    /// </summary>
     private string _volume;
 
-    /// <summary>
-    /// The volume set
-    /// </summary>
     private bool _volumeSet;
 
-    /// <summary>
-    /// The sequence
-    /// </summary>
     private int _sequence;
 
-    /// <summary>
-    /// The sequence set
-    /// </summary>
     private bool _sequenceSet;
 
-    /// <summary>
-    /// The observation
-    /// </summary>
     private string _observation;
 
-    /// <summary>
-    /// The observation set
-    /// </summary>
     private bool _observationSet;
 
-    /// <summary>
-    /// The product
-    /// </summary>
     private Product _product;
 
-    /// <summary>
-    /// The product set
-    /// </summary>
     private bool _productSet;
 
-    /// <summary>
-    /// Gets or sets the code product.
-    /// </summary>
-    /// <value>The code product.</value>
     [EntityElement("CODPROD")]
     public int CodeProduct
     {
@@ -198,10 +121,6 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the code feed stock.
-    /// </summary>
-    /// <value>The code feed stock.</value>
     [EntityElement("CODMATPRIMA")]
     public int CodeFeedStock
     {
@@ -213,10 +132,6 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the feed stock quantity.
-    /// </summary>
-    /// <value>The feed stock quantity.</value>
     [EntityElement("QTDMISTURA")]
     public decimal FeedStockQuantity
     {
@@ -228,10 +143,6 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the volume.
-    /// </summary>
-    /// <value>The volume.</value>
     [EntityElement("CODVOL")]
     public string Volume
     {
@@ -243,10 +154,6 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the sequence.
-    /// </summary>
-    /// <value>The sequence.</value>
     [EntityElement("SEQUENCIA")]
     public int Sequence
     {
@@ -258,10 +165,6 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the observation.
-    /// </summary>
-    /// <value>The observation.</value>
     [EntityElement("OBSERVACAO")]
     public string Observation
     {
@@ -273,10 +176,6 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
         }
     }
 
-    /// <summary>
-    /// Gets or sets the product.
-    /// </summary>
-    /// <value>The product.</value>
     [EntityReference("ProdutoMateriaPrima")]
     public Product Product
     {
@@ -288,45 +187,17 @@ public class ItemMakeupProduct : IEntity, IEquatable<ItemMakeupProduct>
         }
     }
 
-    /// <summary>
-    /// Should the serialize code product.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCodeProduct() => _codeProductSet;
 
-    /// <summary>
-    /// Should the serialize code feed stock.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeCodeFeedStock() => _codeFeedStockSet;
 
-    /// <summary>
-    /// Should the serialize feed stock quantity.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeFeedStockQuantity() => _feedStockQuantitySet;
 
-    /// <summary>
-    /// Should the serialize volume.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeVolume() => _volumeSet;
 
-    /// <summary>
-    /// Should the serialize sequence.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeSequence() => _sequenceSet;
 
-    /// <summary>
-    /// Should the serialize observation.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeObservation() => _observationSet;
 
-    /// <summary>
-    /// Should the serialize product.
-    /// </summary>
-    /// <returns>Boolean.</returns>
     public bool ShouldSerializeProduct() => _productSet;
 }

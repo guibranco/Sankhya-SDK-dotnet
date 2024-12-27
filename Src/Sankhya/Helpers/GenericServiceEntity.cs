@@ -12,38 +12,12 @@ using Sankhya.Transport;
 
 namespace Sankhya.Helpers;
 
-/// <summary>
-/// Class GenericServiceEntity.
-/// </summary>
-/// <seealso cref="IXmlSerializable" />
-/// <seealso cref="IEntity" />
 public abstract class GenericServiceEntity : IXmlSerializable, IEntity
 {
-    /// <summary>
-    /// This method is reserved and should not be used.When implementing the IXmlSerializable
-    /// interface, you should return null (Nothing in Visual Basic) from this method, and instead,
-    /// if specifying a custom schema is required, apply the
-    /// <see cref="XmlSchemaProviderAttribute" /> to the class.
-    /// </summary>
-    /// <returns>An <see cref="XmlSchema" /> that describes the XML representation of
-    /// the object that is produced by the
-    /// <see cref="WriteXml(XmlWriter)" />
-    /// method and consumed by the
-    /// <see cref="ReadXml(XmlReader)" />
-    /// method.</returns>
     public XmlSchema GetSchema() => null;
 
-    /// <summary>
-    /// Generates an object from its XML representation.
-    /// </summary>
-    /// <param name="reader">The <see cref="XmlReader" /> stream from which the object is deserialized.</param>
-    /// <exception cref="NotImplementedException">Not implemented.</exception>
     public void ReadXml(XmlReader reader) => throw new NotImplementedException();
 
-    /// <summary>
-    /// Converts an object into its XML representation.
-    /// </summary>
-    /// <param name="writer">The <see cref="XmlWriter" /> stream to which the object is serialized.</param>
     public void WriteXml(XmlWriter writer)
     {
         var type = GetType();
@@ -55,13 +29,6 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
         }
     }
 
-    /// <summary>
-    /// Writes the XML element.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
-    /// <param name="property">The property.</param>
-    /// <param name="type">The type.</param>
-    /// <param name="currentEntityName">Name of the current entity.</param>
     private void WriteXmlElement(
         XmlWriter writer,
         PropertyInfo property,
@@ -86,13 +53,6 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
         Serialize(writer, property, propertyName, customDataProperty);
     }
 
-    /// <summary>
-    /// Serializes the specified writer.
-    /// </summary>
-    /// <param name="writer">The writer.</param>
-    /// <param name="property">The property.</param>
-    /// <param name="propertyName">Name of the property.</param>
-    /// <param name="customDataProperty">The custom data property.</param>
     private void Serialize(
         XmlWriter writer,
         PropertyInfo property,
@@ -148,13 +108,6 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
         writer.WriteEndElement();
     }
 
-    /// <summary>
-    /// Validates the should serialize.
-    /// </summary>
-    /// <param name="property">The property.</param>
-    /// <param name="type">The type.</param>
-    /// <param name="currentEntityName">Name of the current entity.</param>
-    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     private bool ValidateShouldSerialize(PropertyInfo property, Type type, string currentEntityName)
     {
         var shouldSerializeMethodName = property.Name.EndsWith(@"Internal")
@@ -188,12 +141,6 @@ public abstract class GenericServiceEntity : IXmlSerializable, IEntity
         return false;
     }
 
-    /// <summary>
-    /// Validates the attributes.
-    /// </summary>
-    /// <param name="property">The property.</param>
-    /// <param name="propertyName">Name of the property.</param>
-    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     private static bool ValidateAttributes(PropertyInfo property, ref string propertyName)
     {
         var shouldSerialize = true;

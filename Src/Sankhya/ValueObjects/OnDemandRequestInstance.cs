@@ -1,17 +1,3 @@
-// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="OnDemandRequestInstance.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
 using System;
 using Sankhya.Enums;
 using Sankhya.RequestWrappers;
@@ -19,32 +5,27 @@ using Sankhya.RequestWrappers;
 namespace Sankhya.ValueObjects;
 
 /// <summary>
-/// Class OnDemandRequestInstance. This class cannot be inherited.
+/// Represents an instance of an on-demand request.
 /// </summary>
-// TODO change public to internal after remove from Integração Service
 public sealed class OnDemandRequestInstance
 {
     /// <summary>
-    /// Gets or sets the key.
+    /// Gets or sets the unique key for the request instance.
     /// </summary>
-    /// <value>The key.</value>
     public Guid Key { get; set; }
 
     /// <summary>
-    /// Gets or sets the service.
+    /// Gets or sets the service name for the request.
     /// </summary>
-    /// <value>The service.</value>
     public ServiceName Service { get; set; }
 
     /// <summary>
-    /// Gets or sets the type.
+    /// Gets or sets the type of the request.
     /// </summary>
-    /// <value>The type.</value>
     public Type Type { get; set; }
 
     /// <summary>
-    /// Gets or sets the instance.
+    /// Gets or sets the instance of the request wrapper.
     /// </summary>
-    /// <value>The instance.</value>
     public IOnDemandRequestWrapper Instance { get; set; }
 }

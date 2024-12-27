@@ -1,30 +1,18 @@
-﻿// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="EntityCustomDataAttribute.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 
 namespace Sankhya.Attributes;
 
 /// <summary>
-/// Class EntityCustomDataAttribute. This class cannot be inherited.
+/// Specifies custom data attributes for an entity class or property.
 /// </summary>
+/// <remarks>
+/// This attribute can be applied to classes and properties, and it allows multiple instances on the same element.
+/// </remarks>
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property, AllowMultiple = true)]
 public sealed class EntityCustomDataAttribute : Attribute
 {
     /// <summary>
-    /// Gets or sets the maximum length.
+    /// Gets or sets the maximum length of the custom data.
     /// </summary>
-    /// <value>The maximum length.</value>
     public int MaxLength { get; set; }
 }

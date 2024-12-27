@@ -1,45 +1,27 @@
-﻿// ***********************************************************************
-// Assembly         : Sankhya
-// Author           : Guilherme Branco Stracini
-// Created          : 01-16-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-16-2023
-// ***********************************************************************
-// <copyright file="ServiceFile.cs" company="Guilherme Branco Stracini">
-//     © 2023 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace Sankhya.ValueObjects;
+﻿namespace Sankhya.ValueObjects;
 
 /// <summary>
-/// Class ServiceFile. This class cannot be inherited.
+/// Represents a file used in a service.
 /// </summary>
 public sealed class ServiceFile
 {
     /// <summary>
-    /// Gets or sets the type of the content.
+    /// Gets or sets the content type of the file.
     /// </summary>
-    /// <value>The type of the content.</value>
     public string ContentType { get; set; }
 
     /// <summary>
     /// Gets or sets the name of the file.
     /// </summary>
-    /// <value>The name of the file.</value>
     public string FileName { get; set; }
 
     /// <summary>
-    /// Gets or sets the extension.
+    /// Gets or sets the file extension.
     /// </summary>
-    /// <value>The extension.</value>
     public string FileExtension { get; set; }
 
     /// <summary>
-    /// Gets or sets the data.
+    /// Gets or sets the data of the file.
     /// </summary>
-    /// <value>The data.</value>
     public byte[] Data { get; set; }
 }
