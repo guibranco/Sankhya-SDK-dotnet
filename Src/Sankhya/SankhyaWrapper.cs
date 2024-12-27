@@ -706,8 +706,16 @@ internal class SankhyaWrapper
     private static void ReadStream(string key, HttpWebResponse response, ServiceFile result)
     {
         var stream = response.GetResponseStream();
+
+#if NETSTANDARD2_0 || NETSTANDARD2_1
+        if (stream == null)
+        {
+            throw new InvalidOperationException(Resources.ResponseStreamIsNull);
+        }
+#endif
+
         using var memory = new MemoryStream();
-        stream.CopyStreamToMemory(memory);
+        stream.CopyTo(memory);
 
         if (memory.Length == 0)
         {
@@ -935,15 +943,26 @@ internal class SankhyaWrapper
         out string extension
     )
     {
+#if NETSTANDARD2_0
         if (!MimeTypes2Extensions.TryGetValue(response.ContentType, out extension))
         {
             extension = @"jpg";
         }
+#else
+        extension = MimeTypes2Extensions.GetValueOrDefault(response.ContentType, @"jpg");
+#endif
 
         using var stream = response.GetResponseStream();
+#if NETSTANDARD2_0 || NETSTANDARD2_1
+        if (stream == null)
+        {
+            throw new InvalidOperationException(Resources.ResponseStreamIsNull);
+        }
+#endif
 
         var memory = new MemoryStream();
-        stream.CopyStreamToMemory(memory);
+        stream.CopyTo(memory);
+
         return memory;
     }
 
