@@ -120,11 +120,17 @@ public enum ServiceName
     [Service(ServiceModule.Mgecom, ServiceCategory.Invoice, ServiceType.Transactional)]
     InvoiceItemInclude,
 
+    /// <summary>
+    /// Bill invoice.
+    /// </summary>
     [InternalValue("SelecaoDocumentoSP.faturar")]
     [HumanReadable("Bill Invoice")]
     [Service(ServiceModule.Mgecom, ServiceCategory.Invoice, ServiceType.NonTransactional)]
     InvoiceBill,
 
+    /// <summary>
+    /// Invoice accompaniments.
+    /// </summary>
     [InternalValue("ServicosNfeSP.getAcompanhamentosNota")]
     [HumanReadable("Invoice Accompaniment")]
     [Service(ServiceModule.Mgecom, ServiceCategory.Invoice, ServiceType.Retrieve)]

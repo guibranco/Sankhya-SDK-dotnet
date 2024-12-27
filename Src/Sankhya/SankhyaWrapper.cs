@@ -707,27 +707,15 @@ internal class SankhyaWrapper
     {
         var stream = response.GetResponseStream();
 
-        var buffer = new byte[32768];
+#if NETSTANDARD2_0 || NETSTANDARD2_1
+        if (stream == null)
+        {
+            throw new InvalidOperationException(Resources.ResponseStreamIsNull);
+        }
+#endif
 
         using var memory = new MemoryStream();
-
-        int bytesRead;
-
-#if NETSTANDARD2_0 || NETSTANDARD2_1
-        while (stream != null && (bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
-        {
-            memory.Write(buffer, 0, bytesRead);
-        }
-
-        stream?.Close();
-#else
-        while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
-        {
-            memory.Write(buffer, 0, bytesRead);
-        }
-
-        stream.Close();
-#endif
+        stream.CopyTo(memory);
 
         if (memory.Length == 0)
         {
@@ -955,34 +943,25 @@ internal class SankhyaWrapper
         out string extension
     )
     {
+#if NETSTANDARD2_0
         if (!MimeTypes2Extensions.TryGetValue(response.ContentType, out extension))
         {
             extension = @"jpg";
         }
+#else
+        extension = MimeTypes2Extensions.GetValueOrDefault(response.ContentType, @"jpg");
+#endif
 
         using var stream = response.GetResponseStream();
+#if NETSTANDARD2_0 || NETSTANDARD2_1
+        if (stream == null)
+        {
+            throw new InvalidOperationException(Resources.ResponseStreamIsNull);
+        }
+#endif
 
         var memory = new MemoryStream();
-
-        var buffer = new byte[32768];
-
-        int bytesRead;
-
-#if NETSTANDARD2_0 || NETSTANDARD2_1
-        while (stream != null && (bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
-        {
-            memory.Write(buffer, 0, bytesRead);
-        }
-
-        stream?.Close();
-#else
-        while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
-        {
-            memory.Write(buffer, 0, bytesRead);
-        }
-
-        stream.Close();
-#endif
+        stream.CopyTo(memory);
 
         return memory;
     }
