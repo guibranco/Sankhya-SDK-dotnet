@@ -145,13 +145,12 @@ internal sealed class OnDemandRequestWrapper<T> : IOnDemandRequestWrapper
     {
         var sessionToken = _context.AcquireNewSession(ServiceRequestType.OnDemandCrud);
 
-        _token.Register(
-            () =>
-                LogConsumer.Warning(
-                    Resources.OnDemandRequestWrapper_OnDemandRequestWrapper_Cancelling,
-                    sessionToken,
-                    _entityName
-                )
+        _token.Register(() =>
+            LogConsumer.Warning(
+                Resources.OnDemandRequestWrapper_OnDemandRequestWrapper_Cancelling,
+                sessionToken,
+                _entityName
+            )
         );
 
         while (true)
