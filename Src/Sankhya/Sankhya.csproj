@@ -1,13 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <ProjectGuid>{D1E5B509-0934-4E15-B78D-D3A88ADDCB16}</ProjectGuid>
-    <TargetFrameworks>$(DotNetVersions)</TargetFrameworks>    
-    <Description>The Sankhya (ERP) SDK. A .NET client to consume Sankhya web service</Description>    
+    <TargetFrameworks>$(DotNetVersions)</TargetFrameworks>
+    <Description>The Sankhya (ERP) SDK. A .NET client to consume Sankhya web service</Description>
     <PackageTags>sankhya erp client sdk web service webservice apis</PackageTags>
     <PackageReleaseNotes>Chore</PackageReleaseNotes>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="CrispyWaffle" Version="10.0.203" />
     <PackageReference Include="CrispyWaffle.Configuration" Version="10.0.203" />
@@ -17,11 +15,9 @@
     <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.3" />
   </ItemGroup>
-
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -29,7 +25,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.pt-BR.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -39,5 +34,4 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
 </Project>

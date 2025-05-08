@@ -45,8 +45,8 @@ public class MarkAsPaymentPaidExceptionTests
         var innerException = new Exception("Inner exception message");
 
         // Act & Assert
-        Assert.Throws<ArgumentNullException>(
-            () => new MarkAsPaymentPaidException(null, request, innerException)
+        Assert.Throws<ArgumentNullException>(() =>
+            new MarkAsPaymentPaidException(null, request, innerException)
         );
     }
 }
