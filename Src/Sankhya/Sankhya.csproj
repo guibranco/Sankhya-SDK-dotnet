@@ -7,8 +7,8 @@
     <PackageReleaseNotes>Chore</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CrispyWaffle" Version="10.0.369" />
-    <PackageReference Include="CrispyWaffle.Configuration" Version="10.0.369" />
+    <PackageReference Include="CrispyWaffle" Version="10.0.377" />
+    <PackageReference Include="CrispyWaffle.Configuration" Version="10.0.377" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
