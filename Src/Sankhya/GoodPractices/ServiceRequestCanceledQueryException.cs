@@ -9,7 +9,7 @@ namespace Sankhya.GoodPractices;
 public class ServiceRequestCanceledQueryException : ServiceRequestGeneralException
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ServiceRequestCanceledQueryException"/> class with a specified error message and the service request that caused the exception.
+    /// Initializes a new instance of the <see cref="ServiceRequestCanceledQueryException" /> class with a specified error message and the service request that caused the exception.
     /// </summary>
     /// <param name="message">The error message that explains the reason for the exception.</param>
     /// <param name="request">The service request that caused the exception.</param>
@@ -17,7 +17,7 @@ public class ServiceRequestCanceledQueryException : ServiceRequestGeneralExcepti
         : base(message, request) { }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ServiceRequestCanceledQueryException"/> class with a specified error message, the service request that caused the exception, and a reference to the inner exception that is the cause of this exception.
+    /// Initializes a new instance of the <see cref="ServiceRequestCanceledQueryException" /> class with a specified error message, the service request that caused the exception, and a reference to the inner exception that is the cause of this exception.
     /// </summary>
     /// <param name="message">The error message that explains the reason for the exception.</param>
     /// <param name="request">The service request that caused the exception.</param>
@@ -30,7 +30,7 @@ public class ServiceRequestCanceledQueryException : ServiceRequestGeneralExcepti
         : base(message, request, innerException) { }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ServiceRequestCanceledQueryException"/> class with a specified error message, the service request that caused the exception, and the service response associated with the request.
+    /// Initializes a new instance of the <see cref="ServiceRequestCanceledQueryException" /> class with a specified error message, the service request that caused the exception, and the service response associated with the request.
     /// </summary>
     /// <param name="message">The error message that explains the reason for the exception.</param>
     /// <param name="request">The service request that caused the exception.</param>
@@ -43,7 +43,7 @@ public class ServiceRequestCanceledQueryException : ServiceRequestGeneralExcepti
         : base(message, request, response) { }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ServiceRequestCanceledQueryException"/> class with a specified error message, the service request that caused the exception, the service response associated with the request, and a reference to the inner exception that is the cause of this exception.
+    /// Initializes a new instance of the <see cref="ServiceRequestCanceledQueryException" /> class with a specified error message, the service request that caused the exception, the service response associated with the request, and a reference to the inner exception that is the cause of this exception.
     /// </summary>
     /// <param name="message">The error message that explains the reason for the exception.</param>
     /// <param name="request">The service request that caused the exception.</param>
