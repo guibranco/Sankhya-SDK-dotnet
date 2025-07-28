@@ -28,7 +28,15 @@ public class ServiceRequestBusinessRuleRestrictionException(
         response
     )
 {
+    /// <summary>
+    /// Gets the name of the business rule.
+    /// </summary>
+    /// <value>The name of the business rule.</value>
     public string BusinessRuleName { get; } = businessRuleName;
 
+    /// <summary>
+    /// Gets the error message.
+    /// </summary>
+    /// <value>The error message.</value>
     public string ErrorMessage { get; } = errorMessage;
 }

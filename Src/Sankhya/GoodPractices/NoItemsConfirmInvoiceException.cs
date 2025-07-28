@@ -25,5 +25,9 @@ public class NoItemsConfirmInvoiceException(
         innerException
     )
 {
+    /// <summary>
+    /// Gets the single number.
+    /// </summary>
+    /// <value>The single number.</value>
     public int SingleNumber { get; } = singleNumber;
 }
