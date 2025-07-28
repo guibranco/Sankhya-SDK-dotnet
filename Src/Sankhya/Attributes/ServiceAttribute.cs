@@ -10,7 +10,7 @@ namespace Sankhya.Attributes;
 public sealed class ServiceAttribute : Attribute
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ServiceAttribute"/> class with the specified module, category, and type.
+    /// Initializes a new instance of the <see cref="ServiceAttribute" /> class with the specified module, category, and type.
     /// </summary>
     /// <param name="module">The module of the service.</param>
     /// <param name="category">The category of the service.</param>
@@ -25,15 +25,18 @@ public sealed class ServiceAttribute : Attribute
     /// <summary>
     /// Gets the category of the service.
     /// </summary>
+    /// <value>The category.</value>
     public ServiceCategory Category { get; }
 
     /// <summary>
     /// Gets the module of the service.
     /// </summary>
+    /// <value>The module.</value>
     public ServiceModule Module { get; }
 
     /// <summary>
     /// Gets the type of the service.
     /// </summary>
+    /// <value>The type.</value>
     public ServiceType Type { get; }
 }
