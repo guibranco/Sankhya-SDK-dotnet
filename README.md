@@ -127,6 +127,19 @@ Contributions are welcome! Check out the [CONTRIBUTING.md](CONTRIBUTING.md) guid
 
 ---
 
+## SDK Implementations
+
+This Sankhya SDK is available in multiple programming languages:
+
+| Language | Repository | Maintainer |
+|----------|------------|------------|
+| **.NET** | [Sankhya-SDK-dotnet](https://github.com/guibranco/Sankhya-SDK-dotnet) | [@guibranco](https://github.com/guibranco) |
+| **Python** | [Sankhya-SDK-python](https://github.com/ssmvictor/Sankhya-SDK-python) | [@ssmvictor](https://github.com/ssmvictor) |
+
+Each implementation provides language-specific features and follows the conventions of its respective ecosystem while maintaining compatibility with Sankhya's web services.
+
+---
+
 ## Contributors
 
 Thanks to all contributors! 💙
