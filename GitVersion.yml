@@ -4,3 +4,11 @@ assembly-versioning-scheme: MajorMinorPatch
 assembly-file-versioning-scheme: MajorMinorPatch
 assembly-informational-format: '{MajorMinorPatch}{PreReleaseTagWithDash}+{ShortSha}'
 tag-prefix: '[vV]'
+
+# Only honour "+semver: …" when it is the last token on a line (the convention
+# used in PR titles). The GitVersion defaults match the directive anywhere in a
+# commit message, so merely mentioning it in a PR body bumped a release once.
+major-version-bump-message: '(?m)(?:^|\s)\+semver:\s?(breaking|major)\s*$'
+minor-version-bump-message: '(?m)(?:^|\s)\+semver:\s?(feature|minor)\s*$'
+patch-version-bump-message: '(?m)(?:^|\s)\+semver:\s?(fix|patch)\s*$'
+no-bump-message: '(?m)(?:^|\s)\+semver:\s?(none|skip)\s*$'
