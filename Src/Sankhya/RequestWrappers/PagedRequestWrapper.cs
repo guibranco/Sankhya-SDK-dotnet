@@ -6,9 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using CrispyWaffle.Cache;
 using CrispyWaffle.Composition;
-using CrispyWaffle.Infrastructure;
 using CrispyWaffle.Log;
 using Sankhya.Enums;
 using Sankhya.GoodPractices;
@@ -42,7 +40,7 @@ internal sealed class PagedRequestWrapper
 
     private readonly ServiceRequest _request;
 
-    private readonly string _cacheKey;
+    private readonly PagedRequestLock _lock;
 
     private readonly Type _type;
 
@@ -70,7 +68,7 @@ internal sealed class PagedRequestWrapper
         _request = request;
         _resultsLoaded = 0;
         _token = _context.AcquireNewSession(ServiceRequestType.PagedCrud);
-        _cacheKey = $@"PagedRequestWrapper_{_entityName}_{_context.UserName}";
+        _lock = new PagedRequestLock($@"PagedRequestWrapper_{_entityName}_{_context.UserName}");
         _type = type;
     }
 
@@ -194,7 +192,7 @@ internal sealed class PagedRequestWrapper
 
         WaitAnotherLoad();
 
-        CacheManager.Set(EnvironmentHelper.ProcessId, _cacheKey, new TimeSpan(0, lockMinutes, 0));
+        _lock.Acquire(new TimeSpan(0, lockMinutes, 0));
 
         var firstPage = LoadPage(pageNumber++, out var quantityLoaded, out var totalPages);
 
@@ -218,11 +216,7 @@ internal sealed class PagedRequestWrapper
                 totalPages = 1 + pageNumber;
             }
 
-            CacheManager.Set(
-                EnvironmentHelper.ProcessId,
-                _cacheKey,
-                TimeSpan.FromMinutes(lockMinutes * (totalPages - pageNumber + 1))
-            );
+            _lock.Acquire(TimeSpan.FromMinutes(lockMinutes * (totalPages - pageNumber + 1)));
 
             var success = LoadPage(pageNumber++, out quantityLoaded, out totalPages);
 
@@ -246,24 +240,8 @@ internal sealed class PagedRequestWrapper
 
     private void WaitAnotherLoad()
     {
-        while (true)
+        while (_lock.IsHeldByAnotherProcess(out var timeToWait))
         {
-            if (
-                !CacheManager.TryGet(_cacheKey, out int processId)
-                || processId == EnvironmentHelper.ProcessId
-            )
-            {
-                break;
-            }
-
-            var timeToWait = CacheManager.TTL(_cacheKey);
-
-            if (timeToWait.Ticks == 0)
-            {
-                CacheManager.Remove(_cacheKey);
-                break;
-            }
-
             LogConsumer.Warning(
                 Resources.PagedRequestWrapper_LoadResponse_Waiting,
                 _entityName,
@@ -283,7 +261,7 @@ internal sealed class PagedRequestWrapper
 
         try
         {
-            CacheManager.Remove(_cacheKey);
+            _lock.Release();
         }
         catch (Exception e)
         {
