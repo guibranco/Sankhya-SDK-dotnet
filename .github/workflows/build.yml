@@ -1,0 +1,145 @@
+name: Build, Test and Analyze
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_NOLOGO: true
+
+jobs:
+  build:
+    name: Build, Test and Analyze
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: ☕ Setup Java runtime
+        uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          java-version: 21
+          distribution: temurin
+
+      # The library multi-targets up to net9.0 and the tests run on net8.0,
+      # so both SDK/runtime lines are installed explicitly rather than relying
+      # on whatever the runner image happens to ship.
+      - name: 🧰 Setup .NET SDK
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: |
+            8.0.x
+            9.0.x
+
+      - name: 🔧 Install SonarCloud scanner
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+        run: dotnet tool install --global dotnet-sonarscanner
+
+      - name: 📡 Install DeepSource scanner
+        run: |
+          curl --proto '=https' --tlsv1.2 -fsSLo deepsource-install.sh https://deepsource.io/cli
+          sh deepsource-install.sh
+
+      - name: 💾 Cache NuGet packages
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/*.props', '**/global.json', '**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: 📦 Restore dependencies
+        run: dotnet restore
+
+      - name: 🔍 Begin SonarCloud analysis
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          PROJECT="${GITHUB_REPOSITORY/\//_}"
+          ORG="${GITHUB_REPOSITORY_OWNER}"
+
+          dotnet sonarscanner begin \
+            "/k:$PROJECT" \
+            "/o:$ORG" \
+            "/d:sonar.token=$SONAR_TOKEN" \
+            "/d:sonar.host.url=https://sonarcloud.io" \
+            "/d:sonar.scanner.scanAll=false" \
+            "/d:sonar.exclusions=**/bin/**/*,**/obj/**/*" \
+            "/d:sonar.coverage.exclusions=**/*.Tests/**,**/*Tests.cs" \
+            "/d:sonar.cs.opencover.reportsPaths=**/coverage.*.opencover.xml"
+
+      - name: 🏗️ Build solution
+        run: dotnet build --no-restore --configuration Release --verbosity minimal
+
+      - name: 🧪 Run tests with coverage
+        run: |
+          dotnet test \
+            --no-build \
+            --configuration Release \
+            --verbosity minimal \
+            /p:CollectCoverage=true \
+            /p:CoverletOutputFormat=opencover%2ccobertura \
+            --logger:"junit;LogFilePath=test-results.xml"
+
+      - name: 📄 Publish test results
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        if: always()
+        with:
+          name: test-results-${{ github.run_id }}
+          path: Tests/**/test-results.xml
+
+      # Coverlet names its output after the test target framework
+      # (coverage.net8.0.opencover.xml today), so the paths are resolved at
+      # run time instead of being hardcoded and going stale on the next TFM bump.
+      - name: 🧭 Locate coverage reports
+        id: coverage
+        run: |
+          OPENCOVER=$(find Tests -name 'coverage.*.opencover.xml' -o -name 'coverage.opencover.xml' | head -1)
+          COBERTURA=$(find Tests -name 'coverage.*.cobertura.xml' -o -name 'coverage.cobertura.xml' | head -1)
+          echo "opencover=$OPENCOVER" >> "$GITHUB_OUTPUT"
+          echo "cobertura=$COBERTURA" >> "$GITHUB_OUTPUT"
+          echo "OpenCover: $OPENCOVER"
+          echo "Cobertura: $COBERTURA"
+
+      - name: 📊 End SonarCloud analysis
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: dotnet sonarscanner end /d:sonar.token="$SONAR_TOKEN"
+
+      - name: ☂️ Upload coverage to Codecov
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ${{ steps.coverage.outputs.opencover }}
+          fail_ci_if_error: false
+
+      - name: 📈 Report coverage to DeepSource
+        if: >-
+          (
+            github.event_name == 'pull_request' &&
+            github.event.pull_request.head.repo.full_name == github.repository
+          ) || (
+            github.event_name == 'workflow_dispatch'
+          )
+        env:
+          DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
+        run: |
+          ./bin/deepsource report \
+            --analyzer test-coverage \
+            --key csharp \
+            --value-file "${{ steps.coverage.outputs.cobertura }}"

@@ -9,9 +9,9 @@
 
 ## CI/CD
 
-| Build status | Last commit | Tests | Coverage | Code Smells | LoC | 
-|--------------|-------------|-------|----------|-------------|-----|
-| [![Build status](https://ci.appveyor.com/api/projects/status/e1midttew0yykr59/branch/main?svg=true)](https://ci.appveyor.com/project/guibranco/Sankhya-SDK-dotnet/branch/main) | [![GitHub last commit](https://img.shields.io/github/last-commit/guibranco/Sankhya-SDK-dotnet/main)](https://github.com/guibranco/Sankhya-SDK-dotnet) | [![AppVeyor tests (branch)](https://img.shields.io/appveyor/tests/guibranco/Sankhya-SDK-dotnet/main?compact_message)](https://ci.appveyor.com/project/guibranco/Sankhya-SDK-dotnet/branch/main/tests) | [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=guibranco_Sankhya-SDK-dotnet&metric=coverage)](https://sonarcloud.io/dashboard?id=guibranco_Sankhya-SDK-dotnet) | [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=guibranco_Sankhya-SDK-dotnet&metric=code_smells)](https://sonarcloud.io/dashboard?id=guibranco_Sankhya-SDK-dotnet) | [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=guibranco_Sankhya-SDK-dotnet&metric=ncloc)](https://sonarcloud.io/dashboard?id=guibranco_Sankhya-SDK-dotnet)
+| Build and tests | Release | Last commit | Coverage | Code Smells | LoC |
+| --- | --- | --- | --- | --- | --- |
+| [![Build, Test and Analyze](https://github.com/guibranco/Sankhya-SDK-dotnet/actions/workflows/build.yml/badge.svg)](https://github.com/guibranco/Sankhya-SDK-dotnet/actions/workflows/build.yml) | [![Release](https://github.com/guibranco/Sankhya-SDK-dotnet/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/guibranco/Sankhya-SDK-dotnet/actions/workflows/release.yml) | [![GitHub last commit](https://img.shields.io/github/last-commit/guibranco/Sankhya-SDK-dotnet/main)](https://github.com/guibranco/Sankhya-SDK-dotnet) | [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=guibranco_Sankhya-SDK-dotnet&metric=coverage)](https://sonarcloud.io/dashboard?id=guibranco_Sankhya-SDK-dotnet) | [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=guibranco_Sankhya-SDK-dotnet&metric=code_smells)](https://sonarcloud.io/dashboard?id=guibranco_Sankhya-SDK-dotnet) | [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=guibranco_Sankhya-SDK-dotnet&metric=ncloc)](https://sonarcloud.io/dashboard?id=guibranco_Sankhya-SDK-dotnet) |
 
 ## Code Quality
 
