@@ -194,7 +194,7 @@ internal sealed class PagedRequestWrapper
 
         WaitAnotherLoad();
 
-        CacheManager.Set(EnvironmentHelper.ProcessId, _cacheKey, new TimeSpan(0, lockMinutes, 0));
+        AcquireLock(new TimeSpan(0, lockMinutes, 0));
 
         var firstPage = LoadPage(pageNumber++, out var quantityLoaded, out var totalPages);
 
@@ -218,11 +218,7 @@ internal sealed class PagedRequestWrapper
                 totalPages = 1 + pageNumber;
             }
 
-            CacheManager.Set(
-                EnvironmentHelper.ProcessId,
-                _cacheKey,
-                TimeSpan.FromMinutes(lockMinutes * (totalPages - pageNumber + 1))
-            );
+            AcquireLock(TimeSpan.FromMinutes(lockMinutes * (totalPages - pageNumber + 1)));
 
             var success = LoadPage(pageNumber++, out quantityLoaded, out totalPages);
 
@@ -248,19 +244,16 @@ internal sealed class PagedRequestWrapper
     {
         while (true)
         {
-            if (
-                !CacheManager.TryGet(_cacheKey, out int processId)
-                || processId == EnvironmentHelper.ProcessId
-            )
+            if (!TryGetLockOwner(out var processId) || processId == EnvironmentHelper.ProcessId)
             {
                 break;
             }
 
-            var timeToWait = CacheManager.TTL(_cacheKey);
+            var timeToWait = GetLockTimeToLive();
 
             if (timeToWait.Ticks == 0)
             {
-                CacheManager.Remove(_cacheKey);
+                ReleaseLock();
                 break;
             }
 
@@ -274,6 +267,53 @@ internal sealed class PagedRequestWrapper
         }
     }
 
+    /// <summary>
+    /// Registers (or renews) the paging lock for the current process, so other processes paging
+    /// the same entity for the same user wait until this load finishes or the lock expires.
+    /// </summary>
+    /// <param name="timeToLive">How long the lock should be kept before expiring.</param>
+    /// <remarks>
+    /// The <see cref="CacheManager"/> API is asynchronous. This wrapper runs on a dedicated worker
+    /// thread (see <see cref="GetManagedEnumeratorInternal{T}"/>) with no synchronization context,
+    /// so blocking on the cache operations here is safe and keeps the paging flow synchronous.
+    /// </remarks>
+    private void AcquireLock(TimeSpan timeToLive) =>
+        CacheManager
+            .SetAsync(EnvironmentHelper.ProcessId, _cacheKey, timeToLive)
+            .AsTask()
+            .GetAwaiter()
+            .GetResult();
+
+    /// <summary>
+    /// Tries to get the id of the process currently holding the paging lock.
+    /// </summary>
+    /// <param name="processId">The id of the process holding the lock, when found.</param>
+    /// <returns><c>true</c> if the lock exists in the cache; otherwise, <c>false</c>.</returns>
+    private bool TryGetLockOwner(out int processId)
+    {
+        var (success, value) = CacheManager
+            .TryGetAsync<int>(_cacheKey)
+            .AsTask()
+            .GetAwaiter()
+            .GetResult();
+
+        processId = value;
+
+        return success;
+    }
+
+    /// <summary>
+    /// Gets the remaining time to live of the paging lock.
+    /// </summary>
+    /// <returns>The remaining time to live, or <see cref="TimeSpan.Zero"/> if the lock is expired or missing.</returns>
+    private TimeSpan GetLockTimeToLive() =>
+        CacheManager.TTLAsync(_cacheKey).GetAwaiter().GetResult();
+
+    /// <summary>
+    /// Releases the paging lock, removing it from all cache repositories.
+    /// </summary>
+    private void ReleaseLock() => CacheManager.Remove(_cacheKey).AsTask().GetAwaiter().GetResult();
+
     private void Close()
     {
         if (_set)
@@ -283,7 +323,7 @@ internal sealed class PagedRequestWrapper
 
         try
         {
-            CacheManager.Remove(_cacheKey);
+            ReleaseLock();
         }
         catch (Exception e)
         {
