@@ -154,7 +154,11 @@ jobs:
           echo "Cobertura: $COBERTURA"
 
       # ── Coverage reporting ────────────────────────────────────────────────────
+      # The reporters are non-blocking on purpose: a missing token or a
+      # reporting-service outage must not stop a green build from being
+      # published. A missing secret is surfaced as a workflow warning instead.
       - name: Report coverage → Codecov
+        continue-on-error: true
         uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -162,9 +166,14 @@ jobs:
           fail_ci_if_error: false
 
       - name: Report coverage → Codacy
+        continue-on-error: true
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: |
+          if [ -z "$CODACY_PROJECT_TOKEN" ]; then
+            echo "::warning::CODACY_PROJECT_TOKEN is not set — skipping the Codacy coverage report."
+            exit 0
+          fi
           curl --proto '=https' --tlsv1.2 -fsSL \
             https://github.com/codacy/codacy-coverage-reporter/releases/latest/download/codacy-coverage-reporter-assembly.jar \
             -o codacy-reporter.jar
@@ -174,9 +183,14 @@ jobs:
             -r "${{ steps.coverage.outputs.opencover }}"
 
       - name: Report coverage → DeepSource
+        continue-on-error: true
         env:
           DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
         run: |
+          if [ -z "$DEEPSOURCE_DSN" ]; then
+            echo "::warning::DEEPSOURCE_DSN is not set — skipping the DeepSource coverage report."
+            exit 0
+          fi
           ./bin/deepsource report \
             --analyzer test-coverage \
             --key csharp \
@@ -268,9 +282,15 @@ jobs:
       # ── Tag the release commit ────────────────────────────────────────────────
       # This tag is what GitVersion reads on the next run to derive the next
       # version increment, so it must be pushed before any subsequent builds.
+      # Skipped when the tag already exists so a re-run after a failure further
+      # down (e.g. creating the GitHub Release) does not fail here.
       - name: Tag release version
         run: |
           VERSION="v${{ steps.gitversion.outputs.semVer }}"
+          if git ls-remote --exit-code --tags origin "refs/tags/$VERSION" >/dev/null 2>&1; then
+            echo "Tag $VERSION already exists on origin; skipping."
+            exit 0
+          fi
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git tag -a "$VERSION" -m "Release $VERSION"
