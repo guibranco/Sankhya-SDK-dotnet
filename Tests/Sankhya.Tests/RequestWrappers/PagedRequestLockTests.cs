@@ -64,7 +64,10 @@ public class PagedRequestLockTests
         await OnWorkerThread(() => sut.Acquire(_lockTimeToLive));
 
         // Assert
-        Assert.True(Repository.Contains(cacheKey), "The lock must be stored before Acquire returns");
+        Assert.True(
+            Repository.Contains(cacheKey),
+            "The lock must be stored before Acquire returns"
+        );
         var (found, owner) = await OnWorkerThread(() =>
         {
             var success = sut.TryGetOwner(out var processId);
