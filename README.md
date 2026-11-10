@@ -177,7 +177,7 @@ Thanks to all contributors! 💙
                 </a>
             </td>
 		</tr>
-	<tbody>
+	</tbody>
 </table>
 <!-- readme: collaborators,contributors,snyk-bot/- -end -->
 
@@ -239,6 +239,6 @@ Thanks to all contributors! 💙
                 </a>
             </td>
 		</tr>
-	<tbody>
+	</tbody>
 </table>
 <!-- readme: bots,snyk-bot -end -->
