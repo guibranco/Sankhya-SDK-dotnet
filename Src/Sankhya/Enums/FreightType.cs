@@ -34,4 +34,18 @@ public enum FreightType
     [InternalValue("T")]
     [HumanReadable("Terceiros")]
     Third,
+
+    /// <summary>
+    /// Own transport by the sender.
+    /// </summary>
+    [InternalValue("R")]
+    [HumanReadable("Transporte Próprio Remetente")]
+    OwnTransportSender,
+
+    /// <summary>
+    /// Own transport by the recipient.
+    /// </summary>
+    [InternalValue("D")]
+    [HumanReadable("Transporte Próprio Destinatário")]
+    OwnTransportRecipient,
 }
