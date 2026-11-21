@@ -59,8 +59,7 @@ internal sealed class PagedRequestWrapper
     private PagedRequestWrapper(Type type, ServiceRequest request, int maxResults)
     {
         _context = ServiceLocator.Resolve<SankhyaContext>();
-        _entityName =
-            request.RequestBody.Entity?.Name
+        _entityName = request.RequestBody.Entity?.Name
             ?? request.RequestBody.Entity?.RootEntity
             ?? request.RequestBody.DataSet.RootEntity;
         _items = new();

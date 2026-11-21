@@ -296,12 +296,11 @@ public static class ServiceRequestExtensions
 
         var innerType = propertyInfo.PropertyType;
         var innerLevel = (ReferenceLevel)((int)currentLevel + 1);
-        var innerTypeValue =
-            Convert.ChangeType(
-                propertyInfo.GetValue(criteriaEntity, null),
-                innerType,
-                CultureInfo.InvariantCulture
-            ) ?? Activator.CreateInstance(innerType);
+        var innerTypeValue = Convert.ChangeType(
+            propertyInfo.GetValue(criteriaEntity, null),
+            innerType,
+            CultureInfo.InvariantCulture
+        ) ?? Activator.CreateInstance(innerType);
         var innerResult = request.ParseProperties(innerTypeValue, maxLevel, innerLevel);
 
         var innerName = string.IsNullOrWhiteSpace(model.CustomRelationName)

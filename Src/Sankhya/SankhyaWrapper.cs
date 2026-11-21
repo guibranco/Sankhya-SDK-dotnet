@@ -275,8 +275,7 @@ internal class SankhyaWrapper
         retryData.RetryCount++;
         if (service.Category == ServiceCategory.Crud && request != null)
         {
-            var requestName =
-                request.RequestBody.Entity?.Name
+            var requestName = request.RequestBody.Entity?.Name
                 ?? request.RequestBody.Entity?.RootEntity
                 ?? request.RequestBody.DataSet.RootEntity;
             LogConsumer.Trace(
