@@ -163,6 +163,13 @@ Thanks to all contributors! 💙
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/gauravchahal20">
+                    <img src="https://avatars.githubusercontent.com/u/183644790?v=4" width="100;" alt="gauravchahal20"/>
+                    <br />
+                    <sub><b>Gaurav Chahal</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/pedrowindisch">
                     <img src="https://avatars.githubusercontent.com/u/30203228?v=4" width="100;" alt="pedrowindisch"/>
                     <br />
