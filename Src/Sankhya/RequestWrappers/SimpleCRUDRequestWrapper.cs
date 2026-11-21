@@ -178,10 +178,8 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve(entity);
-        return ProcessRequestFindInternalAsync<T>(
-            request,
-            (serviceResponse) =>
-                throw new ServiceRequestUnexpectedResultException(request, serviceResponse)
+        return ProcessRequestFindInternalAsync<T>(request, (serviceResponse) =>
+            throw new ServiceRequestUnexpectedResultException(request, serviceResponse)
         );
     }
 
@@ -190,10 +188,8 @@ public static class SimpleCrudRequestWrapper
     {
         var request = new ServiceRequest(ServiceName.CrudServiceFind);
         request.Resolve<T>(criteria);
-        return ProcessRequestFindInternalAsync<T>(
-            request,
-            (serviceResponse) =>
-                throw new ServiceRequestUnexpectedResultException(request, serviceResponse)
+        return ProcessRequestFindInternalAsync<T>(request, (serviceResponse) =>
+            throw new ServiceRequestUnexpectedResultException(request, serviceResponse)
         );
     }
 
@@ -265,12 +261,11 @@ public static class SimpleCrudRequestWrapper
     {
         if (t.IsFaulted)
         {
-            var exception =
-                (
-                    t.Exception?.InnerExceptions.FirstOrDefault()
-                    ?? t.Exception?.InnerException
-                    ?? t.Exception
-                ) ?? new InvalidOperationException("Invalid async update request");
+            var exception = (
+                t.Exception?.InnerExceptions.FirstOrDefault()
+                ?? t.Exception?.InnerException
+                ?? t.Exception
+            ) ?? new InvalidOperationException("Invalid async update request");
             LogConsumer.Handle(exception);
             return null;
         }

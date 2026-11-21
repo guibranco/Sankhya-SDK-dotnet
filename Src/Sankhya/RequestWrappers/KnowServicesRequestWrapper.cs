@@ -416,8 +416,8 @@ public static class KnowServicesRequestWrapper
         );
         var response = SankhyaContext.ServiceInvoker(request, SessionToken);
         var cancelled = response.ResponseBody.CancellationResult.TotalCancelledInvoices;
-        singleNumbersNotCancelled =
-            response.ResponseBody.CancellationResult.SingleNumbers ?? Array.Empty<int>();
+        singleNumbersNotCancelled = response.ResponseBody.CancellationResult.SingleNumbers
+            ?? Array.Empty<int>();
         LogConsumer.Info(
             Resources.KnowServicesRequestWrapper_CancelInvoices_Canceled,
             cancelled,
