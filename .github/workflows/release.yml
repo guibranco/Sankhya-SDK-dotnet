@@ -47,14 +47,14 @@ jobs:
           java-version: "21"
 
       # ── GitVersion ───────────────────────────────────────────────────────────
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@389fe43e6b0189b98c40c43553070ac029304635 # v4
+      - name: 🔧 Install GitVersion
+        uses: gittools/actions/gitversion/setup@389fe43e6b0189b98c40c43553070ac029304635 # v5.0.0
         with:
-          versionSpec: "6.x"
+          versionSpec: '7.0.x'
 
-      - name: Determine version
+      - name: 🏷️ Determine version number
         id: gitversion
-        uses: gittools/actions/gitversion/execute@389fe43e6b0189b98c40c43553070ac029304635 # v4
+        uses: gittools/actions/gitversion/execute@389fe43e6b0189b98c40c43553070ac029304635 # v5.0.0
 
       - name: Patch .props files with computed version
         run: |
